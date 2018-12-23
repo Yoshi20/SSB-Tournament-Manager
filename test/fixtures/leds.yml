@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-09-12 21:00:07
+  updated_at: 2017-09-12 21:00:07
+  color: MyString
+  luminous_intensity: 1.5
+  viewing_angle: 1
+  casing: MyString
+  forward_current: MyString
+  forward_voltage: MyString
+
+two:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-09-12 21:00:07
+  updated_at: 2017-09-12 21:00:07
+  color: MyString
+  luminous_intensity: 1.5
+  viewing_angle: 1
+  casing: MyString
+  forward_current: MyString
+  forward_voltage: MyString

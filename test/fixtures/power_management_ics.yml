@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-10-21 16:41:04
+  updated_at: 2017-10-21 16:41:04
+  specific_component_type: MyString
+  input_voltage: MyString
+  output_voltage: MyString
+  max_output_current: 1.5
+  quiscent_current: 1.5
+  casing: MyString
+  dropout_voltage: 1.5
+  switching_frequency: MyString
+  battery_type: MyString
+
+two:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-10-21 16:41:04
+  updated_at: 2017-10-21 16:41:04
+  specific_component_type: MyString
+  input_voltage: MyString
+  output_voltage: MyString
+  max_output_current: 1.5
+  quiscent_current: 1.5
+  casing: MyString
+  dropout_voltage: 1.5
+  switching_frequency: MyString
+  battery_type: MyString

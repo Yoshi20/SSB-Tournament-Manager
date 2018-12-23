@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-09-10 09:20:52
+  updated_at: 2017-09-10 09:20:52
+  capacitance: 1.5
+  capacitance_in_farad: 1.5
+  unit: MyString
+  specific_component_type: MyString
+  casing: MyString
+  power_rating: 1.5
+  tolerance: 1.5
+
+two:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-09-10 09:20:52
+  updated_at: 2017-09-10 09:20:52
+  capacitance: 1.5
+  capacitance_in_farad: 1.5
+  unit: MyString
+  specific_component_type: MyString
+  casing: MyString
+  power_rating: 1.5
+  tolerance: 1.5

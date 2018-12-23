@@ -1,0 +1,30 @@
+.row.title-div
+  .col-md-12
+    %h1= "User-List"
+
+-# user list
+.row.user-list
+  .col-md-12
+    %table.table.table-striped
+      %thead.user-list-header
+        %tr
+          %th Username
+          %th Email
+          %th.text-center Log in counter
+          %th Last Log in at
+          %th Created at
+          %th Admin?
+          %th.action
+
+      %tbody.user-list-body
+        - @users.each do |user|
+          %tr
+            %td= user.username
+            %td= user.email
+            %td.text-center= user.sign_in_count
+            %td= user.current_sign_in_at.to_formatted_s(:long)
+            %td= user.created_at.to_formatted_s(:long)
+            %td.text-center= user.admin?
+            %td.text-center{:style => "vertical-align: middle"}
+              - if current_user.admin? && user != current_user
+                = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'

@@ -1,0 +1,157 @@
+rails g scaffold resistor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime resistance:integer unit:string type:string casing:string power_rating:float tolerance:float
+
+
+rails g scaffold capacitor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime capacitance:float capacitance_in_farad:float unit:string specific_component_type:string casing:string voltage_rating:float tolerance:float
+
+rails g scaffold inductor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime inductance:float inductance_in_henry:float unit:string specific_component_type:string casing:string max_dc_current:float max_dc_resistance:float tolerance:float
+
+rails g scaffold led in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime color:string luminous_intensity:float viewing_angle:integer casing:string forward_current:string forward_voltage:string
+
+rails g scaffold transistor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime specific_component_type:string configuration:string polarity:string max_ce_voltage:integer cb_voltage:integer eb_voltage:float max_dc_current:float ds_breakdown_voltage:integer continuous_drain_current:float ds_resistance:float gs_threshold_voltage:float number_of_channels:integer casing:string
+
+rails g scaffold powerManagementIc in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime specific_component_type:string input_voltage:string output_voltage:string max_output_current:float quiscent_current:float casing:string dropout_voltage:float switching_frequency:string battery_type:string
+
+rails g scaffold button in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime switch_function:string length:float width:float height:float operating_force:float travel_distance:float current_rating:integer voltage_rating:integer
+
+rails g scaffold microcontroller in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime casing:string name:string data_bus_width:integer max_clock_frequency:integer program_memory_size:integer data_ram_size:integer eeprom_size:integer number_of_ios:integer supply_voltage:string
+
+rails g scaffold crystal_and_oscillator in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime frequency:float tolerance:float stability:float length:float width:float height:float
+
+
+
+def component_params
+  my_params = params.require(:component).permit(:in_stock, :partnumber, :manufacturer, :comment, :active, :datasheet, :created_at, :updated_at, :user_id, :component_type, :updated_log)
+  case params[:component][:component_type]
+  when 'Resistor'
+    my_params[:payload] =
+    {
+      resistance: params[:resistance],
+      unit: params[:unit],
+      specific_component_type: params[:specific_component_type],
+      casing: params[:casing],
+      power_rating: params[:power_rating],
+      tolerance: params[:tolerance],
+    }
+  when 'Capacitor'
+    my_params[:payload] =
+    {
+      capacitance: params[:capacitance],
+      unit: params[:unit],
+      specific_component_type: params[:specific_component_type],
+      casing: params[:casing],
+      voltage_rating: params[:voltage_rating],
+      tolerance: params[:tolerance],
+    }
+  when 'Inductor'
+    my_params[:payload] =
+    {
+      inductance: params[:inductance],
+      unit: params[:unit],
+      specific_component_type: params[:specific_component_type],
+      casing: params[:casing],
+      max_dc_current: params[:max_dc_current],
+      max_dc_resitance: params[:max_dc_resitance],
+      tolerance: params[:tolerance],
+    }
+  when 'LED'
+    my_params[:payload] =
+    {
+      color: params[:color],
+      luminous_intensity: params[:luminous_intensity],
+      viewing_angle: params[:viewing_angle],
+      casing: params[:casing],
+      forward_current: params[:forward_current],
+      forward_voltage: params[:forward_voltage],
+    }
+  when 'Antenna'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      frequency: params[:frequency],
+      gain: params[:gain],
+      impedance: params[:impedance],
+      power_raing: params[:power_raing],
+    }
+  when 'Diode'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      forward_current: params[:forward_current],
+      forward_voltage: params[:forward_voltage],
+      reverse_current: params[:reverse_current],
+      casing: params[:casing],
+    }
+  when 'Transistor'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      configuration: params[:configuration],
+      transistor_polarity: params[:transistor_polarity],
+      ce_voltage: params[:ce_voltage],
+      cb_volrate: params[:cb_volrate],
+      eb_voltage: params[:eb_voltage],
+      max_dc_current: params[:max_dc_current],
+      ds_resistance: params[:ds_resistance],
+      gs_th_voltage: params[:gs_th_voltage],
+      casing: params[:casing],
+    }
+  when 'Button'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      lenght: params[:lenght],
+      size: params[:size],
+      height: params[:height],
+      current_rating: params[:current_rating],
+      voltage_rating: params[:voltage_rating],
+    }
+  when 'Connector'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      number_of_rows: params[:number_of_rows],
+      number_of_positions: params[:number_of_positions],
+      current_rating: params[:current_rating],
+      casing: params[:casing],
+    }
+  when 'Resonator'
+    my_params[:payload] =
+    {
+      frequency: params[:frequency],
+      tolerance: params[:tolerance],
+      stability: params[:stability],
+      casing: params[:casing],
+    }
+  when 'Microcontroller'
+    my_params[:payload] =
+    {
+      name: params[:name],
+      flash_size: params[:flash_size],
+      ram_size: params[:ram_size],
+      casing: params[:casing],
+    }
+  when 'Speaker'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      frequency: params[:frequency],
+      sound_pressure_level: params[:sound_pressure_level],
+      voltage_rating: params[:voltage_rating],
+      impedance: params[:impedance],
+      power_raing: params[:power_raing],
+      casing: params[:casing],
+    }
+  when 'Power-Managament'
+    my_params[:payload] =
+    {
+      specific_component_type: params[:specific_component_type],
+      output_voltage: params[:output_voltage],
+      max_output_current: params[:max_output_current],
+      quiescent_current: params[:quiescent_current],
+      max_input_voltage: params[:max_input_voltage],
+      dropout_voltage: params[:dropout_voltage],
+      casing: params[:casing],
+    }
+  end
+  my_params
+end

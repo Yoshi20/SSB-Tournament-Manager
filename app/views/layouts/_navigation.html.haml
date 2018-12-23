@@ -1,0 +1,52 @@
+%ul.nav.nav-pills
+  -# %li{role: "presentation", class: (@section == 'components' ? 'active' : 'inactive')}
+  -#   = link_to 'Overview', components_path
+  -#
+  -# %li{role: "presentation", class: (@section == 'resistors' ? 'active' : 'inactive')}
+  -#   = link_to 'Resistors', resistors_path
+  -#
+  -# %li{role: "presentation", class: (@section == 'capacitors' ? 'active' : 'inactive')}
+  -#   = link_to 'Capacitors', capacitors_path
+  -#
+  -# %li{role: "presentation", class: (@section == 'inductors' ? 'active' : 'inactive')}
+  -#   = link_to 'Inductors', inductors_path
+  -#
+  -# %li{role: "presentation", class: (@section == 'diodes' ? 'active' : 'inactive')}
+  -#   %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
+  -#     = "Diodes"
+  -#     %span.caret
+  -#   %ul.dropdown-menu
+  -#     %li= link_to 'STD Diodes', diodes_std_diodes_path
+  -#     %li= link_to 'TVS Diodes', diodes_tvs_diodes_path
+  -#     %li= link_to 'LEDs', leds_path
+
+  %li.dropdown.active.pull-right
+    %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
+      = "Account"
+      %span.caret
+    %ul.dropdown-menu
+      -# %li= link_to "Root-Path", root_path
+      -# %li.divider
+      - if user_signed_in?
+        %p
+          = "Signed in as:"
+          %b{style: 'margin-right: 10px'}
+            = current_user.username
+            - if current_user.admin?
+              = ' (Administrator)'
+        - if current_user.admin?
+          = link_to 'Show all users', users_path, class: 'form-control btn btn-primary'
+        = link_to 'Edit User', edit_user_registration_path, class: 'form-control btn btn-primary'
+        .divider
+        = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'form-control btn btn-warning'
+      - else
+        %li
+          -# unless devise_controller?
+          = form_tag session_path(:user), class: "form-inline pull-right" do
+            .form-group
+              = text_field_tag "user[login]", "", class: "form-control", placeholder: "Username or Email"
+              = password_field_tag "user[password]", "", class: "form-control", placeholder: "Password"
+              .text-center{style: "margin-top: 5px"}
+                = submit_tag "Log in", class: "form-control btn btn-success"
+                = "or"
+                = link_to "Sign up", new_user_registration_path,  class: "form-control btn btn-primary"

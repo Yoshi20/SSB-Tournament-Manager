@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-10-11 21:19:17
+  updated_at: 2017-10-11 21:19:17
+  specific_component_type: MyString
+  configuration: MyString
+  polarity: MyString
+  max_ce_voltage: 1
+  cb_voltage: 1
+  eb_voltage: 1.5
+  max_dc_current: 1.5
+  ds_breakdown_voltage: 1
+  continuous_drain_current: 1.5
+  ds_resistance: 1.5
+  gs_threshold_voltage: 1.5
+  number_of_channels: 1
+  casing: MyString
+
+two:
+  in_stock: 1
+  partnumber: MyString
+  manufacturer: MyString
+  comment: MyText
+  active: false
+  datasheet: 
+  created_at: 2017-10-11 21:19:17
+  updated_at: 2017-10-11 21:19:17
+  specific_component_type: MyString
+  configuration: MyString
+  polarity: MyString
+  max_ce_voltage: 1
+  cb_voltage: 1
+  eb_voltage: 1.5
+  max_dc_current: 1.5
+  ds_breakdown_voltage: 1
+  continuous_drain_current: 1.5
+  ds_resistance: 1.5
+  gs_threshold_voltage: 1.5
+  number_of_channels: 1
+  casing: MyString
