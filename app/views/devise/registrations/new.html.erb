@@ -1,37 +1,70 @@
 <h1>Signing up</h1>
 
-<div class='col-md-12 col-xs-12'>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true %>
+  <div class='row'>
+
+    <div class='col-md-12 col-xs-12'>
+
+      <%= f.hidden_field :points, value: 0 %><br />
+
+      <div class="form-group">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %><br />
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <p>
+        <%= f.label :self_assessment %><br />
+        <%= f.radio_button :self_assessment, 0, checked: false %>
+          <%= self_assessment_defines[0] %>
+        <%= f.radio_button :self_assessment, 1, checked: true %>
+          <%= self_assessment_defines[1] %>
+        <%= f.radio_button :self_assessment, 2, checked: false %>
+          <%= self_assessment_defines[2] %>
+      </p>
+
+      <p>
+        <%= f.label :tournament_experience %><br />
+        <%= f.radio_button :tournament_experience, 0, checked: false %>
+          <%= tournament_experience_defines[0] %>
+        <%= f.radio_button :tournament_experience, 1, checked: true %>
+          <%= tournament_experience_defines[1] %>
+        <%= f.radio_button :tournament_experience, 2, checked: false %>
+          <%= tournament_experience_defines[2] %>
+      </p>
+
     </div>
 
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email %>
+  </div>
+
+  <div class='row'>
+
+    <div class="col-md-12 col-xs-12 actions">
+      <%= f.submit "Register", class:'btn btn-primary' %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :password %><br />
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
+  <p> </p>
+  <p><%= link_to "Back", :back %></p>
 
-    <div class="actions">
-      <%= f.submit "Sign up", class:'btn btn-primary' %>
-      or
-      <%= link_to "Log in", new_session_path(resource_name), class:'btn btn-success' %>
-    </div>
-    
-  <% end %>
-</div>
+<% end %>

@@ -8,22 +8,36 @@
     %table.table.table-striped
       %thead.user-list-header
         %tr
+          %th.text-center Points
           %th Username
-          %th Email
+          - if current_user.admin?
+            %th Email
+          %th.text-center Self assessment
+          %th.text-center Tournament experience
           %th.text-center Log in counter
           %th Last Log in at
           %th Created at
-          %th Admin?
+          %th.text-center Admin?
           %th.action
 
       %tbody.user-list-body
         - @users.each do |user|
           %tr
+            %td.text-center= user.points
             %td= user.username
-            %td= user.email
+            - if current_user.admin?
+              %td= user.email
+            - if user.self_assessment
+              %td.text-center= self_assessment_defines[user.self_assessment]
+            - else
+              %td.text-center= "Undefined"
+            - if user.tournament_experience
+              %td.text-center= tournament_experience_defines[user.tournament_experience]
+            - else
+              %td.text-center= "Undefined"
             %td.text-center= user.sign_in_count
-            %td= user.current_sign_in_at.to_formatted_s(:long)
-            %td= user.created_at.to_formatted_s(:long)
+            %td= user.current_sign_in_at.to_s(:custom_datetime)
+            %td= user.created_at.to_s(:custom_datetime)
             %td.text-center= user.admin?
             %td.text-center{:style => "vertical-align: middle"}
               - if current_user.admin? && user != current_user
