@@ -1,4 +1,8 @@
 %ul.nav.nav-pills
+
+  %li{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
+    -# = link_to 'Tournaments', tournaments_path
+
   %li{role: "presentation", class: (@section == 'users' ? 'active' : 'inactive')}
     = link_to 'Ranking', users_path
 
