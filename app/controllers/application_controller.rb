@@ -11,14 +11,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     #new
-    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :points, :self_assessment, :tournament_experience]
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-
-    #old
-    # devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :points, :self_assessment, :tournament_experience) }
-    # devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :email, :password, :remember_me) }
-    # devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :points, :self_assessment, :tournament_experience) }
   end
 
   def user_for_paper_trail

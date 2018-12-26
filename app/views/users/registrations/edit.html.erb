@@ -32,26 +32,6 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <p>
-    <%= f.label :self_assessment %><br />
-    <%= f.radio_button :self_assessment, 0, checked: false %>
-      <%= self_assessment_defines[0] %>
-    <%= f.radio_button :self_assessment, 1, checked: true %>
-      <%= self_assessment_defines[1] %>
-    <%= f.radio_button :self_assessment, 2, checked: false %>
-      <%= self_assessment_defines[2] %>
-  </p>
-
-  <p>
-    <%= f.label :tournament_experience %><br />
-    <%= f.radio_button :tournament_experience, 0, checked: false %>
-      <%= tournament_experience_defines[0] %>
-    <%= f.radio_button :tournament_experience, 1, checked: true %>
-      <%= tournament_experience_defines[1] %>
-    <%= f.radio_button :tournament_experience, 2, checked: false %>
-      <%= tournament_experience_defines[2] %>
-  </p>
-
   <div class="actions">
     <%= f.submit "Update", class: 'btn btn-success' %>
   </div>

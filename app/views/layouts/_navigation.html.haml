@@ -3,17 +3,8 @@
   %li{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
     = link_to 'Tournaments', tournaments_path
 
-  %li{role: "presentation", class: (@section == 'users' ? 'active' : 'inactive')}
-    = link_to 'Ranking', users_path
-
-  -# %li{role: "presentation", class: (@section == 'resistors' ? 'active' : 'inactive')}
-  -#   = link_to 'Resistors', resistors_path
-  -#
-  -# %li{role: "presentation", class: (@section == 'capacitors' ? 'active' : 'inactive')}
-  -#   = link_to 'Capacitors', capacitors_path
-  -#
-  -# %li{role: "presentation", class: (@section == 'inductors' ? 'active' : 'inactive')}
-  -#   = link_to 'Inductors', inductors_path
+  %li{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
+    = link_to 'Ranking', players_path
   -#
   -# %li{role: "presentation", class: (@section == 'diodes' ? 'active' : 'inactive')}
   -#   %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
@@ -40,7 +31,8 @@
               = ' (Administrator)'
         - if current_user.admin?
           = link_to 'Show all users', users_path, class: 'form-control btn btn-primary'
-        = link_to 'Edit User', edit_user_registration_path, class: 'form-control btn btn-primary'
+        = link_to 'Show', player_path(current_user.player), class: 'form-control btn btn-primary'
+        = link_to 'Edit', edit_player_path(current_user.player), class: 'form-control btn btn-primary'
         .divider
         = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'form-control btn btn-warning'
       - else

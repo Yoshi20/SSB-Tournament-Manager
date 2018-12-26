@@ -7,8 +7,6 @@
 
     <div class='col-md-12 col-xs-12'>
 
-      <%= f.hidden_field :points, value: 0 %><br />
-
       <div class="form-group">
         <%= f.label :username %><br />
         <%= f.text_field :username, autofocus: true %>
@@ -51,6 +49,11 @@
         <%= f.radio_button :tournament_experience, 2, checked: false %>
           <%= tournament_experience_defines[2] %>
       </p>
+
+      <div class="form-group">
+        <%= f.label :comment, "Comment (for what ever you want to tell to the world)" %><br />
+        <%= f.text_field :comment %>
+      </div>
 
     </div>
 

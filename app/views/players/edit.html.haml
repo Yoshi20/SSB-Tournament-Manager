@@ -1,0 +1,11 @@
+%h1= "Editing player: \"#{@player.gamer_tag}\""
+
+.row.form
+  .col-md-8
+    = render 'form', player: @player
+
+  .col-md-4
+    %p= link_to 'Show', player_path(@player)
+    - if current_user.admin?
+      %p= link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }
+    %p= link_to 'Back', :back

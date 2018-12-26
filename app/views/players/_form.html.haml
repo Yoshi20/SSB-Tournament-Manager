@@ -1,0 +1,37 @@
+#player-form.sub-form
+  = form_for @player, role: 'form' do |f|
+
+    - if @player.errors.any?
+      #error_explanation
+        %h2= pluralize(@player.errors.count, "error") + " prohibited this player from being saved:"
+        %ul
+          - @player.errors.full_messages.each do |message|
+            %li= message
+
+    .col-md-12
+      .field.form-group
+        = f.label :self_assessment
+        %br
+        = f.radio_button :self_assessment, 0, checked: (@player.self_assessment == 0 ? true : false)
+        = self_assessment_defines[0]
+        = f.radio_button :self_assessment, 1, checked: (@player.self_assessment == 1 ? true : false)
+        = self_assessment_defines[1]
+        = f.radio_button :self_assessment, 2, checked: (@player.self_assessment == 2 ? true : false)
+        = self_assessment_defines[2]
+      .field.form-group
+        = f.label :tournament_experience
+        %br
+        = f.radio_button :tournament_experience, 0, checked: (@player.tournament_experience == 0 ? true : false)
+        = tournament_experience_defines[0]
+        = f.radio_button :tournament_experience, 1, checked: (@player.tournament_experience == 1 ? true : false)
+        = tournament_experience_defines[1]
+        = f.radio_button :tournament_experience, 2, checked: (@player.tournament_experience == 2 ? true : false)
+        = tournament_experience_defines[2]
+
+      .field.form-group
+        = f.label :comment, "Comment"
+        %br
+        = f.text_field :comment
+
+      .actions.form-group
+        = f.submit class:'btn btn-primary form-control'

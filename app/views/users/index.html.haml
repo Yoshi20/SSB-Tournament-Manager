@@ -1,6 +1,6 @@
 .row.title-div
   .col-md-12
-    %h1= "Player list"
+    %h1= "User list"
 
 -# user list
 .row.user-list
@@ -8,40 +8,22 @@
     %table.table.table-striped
       %thead.user-list-header
         %tr
-          %th.text-center Points
           %th Username
-          - if current_user.admin?
-            %th Email
-          %th.text-center Participations
-          %th.text-center Self assessment
-          %th.text-center Tournament experience
+          %th Email
           %th Last Log in at
-          - if current_user.admin?
-            %th Created at
-            %th.text-center Log in counter
+          %th Created at
+          %th.text-center Log in counter
           %th.text-center Admin
           %th.action
 
       %tbody.user-list-body
         - @users.each do |user|
           %tr
-            %td.text-center= user.points
             %td= user.username
-            - if current_user.admin?
-              %td= user.email
-            %td.text-center= user.participations
-            - if user.self_assessment
-              %td.text-center= self_assessment_defines[user.self_assessment]
-            - else
-              %td.text-center= "Undefined"
-            - if user.tournament_experience
-              %td.text-center= tournament_experience_defines[user.tournament_experience]
-            - else
-              %td.text-center= "Undefined"
+            %td= user.email
             %td= user.current_sign_in_at.to_s(:custom_datetime)
-            - if current_user.admin?
-              %td= user.created_at.to_s(:custom_datetime)
-              %td.text-center= user.sign_in_count
+            %td= user.created_at.to_s(:custom_datetime)
+            %td.text-center= user.sign_in_count
             %td.text-center= user.admin?
             %td.text-center{:style => "vertical-align: middle"}
               - if current_user.admin? && user != current_user

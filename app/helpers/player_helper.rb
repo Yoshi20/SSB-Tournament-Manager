@@ -1,4 +1,4 @@
-module UserHelper
+module PlayerHelper
 
   def self_assessment_defines
     ['Beginner', 'Advanced', 'Professional']

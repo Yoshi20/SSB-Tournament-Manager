@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_24_142232) do
+ActiveRecord::Schema.define(version: 2018_12_26_233000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "players", force: :cascade do |t|
+    t.string "gamer_tag"
+    t.integer "points"
+    t.integer "participations"
+    t.integer "self_assessment"
+    t.integer "tournament_experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.text "comment"
+  end
+
+  create_table "players_tournaments", id: false, force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "tournament_id"
+    t.index ["player_id"], name: "index_players_tournaments_on_player_id"
+    t.index ["tournament_id"], name: "index_players_tournaments_on_tournament_id"
+  end
 
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
@@ -43,13 +62,10 @@ ActiveRecord::Schema.define(version: 2018_12_24_142232) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "is_admin"
-    t.integer "points"
-    t.integer "participations"
-    t.integer "self_assessment"
-    t.integer "tournament_experience"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "players", "users"
 end

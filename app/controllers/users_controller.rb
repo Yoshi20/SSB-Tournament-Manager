@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.order(points: :desc, participations: :asc)
+    @users = User.all
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if current_user.admin?
+    if current_user.admin? or current_user == @user
       @user.destroy
       flash[:notice] = "User was successfully deleted"
     else

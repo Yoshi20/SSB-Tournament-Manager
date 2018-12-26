@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   resources :tournaments
-  devise_for :users
 
+  resources :players
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :destroy]
 
   root to: "users#index"
