@@ -1,0 +1,48 @@
+#tournament-form.sub-form
+  = form_for @tournament, role: 'form' do |f|
+
+    - if @tournament.errors.any?
+      #error_explanation
+        %h2= pluralize(@tournament.errors.count, "error") + " prohibited this tournament from being saved:"
+        %ul
+          - @tournament.errors.full_messages.each do |message|
+            %li= message
+
+    .col-md-12
+      .field.form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control', value:'SSBU Bern KWx'
+      .field.form-group
+        = f.label :date
+        = f.datetime_select :date, class: 'form-control'
+      .field.form-group
+        = f.label :location
+        = f.text_field :location, class: 'form-control', value:"Kultur Bistro Karl Schenk, Spitalgasse 4, 3011 Bern, 2.UG"
+      .field.form-group
+        = f.label :registration_fee
+        = f.text_field :registration_fee, class: 'form-control', value: 5
+      - if @tournament.new_record?
+        .field.form-group.hide
+          = f.label :occupied_seats
+          = f.text_field :occupied_seats, class: 'form-control', value: 0
+      - else
+        .field.form-group
+          = f.label :occupied_seats
+          = f.text_field :occupied_seats, class: 'form-control'
+      .field.form-group
+        = f.label :total_seats
+        = f.text_field :total_seats, class: 'form-control', value: 40
+      .field.form-group
+        = f.label :comment, 'Descripton'
+        = f.text_area :comment, class: 'form-control'
+      - if @tournament.new_record?
+        .field.form-group.hide
+          = f.label :active
+          = f.check_box :active, checked: true, style: 'margin-left: 5px;'
+      - else
+        .field.form-group
+          = f.label :active
+          = f.check_box :active, style: 'margin-left: 5px;'
+
+    .actions.form-group
+      = f.submit class:'btn btn-primary form-control'

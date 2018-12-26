@@ -1,0 +1,59 @@
+.row.title-div
+  .col-md-12
+    %h1= @tournament.name
+
+.row.show-tournament
+  .col-md-4
+    %p
+      %strong Date:
+      = @tournament.date.to_s(:custom_datetime_with_weekday)
+
+    %p
+      %strong Location:
+      = @tournament.location
+
+    %p
+      %strong Descripton:
+      = @tournament.comment
+
+    %p
+      %strong Active:
+      - if @tournament.active
+        %input{type: 'checkbox', checked: 'true', disabled: 'true'}
+      - else
+        %input{type: 'checkbox', disabled: 'true'}
+
+  .col-md-4
+    %p
+      %strong Registration fee [CHF]:
+      = @tournament.registration_fee
+
+    %p
+      %strong Occupied seats:
+      = @tournament.occupied_seats
+
+    %p
+      %strong Total seats:
+      = @tournament.total_seats
+
+    %p
+      %strong Updated at:
+      = @tournament.updated_at.to_s(:custom_datetime)
+
+  .col-md-4
+    - if current_user.admin?
+      %p= link_to 'Edit', edit_tournament_path(@tournament)
+      %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
+    %p= link_to 'Back', :back
+
+.row.title-registered-players-div
+  .col-md-12
+    %h2 Registered players
+
+.row.show-registered-players
+  .col-md-2
+    %p blup1
+    %p blup2
+    -# - @players.each do |player|
+    -#   %p= player.username
+  .col-md-10

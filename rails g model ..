@@ -1,5 +1,11 @@
-rails g scaffold resistor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime resistance:integer unit:string type:string casing:string power_rating:float tolerance:float
 
+
+rails g scaffold tournament name:string date:datetime location:string comment:text registration_fee:float occupied_seats:integer total_seats:interger active:boolean created_at:datetime updated_at:datetime
+
+
+
+
+rails g scaffold resistor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime resistance:integer unit:string type:string casing:string power_rating:float tolerance:float
 
 rails g scaffold capacitor in_stock:integer partnumber:string manufacturer:string comment:text active:boolean datasheet:binary created_at:datetime updated_at:datetime capacitance:float capacitance_in_farad:float unit:string specific_component_type:string casing:string voltage_rating:float tolerance:float
 

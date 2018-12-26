@@ -56,18 +56,18 @@ $ ->
           $form.closest('tr').replaceWith(response["#{component}"])
 
 
-# document.addEventListener 'turbolinks:load', ->
-#   # a click on a component-column links to its show
-#   $('tbody').on 'click', 'td', (e) ->
-#      unless ($(this).hasClass('actions'))
-#       id = +$(this).closest("tr").find("td").html()
-#       str = this.closest("tbody").className
-#       component = str.substring(0, str.indexOf('-'))
-#       unless component == 'user'
-#         window.location.href = "/#{component}s/#{id}"
-#
-#   # change mouse icon
-#   $('tbody').css('cursor', 'pointer')
+document.addEventListener 'turbolinks:load', ->
+  # a click on a component-column links to its show
+  $('tbody').on 'click', 'td', (e) ->
+     unless ($(this).hasClass('actions'))
+      id = +$(this).closest("tr").find("td").html()
+      str = this.closest("tbody").className
+      component = str.substring(0, str.indexOf('-'))
+      unless component == 'user'
+        window.location.href = "/#{component}s/#{id}"
+
+  # change mouse icon
+  $('tbody').css('cursor', 'pointer')
 
 # function to get the current url params as hash
 getParamsAsHash = ->
