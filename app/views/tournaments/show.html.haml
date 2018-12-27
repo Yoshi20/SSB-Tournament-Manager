@@ -53,6 +53,14 @@
       %strong Descripton:
       = @tournament.comment
 
+.row.join-tournament
+  .col-md-12
+    %br
+    - if current_user.player.tournaments.includes(@tournament)
+      %p= button_tag ">>> Leave this tournament <<<", class:'btn btn-warning', id:'join-tournament-button'
+    - else
+      %p= button_tag ">>> Join this tournament <<<", class:'btn btn-success', id:'join-tournament-button'
+
 .row.title-registered-players-div
   .col-md-12
     %h2 Registered players
