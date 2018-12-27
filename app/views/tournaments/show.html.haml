@@ -13,8 +13,8 @@
       = @tournament.location
 
     %p
-      %strong Descripton:
-      = @tournament.comment
+      %strong Registration fee [CHF]:
+      = @tournament.registration_fee
 
     %p
       %strong Active:
@@ -24,9 +24,6 @@
         %input{type: 'checkbox', disabled: 'true'}
 
   .col-md-4
-    %p
-      %strong Registration fee [CHF]:
-      = @tournament.registration_fee
 
     %p
       %strong Occupied seats:
@@ -40,11 +37,21 @@
       %strong Updated at:
       = @tournament.updated_at.to_s(:custom_datetime)
 
+    %p
+      %strong Created at:
+      = @tournament.created_at.to_s(:custom_datetime)
+
   .col-md-4
     - if current_user.admin?
       %p= link_to 'Edit', edit_tournament_path(@tournament)
       %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
     %p= link_to 'Back', :back
+
+.row.tournament-description
+  .col-md-12
+    %p
+      %strong Descripton:
+      = @tournament.comment
 
 .row.title-registered-players-div
   .col-md-12
@@ -52,8 +59,9 @@
 
 .row.show-registered-players
   .col-md-2
-    %p blup1
-    %p blup2
-    -# - @players.each do |player|
-    -#   %p= player.username
+    - @tournament.players.each_with_index do |p, i|
+      %p
+        = "##{i+1}"
+        %strong= link_to "#{p.gamer_tag}", p
+
   .col-md-10

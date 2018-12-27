@@ -37,7 +37,7 @@
       %p= link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }
     %p= link_to 'Back', :back
 
-.row.player-comment{style: 'margin-top: 10px;'}
+.row.player-comment
   .col-md-12
     %p
       %strong Comment:
@@ -48,9 +48,8 @@
     %h2 Registered tournaments
 
 .row.show-registered-tournaments
-  .col-md-2
-    %p blup1
-    %p blup2
-    -# - @tournaments.each do |player|
-    -#   %p= player.username
-  .col-md-10
+  .col-md-12
+    - @player.tournaments.each do |t|
+      %p
+        %strong= link_to "#{t.name}", t
+        = "-> #{t.date.to_s(:custom_datetime_with_weekday)}"
