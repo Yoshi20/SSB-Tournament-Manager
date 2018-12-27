@@ -31,28 +31,28 @@
       </div>
 
       <p>
-        <%= f.label :self_assessment %><br />
-        <%= f.radio_button :self_assessment, 0, checked: false %>
+        <%= label_tag :self_assessment %><br />
+        <%= radio_button_tag :self_assessment, 0, false %>
           <%= self_assessment_defines[0] %>
-        <%= f.radio_button :self_assessment, 1, checked: true %>
+        <%= radio_button_tag :self_assessment, 1, true %>
           <%= self_assessment_defines[1] %>
-        <%= f.radio_button :self_assessment, 2, checked: false %>
+        <%= radio_button_tag :self_assessment, 2, false %>
           <%= self_assessment_defines[2] %>
       </p>
 
       <p>
-        <%= f.label :tournament_experience %><br />
-        <%= f.radio_button :tournament_experience, 0, checked: false %>
+        <%= label_tag :tournament_experience %><br />
+        <%= radio_button_tag :tournament_experience, 0, false %>
           <%= tournament_experience_defines[0] %>
-        <%= f.radio_button :tournament_experience, 1, checked: true %>
+        <%= radio_button_tag :tournament_experience, 1, true %>
           <%= tournament_experience_defines[1] %>
-        <%= f.radio_button :tournament_experience, 2, checked: false %>
+        <%= radio_button_tag :tournament_experience, 2, false %>
           <%= tournament_experience_defines[2] %>
       </p>
 
       <div class="form-group">
-        <%= f.label :comment, "Comment (for what ever you want to tell to the world)" %><br />
-        <%= f.text_field :comment %>
+        <%= label_tag :comment, "Comment (for what ever you want to tell the world)" %><br />
+        <%= text_area_tag :comment %>
       </div>
 
     </div>

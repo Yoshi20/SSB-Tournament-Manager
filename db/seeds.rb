@@ -6,4 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.find_by_email('jascha_haldemann@hotmail.com').update(is_admin: true)
+yomi = User.find_by_email('jascha_haldemann@hotmail.com')
+if yomi.present?
+  yomi.update(is_admin: true)
+end
+
+Challonge::API.username = 'Yoshi20'
+Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'

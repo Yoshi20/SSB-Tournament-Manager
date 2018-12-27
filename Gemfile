@@ -83,3 +83,6 @@ gem 'paper_trail'
 
 # # See https://github.com/thoughtbot/paperclip
 # gem 'gem "paperclip", "~> 5.0.0"'
+
+# See https://github.com/challonge-community/challonge-ruby-gem
+gem 'challonge-api'

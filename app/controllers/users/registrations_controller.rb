@@ -22,9 +22,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.gamer_tag = user_params.username
       player.points = 0
       player.participations = 0
-      player.self_assessment = params[:user][:self_assessment]
-      player.tournament_experience = params[:user][:tournament_experience]
-      player.comment = params[:user][:comment]
+      player.self_assessment = params[:self_assessment]
+      player.tournament_experience = params[:tournament_experience]
+      player.comment = params[:comment]
       player.user = user
       if player.save
         flash[:notice] = "Player was successfully created"
@@ -32,9 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         flash.delete(:notice)
         flash[:error] = "Creating player failed!"
         user.delete
-        render :back
       end
-
     end
   end
 
@@ -67,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -80,9 +78,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    players_path()
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

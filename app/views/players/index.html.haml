@@ -25,6 +25,7 @@
       %tbody.player-list-body
         - @players.each do |player|
           %tr
+            %td.hide= player.id # used for some js-magic
             %td.text-center= player.points
             %td= player.gamer_tag
             - if current_user.admin?
