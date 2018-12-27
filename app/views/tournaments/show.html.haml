@@ -56,7 +56,7 @@
 .row.join-tournament
   .col-md-12
     %br
-    - if current_user.player.tournaments.includes(@tournament)
+    - if current_user.player.tournaments.include?(@tournament)
       %p= button_tag ">>> Leave this tournament <<<", class:'btn btn-warning', id:'join-tournament-button'
     - else
       %p= button_tag ">>> Join this tournament <<<", class:'btn btn-success', id:'join-tournament-button'
@@ -73,3 +73,4 @@
         %strong= link_to "#{p.gamer_tag}", p
 
   .col-md-10
+    -# %iframe{:src => @challonge_url, :width => '500', :height => '500', :frameborder => '0'}
