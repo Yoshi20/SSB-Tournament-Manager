@@ -41,13 +41,31 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
-    respond_to do |format|
-      if @tournament.update(tournament_params)
-        format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tournament }
-      else
-        format.html { render :edit }
-        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+    if params[:add_player] or params[:remove_player]
+      if params[:add_player]
+        if @tournament.occupied_seats < @tournament.total_seats
+          @tournament.players << current_user.player
+          @tournament.update(occupied_seats: @tournament.occupied_seats+1)
+          redirect_to @tournament, notice: 'Player was added to the tournament.'
+        else
+          redirect_to @tournament, alert: "Player couldn't be added to the tournament. The tournament is full."
+        end
+      end
+
+      if params[:remove_player]
+        @tournament.players.delete(Player.find(current_user.player.id))
+        @tournament.update(occupied_seats: @tournament.occupied_seats-1)
+        redirect_to @tournament, notice: 'Player was removed from the tournament.'
+      end
+    else
+      respond_to do |format|
+        if @tournament.update(tournament_params)
+          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+          format.json { render :show, status: :ok, location: @tournament }
+        else
+          format.html { render :edit }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

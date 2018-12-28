@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         flash[:notice] = "Player was successfully created"
       else
         flash.delete(:notice)
-        flash[:error] = "Creating player failed!"
+        flash[:alert] = "Creating player failed!"
         user.delete
       end
     end
