@@ -10,6 +10,3 @@ yomi = User.find_by_email('jascha_haldemann@hotmail.com')
 if yomi.present?
   yomi.update(is_admin: true)
 end
-
-Challonge::API.username = 'Yoshi20'
-Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'

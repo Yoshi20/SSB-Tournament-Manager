@@ -61,7 +61,7 @@
     - else
       %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, :method => :patch, class:'btn btn-success', id:'join-tournament-button'
 
-.row.title-registered-players-div
+.row.title-registered-players
   .col-md-12
     %h2 Registered players
 
@@ -73,4 +73,13 @@
         %strong= link_to "#{p.gamer_tag}", p
 
   .col-md-10
-    -# %iframe{:src => @challonge_url, :width => '500', :height => '500', :frameborder => '0'}
+    -# - if @tournament.started
+    %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
+
+- if current_user.admin?
+  .row.admin-tournament
+    .col-md-12
+      %br
+      %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-danger', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}
+      -# - if @tournament.started
+      = link_to 'Challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'

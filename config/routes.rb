@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
   resources :tournaments
+  post 'tournaments/start/:id' => 'tournaments#start'
 
   resources :players
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :destroy]
 
-  root to: "users#index"
+  root to: "players#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

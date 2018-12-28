@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: [:show, :edit, :update, :destroy]
+  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :start]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -78,6 +78,38 @@ class TournamentsController < ApplicationController
       format.html { redirect_to tournaments_url, notice: 'Tournament was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # POST /tournaments/start/1
+  def start
+    # TODO: Add challonge-api as a dependency for your project and set your username and API key on startup.
+    Challonge::API.username = 'Yoshi20'
+    Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'
+
+    # setup and start a challonge tournament
+    ct = Challonge::Tournament.new
+    ct.name = @tournament.name #'SSBU Bern KW 1'
+    ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw_1'
+    ct.tournament_type = 'double elimination'
+    ct.game_name = 'Super Smash Bros. Ultimate'
+    ct.description = @tournament.comment
+    if ct.save == false
+      raise ct.errors.full_messages.inspect
+    end
+
+    # add the participants
+    @tournament.players.each do |p|
+    	Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
+    end
+
+    ct.start!
+
+    #TODO: add_started_to_tournaments
+    #@tournament.update(started: true)
+
+    #TODO: show tournament tree in the show view
+
+    redirect_to @tournament, notice: 'Tournament was successfully started.'
   end
 
   private
