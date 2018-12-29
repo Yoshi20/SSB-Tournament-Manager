@@ -41,3 +41,17 @@
         - if current_user.admin?
           .add-tournament-button
             = link_to 'Add Tournament', new_tournament_path, class:'btn btn-primary pull-right', style: 'margin-bottom: 15px;'
+
+.row.title-div
+  .col-md-12
+    %h1= "Past tournaments 2019"
+
+-# past tournaments list
+.row.tournament-list
+  .col-md-12
+    %table.table.table-striped
+      %thead.tournament-list-header
+        = render "tournament_list_header"
+
+      %tbody.tournament-list-body
+        = render @past_tournaments

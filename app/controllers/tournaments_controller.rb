@@ -6,6 +6,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments.json
   def index
     @tournaments = Tournament.all.where(active: true).where("? > ?", :date, Time::now).order(date: :asc)
+    @past_tournaments = Tournament.all.where(active: true).where("? < ?", :date, Time::now - 24*3600).order(date: :desc)
   end
 
   # GET /tournaments/1
@@ -44,18 +45,38 @@ class TournamentsController < ApplicationController
     if params[:add_player] or params[:remove_player]
       if params[:add_player]
         if @tournament.occupied_seats < @tournament.total_seats
-          @tournament.players << current_user.player
-          @tournament.update(occupied_seats: @tournament.occupied_seats+1)
-          redirect_to @tournament, notice: 'Player was added to the tournament.'
+          if params[:gamer_tag].present?
+            player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
+          else
+            player_to_add = current_user.player
+          end
+          if player_to_add.nil?
+            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
+          elsif @tournament.players.include?(player_to_add)
+            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player already added."
+          else
+            @tournament.players << player_to_add
+            @tournament.update(occupied_seats: @tournament.occupied_seats+1)
+            redirect_to @tournament, notice: 'Player was added to the tournament.'
+          end
         else
-          redirect_to @tournament, alert: "Player couldn't be added to the tournament. The tournament is full."
+          redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
         end
       end
 
       if params[:remove_player]
-        @tournament.players.delete(Player.find(current_user.player.id))
-        @tournament.update(occupied_seats: @tournament.occupied_seats-1)
-        redirect_to @tournament, notice: 'Player was removed from the tournament.'
+        if params[:gamer_tag].present?
+          player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
+        else
+          player_to_remove = current_user.player
+        end
+        if player_to_remove.nil?
+          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
+        else
+          @tournament.players.delete(Player.find(player_to_remove.id))
+          @tournament.update(occupied_seats: @tournament.occupied_seats-1)
+          redirect_to @tournament, notice: 'Player was removed from the tournament.'
+        end
       end
     else
       respond_to do |format|
@@ -117,7 +138,7 @@ class TournamentsController < ApplicationController
 
     if ct.state == 'complete'
       @tournament.finished = true
-      @tournament.active = false
+      # updated the participated players
       ct.participants.each do |p|
         player = @tournament.players.find_by(:gamer_tag => p.display_name)
         player.points = points_repartition_table(p.final_rank)
@@ -126,16 +147,18 @@ class TournamentsController < ApplicationController
         elsif player.participations >= 10 and player.tournament_experience < 1 then player.tournament_experience = 1
         end
         player.save
+        # create/updated a raking_string on the tournament
+        ranking_string = "#{p.final_rank},#{p.display_name};"
         if @tournament.ranking_string.nil?
-          @tournament.ranking_string = "#{p.final_rank},#{p.display_name};"
+          @tournament.ranking_string = ranking_string
         else
-          @tournament.ranking_string += "#{p.final_rank},#{p.display_name};"
+          @tournament.ranking_string += ranking_string
         end
       end
       @tournament.save
-      redirect_to @tournament, notice: 'Tournament was successfully finished.'
+      redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
     else
-      redirect_to @tournament, alert: "Tournament was not fineshed yet. You must finish it first on: https://challonge.com/#{ct.url}"
+      redirect_to @tournament, alert: "Tournament was not fineshed yet. You have to finish it first on: https://challonge.com/#{ct.url}"
     end
   end
 

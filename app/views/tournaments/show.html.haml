@@ -59,12 +59,27 @@
 
 - if @tournament.started != true
   .row.join-tournament
-    .col-md-12
-      %br
-        - if current_user.player.tournaments.include?(@tournament)
-          %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, :method => :patch, class:'btn btn-warning', id:'leave-tournament-button'
-        - else
-          %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, :method => :patch, class:'btn btn-success', id:'join-tournament-button'
+    %br
+    .col-md-4
+      - if current_user.player.tournaments.include?(@tournament)
+        %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, method:'patch', class:'btn btn-warning', id:'leave-tournament-button'
+      - else
+        %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-success', id:'join-tournament-button'
+
+    - if current_user.admin?
+      .col-md-4
+        %p
+          = form_tag tournament_path(@tournament.id), method:'patch', class: 'form-inline' do
+            .hidden= text_field_tag :add_player, true, class: 'form-control'
+            = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+            = submit_tag 'Add player', name:nil, class: 'form-control btn btn-default'
+
+      .col-md-4
+        %p
+          = form_tag tournament_path(@tournament.id), method:'patch', class: 'form-inline' do
+            .hidden= text_field_tag :remove_player, true, class: 'form-control'
+            = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+            = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
 .row.title-registered-players
   .col-md-6
