@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :tournaments
   post 'tournaments/start/:id' => 'tournaments#start'
+  post 'tournaments/finish/:id' => 'tournaments#finish'
 
   resources :players
 

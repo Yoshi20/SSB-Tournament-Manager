@@ -1,6 +1,6 @@
 .row.title-div
   .col-md-12
-    %h1= "Player list"
+    %h1= "Players 2019"
 
 -# player list
 .row.player-list
@@ -8,42 +8,24 @@
     %table.table.table-striped
       %thead.player-list-header
         %tr
+          %th.text-center Rank
           %th.text-center Points
           %th Gamer tag
-          - if current_user.admin?
-            %th Email
-          %th.text-center Participations
-          %th.text-center Self assessment
-          %th.text-center Tournament experience
-          %th Last Log in at
-          - if current_user.admin?
-            %th Created at
-            %th.text-center Log in counter
+          %th.text-center Tournament participations
+          %th.text-center.hidden-xs Self assessment
+          %th.text-center.hidden-xs Tournament experience
+          %th.hidden-xs Last Log in at
           %th.text-center Admin
-          %th.action
 
       %tbody.player-list-body
-        - @players.each do |player|
+        - @players.each_with_index do |player, i|
           %tr
             %td.hide= player.id # used for some js-magic
+            %td.text-center= "#{i+1}."
             %td.text-center= player.points
             %td= player.gamer_tag
-            - if current_user.admin?
-              %td= player.user.email
             %td.text-center= player.participations
-            - if player.self_assessment
-              %td.text-center= self_assessment_defines[player.self_assessment]
-            - else
-              %td.text-center= "Undefined"
-            - if player.tournament_experience
-              %td.text-center= tournament_experience_defines[player.tournament_experience]
-            - else
-              %td.text-center= "Undefined"
-            %td= player.user.current_sign_in_at.to_s(:custom_datetime)
-            - if current_user.admin?
-              %td= player.created_at.to_s(:custom_datetime)
-              %td.text-center= player.user.sign_in_count
-            %td.text-center= player.user.admin?
-            %td.text-center{:style => "vertical-align: middle"}
-              - if current_user.admin? && player.user != current_user
-                = link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
+            %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
+            %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+            %td.hidden-xs= player.user.current_sign_in_at.to_s(:custom_datetime)
+            %td.text-center= player.user.admin? ? 'X' : ''

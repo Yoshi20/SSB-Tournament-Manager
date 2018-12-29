@@ -14,7 +14,8 @@
           %th Created at
           %th.text-center Log in counter
           %th.text-center Admin
-          %th.action
+          - if current_user.admin?
+            %th.text-center.action Edit
 
       %tbody.user-list-body
         - @users.each do |user|
@@ -24,7 +25,8 @@
             %td= user.current_sign_in_at.to_s(:custom_datetime)
             %td= user.created_at.to_s(:custom_datetime)
             %td.text-center= user.sign_in_count
-            %td.text-center= user.admin?
-            %td.text-center{:style => "vertical-align: middle"}
-              - if current_user.admin? && user != current_user
-                = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
+            %td.text-center= user.admin? ? 'X' : ''
+            - if current_user.admin?
+              %td.text-center{:style => "vertical-align: middle"}
+                - if current_user.admin? && user != current_user
+                  = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'

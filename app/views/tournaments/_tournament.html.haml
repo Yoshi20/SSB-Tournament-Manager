@@ -28,10 +28,13 @@
     = tournament.total_seats
 
   %td.text-center.hidden-xs
-    = check_box_tag '', '', tournament.active?, disabled: true
+    = check_box_tag '', '', tournament.started?, disabled: true
 
   %td.text-center.hidden-xs
-    = tournament.updated_at.strftime('%d.%m.%y (%H:%M)')
+    = check_box_tag '', '', tournament.finished?, disabled: true
+
+  %td.text-center.hidden-xs
+    = check_box_tag '', '', tournament.active?, disabled: true
 
   - if current_user.admin?
     %td.text-center.actions

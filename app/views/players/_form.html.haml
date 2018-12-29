@@ -35,7 +35,7 @@
         = f.radio_button :tournament_experience, 2, checked: (@player.tournament_experience == 2 ? true : false)
         = tournament_experience_defines[2]
       .field.form-group
-        = f.label :comment
+        = f.label :comment, "Comment (for what ever you want to tell the world)"
         %br
         = f.text_area :comment, class: 'form-control'
 

@@ -13,17 +13,21 @@
       = @tournament.location
 
     %p
-      %strong Registration fee [CHF]:
-      = @tournament.registration_fee
+      %strong Started:
+      %input{type: 'checkbox', checked: @tournament.started, disabled: 'true'}
+
+    %p
+      %strong Finished:
+      %input{type: 'checkbox', checked: @tournament.finished, disabled: 'true'}
 
     %p
       %strong Active:
-      - if @tournament.active
-        %input{type: 'checkbox', checked: 'true', disabled: 'true'}
-      - else
-        %input{type: 'checkbox', disabled: 'true'}
+      %input{type: 'checkbox', checked: @tournament.active, disabled: 'true'}
 
   .col-md-4
+    %p
+      %strong Registration fee [CHF]:
+      = @tournament.registration_fee
 
     %p
       %strong Occupied seats:
@@ -53,33 +57,48 @@
       %strong Descripton:
       = @tournament.comment
 
-.row.join-tournament
-  .col-md-12
-    %br
-    - if current_user.player.tournaments.include?(@tournament)
-      %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, :method => :patch, class:'btn btn-warning', id:'leave-tournament-button'
-    - else
-      %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, :method => :patch, class:'btn btn-success', id:'join-tournament-button'
+- if @tournament.started != true
+  .row.join-tournament
+    .col-md-12
+      %br
+        - if current_user.player.tournaments.include?(@tournament)
+          %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, :method => :patch, class:'btn btn-warning', id:'leave-tournament-button'
+        - else
+          %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, :method => :patch, class:'btn btn-success', id:'join-tournament-button'
 
 .row.title-registered-players
-  .col-md-12
+  .col-md-6
     %h2 Registered players
+  - if @tournament.finished
+    .col-md-6
+      %h2 Tournament ranking
 
 .row.show-registered-players
-  .col-md-2
+  .col-md-6
     - @tournament.players.each_with_index do |p, i|
       %p
         = "##{i+1}"
         %strong= link_to "#{p.gamer_tag}", p
+  - if @tournament.finished
+    .col-md-6
+      - unless @tournament.ranking_string.nil?
+        - @tournament.ranking_string.split(';').sort.each do |r|
+          %p
+            %strong= "#{r.split(',')[0]}. #{r.split(',')[1]}"
 
-  .col-md-10
-    -# - if @tournament.started
-    %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
+- if @tournament.started
+  .row.challonge_tournament_tree
+    .col-md-12
+      %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
 
 - if current_user.admin?
   .row.admin-tournament
     .col-md-12
       %br
-      %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-danger', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}
-      -# - if @tournament.started
-      = link_to 'Challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
+      - if @tournament.started
+        %p
+          = link_to 'Show challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
+          - unless @tournament.finished
+            = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-danger', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
+      - else
+        %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-danger', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}

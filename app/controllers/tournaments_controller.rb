@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :start]
+  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :start, :finish]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -82,9 +82,7 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/start/1
   def start
-    # TODO: Add challonge-api as a dependency for your project and set your username and API key on startup.
-    Challonge::API.username = 'Yoshi20'
-    Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'
+    set_challonge_username_and_api_key()
 
     # setup and start a challonge tournament
     ct = Challonge::Tournament.new
@@ -98,18 +96,47 @@ class TournamentsController < ApplicationController
     end
 
     # add the participants
-    @tournament.players.each do |p|
+    @tournament.players.order(points: :desc).each do |p|
     	Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
     end
 
     ct.start!
-
-    #TODO: add_started_to_tournaments
-    #@tournament.update(started: true)
-
-    #TODO: show tournament tree in the show view
+    @tournament.started = true
+    @tournament.challonge_tournament_id = ct.id
+    @tournament.save
 
     redirect_to @tournament, notice: 'Tournament was successfully started.'
+  end
+
+  # POST /tournaments/finish/1
+  def finish
+    set_challonge_username_and_api_key()
+
+    # get the correct challonge tournament
+    ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
+
+    if ct.state == 'complete'
+      @tournament.finished = true
+      @tournament.active = false
+      ct.participants.each do |p|
+        player = @tournament.players.find_by(:gamer_tag => p.display_name)
+        player.points = points_repartition_table(p.final_rank)
+        player.participations += 1
+        if player.participations >= 30 and player.tournament_experience < 2 then player.tournament_experience = 2
+        elsif player.participations >= 10 and player.tournament_experience < 1 then player.tournament_experience = 1
+        end
+        player.save
+        if @tournament.ranking_string.nil?
+          @tournament.ranking_string = "#{p.final_rank},#{p.display_name};"
+        else
+          @tournament.ranking_string += "#{p.final_rank},#{p.display_name};"
+        end
+      end
+      @tournament.save
+      redirect_to @tournament, notice: 'Tournament was successfully finished.'
+    else
+      redirect_to @tournament, alert: "Tournament was not fineshed yet. You must finish it first on: https://challonge.com/#{ct.url}"
+    end
   end
 
   private
@@ -120,6 +147,27 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :location, :comment, :registration_fee, :occupied_seats, :total_seats, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :location, :comment, :registration_fee, :occupied_seats, :total_seats, :started, :finished, :active, :created_at, :updated_at)
+    end
+
+    def set_challonge_username_and_api_key
+      # TODO: Add challonge-api as a dependency for your project and set your username and API key on startup.
+      Challonge::API.username = 'Yoshi20'
+      Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'
+    end
+
+    def points_repartition_table(rank)
+        if rank == 1 then 300
+        elsif rank == 2 then 250
+        elsif rank == 3 then 200
+        elsif rank == 4 then 150
+        elsif rank <= 6 then 100
+        elsif rank <= 8 then 75
+        elsif rank <= 12 then 50
+        elsif rank <= 16 then 25
+        elsif rank <= 24 then 15
+        elsif rank <= 32 then 10
+        else 5
+        end
     end
 end
