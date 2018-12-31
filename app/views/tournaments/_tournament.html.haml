@@ -2,17 +2,20 @@
   %td.hide
     = tournament.id # used for some js-magic
 
+  %td.text-center
+    = tournament.date.to_s(:custom_datetime_weekday)
+
+  %td
+    = tournament.date.to_s(:custom_datetime)
+
   %td
     = tournament.name
-
-  %td.text-center
-    = tournament.date.to_s(:custom_datetime_with_weekday)
 
   %td
     = tournament.location
 
   %td.hidden-md.hidden-sm.hidden-xs
-    = truncate(tournament.comment, length: 50)
+    = truncate(tournament.description, length: 50)
 
   %td.text-center.hidden-xs
     - if tournament.registration_fee.present?
@@ -29,12 +32,6 @@
 
   %td.text-center.hidden-xs
     = check_box_tag '', '', tournament.started?, disabled: true
-
-  %td.text-center.hidden-xs
-    = check_box_tag '', '', tournament.finished?, disabled: true
-
-  %td.text-center.hidden-xs
-    = check_box_tag '', '', tournament.active?, disabled: true
 
   - if current_user.admin?
     %td.text-center.actions

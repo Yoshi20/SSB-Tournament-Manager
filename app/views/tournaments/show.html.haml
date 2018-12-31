@@ -55,9 +55,9 @@
   .col-md-12
     %p
       %strong Descripton:
-      = @tournament.comment
+      = @tournament.description
 
-- if @tournament.started != true
+- if @tournament.started != true and @tournament.finished != true
   .row.join-tournament
     %br
     .col-md-4
@@ -115,5 +115,5 @@
           = link_to 'Show challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
           - unless @tournament.finished
             = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-danger', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
-      - else
+      - elsif @tournament.finished != true
         %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-danger', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}

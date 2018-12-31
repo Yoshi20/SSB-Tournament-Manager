@@ -4,10 +4,10 @@ one:
   name: MyString
   date: 2018-12-24 15:22:32
   location: MyString
-  comment: MyText
+  description: MyText
   registration_fee: 1.5
   occupied_seats: 1
-  total_seats: 
+  total_seats:
   active: false
   created_at: 2018-12-24 15:22:32
   updated_at: 2018-12-24 15:22:32
@@ -16,10 +16,10 @@ two:
   name: MyString
   date: 2018-12-24 15:22:32
   location: MyString
-  comment: MyText
+  description: MyText
   registration_fee: 1.5
   occupied_seats: 1
-  total_seats: 
+  total_seats:
   active: false
   created_at: 2018-12-24 15:22:32
   updated_at: 2018-12-24 15:22:32

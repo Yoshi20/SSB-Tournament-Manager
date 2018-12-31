@@ -5,8 +5,9 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = Tournament.all.where(active: true).where("? > ?", :date, Time::now).order(date: :asc)
-    @past_tournaments = Tournament.all.where(active: true).where("? < ?", :date, Time::now - 24*3600).order(date: :desc)
+    all_active_tournaments = Tournament.all.where(active: true)
+    @tournaments = all_active_tournaments.where('finished is not true').order(date: :asc)
+    @finished_tournaments = all_active_tournaments.where(finished: true).order(date: :desc)
   end
 
   # GET /tournaments/1
@@ -111,7 +112,7 @@ class TournamentsController < ApplicationController
     ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw_1'
     ct.tournament_type = 'double elimination'
     ct.game_name = 'Super Smash Bros. Ultimate'
-    ct.description = @tournament.comment
+    ct.description = @tournament.description
     if ct.save == false
       raise ct.errors.full_messages.inspect
     end
@@ -170,7 +171,7 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :location, :comment, :registration_fee, :occupied_seats, :total_seats, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :location, :description, :registration_fee, :occupied_seats, :total_seats, :started, :finished, :active, :created_at, :updated_at)
     end
 
     def set_challonge_username_and_api_key

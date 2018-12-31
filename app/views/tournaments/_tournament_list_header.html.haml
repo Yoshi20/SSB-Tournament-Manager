@@ -1,24 +1,12 @@
 %tr
-  %th
-    = link_to 'Name', tournaments_path(table_params.merge(sort: 'name', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center
-    = link_to 'Date', tournaments_path(table_params.merge(sort: 'date', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th
-    = link_to 'Location', tournaments_path(table_params.merge(sort: 'location', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.hidden-md.hidden-sm.hidden-xs
-    = link_to 'Comment', tournaments_path(table_params.merge(sort: 'comment', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center.hidden-xs
-    = link_to 'Registration fee [CHF]', tournaments_path(table_params.merge(sort: 'registration_fee', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center
-    = link_to 'Occupied seats', tournaments_path(table_params.merge(sort: 'occupied_seats', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center
-    = link_to 'Total seats', tournaments_path(table_params.merge(sort: 'total_seats', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center.hidden-xs
-    = link_to 'Started', tournaments_path(table_params.merge(sort: 'started', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center.hidden-xs
-    = link_to 'Finished', tournaments_path(table_params.merge(sort: 'finished', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
-  %th.text-center.hidden-xs
-    = link_to 'Active', tournaments_path(table_params.merge(sort: 'active', order: (params[:order] == 'desc' ? 'asc' : 'desc')))
+  %th.text-center Weekday
+  %th Date
+  %th Name
+  %th Location
+  %th.hidden-md.hidden-sm.hidden-xs Descripton
+  %th.text-center.hidden-xs Registration fee [CHF]
+  %th.text-center Occupied seats
+  %th.text-center Total seats
+  %th.text-center.hidden-xs Started
   - if current_user.admin?
-    %th.action
-      Edit
+    %th.action Edit
