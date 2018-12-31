@@ -18,11 +18,13 @@
           %th.text-center Admin
 
       %tbody.player-list-body
+        - last_player_points = 0
         - @players.each_with_index do |player, i|
           %tr
             %td.hide= player.id # used for some js-magic
-            %td.text-center= "#{i+1}."
+            %td.text-center= (last_player_points == player.points) ? '' : "#{i+1}."
             %td.text-center= player.points
+            - last_player_points = player.points
             %td= player.gamer_tag
             %td.text-center= player.participations
             %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'

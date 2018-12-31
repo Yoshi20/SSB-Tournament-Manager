@@ -5,7 +5,10 @@
 
   %li{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
     = link_to 'Ranking', players_path
-  -#
+
+  %li{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
+    = link_to 'Rules', rules_path
+
   -# %li{role: "presentation", class: (@section == 'diodes' ? 'active' : 'inactive')}
   -#   %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
   -#     = "Diodes"

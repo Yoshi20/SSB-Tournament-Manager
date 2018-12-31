@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'rules' => 'rules#index'
+
   resources :tournaments
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
