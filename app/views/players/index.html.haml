@@ -14,7 +14,6 @@
           %th.text-center Tournament participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
-          %th.hidden-xs Last Log in at
           %th.text-center Admin
 
       %tbody.player-list-body
@@ -29,5 +28,4 @@
             %td.text-center= player.participations
             %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
             %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-            %td.hidden-xs= player.user.current_sign_in_at.to_s(:custom_datetime)
             %td.text-center= player.user.admin? ? 'X' : ''
