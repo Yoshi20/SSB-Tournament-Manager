@@ -1,0 +1,50 @@
+.row.title-div
+  .col-md-12
+    %h1= 'Feedback'
+
+.row.feedbacks-div
+  .col-md-12
+    %p= 'Let us know what you think of our tournaments or homepage and tell us if you\'re missing something or found a problem.'
+
+.row.form
+  .col-md-12
+    %table.table.table-striped
+      %thead.feedback-list-header
+        = render "feedback_list_header"
+
+      %tbody.with-show.feedback-list-body
+        = render @feedbacks
+
+    %p= link_to "New feedback", new_feedback_path,  class: "form-control btn btn-primary"
+
+%br
+.row.title-div
+  .col-md-12
+    %h1= 'Administrators'
+
+.row.administrators-div
+  .col-md-4
+    %p
+      %strong= 'Jascha Haldemann'
+    %p
+      %strong= 'Gamer tag:'
+      = 'Yomi'
+    %p
+      %strong= 'E-Mail:'
+      = 'jascha_haldemann@hotmail.com'
+    %p
+      %strong= 'Mobile:'
+      = '079 / 247 26 28'
+
+  .col-md-4
+    %p
+      %strong= 'Wanja Haldemann'
+    %p
+      %strong= 'Gamer tag:'
+      = 'H.D.M.P'
+    %p
+      %strong= 'E-Mail:'
+      = 'wanja_haldemann@hotmail.ch'
+    %p
+      %strong= 'Mobile:'
+      = '-'

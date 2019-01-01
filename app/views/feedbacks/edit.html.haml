@@ -1,0 +1,11 @@
+%h1= "Editing feedback"
+
+.row.form
+  .col-md-8
+    = render 'form', feedback: @feedback
+
+  .col-md-4
+    %p= link_to 'Show', feedback_path(@feedback)
+    - if current_user.admin? or current_user == @feedback.user
+      %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: 'Are you sure?' }
+    %p= link_to 'Back', :back

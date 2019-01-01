@@ -14,9 +14,10 @@
           %th.text-center Tournament participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
+          %th Comment
           %th.text-center Admin
 
-      %tbody.player-list-body
+      %tbody.with-show.player-list-body
         - last_player_points = 0
         - @players.each_with_index do |player, i|
           %tr
@@ -28,4 +29,5 @@
             %td.text-center= player.participations
             %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
             %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+            %td= player.comment
             %td.text-center= player.user.admin? ? 'X' : ''

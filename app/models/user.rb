@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :player, dependent: :destroy
+  #has_many :feedbacks, dependent: :destroy
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'

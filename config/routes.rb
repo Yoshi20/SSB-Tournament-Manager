@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :feedbacks
+
   get 'rules' => 'rules#index'
 
   resources :tournaments

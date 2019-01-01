@@ -1,0 +1,30 @@
+.row.title-div
+  .col-md-12
+    %h1= "#{@feedback.user.username}'s feedback:"
+
+.row.show-feedback
+  .col-md-8
+    %p= @feedback.text
+    - if !@feedback.response.nil? and !@feedback.response.empty?
+      %br
+      %p
+        %strong= 'Administrator response:'
+        %br
+        = @feedback.response
+
+  .col-md-4
+    - if current_user.admin? or current_user == @feedback.user
+      %p= link_to 'Edit', edit_feedback_path(@feedback)
+      %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: 'Are you sure?' }
+    %p= link_to 'Back', :back
+
+%br
+.row.show-feedback
+  .col-md-12
+    %p
+      %strong Updated at:
+      = @feedback.updated_at.to_s(:custom_datetime)
+
+    %p
+      %strong Created at:
+      = @feedback.created_at.to_s(:custom_datetime)

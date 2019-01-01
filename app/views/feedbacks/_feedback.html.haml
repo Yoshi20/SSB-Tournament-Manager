@@ -1,0 +1,23 @@
+%tr
+  %td.hide
+    = feedback.id # used for some js-magic
+
+  %td.text-center
+    = feedback.user.username
+
+  %td
+    = feedback.text
+    - if !feedback.response.nil? and !feedback.response.empty?
+      %br
+      %strong= 'Administrator response:'
+      = feedback.response
+
+  %td.text-center
+    = feedback.updated_at.to_s(:custom_datetime)
+
+  - if current_user.admin?
+    %td.text-center.actions
+      = link_to edit_feedback_path(feedback), class:'btn btn-default btn-xs' do
+        %span.glyphicon.glyphicon-pencil
+      = link_to feedback, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
+        %span.glyphicon.glyphicon-trash
