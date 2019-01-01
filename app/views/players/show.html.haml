@@ -51,5 +51,12 @@
   .col-md-12
     - @player.tournaments.each do |t|
       %p
+        - player_rank = '?'
+        - if t.ranking_string.to_s.include?(@player.gamer_tag)
+          - t.ranking_string.split(';').sort.each do |r|
+            - if r.split(',')[1] == @player.gamer_tag
+              - player_rank = r.split(',')[0]
+        %strong= "#{player_rank}"
+        %i.glyphicon.glyphicon-star
         %strong= link_to "#{t.name}", t
-        = "-> #{t.date.to_s(:custom_datetime_with_weekday)}"
+        -# = "-> #{t.date.to_s(:custom_datetime_with_weekday)}"

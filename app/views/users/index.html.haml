@@ -9,7 +9,8 @@
       %thead.user-list-header
         %tr
           %th Username
-          %th Email
+          - if current_user.admin?
+            %th Email
           %th Last Log in at
           %th Created at
           %th.text-center Log in counter
@@ -21,11 +22,14 @@
         - @users.each do |user|
           %tr
             %td= user.username
-            %td= user.email
+            - if current_user.admin?
+              %td= user.email
             %td= user.current_sign_in_at.to_s(:custom_datetime)
             %td= user.created_at.to_s(:custom_datetime)
             %td.text-center= user.sign_in_count
-            %td.text-center= user.admin? ? 'X' : ''
+            %td.text-center
+              - if user.admin?
+                .glyphicon.glyphicon-ok
             - if current_user.admin?
               %td.text-center{:style => "vertical-align: middle"}
                 - if current_user.admin? && user != current_user

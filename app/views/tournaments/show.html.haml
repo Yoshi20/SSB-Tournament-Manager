@@ -26,6 +26,10 @@
 
   .col-md-4
     %p
+      %strong Registration deadline:
+      = registration_deadline(@tournament.date).to_s(:custom_datetime_with_weekday)
+
+    %p
       %strong Registration fee [CHF]:
       = @tournament.registration_fee
 
@@ -55,6 +59,7 @@
   .col-md-12
     %p
       %strong Descripton:
+      %br
       = @tournament.description
 
 - if @tournament.started != true and @tournament.finished != true

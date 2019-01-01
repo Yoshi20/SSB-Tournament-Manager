@@ -29,5 +29,7 @@
             %td.text-center= player.participations
             %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
             %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-            %td= player.comment
-            %td.text-center= player.user.admin? ? 'X' : ''
+            %td= truncate(player.comment, length: 60)
+            %td.text-center
+              - if player.user.admin?
+                .glyphicon.glyphicon-ok

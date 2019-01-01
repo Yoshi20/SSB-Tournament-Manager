@@ -54,6 +54,8 @@ class TournamentsController < ApplicationController
             redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
           elsif @tournament.players.include?(player_to_add)
             redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player already added."
+          elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
           else
             @tournament.players << player_to_add
             @tournament.update(occupied_seats: @tournament.occupied_seats+1)
@@ -72,6 +74,8 @@ class TournamentsController < ApplicationController
         end
         if player_to_remove.nil?
           redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
+        elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
         else
           @tournament.players.delete(Player.find(player_to_remove.id))
           @tournament.update(occupied_seats: @tournament.occupied_seats-1)

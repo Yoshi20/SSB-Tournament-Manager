@@ -3,6 +3,12 @@
     = tournament.id # used for some js-magic
 
   %td.text-center
+    - if tournament.players.include?(current_user.player)
+      .glyphicon.glyphicon-check
+    - else
+      .glyphicon.glyphicon-unchecked
+
+  %td.text-center
     = tournament.date.to_s(:custom_datetime_weekday)
 
   %td
@@ -12,10 +18,10 @@
     = tournament.name
 
   %td
-    = tournament.location
+    = truncate(tournament.location, length: 16)
 
-  %td.hidden-md.hidden-sm.hidden-xs
-    = truncate(tournament.description, length: 50)
+  -# %td.hidden-md.hidden-sm.hidden-xs
+  -#   = truncate(tournament.description, length: 50)
 
   %td.text-center.hidden-xs
     - if tournament.registration_fee.present?
@@ -31,7 +37,10 @@
     = tournament.total_seats
 
   %td.text-center.hidden-xs
-    = check_box_tag '', '', tournament.started?, disabled: true
+    - if tournament.started?
+      .glyphicon.glyphicon-check
+    - else
+      .glyphicon.glyphicon-unchecked
 
   - if current_user.admin?
     %td.text-center.actions
