@@ -19,7 +19,7 @@
 
       %tbody.with-show.player-list-body
         - if @players.any?
-          - last_player_points = 0
+          - last_player_points = nil
           - @players.each_with_index do |player, i|
             %tr
               %td.hide= player.id # used for some js-magic
