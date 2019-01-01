@@ -1,0 +1,2 @@
+class TournamentMailer < ApplicationMailer
+end

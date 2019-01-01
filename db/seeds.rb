@@ -10,3 +10,8 @@ yomi = User.find_by_email('jascha_haldemann@hotmail.com')
 if yomi.present?
   yomi.update(is_admin: true)
 end
+
+hdmp = User.find_by_email('wanja_haldemann@hotmail.ch')
+if hdmp.present?
+  hdmp.update(is_admin: true)
+end

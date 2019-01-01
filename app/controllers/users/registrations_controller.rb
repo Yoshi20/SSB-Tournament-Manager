@@ -28,6 +28,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.user = user
       if player.save
         flash[:notice] = "Player was successfully created"
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.with(user: user).welcome_email.deliver_later
       else
         flash.delete(:notice)
         flash[:alert] = "Creating player failed!"

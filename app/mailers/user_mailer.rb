@@ -1,5 +1,11 @@
 class UserMailer < ApplicationMailer
 
+  def welcome_email
+    @user = params[:user]
+    @url  = 'https://ssb-tournament-manager.herokuapp.com/tournaments'
+    mail(to: @user.email, subject: 'Welcome to the SSB Tournament Manager')
+  end
+
   # def component_out_of_stock_notification_mail(anime, other_user)
   #   subject = "#{component.name} is out of stock!"
   # 	@anime = anime
