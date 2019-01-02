@@ -28,7 +28,9 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        FeedbackMailer.with(feedback: @feedback).new_feedback_email.deliver_later
+        User.where(is_admin:true).each do |u|
+          FeedbackMailer.with(feedback: @feedback, email: u.email).new_feedback_email.deliver_later
+        end
         format.html { redirect_to feedbacks_path, notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
