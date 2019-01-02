@@ -1,8 +1,16 @@
-Blup
+<%= @tournament.name %>
 ===============================================
 
-You have successfully signed up. Your username is: <%= @user.username %>.
+The tournament "<%= @tournament.name %>" was added to the SSB Tournament Manager.
 
-To join some tournaments, just follow this link: <%= @url %>.
+Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+Registartion fee: <%= @tournament.registration_fee %> CHF
+Location:
+<%- @tournament.location.split(',').each do |str| %>
+  <%= str.strip %>
+<%- end %>
 
-Thanks for your registration and good luck during your matches!
+To join this tournament, just follow the link and click the green button:
+  <%= @url %>
+
+We wish you good luck during your matches!

@@ -10,17 +10,21 @@
 
     %p
       %strong Location:
-      = @tournament.location
+      %br
+      - @tournament.location.split(',').each do |str|
+        &emsp;
+        = str.strip
+        %br
 
     %p
       %strong Started:
       %input{type: 'checkbox', checked: @tournament.started, disabled: 'true'}
 
-    %p
+      &emsp;
       %strong Finished:
       %input{type: 'checkbox', checked: @tournament.finished, disabled: 'true'}
 
-    %p
+      &emsp;
       %strong Active:
       %input{type: 'checkbox', checked: @tournament.active, disabled: 'true'}
 
