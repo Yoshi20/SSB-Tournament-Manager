@@ -32,5 +32,5 @@
                 .glyphicon.glyphicon-ok
             - if current_user.admin?
               %td.text-center{:style => "vertical-align: middle"}
-                - if current_user.admin? && user != current_user
+                - if current_user.admin? #&& user != current_user
                   = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
