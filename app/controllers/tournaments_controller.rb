@@ -30,6 +30,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     respond_to do |format|
       if @tournament.save
+        TournamentMailer.with(tournament: @tournament).new_tournament_email.deliver_later
         format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
         format.json { render :show, status: :created, location: @tournament }
       else
