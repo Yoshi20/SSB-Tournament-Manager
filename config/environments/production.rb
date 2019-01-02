@@ -62,6 +62,20 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "ssb-tournament-manager_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager.herokuapp.com'}
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: "25",
+    domain: 'heroku.com',
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
