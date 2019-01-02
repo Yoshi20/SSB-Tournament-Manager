@@ -3,7 +3,10 @@
     = feedback.id # used for some js-magic
 
   %td.text-center
-    = feedback.user.username
+    - if feedback.user.present?
+      = feedback.user.username
+    - else
+      = '?'
 
   %td
     = feedback.text
