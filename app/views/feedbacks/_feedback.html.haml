@@ -10,9 +10,11 @@
 
   %td
     = feedback.text
-    - if !feedback.response.nil? and !feedback.response.empty?
+    - if !feedback.response.nil? and !feedback.response.blank?
       %br
       %strong= 'Administrator response:'
+      %br
+      &emsp;
       = feedback.response
 
   %td.text-center

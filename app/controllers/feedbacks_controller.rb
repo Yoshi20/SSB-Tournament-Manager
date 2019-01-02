@@ -28,6 +28,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
+        FeedbackMailer.with(feedback: @feedback).new_feedback_email.deliver_later
         format.html { redirect_to feedbacks_path, notice: 'Feedback was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
@@ -41,7 +42,12 @@ class FeedbacksController < ApplicationController
   # PATCH/PUT /feedbacks/1.json
   def update
     respond_to do |format|
-      if @feedback.update(feedback_params)
+      p = feedback_params
+      if feedback_params[:response] != @feedback.response
+        # do not update user_id when an admin wrote a response
+        p.delete('user_id')
+      end
+      if @feedback.update(p)
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
         format.json { render :show, status: :ok, location: @feedback }
       else

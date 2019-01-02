@@ -1,11 +1,11 @@
 .row.title-div
   .col-md-12
-    %h1= "#{@feedback.user.username}'s feedback:"
+    %h1= "#{@feedback.user.present? ? @feedback.user.username : '?'}'s feedback:"
 
 .row.show-feedback
   .col-md-8
     %p= @feedback.text
-    - if !@feedback.response.nil? and !@feedback.response.empty?
+    - if !@feedback.response.nil? and !@feedback.response.blank?
       %br
       %p
         %strong= 'Administrator response:'
