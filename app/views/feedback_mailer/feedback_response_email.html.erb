@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.username %></h1>
+    <p>
+      Thanks a lot for your feedback or question.
+    </p>
+    <p>
+      You can check out my answer by following <%= link_to "this link", @url %>.
+    </p>
+    <p>
+      Best regards<br>
+      <%= @admin.username %>
+    </p>
+  </body>
+</html>

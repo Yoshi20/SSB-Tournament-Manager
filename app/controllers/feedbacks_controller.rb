@@ -28,10 +28,10 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        User.where(is_admin:true).each do |u|
-          FeedbackMailer.with(feedback: @feedback, email: u.email).new_feedback_email.deliver_later
+        User.where(is_admin:true).each do |admin|
+          FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
-        format.html { redirect_to feedbacks_path, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to feedbacks_path, notice: 'Feedback or Question was successfully created.' }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -45,12 +45,12 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       p = feedback_params
-      if feedback_params[:response] != @feedback.response
-        # do not update user_id when an admin wrote a response
-        p.delete('user_id')
+      if feedback_params[:response] != @feedback.response and current_user.admin?
+        p.delete('user_id') # do not update user_id when an admin wrote a response
+        FeedbackMailer.with(feedback: @feedback, admin: current_user).feedback_response_email.deliver_later
       end
       if @feedback.update(p)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
+        format.html { redirect_to @feedback, notice: 'Feedback or Question was successfully updated.' }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
+      format.html { redirect_to feedbacks_url, notice: 'Feedback or Question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
