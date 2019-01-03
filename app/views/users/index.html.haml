@@ -30,6 +30,12 @@
             %td.text-center
               - if user.admin?
                 .glyphicon.glyphicon-ok
+              - elsif current_user.admin?
+                = form_for user, role: 'form', method: :patch do |f|
+                  .field
+                    = f.check_box :is_admin, checked: true, class: 'hidden'
+                    = f.submit 'New Admin', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
+
             - if current_user.admin?
               %td.text-center{:style => "vertical-align: middle"}
                 - if current_user.admin? #&& user != current_user
