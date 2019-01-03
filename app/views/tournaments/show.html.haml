@@ -94,25 +94,29 @@
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
-.row.title-registered-players
+.row.title-registered-players-tournament-ranking
   .col-md-6
-    %h2 Registered players
-  - if @tournament.finished
-    .col-md-6
-      %h2 Tournament ranking
+    .row.title-registered-players
+      .col-md-12
+        %h2 Registered players
+        .row.show-registered-players
+          .col-md-12
+            - @tournament.players.each_with_index do |p, i|
+              %p
+                = "##{i+1}"
+                %strong= link_to "#{p.gamer_tag}", p
 
-.row.show-registered-players
   .col-md-6
-    - @tournament.players.each_with_index do |p, i|
-      %p
-        = "##{i+1}"
-        %strong= link_to "#{p.gamer_tag}", p
-  - if @tournament.finished
-    .col-md-6
-      - unless @tournament.ranking_string.nil?
-        - @tournament.ranking_string.split(';').sort.each do |r|
-          %p
-            %strong= "#{r.split(',')[0]}. #{r.split(',')[1]}"
+    - if @tournament.finished
+      .row.title-tournament-ranking
+        .col-md-12
+          %h2 Tournament ranking
+          .row.show-tournament-ranking
+            .col-md-12
+              - unless @tournament.ranking_string.nil?
+                - @tournament.ranking_string.split(';').sort.each do |r|
+                  %p
+                    %strong= "#{r.split(',')[0]}. #{r.split(',')[1]}"
 
 - if @tournament.started
   .row.challonge_tournament_tree
