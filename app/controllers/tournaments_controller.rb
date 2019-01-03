@@ -181,9 +181,8 @@ class TournamentsController < ApplicationController
     end
 
     def set_challonge_username_and_api_key
-      # TODO: Add challonge-api as a dependency for your project and set your username and API key on startup.
-      Challonge::API.username = 'Yoshi20'
-      Challonge::API.key = 'CRgTBcoqMDnObv1XKKTz4ge3UDQeN5hMmtEszxjM'
+      Challonge::API.username = ENV['CHALLONGE_USERNAME']
+      Challonge::API.key = ENV['CHALLONGE_API_KEY']
     end
 
     def points_repartition_table(rank)
