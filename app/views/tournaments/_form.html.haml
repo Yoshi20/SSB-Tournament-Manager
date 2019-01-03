@@ -20,7 +20,7 @@
         = f.label :location
         = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'Kultur Bistro Karl Schenk, Spitalgasse 4, 3011 Bern, 2.UG' : @tournament.location)
       .field.form-group
-        = f.label :registration_fee
+        = f.label :registration_fee, 'Registration fee [CHF]'
         = f.text_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? 5 : @tournament.registration_fee)
       .field.form-group.hide
         = f.label :occupied_seats

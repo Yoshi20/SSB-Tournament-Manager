@@ -34,8 +34,9 @@
       = registration_deadline(@tournament.date).to_s(:custom_datetime_with_weekday)
 
     %p
-      %strong Registration fee [CHF]:
+      %strong Registration fee:
       = @tournament.registration_fee
+      = 'CHF'
 
     %p
       %strong Occupied seats:
