@@ -8,7 +8,7 @@
     - else
       .glyphicon.glyphicon-unchecked
 
-  %td.text-center
+  %td.text-center.hidden-xs
     = tournament.date.to_s(:custom_datetime_weekday)
 
   %td
@@ -17,7 +17,7 @@
   %td
     = tournament.name
 
-  %td
+  %td.hidden-xs
     = truncate(tournament.location, length: 16)
 
   -# %td.hidden-md.hidden-sm.hidden-xs
@@ -32,10 +32,7 @@
       = 'CHF'
 
   %td.text-center
-    = tournament.occupied_seats
-
-  %td.text-center
-    = tournament.total_seats
+    = "#{tournament.occupied_seats} / #{tournament.total_seats}"
 
   %td.text-center.hidden-xs
     - if tournament.started?

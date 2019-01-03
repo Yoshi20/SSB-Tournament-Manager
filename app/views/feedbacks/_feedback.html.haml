@@ -18,7 +18,7 @@
       &emsp;
       %i= feedback.response
 
-  %td.text-center
+  %td.text-center.hidden-xs
     = feedback.updated_at.to_s(:custom_datetime)
 
   - if current_user.admin?
