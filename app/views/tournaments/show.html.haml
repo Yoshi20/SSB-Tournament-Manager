@@ -70,10 +70,13 @@
   .row.join-tournament
     %br
     .col-md-4
-      - if current_user.player.tournaments.include?(@tournament)
-        %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, method:'patch', class:'btn btn-warning', id:'leave-tournament-button'
-      - else
-        %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-success', id:'join-tournament-button'
+      - if Time.now > registration_deadline(@tournament.date)
+        %p= button_to "Registration deadline exceeded", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-primary', id:'join-tournament-button', disabled:true
+      -else
+        - if current_user.player.tournaments.include?(@tournament)
+          %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, method:'patch', class:'btn btn-warning', id:'leave-tournament-button'
+        - else
+          %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-success', id:'join-tournament-button'
 
     - if current_user.admin?
       .col-md-4

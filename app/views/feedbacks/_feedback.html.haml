@@ -12,10 +12,11 @@
     = feedback.text
     - if !feedback.response.nil? and !feedback.response.blank?
       %br
-      %strong= 'Administrator response:'
+      %br
+      %i= 'Administrator response:'
       %br
       &emsp;
-      = feedback.response
+      %i= feedback.response
 
   %td.text-center
     = feedback.updated_at.to_s(:custom_datetime)
