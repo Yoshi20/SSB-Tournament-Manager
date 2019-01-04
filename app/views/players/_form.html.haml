@@ -8,14 +8,27 @@
           - @player.errors.full_messages.each do |message|
             %li= message
 
+    -# :best_rank, :wins, :losses, :created_at, :updated_at)
     .col-md-12
       - if current_user.is_admin?
+        .field.form-group
+          = f.label :gamer_tag
+          = f.text_field :gamer_tag, class: 'form-control'
         .field.form-group
           = f.label :points
           = f.number_field :points, class: 'form-control'
         .field.form-group
           = f.label :participations
           = f.number_field :participations, class: 'form-control'
+        .field.form-group
+          = f.label :best_rank
+          = f.number_field :best_rank, class: 'form-control'
+        .field.form-group
+          = f.label :wins
+          = f.number_field :wins, class: 'form-control'
+        .field.form-group
+          = f.label :losses
+          = f.number_field :losses, class: 'form-control'
       .field.form-group
         = f.label :self_assessment
         %br

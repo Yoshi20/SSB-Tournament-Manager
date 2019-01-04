@@ -5,6 +5,10 @@
 .row.show-player
   .col-md-4
     %p
+      %strong Best rank:
+      = @player.best_rank
+
+    %p
       %strong Points:
       = @player.points
 
@@ -21,6 +25,19 @@
       = tournament_experience_defines[@player.tournament_experience]
 
   .col-md-4
+
+    %p
+      %strong Wins:
+      = @player.wins
+
+    %p
+      %strong Losses:
+      = @player.losses
+
+    %p
+      %strong Win/Loss ratio:
+      = (@player.losses == 0) ? 0 : (@player.wins/@player.losses)
+      = '%'
 
     %p
       %strong Updated at:

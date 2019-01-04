@@ -14,6 +14,7 @@
           %th.text-center.hidden-xs Tournament participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
+          %th.text-center Win/Loss ratio
           %th Comment
           %th.text-center Admin
 
@@ -30,6 +31,7 @@
               %td.text-center.hidden-xs= player.participations
               %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+              %td.text-center= "#{(player.losses == 0) ? 0 : (player.wins/player.losses)} %"
               %td= truncate(player.comment, length: 60)
               %td.text-center
                 - if player.user.admin?
