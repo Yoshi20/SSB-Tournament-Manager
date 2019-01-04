@@ -36,7 +36,7 @@
 
     %p
       %strong Win/Loss ratio:
-      = (@player.losses == 0) ? 0 : (@player.wins/@player.losses)
+      = (@player.losses == 0) ? 0 : (@player.wins/@player.losses*100)
       = '%'
 
     %p
