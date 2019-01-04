@@ -25,6 +25,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.self_assessment = params[:self_assessment]
       player.tournament_experience = params[:tournament_experience]
       player.comment = params[:comment]
+      player.best_rank = 0
+      player.wins = 0
+      player.losses = 0
       player.user = user
       if player.save
         flash[:notice] = "Player was successfully created"

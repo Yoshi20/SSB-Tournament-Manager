@@ -28,6 +28,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments.json
   def create
     @tournament = Tournament.new(tournament_params)
+    @tournament.ranking_string = ''
     respond_to do |format|
       if @tournament.save
         Player.all.each do |p|
@@ -144,24 +145,32 @@ class TournamentsController < ApplicationController
     ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
 
     if ct.state == 'complete'
-      @tournament.finished = true
       # updated the participated players
       ct.participants.each do |p|
+        # updated player
         player = @tournament.players.find_by(:gamer_tag => p.display_name)
-        player.points = points_repartition_table(p.final_rank)
+        player.points += points_repartition_table(p.final_rank)
         player.participations += 1
         if player.participations >= 30 and player.tournament_experience < 2 then player.tournament_experience = 2
         elsif player.participations >= 10 and player.tournament_experience < 1 then player.tournament_experience = 1
         end
-        player.save
-        # create/updated a raking_string on the tournament
-        ranking_string = "#{p.final_rank},#{p.display_name};"
-        if @tournament.ranking_string.nil?
-          @tournament.ranking_string = ranking_string
-        else
-          @tournament.ranking_string += ranking_string
+        if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
+        ct.matches.each do |m|
+          scores = m.scores_csv.split('-')
+          if m.player1_id == p.id
+            player.wins += scores[0].to_i
+            player.losses += scores[1].to_i
+          elsif m.player2_id == p.id
+            player.wins += scores[1].to_i
+            player.losses += scores[0].to_i
+          end
         end
+        player.save
+        # updated raking_string on the tournament
+        ranking_string = "#{p.final_rank},#{p.display_name};"
+        @tournament.ranking_string += ranking_string
       end
+      @tournament.finished = true
       @tournament.save
       redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
     else
