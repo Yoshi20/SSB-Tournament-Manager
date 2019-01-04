@@ -115,8 +115,8 @@ class TournamentsController < ApplicationController
 
     # setup and start a challonge tournament
     ct = Challonge::Tournament.new
-    ct.name = @tournament.name #'SSBU Bern KW 1'
-    ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw_1'
+    ct.name = @tournament.name #'SSBU Bern KW1'
+    ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
     ct.tournament_type = 'double elimination'
     ct.game_name = 'Super Smash Bros. Ultimate'
     ct.description = @tournament.description
@@ -124,9 +124,18 @@ class TournamentsController < ApplicationController
       raise ct.errors.full_messages.inspect
     end
 
-    # add the participants
-    @tournament.players.order(points: :desc).each do |p|
-    	Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
+    # sort the participants by the best player
+    seeded_participants = @tournament.players.sort_by do |p|
+      seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
+      seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/p.losses)
+      seed_points += p.self_assessment.to_f/5
+      seed_points += p.tournament_experience.to_f/10
+      seed_points
+    end.reverse
+
+    # add the participants to the challonge tournament
+    seeded_participants.each do |p|
+      Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
     end
 
     ct.start!
