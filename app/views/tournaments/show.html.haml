@@ -107,7 +107,7 @@
                 %strong= link_to "#{p.gamer_tag}", p
 
   .col-md-6
-    - if @tournament.finished
+    - if @tournament.started and @tournament.finished
       .row.title-tournament-ranking
         .col-md-12
           %h2 Tournament ranking

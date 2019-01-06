@@ -123,7 +123,8 @@
     .row.prices-title
       .col-md-12
         %h2= 'Prices for the winner'
-        %p= 'The top 3 ranks must be unambiguous. That means, if there are two or more player with the same amount of points, they have to play remachtes (e.g. best of 5 games) until the three winners are clear.'
+        %p
+          = 'The top 3 ranks must be unambiguous. That means, if there are two or more player with the same amount of points, they have to play remachtes (e.g. best of 5 games) until the three winners are clear. Each player will only receive one price.'
         .row.prices
           .col-md-12
             %table.table.table-striped
@@ -145,11 +146,11 @@
                   %td.text-center 4-6
                   %td.text-center Not yet decided
                 %tr
+                  %td.text-center >1500p
+                  %td.text-center Not yet decided
+                %tr
                   %td.text-center >1000p
                   %td.text-center Not yet decided
                 %tr
                   %td.text-center >500p
-                  %td.text-center Not yet decided
-                %tr
-                  %td.text-center >250p
                   %td.text-center Not yet decided

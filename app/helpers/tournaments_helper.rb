@@ -1,5 +1,9 @@
 module TournamentsHelper
 
+  def active_tournaments_2019
+    Tournament.where('active = ? AND date > ? AND date < ?', true, Time.local(2019,1,1), Time.local(2019,12,31,23,59,59))
+  end
+
   def registration_deadline(date)
     date-16*3600
   end

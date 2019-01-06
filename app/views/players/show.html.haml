@@ -14,7 +14,7 @@
 
     %p
       %strong Participations:
-      = @player.participations
+      = "#{@player.participations} / #{@finished_tournaments_count_2019}"
 
     %p
       %strong Self assessment:
@@ -60,11 +60,11 @@
       = @player.comment || '-'
 
 - if @player.tournaments.any?
-  .row.title-registered-tournaments-div
+  .row.title-joined-tournaments-div
     .col-md-12
-      %h2 Registered tournaments
+      %h2 Joined tournaments
 
-  .row.show-registered-tournaments
+  .row.show-joined-tournaments
     .col-md-12
       - @player.tournaments.each do |t|
         %p

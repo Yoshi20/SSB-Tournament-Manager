@@ -5,9 +5,8 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    all_active_tournaments = Tournament.all.where(active: true)
-    @tournaments = all_active_tournaments.where('finished is not true').order(date: :asc)
-    @finished_tournaments = all_active_tournaments.where(finished: true).order(date: :desc)
+    @tournaments = helpers.active_tournaments_2019.where('finished is not true').order(date: :asc)
+    @finished_tournaments = helpers.active_tournaments_2019.where(finished: true).order(date: :desc)
   end
 
   # GET /tournaments/1
