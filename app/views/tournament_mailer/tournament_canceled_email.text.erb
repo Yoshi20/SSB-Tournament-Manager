@@ -1,0 +1,11 @@
+<%= @tournament.name %>
+===============================================
+
+Because of too few registrations or other reasons, an administrator has canceled the tournament "<%= @tournament.name.gsub('(canceled) ', '') %>".
+
+Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+
+To join an other tournament, just follow the link:
+  <%= @url %>
+
+We hope to see you soon in a different tournament.

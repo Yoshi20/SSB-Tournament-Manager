@@ -6,13 +6,13 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = Player.all.order(points: :desc, participations: :asc)
-    @finished_tournaments_count_2019 = helpers.active_tournaments_2019.where(finished: true).count
+    @started_and_finished_tournaments_count_2019 = helpers.active_tournaments_2019.where(started: true, finished: true).count
   end
 
   # GET /players/1
   # GET /players/1.json
   def show
-    @finished_tournaments_count_2019 = helpers.active_tournaments_2019.where(finished: true).count
+    @started_and_finished_tournaments_count_2019 = helpers.active_tournaments_2019.where(started: true, finished: true).count
   end
 
   # # GET /players/new

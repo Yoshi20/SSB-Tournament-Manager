@@ -125,13 +125,24 @@
       %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
 
 - if current_user.admin?
+  %br
   .row.admin-tournament
-    .col-md-12
-      %br
+    .col-md-4
       - if @tournament.started
-        %p
-          = link_to 'Show challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
-          - unless @tournament.finished
-            = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-danger', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
-      - elsif @tournament.finished != true
-        %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-danger', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}
+        %p= link_to 'Show challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
+      - elsif !@tournament.finished
+        %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-warning', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}
+
+    .col-md-4
+
+    .col-md-4
+      - if !@tournament.finished
+        - if @tournament.started
+          = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-warning', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
+        - else
+          = form_for @tournament, role: 'form', method: :patch do |f|
+            .field
+              = f.text_field :name, value: "(canceled) #{@tournament.name}", class: 'hidden'
+              = f.check_box :finished, checked: true, class: 'hidden'
+              = f.check_box :cancel, checked: true, class: 'hidden'
+              = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }

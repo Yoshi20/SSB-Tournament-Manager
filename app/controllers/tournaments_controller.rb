@@ -45,6 +45,11 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
+    if params[:tournament].present? and params[:tournament][:cancel]
+      @tournament.players.each do |p|
+        TournamentMailer.with(tournament: @tournament, user: p.user).tournament_canceled_email.deliver_later
+      end
+    end
     if params[:add_player] or params[:remove_player]
       if params[:add_player]
         if @tournament.occupied_seats < @tournament.total_seats
