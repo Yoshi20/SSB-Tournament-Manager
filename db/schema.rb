@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_140900) do
+ActiveRecord::Schema.define(version: 2019_01_06_215600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,26 +24,27 @@ ActiveRecord::Schema.define(version: 2019_01_04_140900) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
+  create_table "player_tournaments", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "tournament_id"
+    t.integer "game_stations"
+    t.index ["player_id"], name: "index_player_tournaments_on_player_id"
+    t.index ["tournament_id"], name: "index_player_tournaments_on_tournament_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "gamer_tag"
     t.integer "points"
     t.integer "participations"
     t.integer "self_assessment"
     t.integer "tournament_experience"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.text "comment"
     t.integer "best_rank"
     t.integer "wins"
     t.integer "losses"
-  end
-
-  create_table "players_tournaments", id: false, force: :cascade do |t|
-    t.bigint "player_id"
-    t.bigint "tournament_id"
-    t.index ["player_id"], name: "index_players_tournaments_on_player_id"
-    t.index ["tournament_id"], name: "index_players_tournaments_on_tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|

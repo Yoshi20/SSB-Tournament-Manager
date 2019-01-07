@@ -74,7 +74,7 @@
       - if Time.now > registration_deadline(@tournament.date)
         %p= button_to "Registration deadline exceeded", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-primary', id:'join-tournament-button', disabled:true
       -else
-        - if current_user.player.tournaments.include?(@tournament)
+        - if @tournament.players.include?(current_user.player)
           %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, method:'patch', class:'btn btn-warning', id:'leave-tournament-button'
         - else
           %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-success', id:'join-tournament-button'
@@ -94,6 +94,32 @@
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
+- if @tournament.players.include?(current_user.player) and @game_stations_needed > 0 and !@tournament.started and !@tournament.finished
+  %br
+  .row.game-stations-text
+    .col-md-12
+      %h2 Please bring a game station with you
+      %p
+        = 'If you bring the following hard- and software to the tournament, you do not have to pay the registraion fee.'
+        = 'But after agreeing to bring a game station, you will be obligated to also do so.'
+      .row.add-game-stations
+        .col-md-6
+          %ul
+            %li Nintendo Switch console and a docking station with its power supply
+            %li 2 Joy-Cons (right & left) and a Joy-Con-Grip
+            %li HDMI cable
+            %li Super Smash Bros. Ultimate Game
+
+        .col-md-6
+          -# = form_for "tournaments/#{@tournament.id}", role: 'form', method: :patch do |f|
+          = form_for @tournament, role: 'form', method: :patch do |f|
+            .field
+              = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @game_stations_needed
+              = f.submit 'I\'ll bring one or more game stations with me', class:'btn btn-success', id:'bring-game-stations-button', style: 'display:inline'
+              %br
+              = "(max. #{@game_stations_needed} more game #{@game_stations_needed > 1 ? 'stations are' : 'station is'} needed)"
+      %br
+
 .row.title-registered-players-tournament-ranking
   .col-md-6
     .row.title-registered-players
@@ -105,6 +131,9 @@
               %p
                 = "##{i+1}"
                 %strong= link_to "#{p.gamer_tag}", p
+                - gs = p.player_tournaments.where(tournament_id: @tournament.id).first.game_stations
+                - if !gs.nil? and gs > 0
+                  = "(Brings #{gs} game #{gs > 1 ? 'stations' : 'station'})"
 
   .col-md-6
     - if @tournament.started and @tournament.finished
@@ -118,11 +147,6 @@
                   %p
                     - ranking = r.split(',')
                     %strong= "#{ranking[0]}. #{ranking[1]} (#{points_repartition_table(ranking[0].to_i)}p)"
-
-- if @tournament.started
-  .row.challonge_tournament_tree
-    .col-md-12
-      %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
 
 - if current_user.admin?
   %br
@@ -146,3 +170,10 @@
               = f.check_box :finished, checked: true, class: 'hidden'
               = f.check_box :cancel, checked: true, class: 'hidden'
               = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
+
+
+- if @tournament.started
+  .row.challonge_tournament_tree
+    .col-md-12
+      %br
+      %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}

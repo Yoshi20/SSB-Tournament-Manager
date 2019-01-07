@@ -12,6 +12,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
+    @game_stations_needed = helpers.max_needed_game_stations_per_tournament(@tournament.total_seats) - get_game_stations_count(@tournament)
   end
 
   # GET /tournaments/new
@@ -45,11 +46,23 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
+    # add a game station to a PlayerTournament
+    if params[:tournament].present? and params[:tournament][:game_stations]
+      pt = @tournament.player_tournaments.where(player_id: current_user.player.id).first
+      if pt.game_stations.nil? then pt.game_stations = 0 end
+      if pt.game_stations < helpers.max_needed_game_stations_per_tournament(@tournament.total_seats)
+        pt.update(game_stations: params[:tournament][:game_stations])
+      end
+    end
+
+    # send each player a mail if the tournament was canceled
     if params[:tournament].present? and params[:tournament][:cancel]
       @tournament.players.each do |p|
         TournamentMailer.with(tournament: @tournament, user: p.user).tournament_canceled_email.deliver_later
       end
     end
+
+    # add/remove players to/from the tournament
     if params[:add_player] or params[:remove_player]
       if params[:add_player]
         if @tournament.occupied_seats < @tournament.total_seats
@@ -77,6 +90,7 @@ class TournamentsController < ApplicationController
       if params[:remove_player]
         if params[:gamer_tag].present?
           player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
+          player_to_remove.player_tournaments.where(tournament_id: @tournament.id).delete_all
         else
           player_to_remove = current_user.player
         end
@@ -91,6 +105,7 @@ class TournamentsController < ApplicationController
         end
       end
     else
+      # update tournament
       respond_to do |format|
         if @tournament.update(tournament_params)
           format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
@@ -115,39 +130,46 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/start/1
   def start
-    set_challonge_username_and_api_key()
+    needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.occupied_seats)
+    current_game_stations_count = get_game_stations_count(@tournament)
+    if current_game_stations_count < needed_game_stations_count
+      delta_game_stations = needed_game_stations_count - current_game_stations_count
+      redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to start the tournament!"
+    else
+      set_challonge_username_and_api_key()
 
-    # setup and start a challonge tournament
-    ct = Challonge::Tournament.new
-    ct.name = @tournament.name #'SSBU Bern KW1'
-    ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
-    ct.tournament_type = 'double elimination'
-    ct.game_name = 'Super Smash Bros. Ultimate'
-    ct.description = @tournament.description
-    if ct.save == false
-      raise ct.errors.full_messages.inspect
+      # setup and start a challonge tournament
+      ct = Challonge::Tournament.new
+      ct.name = @tournament.name #'SSBU Bern KW1'
+      ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
+      ct.tournament_type = 'double elimination'
+      ct.game_name = 'Super Smash Bros. Ultimate'
+      ct.description = @tournament.description
+      if ct.save == false
+        raise ct.errors.full_messages.inspect
+      end
+
+      # sort the participants by the best player
+      seeded_participants = @tournament.players.sort_by do |p|
+        seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
+        seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/p.losses)
+        seed_points += p.self_assessment.to_f/5
+        seed_points += p.tournament_experience.to_f/10
+        seed_points
+      end.reverse
+
+      # add the participants to the challonge tournament
+      seeded_participants.each do |p|
+        Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
+      end
+
+      ct.start!
+      @tournament.started = true
+      @tournament.challonge_tournament_id = ct.id
+      @tournament.save
+
+      redirect_to @tournament, notice: 'Tournament was successfully started.'
     end
-
-    # sort the participants by the best player
-    seeded_participants = @tournament.players.sort_by do |p|
-      seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
-      seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/p.losses)
-      seed_points += p.self_assessment.to_f/5
-      seed_points += p.tournament_experience.to_f/10
-      seed_points
-    end.reverse
-
-    # add the participants to the challonge tournament
-    seeded_participants.each do |p|
-      Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
-    end
-
-    ct.start!
-    @tournament.started = true
-    @tournament.challonge_tournament_id = ct.id
-    @tournament.save
-
-    redirect_to @tournament, notice: 'Tournament was successfully started.'
   end
 
   # POST /tournaments/finish/1
@@ -205,6 +227,14 @@ class TournamentsController < ApplicationController
     def set_challonge_username_and_api_key
       Challonge::API.username = ENV['CHALLONGE_USERNAME']
       Challonge::API.key = ENV['CHALLONGE_API_KEY']
+    end
+
+    def get_game_stations_count(tournament)
+      pt_count = 0
+      PlayerTournament.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |pt|
+        pt_count += pt.game_stations
+      end
+      pt_count
     end
 
 end

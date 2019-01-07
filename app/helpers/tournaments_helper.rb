@@ -8,6 +8,10 @@ module TournamentsHelper
     date-16*3600
   end
 
+  def max_needed_game_stations_per_tournament(seats)
+    seats/4
+  end
+
   def points_repartition_table(rank)
       if rank == 1 then 300
       elsif rank == 2 then 250

@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   belongs_to :user, dependent: :destroy
-  has_and_belongs_to_many :tournaments
+  has_many :player_tournaments, dependent: :destroy
+  has_many :tournaments, through: :player_tournaments
 
 end
