@@ -1,4 +1,4 @@
-class PlayerTournament < ApplicationRecord
+class Registration < ApplicationRecord
   belongs_to :player
   belongs_to :tournament
 

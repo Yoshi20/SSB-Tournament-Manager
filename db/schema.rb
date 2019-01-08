@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_215600) do
+ActiveRecord::Schema.define(version: 2019_01_08_173800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 2019_01_06_215600) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
-  end
-
-  create_table "player_tournaments", force: :cascade do |t|
-    t.bigint "player_id"
-    t.bigint "tournament_id"
-    t.integer "game_stations"
-    t.index ["player_id"], name: "index_player_tournaments_on_player_id"
-    t.index ["tournament_id"], name: "index_player_tournaments_on_tournament_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -45,6 +37,15 @@ ActiveRecord::Schema.define(version: 2019_01_06_215600) do
     t.integer "best_rank"
     t.integer "wins"
     t.integer "losses"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "tournament_id"
+    t.integer "game_stations"
+    t.float "paid_fee"
+    t.index ["player_id"], name: "index_registrations_on_player_id"
+    t.index ["tournament_id"], name: "index_registrations_on_tournament_id"
   end
 
   create_table "tournaments", force: :cascade do |t|

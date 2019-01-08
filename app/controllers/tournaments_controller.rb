@@ -46,9 +46,9 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
-    # add a game station to a PlayerTournament
+    # add a game station to a Registration
     if params[:tournament].present? and params[:tournament][:game_stations]
-      pt = @tournament.player_tournaments.where(player_id: current_user.player.id).first
+      pt = @tournament.registrations.where(player_id: current_user.player.id).first
       if pt.game_stations.nil? then pt.game_stations = 0 end
       if pt.game_stations < helpers.max_needed_game_stations_per_tournament(@tournament.total_seats)
         pt.update(game_stations: params[:tournament][:game_stations])
@@ -90,7 +90,7 @@ class TournamentsController < ApplicationController
       if params[:remove_player]
         if params[:gamer_tag].present?
           player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
-          player_to_remove.player_tournaments.where(tournament_id: @tournament.id).delete_all
+          player_to_remove.registrations.where(tournament_id: @tournament.id).delete_all
         else
           player_to_remove = current_user.player
         end
@@ -231,7 +231,7 @@ class TournamentsController < ApplicationController
 
     def get_game_stations_count(tournament)
       pt_count = 0
-      PlayerTournament.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |pt|
+      Registration.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |pt|
         pt_count += pt.game_stations
       end
       pt_count

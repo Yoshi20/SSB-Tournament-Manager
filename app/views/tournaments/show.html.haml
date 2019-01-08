@@ -100,7 +100,7 @@
     .col-md-12
       %h2 Please bring a game station with you
       %p
-        = 'If you bring the following hard- and software to the tournament, you do not have to pay the registraion fee.'
+        = 'If you bring the following hard- and software to the tournament, you do not have to pay the registration fee.'
         = 'But after agreeing to bring a game station, you will be obligated to also do so.'
       .row.add-game-stations
         .col-md-6
@@ -131,7 +131,7 @@
               %p
                 = "##{i+1}"
                 %strong= link_to "#{p.gamer_tag}", p
-                - gs = p.player_tournaments.where(tournament_id: @tournament.id).first.game_stations
+                - gs = p.registrations.where(tournament_id: @tournament.id).first.game_stations
                 - if !gs.nil? and gs > 0
                   = "(Brings #{gs} game #{gs > 1 ? 'stations' : 'station'})"
 

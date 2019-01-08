@@ -1,6 +1,6 @@
-class CreatePlayerTournaments < ActiveRecord::Migration[5.2]
+class CreateRegistrations < ActiveRecord::Migration[5.2]
   def change
-    create_table :player_tournaments do |t|
+    create_table :registrations do |t|
       t.belongs_to :player, index: true
       t.belongs_to :tournament, index: true
     end

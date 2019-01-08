@@ -4,7 +4,7 @@
 The tournament "<%= @tournament.name %>" was added to the SSB Tournament Manager.
 
 Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
-Registartion fee: <%= @tournament.registration_fee %> CHF
+Registration fee: <%= @tournament.registration_fee %> CHF
 Location:
 <%- @tournament.location.split(',').each do |str| %>
   <%= str.strip %>
