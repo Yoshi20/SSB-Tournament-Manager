@@ -31,7 +31,13 @@
               %td.text-center.hidden-xs= "#{player.participations} / #{@started_and_finished_tournaments_count_2019}"
               %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center= "#{(player.losses == 0) ? 0 : ((player.wins.to_f/player.losses*100).round(2))} %"
+              %td.text-center
+                - if player.losses == 0 and player.wins == 0
+                  = '-'
+                - elsif player.losses == 0
+                  = '100 %'
+                - else
+                  = "#{(player.wins.to_f/player.losses*100).round(2)} %"
               %td= truncate(player.comment, length: 60)
               %td.text-center
                 - if player.user.admin?

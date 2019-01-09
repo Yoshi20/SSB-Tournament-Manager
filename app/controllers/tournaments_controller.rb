@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :start, :finish]
+  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :setup, :start, :finish]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -128,44 +128,67 @@ class TournamentsController < ApplicationController
     end
   end
 
+  # POST /tournaments/setup/1
+  def setup
+    if @tournament.setup or @tournament.started or @tournament.finished
+      redirect_to @tournament, alert: 'Tournament is already set up, started or finished!'
+    else
+      needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.occupied_seats)
+      current_game_stations_count = get_game_stations_count(@tournament)
+      if current_game_stations_count < needed_game_stations_count
+        delta_game_stations = needed_game_stations_count - current_game_stations_count
+        redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament!"
+      else
+        set_challonge_username_and_api_key()
+
+        # setup a challonge tournament
+        ct = Challonge::Tournament.new
+        ct.name = @tournament.name #'SSBU Bern KW1'
+        ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
+        ct.tournament_type = 'double elimination'
+        ct.game_name = 'Super Smash Bros. Ultimate'
+        ct.description = @tournament.description
+        if ct.save == false
+          raise ct.errors.full_messages.inspect
+        end
+
+        # sort the participants by the best player
+        seeded_participants = @tournament.players.sort_by do |p|
+          seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
+          seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/p.losses)
+          seed_points += p.self_assessment.to_f/5
+          seed_points += p.tournament_experience.to_f/10
+          seed_points
+        end.reverse
+
+        # add the participants to the challonge tournament
+        seeded_participants.each do |p|
+          Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
+        end
+
+        @tournament.setup = true
+        @tournament.challonge_tournament_id = ct.id
+        @tournament.save
+
+        redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+      end
+    end
+  end
+
   # POST /tournaments/start/1
   def start
-    needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.occupied_seats)
-    current_game_stations_count = get_game_stations_count(@tournament)
-    if current_game_stations_count < needed_game_stations_count
-      delta_game_stations = needed_game_stations_count - current_game_stations_count
-      redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to start the tournament!"
+    if !@tournament.setup
+      redirect_to @tournament, alert: "Tournament wasn't set up yet!"
+    elsif @tournament.started or @tournament.finished
+      redirect_to @tournament, alert: 'Tournament is already started or finished!'
     else
       set_challonge_username_and_api_key()
 
-      # setup and start a challonge tournament
-      ct = Challonge::Tournament.new
-      ct.name = @tournament.name #'SSBU Bern KW1'
-      ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
-      ct.tournament_type = 'double elimination'
-      ct.game_name = 'Super Smash Bros. Ultimate'
-      ct.description = @tournament.description
-      if ct.save == false
-        raise ct.errors.full_messages.inspect
-      end
-
-      # sort the participants by the best player
-      seeded_participants = @tournament.players.sort_by do |p|
-        seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
-        seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/p.losses)
-        seed_points += p.self_assessment.to_f/5
-        seed_points += p.tournament_experience.to_f/10
-        seed_points
-      end.reverse
-
-      # add the participants to the challonge tournament
-      seeded_participants.each do |p|
-        Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
-      end
+      # get the correct challonge tournament
+      ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
 
       ct.start!
       @tournament.started = true
-      @tournament.challonge_tournament_id = ct.id
       @tournament.save
 
       redirect_to @tournament, notice: 'Tournament was successfully started.'
@@ -174,42 +197,49 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/finish/1
   def finish
-    set_challonge_username_and_api_key()
-
-    # get the correct challonge tournament
-    ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
-
-    if ct.state == 'complete'
-      # updated the participated players
-      ct.participants.each do |p|
-        # updated player
-        player = @tournament.players.find_by(:gamer_tag => p.display_name)
-        player.points += helpers.points_repartition_table(p.final_rank)
-        player.participations += 1
-        if player.participations >= 30 and player.tournament_experience < 2 then player.tournament_experience = 2
-        elsif player.participations >= 10 and player.tournament_experience < 1 then player.tournament_experience = 1
-        end
-        if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
-        ct.matches.each do |m|
-          scores = m.scores_csv.split('-')
-          if m.player1_id == p.id
-            player.wins += scores[0].to_i
-            player.losses += scores[1].to_i
-          elsif m.player2_id == p.id
-            player.wins += scores[1].to_i
-            player.losses += scores[0].to_i
-          end
-        end
-        player.save
-        # updated raking_string on the tournament
-        ranking_string = "#{p.final_rank},#{p.display_name};"
-        @tournament.ranking_string += ranking_string
-      end
-      @tournament.finished = true
-      @tournament.save
-      redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
+    if !@tournament.setup or !@tournament.started
+      redirect_to @tournament, alert: "Tournament wasn't set up or started yet!"
+    elsif @tournament.finished
+      redirect_to @tournament, alert: 'Tournament is already finished!'
     else
-      redirect_to @tournament, alert: "Tournament was not fineshed yet. You have to finish it first on: https://challonge.com/#{ct.url}"
+      set_challonge_username_and_api_key()
+
+      # get the correct challonge tournament
+      ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
+
+      if ct.state == 'complete'
+        # updated the participated players
+        ct.participants.each do |p|
+          # updated player
+          player = @tournament.players.find_by(:gamer_tag => p.display_name)
+          player.points += helpers.points_repartition_table(p.final_rank)
+          player.participations += 1
+          if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
+          ct.matches.each do |m|
+            scores = m.scores_csv.split('-')
+            if m.player1_id == p.id
+              player.wins += scores[0].to_i
+              player.losses += scores[1].to_i
+            elsif m.player2_id == p.id
+              player.wins += scores[1].to_i
+              player.losses += scores[0].to_i
+            end
+          end
+          player.save
+
+          player.update_tournament_experience
+
+          # updated raking_string on the tournament
+          ranking_string = "#{p.final_rank},#{p.display_name};"
+          @tournament.ranking_string += ranking_string
+        end
+        @tournament.finished = true
+        @tournament.save
+        redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
+      else
+        if ct.started_at.nil? then @tournament.update(started: false) end # this happens when a ct was reset
+        redirect_to @tournament, alert: "Tournament was not fineshed yet. You have to finish it first on: https://challonge.com/#{ct.url}"
+      end
     end
   end
 
@@ -221,7 +251,7 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :location, :description, :registration_fee, :occupied_seats, :total_seats, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :location, :description, :registration_fee, :occupied_seats, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
     end
 
     def set_challonge_username_and_api_key

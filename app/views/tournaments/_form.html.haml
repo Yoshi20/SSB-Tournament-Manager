@@ -37,6 +37,9 @@
           = f.check_box :active, checked: true, style: 'margin-left: 5px;'
       - else
         .field.form-group
+          = f.label :setup
+          = f.check_box :setup, style: 'margin-left: 5px;'
+        .field.form-group
           = f.label :started
           = f.check_box :started, style: 'margin-left: 5px;'
         .field.form-group

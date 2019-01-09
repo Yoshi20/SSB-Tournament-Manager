@@ -5,11 +5,13 @@ module TournamentsHelper
   end
 
   def registration_deadline(date)
-    date-16*3600
+    return date-16*3600
   end
 
   def max_needed_game_stations_per_tournament(seats)
-    seats/4
+    needed_game_stations = seats/4
+    if needed_game_stations == 0 then needed_game_stations = 1 end
+    return needed_game_stations
   end
 
   def points_repartition_table(rank)

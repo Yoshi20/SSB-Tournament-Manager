@@ -17,16 +17,16 @@
         %br
 
     %p
+      %strong Set up:
+      %input{type: 'checkbox', checked: @tournament.setup, disabled: 'true'}
+
+      &emsp;
       %strong Started:
       %input{type: 'checkbox', checked: @tournament.started, disabled: 'true'}
 
       &emsp;
       %strong Finished:
       %input{type: 'checkbox', checked: @tournament.finished, disabled: 'true'}
-
-      &emsp;
-      %strong Active:
-      %input{type: 'checkbox', checked: @tournament.active, disabled: 'true'}
 
   .col-md-4
     %p
@@ -67,7 +67,7 @@
       %br
       = @tournament.description
 
-- if @tournament.started != true and @tournament.finished != true
+- if !@tournament.setup and !@tournament.started and !@tournament.finished
   .row.join-tournament
     %br
     .col-md-4
@@ -94,7 +94,7 @@
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
-- if @tournament.players.include?(current_user.player) and @game_stations_needed > 0 and !@tournament.started and !@tournament.finished
+- if @tournament.players.include?(current_user.player) and @game_stations_needed > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
   %br
   .row.game-stations-text
     .col-md-12
@@ -108,10 +108,9 @@
             %li Nintendo Switch console and a docking station with its power supply
             %li 2 Joy-Cons (right & left) and a Joy-Con-Grip
             %li HDMI cable
-            %li Super Smash Bros. Ultimate Game
+            %li Super Smash Bros. Ultimate Game (with the most current version)
 
         .col-md-6
-          -# = form_for "tournaments/#{@tournament.id}", role: 'form', method: :patch do |f|
           = form_for @tournament, role: 'form', method: :patch do |f|
             .field
               = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @game_stations_needed
@@ -148,29 +147,33 @@
                     - ranking = r.split(',')
                     %strong= "#{ranking[0]}. #{ranking[1]} (#{points_repartition_table(ranking[0].to_i)}p)"
 
-- if current_user.admin?
-  %br
+%br
+- if @tournament.setup
+  .row.show-on-challonge
+    .col-md-4
+      %p= link_to 'Show tournament on Challonge', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
+
+- if current_user.admin? and !@tournament.finished
   .row.admin-tournament
     .col-md-4
+      - if !@tournament.setup and !@tournament.started
+        %p= button_to "Set up tournament", "/tournaments/setup/#{@tournament.id}", class:'btn btn-success', id:'setup-tournament-button', :data => {:confirm => 'Are you sure? A tournament on challonge.com will be created.'}
+      - elsif @tournament.setup and !@tournament.started
+        %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-warning', id:'start-tournament-button', :data => {:confirm => 'Are you sure? The tournament on challonge.com will be started.'}
+
+    .col-md-4
+
+    .col-md-4
       - if @tournament.started
-        %p= link_to 'Show challonge tournament tree', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
-      - elsif !@tournament.finished
-        %p= button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-warning', id:'start-tournament-button', :data => {:confirm => 'Are you sure?'}
-
-    .col-md-4
-
-    .col-md-4
-      - if !@tournament.finished
-        - if @tournament.started
-          = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-warning', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
-        - else
-          = form_for @tournament, role: 'form', method: :patch do |f|
-            .field
-              = f.text_field :name, value: "(canceled) #{@tournament.name}", class: 'hidden'
-              = f.check_box :finished, checked: true, class: 'hidden'
-              = f.check_box :cancel, checked: true, class: 'hidden'
-              = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
-
+        = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-warning', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
+      - else
+        -# cancel tournament form
+        = form_for @tournament, role: 'form', method: :patch do |f|
+          .field
+            = f.text_field :name, value: "(canceled) #{@tournament.name}", class: 'hidden'
+            = f.check_box :finished, checked: true, class: 'hidden'
+            = f.check_box :cancel, checked: true, class: 'hidden'
+            = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
 
 - if @tournament.started
   .row.challonge_tournament_tree

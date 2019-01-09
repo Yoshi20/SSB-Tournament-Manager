@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_173800) do
+ActiveRecord::Schema.define(version: 2019_01_09_010000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_173800) do
     t.boolean "finished"
     t.bigint "challonge_tournament_id"
     t.string "ranking_string"
+    t.boolean "setup"
   end
 
   create_table "users", force: :cascade do |t|
