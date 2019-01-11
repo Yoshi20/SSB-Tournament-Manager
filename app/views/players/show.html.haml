@@ -38,10 +38,8 @@
       %strong Win/Loss ratio:
       - if @player.losses == 0 and @player.wins == 0
         = '-'
-      - elsif @player.losses == 0
-        = '100 %'
       - else
-        = "#{(@player.wins.to_f/@player.losses*100).round(2)} %"
+        = "#{(@player.wins.to_f/(@player.wins+@player.losses)*100).round(2)} %"
 
     %p
       %strong Updated at:

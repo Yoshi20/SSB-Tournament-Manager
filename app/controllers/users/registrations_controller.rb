@@ -22,8 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.gamer_tag = user_params.username
       player.points = 0
       player.participations = 0
-      player.self_assessment = params[:self_assessment]
-      player.tournament_experience = params[:tournament_experience]
+      player.self_assessment = params[:self_assessment] || 0
+      player.tournament_experience = params[:tournament_experience] || 0
       player.comment = params[:comment]
       player.best_rank = 0
       player.wins = 0

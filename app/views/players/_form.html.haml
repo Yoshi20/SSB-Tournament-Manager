@@ -32,21 +32,15 @@
       .field.form-group
         = f.label :self_assessment
         %br
-        = f.radio_button :self_assessment, 0, checked: (@player.self_assessment == 0 ? true : false)
-        = self_assessment_defines[0]
-        = f.radio_button :self_assessment, 1, checked: (@player.self_assessment == 1 ? true : false)
-        = self_assessment_defines[1]
-        = f.radio_button :self_assessment, 2, checked: (@player.self_assessment == 2 ? true : false)
-        = self_assessment_defines[2]
+        - self_assessment_defines.count.times do |i|
+          = f.radio_button :self_assessment, i, checked: (@player.self_assessment == i ? true : false)
+          = self_assessment_defines[i]
       .field.form-group
         = f.label :tournament_experience
         %br
-        = f.radio_button :tournament_experience, 0, checked: (@player.tournament_experience == 0 ? true : false)
-        = tournament_experience_defines[0]
-        = f.radio_button :tournament_experience, 1, checked: (@player.tournament_experience == 1 ? true : false)
-        = tournament_experience_defines[1]
-        = f.radio_button :tournament_experience, 2, checked: (@player.tournament_experience == 2 ? true : false)
-        = tournament_experience_defines[2]
+        - tournament_experience_defines.count.times do |i|
+          = f.radio_button :tournament_experience, i, checked: (@player.tournament_experience == i ? true : false)
+          = tournament_experience_defines[i]
       .field.form-group
         = f.label :comment, "Comment (for what ever you want to tell the world)"
         %br
