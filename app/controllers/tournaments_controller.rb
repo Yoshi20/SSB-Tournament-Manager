@@ -46,15 +46,6 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
-    # add a game station to a Registration
-    if params[:tournament].present? and params[:tournament][:game_stations]
-      pt = @tournament.registrations.where(player_id: current_user.player.id).first
-      if pt.game_stations.nil? then pt.game_stations = 0 end
-      if pt.game_stations < helpers.max_needed_game_stations_per_tournament(@tournament.total_seats)
-        pt.update(game_stations: params[:tournament][:game_stations])
-      end
-    end
-
     # send each player a mail if the tournament was canceled
     if params[:tournament].present? and params[:tournament][:cancel]
       @tournament.players.each do |p|
@@ -259,11 +250,11 @@ class TournamentsController < ApplicationController
     end
 
     def get_game_stations_count(tournament)
-      pt_count = 0
-      Registration.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |pt|
-        pt_count += pt.game_stations
+      gs_count = 0
+      Registration.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |r|
+        gs_count += r.game_stations
       end
-      pt_count
+      gs_count
     end
 
 end

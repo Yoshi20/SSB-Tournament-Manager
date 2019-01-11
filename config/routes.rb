@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :players
 
+  resources :registrations, only: [:update]
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :update, :destroy]
 

@@ -112,7 +112,7 @@
             %li Super Smash Bros. Ultimate Game (with the most current version)
 
         .col-md-6
-          = form_for @tournament, role: 'form', method: :patch do |f|
+          = form_for @tournament.registrations.where(player_id: current_user.player.id).first, role: 'form', method: :patch do |f|
             .field
               = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @game_stations_needed
               = f.submit 'I\'ll bring one or more game stations with me', class:'btn btn-success', id:'bring-game-stations-button', style: 'display:inline'
