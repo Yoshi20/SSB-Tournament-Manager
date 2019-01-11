@@ -85,17 +85,16 @@ class TournamentsController < ApplicationController
         else
           redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
         end
-      end
-
-      if params[:remove_player]
+      elsif params[:remove_player]
         if params[:gamer_tag].present?
           player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
-          player_to_remove.registrations.where(tournament_id: @tournament.id).delete_all
         else
           player_to_remove = current_user.player
         end
         if player_to_remove.nil?
           redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
+        elsif !@tournament.players.include?(player_to_remove)
+          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not in the tournament."
         elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
           redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
         else

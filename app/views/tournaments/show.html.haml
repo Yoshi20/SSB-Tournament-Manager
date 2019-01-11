@@ -46,13 +46,14 @@
       %strong Total seats:
       = @tournament.total_seats
 
-    %p
-      %strong Updated at:
-      = @tournament.updated_at.to_s(:custom_datetime)
+    - if current_user.admin?
+      %p
+        %strong Updated at:
+        = @tournament.updated_at.to_s(:custom_datetime)
 
-    %p
-      %strong Created at:
-      = @tournament.created_at.to_s(:custom_datetime)
+      %p
+        %strong Created at:
+        = @tournament.created_at.to_s(:custom_datetime)
 
   .col-md-4
     - if current_user.admin?
