@@ -44,7 +44,7 @@
 
 .row.title-div
   .col-md-12
-    %h1= "Finished tournaments 2019"
+    %h1= "Past tournaments 2019"
 
 -# past tournaments list
 .row.tournament-list
@@ -54,4 +54,4 @@
         = render "tournament_list_header"
 
       %tbody.with-show.tournament-list-body
-        = render @finished_tournaments
+        = render @past_tournaments
