@@ -19,6 +19,19 @@
       .field.form-group
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      - if current_user.admin? and resource == current_user
+        = '------------------------ Administrator part --------------------------------'
+        .field.form-group
+          = f.label :challonge_username
+          = f.text_field :challonge_username, class: 'form-control'
+        .field.form-group
+          = f.label :challonge_api_key do
+            = 'Challonge api key ('
+            = link_to 'https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank'
+            = ')'
+          = f.text_field :challonge_api_key, class: 'form-control'
+        .moved-up{style: 'margin-top:-10px'}= '---------------------------------------------------------------------------------'
+        %br
       .field.form-group
         = f.label :current_password
         %i (enter your current password to confirm the changes)

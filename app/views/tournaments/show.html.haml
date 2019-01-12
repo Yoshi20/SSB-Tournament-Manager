@@ -133,9 +133,9 @@
               - player_registration = p.registrations.where(tournament_id: @tournament.id).first
               - gs = player_registration.game_stations
               - if !gs.nil? and gs > 0
-                = "(#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} game #{gs > 1 ? 'stations' : 'station'})"
-              - elsif current_user.admin? and !@tournament.started
-                = '(Registration fee paid:'
+                = "( #{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} game #{gs > 1 ? 'stations' : 'station'} )"
+              - if current_user.admin? and !@tournament.started
+                = '( Registration fee paid:'
                 .inline-div{style:'display:inline-block'}
                   = form_for player_registration, role: 'form', method: :patch do |f|
                     .field

@@ -246,8 +246,13 @@ class TournamentsController < ApplicationController
     end
 
     def set_challonge_username_and_api_key
-      Challonge::API.username = ENV['CHALLONGE_USERNAME']
-      Challonge::API.key = ENV['CHALLONGE_API_KEY']
+      if current_user.challonge_username.present? and current_user.challonge_api_key.present?
+        Challonge::API.username = current_user.challonge_username
+        Challonge::API.key = current_user.challonge_api_key
+      else
+        Challonge::API.username = ENV['CHALLONGE_USERNAME']
+        Challonge::API.key = ENV['CHALLONGE_API_KEY']
+      end
     end
 
     def get_game_stations_count(tournament)

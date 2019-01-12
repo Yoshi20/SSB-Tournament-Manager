@@ -35,8 +35,9 @@
                     = f.check_box :is_admin, checked: true, class: 'hidden'
                     = f.submit 'New Admin', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
             %td.text-center.actions
-              - if current_user.admin? or user == current_user
+              - if user == current_user
                 = link_to edit_user_registration_path, class:'btn btn-default btn-xs' do
                   %span.glyphicon.glyphicon-pencil
+              - if current_user.admin? or user == current_user
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
                   %span.glyphicon.glyphicon-trash
