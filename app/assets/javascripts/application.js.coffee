@@ -17,45 +17,6 @@
 #= require turbolinks
 #= require_tree .
 
-# $ ->
-#
-#   # a click on a + or - button changes the signe of the number field (if necessary) and sends an AJAX request if its value is != 0 or NaN
-#   $(document).on 'click', '.change_stock_btn', (e) ->
-#     e.preventDefault()
-#     $t = $(this)
-#     $numberInput = $t.closest('td').find('input[type=number]').last()
-#     change_stock_value = parseInt($numberInput.val())
-#     if change_stock_value != 0 && !isNaN(change_stock_value)
-#       if ($t.hasClass('plus_btn') && change_stock_value < 0) || ($t.hasClass('minus_btn') && change_stock_value > 0)
-#         change_stock_value *= -1
-#         $numberInput.val(change_stock_value)
-#       $form = $t.closest('form')
-#       form_id = $form.attr('id')
-#       index_first_underscore = form_id.indexOf('_')
-#       index_last_underscore = form_id.lastIndexOf('_')
-#       component = form_id.substring(index_first_underscore+1, index_last_underscore)
-#       console.log("component = #{component}")
-#       url = $form.attr('action')
-#       console.log("url = #{url}")
-#       data =
-#         "#{component}":
-#           in_stock: change_stock_value
-#         paramsHash: getParamsAsHash()
-#       $.ajax
-#         method: 'patch'
-#         url: url
-#         data: data
-#         dataType: 'json'
-#         error: ->
-#           console.log("error: update in_stock ajax request")
-#         success: (response) ->
-#           $form.closest('tbody').find('tr').each (i, tr) ->
-#             if tr.id == 'highlighted'
-#               $(tr).removeAttr('id')
-#               $(tr).removeAttr('style')
-#           $form.closest('tr').replaceWith(response["#{component}"])
-
-
 document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'td', (e) ->

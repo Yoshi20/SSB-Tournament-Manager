@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       if registration.update(registration_params)
         format.html { redirect_to registration.tournament, notice: 'Registration was successfully updated.' }
-        format.json { render :show, status: :ok, location: registration.tournament }
+        format.json { render json: registration, status: :ok, location: registration }
       else
         format.html { redirect_to registration.tournament, alert: "Registration couldn't be updated." }
         format.json { render json: registration.errors, status: :unprocessable_entity }
