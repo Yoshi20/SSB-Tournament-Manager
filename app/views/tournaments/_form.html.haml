@@ -15,7 +15,7 @@
         %br= f.datetime_select :date, class: 'form-control'
       .field.form-group
         = f.label :name
-        = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Bern KWx' : @tournament.name)
+        = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Weekly Bern KWx' : @tournament.name)
       .field.form-group
         = f.label :location
         = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'Kultur Bistro Karl Schenk, Spitalgasse 4, 3011 Bern, 2.UG' : @tournament.location)
