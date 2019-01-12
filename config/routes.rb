@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   get 'rules' => 'rules#index'
 
   resources :tournaments
+  post 'tournaments/add_player/:id' => 'tournaments#add_player'
+  post 'tournaments/remove_player/:id' => 'tournaments#remove_player'
   post 'tournaments/setup/:id' => 'tournaments#setup'
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
+  post 'tournaments/cancel/:id' => 'tournaments#cancel'
 
   resources :players
 

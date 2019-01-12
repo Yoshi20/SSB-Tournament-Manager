@@ -73,25 +73,23 @@
     %br
     .col-md-4
       - if Time.now > registration_deadline(@tournament.date)
-        %p= button_to "Registration deadline exceeded", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-primary', id:'join-tournament-button', disabled:true
+        %p= button_to "Registration deadline exceeded", nil, class:'btn btn-primary', id:'join-tournament-button', disabled:true
       -else
         - if @tournament.players.include?(current_user.player)
-          %p= button_to ">>> Leave this tournament <<<", tournament_path(@tournament.id), params:{remove_player:true}, method:'patch', class:'btn btn-warning', id:'leave-tournament-button'
+          %p= button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}", method:'post', class:'btn btn-warning', id:'leave-tournament-button'
         - else
-          %p= button_to ">>> Join this tournament <<<", tournament_path(@tournament.id), params:{add_player:true}, method:'patch', class:'btn btn-success', id:'join-tournament-button'
+          %p= button_to ">>> Join this tournament <<<", "/tournaments/add_player/#{@tournament.id}", method:'post', class:'btn btn-success', id:'join-tournament-button'
 
     - if current_user.admin?
       .col-md-4
         %p
-          = form_tag tournament_path(@tournament.id), method:'patch', class: 'form-inline' do
-            .hidden= text_field_tag :add_player, true, class: 'form-control'
+          = form_tag "/tournaments/add_player/#{@tournament.id}", method:'post', class: 'form-inline' do
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Add player', name:nil, class: 'form-control btn btn-default'
 
       .col-md-4
         %p
-          = form_tag tournament_path(@tournament.id), method:'patch', class: 'form-inline' do
-            .hidden= text_field_tag :remove_player, true, class: 'form-control'
+          = form_tag "/tournaments/remove_player/#{@tournament.id}", method:'post', class: 'form-inline' do
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
@@ -178,11 +176,10 @@
         = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-warning', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
       - else
         -# cancel tournament form
-        = form_for @tournament, role: 'form', method: :patch do |f|
+        = form_for @tournament, role: 'form', as: :tournament, url: "/tournaments/cancel/#{@tournament.id}", method: :post, html: { class: "form-inline" } do |f|
           .field
             = f.text_field :name, value: "(canceled) #{@tournament.name}", class: 'hidden'
             = f.check_box :finished, checked: true, class: 'hidden'
-            = f.check_box :cancel, checked: true, class: 'hidden'
             = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
 
 - if @tournament.started

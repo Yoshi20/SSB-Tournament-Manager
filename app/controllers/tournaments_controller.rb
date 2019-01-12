@@ -1,5 +1,6 @@
 class TournamentsController < ApplicationController
-  before_action :set_tournament, only: [:show, :edit, :update, :destroy, :setup, :start, :finish]
+  before_action :set_tournament, except: [:index, :new, :create]
+  before_action :check_if_admin, except: [:index, :show]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -47,64 +48,14 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json
   def update
-    # send each player a mail if the tournament was canceled
-    if params[:tournament].present? and params[:tournament][:cancel]
-      @tournament.players.each do |p|
-        TournamentMailer.with(tournament: @tournament, user: p.user).tournament_canceled_email.deliver_later
-      end
-    end
-
-    # add/remove players to/from the tournament
-    if params[:add_player] or params[:remove_player]
-      if params[:add_player]
-        if @tournament.occupied_seats < @tournament.total_seats
-          if params[:gamer_tag].present?
-            player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
-          else
-            player_to_add = current_user.player
-          end
-          if player_to_add.nil?
-            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
-          elsif @tournament.players.include?(player_to_add)
-            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player already added."
-          elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
-            redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
-          else
-            @tournament.players << player_to_add
-            @tournament.update(occupied_seats: @tournament.occupied_seats+1)
-            redirect_to @tournament, notice: 'Player was added to the tournament.'
-          end
-        else
-          redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
-        end
-      elsif params[:remove_player]
-        if params[:gamer_tag].present?
-          player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
-        else
-          player_to_remove = current_user.player
-        end
-        if player_to_remove.nil?
-          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
-        elsif !@tournament.players.include?(player_to_remove)
-          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not in the tournament."
-        elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
-          redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
-        else
-          @tournament.players.delete(Player.find(player_to_remove.id))
-          @tournament.update(occupied_seats: @tournament.occupied_seats-1)
-          redirect_to @tournament, notice: 'Player was removed from the tournament.'
-        end
-      end
-    else
-      # update tournament
-      respond_to do |format|
-        if @tournament.update(tournament_params)
-          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
-          format.json { render :show, status: :ok, location: @tournament }
-        else
-          format.html { render :edit }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
-        end
+    # update tournament
+    respond_to do |format|
+      if @tournament.update(tournament_params)
+        format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+        format.json { render :show, status: :ok, location: @tournament }
+      else
+        format.html { render :edit }
+        format.json { render json: @tournament.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -116,6 +67,50 @@ class TournamentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tournaments_url, notice: 'Tournament was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /tournaments/add_player/1
+  def add_player
+    if @tournament.occupied_seats < @tournament.total_seats
+      if params[:gamer_tag].present?
+        player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
+      else
+        player_to_add = current_user.player
+      end
+      if player_to_add.nil?
+        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
+      elsif @tournament.players.include?(player_to_add)
+        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player was already added."
+      elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
+      else
+        @tournament.players << player_to_add
+        @tournament.update(occupied_seats: @tournament.occupied_seats+1)
+        redirect_to @tournament, notice: 'Player was added to the tournament.'
+      end
+    else
+      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
+    end
+  end
+
+  # POST /tournaments/remove_player/1
+  def remove_player
+    if params[:gamer_tag].present?
+      player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
+    else
+      player_to_remove = current_user.player
+    end
+    if player_to_remove.nil?
+      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
+    elsif !@tournament.players.include?(player_to_remove)
+      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
+    elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
+    else
+      @tournament.players.delete(Player.find(player_to_remove.id))
+      @tournament.update(occupied_seats: @tournament.occupied_seats-1)
+      redirect_to @tournament, notice: 'Player was removed from the tournament.'
     end
   end
 
@@ -244,10 +239,29 @@ class TournamentsController < ApplicationController
     end
   end
 
+  # POST /tournaments/cancel/1
+  def cancel
+    # send each player an email if the tournament was canceled
+    @tournament.players.each do |p|
+      TournamentMailer.with(tournament: @tournament, user: p.user).tournament_canceled_email.deliver_later
+    end
+    @tournament.update(tournament_params)
+    redirect_to @tournament, notice: 'Tournament was successfully canceled.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tournament
       @tournament = Tournament.find(params[:id])
+    end
+
+    def check_if_admin
+      unless current_user.is_admin
+        respond_to do |format|
+          format.html { redirect_to @tournament, alert: 'Unauthorized! You must be an administrator to make this action.' }
+          format.json { render json: @tournament.errors, status: :unauthorized }
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
