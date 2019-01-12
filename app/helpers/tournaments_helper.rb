@@ -4,10 +4,6 @@ module TournamentsHelper
     Tournament.where('active = ? AND date > ? AND date < ?', true, Time.local(2019,1,1), Time.local(2019,12,31,23,59,59))
   end
 
-  def registration_deadline(date)
-    return date-16*3600
-  end
-
   def max_needed_game_stations_per_tournament(seats)
     needed_game_stations = seats/4
     if needed_game_stations == 0 then needed_game_stations = 1 end

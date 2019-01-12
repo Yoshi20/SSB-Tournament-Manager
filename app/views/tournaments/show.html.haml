@@ -3,10 +3,14 @@
     %h1= @tournament.name
 
 .row.show-tournament
-  .col-md-4
+  .col-md-5
     %p
-      %strong Date:
+      %strong Tournament start date:
       = @tournament.date.to_s(:custom_datetime_with_weekday)
+
+    %p
+      %strong Registration deadline:
+      = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
 
     %p
       %strong Location:
@@ -28,11 +32,7 @@
       %strong Finished:
       %input{type: 'checkbox', checked: @tournament.finished, disabled: 'true'}
 
-  .col-md-4
-    %p
-      %strong Registration deadline:
-      = registration_deadline(@tournament.date).to_s(:custom_datetime_with_weekday)
-
+  .col-md-3
     %p
       %strong Registration fee:
       = @tournament.registration_fee
@@ -72,7 +72,7 @@
   .row.join-tournament
     %br
     .col-md-4
-      - if Time.now > registration_deadline(@tournament.date)
+      - if Time.now > @tournament.registration_deadline
         %p= button_to "Registration deadline exceeded", nil, class:'btn btn-primary', id:'join-tournament-button', disabled:true
       -else
         - if @tournament.players.include?(current_user.player)

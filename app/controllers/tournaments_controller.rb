@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, except: [:index, :new, :create]
-  before_action :check_if_admin, except: [:index, :show]
+  before_action :check_if_admin, except: [:index, :show, :add_player, :remove_player]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -32,7 +32,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     @tournament.ranking_string = ''
     respond_to do |format|
-      if @tournament.save
+      if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
         Player.all.each do |p|
           TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
         end
@@ -50,7 +50,7 @@ class TournamentsController < ApplicationController
   def update
     # update tournament
     respond_to do |format|
-      if @tournament.update(tournament_params)
+      if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
         format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
         format.json { render :show, status: :ok, location: @tournament }
       else
@@ -82,7 +82,7 @@ class TournamentsController < ApplicationController
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
       elsif @tournament.players.include?(player_to_add)
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player was already added."
-      elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+      elsif Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
       else
         @tournament.players << player_to_add
@@ -105,7 +105,7 @@ class TournamentsController < ApplicationController
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
     elsif !@tournament.players.include?(player_to_remove)
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
-    elsif Time.now > helpers.registration_deadline(@tournament.date) and !params[:gamer_tag].present?
+    elsif Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
     else
       @tournament.players.delete(Player.find(player_to_remove.id))
@@ -264,9 +264,20 @@ class TournamentsController < ApplicationController
       end
     end
 
+    def check_registration_deadline_is_less_than_date(tp)
+      date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
+      registration_deadline = Time.new(tp['registration_deadline(1i)'], tp['registration_deadline(2i)'], tp['registration_deadline(3i)'],  tp['registration_deadline(4i)'],  tp['date(5i)'])
+      if registration_deadline >= date
+        @tournament.errors.add(:registration_deadline, "must be less than date")
+        return false
+      else
+        return true
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :location, :description, :registration_fee, :occupied_seats, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :occupied_seats, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
     end
 
     def set_challonge_username_and_api_key
