@@ -14,7 +14,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1.json
   def show
     @game_stations_needed = helpers.max_needed_game_stations_per_tournament(@tournament.total_seats) - get_game_stations_count(@tournament)
-    @registration = @tournament.registrations.where(player_id: current_user.player.id).first
+    @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
   end
 
   # GET /tournaments/new

@@ -1,48 +1,49 @@
-%tr
-  %td.hide
-    = tournament.id # used for some js-magic
+-if tournament.present?
+  %tr
+    %td.hide
+      = tournament.id # used for some js-magic
 
-  %td.text-center
-    - if tournament.players.include?(current_user.player)
-      .glyphicon.glyphicon-check
-    - else
-      .glyphicon.glyphicon-unchecked
-
-  %td.text-center.hidden-xs
-    = tournament.date.to_s(:custom_datetime_weekday)
-
-  %td
-    = tournament.date.to_s(:custom_datetime_date_and_time)
-
-  %td
-    = tournament.name
-
-  %td.hidden-xs
-    = truncate(tournament.location, length: 16)
-
-  -# %td.hidden-md.hidden-sm.hidden-xs
-  -#   = truncate(tournament.description, length: 50)
-
-  %td.text-center.hidden-xs
-    - if tournament.registration_fee.present?
-      - if tournament.registration_fee%1 != 0  # check if it's a float
-        = tournament.registration_fee
+    %td.text-center
+      - if current_user.present? and tournament.players.include?(current_user.player)
+        .glyphicon.glyphicon-check
       - else
-        = tournament.registration_fee.to_i
-      = 'CHF'
+        .glyphicon.glyphicon-unchecked
 
-  %td.text-center
-    = "#{tournament.occupied_seats} / #{tournament.total_seats}"
+    %td.text-center.hidden-xs
+      = tournament.date.to_s(:custom_datetime_weekday)
 
-  %td.text-center.hidden-xs
-    - if tournament.started?
-      .glyphicon.glyphicon-check
-    - else
-      .glyphicon.glyphicon-unchecked
+    %td
+      = tournament.date.to_s(:custom_datetime_date_and_time)
 
-  - if current_user.admin?
-    %td.text-center.actions
-      = link_to edit_tournament_path(tournament), class:'btn btn-default btn-xs' do
-        %span.glyphicon.glyphicon-pencil
-      = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
-        %span.glyphicon.glyphicon-trash
+    %td
+      = tournament.name
+
+    %td.hidden-xs
+      = truncate(tournament.location, length: 16)
+
+    -# %td.hidden-md.hidden-sm.hidden-xs
+    -#   = truncate(tournament.description, length: 50)
+
+    %td.text-center.hidden-xs
+      - if tournament.registration_fee.present?
+        - if tournament.registration_fee%1 != 0  # check if it's a float
+          = tournament.registration_fee
+        - else
+          = tournament.registration_fee.to_i
+        = 'CHF'
+
+    %td.text-center
+      = "#{tournament.occupied_seats} / #{tournament.total_seats}"
+
+    %td.text-center.hidden-xs
+      - if tournament.started?
+        .glyphicon.glyphicon-check
+      - else
+        .glyphicon.glyphicon-unchecked
+
+    - if current_user.present? and current_user.admin?
+      %td.text-center.actions
+        = link_to edit_tournament_path(tournament), class:'btn btn-default btn-xs' do
+          %span.glyphicon.glyphicon-pencil
+        = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
+          %span.glyphicon.glyphicon-trash

@@ -50,7 +50,7 @@
       = @player.created_at.to_s(:custom_datetime)
 
   .col-md-4
-    - if current_user.admin? or current_user == @player.user
+    - if current_user.present? and (current_user.admin? or current_user == @player.user)
       %p= link_to 'Edit player', edit_player_path(@player)
       - if current_user == @player.user
         %p= link_to 'Edit user', edit_user_registration_path

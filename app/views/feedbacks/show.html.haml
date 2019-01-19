@@ -13,7 +13,7 @@
         = @feedback.response
 
   .col-md-4
-    - if current_user.admin? or current_user == @feedback.user
+    - if current_user.present? and (current_user.admin? or current_user == @feedback.user)
       %p= link_to 'Edit', edit_feedback_path(@feedback)
       %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: 'Are you sure?' }
     %p= link_to 'Back', :back

@@ -1,0 +1,24 @@
+.row.title-div
+  .col-md-12
+    %h1= 'Welcome to the SSB Tournament Manager'
+    %br
+    %p
+      = 'If you want to stay up-to-date with the Swiss Smash Community, join us on'
+      = link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
+      = 'and follow the Swiss Smash'
+      = link_to 'Twitter', 'https://twitter.com/swisssmashu', target: '_blank'
+      = 'Account.'
+    %br
+    %p
+      = 'You can find upcoming events at the'
+      = link_to 'Tournaments overview', tournaments_path
+      = 'or the'
+      = link_to 'Calendar', tournaments_path #TODO: add calendar_path
+      = '.'
+    %br
+    %p
+      = 'If you want to join a tournament, write a feedback or a question'
+      = link_to 'Log in', new_user_session_path
+      = 'or'
+      = link_to 'Sign up', new_user_registration_path
+      = 'if you haven\'t yet.'

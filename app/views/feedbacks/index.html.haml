@@ -15,7 +15,11 @@
       %tbody.with-show.feedback-list-body
         = render @feedbacks
 
-    %p= link_to "New feedback or question", new_feedback_path,  class: "form-control btn btn-primary"
+    .pull-right
+      - if current_user.present?
+        %p= link_to "Create a new feedback or question", new_feedback_path, class: "btn btn-primary"
+      - else
+        %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-primary', id:'join-tournament-button', disabled:true
 
 %br
 .row.title-div

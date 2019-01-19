@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :feedbacks
+  get 'welcome' => 'welcome#index'
 
   get 'rules' => 'rules#index'
 
   get 'informations' => 'informations#index'
+
+  resources :feedbacks
 
   resources :tournaments
   post 'tournaments/add_player/:id' => 'tournaments#add_player'
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :update, :destroy]
 
-  root to: "players#index"
+  root to: "welcome#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

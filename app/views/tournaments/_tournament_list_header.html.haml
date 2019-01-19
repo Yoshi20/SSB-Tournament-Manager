@@ -8,5 +8,5 @@
   %th.text-center.hidden-xs Registration fee
   %th.text-center Occupied seats
   %th.text-center.hidden-xs Started
-  - if current_user.admin?
+  - if current_user.present? and current_user.admin?
     %th.text-center.action Edit
