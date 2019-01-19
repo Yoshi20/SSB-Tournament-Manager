@@ -34,7 +34,7 @@
       - if user_signed_in?
         %p
           = "Signed in as:"
-          %b{style: 'margin-right: 10px'}
+          %b
             = current_user.username
             - if current_user.admin?
               = ' (Administrator)'

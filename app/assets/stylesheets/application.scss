@@ -32,16 +32,18 @@ body {
   background-color: #e8e8e8;
 }
 
+.banner {
+  .inside-banner {
+    margin-top: -185px;
+    margin-left: 35px;
+    padding-bottom: 35px;
+  }
+}
+
 .header {
-  margin-top: 5px;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 5px;
   border-bottom: 1px solid #337ab7;
-
-  .login {
-    margin-right: 20px;
-  }
 }
 
 .dropdown-menu {
