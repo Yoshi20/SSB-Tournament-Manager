@@ -46,6 +46,10 @@
       %strong Total seats:
       = @tournament.total_seats
 
+    %p
+      %strong Host:
+      = @tournament.host_username
+
     - if current_user.present? and current_user.admin?
       %p
         %strong Updated at:

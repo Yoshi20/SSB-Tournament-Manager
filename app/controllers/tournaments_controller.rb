@@ -275,7 +275,7 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :total_seats, :host_username, :setup, :started, :finished, :active, :created_at, :updated_at)
     end
 
     def set_challonge_username_and_api_key
