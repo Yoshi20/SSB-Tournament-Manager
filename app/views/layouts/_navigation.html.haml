@@ -9,6 +9,9 @@
   %li{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
     = link_to 'Rules', rules_path
 
+  %li{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
+    = link_to 'Informations', informations_path
+
   %li{role: "presentation", class: (@section == 'feedbacks' ? 'active' : 'inactive')}
     = link_to 'Feedbacks & Questions', feedbacks_path
 
@@ -53,3 +56,6 @@
                 = submit_tag "Log in", class: "form-control btn btn-success"
                 = "or"
                 = link_to "Sign up", new_user_registration_path,  class: "form-control btn btn-primary"
+
+  %li.pull-right
+    = link_to image_tag('Discord-Logo-Black.svg', height: '40', width: '40', style: 'margin-top: -10px; margin-right: -10px; margin-bottom: -10px; margin-left: -10px;'), 'https://discord.gg/wA89CyA', target: '_blank'
