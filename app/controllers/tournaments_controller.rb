@@ -72,7 +72,7 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/add_player/1
   def add_player
-    if @tournament.occupied_seats < @tournament.total_seats
+    if @tournament.players.count < @tournament.total_seats
       if params[:gamer_tag].present?
         player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
       else
@@ -86,7 +86,6 @@ class TournamentsController < ApplicationController
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
       else
         @tournament.players << player_to_add
-        @tournament.update(occupied_seats: @tournament.occupied_seats+1)
         redirect_to @tournament, notice: 'Player was added to the tournament.'
       end
     else
@@ -109,7 +108,6 @@ class TournamentsController < ApplicationController
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
     else
       @tournament.players.delete(Player.find(player_to_remove.id))
-      @tournament.update(occupied_seats: @tournament.occupied_seats-1)
       redirect_to @tournament, notice: 'Player was removed from the tournament.'
     end
   end
@@ -119,7 +117,7 @@ class TournamentsController < ApplicationController
     if @tournament.setup or @tournament.started or @tournament.finished
       redirect_to @tournament, alert: 'Tournament is already set up, started or finished!'
     else
-      needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.occupied_seats)
+      needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.players.count)
       current_game_stations_count = get_game_stations_count(@tournament)
       if current_game_stations_count < needed_game_stations_count
         delta_game_stations = needed_game_stations_count - current_game_stations_count
@@ -277,7 +275,7 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :occupied_seats, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :total_seats, :setup, :started, :finished, :active, :created_at, :updated_at)
     end
 
     def set_challonge_username_and_api_key

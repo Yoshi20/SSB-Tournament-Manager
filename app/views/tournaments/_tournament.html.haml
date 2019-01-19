@@ -33,7 +33,7 @@
         = 'CHF'
 
     %td.text-center
-      = "#{tournament.occupied_seats} / #{tournament.total_seats}"
+      = "#{tournament.players.count} / #{tournament.total_seats}"
 
     %td.text-center.hidden-xs
       - if tournament.started?

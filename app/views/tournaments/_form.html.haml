@@ -26,9 +26,6 @@
       .field.form-group
         = f.label :registration_fee, 'Registration fee [CHF]'
         = f.text_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? 5 : @tournament.registration_fee)
-      .field.form-group.hide
-        = f.label :occupied_seats
-        = f.text_field :occupied_seats, class: 'form-control', value: (@tournament.new_record? ? 0 : @tournament.occupied_seats)
       .field.form-group
         = f.label :total_seats
         = f.text_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? 40 : @tournament.total_seats)

@@ -20,7 +20,6 @@ class TournamentsTest < ApplicationSystemTestCase
     fill_in "Date", with: @tournament.date
     fill_in "Location", with: @tournament.location
     fill_in "Name", with: @tournament.name
-    fill_in "Occupied seats", with: @tournament.occupied_seats
     fill_in "Registration fee", with: @tournament.registration_fee
     fill_in "Total seats", with: @tournament.total_seats
     fill_in "Updated at", with: @tournament.updated_at
@@ -40,7 +39,6 @@ class TournamentsTest < ApplicationSystemTestCase
     fill_in "Date", with: @tournament.date
     fill_in "Location", with: @tournament.location
     fill_in "Name", with: @tournament.name
-    fill_in "Occupied seats", with: @tournament.occupied_seats
     fill_in "Registration fee", with: @tournament.registration_fee
     fill_in "Total seats", with: @tournament.total_seats
     fill_in "Updated at", with: @tournament.updated_at

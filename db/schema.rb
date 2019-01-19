@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_230600) do
+ActiveRecord::Schema.define(version: 2019_01_20_002400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2019_01_12_230600) do
     t.string "location"
     t.text "description"
     t.float "registration_fee"
-    t.integer "occupied_seats"
     t.integer "total_seats"
     t.boolean "active"
     t.datetime "created_at", null: false

@@ -17,7 +17,7 @@ class TournamentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tournament" do
     assert_difference('Tournament.count') do
-      post tournaments_url, params: { tournament: { active: @tournament.active, description: @tournament.description, created_at: @tournament.created_at, date: @tournament.date, location: @tournament.location, name: @tournament.name, occupied_seats: @tournament.occupied_seats, registration_fee: @tournament.registration_fee, total_seats: @tournament.total_seats, updated_at: @tournament.updated_at } }
+      post tournaments_url, params: { tournament: { active: @tournament.active, description: @tournament.description, created_at: @tournament.created_at, date: @tournament.date, location: @tournament.location, name: @tournament.name, registration_fee: @tournament.registration_fee, total_seats: @tournament.total_seats, updated_at: @tournament.updated_at } }
     end
 
     assert_redirected_to tournament_url(Tournament.last)
@@ -34,7 +34,7 @@ class TournamentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tournament" do
-    patch tournament_url(@tournament), params: { tournament: { active: @tournament.active, description: @tournament.description, created_at: @tournament.created_at, date: @tournament.date, location: @tournament.location, name: @tournament.name, occupied_seats: @tournament.occupied_seats, registration_fee: @tournament.registration_fee, total_seats: @tournament.total_seats, updated_at: @tournament.updated_at } }
+    patch tournament_url(@tournament), params: { tournament: { active: @tournament.active, description: @tournament.description, created_at: @tournament.created_at, date: @tournament.date, location: @tournament.location, name: @tournament.name, registration_fee: @tournament.registration_fee, total_seats: @tournament.total_seats, updated_at: @tournament.updated_at } }
     assert_redirected_to tournament_url(@tournament)
   end
 
