@@ -5,12 +5,12 @@
 .row.show-tournament
   .col-md-5
     %p
-      %strong Tournament start date:
-      = @tournament.date.to_s(:custom_datetime_with_weekday)
-
-    %p
       %strong Registration deadline:
       = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
+
+    %p
+      %strong Tournament start date:
+      = @tournament.date.to_s(:custom_datetime_with_weekday)
 
     %p
       %strong Location:

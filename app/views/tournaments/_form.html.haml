@@ -11,11 +11,12 @@
     %br
     .col-md-12
       .field.form-group
-        = f.label :date, 'Tournament start date'
-        %br= f.datetime_select :date, class: 'form-control'
-      .field.form-group
         = f.label :registration_deadline
-        %br= f.datetime_select :registration_deadline, class: 'form-control'
+        %br= f.datetime_select :registration_deadline, class: 'form-control', start_year: Time.now.year
+      .field.form-group
+        = f.label :date, 'Tournament start date'
+        %br= f.datetime_select :date, class: 'form-control', start_year: Time.now.year
+
       .field.form-group
         = f.label :name
         = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Weekly Bern KWx' : @tournament.name)
