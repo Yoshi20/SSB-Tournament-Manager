@@ -9,19 +9,20 @@
       %thead.user-list-header
         %tr
           %th Username
-          - if current_user.admin?
+          - if current_user.present? and current_user.admin?
             %th Email
           %th Last Log in at
           %th Created at
           %th.text-center Log in counter
           %th.text-center Admin
+          %th.text-center Super Admin
           %th.text-center.action Edit
 
       %tbody.user-list-body
         - @users.each do |user|
           %tr
             %td= user.username
-            - if current_user.admin?
+            - if current_user.present? and current_user.admin?
               %td= user.email
             %td= user.current_sign_in_at.to_s(:custom_datetime)
             %td= user.created_at.to_s(:custom_datetime)
@@ -29,15 +30,18 @@
             %td.text-center
               - if user.admin?
                 .glyphicon.glyphicon-ok
-              - elsif current_user.admin?
+              - elsif current_user.present? and current_user.super_admin?
                 = form_for user, role: 'form', method: :patch do |f|
                   .field
                     = f.check_box :is_admin, checked: true, class: 'hidden'
                     = f.submit 'New Admin', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
+            %td.text-center
+              - if user.super_admin?
+                .glyphicon.glyphicon-ok
             %td.text-center.actions
               - if user == current_user
                 = link_to edit_user_registration_path, class:'btn btn-default btn-xs' do
                   %span.glyphicon.glyphicon-pencil
-              - if current_user.admin? or user == current_user
+              - if current_user.present? and (current_user.super_admin? or user == current_user)
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
                   %span.glyphicon.glyphicon-trash
