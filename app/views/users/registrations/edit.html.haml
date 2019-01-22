@@ -22,6 +22,18 @@
       - if current_user.admin? and resource == current_user
         = '------------------------ Administrator part --------------------------------'
         .field.form-group
+          = f.label :full_name
+          %i (first and last name)
+          = f.text_field :full_name, class: 'form-control'
+        .field.form-group
+          = f.label :mobile_number
+          %i (079 / 123 45 67)
+          = f.text_field :mobile_number, class: 'form-control'
+        .field.form-group
+          = f.label :area_of_responsibility
+          %i (Bern, Zurich, Geneva, ...?)
+          = f.text_field :area_of_responsibility, class: 'form-control'
+        .field.form-group
           = f.label :challonge_username
           = f.text_field :challonge_username, class: 'form-control'
         .field.form-group

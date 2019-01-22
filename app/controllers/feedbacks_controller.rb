@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     @feedbacks = Feedback.all.order(created_at: :desc)
+    @admins = User.where(is_admin: true).order(:area_of_responsibility)
   end
 
   # GET /feedbacks/1

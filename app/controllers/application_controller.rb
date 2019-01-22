@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     #new
-    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :challonge_username, :challonge_api_key]
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :challonge_username, :challonge_api_key, :full_name, :mobile_number, :area_of_responsibility]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
