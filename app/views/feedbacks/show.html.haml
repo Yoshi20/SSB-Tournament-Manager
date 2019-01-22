@@ -8,7 +8,7 @@
     - if !@feedback.response.nil? and !@feedback.response.blank?
       %br
       %p
-        %strong= 'Administrator response:'
+        %strong= "Administrator \"#{@feedback.response_username}\" replied:"
         %br
         = @feedback.response
 

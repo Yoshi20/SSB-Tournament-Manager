@@ -13,7 +13,7 @@
     - if !feedback.response.nil? and !feedback.response.blank?
       %br
       %br
-      %i= 'Administrator response:'
+      %i= "Administrator \"#{feedback.response_username}\" replied:"
       %br
       &emsp;
       %i= feedback.response

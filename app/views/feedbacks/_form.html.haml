@@ -16,5 +16,6 @@
         .field.form-group
           = f.label :response, 'Administrator response'
           = f.text_area :response, class: 'form-control', style: 'height: 120px'
+          = f.text_field :response_username, value: current_user.username, hidden: true
       .actions.form-group
         = f.submit class:'btn btn-primary form-control'

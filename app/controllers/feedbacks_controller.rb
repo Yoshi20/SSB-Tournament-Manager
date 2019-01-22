@@ -45,9 +45,13 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       p = feedback_params
-      if feedback_params[:response] != @feedback.response and current_user.admin?
-        p.delete('user_id') # do not update user_id when an admin wrote a response
-        FeedbackMailer.with(feedback: @feedback, admin: current_user).feedback_response_email.deliver_later
+      p.delete('user_id') unless @feedback.new_record?
+      if current_user.admin?
+        if feedback_params[:response] != @feedback.response and feedback_params[:response] != ""
+          FeedbackMailer.with(feedback: @feedback, admin: current_user).feedback_response_email.deliver_later
+        else
+          p.delete('response_username')  # do not update response_username when an admin didn't write/change the response
+        end
       end
       if @feedback.update(p)
         format.html { redirect_to @feedback, notice: 'Feedback or Question was successfully updated.' }
@@ -77,7 +81,7 @@ class FeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
-      params.require(:feedback).permit(:user_id, :text, :response, :created_at, :updated_at)
+      params.require(:feedback).permit(:user_id, :text, :response, :response_username, :created_at, :updated_at)
     end
 
 end
