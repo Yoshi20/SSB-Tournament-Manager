@@ -1,7 +1,12 @@
 %ul.nav.nav-pills
 
   %li{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
-    = link_to 'Tournaments', tournaments_path
+    %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
+      = "Tournaments"
+      %span.caret
+    %ul.dropdown-menu
+      %li= link_to 'List', tournaments_path
+      %li= link_to 'Calendar', tournaments_path #TODO: calendar_path
 
   %li{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
     = link_to 'Ranking', players_path
@@ -14,15 +19,6 @@
 
   %li{role: "presentation", class: (@section == 'feedbacks' ? 'active' : 'inactive')}
     = link_to 'Feedbacks & Questions', feedbacks_path
-
-  -# %li{role: "presentation", class: (@section == 'diodes' ? 'active' : 'inactive')}
-  -#   %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
-  -#     = "Diodes"
-  -#     %span.caret
-  -#   %ul.dropdown-menu
-  -#     %li= link_to 'STD Diodes', diodes_std_diodes_path
-  -#     %li= link_to 'TVS Diodes', diodes_tvs_diodes_path
-  -#     %li= link_to 'LEDs', leds_path
 
   %li.dropdown.active.pull-right
     %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
