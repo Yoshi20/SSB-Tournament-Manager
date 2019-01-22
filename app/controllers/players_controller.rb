@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all.order(points: :desc, participations: :asc)
+    @players = Player.all.order(points: :desc, participations: :asc).includes(:user)
     @started_and_finished_tournaments_count_2019 = helpers.active_tournaments_2019.where(started: true, finished: true).count
   end
 
