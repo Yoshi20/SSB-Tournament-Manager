@@ -81,7 +81,12 @@
       -else
         - if current_user.present?
           - if @tournament.players.include?(current_user.player)
-            %p= button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}", method:'post', class:'btn btn-warning', id:'leave-tournament-button'
+            %p= button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}", method:'post', class:'btn btn-warning', id:'leave-tournament-button', data: { confirm: "Are you sure? You may not be able to join the tournament again if there's a player in the waiting list."}
+          - elsif @tournament.players.count >= @tournament.total_seats
+            - if @tournament.waiting_list.include?(current_user.player.gamer_tag)
+              %p= button_to ">>> Leave the waiting list <<<", "/tournaments/remove_player/#{@tournament.id}", params:{waiting_list: true}, method:'post', class:'btn btn-warning', id:'leave-waiting-list-button', data: { confirm: "Are you sure? You may loose your position in the waiting list if there's another player in it."}
+            - else
+              %p= button_to "Tournament is full >>> Join the waiting list <<<", "/tournaments/add_player/#{@tournament.id}", params:{waiting_list: true}, method:'post', class:'btn btn-info', id:'join-waiting-list-button'
           - else
             %p= button_to ">>> Join this tournament <<<", "/tournaments/add_player/#{@tournament.id}", method:'post', class:'btn btn-success', id:'join-tournament-button'
         - else
@@ -126,7 +131,7 @@
       %br
 
 .row.title-registered-players-tournament-ranking
-  .col-md-6
+  .col-md-4
     .row.title-registered-players
       .col-md-12
         %h2 Registered players
@@ -149,7 +154,19 @@
                 = ')'
               %p
 
-  .col-md-6
+  .col-md-4
+    - if @tournament.waiting_list.any?
+      .row.title-waiting-list
+        .col-md-12
+          %h2 Waiting list
+          .row.show-waiting-list
+            .col-md-12
+              - @tournament.waiting_list.each_with_index do |gt, i|
+                = "##{i+1}"
+                = gt
+                %p
+
+  .col-md-4
     - if @tournament.started and @tournament.finished
       .row.title-tournament-ranking
         .col-md-12

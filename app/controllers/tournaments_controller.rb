@@ -86,10 +86,25 @@ class TournamentsController < ApplicationController
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
       else
         @tournament.players << player_to_add
-        redirect_to @tournament, notice: 'Player was added to the tournament.'
+        if @tournament.waiting_list.include?(player_to_add.gamer_tag)
+          @tournament.waiting_list.delete(player_to_add.gamer_tag)
+          if @tournament.save
+            redirect_to @tournament, notice: 'Player was added to the tournament and removed from the waiting list.'
+          else
+            redirect_to @tournament, alert: "Player was added to the tournament but couldn't be removed from the waiting list."
+          end
+        else
+          redirect_to @tournament, notice: 'Player was added to the tournament.'
+        end
       end
     else
-      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
+      if params[:waiting_list] == 'true'
+        @tournament.waiting_list.push(current_user.player.gamer_tag)
+        @tournament.save
+        redirect_to @tournament, notice: "Player was added to the waiting list."
+      else
+        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
+      end
     end
   end
 
@@ -103,25 +118,45 @@ class TournamentsController < ApplicationController
     if player_to_remove.nil?
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
     elsif !@tournament.players.include?(player_to_remove)
-      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
+      if @tournament.waiting_list.include?(player_to_remove.gamer_tag) and params[:waiting_list] == 'true'
+        @tournament.waiting_list.delete(player_to_remove.gamer_tag)
+        if @tournament.save
+          redirect_to @tournament, notice: 'Player was removed from the waiting list.'
+        else
+          redirect_to @tournament, alert: "Player couldn't be removed from the waiting list."
+        end
+      else
+        redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
+      end
     elsif Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
     else
       @tournament.players.delete(Player.find(player_to_remove.id))
-      redirect_to @tournament, notice: 'Player was removed from the tournament.'
+      if @tournament.waiting_list.any?
+        gamer_tag_to_add = @tournament.waiting_list.shift # shift is the same as pop_first
+        player_to_add = Player.find_by(gamer_tag: gamer_tag_to_add)
+        @tournament.players << player_to_add
+        if @tournament.save
+          redirect_to @tournament, notice: 'Player was removed from the tournament and the first player in the waiting list took the seat.'
+        else
+          redirect_to @tournament, alert: "Player was removed from the tournament but the first player in the waiting list couldn't take the seat."
+        end
+      else
+        redirect_to @tournament, notice: 'Player was removed from the tournament.'
+      end
     end
   end
 
   # POST /tournaments/setup/1
   def setup
     if @tournament.setup or @tournament.started or @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already set up, started or finished!'
+      redirect_to @tournament, alert: 'Tournament is already set up, started or finished.'
     else
       needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.players.count)
       current_game_stations_count = get_game_stations_count(@tournament)
       if current_game_stations_count < needed_game_stations_count
         delta_game_stations = needed_game_stations_count - current_game_stations_count
-        redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament!"
+        redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
       else
         if set_challonge_username_and_api_key()
 
@@ -152,9 +187,11 @@ class TournamentsController < ApplicationController
 
           @tournament.setup = true
           @tournament.challonge_tournament_id = ct.id
-          @tournament.save
-
-          redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+          if @tournament.save
+            redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+          else
+            redirect_to @tournament, alert: "Tournament couldn't be set up."
+          end
         else
           redirect_to @tournament, alert: "Tournament cannot be set up. Challonge data are missing. Add them #{view_context.link_to('here', edit_user_registration_path, target: '_blank')}".html_safe
         end
@@ -165,9 +202,9 @@ class TournamentsController < ApplicationController
   # POST /tournaments/start/1
   def start
     if !@tournament.setup
-      redirect_to @tournament, alert: "Tournament wasn't set up yet!"
+      redirect_to @tournament, alert: "Tournament wasn't set up yet."
     elsif @tournament.started or @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already started or finished!'
+      redirect_to @tournament, alert: 'Tournament is already started or finished.'
     else
       if set_challonge_username_and_api_key()
 
@@ -176,9 +213,11 @@ class TournamentsController < ApplicationController
 
         ct.start!
         @tournament.started = true
-        @tournament.save
-
-        redirect_to @tournament, notice: 'Tournament was successfully started.'
+        if @tournament.save
+          redirect_to @tournament, notice: 'Tournament was successfully started.'
+        else
+          redirect_to @tournament, alert: "Tournament couldn't be started."
+        end
       else
         redirect_to @tournament, alert: "Tournament cannot be started. Challonge data are missing. Add them #{view_context.link_to('here', edit_user_registration_path, target: '_blank')}".html_safe
       end
@@ -188,9 +227,9 @@ class TournamentsController < ApplicationController
   # POST /tournaments/finish/1
   def finish
     if !@tournament.setup or !@tournament.started
-      redirect_to @tournament, alert: "Tournament wasn't set up or started yet!"
+      redirect_to @tournament, alert: "Tournament wasn't set up or started yet."
     elsif @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already finished!'
+      redirect_to @tournament, alert: 'Tournament is already finished.'
     else
       if set_challonge_username_and_api_key()
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_211100) do
+ActiveRecord::Schema.define(version: 2019_01_23_221900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_211100) do
     t.boolean "setup"
     t.datetime "registration_deadline"
     t.string "host_username"
+    t.string "waiting_list", default: [], array: true
   end
 
   create_table "users", force: :cascade do |t|
