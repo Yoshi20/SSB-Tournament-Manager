@@ -14,7 +14,7 @@
 
     %p
       %strong Participations:
-      = "#{@player.participations} / #{@started_and_finished_tournaments_count_2019}"
+      = @player.participations #"#{@player.participations} / #{@started_and_finished_tournaments_count_2019}"
 
     %p
       %strong Self assessment:
@@ -50,11 +50,12 @@
       = @player.created_at.to_s(:custom_datetime)
 
   .col-md-4
-    - if current_user.present? and (current_user.admin? or current_user == @player.user)
-      %p= link_to 'Edit player', edit_player_path(@player)
-      - if current_user == @player.user
-        %p= link_to 'Edit user', edit_user_registration_path
-    %p= link_to 'Back', :back
+    %strong
+      - if current_user.present? and (current_user.admin? or current_user == @player.user)
+        %p= link_to 'Edit player', edit_player_path(@player)
+        - if current_user == @player.user
+          %p= link_to 'Edit user', edit_user_registration_path
+      %p= link_to 'Back', :back
 
 .row.player-comment
   .col-md-12

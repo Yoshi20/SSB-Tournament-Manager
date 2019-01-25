@@ -6,19 +6,26 @@
       .row
         .col-md-12.col-xs-12
           .field.form-group
-            = f.label :username, 'Username (Gamer tag)'
+            = f.label :username, 'Username *'
+            %em
+              (= Gamer tag)
             = f.text_field :username, autofocus: true, class: 'form-control'
           .field.form-group
-            = f.label :email
+            = f.label :email, 'Email *'
             = f.email_field :email, class: 'form-control'
           .field.form-group
-            = f.label :password
+            = f.label :mobile_number
+            %em
+              (079 / 123 45 67)
+            = f.text_field :mobile_number, class: 'form-control'
+          .field.form-group
+            = f.label :password, 'Password *'
             - if @minimum_password_length
               %em
                 (#{@minimum_password_length} characters minimum)
             = f.password_field :password, autocomplete: "off", class: 'form-control'
           .field.form-group
-            = f.label :password_confirmation
+            = f.label :password_confirmation, 'Password confirmation *'
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
           %p
             = label_tag :self_assessment
@@ -31,7 +38,9 @@
               = radio_button_tag :tournament_experience, i, false
               = tournament_experience_defines[i]
           .field.form-group
-            = label_tag :comment, "Comment (for what ever you want to tell the world)"
+            = label_tag :comment, "Comment"
+            %em
+              (for what ever you want to tell the world)
             %br
             = text_area_tag :comment, nil, class: 'form-control'
       .row
@@ -39,4 +48,5 @@
           = f.submit "Register", class:'btn btn-primary'
 
   .col-md-4
-    %p= link_to 'Back', :back
+    %strong
+      %p= link_to 'Back', :back

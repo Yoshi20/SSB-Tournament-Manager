@@ -1,15 +1,13 @@
 %ul.nav.nav-pills
 
   %li{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
-    %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
-      = "Tournaments"
-      %span.caret
-    %ul.dropdown-menu
-      %li= link_to 'List', tournaments_path
-      %li= link_to 'Calendar', tournaments_path #TODO: calendar_path
+    = link_to 'Tournaments', tournaments_path
+
+  %li{role: "presentation", class: (@section == 'calendar' ? 'active' : 'inactive')}
+    = link_to 'Calendar', calendar_path
 
   %li{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
-    = link_to 'Ranking', players_path
+    = link_to 'Players', players_path
 
   %li{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
     = link_to 'Rules', rules_path
@@ -25,8 +23,6 @@
       = "Account"
       %span.caret
     %ul.dropdown-menu
-      -# %li= link_to "Root-Path", root_path
-      -# %li.divider
       - if user_signed_in?
         %p
           = "Signed in as:"
@@ -35,12 +31,12 @@
             - if current_user.admin?
               = ' (Administrator)'
         - if current_user.player.present?
-          = link_to 'Show', player_path(current_user.player), class: 'form-control btn btn-primary'
+          = link_to 'Show', player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
         - if current_user.admin?
-          = link_to 'Show all users', users_path, class: 'form-control btn btn-primary'
+          = link_to 'Show all users', users_path, class: 'account-btn form-control btn btn-primary'
         -# = link_to 'Edit', edit_player_path(current_user.player), class: 'form-control btn btn-primary'
         .divider
-        = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'form-control btn btn-warning'
+        = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'account-btn form-control btn btn-warning'
       - else
         %li
           -# unless devise_controller?
@@ -51,7 +47,7 @@
               .text-center{style: "margin-top: 5px"}
                 = submit_tag "Log in", class: "form-control btn btn-success"
                 = "or"
-                = link_to "Sign up", new_user_registration_path,  class: "form-control btn btn-primary"
+                = link_to "Sign up", new_user_registration_path,  class: "account-btn form-control btn btn-primary"
 
   %li.pull-right
-    = link_to image_tag('Discord-Logo-Black.svg', height: '40', width: '40', style: 'margin-top: -10px; margin-right: -10px; margin-bottom: -10px; margin-left: -10px;'), 'https://discord.gg/wA89CyA', target: '_blank'
+    = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40', style: 'margin-top: -10px; margin-right: -10px; margin-bottom: -10px; margin-left: -10px;'), 'https://discord.gg/wA89CyA', target: '_blank'

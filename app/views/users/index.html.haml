@@ -11,6 +11,7 @@
           %th Username
           - if current_user.present? and current_user.admin?
             %th Email
+            %th Mobile Number
           %th Last Log in at
           %th Created at
           %th.text-center Log in counter
@@ -24,6 +25,7 @@
             %td= user.username
             - if current_user.present? and current_user.admin?
               %td= user.email
+              %td= user.mobile_number
             %td= user.current_sign_in_at.to_s(:custom_datetime)
             %td= user.created_at.to_s(:custom_datetime)
             %td.text-center= user.sign_in_count

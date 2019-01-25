@@ -57,10 +57,34 @@ body {
   margin: 0 0 20px 0;
 }
 
-// .mirrored {
-//   -moz-transform: scale(-1, 1);
-//   -webkit-transform: scale(-1, 1);
-//   -o-transform: scale(-1, 1);
-//   -ms-transform: scale(-1, 1);
-//   transform: scale(-1, 1);
-// }
+.account-btn {
+  padding: 6px 12px !important;
+}
+
+.navigation-header {
+  background-color: #222222;
+  margin-top: -10px;
+  position: relative;
+}
+
+.nav li a {
+  color: #ffffff;
+  position: relative;
+  display: block;
+  padding: 20px 15px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: #ffffff;
+    background-color: #3f3f3f;
+
+}
+
+.nav-pills > li + li {
+  margin-left: 0px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #ffffff;
+  background-color: #3f3f3f;
+}

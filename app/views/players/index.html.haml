@@ -1,6 +1,6 @@
 .row.title-div
   .col-md-12
-    %h1= "Championship 2019"
+    %h1= "Players"
 
 -# player list
 .row.player-list
@@ -11,7 +11,7 @@
           %th.text-center Rank
           %th.text-center Points
           %th Gamer tag
-          %th.text-center.hidden-xs Tournament participations
+          %th.text-center.hidden-xs Participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
           %th.text-center Win/Loss ratio
@@ -28,7 +28,7 @@
               %td.text-center= player.points
               - last_player_points = player.points
               %td= player.gamer_tag
-              %td.text-center.hidden-xs= "#{player.participations} / #{@started_and_finished_tournaments_count_2019}"
+              %td.text-center.hidden-xs= player.participations #"#{player.participations} / #{@started_and_finished_tournaments_count_2019}"
               %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
               %td.text-center

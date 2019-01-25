@@ -4,21 +4,21 @@
     %br
     %p
       = 'If you want to stay up-to-date with the Swiss Smash Community, join us on'
-      = link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
+      %strong= link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
       = 'and follow the Swiss Smash'
-      = link_to 'Twitter', 'https://twitter.com/swisssmashu', target: '_blank'
+      %strong= link_to 'Twitter', 'https://twitter.com/swisssmashu', target: '_blank'
       = 'Account.'
     %br
     %p
       = 'You can find the upcoming events in the'
-      = link_to 'Tournaments list', tournaments_path
+      %strong= link_to 'Tournaments list', tournaments_path
       = 'or in the'
-      = link_to 'Calendar', tournaments_path #TODO: add calendar_path
+      %strong= link_to 'Calendar', calendar_path
       = '.'
     %br
     %p
       = 'To be able to join a tournament and write a feedback or a question'
-      = link_to 'Log in', new_user_session_path
+      %strong= link_to 'Log in', new_user_session_path
       = 'or'
-      = link_to 'Sign up', new_user_registration_path
+      %strong= link_to 'Sign up', new_user_registration_path
       = 'if you haven\'t yet.'

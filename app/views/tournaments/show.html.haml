@@ -60,10 +60,11 @@
         = @tournament.created_at.to_s(:custom_datetime)
 
   .col-md-4
-    - if current_user.present? and current_user.admin?
-      %p= link_to 'Edit', edit_tournament_path(@tournament)
-      %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
-    %p= link_to 'Back', :back
+    %strong
+      - if current_user.present? and current_user.admin?
+        %p= link_to 'Edit', edit_tournament_path(@tournament)
+        %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
+      %p= link_to 'Back', :back
 
 .row.tournament-description
   .col-md-12

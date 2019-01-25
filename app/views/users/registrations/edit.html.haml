@@ -13,6 +13,11 @@
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .field.form-group
+        = f.label :mobile_number
+        %em
+          (079 / 123 45 67)
+        = f.text_field :mobile_number, class: 'form-control'
+      .field.form-group
         = f.label :password
         %i (leave blank if you don't want to change it)
         = f.password_field :password, autocomplete: "off", class: 'form-control'
@@ -25,10 +30,6 @@
           = f.label :full_name
           %i (first and last name)
           = f.text_field :full_name, class: 'form-control'
-        .field.form-group
-          = f.label :mobile_number
-          %i (079 / 123 45 67)
-          = f.text_field :mobile_number, class: 'form-control'
         .field.form-group
           = f.label :area_of_responsibility
           %i (Bern, Zurich, Geneva, ...?)
@@ -55,4 +56,5 @@
       Unhappy? #{button_to "Delete account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'}
 
   .col-md-4
-    %p= link_to 'Back', :back
+    %strong
+      %p= link_to 'Back', :back

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'informations' => 'informations#index'
 
+  get 'calendar' => 'calendar#index'
+
   resources :feedbacks
 
   resources :tournaments
