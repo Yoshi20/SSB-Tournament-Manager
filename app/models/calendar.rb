@@ -51,7 +51,7 @@ class Calendar
     def ical_event_internal(calendar, tournament, tzid)
       calendar.event do |event|
         end_time = tournament.date + 4.hours
-        if tournament.ganztaegig?
+        if false # whole-day tournament structure
           event.dtstart = ical_date(tournament.date.to_date)
           event.dtend   = ical_date(end_time.to_date)
           event.dtstart.ical_param 'VALUE', 'DATE'
