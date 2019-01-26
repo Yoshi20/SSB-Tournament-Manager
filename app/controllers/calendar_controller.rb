@@ -4,6 +4,7 @@ class CalendarController < ApplicationController
   # GET /calendar
   # GET /calendar.json
   def index
+    @full_calendar_events = []
   end
 
 end

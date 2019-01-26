@@ -4,4 +4,29 @@
 
 .row.calendar
   .col-md-12
-    Comming soon...
+    #fullcalendar{data: {events: @full_calendar_events}}
+
+:coffeescript
+  $ ->
+    calendar = $('#fullcalendar')
+    calendar.fullCalendar
+      header:
+        left: 'title'
+        center: ''
+        right: 'today month,agendaWeek,agendaDay,listAll prev,next'
+      contentHeight: 600
+      views:
+        month:
+          titleFormat: 'MMMM YYYY'
+        agendaWeek:
+          titleFormat: 'DD. MMMM YYYY'
+          columnFormat: 'ddd, DD.MM.'
+        agendaDay:
+          titleFormat: 'DD. MMMM YYYY'
+        listAll:
+          type: 'list'
+          duration: { years: 10 }
+          listDayFormat: 'dddd, DD. MMMM YYYY'
+          listDayAltFormat: ''
+      defaultView: 'month'
+      events: calendar.data('events')
