@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @tournament.name %></h1>
+    <p>
+      Hi <%= @user.username %>.
+    </p>
+    <p>
+      Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament.
+    </p>
+    <p>
+      To check out your registration, just follow <%= link_to "this link", @url %>.
+    </p>
+    <p>We wish you good luck during your matches!</p>
+  </body>
+</html>

@@ -1,8 +1,11 @@
 <%= @tournament.name %>
 ===============================================
 
-The tournament "<%= @tournament.name %>" was added to the SSB Tournament Manager.
+Hi <%= @user.username %>.
 
+A new tournament was added to the SSB Tournament Manager.
+
+Name: <%= @tournament.name %>
 Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
 Registration fee: <%= @tournament.registration_fee %> CHF
 Location:

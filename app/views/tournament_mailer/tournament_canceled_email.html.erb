@@ -6,6 +6,9 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
+      Hi <%= @user.username %>.
+    </p>
+    <p>
       Because of too few registrations or other reasons, an administrator has canceled the tournament "<strong><%= @tournament.name.gsub('(canceled) ', '') %></strong>".
     </p>
     <p>

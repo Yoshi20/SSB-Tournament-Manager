@@ -1,6 +1,8 @@
 <%= @tournament.name %>
 ===============================================
 
+Hi <%= @user.username %>.
+
 Because of too few registrations or other reasons, an administrator has canceled the tournament "<%= @tournament.name.gsub('(canceled) ', '') %>".
 
 Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>

@@ -72,36 +72,50 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/add_player/1
   def add_player
+    if params[:gamer_tag].present?
+      player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
+    else
+      player_to_add = current_user.player
+    end
+
+    if player_to_add.nil?
+      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
+      return;
+    end
+
+    if Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
+      return;
+    end
+
+    if @tournament.players.include?(player_to_add)
+      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player was already added."
+      return;
+    end
+
     if @tournament.players.count < @tournament.total_seats
-      if params[:gamer_tag].present?
-        player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
-      else
-        player_to_add = current_user.player
-      end
-      if player_to_add.nil?
-        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
-      elsif @tournament.players.include?(player_to_add)
-        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player was already added."
-      elsif Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
-      else
-        @tournament.players << player_to_add
-        if @tournament.waiting_list.include?(player_to_add.gamer_tag)
-          @tournament.waiting_list.delete(player_to_add.gamer_tag)
-          if @tournament.save
-            redirect_to @tournament, notice: 'Player was added to the tournament and removed from the waiting list.'
-          else
-            redirect_to @tournament, alert: "Player was added to the tournament but couldn't be removed from the waiting list."
-          end
+      # tournament is not full yet -> add the player to the tournament
+      @tournament.players << player_to_add
+      # remove the player from the waiting list
+      if @tournament.waiting_list.include?(player_to_add.gamer_tag)
+        @tournament.waiting_list.delete(player_to_add.gamer_tag)
+        if @tournament.save
+          redirect_to @tournament, notice: 'Player was added to the tournament and removed from the waiting list.'
         else
-          redirect_to @tournament, notice: 'Player was added to the tournament.'
+          redirect_to @tournament, alert: "Player was added to the tournament but couldn't be removed from the waiting list."
         end
+      else
+        redirect_to @tournament, notice: 'Player was added to the tournament.'
       end
     else
-      if params[:waiting_list] == 'true'
-        @tournament.waiting_list.push(current_user.player.gamer_tag)
-        @tournament.save
-        redirect_to @tournament, notice: "Player was added to the waiting list."
+      # tournament is full
+      if params[:waiting_list] == 'true' or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add))
+        @tournament.waiting_list.push(player_to_add.gamer_tag)
+        if @tournament.save
+          redirect_to @tournament, notice: "Player was added to the waiting list."
+        else
+          redirect_to @tournament, alert: "Player couldn't be added to the waiting list."
+        end
       else
         redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
       end
@@ -115,10 +129,19 @@ class TournamentsController < ApplicationController
     else
       player_to_remove = current_user.player
     end
+
     if player_to_remove.nil?
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
-    elsif !@tournament.players.include?(player_to_remove)
-      if @tournament.waiting_list.include?(player_to_remove.gamer_tag) and params[:waiting_list] == 'true'
+      return;
+    end
+
+    if Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
+      return;
+    end
+
+    if !@tournament.players.include?(player_to_remove)
+      if @tournament.waiting_list.include?(player_to_remove.gamer_tag)
         @tournament.waiting_list.delete(player_to_remove.gamer_tag)
         if @tournament.save
           redirect_to @tournament, notice: 'Player was removed from the waiting list.'
@@ -128,22 +151,25 @@ class TournamentsController < ApplicationController
       else
         redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
       end
-    elsif Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
-    else
-      @tournament.players.delete(Player.find(player_to_remove.id))
-      if @tournament.waiting_list.length > 0
-        gamer_tag_to_add = @tournament.waiting_list.shift # shift is the same as pop_first
-        player_to_add = Player.find_by(gamer_tag: gamer_tag_to_add)
-        @tournament.players << player_to_add
-        if @tournament.save
-          redirect_to @tournament, notice: 'Player was removed from the tournament and the first player in the waiting list took the seat.'
-        else
-          redirect_to @tournament, alert: "Player was removed from the tournament but the first player in the waiting list couldn't take the seat."
-        end
+      return;
+    end
+
+    # remove the player from the tournament
+    @tournament.players.delete(Player.find(player_to_remove.id))
+
+    # check if a player in the waiting list needs to be registered
+    if @tournament.waiting_list.length > 0
+      gamer_tag_to_add = @tournament.waiting_list.shift # shift is the same as pop_first
+      player_to_add = Player.find_by(gamer_tag: gamer_tag_to_add)
+      @tournament.players << player_to_add
+      TournamentMailer.with(tournament: @tournament, user: player_to_add.user).waiting_player_upgraded_email.deliver_later
+      if @tournament.save
+        redirect_to @tournament, notice: 'Player was removed from the tournament and the first player in the waiting list took the seat.'
       else
-        redirect_to @tournament, notice: 'Player was removed from the tournament.'
+        redirect_to @tournament, alert: "Player was removed from the tournament but the first player in the waiting list couldn't take the seat."
       end
+    else
+      redirect_to @tournament, notice: 'Player was removed from the tournament.'
     end
   end
 
