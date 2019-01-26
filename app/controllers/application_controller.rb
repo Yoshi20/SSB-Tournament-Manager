@@ -20,4 +20,16 @@ class ApplicationController < ActionController::Base
     current_user.try(:username)
   end
 
+  def after_sign_in_path_for(resource)
+    if (request.referer.include?('/users/sign_in'))
+     root_path
+    else
+     request.referer
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    request.referrer
+  end
+
 end
