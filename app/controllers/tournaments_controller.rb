@@ -7,7 +7,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments.json
   def index
     @tournaments = helpers.active_tournaments_2019.where('finished is not true AND date >= ?', Time.now).order(date: :asc).includes(:players)
-    @past_tournaments = helpers.active_tournaments_2019.where('finished is true OR date < ?', Time.now).order(date: :desc).includes(:players)
+    @past_tournaments = helpers.active_tournaments_2019.where('finished is true OR date < ?', Time.now).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
   end
 
   # GET /tournaments/1

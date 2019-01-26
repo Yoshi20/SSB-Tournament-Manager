@@ -22,19 +22,8 @@
 
     .row.tournament-list-footer
       -# pageinator
-      .col-md-5
-        -# - if @tournaments.any?
-        -#   = render 'paginator'
-
-      -# Import Animes
-      .col-md-5
-      -#   - if user_signed_in? && current_user.admin?
-      -#     .import-tournament
-      -#       %h3{style: 'margin-top: 0px; margin-bottom: 0px;'}
-      -#         = "Import Animes"
-      -#       = form_tag import_tournaments_path, multipart:true do
-      -#         = file_field_tag :file, style: 'display: inline'
-      -#         = submit_tag "Import", class: 'btn btn-primary', style: 'margin-top: -25px;'
+      .col-md-10
+      -#   = render 'paginator'
 
       -# 'Add Tournament' button
       .col-md-2
@@ -55,3 +44,8 @@
 
       %tbody.with-show.tournament-list-body
         = render @past_tournaments
+
+    .row.tournament-list-footer
+      -# pageinator
+      .col-md-12
+        = render 'paginator'

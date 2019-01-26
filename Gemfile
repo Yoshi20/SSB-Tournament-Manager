@@ -90,3 +90,6 @@ gem 'paper_trail'
 
 # See https://github.com/challonge-community/challonge-ruby-gem
 gem 'challonge-api'
+
+# See https://github.com/mislav/will_paginate
+gem 'will_paginate', '~> 3.1.0'

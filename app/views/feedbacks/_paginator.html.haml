@@ -1,0 +1,26 @@
+- if @feedbacks.any? && @feedbacks.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', @feedbacks.total_pages
+      %li.left-arrow
+        -# table_params is a helper methode to whitelist the needed params to sort and order
+        - if @feedbacks.current_page.present? && @feedbacks.current_page > 1
+          = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page-1)), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+
+      - (1..@feedbacks.total_pages).each do |page|
+        %li{class: "#{"active" if page == @feedbacks.current_page}"}= link_to page.to_s, feedbacks_path(table_params.merge(page: page)), value: page
+      %li.right-arrow
+        - if @feedbacks.try(:current_page).present? && @feedbacks.current_page < @feedbacks.total_pages
+          = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page+1)), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

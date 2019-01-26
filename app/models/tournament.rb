@@ -4,4 +4,6 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true
 
+  MAX_PAST_TOURNAMENTS_PER_PAGE = 10
+
 end
