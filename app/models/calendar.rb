@@ -15,11 +15,12 @@ class Calendar
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       tournament.date + 2.hours,
+        end:       tournament.date + 4.hours,
         allDay:    false,
         editable:  false,
         className: 'calendar-tournament',
         color:     '#61bf9b',
+        url:       "/tournaments/#{tournament.id}",
       }
     end
 
@@ -49,7 +50,7 @@ class Calendar
 
     def ical_event_internal(calendar, tournament, tzid)
       calendar.event do |event|
-        end_time = tournament.date + 2.hours
+        end_time = tournament.date + 4.hours
         if tournament.ganztaegig?
           event.dtstart = ical_date(tournament.date.to_date)
           event.dtend   = ical_date(end_time.to_date)
