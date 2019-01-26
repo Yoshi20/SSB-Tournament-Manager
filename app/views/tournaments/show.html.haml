@@ -156,7 +156,7 @@
               %p
 
   .col-md-3
-    - if @tournament.waiting_list.any?
+    - if @tournament.waiting_list.length > 0
       .row.title-waiting-list
         .col-md-12
           %h2 Waiting list

@@ -132,7 +132,7 @@ class TournamentsController < ApplicationController
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
     else
       @tournament.players.delete(Player.find(player_to_remove.id))
-      if @tournament.waiting_list.any?
+      if @tournament.waiting_list.length > 0
         gamer_tag_to_add = @tournament.waiting_list.shift # shift is the same as pop_first
         player_to_add = Player.find_by(gamer_tag: gamer_tag_to_add)
         @tournament.players << player_to_add
