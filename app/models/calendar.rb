@@ -19,7 +19,7 @@ class Calendar
         allDay:    false,
         editable:  false,
         className: 'calendar-tournament',
-        color:     '#61bf9b',
+        color:     tournament.finished ? 'lightsalmon':'#61bf9b',
         url:       "/tournaments/#{tournament.id}",
       }
     end
