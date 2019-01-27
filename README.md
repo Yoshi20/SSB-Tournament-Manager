@@ -5,3 +5,5 @@ Links:
 - https://ssb-tournament-manager.herokuapp.com
 - https://swisssmash.ch
 - https://challonge.com
+- https://smash.gg
+- http://sac-bern.ch
