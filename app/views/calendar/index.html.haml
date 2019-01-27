@@ -7,7 +7,7 @@
     #fullcalendar{data: {events: @full_calendar_events}}
 
 :coffeescript
-  $ ->
+  document.addEventListener 'turbolinks:load', ->
     calendar = $('#fullcalendar')
     calendar.fullCalendar
       header:
@@ -31,3 +31,14 @@
       defaultView: 'month'
       events: calendar.data('events')
       firstDay: 1
+
+    eventCalendar = ->
+      $('#fullcalendar').fullCalendar {calendar}
+
+    clearCalendar = ->
+      $('#fullcalendar').fullCalendar 'delete'
+      $('#fullcalendar').html ''
+      return
+
+    $(document).on 'turbolinks:load', eventCalendar
+    $(document).on 'turbolinks:before-cache', clearCalendar
