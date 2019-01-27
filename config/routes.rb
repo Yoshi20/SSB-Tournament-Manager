@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
   post 'tournaments/cancel/:id' => 'tournaments#cancel'
+  get 'tournaments/location/:id' => 'tournaments#location'
 
   resources :players
 

@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, except: [:index, :new, :create]
-  before_action :check_if_admin, except: [:index, :show, :add_player, :remove_player]
+  before_action :check_if_admin, except: [:index, :show, :add_player, :remove_player, :location]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -310,6 +310,12 @@ class TournamentsController < ApplicationController
     end
     @tournament.update(tournament_params)
     redirect_to @tournament, notice: 'Tournament was successfully canceled.'
+  end
+
+  # GET /tournaments/location/1
+  # GET /tournaments/location/1.json
+  def location
+
   end
 
   private
