@@ -3,7 +3,16 @@ class CalendarController < ApplicationController
 
   # GET /calendar
   # GET /calendar.json
+  # GET /calendar.ics
   def index
+    respond_to do |format|
+      format.html do
+        @full_calendar_events = Calendar.full_calendar_events
+      end
+      format.ics do
+        send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
+      end
+    end
   end
 
 end
