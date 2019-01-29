@@ -6,6 +6,11 @@
     %td.text-center
       - if current_user.present? and tournament.players.include?(current_user.player)
         .glyphicon.glyphicon-check
+      - elsif tournament.subtype == 'external'
+        -# blup
+        .glyphicon.glyphicon-share
+        .glyphicon.glyphicon-link
+        .glyphicon.glyphicon-new-window
       - else
         .glyphicon.glyphicon-unchecked
 

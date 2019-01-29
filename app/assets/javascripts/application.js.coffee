@@ -42,5 +42,5 @@ document.addEventListener 'turbolinks:load', ->
 #     paramsHash[currentParamArray[0]] = currentParamArray[1]
 #   return paramsHash
 
-# console.log("blup = #{blup}")
-# console.log($(blup))
+# console.log("bla = #{bla}")
+# console.log($(bla))

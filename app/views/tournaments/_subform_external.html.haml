@@ -1,0 +1,18 @@
+.tournament-subform.external-tournament
+  .field.form-group
+    = f.label :date, 'Tournament start date'
+    %br= f.datetime_select :date, class: 'form-control', start_year: Time.now.year
+  .field.form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'Ultimon Stadion x' : @tournament.name)
+  .field.form-group
+    = f.label :external_registration_link
+    = f.text_field :external_registration_link, class: 'form-control'
+  - if @tournament.new_record?
+    .field.form-group.hide
+      = f.label :active
+      = f.check_box :active, checked: true, style: 'margin-left: 5px;'
+  - else
+    .field.form-group
+      = f.label :active
+      = f.check_box :active, style: 'margin-left: 5px;'

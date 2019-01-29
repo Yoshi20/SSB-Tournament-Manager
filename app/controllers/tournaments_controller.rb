@@ -334,10 +334,11 @@ class TournamentsController < ApplicationController
     end
 
     def check_registration_deadline_is_less_than_date(tp)
+      return true if tp['subtype'] == 'external'
       date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
       registration_deadline = Time.new(tp['registration_deadline(1i)'], tp['registration_deadline(2i)'], tp['registration_deadline(3i)'],  tp['registration_deadline(4i)'],  tp['registration_deadline(5i)'])
       if registration_deadline >= date
-        @tournament.errors.add(:registration_deadline, "must be less or equal than the tournament start date")
+        @tournament.errors.add(:registration_deadline, "must be less than the tournament start date")
         return false
       else
         return true
@@ -346,7 +347,10 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :date, :registration_deadline, :location, :description, :registration_fee, :total_seats, :host_username, :setup, :started, :finished, :active, :created_at, :updated_at)
+      params.require(:tournament).permit(:name, :date, :registration_deadline,
+        :location, :description, :registration_fee, :total_seats,
+        :host_username, :setup, :started, :finished, :active, :created_at,
+        :updated_at, :subtype, :city, :end_date, :external_registration_link)
     end
 
     def set_challonge_username_and_api_key

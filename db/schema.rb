@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_221900) do
+ActiveRecord::Schema.define(version: 2019_01_29_184400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,10 @@ ActiveRecord::Schema.define(version: 2019_01_23_221900) do
     t.datetime "registration_deadline"
     t.string "host_username"
     t.string "waiting_list", default: [], array: true
+    t.string "subtype"
+    t.string "city"
+    t.datetime "end_date"
+    t.string "external_registration_link"
   end
 
   create_table "users", force: :cascade do |t|
