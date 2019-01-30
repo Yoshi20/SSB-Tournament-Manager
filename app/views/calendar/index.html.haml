@@ -31,6 +31,10 @@
       defaultView: 'month'
       events: calendar.data('events')
       firstDay: 1
+      eventClick: (event) ->
+        if event.url and event.url[0] != '/'
+          window.open event.url, '_blank'
+          return false
 
     eventCalendar = ->
       $('#fullcalendar').fullCalendar {calendar}

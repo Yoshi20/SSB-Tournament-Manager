@@ -7,10 +7,9 @@
       - if current_user.present? and tournament.players.include?(current_user.player)
         .glyphicon.glyphicon-check
       - elsif tournament.subtype == 'external'
-        -# blup
-        .glyphicon.glyphicon-share
-        .glyphicon.glyphicon-link
         .glyphicon.glyphicon-new-window
+      - elsif tournament.registration_deadline < Time.now
+        .glyphicon.glyphicon-lock
       - else
         .glyphicon.glyphicon-unchecked
 
@@ -24,10 +23,7 @@
       = tournament.name
 
     %td.hidden-xs
-      = truncate(tournament.location, length: 16)
-
-    -# %td.hidden-md.hidden-sm.hidden-xs
-    -#   = truncate(tournament.description, length: 50)
+      = truncate(tournament.location, length: 16) || tournament.city || '-'
 
     %td.text-center.hidden-xs
       - if tournament.registration_fee.present?
@@ -36,12 +32,19 @@
         - else
           = tournament.registration_fee.to_i
         = 'CHF'
+      - else
+        = '-'
 
     %td.text-center
-      = "#{tournament.players.count} / #{tournament.total_seats}"
+      - if tournament.total_seats.nil?
+        = '-'
+      - else
+        = "#{tournament.players.count} / #{tournament.total_seats}"
 
     %td.text-center.hidden-xs
-      - if tournament.started?
+      - if tournament.subtype == 'external'
+        .glyphicon.glyphicon-question-sign
+      - elsif tournament.started?
         .glyphicon.glyphicon-check
       - else
         .glyphicon.glyphicon-unchecked
@@ -52,3 +55,6 @@
           %span.glyphicon.glyphicon-pencil
         = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
           %span.glyphicon.glyphicon-trash
+
+    %td.hide
+      = tournament.external_registration_link # used for some js-magic

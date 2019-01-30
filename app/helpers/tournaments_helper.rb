@@ -5,6 +5,7 @@ module TournamentsHelper
   end
 
   def max_needed_game_stations_per_tournament(seats)
+    if seats.nil? then return 0 end
     needed_game_stations = seats/4
     if needed_game_stations == 0 then needed_game_stations = 1 end
     return needed_game_stations

@@ -31,16 +31,47 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     @tournament.ranking_string = ''
-    respond_to do |format|
-      if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
-        Player.all.each do |p|
-          TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+    # handle the different subtypes
+    if @tournament.subtype.nil? or @tournament.subtype == 'internal'
+      respond_to do |format|
+        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+          Player.all.each do |p|
+            TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+          end
+          format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
+          format.json { render :show, status: :created, location: @tournament }
+        else
+          format.html { render :new }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
-        format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
-        format.json { render :show, status: :created, location: @tournament }
-      else
-        format.html { render :new }
-        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+      end
+    elsif @tournament.subtype == 'external'
+      respond_to do |format|
+        if @tournament.save
+          Player.all.each do |p|
+            TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
+          end
+          format.html { redirect_to tournaments_path, notice: 'External tournament was successfully created.' }
+          format.json { render :show, status: :created, location: @tournament }
+        else
+          format.html { render :new }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
+      end
+    elsif @tournament.subtype == 'weekly'
+      @tournament.name = generate_weekly_name(tournament_params)
+      #blup: TODO: create multiple tournaments with the help of end_date
+      respond_to do |format|
+        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+          Player.all.each do |p|
+            TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+          end
+          format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
+          format.json { render :show, status: :created, location: @tournament }
+        else
+          format.html { render :new }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -49,13 +80,39 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1.json
   def update
     # update tournament
-    respond_to do |format|
-      if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
-        format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tournament }
-      else
-        format.html { render :edit }
-        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+    if @tournament.subtype.nil? or @tournament.subtype == 'internal'
+      respond_to do |format|
+        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+          format.json { render :show, status: :ok, location: @tournament }
+        else
+          format.html { render :edit }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
+      end
+    elsif @tournament.subtype == 'external'
+      respond_to do |format|
+        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+          format.html { redirect_to tournaments_path, notice: 'External tournament was successfully updated.' }
+          format.json { render :show, status: :ok, location: @tournament }
+        else
+          format.html { render :edit }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
+      end
+    elsif @tournament.subtype == 'weekly'
+      tp = tournament_params
+      if tp[:city] != @tournament.city
+        tp[:name] = generate_weekly_name(tp)
+      end
+      respond_to do |format|
+        if check_registration_deadline_is_less_than_date(tp) && @tournament.update(tp)
+          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+          format.json { render :show, status: :ok, location: @tournament }
+        else
+          format.html { render :edit }
+          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -343,6 +400,11 @@ class TournamentsController < ApplicationController
       else
         return true
       end
+    end
+
+    def generate_weekly_name(tp)
+      date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
+      "SSBU Weekly #{tp[:city]} KW#{Date.parse(date.to_s).cweek} #{date.year}"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

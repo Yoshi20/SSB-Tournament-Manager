@@ -2,7 +2,21 @@
 
 .row.form
   .col-md-8
-    = render 'form'
+
+    %ul#pills-tab.nav.nav-pills.mb-3{:role => "tablist", style: 'background-color: #222222;'}
+      %li.nav-item
+        %a#pills-internal-tab.nav-link{"aria-controls" => "pills-internal", "aria-selected" => "true", "data-toggle" => "pill", :href => "#pills-internal", :role => "tab"} Internal
+      %li.nav-item
+        %a#pills-external-tab.nav-link{"aria-controls" => "pills-external", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-external", :role => "tab"} External
+      %li.nav-item
+        %a#pills-weekly-tab.nav-link{"aria-controls" => "pills-weekly", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-weekly", :role => "tab"} Weekly
+    #pills-tabContent.tab-content
+      #pills-internal.tab-pane.fade{"aria-labelledby" => "pills-internal-tab", :role => "tabpanel"}
+        = render 'internal-form'
+      #pills-external.tab-pane.fade{"aria-labelledby" => "pills-external-tab", :role => "tabpanel"}
+        = render 'external-form'
+      #pills-weekly.tab-pane.fade{"aria-labelledby" => "pills-weekly-tab", :role => "tabpanel"}
+        = render 'weekly-form'
 
   .col-md-4
     %strong

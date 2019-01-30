@@ -23,12 +23,18 @@ document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'td', (e) ->
      unless ($(this).hasClass('actions'))
-      id = +$(this).closest("tr").find("td").html()
+      id = +$(this).closest("tr").find("td").html() # the first td must containt the id
       str = this.closest("tbody").className
       str = str.substring(10) # filter the "with-show"
       component = str.substring(0, str.indexOf('-'))
       unless component == 'user'
-        window.location.href = "/#{component}s/#{id}"
+        url = "/#{component}s/#{id}"
+        if component == 'tournament'
+          external_url = $(this).closest("tr").find("td:last-child").html()
+          if external_url.length > 2
+            window.open(external_url, '_blank');
+            return
+        window.location.href = url
 
   # change mouse icon
   $('tbody.with-show').css('cursor', 'pointer')

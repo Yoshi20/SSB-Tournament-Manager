@@ -6,4 +6,8 @@ class Tournament < ApplicationRecord
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 10
 
+  def canceled?
+    !self.started and self.finished
+  end
+
 end

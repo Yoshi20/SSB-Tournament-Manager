@@ -2,7 +2,12 @@
 
 .row.form
   .col-md-8
-    = render 'form', tournament: @tournament
+    - if @tournament.subtype.nil? or @tournament.subtype == 'internal'
+      = render 'internal-form', tournament: @tournament
+    - elsif @tournament.subtype == 'external'
+      = render 'external-form', tournament: @tournament
+    - elsif @tournament.subtype == 'weekly'
+      = render 'weekly-form', tournament: @tournament
 
   .col-md-4
     %strong

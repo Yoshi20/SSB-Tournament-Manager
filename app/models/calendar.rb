@@ -19,9 +19,22 @@ class Calendar
         allDay:    false,
         editable:  false,
         className: 'calendar-tournament',
-        color:     tournament.finished ? 'lightsalmon':'#61bf9b',
-        url:       "/tournaments/#{tournament.id}",
+        color:     get_event_color(tournament),
+        url:       tournament.external_registration_link || "/tournaments/#{tournament.id}",
       }
+    end
+
+    def get_event_color(tournament)
+      if tournament.canceled?
+        'lightsalmon'
+      elsif tournament.external_registration_link.present?
+        'cornflowerblue'
+      else
+        '#61bf9b'
+      end
+      # 'darkcyan' #dunkles blau/grün
+      # 'darkgray'
+      # 'darkorchid'
     end
 
     def ical_events

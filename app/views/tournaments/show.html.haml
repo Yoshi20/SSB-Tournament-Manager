@@ -6,19 +6,27 @@
   .col-md-5
     %p
       %strong Registration deadline:
-      = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
+      - if @tournament.registration_deadline.nil?
+        = '-'
+      - else
+        = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
 
     %p
       %strong Tournament start date:
       = @tournament.date.to_s(:custom_datetime_with_weekday)
 
-    %p
-      %strong= link_to 'Location:', "/tournaments/location/#{@tournament.id}"
-      %br
-      - @tournament.location.split(',').each do |str|
-        &emsp;
-        = str.strip
+    - if @tournament.location.present?
+      %p
+        %strong= link_to 'Location:', "/tournaments/location/#{@tournament.id}"
         %br
+        - @tournament.location.split(',').each do |str|
+          &emsp;
+          = str.strip
+          %br
+    - elsif @tournament.city.present?
+      %p
+        %strong City:
+        = @tournament.city
 
     %p
       %strong Set up:
@@ -79,13 +87,13 @@
   .row.join-tournament
     %br
     .col-md-4
-      - if Time.now > @tournament.registration_deadline
+      - if @tournament.registration_deadline.present? and Time.now > @tournament.registration_deadline
         %p= button_to "Registration deadline exceeded", nil, class:'btn btn-primary', id:'join-tournament-button', disabled:true
       -else
         - if current_user.present?
           - if @tournament.players.include?(current_user.player)
             %p= button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}", method:'post', class:'btn btn-warning', id:'leave-tournament-button', data: { confirm: "Are you sure? You may not be able to join the tournament again if there's a player in the waiting list."}
-          - elsif @tournament.players.count >= @tournament.total_seats
+          - elsif @tournament.total_seats.present? and @tournament.players.count >= @tournament.total_seats
             - if @tournament.waiting_list.include?(current_user.player.gamer_tag)
               %p= button_to ">>> Leave the waiting list <<<", "/tournaments/remove_player/#{@tournament.id}", params:{waiting_list: true}, method:'post', class:'btn btn-warning', id:'leave-waiting-list-button', data: { confirm: "Are you sure? You may loose your position in the waiting list if there's another player in it."}
             - else

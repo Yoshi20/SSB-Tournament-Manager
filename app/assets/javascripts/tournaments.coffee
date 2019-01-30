@@ -4,11 +4,6 @@
 
 document.addEventListener 'turbolinks:load', ->
 
-  # show the correct subform in tournament#new or tournament#edit
-  showOrHideSubform()
-  $('input[type="radio"]').click ->
-    showOrHideSubform()
-
   # hide the paid fee submit button in tournament#show
   $('.paid-fee-button').hide()
 
@@ -29,14 +24,3 @@ document.addEventListener 'turbolinks:load', ->
       success: (response) ->
         # console.log(response)
   )
-
-showOrHideSubform = ->
-  selected_index = -1
-  $('.tournament-subtype').find('input[type="radio"]').each (i) ->
-    if $(this).is(':checked')
-      selected_index = i
-  $('.tournament-subform').each (i) ->
-    if i == selected_index
-      $(this).show() #blup: should be an ajax request?
-    else
-      $(this).hide() #blup: should be .detach()
