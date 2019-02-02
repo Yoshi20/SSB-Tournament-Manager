@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @tournament.name %></h1>
+    <p>
+      Hi <%= @user.username %>.
+    </p>
+    <p>
+      A new external tournament was added to the SSB Tournament Manager.
+    </p>
+    <p>
+      <strong>Name:</strong> <%= @tournament.name %><br>
+      <strong>Date:</strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+    </p>
+    <p>
+      To check out this tournament, just follow <%= link_to "this link", @url %>.
+    </p>
+    <p>We wish you good luck during your matches!</p>
+  </body>
+</html>

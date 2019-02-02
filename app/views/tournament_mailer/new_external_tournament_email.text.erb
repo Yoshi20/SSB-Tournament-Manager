@@ -1,0 +1,14 @@
+<%= @tournament.name %>
+===============================================
+
+Hi <%= @user.username %>.
+
+A new external tournament was added to the SSB Tournament Manager.
+
+Name: <%= @tournament.name %>
+Date: <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+
+To check out this tournament, just follow the link:
+  <%= @url %>
+
+We wish you good luck during your matches!

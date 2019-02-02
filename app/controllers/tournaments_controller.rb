@@ -6,7 +6,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = helpers.active_tournaments_2019.where('finished is not true AND date >= ?', Time.now).order(date: :asc).includes(:players)
+    @tournaments = helpers.active_tournaments_2019.where('finished is not true AND date >= ?', Time.now).order(date: :asc).includes(:players).limit(20)
     @past_tournaments = helpers.active_tournaments_2019.where('finished is true OR date < ?', Time.now).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
   end
 
@@ -38,7 +38,7 @@ class TournamentsController < ApplicationController
           Player.all.each do |p|
             TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
           end
-          format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
+          format.html { redirect_to @tournament, notice: 'Internal tournament was successfully created.' }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -59,14 +59,28 @@ class TournamentsController < ApplicationController
         end
       end
     elsif @tournament.subtype == 'weekly'
-      @tournament.name = generate_weekly_name(tournament_params)
-      #blup: TODO: create multiple tournaments with the help of end_date
+      @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           Player.all.each do |p|
-            TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+            TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
           end
-          format.html { redirect_to @tournament, notice: 'Tournament was successfully created.' }
+          # saving the first weekly succeeded -> create x more until end_date is reached
+          last_weekly = @tournament
+          while last_weekly.date + 7.days <= @tournament.end_date do
+            next_weekly = last_weekly.dup()
+            next_weekly.date = last_weekly.date + 7.days
+            next_weekly.registration_deadline = last_weekly.registration_deadline + 7.days
+            next_weekly.name = generate_weekly_name(next_weekly.city, next_weekly.date)
+            if next_weekly.save
+              last_weekly = next_weekly
+            else
+              format.html { render :new }
+              format.json { render json: next_weekly.errors, status: :unprocessable_entity }
+              return
+            end
+          end
+          format.html { redirect_to @tournament, notice: 'One or more weekly were successfully created.' }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -108,7 +122,8 @@ class TournamentsController < ApplicationController
     elsif @tournament.subtype == 'weekly'
       tp = tournament_params
       if tp[:city] != @tournament.city
-        tp[:name] = generate_weekly_name(tp)
+        date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
+        tp[:name] = generate_weekly_name(tp[:city], date)
       end
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tp) && @tournament.update(tp)
@@ -412,9 +427,8 @@ class TournamentsController < ApplicationController
       end
     end
 
-    def generate_weekly_name(tp)
-      date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
-      "SSBU Weekly #{tp[:city]} KW#{Date.parse(date.to_s).cweek} #{date.year}"
+    def generate_weekly_name(city, date)
+      "SSBU Weekly #{city} KW#{Date.parse(date.to_s).cweek} #{date.year}"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

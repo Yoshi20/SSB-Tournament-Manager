@@ -25,7 +25,7 @@ class Calendar
     end
 
     def get_event_color(tournament)
-      if tournament.canceled? or tournament.date < Time.now
+      if tournament.canceled? or tournament.registration_deadline < Time.now
         'lightsalmon'
       elsif tournament.external_registration_link.present?
         'cornflowerblue'
