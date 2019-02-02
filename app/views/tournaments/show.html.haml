@@ -56,7 +56,7 @@
 
     %p
       %strong Host:
-      = @tournament.host_username
+      = link_to @host.gamer_tag, @host
 
     - if current_user.present? and current_user.admin?
       %p

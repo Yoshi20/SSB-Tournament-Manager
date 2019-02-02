@@ -15,6 +15,7 @@ class TournamentsController < ApplicationController
   def show
     @game_stations_count = get_game_stations_count(@tournament)
     @game_stations_needed = @tournament.total_needed_game_stations - @game_stations_count if @tournament.total_needed_game_stations.present?
+    @host = User.find_by(username: @tournament.host_username).player
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
   end
 
