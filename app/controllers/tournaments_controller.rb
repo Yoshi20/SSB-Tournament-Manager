@@ -73,6 +73,11 @@ class TournamentsController < ApplicationController
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
+    else
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -113,6 +118,11 @@ class TournamentsController < ApplicationController
           format.html { render :edit }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @tournament.errors, status: :unprocessable_entity }
       end
     end
   end

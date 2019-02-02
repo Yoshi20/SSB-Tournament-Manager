@@ -25,16 +25,15 @@ class Calendar
     end
 
     def get_event_color(tournament)
-      if tournament.canceled?
+      if tournament.canceled? or tournament.date < Time.now
         'lightsalmon'
       elsif tournament.external_registration_link.present?
         'cornflowerblue'
+      # elsif current_user.present? and tournament.players.include?(current_user.player)
+      #   '#43a17d'
       else
         '#61bf9b'
       end
-      # 'darkcyan' #dunkles blau/grün
-      # 'darkgray'
-      # 'darkorchid'
     end
 
     def ical_events

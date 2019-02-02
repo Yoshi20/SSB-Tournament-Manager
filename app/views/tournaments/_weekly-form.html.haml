@@ -61,4 +61,5 @@
           = f.check_box :active, style: 'margin-left: 5px;'
 
     .actions.form-group
+      = hidden_field_tag(:subtype, 'weekly')
       = f.submit 'Create Weekly Tournament(s)', class:'btn btn-primary form-control'
