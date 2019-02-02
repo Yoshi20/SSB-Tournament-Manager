@@ -3,14 +3,14 @@ require 'icalendar/tzinfo'
 class Calendar
   class << self
 
-    def full_calendar_events
+    def full_calendar_events(current_user)
       tournaments = Tournament.where('date > ?', 2.weeks.ago)
       tournaments.map do |tournament|
-        full_calendar_event(tournament)
+        full_calendar_event(tournament, current_user)
       end.to_json
     end
 
-    def full_calendar_event(tournament)
+    def full_calendar_event(tournament, current_user)
       # TODO change date to from and to? do we have whole-day events?
       {
         title:     tournament.name.to_s,
@@ -19,18 +19,22 @@ class Calendar
         allDay:    false,
         editable:  false,
         className: 'calendar-tournament',
-        color:     get_event_color(tournament),
+        color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link || "/tournaments/#{tournament.id}",
       }
     end
 
-    def get_event_color(tournament)
+    def get_event_color(tournament, current_user)
       if tournament.canceled? or (tournament.registration_deadline.present? and tournament.registration_deadline < Time.now)
-        'lightsalmon'
+        if current_user.present? and tournament.players.include?(current_user.player)
+          '#e77740'
+        else
+          'lightsalmon'
+        end
       elsif tournament.external_registration_link.present?
         'cornflowerblue'
-      # elsif current_user.present? and tournament.players.include?(current_user.player)
-      #   '#43a17d'
+      elsif current_user.present? and tournament.players.include?(current_user.player)
+        '#43a17d'
       else
         '#61bf9b'
       end

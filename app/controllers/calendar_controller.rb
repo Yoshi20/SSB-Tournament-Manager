@@ -7,7 +7,7 @@ class CalendarController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @full_calendar_events = Calendar.full_calendar_events
+        @full_calendar_events = Calendar.full_calendar_events(current_user)
       end
       format.ics do
         send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
