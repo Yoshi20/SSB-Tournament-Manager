@@ -14,7 +14,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1.json
   def show
     @game_stations_count = get_game_stations_count(@tournament)
-    @game_stations_needed = @tournament.total_needed_game_stations - @game_stations_count
+    @game_stations_needed = @tournament.total_needed_game_stations - @game_stations_count if @tournament.total_needed_game_stations.present?
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
   end
 

@@ -97,9 +97,16 @@
                   %td.text-center >500p
                   %td.text-center Not yet decided
 
+.row.host-infos
+  .col-md-12
+    %h2= 'Tournament organiser'
+    %p
+      = 'Are you organising tournaments yourself and would like to use the SSB Tournament Manager? Just let me know'
+      = mail_to 'jascha_haldemann@hotmail.com', 'via email.', subject: 'I would like to be an administrator!', body: "Hi Yomi\n\nI'm ??? and I would like to be an administrator because:\n???"
+%br
 
 .row.discord-title
-  .col-md-12
+  .col-md-12{style: 'margin-left: -15px;'}
     = image_tag 'Discord-Logo_Wordmark-Black.svg', height: '30%', width: '30%'
     .row.discord
       .col-md-12{style: 'margin-left: 20px;'}
