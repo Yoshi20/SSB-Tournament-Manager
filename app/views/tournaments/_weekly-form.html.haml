@@ -62,4 +62,4 @@
 
     .actions.form-group
       = hidden_field_tag(:subtype, 'weekly')
-      = f.submit 'Create Weekly Tournament(s)', class:'btn btn-primary form-control'
+      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} Weekly Tournament", class:'btn btn-primary form-control'

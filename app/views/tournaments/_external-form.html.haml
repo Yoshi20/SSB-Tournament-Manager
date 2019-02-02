@@ -35,4 +35,4 @@
 
     .actions.form-group
       = hidden_field_tag(:subtype, 'external')
-      = f.submit 'Create External Tournament', class:'btn btn-primary form-control'
+      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} External Tournament", class:'btn btn-primary form-control'
