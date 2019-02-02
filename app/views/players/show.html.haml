@@ -43,8 +43,11 @@
         = "#{(@player.wins.to_f/(@player.wins+@player.losses)*100).round(2)} %"
 
     %p
-      %strong Updated at:
-      = @player.updated_at.to_s(:custom_datetime)
+      %strong Main characters:
+      - if @player.main_characters.any?
+        - @player.main_characters[0...3].each do |char|
+          - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+            = image_tag "characters/#{char}.png", height: '25px', width: '25px'
 
     %p
       %strong Created at:
@@ -95,4 +98,3 @@
           %strong= "#{player_rank}"
           %i.glyphicon.glyphicon-star
           %strong= link_to "#{t.name}", t
-          -# = "-> #{t.date.to_s(:custom_datetime_with_weekday)}"

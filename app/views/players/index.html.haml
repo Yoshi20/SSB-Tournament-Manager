@@ -11,11 +11,12 @@
           %th.text-center Rank
           %th.text-center Points
           %th Gamer tag
+          %th.text-center Mains
           %th.text-center.hidden-xs Participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
           %th.text-center Win/Loss ratio
-          %th Comment
+          %th.hidden-xs Comment
           %th.text-center Admin
 
       %tbody.with-show.player-list-body
@@ -28,6 +29,16 @@
               %td.text-center= player.points
               - last_player_points = player.points
               %td= player.gamer_tag
+              %td.text-center
+                - if player.main_characters.any?
+                  .hidden-xs
+                    - player.main_characters[0...3].each do |char|
+                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                  .visible-xs
+                    - player.main_characters[0...1].each do |char|
+                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
               %td.text-center.hidden-xs= player.participations #"#{player.participations} / #{@started_and_finished_tournaments_count_2019}"
               %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
@@ -36,7 +47,7 @@
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
-              %td= truncate(player.comment, length: 60)
+              %td.hidden-xs= truncate(player.comment, length: 60)
               %td.text-center
                 - if player.user.admin?
                   .glyphicon.glyphicon-ok

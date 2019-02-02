@@ -56,7 +56,7 @@
 
     %p
       %strong Host:
-      = link_to @host.gamer_tag, @host
+      = link_to @host.gamer_tag, @host if @host.present?
 
     - if current_user.present? and current_user.admin?
       %p
@@ -148,8 +148,13 @@
         %h2 Registered players
         .row.show-registered-players
           .col-md-12
-            - @tournament.players.each_with_index do |p, i|
-              = "##{i+1}"
+            - @tournament.players.each do |p|
+              - if p.main_characters.any?
+                - p.main_characters[0...1].each do |char|
+                  - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                    = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              - else
+                .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
               %strong= link_to "#{p.gamer_tag}", p
               - player_registration = p.registrations.where(tournament_id: @tournament.id).first
               - gs = player_registration.game_stations

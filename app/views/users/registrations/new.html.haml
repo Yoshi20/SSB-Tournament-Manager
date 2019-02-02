@@ -38,6 +38,12 @@
               = radio_button_tag :tournament_experience, i, false
               = tournament_experience_defines[i]
           .field.form-group
+            = label_tag :main_characters
+            %em
+              (you can add up to three by separating them with a comma)
+            %br
+            = text_field_tag :main_characters, nil, class: 'form-control'
+          .field.form-group
             = label_tag :comment, "Comment"
             %em
               (for what ever you want to tell the world)

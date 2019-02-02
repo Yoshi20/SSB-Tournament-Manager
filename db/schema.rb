@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_154000) do
+ActiveRecord::Schema.define(version: 2019_02_02_184700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_154000) do
     t.integer "best_rank"
     t.integer "wins"
     t.integer "losses"
+    t.string "main_characters", default: [], array: true
   end
 
   create_table "registrations", force: :cascade do |t|

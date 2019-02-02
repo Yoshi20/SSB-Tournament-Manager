@@ -45,6 +45,11 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
+        @player.main_characters.clear
+        player_params[:main_characters].split(',').each do |char|
+          @player.main_characters << char.strip.downcase.gsub(' ', '_')
+        end
+        @player.save
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
@@ -62,7 +67,7 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:gamer_tag, :points, :participations, :self_assessment, :tournament_experience, :comment, :best_rank, :wins, :losses, :created_at, :updated_at)
+      params.require(:player).permit(:gamer_tag, :points, :participations, :self_assessment, :tournament_experience, :comment, :best_rank, :wins, :losses, :main_characters, :created_at, :updated_at)
     end
 
 end

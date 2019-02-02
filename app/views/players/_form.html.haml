@@ -42,6 +42,17 @@
           = f.radio_button :tournament_experience, i, checked: (@player.tournament_experience == i ? true : false)
           = tournament_experience_defines[i]
       .field.form-group
+        = f.label :main_characters
+        %em
+          (you can add up to three by separating them with a comma)
+        - main_characters_string = ''
+        - @player.main_characters.each_with_index do |char, i|
+          - if i == 0
+            - main_characters_string = char
+          - else
+            - main_characters_string = main_characters_string + ', ' + char
+        = f.text_field :main_characters, class: 'form-control', value: main_characters_string
+      .field.form-group
         = f.label :comment, "Comment"
         %em
           (for what ever you want to tell the world)
