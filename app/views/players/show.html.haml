@@ -5,7 +5,7 @@
 .row.show-player
   .col-md-4
     %p
-      %strong Best rank:
+      %strong Best rank ever:
       = @player.best_rank
 
     %p
@@ -67,10 +67,19 @@
   .row.title-joined-tournaments-div
     .col-md-12
       %h2 Joined tournaments
-
   .row.show-joined-tournaments
     .col-md-12
-      - @player.tournaments.each do |t|
+      - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(date: :asc).each do |t|
+        %p
+          %i.glyphicon.glyphicon-time
+          %strong= link_to "#{t.date.to_s(:custom_datetime_date)} -> #{t.name}", t
+
+  .row.title-past-joined-tournaments-div
+    .col-md-12
+      %h2 Past joined tournaments
+  .row.show-past-joined-tournaments
+    .col-md-12
+      - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |t|
         %p
           - player_rank = '?'
           - if t.ranking_string.to_s.include?(@player.gamer_tag)
