@@ -48,11 +48,11 @@
 
     %p
       %strong Occupied seats:
-      = @tournament.players.count
+      = "#{@tournament.players.count} / #{@tournament.total_seats}"
 
     %p
-      %strong Total seats:
-      = @tournament.total_seats
+      %strong Game stations:
+      = "#{@game_stations_count} / #{@tournament.total_needed_game_stations}"
 
     %p
       %strong Host:

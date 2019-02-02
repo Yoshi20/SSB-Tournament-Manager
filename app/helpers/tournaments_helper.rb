@@ -4,11 +4,11 @@ module TournamentsHelper
     Tournament.where('active = ? AND date > ? AND date < ?', true, Time.local(2019,1,1), Time.local(2019,12,31,23,59,59))
   end
 
-  def max_needed_game_stations_per_tournament(seats)
+  def min_needed_game_stations_per_tournament(seats)
     if seats.nil? then return 0 end
-    needed_game_stations = seats/4
-    if needed_game_stations == 0 then needed_game_stations = 1 end
-    return needed_game_stations
+    min_needed_game_stations = seats/4
+    if min_needed_game_stations == 0 then min_needed_game_stations = 1 end
+    return min_needed_game_stations
   end
 
   def points_repartition_table(rank)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_184400) do
+ActiveRecord::Schema.define(version: 2019_02_02_154000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_01_29_184400) do
     t.string "city"
     t.datetime "end_date"
     t.string "external_registration_link"
+    t.integer "total_needed_game_stations"
   end
 
   create_table "users", force: :cascade do |t|

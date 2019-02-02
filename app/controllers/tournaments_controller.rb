@@ -13,7 +13,8 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
-    @game_stations_needed = helpers.max_needed_game_stations_per_tournament(@tournament.total_seats) - get_game_stations_count(@tournament)
+    @game_stations_count = get_game_stations_count(@tournament)
+    @game_stations_needed = @tournament.total_needed_game_stations - @game_stations_count
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
   end
 
@@ -260,11 +261,11 @@ class TournamentsController < ApplicationController
     if @tournament.setup or @tournament.started or @tournament.finished
       redirect_to @tournament, alert: 'Tournament is already set up, started or finished.'
     else
-      needed_game_stations_count = helpers.max_needed_game_stations_per_tournament(@tournament.players.count)
+      min_needed_game_stations_count = helpers.min_needed_game_stations_per_tournament(@tournament.players.count)
       current_game_stations_count = get_game_stations_count(@tournament)
-      if current_game_stations_count < needed_game_stations_count
-        delta_game_stations = needed_game_stations_count - current_game_stations_count
-        redirect_to @tournament, alert: "#{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
+      if current_game_stations_count < min_needed_game_stations_count
+        delta_game_stations = min_needed_game_stations_count - current_game_stations_count
+        redirect_to @tournament, alert: "At least #{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
       else
         if set_challonge_username_and_api_key()
 
@@ -436,7 +437,8 @@ class TournamentsController < ApplicationController
       params.require(:tournament).permit(:name, :date, :registration_deadline,
         :location, :description, :registration_fee, :total_seats,
         :host_username, :setup, :started, :finished, :active, :created_at,
-        :updated_at, :subtype, :city, :end_date, :external_registration_link)
+        :updated_at, :subtype, :city, :end_date, :external_registration_link,
+        :total_needed_game_stations)
     end
 
     def set_challonge_username_and_api_key
