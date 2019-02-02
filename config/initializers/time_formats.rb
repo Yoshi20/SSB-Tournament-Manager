@@ -1,4 +1,6 @@
 Time::DATE_FORMATS[:custom_datetime] = "%d.%m.%y (%H:%M)"
+Time::DATE_FORMATS[:custom_datetime_date] = "%d.%m.%y"
 Time::DATE_FORMATS[:custom_datetime_weekday] = "%A"
-Time::DATE_FORMATS[:custom_datetime_with_weekday] = "%A, %B %d at %I:%M %p"
-Time::DATE_FORMATS[:custom_datetime_date_and_time] = "%B %d at %I:%M %p"
+Time::DATE_FORMATS[:custom_datetime_with_weekday] = "%A, %d %B at %H:%M"
+Time::DATE_FORMATS[:custom_datetime_date_and_time] = "%d %B at %H:%M"
+Time::DATE_FORMATS[:custom_datetime_weekday_date_and_year] = "%A, %d %B %Y"
