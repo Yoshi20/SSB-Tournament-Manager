@@ -40,10 +40,10 @@
           %u= admin.full_name || '?????? ??????'
           %br
         %strong= 'Gamer tag:'
-        = admin.player.gamer_tag
+        = link_to admin.player.gamer_tag, admin.player
         %br
         %strong= 'E-Mail:'
-        = admin.email
+        = mail_to admin.email, admin.email, body: "Hi #{admin.username}\n\n..."
         %br
         - if admin.mobile_number.present?
           %strong= 'Mobile:'
