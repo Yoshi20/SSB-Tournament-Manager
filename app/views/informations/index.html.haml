@@ -1,13 +1,19 @@
 .row.title-div
   .col-md-12
     %h1= 'Informations'
+    %p Here you'll find some general informations concerning the SSB Tournament Manager.
 
 .row.ranking-system-and-seeding-and-prices
   .col-md-6
     .row.ranking-system-title
       .col-md-12
-        %h2= 'Ranking system'
-        %p= 'Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives.'
+        %h2
+          = 'Ranking system'
+          %em{style: 'font-size: 15px; color: red;'}
+            = '(work in progress)'
+        %p
+          = 'Regardless of the number of participants per tournament,'
+          = 'the players rank at the end of a tournament decides the amount of points he or she receives.'
         .row.ranking-system
           .col-md-3
           .col-md-4
@@ -54,7 +60,10 @@
   .col-md-6
     .row.seeding-title
       .col-md-12
-        %h2= 'Match seeding'
+        %h2
+          = 'Match seeding'
+          %em{style: 'font-size: 15px; color: red;'}
+            = '(work in progress)'
         %p
           = 'The final seeding is done by the Challonge tournament manager.'
           %br
@@ -64,7 +73,10 @@
 
     .row.prices-title
       .col-md-12
-        %h2= 'Prices for the winners'
+        %h2
+          = 'Prices for the winners'
+          %em{style: 'font-size: 15px; color: red;'}
+            = '(work in progress)'
         %p
           = 'The top 3 ranks must be unambiguous. That means, if there are two or more player with the same amount of points, they have to play remachtes (e.g. best of 5 games) until the three winners are clear. Each player will only receive one price.'
         .row.prices
@@ -103,8 +115,8 @@
     %p
       = 'Are you organising tournaments yourself and would like to use the SSB Tournament Manager? Just let me know'
       = mail_to 'jascha_haldemann@hotmail.com', 'via email.', subject: 'I would like to be an administrator!', body: "Hi Yomi\n\nI'm ??? and I would like to be an administrator because:\n???"
-%br
 
+%br
 .row.discord-title
   .col-md-12{style: 'margin-left: -15px;'}
     = image_tag 'Discord-Logo_Wordmark-Black.svg', height: '30%', width: '30%'
