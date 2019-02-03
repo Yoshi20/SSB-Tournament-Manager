@@ -23,7 +23,10 @@
       = tournament.name
 
     %td.hidden-xs
-      = truncate(tournament.location, length: 16) || tournament.city || '-'
+      - if tournament.location.present?
+        = tournament.location.split(',')[0]
+      - else
+        = tournament.city || '-'
 
     %td.text-center.hidden-xs
       - if tournament.registration_fee.present?
