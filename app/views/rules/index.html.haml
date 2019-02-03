@@ -17,7 +17,7 @@
           %li= 'Thieving will not be tolerated'
 
 .row.tournament-rules-title
-  .col-md-12
+  .col-md-7
     %h2= 'SSBU tournament rules'
     .row.tournament-rules
       .col-md-12
@@ -28,21 +28,26 @@
           %li= 'If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you\'re out of the tournament)'
           %li= 'Unused tournament game stations can be used for friendly matches as soon as a host allowed it'
 
-.row.match-rules-title
-  .col-md-12
-    %h2= 'SSBU match rules (Ruleset)'
-    .row.match-rules
+    .row.match-rules-title
       .col-md-12
-        %p
-          = 'For now (early 2019) the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found'
-          %strong= link_to 'here', 'https://drive.google.com/file/d/1-B6jUl0o8EDrASswJ1ReYK-3vT_7Kb54/view', target: 'blank'
-          = '.'
-        %p
-          = 'Short overview:'
-        %ul
-          %li= '1 vs. 1'
-          %li= 'Best of 3 (Final matches: Best of 5)'
-          %li= '3 stocks per game'
-          %li= '7 min per game'
-          %li= 'No items'
-          %li= 'The winner of a match is obligated to report the results to an administrator'
+        %h2= 'SSBU match rules (Ruleset)'
+        .row.match-rules
+          .col-md-12
+            %p
+              = 'For now (early 2019) the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found'
+              %strong= link_to 'here', 'https://drive.google.com/file/d/1-B6jUl0o8EDrASswJ1ReYK-3vT_7Kb54/view', target: 'blank'
+              = '.'
+            %p
+              = 'Short overview:'
+            %ul
+              %li= '1 vs. 1'
+              %li= 'Best of 3 (Final matches: Best of 5)'
+              %li= '3 stocks per game'
+              %li= '7 min per game'
+              %li= 'No items'
+              %li= 'Pause: Off'
+              %li= 'Stage hazards: Off'
+              %li= 'The winner of a match is obligated to report the results to an administrator'
+
+  .col-md-5.mirakuru_stages.text-center
+    = image_tag 'mirakuru_stages.png', height: '100%', width: '100%'
