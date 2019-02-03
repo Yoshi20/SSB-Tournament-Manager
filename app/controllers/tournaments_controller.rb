@@ -102,7 +102,7 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1.json
   def update
     # update tournament
-    if @tournament.subtype.nil? or @tournament.subtype == 'internal'
+    if @tournament.subtype.nil? or @tournament.subtype == 'internal' or  @tournament.subtype == 'weekly'
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
           format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
@@ -116,21 +116,6 @@ class TournamentsController < ApplicationController
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
           format.html { redirect_to tournaments_path, notice: 'External tournament was successfully updated.' }
-          format.json { render :show, status: :ok, location: @tournament }
-        else
-          format.html { render :edit }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
-        end
-      end
-    elsif @tournament.subtype == 'weekly'
-      tp = tournament_params
-      if tp[:city] != @tournament.city
-        date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
-        tp[:name] = generate_weekly_name(tp[:city], date)
-      end
-      respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tp) && @tournament.update(tp)
-          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
           format.json { render :show, status: :ok, location: @tournament }
         else
           format.html { render :edit }
