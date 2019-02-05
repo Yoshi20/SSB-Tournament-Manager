@@ -151,6 +151,7 @@
         %h2 Registered players
         .row.show-registered-players
           .col-md-12
+            - mail_string = ''
             - @tournament.players.each do |p|
               - if p.main_characters.any?
                 - p.main_characters[0...1].each do |char|
@@ -174,6 +175,9 @@
                       = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button'
                 = ')'
               %p
+              - mail_string = mail_string + p.user.email + ', '
+            - if current_user.present? and current_user.admin?
+              = mail_to mail_string, 'Send all registerd players an email', subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
 
   .col-md-3
     - if @tournament.waiting_list.length > 0
