@@ -156,6 +156,8 @@
                 - p.main_characters[0...1].each do |char|
                   - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                     = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                  - else
+                    .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
               - else
                 .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
               %strong= link_to "#{p.gamer_tag}", p
