@@ -63,7 +63,7 @@
 
     - if @tournament.total_needed_game_stations.present?
       %p
-        %strong Required game stations:
+        %strong Game stations:
         - if @tournament.total_needed_game_stations.to_i > 0
           = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
         - else
@@ -192,7 +192,7 @@
                 = ')'
               %p
               - mail_string = mail_string + p.user.email + ', '
-            - if current_user.present? and current_user.admin?
+            - if @tournament.players.any? and current_user.present? and current_user.admin?
               = mail_to mail_string, 'Send all registerd players an email', subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
 
   .col-md-3
