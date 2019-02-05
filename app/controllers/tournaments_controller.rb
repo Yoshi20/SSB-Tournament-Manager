@@ -13,8 +13,13 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
-    @game_stations_count = get_game_stations_count(@tournament)
-    @game_stations_needed = @tournament.total_needed_game_stations - @game_stations_count if @tournament.total_needed_game_stations.present?
+    players_per_game_station = (@tournament.total_seats.to_f/@tournament.total_needed_game_stations).ceil() if @tournament.total_needed_game_stations.to_i != 0
+    @min_needed_game_stations = (@tournament.min_needed_registrations.to_f/players_per_game_station).ceil() if players_per_game_station.to_i != 0
+    if @tournament.players.count < @tournament.min_needed_registrations.to_i
+      @currently_needed_game_stations = @min_needed_game_stations - get_game_stations_count(@tournament) if @min_needed_game_stations.present?
+    else
+      @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - get_game_stations_count(@tournament) if players_per_game_station.to_i != 0
+    end
     host_user = User.find_by(username: @tournament.host_username)
     @host_player = host_user.player if host_user.present? and @tournament.host_username.present?
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
@@ -425,7 +430,7 @@ class TournamentsController < ApplicationController
         :location, :description, :registration_fee, :total_seats,
         :host_username, :setup, :started, :finished, :active, :created_at,
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
-        :total_needed_game_stations)
+        :total_needed_game_stations, :min_needed_registrations)
     end
 
     def set_challonge_username_and_api_key

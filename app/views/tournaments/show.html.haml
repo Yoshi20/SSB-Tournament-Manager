@@ -43,23 +43,39 @@
   .col-md-3
     %p
       %strong Registration fee:
-      = @tournament.registration_fee
+      - if @tournament.registration_fee.to_i%1 != 0  # check if it's a float
+        = @tournament.registration_fee
+      - else
+        = @tournament.registration_fee.to_i
       = 'CHF'
 
     %p
       %strong Occupied seats:
-      = "#{@tournament.players.count} / #{@tournament.total_seats}"
-
-    %p
-      %strong Game stations:
-      = "#{@game_stations_count} / #{@tournament.total_needed_game_stations}"
-
-    %p
-      %strong Host:
-      - if @host_player.present?
-        = link_to @host_player.gamer_tag, @host_player
+      - if @tournament.total_seats.present?
+        = "#{@tournament.players.count} / #{@tournament.total_seats}"
       - else
-        = @tournament.host_username
+        = @tournament.players.count
+
+    - if @tournament.min_needed_registrations.present?
+      %p
+        %strong Min. required registrations:
+        = @tournament.min_needed_registrations.to_i
+
+    - if @tournament.total_needed_game_stations.present?
+      %p
+        %strong Required game stations:
+        - if @tournament.total_needed_game_stations.to_i > 0
+          = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
+        - else
+          = @tournament.total_needed_game_stations.to_i
+
+    - if @tournament.host_username.present?
+      %p
+        %strong Host:
+        - if @host_player.present?
+          = link_to @host_player.gamer_tag, @host_player
+        - else
+          = @tournament.host_username
 
     - if current_user.present? and current_user.admin?
       %p
@@ -119,7 +135,7 @@
             = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
             = submit_tag 'Remove player', name:nil, class: 'form-control btn btn-default'
 
-- if current_user.present? and @tournament.players.include?(current_user.player) and @game_stations_needed > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
+- if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
   %br
   .row.game-stations-text
     .col-md-12
@@ -138,10 +154,10 @@
         .col-md-6
           = form_for @registration, role: 'form', method: :patch do |f|
             .field
-              = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @game_stations_needed
+              = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
               = f.submit 'I\'ll bring one or more game stations with me', class:'btn btn-success', id:'bring-game-stations-button', style: 'display:inline'
               %br
-              = "(max. #{@game_stations_needed} more game #{@game_stations_needed > 1 ? 'stations are' : 'station is'} needed)"
+              = "(max. #{@currently_needed_game_stations} more game #{@currently_needed_game_stations > 1 ? 'stations are' : 'station is'} needed at the moment)"
       %br
 
 .row.title-registered-players-tournament-ranking
@@ -166,7 +182,7 @@
               - gs = player_registration.game_stations
               - if !gs.nil? and gs > 0
                 = "( #{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} game #{gs > 1 ? 'stations' : 'station'} )"
-              - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee > 0
+              - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
                 = '( Registration fee paid:'
                 .inline-div{style:'display:inline-block'}
                   = form_for player_registration, role: 'form', method: :patch do |f|
