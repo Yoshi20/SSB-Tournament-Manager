@@ -168,7 +168,7 @@
         .row.show-registered-players
           .col-md-12
             - mail_string = ''
-            - @tournament.players.each do |p|
+            - @tournament.players.includes(:registrations).order('registrations.created_at').each do |p|
               - if p.main_characters.any?
                 - p.main_characters[0...1].each do |char|
                   - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
