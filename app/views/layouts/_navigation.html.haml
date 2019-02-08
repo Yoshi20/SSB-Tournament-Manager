@@ -20,18 +20,21 @@
 
   %li.dropdown.active.pull-right
     %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
-      = "Account"
+      - if user_signed_in?
+        = current_user.username
+      - else
+        = "Account"
       %span.caret
     %ul.dropdown-menu
       - if user_signed_in?
-        %p
-          = "Signed in as:"
-          %b
-            = current_user.username
-            - if current_user.admin?
-              = ' (Administrator)'
+        - if current_user.admin?
+          .text-center
+            %b
+              = '(Administrator)'
         - if current_user.player.present?
           = link_to 'Show', player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
+          = link_to 'Edit player', edit_player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
+        = link_to 'Edit user', edit_user_registration_path, class: 'account-btn form-control btn btn-primary'
         - if current_user.admin?
           = link_to 'Show all users', users_path, class: 'account-btn form-control btn btn-primary'
         -# = link_to 'Edit', edit_player_path(current_user.player), class: 'form-control btn btn-primary'

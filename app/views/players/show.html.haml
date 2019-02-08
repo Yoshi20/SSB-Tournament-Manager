@@ -55,10 +55,6 @@
 
   .col-md-4
     %strong
-      - if current_user.present? and (current_user.admin? or current_user == @player.user)
-        %p= link_to 'Edit player', edit_player_path(@player)
-        - if current_user == @player.user
-          %p= link_to 'Edit user', edit_user_registration_path
       - if current_user.present? and @player.user != current_user
         - if @player.user.admin?
           %p= mail_to @player.user.email, "Contact this administrator", body: "Hi #{@player.user.username}\n\n..."
