@@ -10,4 +10,8 @@ class Tournament < ApplicationRecord
     !self.started and self.finished
   end
 
+  def is_past?
+    self.date < Time.now
+  end
+
 end
