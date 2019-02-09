@@ -342,6 +342,9 @@ class TournamentsController < ApplicationController
           ct.participants.each do |p|
             # updated player
             player = @tournament.players.find_by(:gamer_tag => p.display_name)
+            if player.nil? do #blup
+              raise p.display_name.inspect
+            end
             player.points += helpers.points_repartition_table(p.final_rank)
             player.participations += 1
             if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
