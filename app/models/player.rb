@@ -3,9 +3,13 @@ class Player < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :tournaments, through: :registrations
 
-  validates :gamer_tag,
-    :format => { without: /\s/ },
-    :presence => true
+  before_validation :strip_whitespace
+
+  validates :gamer_tag, :presence => true
+
+  def strip_whitespace
+    self.gamer_tag.try(:strip!)
+  end
 
   def update_tournament_experience
     if self.participations == 0

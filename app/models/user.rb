@@ -6,8 +6,9 @@ class User < ApplicationRecord
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
+  before_validation :strip_whitespace
+
   validates :username,
-    :format => { without: /\s/ },
     :presence => true,
     :uniqueness => {
       :case_sensitive => false
@@ -35,6 +36,11 @@ class User < ApplicationRecord
   # def login_data_notification
   #   UserMailer.login_data().deliver
   # end
+
+  def strip_whitespace
+    self.username.try(:strip!)
+    self.email.try(:strip!)
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
