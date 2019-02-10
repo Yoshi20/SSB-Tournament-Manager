@@ -342,7 +342,7 @@ class TournamentsController < ApplicationController
           ct.participants.each do |p|
             # updated player
             player = @tournament.players.find_by(:gamer_tag => p.display_name)
-            if player.nil? do #blup
+            if player.nil? #blup
               raise p.display_name.inspect
             end
             player.points += helpers.points_repartition_table(p.final_rank)
