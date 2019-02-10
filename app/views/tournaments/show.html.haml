@@ -215,7 +215,7 @@
           .row.show-tournament-ranking
             .col-md-12
               - unless @tournament.ranking_string.nil?
-                - @tournament.ranking_string.split(';').sort.each do |r|
+                - @tournament.ranking_string.split(';').sort_by{|a| a.split(',')[0].to_i}.each do |r|
                   %p
                     - ranking = r.split(',')
                     %strong= "#{ranking[0]}. #{ranking[1]} (+#{points_repartition_table(ranking[0].to_i)}p)"
