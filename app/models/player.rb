@@ -3,6 +3,10 @@ class Player < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :tournaments, through: :registrations
 
+  validates :gamer_tag,
+    :format => { without: /\s/ },
+    :presence => true
+
   def update_tournament_experience
     if self.participations == 0
       self.tournament_experience = 0 # None

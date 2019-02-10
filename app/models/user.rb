@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_accessor :login
 
   validates :username,
+    :format => { without: /\s/ },
     :presence => true,
     :uniqueness => {
       :case_sensitive => false

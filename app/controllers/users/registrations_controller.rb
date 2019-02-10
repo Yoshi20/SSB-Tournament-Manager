@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if user.id == user_params[:id]
       # User seems to be created successfully -> Create a new player and assign it to this user
       player = Player.new
-      player.gamer_tag = user_params.username
+      player.gamer_tag = user.username
       player.points = 0
       player.participations = 0
       player.self_assessment = params[:self_assessment] || 0
