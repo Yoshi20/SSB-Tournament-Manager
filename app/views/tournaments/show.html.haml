@@ -192,7 +192,7 @@
                 = ')'
               %p
               - mail_string = mail_string + p.user.email + '; '
-            - if @tournament.players.any? and current_user.present? and current_user.admin? and !@tournament.setup and !@tournament.canceled? and !@tournament.is_past?
+            - if @tournament.players.any? and current_user.present? and current_user.admin? and (!@tournament.setup or @tournament.finished) and !@tournament.canceled?
               = mail_to mail_string, 'Send all registerd players an email', subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
 
   .col-md-3
