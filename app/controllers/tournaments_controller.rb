@@ -339,33 +339,37 @@ class TournamentsController < ApplicationController
 
         if ct.state == 'complete'
           # updated the participated players
-          ct.participants.each do |p|
-            # updated player
-            player = @tournament.players.find_by(:gamer_tag => p.display_name)
-            if player.nil? #blup
-              raise p.display_name.inspect
-            end
-            player.points += helpers.points_repartition_table(p.final_rank)
-            player.participations += 1
-            if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
-            ct.matches.each do |m|
-              scores = m.scores_csv.split('-')
-              if m.player1_id == p.id
-                player.wins += scores[0].to_i
-                player.losses += scores[1].to_i
-              elsif m.player2_id == p.id
-                player.wins += scores[1].to_i
-                player.losses += scores[0].to_i
+          ActiveRecord::Base.transaction do
+            ct.participants.each do |p|
+              # updated player
+              player = @tournament.players.find_by(:gamer_tag => p.display_name)
+              raise ("#{p.display_name} not found in this tournament!").inspect if player.nil?
+              player.points += helpers.points_repartition_table(p.final_rank)
+              player.participations += 1
+              if player.best_rank == 0 or player.best_rank < p.final_rank then player.best_rank = p.final_rank end
+              ct.matches.each do |m|
+                scores = m.scores_csv.split('-')
+                if m.player1_id == p.id
+                  player.wins += scores[0].to_i
+                  player.losses += scores[1].to_i
+                elsif m.player2_id == p.id
+                  player.wins += scores[1].to_i
+                  player.losses += scores[0].to_i
+                end
               end
+              player.save! # raise an exception when player.save failed
+
+              player.update_tournament_experience
+
+              # updated raking_string on the tournament
+              ranking_string = "#{p.final_rank},#{p.display_name};"
+              @tournament.ranking_string += ranking_string
             end
-            player.save
-
-            player.update_tournament_experience
-
-            # updated raking_string on the tournament
-            ranking_string = "#{p.final_rank},#{p.display_name};"
-            @tournament.ranking_string += ranking_string
           end
+          # rescue ActiveRecord::RecordInvalid
+          #   puts "Something went wrong while updating the players!"
+          # end
+
           @tournament.finished = true
           @tournament.save
           redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
