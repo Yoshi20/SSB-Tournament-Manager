@@ -44,12 +44,25 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1.json
   def update
     respond_to do |format|
+      old_gamer_tag = @player.gamer_tag
       if @player.update(player_params)
+
+        # update main_characters
         @player.main_characters.clear
         player_params[:main_characters].split(',').each do |char|
           @player.main_characters << char.strip.downcase.gsub(' ', '_')
         end
         @player.save
+
+        # update all tournament ranking_strings if the gamer_tag was changed
+        if @player.gamer_tag != old_gamer_tag
+          Tournament.all.each do |t|
+            if t.ranking_string.to_s.include?(old_gamer_tag)
+              t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
+            end
+          end
+        end
+
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
