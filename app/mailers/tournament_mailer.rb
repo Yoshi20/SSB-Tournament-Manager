@@ -18,7 +18,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = "https://ssb-tournament-manager.herokuapp.com/tournaments/#{@tournament.id}"
-    mail(to: @user.email, subject: "One or more weeklys were added: #{@tournament.name}")
+    mail(to: @user.email, subject: "One or more weeklies were added: #{@tournament.name}")
   end
 
   def tournament_canceled_email
