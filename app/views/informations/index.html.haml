@@ -62,14 +62,12 @@
       .col-md-12
         %h2
           = 'Match seeding'
-          %em{style: 'font-size: 15px; color: red;'}
-            = '(not final yet)'
         %p
-          = 'The final seeding is done by the Challonge tournament manager.'
+          = 'The initial seeding is done by providing the Challonge Tournament Manager a player list sorted by skill'
+          %i= '(player_skill = points/participations + wins/(wins+losses) + self_assessment/5 + tournament_experience/10).'
           %br
-          = 'We only provide a list sorted by the players skill, calculated as follows:'
+          = 'The final seeding is done manually by a TO or his/her representatives.'
           %br
-          %i= '(player_skill = points/participations + wins/(wins+losses) + self_assessment/5 + tournament_experience/10)'
 
     .row.prices-title
       .col-md-12
