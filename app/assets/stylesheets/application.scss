@@ -89,9 +89,8 @@ body {
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: #ffffff;
-    background-color: #3f3f3f;
-
+  text-decoration: #ffffff;
+  background-color: #3f3f3f;
 }
 
 .nav-pills > li + li {
@@ -99,6 +98,39 @@ body {
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #ffffff;
+  background-color: #3f3f3f;
+}
+
+.navbar-toggler {
+  min-height: 60.15px;
+  padding-top: 23.075px;
+  padding-left: 10px;
+  width: -moz-available;
+  background-color: #222222;
+  color: #ffffff;
+  text-align: left;
+}
+
+.navbar{
+  min-height: 60.15px;
+  margin-bottom: 0px;
+  border: none;
+}
+
+.navbar-nav li a {
+  color: #ffffff;
+  position: relative;
+  display: block;
+  padding: 20px 15px;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+  text-decoration: #ffffff;
+  background-color: #3f3f3f;
+}
+
+.navbar-nav > li.active > a, .navbar-nav > li.active > a:hover, .navbar-nav > li.active > a:focus {
   color: #ffffff;
   background-color: #3f3f3f;
 }
