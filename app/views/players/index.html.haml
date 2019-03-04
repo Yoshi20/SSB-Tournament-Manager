@@ -13,13 +13,14 @@
           %th.text-center Rank
           %th.text-center Points
           %th Gamer tag
-          %th.text-center Mains
+          %th.text-center.hidden-xs Mains
+          %th.text-center.visible-xs Main
           %th.text-center.hidden-xs Participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
           %th.text-center Win/Loss ratio
           %th.hidden-xs Comment
-          %th.text-center Admin
+          %th.text-center.hidden-xs Admin
 
       %tbody.with-show.player-list-body
         - if @players.any?
@@ -50,6 +51,6 @@
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
               %td.hidden-xs= truncate(player.comment, length: 60)
-              %td.text-center
+              %td.text-center.hidden-xs
                 - if player.user.admin?
                   .glyphicon.glyphicon-ok
