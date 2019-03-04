@@ -19,7 +19,7 @@
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
           %th.text-center Win/Loss ratio
-          %th.hidden-xs Comment
+          %th.hidden-sm.hidden-xs Comment
           %th.text-center.hidden-xs Admin
 
       %tbody.with-show.player-list-body
@@ -50,7 +50,7 @@
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
-              %td.hidden-xs= truncate(player.comment, length: 60)
+              %td.hidden-sm.hidden-xs= truncate(player.comment, length: 60)
               %td.text-center.hidden-xs
                 - if player.user.admin?
                   .glyphicon.glyphicon-ok
