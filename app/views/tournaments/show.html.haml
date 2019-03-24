@@ -98,9 +98,9 @@
 .row.tournament-description
   .col-md-12
     %p
-      %strong Descripton:
+      %strong Description:
       %br
-      = @tournament.description
+      = @tournament.description.html_safe
 
 - if !@tournament.setup and !@tournament.started and !@tournament.finished
   .row.join-tournament
@@ -142,7 +142,7 @@
       %h2 Please bring a game station with you
       %p
         = 'If you bring the following hard- and software to the tournament, you will get off 5 CHF of your registration fee.'
-        = 'But after agreeing to bring a game station, you will be obligated to also do so.'
+        = 'But after agreeing to bring a game station, you will be obligated to also do so and provide it until the end of the tournament or it\'s not needed anymore.'
       .row.add-game-stations
         .col-md-6
           %ul

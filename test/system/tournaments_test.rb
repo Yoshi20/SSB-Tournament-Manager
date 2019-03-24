@@ -15,7 +15,7 @@ class TournamentsTest < ApplicationSystemTestCase
     click_on "New Tournament"
 
     fill_in "Active", with: @tournament.active
-    fill_in "Descripton", with: @tournament.description
+    fill_in "Description", with: @tournament.description
     fill_in "Created at", with: @tournament.created_at
     fill_in "Date", with: @tournament.date
     fill_in "Location", with: @tournament.location
@@ -34,7 +34,7 @@ class TournamentsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Active", with: @tournament.active
-    fill_in "Descripton", with: @tournament.description
+    fill_in "Description", with: @tournament.description
     fill_in "Created at", with: @tournament.created_at
     fill_in "Date", with: @tournament.date
     fill_in "Location", with: @tournament.location

@@ -48,7 +48,7 @@
         = f.label :host_username, 'Hostname'
         = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
       .field.form-group
-        = f.label :description, 'Descripton'
+        = f.label :description, 'Description (HTML)'
         = f.text_area :description, class: 'form-control'
       - if @tournament.new_record?
         .field.form-group.hide
