@@ -1,6 +1,9 @@
 .row.title-div
-  .col-md-12
+  .col-md-6
     %h1= "User list"
+
+  .col-md-6{style: "positon: relative"}
+    %p{style: "position: absolute; top: 50%; transform: translate(0, 150%);"}= "Total users count = #{User.all.count}"
 
 -# user list
 .row.user-list
