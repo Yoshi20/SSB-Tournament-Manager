@@ -4,7 +4,7 @@ class Calendar
   class << self
 
     def full_calendar_events(current_user)
-      tournaments = Tournament.where('active = ? AND date > ?', true, 2.weeks.ago)
+      tournaments = Tournament.for_calendar
       tournaments.map do |tournament|
         full_calendar_event(tournament, current_user)
       end.to_json
@@ -41,7 +41,7 @@ class Calendar
     end
 
     def ical_events
-      tournaments = Tournament.where('date > ?', 2.weeks.ago)
+      tournaments = Tournament.for_calendar
       ical_events_internal(tournaments)
     end
 

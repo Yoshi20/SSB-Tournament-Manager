@@ -4,6 +4,8 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true
 
+  scope :for_calendar, -> { where(active: true).where('date > ?', 2.weeks.ago) }
+
   MAX_PAST_TOURNAMENTS_PER_PAGE = 10
 
   def canceled?
