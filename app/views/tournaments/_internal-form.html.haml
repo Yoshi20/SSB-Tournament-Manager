@@ -48,6 +48,9 @@
         .field.form-group.hide
           = f.label :active
           = f.check_box :active, checked: true, style: 'margin-left: 5px;'
+        .field.form-group
+          = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
+          = label_tag :send_mails, 'Send all players an email'
       - else
         .field.form-group
           = f.label :setup

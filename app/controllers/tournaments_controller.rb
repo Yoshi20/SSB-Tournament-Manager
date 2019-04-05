@@ -43,8 +43,10 @@ class TournamentsController < ApplicationController
     if @tournament.subtype.nil? or @tournament.subtype == 'internal'
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
-          Player.all.each do |p|
-            TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+          if params[:send_mails]
+            Player.all.each do |p|
+              TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+            end
           end
           format.html { redirect_to @tournament, notice: 'Internal tournament was successfully created.' }
           format.json { render :show, status: :created, location: @tournament }
@@ -56,8 +58,10 @@ class TournamentsController < ApplicationController
     elsif @tournament.subtype == 'external'
       respond_to do |format|
         if @tournament.save
-          Player.all.each do |p|
-            TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
+          if params[:send_mails]
+            Player.all.each do |p|
+              TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
+            end
           end
           format.html { redirect_to tournaments_path, notice: 'External tournament was successfully created.' }
           format.json { render :show, status: :created, location: @tournament }
@@ -70,8 +74,10 @@ class TournamentsController < ApplicationController
       @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
-          Player.all.each do |p|
-            TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
+          if params[:send_mails]
+            Player.all.each do |p|
+              TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
+            end
           end
           # saving the first weekly succeeded -> create x more until end_date is reached
           last_weekly = @tournament
