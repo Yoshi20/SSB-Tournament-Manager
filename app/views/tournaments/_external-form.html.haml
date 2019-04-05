@@ -22,6 +22,9 @@
         = f.label :city
         = f.text_field :city, class: 'form-control', value: (@tournament.new_record? ? '' : @tournament.city)
       .field.form-group
+        = f.label :registration_fee, 'Registration fee [CHF]'
+        = f.number_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? nil : @tournament.registration_fee)
+      .field.form-group
         = f.label :external_registration_link
         = f.text_field :external_registration_link, class: 'form-control'
       - if @tournament.new_record?

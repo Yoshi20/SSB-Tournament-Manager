@@ -17,7 +17,10 @@
       = tournament.date.to_s(:custom_datetime_weekday)
 
     %td
-      = tournament.date.to_s(:custom_datetime_date_and_time)
+      - if tournament.date.hour == 0 and tournament.date.min == 0 and tournament.subtype == 'external'
+        = tournament.date.to_s(:custom_datetime_date_and_no_time)
+      - else
+        = tournament.date.to_s(:custom_datetime_date_and_time)
 
     %td
       = tournament.name
@@ -42,7 +45,10 @@
       - if tournament.total_seats.nil?
         = '-'
       - else
-        = "#{tournament.players.count} / #{tournament.total_seats}"
+        - if tournament.players.count == 0 and tournament.subtype == 'external'
+          = "? / #{tournament.total_seats}"
+        - else
+          = "#{tournament.players.count} / #{tournament.total_seats}"
 
     %td.text-center.hidden-xs
       - if tournament.subtype == 'external'
