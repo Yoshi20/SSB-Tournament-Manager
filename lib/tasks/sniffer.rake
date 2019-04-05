@@ -75,4 +75,42 @@ namespace :sniffer do
     end
   end
 
+  desc "Creates upcomming external tournaments from toornament.com"
+  task toornament: :environment do
+    root = 'https://toornament.com'
+    validFlag = 'flag-ch'
+    doc = Nokogiri::HTML(open('https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming'))
+    doc.css('div.tournament-list a.tournament').each_with_index do |a, i|
+      locationItalic = a.css('div.event div.location i')[0]
+      if !locationItalic.nil? and locationItalic['class'].include?(validFlag)
+        # we have a valid tournament
+        externalTournament = Tournament.new
+        externalTournament.subtype = 'external'
+        externalTournament.date = Date.parse(a.css('div.event div.dates time').text.strip)
+        externalTournament.name = a.css('div.identity div.name').text.strip
+        externalTournament.city = a.css('div.event div.location span').text.strip
+        externalTournament.external_registration_link = root + a['href']
+        size = a.css('div.size div.number').text.strip
+        if size.include?('/')
+          size = size[size.index('/')+1..-1].strip.to_i
+        else
+          size = size.to_i
+        end
+        externalTournament.total_seats = size
+        externalTournament.active = true
+        if externalTournament.save
+          puts "-> Created: \"" + externalTournament.name + "\"\n\n"
+        else
+          puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
+          if externalTournament.errors.any?
+            externalTournament.errors.full_messages.each do |message|
+              puts "==> " + message
+            end
+            puts "\n"
+          end
+        end
+      end
+    end
+  end
+
 end
