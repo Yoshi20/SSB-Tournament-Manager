@@ -45,7 +45,9 @@ class TournamentsController < ApplicationController
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all.each do |p|
-              TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+              if p.user.wants_major_email
+                TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
+              end
             end
           end
           format.html { redirect_to @tournament, notice: 'Internal tournament was successfully created.' }
@@ -60,7 +62,9 @@ class TournamentsController < ApplicationController
         if @tournament.save
           if params[:send_mails]
             Player.all.each do |p|
-              TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
+              if p.user.wants_major_email
+                TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
+              end
             end
           end
           format.html { redirect_to tournaments_path, notice: 'External tournament was successfully created.' }
@@ -76,7 +80,9 @@ class TournamentsController < ApplicationController
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all.each do |p|
-              TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
+              if p.user.wants_weekly_email
+                TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
+              end
             end
           end
           # saving the first weekly succeeded -> create x more until end_date is reached

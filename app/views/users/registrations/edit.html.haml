@@ -46,6 +46,12 @@
         .moved-up{style: 'margin-top:-10px'}= '---------------------------------------------------------------------------------'
         %br
       .field.form-group
+        = f.check_box :wants_major_email, style: 'margin-left: 5px;'
+        = f.label :wants_major_email, 'Inform me when a major tournament was added'
+      .field.form-group{style: 'margin-top: -15px;'}
+        = f.check_box :wants_weekly_email, style: 'margin-left: 5px;'
+        = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added'
+      .field.form-group
         = f.label :current_password
         %i (enter your current password to confirm the changes)
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'

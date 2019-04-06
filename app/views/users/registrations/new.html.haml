@@ -49,6 +49,12 @@
               (for what ever you want to tell the world)
             %br
             = text_area_tag :comment, nil, class: 'form-control'
+          .field.form-group
+            = f.check_box :wants_major_email, checked: true, style: 'margin-left: 5px;'
+            = f.label :wants_major_email, 'Inform me when a major tournament was added'
+          .field.form-group{style: 'margin-top: -15px;'}
+            = f.check_box :wants_weekly_email, checked: true, style: 'margin-left: 5px;'
+            = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added'
       .row
         .col-md-12.col-xs-12.actions
           = f.submit "Register", class:'btn btn-primary'
