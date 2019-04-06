@@ -2,6 +2,7 @@
 Simple tournament manager for Super Smash Bros. matches (Ruby on Rails project)
 
 Commands:
+- bundle update
 - git push heroku master
 - rails s
 - rails c
