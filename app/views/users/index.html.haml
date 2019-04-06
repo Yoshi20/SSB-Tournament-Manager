@@ -18,6 +18,7 @@
           %th Last Log in at
           %th Created at
           %th.text-center Log in counter
+          %th.text-center Club member
           %th.text-center Admin
           %th.text-center Super Admin
           %th.text-center.action Edit
@@ -32,6 +33,14 @@
             %td= user.current_sign_in_at.to_s(:custom_datetime)
             %td= user.created_at.to_s(:custom_datetime)
             %td.text-center= user.sign_in_count
+            %td.text-center
+              - if user.is_club_member
+                .glyphicon.glyphicon-ok
+              - elsif current_user.present? and current_user.super_admin?
+                = form_for user, role: 'form', method: :patch do |f|
+                  .field
+                    = f.check_box :is_club_member, checked: true, class: 'hidden'
+                    = f.submit 'New Member', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
             %td.text-center
               - if user.admin?
                 .glyphicon.glyphicon-ok
