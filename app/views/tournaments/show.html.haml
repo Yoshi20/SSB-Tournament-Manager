@@ -252,3 +252,9 @@
     .col-md-12
       %br
       %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
+
+- if @tournament.name.include?('PK Bern')
+  %br
+  .row
+    .col-md-12
+      = image_tag 'pk_bern.png', height: '100%', width: '100%'
