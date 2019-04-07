@@ -6,10 +6,10 @@
     %td.text-center
       - if current_user.present? and tournament.players.include?(current_user.player)
         .glyphicon.glyphicon-check
-      - elsif tournament.registration_deadline < Time.now
-        .glyphicon.glyphicon-lock
       - elsif tournament.subtype == 'external'
         .glyphicon.glyphicon-new-window
+      - elsif tournament.registration_deadline < Time.now
+        .glyphicon.glyphicon-lock
       - elsif !tournament.is_registration_allowed
         .glyphicon.glyphicon-info-sign
       - else

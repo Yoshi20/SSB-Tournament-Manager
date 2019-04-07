@@ -8,9 +8,10 @@ Commands:
 - rails c
 - heroku logs --tail
 - heroku run rake db:migrate
-- heroku run rake sniffer:braacket
-- heroku run rake sniffer:smash_gg
-- heroku run rake sniffer:toornament
+- heroku run rake sniffer:all
+- (heroku run rake sniffer:braacket)
+- (heroku run rake sniffer:smash_gg)
+- (heroku run rake sniffer:toornament)
 
 Links:
 - https://ssb-tournament-manager.herokuapp.com
