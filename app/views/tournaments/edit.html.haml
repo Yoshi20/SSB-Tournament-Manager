@@ -13,5 +13,9 @@
     %strong
       %p= link_to 'Show', tournament_path(@tournament)
       - if current_user.admin?
-        %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
+        - if @tournament.subtype == 'weekly'
+          %p= link_to 'Delete this weekly', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
+          %p= link_to 'Delete all upcoming weeklies of this kind', tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: 'Are you sure?' }
+        - else
+          %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
       %p= link_to 'Back', :back

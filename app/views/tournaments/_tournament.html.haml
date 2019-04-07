@@ -6,10 +6,12 @@
     %td.text-center
       - if current_user.present? and tournament.players.include?(current_user.player)
         .glyphicon.glyphicon-check
-      - elsif tournament.subtype == 'external'
-        .glyphicon.glyphicon-new-window
       - elsif tournament.registration_deadline < Time.now
         .glyphicon.glyphicon-lock
+      - elsif tournament.subtype == 'external'
+        .glyphicon.glyphicon-new-window
+      - elsif !tournament.is_registration_allowed
+        .glyphicon.glyphicon-info-sign
       - else
         .glyphicon.glyphicon-unchecked
 
@@ -45,7 +47,7 @@
       - if tournament.total_seats.nil?
         = '-'
       - else
-        - if tournament.players.count == 0 and tournament.subtype == 'external'
+        - if (tournament.players.count == 0 and tournament.subtype == 'external') or !tournament.is_registration_allowed
           = "? / #{tournament.total_seats}"
         - else
           = "#{tournament.players.count} / #{tournament.total_seats}"
