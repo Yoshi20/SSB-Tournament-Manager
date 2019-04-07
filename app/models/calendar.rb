@@ -52,13 +52,13 @@ class Calendar
 
     private
 
-    def ical_events_internal(tournamente)
+    def ical_events_internal(tournaments)
       calendar = Icalendar::Calendar.new
       tzid     = 'CET'
       tz       = TZInfo::Timezone.get tzid
       timezone = tz.ical_timezone Time.current
       calendar.add_timezone timezone
-      tournamente.each do |tournament|
+      tournaments.each do |tournament|
         ical_event_internal(calendar, tournament, tzid)
       end
       calendar.to_ical
@@ -67,7 +67,8 @@ class Calendar
     def ical_event_internal(calendar, tournament, tzid)
       calendar.event do |event|
         end_time = tournament.date + 4.hours
-        if false # whole-day tournament structure
+        if false
+          # whole-day tournament structure
           event.dtstart = ical_date(tournament.date.to_date)
           event.dtend   = ical_date(end_time.to_date)
           event.dtstart.ical_param 'VALUE', 'DATE'
