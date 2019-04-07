@@ -12,6 +12,7 @@ Commands:
 - (heroku run rake sniffer:braacket)
 - (heroku run rake sniffer:smash_gg)
 - (heroku run rake sniffer:toornament)
+- heroku restart
 
 Links:
 - https://ssb-tournament-manager.herokuapp.com
