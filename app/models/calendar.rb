@@ -11,12 +11,13 @@ class Calendar
     end
 
     def full_calendar_event(tournament, current_user)
-      # TODO change date to from and to? do we have whole-day events?
+      # TODO change date to from and to?
+      isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       tournament.date + 4.hours,
-        allDay:    false,
+        end:       isFullDayEvent ? nil : (tournament.date + 4.hours),
+        allDay:    isFullDayEvent,
         editable:  false,
         className: 'calendar-tournament',
         color:     get_event_color(tournament, current_user),
