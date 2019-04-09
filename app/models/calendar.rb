@@ -26,7 +26,9 @@ class Calendar
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.canceled? or (tournament.registration_deadline.present? and tournament.registration_deadline < Time.now)
+      if tournament.date < Date.today
+        '#bfc3cb'
+      elsif tournament.canceled? or (tournament.registration_deadline.present? and tournament.registration_deadline < Time.now)
         if current_user.present? and tournament.players.include?(current_user.player)
           '#e77740'
         else
