@@ -4,7 +4,7 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true
 
-  scope :for_calendar, -> { where(active: true).where('date > ?', 2.weeks.ago) }
+  scope :for_calendar, -> { where(active: true).where('date > ? and date < ?', 2.weeks.ago, Date.today + 4.months) }
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 10
 
