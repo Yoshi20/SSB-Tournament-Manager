@@ -26,20 +26,34 @@ class Calendar
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.date < Date.today
-        '#bfc3cb'
-      elsif tournament.canceled? or (tournament.registration_deadline.present? and tournament.registration_deadline < Time.now)
-        if current_user.present? and tournament.players.include?(current_user.player)
-          '#e77740'
-        else
-          'lightsalmon'
-        end
-      elsif tournament.external_registration_link.present?
+      if tournament.date + 4.hours < DateTime.now
+        # past tournament
+        'lightgray'
+      elsif tournament.subtype == 'external'
+        # external tournament
         'cornflowerblue'
-      elsif current_user.present? and tournament.players.include?(current_user.player)
-        '#43a17d'
+      elsif tournament.canceled?
+        # canceled
+        'lightsalmon'
+      elsif tournament.registration_deadline.present? and tournament.registration_deadline < DateTime.now
+        # registration deadline exceeded?
+        'darkorange'
+      elsif tournament.subtype == 'internal'
+        # internal tournament
+        if current_user.present? and tournament.players.include?(current_user.player)
+          # joined
+          'mediumorchid'
+        else
+          'orchid'
+        end
       else
-        '#61bf9b'
+        # weekly
+        if current_user.present? and tournament.players.include?(current_user.player)
+          # joined
+          '#07a468' # green
+        else
+          '#61bf9b' # light green
+        end
       end
     end
 

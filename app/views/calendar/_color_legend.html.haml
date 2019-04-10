@@ -1,0 +1,25 @@
+%span.circle{style: "background: lightgray;"}
+%p{style: "display: inline;"}Past
+%br.visible-sm.visible-xs
+%span.circle{style: "background: lightsalmon;"}
+%p{style: "display: inline;"}Canceled
+%br.visible-sm.visible-xs
+%span.circle{style: "background: darkorange;"}
+%p{style: "display: inline;"}Ongoing
+%br.visible-sm.visible-xs
+%span.circle{style: "background: cornflowerblue;"}
+%p{style: "display: inline;"}External
+%br.visible-sm.visible-xs
+%span.circle{style: "background: orchid;"}
+%p{style: "display: inline;"}Internal
+%br.visible-sm.visible-xs
+-if current_user.present?
+  %span.circle{style: "background: mediumorchid;"}
+  %p{style: "display: inline;"}Internal joined
+  %br.visible-sm.visible-xs
+%span.circle{style: "background: #61bf9b;"}
+%p{style: "display: inline;"}Weekly
+%br.visible-sm.visible-xs
+-if current_user.present?
+  %span.circle{style: "background: #07a468;"}
+  %p{style: "display: inline;"}Weekly joined
