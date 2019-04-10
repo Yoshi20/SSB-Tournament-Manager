@@ -33,6 +33,10 @@
       %tbody.with-show.tournament-list-body
         = render @tournaments
 
+    - if !@tournaments.any?
+      %p{style: 'text-align: center;'}
+        No upcoming tournaments found yet!
+
     .row.tournament-list-footer
       -# pageinator
       .col-md-10
@@ -62,3 +66,7 @@
       -# pageinator
       .col-md-12
         = render 'paginator'
+
+    - if !@past_tournaments.any?
+      %p{style: 'text-align: center;'}
+        No past tournaments found yet!
