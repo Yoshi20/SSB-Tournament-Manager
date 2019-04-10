@@ -138,3 +138,12 @@ body {
 .fc-content {
   color: black;
 }
+
+.circle {
+  display: inline-block;
+  background: #000;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
