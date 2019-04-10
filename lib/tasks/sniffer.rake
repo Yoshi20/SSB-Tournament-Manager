@@ -11,7 +11,7 @@ namespace :sniffer do
     puts "done"
   end
 
-  desc "Creates upcomming external tournaments from braacket.com"
+  desc "Creates upcoming external tournaments from braacket.com"
   task braacket: :environment do
     puts 'Sniffing https://braacket.com/tournament...'
     root = 'https://braacket.com'
@@ -48,7 +48,7 @@ namespace :sniffer do
     end
   end
 
-  desc "Creates upcomming external tournaments from smash.gg"
+  desc "Creates upcoming external tournaments from smash.gg"
   task smash_gg: :environment do
     puts 'Sniffing https://smash.gg/tournaments...'
     root = 'https://smash.gg'
@@ -87,7 +87,7 @@ namespace :sniffer do
     end
   end
 
-  desc "Creates upcomming external tournaments from toornament.com"
+  desc "Creates upcoming external tournaments from toornament.com"
   task toornament: :environment do
     puts 'Sniffing https://www.toornament.com/tournaments...'
     root = 'https://toornament.com'

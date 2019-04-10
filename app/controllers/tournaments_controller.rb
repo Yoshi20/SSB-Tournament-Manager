@@ -6,8 +6,54 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = helpers.active_tournaments_2019.where('finished is not true AND date >= ?', Time.now).order(date: :asc).includes(:players).limit(20)
-    @past_tournaments = helpers.active_tournaments_2019.where('finished is true OR date < ?', Time.now).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    if params[:filter].nil? or params[:filter] == 'all'
+      @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    elsif params[:filter] == 'external'
+      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'external').order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(subtype: 'external').order(date: :desc).includes(:players).limit(10)
+    elsif params[:filter] == 'internal'
+      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'internal').order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(subtype: 'internal').order(date: :desc).includes(:players).limit(10)
+    elsif params[:filter] == 'weekly'
+      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'weekly').order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(subtype: 'weekly').order(date: :desc).includes(:players).limit(10)
+    elsif params[:filter] == 'baden'
+      @tournaments = Tournament.active_2019.upcoming.where(city: 'Baden').or(
+        Tournament.active_2019.upcoming.from_city('Baden')
+      ).order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(city: 'Baden').or(
+        Tournament.active_2019.upcoming.from_city('Baden')
+      ).order(date: :asc).includes(:players).limit(10)
+    elsif params[:filter] == 'bern'
+      @tournaments = Tournament.active_2019.upcoming.where(city: 'Bern').or(
+        Tournament.active_2019.upcoming.from_city('Bern')
+      ).order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(city: 'Bern').or(
+        Tournament.active_2019.upcoming.from_city('Bern')
+      ).order(date: :asc).includes(:players).limit(10)
+    elsif params[:filter] == 'geneva'
+      @tournaments = Tournament.active_2019.upcoming.where(city: 'Geneva').or(
+        Tournament.active_2019.upcoming.from_city('Geneva')
+      ).order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(city: 'Geneva').or(
+        Tournament.active_2019.upcoming.from_city('Geneva')
+      ).order(date: :asc).includes(:players).limit(10)
+    elsif params[:filter] == 'solothurn'
+      @tournaments = Tournament.active_2019.upcoming.where(city: 'Solothurn').or(
+        Tournament.active_2019.upcoming.from_city('Solothurn')
+      ).order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(city: 'Solothurn').or(
+        Tournament.active_2019.upcoming.from_city('Solothurn')
+      ).order(date: :asc).includes(:players).limit(10)
+    elsif params[:filter] == 'zurich'
+      @tournaments = Tournament.active_2019.upcoming.where(city: 'Zurich').or(
+        Tournament.active_2019.upcoming.from_city('Zurich')
+      ).order(date: :asc).includes(:players).limit(20)
+      @past_tournaments = Tournament.active_2019.finished_or_over.where(city: 'Zurich').or(
+        Tournament.active_2019.upcoming.from_city('Zurich')
+      ).order(date: :asc).includes(:players).limit(10)
+    end
   end
 
   # GET /tournaments/1
@@ -151,7 +197,7 @@ class TournamentsController < ApplicationController
   # DELETE /tournaments/1.json
   def destroy
     if @tournament.subtype == 'weekly' and params[:all]
-      # destroy all upcomming weeklies of this type
+      # destroy all upcoming weeklies of this type
       name_without_kw = @tournament.name[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
       Tournament.where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|
         if tt.name[0.. -10].strip == name_without_kw

@@ -5,7 +5,8 @@
       %li.left-arrow
         -# table_params is a helper methode to whitelist the needed params to sort and order
         - if @past_tournaments.current_page.present? && @past_tournaments.current_page > 1
-          = link_to tournaments_path(table_params.merge(page: @past_tournaments.current_page-1)), aria: {label: "Previous"} do
+          -# = link_to tournaments_path(table_params.merge(page: @past_tournaments.current_page-1), '#past-tournaments'), aria: {label: "Previous"} do
+          = link_to tournaments_path(page: @past_tournaments.current_page-1, anchor: "past-tournaments"), aria: {label: "Previous"} do
             %span{"aria-hidden"=> "true"}
               &laquo;
         - else
@@ -14,10 +15,11 @@
               &laquo;
 
       - (1..@past_tournaments.total_pages).each do |page|
-        %li{class: "#{"active" if page == @past_tournaments.current_page}"}= link_to page.to_s, tournaments_path(table_params.merge(page: page)), value: page
+        -# %li{class: "#{"active" if page == @past_tournaments.current_page}"}= link_to page.to_s, tournaments_path(table_params.merge(page: page)), value: page
+        %li{class: "#{"active" if page == @past_tournaments.current_page}"}= link_to page.to_s, tournaments_path(page: page, anchor: "past-tournaments"), value: page
       %li.right-arrow
         - if @past_tournaments.try(:current_page).present? && @past_tournaments.current_page < @past_tournaments.total_pages
-          = link_to tournaments_path(table_params.merge(page: @past_tournaments.current_page+1)), aria: {label: "Next"} do
+          = link_to tournaments_path(page: @past_tournaments.current_page+1, anchor: "past-tournaments"), aria: {label: "Next"} do
             %span{"aria-hidden"=> "true"}
               &raquo;
         - else
