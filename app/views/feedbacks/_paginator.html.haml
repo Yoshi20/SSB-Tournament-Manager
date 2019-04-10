@@ -5,7 +5,8 @@
       %li.left-arrow
         -# table_params is a helper methode to whitelist the needed params to sort and order
         - if @feedbacks.current_page.present? && @feedbacks.current_page > 1
-          = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page-1)), aria: {label: "Previous"} do
+          -# = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page-1)), aria: {label: "Previous"} do
+          = link_to feedbacks_path(page: @feedbacks.current_page-1), aria: {label: "Previous"} do
             %span{"aria-hidden"=> "true"}
               &laquo;
         - else
@@ -14,10 +15,12 @@
               &laquo;
 
       - (1..@feedbacks.total_pages).each do |page|
-        %li{class: "#{"active" if page == @feedbacks.current_page}"}= link_to page.to_s, feedbacks_path(table_params.merge(page: page)), value: page
+        -# %li{class: "#{"active" if page == @feedbacks.current_page}"}= link_to page.to_s, feedbacks_path(table_params.merge(page: page)), value: page
+        %li{class: "#{"active" if page == @feedbacks.current_page}"}= link_to page.to_s, feedbacks_path(page: page), value: page
       %li.right-arrow
         - if @feedbacks.try(:current_page).present? && @feedbacks.current_page < @feedbacks.total_pages
-          = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page+1)), aria: {label: "Next"} do
+          -# = link_to feedbacks_path(table_params.merge(page: @feedbacks.current_page+1)), aria: {label: "Next"} do
+          = link_to feedbacks_path(page: @feedbacks.current_page+1), aria: {label: "Next"} do
             %span{"aria-hidden"=> "true"}
               &raquo;
         - else

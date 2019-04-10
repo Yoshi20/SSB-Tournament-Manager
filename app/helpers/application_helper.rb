@@ -9,15 +9,15 @@ module ApplicationHelper
     end
   end
 
-  # to keep the sort and order parameters
-  def table_params
-    {
-      sort: params[:sort],
-      order: params[:order],
-      order_by_letter: params[:order_by_letter],
-      search: params[:search],
-      limit: params[:limit],
-    }
-  end
+  # # to keep the sort and order parameters
+  # def table_params
+  #   {
+  #     sort: params[:sort],
+  #     order: params[:order],
+  #     order_by_letter: params[:order_by_letter],
+  #     search: params[:search],
+  #     limit: params[:limit],
+  #   }
+  # end
 
 end

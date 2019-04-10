@@ -1,9 +1,5 @@
 module TournamentsHelper
 
-  def active_tournaments_2019
-    Tournament.where('active = ? AND date > ? AND date < ?', true, Time.local(2019,1,1), Time.local(2019,12,31,23,59,59))
-  end
-
   def min_needed_game_stations_per_tournament(seats)
     if seats.nil? then return 0 end
     min_needed_game_stations = seats/4

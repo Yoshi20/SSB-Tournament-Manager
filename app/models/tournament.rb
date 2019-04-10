@@ -4,7 +4,11 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true
 
-  scope :for_calendar, -> { where(active: true).where('date > ? and date < ?', 2.weeks.ago, Date.today + 4.months) }
+  scope :active_2019, -> { where(active: true).where('date > ? AND date < ?', Time.local(2019,1,1), Time.local(2019,12,31,23,59,59)) }
+  scope :upcoming, -> { where('finished is not true AND date >= ?', Time.now) }
+  scope :finished_or_over, -> { where('finished is true OR date < ?', Time.now) }
+  scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
+  scope :from_city, -> (city) { where("name like ? OR name like ? OR location like ? OR location like ?", "%#{city}%", "%#{city.downcase}%", "%#{city}%", "%#{city.downcase}%") }
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 10
 
