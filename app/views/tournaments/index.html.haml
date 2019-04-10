@@ -10,8 +10,7 @@
   -#       = submit_tag 'Search', name:nil, class: 'form-control btn btn-default'
   -#     %p (Partnumber, Manufacturer, Comment)
 
-
-.row.tournament-filter#upcoming-tournaments
+.row.tournament-filter
   .col-md-12
     %p.tournament-filter-text= link_to 'All',       tournaments_path(filter: 'all'),       style: "text-decoration: #{(params[:filter].nil? or params[:filter] == 'all') ? 'underline' : ''};"
     %p.tournament-filter-text= link_to 'External',  tournaments_path(filter: 'external'),  style: "text-decoration: #{params[:filter] == 'external' ? 'underline' : ''};"
@@ -24,7 +23,7 @@
     %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(filter: 'zurich'),    style: "text-decoration: #{params[:filter] == 'zurich' ? 'underline' : ''};"
 
 -# tournaments list
-.row.tournament-list
+.row.tournament-list#upcoming-tournaments
   .col-md-12
     %table.table.table-striped
       %thead.tournament-list-header
@@ -51,6 +50,18 @@
 .row.title-div
   .col-md-12
     %h1= "Past tournaments 2019"
+
+.row.tournament-filter
+  .col-md-12
+    %p.tournament-filter-text= link_to 'All',       tournaments_path(anchor: 'past-tournaments', filter: 'all'),       style: "text-decoration: #{(params[:filter].nil? or params[:filter] == 'all') ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'External',  tournaments_path(anchor: 'past-tournaments', filter: 'external'),  style: "text-decoration: #{params[:filter] == 'external' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Internal',  tournaments_path(anchor: 'past-tournaments', filter: 'internal'),  style: "text-decoration: #{params[:filter] == 'internal' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(anchor: 'past-tournaments', filter: 'weekly'),    style: "text-decoration: #{params[:filter] == 'weekly' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Baden',     tournaments_path(anchor: 'past-tournaments', filter: 'baden'),     style: "text-decoration: #{params[:filter] == 'baden' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Bern',      tournaments_path(anchor: 'past-tournaments', filter: 'bern'),      style: "text-decoration: #{params[:filter] == 'bern' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(anchor: 'past-tournaments', filter: 'geneva'),    style: "text-decoration: #{params[:filter] == 'geneva' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(anchor: 'past-tournaments', filter: 'solothurn'), style: "text-decoration: #{params[:filter] == 'solothurn' ? 'underline' : ''};"
+    %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(anchor: 'past-tournaments', filter: 'zurich'),    style: "text-decoration: #{params[:filter] == 'zurich' ? 'underline' : ''};"
 
 -# past tournaments list
 .row.tournament-list#past-tournaments
