@@ -175,38 +175,39 @@
 
   .row.title-registered-players-tournament-ranking
     .col-md-5
-      .row.title-registered-players
-        .col-md-12
-          %h2 Registered players
-          .row.show-registered-players
-            .col-md-12
-              - mail_string = ''
-              - @tournament.players.includes(:registrations).order('registrations.created_at').each do |p|
-                - if p.main_characters.any?
-                  - p.main_characters[0...1].each do |char|
-                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-                    - else
-                      .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
-                - else
-                  .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
-                %strong= link_to "#{p.gamer_tag}", p
-                - player_registration = p.registrations.where(tournament_id: @tournament.id).first
-                - gs = player_registration.game_stations
-                - if !gs.nil? and gs > 0
-                  = "( #{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} game #{gs > 1 ? 'stations' : 'station'} )"
-                - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
-                  = '( Registration fee paid:'
-                  .inline-div{style:'display:inline-block'}
-                    = form_for player_registration, role: 'form', method: :patch do |f|
-                      .field
-                        = f.check_box :paid_fee, {class: 'paid-fee-checkbox'}, @tournament.registration_fee
-                        = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button'
-                  = ')'
-                %p
-                - mail_string = mail_string + p.user.email + '; '
-              - if @tournament.players.any? and current_user.present? and current_user.admin? and (!@tournament.setup or @tournament.finished) and !@tournament.canceled?
-                = mail_to "", 'Send all registerd players an email', bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
+      - if @tournament.players.any?
+        .row.title-registered-players
+          .col-md-12
+            %h2 Registered players
+            .row.show-registered-players
+              .col-md-12
+                - mail_string = ''
+                - @tournament.players.includes(:registrations).order('registrations.created_at').each do |p|
+                  - if p.main_characters.any?
+                    - p.main_characters[0...1].each do |char|
+                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                      - else
+                        .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
+                  - else
+                    .glyphicon.glyphicon-question-sign{style: 'margin-left: 6px; margin-right: 6px;'}
+                  %strong= link_to "#{p.gamer_tag}", p
+                  - player_registration = p.registrations.where(tournament_id: @tournament.id).first
+                  - gs = player_registration.game_stations
+                  - if !gs.nil? and gs > 0
+                    = "( #{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} game #{gs > 1 ? 'stations' : 'station'} )"
+                  - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
+                    = '( Registration fee paid:'
+                    .inline-div{style:'display:inline-block'}
+                      = form_for player_registration, role: 'form', method: :patch do |f|
+                        .field
+                          = f.check_box :paid_fee, {class: 'paid-fee-checkbox'}, @tournament.registration_fee
+                          = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button'
+                    = ')'
+                  %p
+                  - mail_string = mail_string + p.user.email + '; '
+                - if @tournament.players.any? and current_user.present? and current_user.admin? and (!@tournament.setup or @tournament.finished) and !@tournament.canceled?
+                  = mail_to "", 'Send all registerd players an email', bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
 
     .col-md-3
       - if @tournament.waiting_list.length > 0
