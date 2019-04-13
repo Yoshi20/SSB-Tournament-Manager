@@ -26,17 +26,21 @@ class Calendar
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.date + 4.hours < DateTime.now
+      if tournament.date + 4.hours < DateTime.now and tournament.subtype != 'external'
         # past tournament
         'lightgray'
       elsif tournament.subtype == 'external'
-        # external tournament
-        'cornflowerblue'
+        if tournament.date + 24.hours < DateTime.now
+          'lightgray' # past
+        else
+          # external tournament
+          'cornflowerblue'
+        end
       elsif tournament.canceled?
         # canceled
         'lightsalmon'
       elsif tournament.registration_deadline.present? and tournament.registration_deadline < DateTime.now
-        # registration deadline exceeded?
+        # registration deadline exceeded? -> ongoing
         'darkorange'
       elsif tournament.subtype == 'internal'
         # internal tournament
