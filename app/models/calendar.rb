@@ -22,7 +22,6 @@ class Calendar
         className: 'calendar-tournament',
         color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link || "/tournaments/#{tournament.id}",
-        status:    tournament.cancelled? ? 'CANCELLED' : nil,
       }
     end
 
@@ -102,6 +101,9 @@ class Calendar
         event.summary     = tournament.name.to_s.strip
         event.description = tournament.description.to_s.strip
         event.location    = tournament.location.to_s.strip
+        if tournament.cancelled?
+          event.status = 'CANCELLED'
+        end
       end
     end
 
