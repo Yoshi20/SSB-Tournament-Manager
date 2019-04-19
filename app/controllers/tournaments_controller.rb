@@ -453,12 +453,12 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/cancel/1
   def cancel
-    # send each player an email if the tournament was canceled
+    # send each player an email if the tournament was cancelled
     @tournament.players.each do |p|
-      TournamentMailer.with(tournament: @tournament, user: p.user).tournament_canceled_email.deliver_later
+      TournamentMailer.with(tournament: @tournament, user: p.user).tournament_cancelled_email.deliver_later
     end
     @tournament.update(tournament_params)
-    redirect_to @tournament, notice: 'Tournament was successfully canceled.'
+    redirect_to @tournament, notice: 'Tournament was successfully cancelled.'
   end
 
   # GET /tournaments/location/1

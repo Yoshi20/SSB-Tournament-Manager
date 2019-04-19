@@ -2,7 +2,7 @@
   .col-md-12
     %h1= 'Calendar'
 
-.row-color-legend.hidden-sm.hidden-xs{style: "position: relative;"}
+.row.color-legend.hidden-sm.hidden-xs{style: "position: relative;"}
   .col-md-12{style: "position: absolute; top: 30px; text-align: right;"}
     = render 'color_legend'
 
@@ -51,6 +51,11 @@
     $(document).on 'turbolinks:load', eventCalendar
     $(document).on 'turbolinks:before-cache', clearCalendar
 
-.row-color-legend.visible-sm.visible-xs{style: "margin-top: 20px;"}
-  .col-md-12{style: "margin-left: -30px;"}
-    = render 'color_legend'
+.row.calendar-footer{style: "margin-top: 20px; margin-bottom: 30px;"}
+  .col-xs-10{style: "margin-left: -20px;"}
+    .color-legend.visible-sm.visible-xs
+      = render 'color_legend'
+
+  .col-xs-2
+    .ical-export
+      = link_to ".ical Export", calendar_path + '.ics', class:'btn btn-primary', style: 'position: absolute; right: 0;'

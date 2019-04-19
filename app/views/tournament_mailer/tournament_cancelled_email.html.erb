@@ -9,7 +9,7 @@
       Hi <%= @user.username %>.
     </p>
     <p>
-      Because of too few registrations or other reasons, an administrator has canceled the tournament "<strong><%= @tournament.name.gsub('(canceled) ', '') %></strong>".
+      Because of too few registrations or other reasons, an administrator has cancelled the tournament "<strong><%= @tournament.name.gsub('(cancelled) ', '') %></strong>".
     </p>
     <p>
       <strong>Date:</strong> <del><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></del><br>

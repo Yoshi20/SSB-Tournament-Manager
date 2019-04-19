@@ -206,7 +206,7 @@
                     = ')'
                   %p
                   - mail_string = mail_string + p.user.email + '; '
-                - if @tournament.players.any? and current_user.present? and current_user.admin? and (!@tournament.setup or @tournament.finished) and !@tournament.canceled?
+                - if @tournament.players.any? and current_user.present? and current_user.admin? and (!@tournament.setup or @tournament.finished) and !@tournament.cancelled?
                   = mail_to "", 'Send all registerd players an email', bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-primary'
 
     .col-md-3
@@ -258,7 +258,7 @@
         -# cancel tournament form
         = form_for @tournament, role: 'form', as: :tournament, url: "/tournaments/cancel/#{@tournament.id}", method: :post, html: { class: "form-inline" } do |f|
           .field
-            = f.text_field :name, value: "(canceled) #{@tournament.name}", class: 'hidden'
+            = f.text_field :name, value: "(cancelled) #{@tournament.name}", class: 'hidden'
             = f.check_box :finished, checked: true, class: 'hidden'
             = f.submit 'Cancel tournament', class:'btn btn-danger', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
 

@@ -22,6 +22,7 @@ class Calendar
         className: 'calendar-tournament',
         color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link || "/tournaments/#{tournament.id}",
+        status:    tournament.cancelled? ? 'CANCELLED' : nil,
       }
     end
 
@@ -36,8 +37,8 @@ class Calendar
           # external tournament
           'cornflowerblue'
         end
-      elsif tournament.canceled?
-        # canceled
+      elsif tournament.cancelled?
+        # cancelled
         'lightsalmon'
       elsif tournament.registration_deadline.present? and tournament.registration_deadline < DateTime.now
         # registration deadline exceeded? -> ongoing
