@@ -23,5 +23,8 @@ Links:
 - https://www.toornament.com/
 - http://sac-bern.ch
 
+Icons:
+- https://www.ssbwiki.com/Category:Head_icons_(SSBU)
+
 Queries:
 - Players that haven't joined a tournament yet: ```Player.includes(:tournaments).where(tournaments: {id: nil})```
