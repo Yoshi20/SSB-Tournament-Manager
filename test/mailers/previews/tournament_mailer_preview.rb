@@ -12,8 +12,8 @@ class TournamentMailerPreview < ActionMailer::Preview
     TournamentMailer.with(tournament: Tournament.where(subtype: 'weekly').first, user: User.first).new_weekly_tournament_email
   end
 
-  def tournament_canceled_email
-    TournamentMailer.with(tournament: Tournament.where('started is FALSE or started is NULL AND finished is TRUE').first, user: User.first).tournament_canceled_email
+  def tournament_cancelled_email
+    TournamentMailer.with(tournament: Tournament.where('started is FALSE or started is NULL AND finished is TRUE').first, user: User.first).tournament_cancelled_email
   end
 
   def waiting_player_upgraded_email

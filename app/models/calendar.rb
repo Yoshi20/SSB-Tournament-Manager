@@ -36,8 +36,8 @@ class Calendar
           # external tournament
           'cornflowerblue'
         end
-      elsif tournament.canceled?
-        # canceled
+      elsif tournament.cancelled?
+        # cancelled
         'lightsalmon'
       elsif tournament.registration_deadline.present? and tournament.registration_deadline < DateTime.now
         # registration deadline exceeded? -> ongoing
@@ -101,6 +101,9 @@ class Calendar
         event.summary     = tournament.name.to_s.strip
         event.description = tournament.description.to_s.strip
         event.location    = tournament.location.to_s.strip
+        if tournament.cancelled?
+          event.status = 'CANCELLED'
+        end
       end
     end
 
