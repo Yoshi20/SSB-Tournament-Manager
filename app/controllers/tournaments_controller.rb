@@ -331,7 +331,7 @@ class TournamentsController < ApplicationController
           # setup a challonge tournament
           ct = Challonge::Tournament.new
           ct.name = @tournament.name #'SSBU Bern KW1' or 'PK Bern #1'
-          ct.url = @tournament.name.downcase.gsub(/[^0-9A-Za-z\s]/, '').strip.gsub(' ', '_').gsub('__', '_').gsub('__', '_') #'ssbu_bern_kw1' or 'pk_bern_1'
+          ct.url = helpers.valid_challonge_url(@tournament.name) #'ssbu_bern_kw1' or 'pk_bern_1'
           ct.tournament_type = 'double elimination'
           ct.game_name = 'Super Smash Bros. Ultimate'
           ct.description = @tournament.description

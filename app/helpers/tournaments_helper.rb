@@ -7,6 +7,10 @@ module TournamentsHelper
     return min_needed_game_stations
   end
 
+  def valid_challonge_url(str)
+    str.downcase.gsub(/[^0-9A-Za-z\s]/, '').strip.gsub(' ', '_').gsub('__', '_').gsub('__', '_')
+  end
+
   def points_repartition_table(rank)
       if rank == 1 then 300
       elsif rank == 2 then 250

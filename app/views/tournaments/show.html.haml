@@ -10,10 +10,14 @@
         - if @tournament.registration_deadline.nil?
           = '-'
         - else
+          %br
+          &emsp;
           = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
 
-    %p
+    %p{style: 'font-size: 18px;'}
       %strong Tournament start date:
+      %br
+      &emsp;
       = @tournament.date.to_s(:custom_datetime_with_weekday)
 
     - if @tournament.location.present?
@@ -238,7 +242,7 @@
 - if @tournament.setup
   .row.show-on-challonge
     .col-md-4
-      %p= link_to 'Show tournament on Challonge', "https://challonge.com/de/#{@tournament.name.gsub(/( )/, '_').downcase}", target: '_blank', class:'btn btn-primary'
+      %p= link_to 'Show tournament on Challonge', "https://challonge.com/de/#{valid_challonge_url(@tournament.name)}", target: '_blank', class:'btn btn-primary'
 
 - if current_user.present? and current_user.admin? and !@tournament.finished
   .row.admin-tournament
@@ -266,7 +270,7 @@
   .row.challonge_tournament_tree
     .col-md-12
       %br
-      %img{:src => "https://challonge.com/#{@tournament.name.gsub(/( )/, '_').downcase}.svg"}
+      %img{:src => "https://challonge.com/#{valid_challonge_url(@tournament.name)}.svg"}
 
 - if @tournament.name.include?('PK Bern')
   %br
