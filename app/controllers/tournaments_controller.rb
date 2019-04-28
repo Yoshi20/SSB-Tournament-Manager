@@ -315,7 +315,7 @@ class TournamentsController < ApplicationController
     end
   end
 
-  # POST /tournaments/setup/1
+  # POST /tournaments/setup/1'
   def setup
     if @tournament.setup or @tournament.started or @tournament.finished
       redirect_to @tournament, alert: 'Tournament is already set up, started or finished.'
@@ -330,8 +330,8 @@ class TournamentsController < ApplicationController
 
           # setup a challonge tournament
           ct = Challonge::Tournament.new
-          ct.name = @tournament.name #'SSBU Bern KW1'
-          ct.url = @tournament.name.gsub(/( )/, '_').downcase #'ssbu_bern_kw1'
+          ct.name = @tournament.name #'SSBU Bern KW1' or 'PK Bern #1'
+          ct.url = @tournament.name.downcase.gsub(/[^0-9A-Za-z\s]/, '').strip.gsub(' ', '_').gsub('__', '_').gsub('__', '_') #'ssbu_bern_kw1' or 'pk_bern_1'
           ct.tournament_type = 'double elimination'
           ct.game_name = 'Super Smash Bros. Ultimate'
           ct.description = @tournament.description
