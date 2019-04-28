@@ -6,6 +6,7 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
+    @ongoing_tournaments = Tournament.active_2019.ongoing
     if params[:filter].nil? or params[:filter] == 'all'
       @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(20)
       @past_tournaments = Tournament.active_2019.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)

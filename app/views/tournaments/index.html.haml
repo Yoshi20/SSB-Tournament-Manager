@@ -1,3 +1,18 @@
+- if @ongoing_tournaments.any?
+  .row.title-div
+    .col-md-12
+      %h1= "Ongoing tournaments 2019"
+
+  -# ongoing tournaments list
+  .row.tournament-list#ongoing-tournaments
+    .col-md-12
+      %table.table.table-striped
+        %thead.tournament-list-header
+          = render "tournament_list_header"
+
+        %tbody.with-show.tournament-list-body
+          = render @ongoing_tournaments
+
 .row.title-div
   .col-md-12
     %h1= "Upcoming tournaments 2019"

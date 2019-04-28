@@ -16,7 +16,7 @@ class Calendar
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       isFullDayEvent ? nil : (tournament.date + 4.hours),
+        end:       isFullDayEvent ? nil : (tournament.date + 6.hours),
         allDay:    isFullDayEvent,
         editable:  false,
         className: 'calendar-tournament',
@@ -26,7 +26,7 @@ class Calendar
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.date + 4.hours < DateTime.now and tournament.subtype != 'external'
+      if tournament.date + 6.hours < DateTime.now and tournament.subtype != 'external'
         # past tournament
         'lightgray'
       elsif tournament.subtype == 'external'
@@ -87,7 +87,7 @@ class Calendar
 
     def ical_event_internal(calendar, tournament, tzid)
       calendar.event do |event|
-        end_time = tournament.date + 4.hours
+        end_time = tournament.date + 6.hours
         if false
           # whole-day tournament structure
           event.dtstart = ical_date(tournament.date.to_date)
