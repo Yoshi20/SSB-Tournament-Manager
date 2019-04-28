@@ -52,10 +52,15 @@
     $(document).on 'turbolinks:before-cache', clearCalendar
 
 .row.calendar-footer{style: "margin-top: 20px; margin-bottom: 30px;"}
-  .col-xs-10{style: "margin-left: -20px;"}
-    .color-legend.visible-sm.visible-xs
-      = render 'color_legend'
+  .col-xs-6
+    .row
+      .col-xs-12{style: "margin-left: -20px;"}
+        .color-legend.visible-sm.visible-xs
+          = render 'color_legend'
 
-  .col-xs-2
-    .ical-export
-      = link_to ".ical Export", calendar_path + '.ics', class:'btn btn-primary', style: 'position: absolute; right: 0;'
+  .col-xs-6
+    .row
+      .col-xs-12{style: 'text-align: right;'}
+        .ical-export
+          %p= link_to "iCal Export", calendar_path + '.ics', class:'btn btn-primary'
+          %p= request.base_url + calendar_path + '.ics'
