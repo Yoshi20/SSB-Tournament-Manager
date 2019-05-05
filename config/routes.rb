@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'informations' => 'informations#index'
 
   get 'calendar' => 'calendar#index'
+  get 'calendar_for_iframe' => 'calendar#show'
 
   resources :feedbacks
 
