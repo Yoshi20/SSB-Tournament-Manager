@@ -36,3 +36,9 @@
       .container.content-wrapper
         .content
           = yield
+
+      .footer
+        = image_tag('logo.png', height: '50px', width: '50px')
+        %p
+          = 'If you face any problems or have a question, please contact me'
+          = mail_to 'jascha_haldemann@hotmail.com', 'via email.', subject: 'I faced a problem or have a question!', body: "Hi Yomi\n\nI'm ??? and I would like to ???"
