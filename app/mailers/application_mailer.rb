@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'SwissSmash <ssb.tournament.manager@gmail.com>'
+  default from: 'SwissSmash <admin@swisssmash.ch>'
   layout 'mailer'
 end
