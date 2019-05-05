@@ -1,0 +1,62 @@
+.row.color-legend.hidden-sm.hidden-xs{style: "position: relative;"}
+  .col-md-12{style: "position: absolute; top: 30px; text-align: right;"}
+    = render 'color_legend'
+
+.row.calendar
+  .col-md-12
+    #fullcalendar{data: {events: @full_calendar_events}}
+
+.row.calendar-footer{style: "margin-top: 20px; margin-bottom: 30px;"}
+  .col-xs-6
+    .row
+      .col-xs-12{style: "margin-left: -20px;"}
+        .color-legend.visible-sm.visible-xs
+          = render 'color_legend'
+
+  .col-xs-6
+    .row
+      .col-xs-12{style: 'text-align: right;'}
+        .ical-export
+          %p= link_to "iCal Export", calendar_path + '.ics', class:'btn btn-primary'
+          %p= request.base_url + calendar_path + '.ics'
+
+:coffeescript
+  document.addEventListener 'turbolinks:load', ->
+    calendar = $('#fullcalendar')
+    calendar.fullCalendar
+      header:
+        left: 'title'
+        center: ''
+        right: 'today month,agendaWeek,agendaDay,listAll prev,next'
+      contentHeight: 600
+      views:
+        month:
+          titleFormat: 'MMMM YYYY'
+        agendaWeek:
+          titleFormat: 'DD. MMMM YYYY'
+          columnFormat: 'ddd, DD.MM.'
+        agendaDay:
+          titleFormat: 'DD. MMMM YYYY'
+        listAll:
+          type: 'list'
+          duration: { years: 10 }
+          listDayFormat: 'dddd, DD. MMMM YYYY'
+          listDayAltFormat: ''
+      defaultView: 'month'
+      events: calendar.data('events')
+      firstDay: 1
+      eventClick: (event) ->
+        if event.url and event.url[0] != '/'
+          window.open event.url, '_blank'
+          return false
+
+    eventCalendar = ->
+      $('#fullcalendar').fullCalendar {calendar}
+
+    clearCalendar = ->
+      $('#fullcalendar').fullCalendar 'delete'
+      $('#fullcalendar').html ''
+      return
+
+    $(document).on 'turbolinks:load', eventCalendar
+    $(document).on 'turbolinks:before-cache', clearCalendar
