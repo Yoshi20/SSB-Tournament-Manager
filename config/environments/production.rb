@@ -69,12 +69,21 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587, #or 25,
-    domain: 'heroku.com', #ENV['GMAIL_USERNAME'],
-    user_name: ENV['SENDGRID_USERNAME'], #ENV['GMAIL_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'], #ENV['GMAIL_PASSWORD'],
+    domain: 'heroku.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
+  # ActionMailer::Base.smtp_settings = {
+  #   address: 'mail.infomaniak.com',
+  #   port: 587, #or 25,
+  #   domain: 'swisssmash.ch',
+  #   user_name: ENV['INFOMANIAK_EMAIL_USERNAME'],
+  #   password: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true
+  # }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
