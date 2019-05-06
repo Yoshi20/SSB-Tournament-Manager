@@ -18,9 +18,9 @@
           %th.text-center.hidden-xs Participations
           %th.text-center.hidden-xs Self assessment
           %th.text-center.hidden-xs Tournament experience
-          %th.text-center Win/Loss ratio
+          %th.text-center.hidden-xs Win/Loss ratio
           %th.hidden-sm.hidden-xs Comment
-          %th.text-center.hidden-xs Admin
+          %th.text-center.hidden-sm.hidden-xs Admin
 
       %tbody.with-show.player-list-body
         - if @players.any?
@@ -45,12 +45,12 @@
               %td.text-center.hidden-xs= player.participations #"#{player.participations} / #{@started_and_finished_tournaments_count_2019}"
               %td.text-center.hidden-xs= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.hidden-xs= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center
+              %td.text-center.hidden-xs
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
               %td.hidden-sm.hidden-xs= truncate(player.comment, length: 60)
-              %td.text-center.hidden-xs
+              %td.text-center.hidden-sm.hidden-xs
                 - if player.user.admin?
                   .glyphicon.glyphicon-ok
