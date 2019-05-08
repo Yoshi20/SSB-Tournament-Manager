@@ -1,12 +1,10 @@
 %tr
-  %th.text-center Joined
-  %th.text-center.hidden-xs Weekday
-  %th Date
+  %th
+  %th{style: 'min-width: 5rem'} Date
   %th Name
   %th.hidden-xs Location
   -# %th.hidden-md.hidden-sm.hidden-xs Description
-  %th.text-center.hidden-xs Registration fee
-  %th.text-center.hidden-xs Occupied seats
-  %th.text-center.hidden-xs Started
+  %th.text-center.hidden-xs{style: 'min-width: 5rem'} Fee
+  %th.text-center.hidden-xs Seats
   - if current_user.present? and current_user.admin?
     %th.text-center.action Edit

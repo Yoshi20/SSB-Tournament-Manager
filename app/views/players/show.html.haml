@@ -1,10 +1,25 @@
-.row.title-div
-  .col-md-12
-    %h1
+.row
+  .col
+    %h1.page-title
       = @player.gamer_tag
 
-.row.show-player
-  .col-md-4
+.row.mb-3
+  .col
+    - if current_user.present? and current_user.admin?
+      %p
+        %strong= link_to 'Edit player', edit_player_path(@player)
+    - if current_user.present? and @player.user != current_user
+      - if @player.user.admin?
+        %p
+          %strong= mail_to @player.user.email, "Contact this administrator", body: "Hi #{@player.user.username}\n\n..."
+      - elsif current_user.admin?
+        %p
+          %strong= mail_to @player.user.email, "Contact user", body: "Hi #{@player.user.username}\n\n..."
+          - if @player.user.mobile_number.present?
+            = "(#{@player.user.mobile_number})"
+
+.row
+  .col-6
     %p
       %strong Best rank ever:
       = @player.best_rank
@@ -25,8 +40,7 @@
       %strong Tournament experience:
       = tournament_experience_defines[@player.tournament_experience]
 
-  .col-md-4
-
+  .col-6
     %p
       %strong Wins:
       = @player.wins
@@ -53,51 +67,43 @@
       %strong Created at:
       = @player.created_at.to_s(:custom_datetime)
 
-  .col-md-4
-    - if current_user.present? and current_user.admin?
-      %p
-        %strong= link_to 'Edit player', edit_player_path(@player)
-    - if current_user.present? and @player.user != current_user
-      - if @player.user.admin?
-        %p
-          %strong= mail_to @player.user.email, "Contact this administrator", body: "Hi #{@player.user.username}\n\n..."
-      - elsif current_user.admin?
-        %p
-          %strong= mail_to @player.user.email, "Contact user", body: "Hi #{@player.user.username}\n\n..."
-          - if @player.user.mobile_number.present?
-            = "(#{@player.user.mobile_number})"
-    %p
-      %strong= link_to 'Back', :back
-
-.row.player-comment
-  .col-md-12
+.row.mt-3
+  .col
     %p
       %strong Comment:
       = @player.comment || '-'
 
 - if @player.tournaments.any?
-  .row.title-joined-tournaments-div
-    .col-md-12
-      %h2 Joined tournaments
-  .row.show-joined-tournaments
-    .col-md-12
-      - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(date: :asc).each do |t|
-        %p
-          %i.glyphicon.glyphicon-time
-          %strong= link_to "#{t.date.to_s(:custom_datetime_date)} -> #{t.name}", t
-
-  .row.title-past-joined-tournaments-div
-    .col-md-12
-      %h2 Past joined tournaments
-  .row.show-past-joined-tournaments
-    .col-md-12
-      - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |t|
-        %p
-          - player_rank = '?'
-          - if t.ranking_string.to_s.include?(@player.gamer_tag)
-            - t.ranking_string.split(';').sort.each do |r|
-              - if r.split(',')[1] == @player.gamer_tag
-                - player_rank = r.split(',')[0]
-          %strong= "#{player_rank}"
-          %i.glyphicon.glyphicon-star
-          %strong= link_to "#{t.name}", t
+  -if @player.tournaments.where('active = ? AND date >= ?', true, Time.now).any?
+    .row.mt-3
+      .col
+        %h2 Joined tournaments
+    .row
+      .col
+        - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(date: :asc).each do |t|
+          %p
+            %i.glyphicon.glyphicon-time
+            %strong= link_to "#{t.date.to_s(:custom_datetime_date)} -> #{t.name}", t
+  -if @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).any?
+    .row.mt-3
+      .col
+        %h2 Past joined tournaments
+    .row
+      .col
+        - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |t|
+          .d-flex.align-items-center.mb-3
+            - player_rank = '?'
+            - if t.ranking_string.to_s.include?(@player.gamer_tag)
+              - t.ranking_string.split(';').sort.each do |r|
+                - if r.split(',')[1] == @player.gamer_tag
+                  - player_rank = r.split(',')[0]
+            %strong= "#{player_rank}"
+            - if player_rank == '1'
+              = 'st'
+            - elsif player_rank == '3'
+              = 'rd'
+            - else 
+              = 'nd'
+            %span.material-icons.ml-3
+              = 'star'
+            .ml-3= link_to "#{t.name}", t

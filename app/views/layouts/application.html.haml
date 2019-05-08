@@ -10,42 +10,23 @@
     = csrf_meta_tags
 
   %body
-    .wrapper.fixed-width
-      .banner
-        .fixed-width
-          = image_tag 'banner.jpg', height: '200px', width: '100%', style: 'object-fit: cover;'
-          .inside-banner
-            = link_to image_tag('logistik.png', height: '150px', width: '150px'), root_path
-
-      .header
-        .fixed-width
-          .navigation-header
-            = render '/layouts/navigation'
-
-        -# -# login header
-        -# .col-md-6
-        -#   .row.login-header
-        -#     = render '/layouts/login'
-
-      -# flash notifications and alerts
-      .flashes
-        .fixed-width
-          = render '/layouts/flashes'
-
-      -# main content (index.html)
-      .container.content-wrapper
-        .content
-          = yield
-
+    = render '/layouts/flashes'
+    .header.navbar.navbar-expand-lg.navbar-sstm
+      = render '/layouts/navigation'
+    .container.content
+      .row
+        .col-3
+          .box
+            = render '/partials/players'
+        .col-6
+          .box
+            = yield
+        .col-3
+          .box
+            = render '/partials/events'
     .footer
       = button_tag '', onclick: 'topFunction()', title: 'Go to top', style: 'background-color: #222; border: none;' do
         = image_tag('logo.png', height: '50px', width: '50px')
-      %p
+      %p.small
         = 'If you face any problems or have a question, please contact me'
         = mail_to 'admin@swisssmash.ch', 'via email.', subject: 'I faced a problem or have a question!', body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"
-
-:javascript
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };

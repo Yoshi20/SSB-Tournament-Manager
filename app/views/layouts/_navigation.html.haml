@@ -1,122 +1,60 @@
 -# Std view
-%ul.nav.nav-pills.hidden-xs
-
-  %li{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
-    = link_to 'Tournaments', tournaments_path
-
-  %li{role: "presentation", class: (@section == 'calendar' ? 'active' : 'inactive')}
-    = link_to 'Calendar', calendar_path
-
-  %li{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
-    = link_to 'Players', players_path
-
-  %li{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
-    = link_to 'Rules', rules_path
-
-  %li{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-    = link_to 'Information', informations_path
-
-  %li{role: "presentation", class: (@section == 'feedbacks' ? 'active' : 'inactive')}
-    = link_to 'Feedback & Questions', feedbacks_path
-
-  %li.dropdown.active.pull-right
-    %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
-      - if user_signed_in?
-        = current_user.username
-      - else
-        = "Account"
-      %span.caret
-    %ul.dropdown-menu
-      - if user_signed_in?
-        - if current_user.admin?
-          .text-center
-            %b
-              = '(Administrator)'
-        - if current_user.player.present?
-          = link_to 'Show', player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
-          = link_to 'Edit player', edit_player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
-        = link_to 'Edit user', edit_user_registration_path, class: 'account-btn form-control btn btn-primary'
-        - if current_user.admin?
-          = link_to 'Show all users', users_path, class: 'account-btn form-control btn btn-primary'
-        -# = link_to 'Edit', edit_player_path(current_user.player), class: 'form-control btn btn-primary'
-        .divider
-        = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'account-btn form-control btn btn-warning'
-      - else
-        %li
-          -# unless devise_controller?
-          = form_tag session_path(:user), class: "form-inline pull-right" do
-            .form-group
-              = text_field_tag "user[login]", "", class: "form-control", placeholder: "Username or Email"
-              = password_field_tag "user[password]", "", class: "form-control", placeholder: "Password"
-              .text-center{style: "margin-top: 5px"}
-                = submit_tag "Log in", class: "form-control btn btn-success"
-                = "or"
-                = link_to "Sign up", new_user_registration_path,  class: "account-btn form-control btn btn-primary"
-
-  %li.pull-right
-    = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40', style: 'margin-top: -10px; margin-right: -10px; margin-bottom: -10px; margin-left: -10px;'), 'https://discord.gg/wA89CyA', target: '_blank'
-
-
--# Mobile view
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.hidden.visible-xs
-  .navbar-toggler.left-align{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
-    -# %span.navbar-toggler-icon
-    %span.glyphicon.glyphicon-menu-hamburger
-    Menu
-  #navbarNavDropdown.collapse.navbar-collapse
-    %ul.navbar-nav{style: 'list-style-type: none; padding-left: 0;'}
-
+.container 
+  %a.navbar-brand{href: '/'} 
+    = image_tag('logo.png', height: '50px', width: '50px')
+    = 'SwissSmash'
+  %button.navbar-toggler{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
+    %span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarSupportedContent
+    %ul.navbar-nav.navbar-main.ml-auto
       %li.nav-item{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
-        = link_to 'Tournaments', tournaments_path
+        = link_to 'Tournaments', tournaments_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'calendar' ? 'active' : 'inactive')}
-        = link_to 'Calendar', calendar_path
+        = link_to 'Calendar', calendar_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
-        = link_to 'Players', players_path
+        = link_to 'Players', players_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
-        = link_to 'Rules', rules_path
+        = link_to 'Rules', rules_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-        = link_to 'Information', informations_path
+        = link_to 'Information', informations_path, class: 'nav-link'
 
-      %li.nav-item{role: "presentation", class: (@section == 'feedbacks' ? 'active' : 'inactive')}
-        = link_to 'Feedback & Questions', feedbacks_path
-
-      %li.nav-item
-        = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40', style: 'margin-top: -10px; margin-right: -10px; margin-bottom: -10px; margin-left: -5px;'), 'https://discord.gg/wA89CyA', target: '_blank'
-
-      %li.nav-item.dropdown
-        %a.dropdown-toggle{"data-toggle"=>"dropdown", href:"#"}
-          - if user_signed_in?
-            = current_user.username
-          - else
-            = "Account"
-          %span.caret
-        %ul.dropdown-menu
-          - if user_signed_in?
+    %ul.navbar-nav.navbar-account
+      - if user_signed_in?
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+            %span.material-icons
+              = 'account_circle'
+          .dropdown-menu{'aria-labelledby':'navbarDropdown'}
             - if current_user.admin?
-              .text-center
-                %b
-                  = '(Administrator)'
+              %b
+              = '(Administrator)'
             - if current_user.player.present?
-              = link_to 'Show', player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
-              = link_to 'Edit player', edit_player_path(current_user.player), class: 'account-btn form-control btn btn-primary'
-            = link_to 'Edit user', edit_user_registration_path, class: 'account-btn form-control btn btn-primary'
+              = link_to 'Show Profile', player_path(current_user.player), class: 'dropdown-item'
+              = link_to 'Edit Profile', edit_player_path(current_user.player), class: 'dropdown-item'
+            = link_to 'Account', edit_user_registration_path, class: 'dropdown-item'
             - if current_user.admin?
-              = link_to 'Show all users', users_path, class: 'account-btn form-control btn btn-primary'
-            -# = link_to 'Edit', edit_player_path(current_user.player), class: 'form-control btn btn-primary'
+              = link_to 'Show all users', users_path, class: 'dropdown-item'
+            -#
             .divider
-            = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'account-btn form-control btn btn-warning'
-          - else
-            %li
-              -# unless devise_controller?
-              = form_tag session_path(:user), class: "form-inline" do
+            = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'dropdown-item'
+      - else
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+            %span.material-icons
+              = 'account_circle'
+          %ul.dropdown-menu
+            %li.px-3.py-2
+              = form_tag session_path(:user), class: "form" do
                 .form-group
-                  = text_field_tag "user[login]", "", class: "form-control", placeholder: "Username or Email"
-                  = password_field_tag "user[password]", "", class: "form-control", placeholder: "Password"
-                  .text-center{style: "margin-top: 5px"}
-                    = submit_tag "Log in", class: "form-control btn btn-success"
-                    = "or"
-                    = link_to "Sign up", new_user_registration_path,  class: "account-btn form-control btn btn-primary"
+                  = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: "Username"
+                .form-group
+                  = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: "Password"
+                .form-group
+                  = submit_tag "Log in", class: "btn btn-ghost btn-block"
+                .form-group.text-center 
+                  %small
+                    = link_to "Sign up", new_user_registration_path,  class: ""

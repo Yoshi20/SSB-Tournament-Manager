@@ -1,7 +1,9 @@
-%h2= "Edit #{resource_name.to_s.humanize}"
 .row
-  .col-md-8
-    = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
+  .col
+    %h1.page-title My Account
+.row.mb-3
+  .col
+    = form_for(resource, class: 'form', as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
       = devise_error_messages!
       .field.form-group
         = f.label :username
@@ -43,24 +45,24 @@
             = link_to 'https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank'
             = ')'
           = f.text_field :challonge_api_key, class: 'form-control'
-        .moved-up{style: 'margin-top:-10px'}= '---------------------------------------------------------------------------------'
-        %br
+      .field.form-group.mb-0
+        .form-check
+          = f.check_box :wants_major_email, class:'form-check-input mr-2'
+          = f.label :wants_major_email, 'Inform me when a major tournament was added', class:'form-check-label'
       .field.form-group
-        = f.check_box :wants_major_email, style: 'margin-left: 5px;'
-        = f.label :wants_major_email, 'Inform me when a major tournament was added'
-      .field.form-group{style: 'margin-top: -15px;'}
-        = f.check_box :wants_weekly_email, style: 'margin-left: 5px;'
-        = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added'
+        .form-check
+          = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
+          = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
       .field.form-group
         = f.label :current_password
         %i (enter your current password to confirm the changes)
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
       .actions
-        = f.submit "Update", class: 'btn btn-success'
-    %h3 Delete my account
+        = f.submit "Update", class: 'btn btn-block btn-ghost'
+%hr
+.row
+  .col
+    %h2 Delete my account
     %p
-      Unhappy? #{button_to "Delete account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'}
-
-  .col-md-4
-    %strong
-      %p= link_to 'Back', :back
+      Unhappy? 
+      = button_to "Delete account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-block btn-sstm'

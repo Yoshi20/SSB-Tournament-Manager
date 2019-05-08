@@ -1,0 +1,27 @@
+.btn {
+  border-radius: 0;
+}
+.btn.btn-ghost {
+  background: transparent;
+  border: 2px solid $color-red;
+  color: $color-red;
+  transition: all 0.3s ease;
+  &:hover {
+    background: $color-red;
+    color: $color-white;
+  }
+  &:focus, .focus {
+    box-shadow: 0 0 0 0.2rem rgba(226, 4, 1, 0.25)
+  }
+}
+
+.btn.btn-sstm {
+  background: $color-red;
+  border: 2px solid $color-red;
+  color: $color-white;
+  transition: all 0.3s ease;
+  &:focus, .focus {
+    box-shadow: 0 0 0 0.2rem rgba(226, 4, 1, 0.25)
+  }
+
+}

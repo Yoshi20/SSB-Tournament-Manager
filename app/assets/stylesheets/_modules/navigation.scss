@@ -1,0 +1,55 @@
+.navbar.navbar-sstm {
+  background-color: $color-red;
+  .navbar-brand {
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    img {
+      margin-right: 1rem;
+      background-color: $color-white;
+      border-radius: 50%;
+    }
+  }
+  .nav-item {
+    .nav-link {
+      color: $color-white;
+    }
+  }
+  .navbar-main {
+    .nav-item {
+      .nav-link {
+        &:after {
+          content: "";
+          width: 0%;
+          height: 1px;
+          transition: width 0.2s ease;
+          background-color: $color-white;
+          display: block;
+        }
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .navbar-account {
+    .dropdown-menu {
+      border-radius: 0;
+      a {
+        color: $color-red;
+      }
+      .dropdown-item.active, .dropdown-item:active {
+        background-color: $color-grey-light;
+      }
+    }
+    .dropdown-toggle {
+      display: flex;
+      align-content: center;
+      margin-left: 1rem;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

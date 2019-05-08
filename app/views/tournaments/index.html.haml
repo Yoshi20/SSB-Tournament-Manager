@@ -1,98 +1,63 @@
-- if @ongoing_tournaments.any?
-  .row.title-div
-    .col-md-12
-      %h1= "Ongoing tournaments 2019"
+%ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#upcoming-tab.nav-link.active{'data-toggle'=>'tab', href: '#upcoming', role: 'tab', 'aria-controls'=>'all'}
+      = 'Upcoming'
+  - if @ongoing_tournaments.any?
+    %li.nav-item
+      %a#ongoing-tab.nav-link{'data-toggle'=>'tab', href: '#ongoing', role: 'tab', 'aria-controls'=>'all'}
+        = 'Ongoing'
+  %li.nav-item
+    %a#past-tab.nav-link{'data-toggle'=>'tab', href: '#past', role: 'tab', 'aria-controls'=>'all'}
+      = 'Past'
 
-  -# ongoing tournaments list
-  .row.tournament-list#ongoing-tournaments
-    .col-md-12
-      %table.table.table-striped
-        %thead.tournament-list-header
-          = render "tournament_list_header"
+.tab-content#tourmanets-tabs-content
+  .tab-pane.fade#ongoing{role: 'tabpanel', 'aria-labelledby'=>'ongoing-tab'}
+    %table.table.table-hover.table-tournaments
+      %thead.table-header
+        = render "tournament_list_header"
 
-        %tbody.with-show.tournament-list-body
-          = render @ongoing_tournaments
+      %tbody.with-show.tournament-list-body
+        = render @ongoing_tournaments
+  .tab-pane.fade.show.active#upcoming{role: 'tabpanel', 'aria-labelledby'=>'upcoming-tab'}
+    .tournaments-filter
+      %p.tournament-filter-text= link_to 'All',       tournaments_path(filter: 'all'),       class: "#{(params[:filter].nil? or params[:filter] == 'all') ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'External',  tournaments_path(filter: 'external'),  class: "#{params[:filter] == 'external' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Internal',  tournaments_path(filter: 'internal'),  class: "#{params[:filter] == 'internal' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(filter: 'weekly'),    class: "#{params[:filter] == 'weekly' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Baden',     tournaments_path(filter: 'baden'),     class: "#{params[:filter] == 'baden' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Bern',      tournaments_path(filter: 'bern'),      class: "#{params[:filter] == 'bern' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(filter: 'geneva'),    class: "#{params[:filter] == 'geneva' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(filter: 'solothurn'), class: "#{params[:filter] == 'solothurn' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(filter: 'zurich'),    class: "#{params[:filter] == 'zurich' ? 'active' : ''}"
 
-.row.title-div
-  .col-md-12
-    %h1= "Upcoming tournaments 2019"
-
-  -# -# search form
-  -# .col-md-6
-  -#   .search-form.pull-right
-  -#     = form_tag tournaments_path, method:'get', class: 'form-inline' do
-  -#       = text_field_tag :search, params[:search], class: 'form-control'
-  -#       = submit_tag 'Search', name:nil, class: 'form-control btn btn-default'
-  -#     %p (Partnumber, Manufacturer, Comment)
-
-.row.tournament-filter
-  .col-md-12
-    %p.tournament-filter-text= link_to 'All',       tournaments_path(filter: 'all'),       style: "text-decoration: #{(params[:filter].nil? or params[:filter] == 'all') ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'External',  tournaments_path(filter: 'external'),  style: "text-decoration: #{params[:filter] == 'external' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Internal',  tournaments_path(filter: 'internal'),  style: "text-decoration: #{params[:filter] == 'internal' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(filter: 'weekly'),    style: "text-decoration: #{params[:filter] == 'weekly' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Baden',     tournaments_path(filter: 'baden'),     style: "text-decoration: #{params[:filter] == 'baden' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Bern',      tournaments_path(filter: 'bern'),      style: "text-decoration: #{params[:filter] == 'bern' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(filter: 'geneva'),    style: "text-decoration: #{params[:filter] == 'geneva' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(filter: 'solothurn'), style: "text-decoration: #{params[:filter] == 'solothurn' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(filter: 'zurich'),    style: "text-decoration: #{params[:filter] == 'zurich' ? 'underline' : ''};"
-
--# tournaments list
-.row.tournament-list#upcoming-tournaments
-  .col-md-12
-    %table.table.table-striped
-      %thead.tournament-list-header
+    %table.table.table-hover.table-tournaments
+      %thead.table-header
         = render "tournament_list_header"
 
       %tbody.with-show.tournament-list-body
         = render @tournaments
 
-    - if !@tournaments.any?
-      %p{style: 'text-align: center;'}
-        No upcoming tournaments found yet!
+    .tournament-list-footer
+      = render 'paginator'
 
-    .row.tournament-list-footer
-      -# pageinator
-      .col-md-10
-      -#   = render 'paginator'
+  .tab-pane.fade#past{role: 'tabpanel', 'aria-labelledby'=>'past-tab'}
+    .tournaments-filter
+      %p.tournament-filter-text= link_to 'All',       tournaments_path(anchor: 'past-tournaments', filter: 'all'),       class: "#{(params[:filter].nil? or params[:filter] == 'all') ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'External',  tournaments_path(anchor: 'past-tournaments', filter: 'external'),  class: "#{params[:filter] == 'external' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Internal',  tournaments_path(anchor: 'past-tournaments', filter: 'internal'),  class: "#{params[:filter] == 'internal' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(anchor: 'past-tournaments', filter: 'weekly'),    class: "#{params[:filter] == 'weekly' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Baden',     tournaments_path(anchor: 'past-tournaments', filter: 'baden'),     class: "#{params[:filter] == 'baden' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Bern',      tournaments_path(anchor: 'past-tournaments', filter: 'bern'),      class: "#{params[:filter] == 'bern' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(anchor: 'past-tournaments', filter: 'geneva'),    class: "#{params[:filter] == 'geneva' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(anchor: 'past-tournaments', filter: 'solothurn'), class: "#{params[:filter] == 'solothurn' ? 'active' : ''}"
+      %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(anchor: 'past-tournaments', filter: 'zurich'),    class: "#{params[:filter] == 'zurich' ? 'active' : ''}"
 
-      -# 'Add Tournament' button
-      .col-md-2
-        - if current_user.present? and current_user.admin?
-          .add-tournament-button
-            = link_to 'Add Tournament', new_tournament_path, class:'btn btn-primary pull-right', style: 'margin-bottom: 15px;'
-
-.row.title-div
-  .col-md-12
-    %h1= "Past tournaments 2019"
-
-.row.tournament-filter
-  .col-md-12
-    %p.tournament-filter-text= link_to 'All',       tournaments_path(anchor: 'past-tournaments', filter: 'all'),       style: "text-decoration: #{(params[:filter].nil? or params[:filter] == 'all') ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'External',  tournaments_path(anchor: 'past-tournaments', filter: 'external'),  style: "text-decoration: #{params[:filter] == 'external' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Internal',  tournaments_path(anchor: 'past-tournaments', filter: 'internal'),  style: "text-decoration: #{params[:filter] == 'internal' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(anchor: 'past-tournaments', filter: 'weekly'),    style: "text-decoration: #{params[:filter] == 'weekly' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Baden',     tournaments_path(anchor: 'past-tournaments', filter: 'baden'),     style: "text-decoration: #{params[:filter] == 'baden' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Bern',      tournaments_path(anchor: 'past-tournaments', filter: 'bern'),      style: "text-decoration: #{params[:filter] == 'bern' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(anchor: 'past-tournaments', filter: 'geneva'),    style: "text-decoration: #{params[:filter] == 'geneva' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(anchor: 'past-tournaments', filter: 'solothurn'), style: "text-decoration: #{params[:filter] == 'solothurn' ? 'underline' : ''};"
-    %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(anchor: 'past-tournaments', filter: 'zurich'),    style: "text-decoration: #{params[:filter] == 'zurich' ? 'underline' : ''};"
-
--# past tournaments list
-.row.tournament-list#past-tournaments
-  .col-md-12
-    %table.table.table-striped
-      %thead.tournament-list-header
+    %table.table.table-hover.table-tournaments
+      %thead.table-header
         = render "tournament_list_header"
 
       %tbody.with-show.tournament-list-body
         = render @past_tournaments
 
-    .row.tournament-list-footer
-      -# pageinator
-      .col-md-12
-        = render 'paginator'
-
-    - if !@past_tournaments.any?
-      %p{style: 'text-align: center;'}
-        No past tournaments found yet!
+    .tournament-list-footer
+      = render 'paginator'

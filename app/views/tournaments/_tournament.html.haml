@@ -1,28 +1,24 @@
 -if tournament.present?
-  %tr
-    %td.hide
-      = tournament.id # used for some js-magic
-
+  %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
     %td.text-center
       - if current_user.present? and tournament.players.include?(current_user.player)
-        .glyphicon.glyphicon-check
+        %span.material-icons
+          = 'check_circle'
       - elsif tournament.subtype == 'external'
-        .glyphicon.glyphicon-new-window
+        %span.material-icons
+          = 'open_in_new'
       - elsif tournament.registration_deadline < Time.now
-        .glyphicon.glyphicon-lock
+        %span.material-icons
+          = 'lock'
       - elsif !tournament.is_registration_allowed
-        .glyphicon.glyphicon-info-sign
+        %span.material-icons
+          = 'info'
       - else
-        .glyphicon.glyphicon-unchecked
-
-    %td.text-center.hidden-xs
-      = tournament.date.to_s(:custom_datetime_weekday)
+        %span.material-icons
+          = 'radio_button_unchecked'
 
     %td
-      - if tournament.date.hour == 0 and tournament.date.min == 0 and tournament.subtype == 'external'
-        = tournament.date.to_s(:custom_datetime_date_and_no_time)
-      - else
-        = tournament.date.to_s(:custom_datetime_date_and_time)
+      = tournament.date.to_s(:custom_datetime_date_and_no_time)
 
     %td
       = tournament.name
@@ -52,20 +48,9 @@
         - else
           = "#{tournament.players.count} / #{tournament.total_seats}"
 
-    %td.text-center.hidden-xs
-      - if tournament.subtype == 'external'
-        .glyphicon.glyphicon-question-sign
-      - elsif tournament.started?
-        .glyphicon.glyphicon-check
-      - else
-        .glyphicon.glyphicon-unchecked
-
     - if current_user.present? and current_user.admin?
       %td.text-center.actions
         = link_to edit_tournament_path(tournament), class:'btn btn-default btn-xs' do
           %span.glyphicon.glyphicon-pencil
         = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
           %span.glyphicon.glyphicon-trash
-
-    %td.hide
-      = tournament.external_registration_link # used for some js-magic

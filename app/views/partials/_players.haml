@@ -1,0 +1,21 @@
+%h2
+  Top Players
+%table.table.table-hover.box-table
+  %thead.table-header
+    %tr
+      %th Player
+      %th
+      %th Points
+
+  %tbody.table-content.with-show
+    - if @topPlayers.any?
+      - @topPlayers.each_with_index do |player, i|
+        %tr{'data-id': player.id, 'data-component'=>'player'}
+          %td
+            - if player.main_characters.any?
+              .visible-xs
+                - player.main_characters[0...1].each do |char|
+                  - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                    = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+          %td= player.gamer_tag
+          %td= player.points

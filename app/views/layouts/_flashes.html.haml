@@ -1,5 +1,7 @@
-- flash.each do |key, value|
-  - if value.present?
-    .alert.alert-dismissable{class: "#{flash_class(key)} fade in"}
-      = button_tag "&times;".html_safe, class: "close", data: {dismiss: "alert"}, aria: {hidden: true}
-      = value.html_safe
+
+.toast-holder
+  - flash.each do |key, value|
+    - if value.present?
+      .toast{role:'alert', 'aria-live'=>'assertive', 'aria-atomic'=>'true'}
+        .toast-body
+          =value.html_safe

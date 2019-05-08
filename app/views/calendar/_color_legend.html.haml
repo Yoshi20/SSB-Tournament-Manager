@@ -1,25 +1,29 @@
-%span.circle{style: "background: lightgray;"}
-%p{style: "display: inline;"}Past
-%br.visible-sm.visible-xs
-%span.circle{style: "background: lightsalmon;"}
-%p{style: "display: inline;"}Cancelled
-%br.visible-sm.visible-xs
-%span.circle{style: "background: darkorange;"}
-%p{style: "display: inline;"}Ongoing
-%br.visible-sm.visible-xs
-%span.circle{style: "background: cornflowerblue;"}
-%p{style: "display: inline;"}External
-%br.visible-sm.visible-xs
-%span.circle{style: "background: orchid;"}
-%p{style: "display: inline;"}Internal
-%br.visible-sm.visible-xs
+.legend
+  %span.circle{style: "background: lightgray;"}
+  %span Past
+.legend
+  %span.circle{style: "background: lightsalmon;"}
+  %span Cancelled
+.legend
+  %span.circle{style: "background: darkorange;"}
+  %span Ongoing
+.legend
+  %span.circle{style: "background: cornflowerblue;"}
+  %span External
+.legend
+  %span.circle{style: "background: orchid;"}
+  %span Internal
+  
 -if current_user.present?
-  %span.circle{style: "background: mediumorchid;"}
-  %p{style: "display: inline;"}Internal joined
-  %br.visible-sm.visible-xs
-%span.circle{style: "background: #61bf9b;"}
-%p{style: "display: inline;"}Weekly
-%br.visible-sm.visible-xs
+  .legend
+    %span.circle{style: "background: mediumorchid;"}
+    %span Internal joined
+
+.legend
+  %span.circle{style: "background: #61bf9b;"}
+  %span Weekly
+
 -if current_user.present?
-  %span.circle{style: "background: #07a468;"}
-  %p{style: "display: inline;"}Weekly joined
+  .legend
+    %span.circle{style: "background: #07a468;"}
+    %span Weekly joined

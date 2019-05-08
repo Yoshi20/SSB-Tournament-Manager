@@ -1,0 +1,16 @@
+.table {
+  font-size: 0.8rem;
+  tr  {
+    cursor: pointer;
+  }
+  .table-header {
+    th {
+      border: none;
+    }
+    background-color: $color-grey-light;
+    color: $color-grey;
+  } 
+  tbody tr:hover {
+    background-color: $color-grey-light;
+  }
+}

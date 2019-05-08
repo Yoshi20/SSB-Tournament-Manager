@@ -1,24 +1,15 @@
-.row.color-legend.hidden-sm.hidden-xs{style: "position: relative;"}
-  .col-md-12{style: "position: absolute; top: 30px; text-align: right;"}
-    = render 'color_legend'
-
-.row.calendar
-  .col-md-12
+.row
+  .col
     #fullcalendar{data: {events: @full_calendar_events}}
 
-.row.calendar-footer{style: "margin-top: 20px; margin-bottom: 30px;"}
-  .col-xs-6
-    .row
-      .col-xs-12{style: "margin-left: -20px;"}
-        .color-legend.visible-sm.visible-xs
-          = render 'color_legend'
+.row.mt-3
+  .col-6
+    .color-legend
+      = render 'color_legend'
 
-  .col-xs-6
-    .row
-      .col-xs-12{style: 'text-align: right;'}
-        .ical-export
-          %p= link_to "iCal Export", calendar_path + '.ics', class:'btn btn-primary'
-          %p= request.base_url + calendar_path + '.ics'
+  .col-6.d-flex.justify-content-end
+    .ical-export
+      = link_to "iCal Export", calendar_path + '.ics', class:'btn btn-ghost'
 
 :coffeescript
   document.addEventListener 'turbolinks:load', ->
