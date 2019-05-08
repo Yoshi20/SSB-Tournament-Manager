@@ -1,5 +1,6 @@
-FROM ruby:2.5
+FROM ruby:2.6.2
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN gem install bundler
 RUN mkdir /sstm
 WORKDIR /sstm
 COPY Gemfile /sstm/Gemfile
