@@ -13,6 +13,9 @@
     = render '/layouts/flashes'
     .header.navbar.navbar-expand-lg.navbar-sstm
       = render '/layouts/navigation'
+    .banner
+      .banner-overlay   
+      = image_tag 'banner.jpg', height: '200px', width: '100%', style: 'object-fit: cover;'
     .container.content
       .row
         .col-3

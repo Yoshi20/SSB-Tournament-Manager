@@ -6,6 +6,10 @@
   %button.navbar-toggler{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
     %span.navbar-toggler-icon
   .collapse.navbar-collapse#navbarSupportedContent
+    %ul.navbar-nav.navbar-discord
+      %li.nav-item{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
+        = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
+
     %ul.navbar-nav.navbar-main.ml-auto
       %li.nav-item{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
         = link_to 'Tournaments', tournaments_path, class: 'nav-link'
@@ -21,7 +25,7 @@
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
         = link_to 'Information', informations_path, class: 'nav-link'
-
+  
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
         %li.nav-item.dropdown
