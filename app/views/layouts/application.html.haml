@@ -21,13 +21,13 @@
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
         .row
-          .col-3
+          .col-12.col-lg-3.order-3.order-lg-1.mb-4.mb-lg-0
             .sidebar
               = render '/partials/players'
-          .col-6
+          .col-12.col-lg-6.order-1.order-lg-2.mb-4.mb-lg-0
             .content
               = yield
-          .col-3
+          .col-12.col-lg-3.order-2.order-lg-3.mb-4.mb-lg-0
             .sidebar
               = render '/partials/events'
     .footer

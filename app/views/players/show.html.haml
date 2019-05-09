@@ -84,7 +84,8 @@
                   - else
                     = tournament.city || '-'
                 %td
-                  %strong = tournament.date.to_s(:custom_datetime_date_and_no_time)
+                  %strong 
+                    = tournament.date.to_s(:custom_datetime_date_and_no_time)
                 
     - if @player.tournaments.where('active = ? AND date < ?', true, Time.now).any?
       .player__tournaments

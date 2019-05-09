@@ -12,6 +12,46 @@
       border-radius: 50%;
     }
   }
+  .navbar-toggler {
+    .navbar-toggler-icon {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .line {
+        height: 2px;
+        width: 1.5rem;
+        background-color: $color-white;
+        margin-bottom: 0.25rem;
+        display: block;
+        transition: all .3s ease;
+      }
+      .line--1 {
+        margin-left: -0.25rem;
+      }
+      .line--3 {
+        margin-left: -0.5rem;
+      }
+    }
+    &:not(.collapsed) {
+      .line {
+        margin: 0;
+        position: absolute;
+      }
+      .line--1 {
+        transform: rotate(45deg);
+      }
+      .line--2 {
+        transform: rotate(45deg);
+      }
+      .line--3 {
+        transform: rotate(-45deg);
+      }
+    }
+  }
   .navbar-main {
     .nav-item {
       .nav-link {
@@ -36,11 +76,13 @@
     .dropdown-toggle, .nav-link {
       display: flex;
       align-content: center;
-      margin-left: 1rem;
       color: $color-white;
       &:after {
         display: none;
       }
     }
+  }
+  .navbar-discord {
+    flex-direction: row;
   }
 }

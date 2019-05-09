@@ -9,12 +9,12 @@
       %thead
         %tr
           %th.text-center #
-          %th.text-center Points
+          %th.text-center.d-none.d-md-block Points
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center Self assessment
-          %th.text-center XP
-          %th.text-center W/L
+          %th.text-center.d-none.d-md-block Self assessment
+          %th.text-center.d-none.d-md-block XP
+          %th.text-center.d-none.d-md-block W/L
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -22,7 +22,7 @@
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
               %td.text-center= (last_player_points == player.points) ? '' : "#{i+1}."
-              %td.text-center= player.points
+              %td.text-center.d-none.d-md-block= player.points
               - last_player_points = player.points
               %td= player.gamer_tag
               %td.text-center
@@ -31,9 +31,9 @@
                     - player.main_characters[0...3].each do |char|
                       - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                         = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-              %td.text-center= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
-              %td.text-center= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center
+              %td.text-center.d-none.d-md-block= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
+              %td.text-center.d-none.d-md-block= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+              %td.text-center.d-none.d-md-block
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else

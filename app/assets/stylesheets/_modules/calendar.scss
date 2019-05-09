@@ -29,6 +29,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+    @media (min-width: 992px) { 
+      flex-direction: row;
+    }
+    .fc-right {
+      .fc-button-group:last-child {
+        margin-top: 1rem;
+        @media (min-width: 768px) { 
+          margin-top: 0;
+        }
+      }
+    }
     .fc-center, .fc-clear {
       display: none;
     }

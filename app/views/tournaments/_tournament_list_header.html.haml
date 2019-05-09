@@ -1,10 +1,10 @@
 %tr
-  %th
+  %th.d-none.d-md-block
   %th{style: 'min-width: 5rem'} Date
   %th Name
-  %th.hidden-xs Location
+  %th.d-none.d-md-block Location
   -# %th.hidden-md.hidden-sm.hidden-xs Description
-  %th.text-center.hidden-xs{style: 'min-width: 5rem'} Fee
-  %th.text-center.hidden-xs Seats
+  %th.text-center.d-none.d-md-block{style: 'min-width: 5rem'} Fee
+  %th.text-center.d-none.d-md-block Seats
   - if current_user.present? and current_user.admin?
-    %th.text-center.action Edit
+    %th.text-center.d-none.d-md-block Edit
