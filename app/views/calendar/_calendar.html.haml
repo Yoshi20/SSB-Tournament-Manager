@@ -1,15 +1,14 @@
-.row
-  .col
-    #fullcalendar{data: {events: @full_calendar_events}}
+.calendar
+  #fullcalendar{data: {events: @full_calendar_events}}
 
-.row.mt-3
-  .col-6
-    .color-legend
-      = render 'color_legend'
-
-  .col-6.d-flex.justify-content-end
-    .ical-export
-      = link_to "iCal Export", calendar_path + '.ics', class:'btn btn-ghost'
+  .calendar__footer
+    .row
+      .col
+        .calendar__footer__legend
+          = render 'color_legend'
+      .col
+        .calendar__footer__actions
+          = link_to "iCal Export", calendar_path + '.ics', class:'btn btn-ghost'
 
 :coffeescript
   document.addEventListener 'turbolinks:load', ->

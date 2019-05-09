@@ -1,0 +1,33 @@
+.btn {
+  background: $color-grey-light;
+  border: none;
+  border-radius: $border-radius-input;
+  padding: 0 .625rem;
+  position: relative;
+  height: 1.875rem;
+  font-size: $fontsize-input;
+  line-height: 1.775rem;
+
+  &.btn-ghost {
+    background: transparent;
+    border: 1px solid $color-red;
+    color: $color-red;
+    &:hover {
+      background: $color-red;
+      color: $color-white;
+    }
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  }
+  &.btn-sstm {
+    background: $color-red;
+    border: 1px solid $color-red;
+    color: $color-white;
+    &:focus, .focus {
+      box-shadow: $shadow-input;
+    }
+  
+  }
+}
+  

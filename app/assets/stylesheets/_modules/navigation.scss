@@ -8,34 +8,24 @@
     img {
       margin-right: 1rem;
       background-color: $color-white;
+      border: 1px solid $color-white;
       border-radius: 50%;
-    }
-  }
-  .nav-item {
-    .nav-link {
-      color: $color-white;
     }
   }
   .navbar-main {
     .nav-item {
       .nav-link {
-        &:after {
-          content: "";
-          width: 0%;
-          height: 1px;
-          transition: width 0.2s ease;
-          background-color: $color-white;
-          display: block;
-        }
-        &:hover::after {
-          width: 100%;
+        color: $color-white;
+        font-weight: 500;
+        &:hover, .active {
+          text-decoration: underline;
         }
       }
     }
   }
   .navbar-account {
     .dropdown-menu {
-      border-radius: 0;
+      border-radius: $border-radius-box;
       a {
         color: $color-red;
       }
@@ -43,10 +33,11 @@
         background-color: $color-grey-light;
       }
     }
-    .dropdown-toggle {
+    .dropdown-toggle, .nav-link {
       display: flex;
       align-content: center;
       margin-left: 1rem;
+      color: $color-white;
       &:after {
         display: none;
       }

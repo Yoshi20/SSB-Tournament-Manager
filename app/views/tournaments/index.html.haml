@@ -1,3 +1,8 @@
+.row
+  .col 
+    %h1.page__title 
+      Tournaments
+
 %ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
   %li.nav-item
     %a#upcoming-tab.nav-link.active{'data-toggle'=>'tab', href: '#upcoming', role: 'tab', 'aria-controls'=>'all'}
@@ -19,16 +24,16 @@
       %tbody.with-show.tournament-list-body
         = render @ongoing_tournaments
   .tab-pane.fade.show.active#upcoming{role: 'tabpanel', 'aria-labelledby'=>'upcoming-tab'}
-    .tournaments-filter
-      %p.tournament-filter-text= link_to 'All',       tournaments_path(filter: 'all'),       class: "#{(params[:filter].nil? or params[:filter] == 'all') ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'External',  tournaments_path(filter: 'external'),  class: "#{params[:filter] == 'external' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Internal',  tournaments_path(filter: 'internal'),  class: "#{params[:filter] == 'internal' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(filter: 'weekly'),    class: "#{params[:filter] == 'weekly' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Baden',     tournaments_path(filter: 'baden'),     class: "#{params[:filter] == 'baden' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Bern',      tournaments_path(filter: 'bern'),      class: "#{params[:filter] == 'bern' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(filter: 'geneva'),    class: "#{params[:filter] == 'geneva' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(filter: 'solothurn'), class: "#{params[:filter] == 'solothurn' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(filter: 'zurich'),    class: "#{params[:filter] == 'zurich' ? 'active' : ''}"
+    .tournaments__filter
+      .tournaments__filter__button= link_to 'All', tournaments_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'External', tournaments_path(filter: 'external'),  class: "btn btn-ghost #{params[:filter] == 'external' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Internal', tournaments_path(filter: 'internal'),  class: "btn btn-ghost #{params[:filter] == 'internal' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Weekly', tournaments_path(filter: 'weekly'),    class: "btn btn-ghost #{params[:filter] == 'weekly' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Baden', tournaments_path(filter: 'baden'),     class: "btn btn-ghost #{params[:filter] == 'baden' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Bern', tournaments_path(filter: 'bern'),      class: "btn btn-ghost #{params[:filter] == 'bern' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Geneva', tournaments_path(filter: 'geneva'),    class: "btn btn-ghost #{params[:filter] == 'geneva' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Solothurn', tournaments_path(filter: 'solothurn'), class: "btn btn-ghost #{params[:filter] == 'solothurn' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Zurich', tournaments_path(filter: 'zurich'),    class: "btn btn-ghost #{params[:filter] == 'zurich' ? 'btn-sstm' : 'btn-ghost'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -41,16 +46,16 @@
       = render 'paginator'
 
   .tab-pane.fade#past{role: 'tabpanel', 'aria-labelledby'=>'past-tab'}
-    .tournaments-filter
-      %p.tournament-filter-text= link_to 'All',       tournaments_path(anchor: 'past-tournaments', filter: 'all'),       class: "#{(params[:filter].nil? or params[:filter] == 'all') ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'External',  tournaments_path(anchor: 'past-tournaments', filter: 'external'),  class: "#{params[:filter] == 'external' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Internal',  tournaments_path(anchor: 'past-tournaments', filter: 'internal'),  class: "#{params[:filter] == 'internal' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Weekly',    tournaments_path(anchor: 'past-tournaments', filter: 'weekly'),    class: "#{params[:filter] == 'weekly' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Baden',     tournaments_path(anchor: 'past-tournaments', filter: 'baden'),     class: "#{params[:filter] == 'baden' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Bern',      tournaments_path(anchor: 'past-tournaments', filter: 'bern'),      class: "#{params[:filter] == 'bern' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Geneva',    tournaments_path(anchor: 'past-tournaments', filter: 'geneva'),    class: "#{params[:filter] == 'geneva' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Solothurn', tournaments_path(anchor: 'past-tournaments', filter: 'solothurn'), class: "#{params[:filter] == 'solothurn' ? 'active' : ''}"
-      %p.tournament-filter-text= link_to 'Zurich',    tournaments_path(anchor: 'past-tournaments', filter: 'zurich'),    class: "#{params[:filter] == 'zurich' ? 'active' : ''}"
+    .tournaments__filter
+      .tournaments__filter__button= link_to 'All', tournaments_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'External', tournaments_path(filter: 'external'),  class: "btn btn-ghost #{params[:filter] == 'external' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Internal', tournaments_path(filter: 'internal'),  class: "btn btn-ghost #{params[:filter] == 'internal' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Weekly', tournaments_path(filter: 'weekly'),    class: "btn btn-ghost #{params[:filter] == 'weekly' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Baden', tournaments_path(filter: 'baden'),     class: "btn btn-ghost #{params[:filter] == 'baden' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Bern', tournaments_path(filter: 'bern'),      class: "btn btn-ghost #{params[:filter] == 'bern' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Geneva', tournaments_path(filter: 'geneva'),    class: "btn btn-ghost #{params[:filter] == 'geneva' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Solothurn', tournaments_path(filter: 'solothurn'), class: "btn btn-ghost #{params[:filter] == 'solothurn' ? 'btn-sstm' : 'btn-ghost'}"
+      .tournaments__filter__button= link_to 'Zurich', tournaments_path(filter: 'zurich'),    class: "btn btn-ghost #{params[:filter] == 'zurich' ? 'btn-sstm' : 'btn-ghost'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header

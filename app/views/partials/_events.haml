@@ -1,15 +1,11 @@
-%h2
+%h2.sidebar__title
   Next Tournamets
-.table-responsive
-  %table.table.table-hover.box-table
-    %thead.table-header
-      %tr
-        %th{style: 'min-width: 5rem'} Date
-        %th Name
 
-    %tbody.table-content.with-show
-      - if @nextTournaments.any?
-        - @nextTournaments.each_with_index do |tournament, i|
-          %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
-            %td= tournament.date.to_s(:custom_datetime_date_and_no_time)
-            %td= tournament.name
+%table.table.table-hover.table-borderless
+
+  %tbody.table-content.with-show
+    - if @nextTournaments.any?
+      - @nextTournaments.each_with_index do |tournament, i|
+        %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+          %td.text-center= tournament.date.to_s(:custom_datetime_date_and_no_time)
+          %td= tournament.name

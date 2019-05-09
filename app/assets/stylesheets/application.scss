@@ -18,41 +18,48 @@
 @import "bootstrap";
 @import "material_icons";          
 @import "fullcalendar";  
+ 
+@import "./_modules/content.scss";  
 
 @import "./_includes/typography.scss";
+@import "./_modules/form.scss";
+@import "./_modules/button.scss";
+            
+@import "./_modules/modal.scss";
+@import "./_modules/table.scss"; 
+@import "./_modules/sidebar.scss";
 @import "./_modules/navigation.scss";
-@import "./_modules/forms.scss";
-@import "./_modules/buttons.scss";
-@import "./_modules/content.scss"; 
-@import "./_modules/tabs.scss";   
-@import "./_modules/tournaments.scss"; 
+@import "./_modules/banner.scss";
+@import "./_modules/toast.scss";
+@import "./_modules/tab.scss";   
+@import "./_modules/tournament.scss"; 
 @import "./_modules/calendar.scss"; 
-    
-@import "./_modules/tables.scss"; 
+@import "./_modules/player.scss";     
+@import "./_modules/administrator.scss"; 
 
-html, body {
+html, body { 
   height: 100%;     
-  background: $color-grey-light;
-}
-.content { 
-  margin-bottom: 2rem;     
-  flex: 1 0 auto;
-}
-          
-body {        
-  font-family: Helvetica, Arial;
-  display: flex;         
-  flex-direction: column;
-}
-        
-.footer {
+  background: $color-grey-light;         
+}    
+main {          
+  margin-bottom: 2rem;        
+  flex: 1 0 auto;            
+}                  
+                
+  
+body {                 
+  display: flex;            
+  flex-direction: column; 
+}   
+         
+.footer {      
   flex-shrink: 0;
-  background-color: $color-grey-dark;   
+  background-color: $color-grey-dark;    
   color: $color-white;
   text-align: center;  
-     
-  img {
-    margin-top: 1rem;
+                       
+  img { 
+    margin-top: 1rem; 
     margin-bottom: 1rem;
   }
 

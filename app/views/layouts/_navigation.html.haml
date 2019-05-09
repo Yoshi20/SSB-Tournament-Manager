@@ -1,15 +1,17 @@
 -# Std view
 .container 
   %a.navbar-brand{href: '/'} 
-    = image_tag('logo.png', height: '50px', width: '50px')
+    = image_tag('logo.svg', height: '50px', width: '50px')
     = 'SwissSmash'
   %button.navbar-toggler{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
     %span.navbar-toggler-icon
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.navbar-discord
-      %li.nav-item{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
+      %li.nav-item{role: "presentation"}
         = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
-
+      %li.nav-item{role: "presentation"}
+        = link_to image_tag('Twitter_Logo_WhiteOnImage', height: '40', width: '40'), 'https://twitter.com/swisssmashu', target: '_blank', class: 'nav-link'
+      
     %ul.navbar-nav.navbar-main.ml-auto
       %li.nav-item{role: "presentation", class: (@section == 'tournaments' ? 'active' : 'inactive')}
         = link_to 'Tournaments', tournaments_path, class: 'nav-link'
@@ -47,18 +49,6 @@
             = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'dropdown-item'
       - else
         %li.nav-item.dropdown
-          %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          %a.nav-link{href:"#", role:"button", 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
             %span.material-icons
               = 'account_circle'
-          %ul.dropdown-menu
-            %li.px-3.py-2
-              = form_tag session_path(:user), class: "form" do
-                .form-group
-                  = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: "Username"
-                .form-group
-                  = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: "Password"
-                .form-group
-                  = submit_tag "Log in", class: "btn btn-ghost btn-block"
-                .form-group.text-center 
-                  %small
-                    = link_to "Sign up", new_user_registration_path,  class: ""

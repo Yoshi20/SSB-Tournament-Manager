@@ -2,8 +2,20 @@ $color-red: #E20401;
 $color-white: #ffffff; 
 $color-grey: #3D4852;
 $color-grey-dark: #222222;
-$color-grey-light: #F1F5F8;
+$color-grey-light: #E5E9EB;
 
+$fontsize-sidebar: 1.15rem;
+$fontsize-title: 1.25rem;
+$fontsize-input: 0.875rem;
+$font-size-small: 0.875rem;
+
+$border-radius-box: 0.365rem;
+$padding-box: 0.625rem;
+
+$border-radius-input: 0.25rem;
+$shadow-input: 0 0 0 0.2rem rgba(226, 4, 1, 0.25);
+
+$grid-gutter-width: 0.625rem;
 $container-max-widths: (
   md: 720px,
   lg: 960px,
