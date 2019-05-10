@@ -13,9 +13,9 @@
   %body
     = render '/layouts/flashes'
     = render '/partials/login'
-    .header.navbar.navbar-expand-lg.navbar-sstm
-      = render '/layouts/navigation'
     %main
+      .header.navbar.navbar-expand-lg.navbar-sstm
+        = render '/layouts/navigation'
       .banner  
         .banner__overlay   
         = image_tag 'banner.jpg', class: 'banner__image'
