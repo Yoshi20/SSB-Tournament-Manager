@@ -2,6 +2,7 @@
   font-size: .75rem;
   tr  {
     cursor: pointer;
+    position: relative;
   }
   .table-header {
     th {
@@ -17,6 +18,9 @@
     }
     tr:hover {
       background-color: $color-grey-light;
+      .admin-actions {
+        display: flex;
+      }
     }
   }
 }

@@ -34,7 +34,7 @@
 @import "./_modules/tab.scss";   
 @import "./_modules/tournament.scss"; 
 @import "./_modules/calendar.scss"; 
-@import "./_modules/player.scss";        
+@import "./_modules/player.scss";         
 @import "./_modules/administrator.scss"; 
 
 html, body { 
@@ -42,22 +42,22 @@ html, body {
   background: $color-grey-light;         
 }    
 main {          
-  margin-bottom: 2rem;        
-  flex: 1 0 auto;            
+  margin-bottom: 2rem;                  
+  flex: 1 0 auto;             
 }                   
-                
+                      
   
 body {                 
   display: flex;            
   flex-direction: column; 
 }   
-         
+          
 .footer {      
   flex-shrink: 0;
-  background-color: $color-grey-dark;    
+  background-color: $color-grey-dark;          
   color: $color-white;
   text-align: center;  
-                       
+                        
   img { 
     margin-top: 1rem; 
     margin-bottom: 1rem;

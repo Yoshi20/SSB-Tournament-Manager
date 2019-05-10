@@ -1,6 +1,6 @@
 -if tournament.present?
   %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
-    %td.text-center.d-none.d-md-block
+    %td.text-center.d-none.d-md-table-cell
       - if current_user.present? and tournament.players.include?(current_user.player)
         %span.material-icons
           = 'check_circle'
@@ -23,13 +23,13 @@
     %td
       = tournament.name
 
-    %td.d-none.d-md-block
+    %td.d-none.d-md-table-cell
       - if tournament.location.present?
         = tournament.location.split(',')[0]
       - else
         = tournament.city || '-'
 
-    %td.text-center.d-none.d-md-block
+    %td.text-center.d-none.d-md-table-cell
       - if tournament.registration_fee.present?
         - if tournament.registration_fee%1 != 0  # check if it's a float
           = tournament.registration_fee
@@ -39,7 +39,7 @@
       - else
         = '-'
 
-    %td.text-center.d-none.d-md-block
+    %td.text-center.d-none.d-md-table-cell
       - if tournament.total_seats.nil?
         = '-'
       - else
@@ -49,8 +49,13 @@
           = "#{tournament.players.count} / #{tournament.total_seats}"
 
     - if current_user.present? and current_user.admin?
-      %td.text-center.d-none.d-md-block
-        = link_to edit_tournament_path(tournament), class:'btn btn-default btn-xs' do
-          %span.glyphicon.glyphicon-pencil
-        = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
-          %span.glyphicon.glyphicon-trash
+      %td.admin-actions
+        .admin-actions__link
+          = link_to edit_tournament_path(tournament), class:'btn btn-ghost btn-square' do
+            %span.material-icons.admin-actions__link__icon
+              edit
+
+        .admin-actions__link
+          = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+            %span.material-icons.admin-actions__link__icon
+              delete

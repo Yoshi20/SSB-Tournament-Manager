@@ -5,55 +5,54 @@
   .col
     = form_for(resource, class: 'form', as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
       = devise_error_messages!
-      .field.form-group
+      .form-group
         = f.label :username
         = f.text_field :username, autofocus: true, class: 'form-control'
-      .field.form-group
+      .form-group
         = f.label :email
         = f.email_field :email, class: 'form-control'
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
-      .field.form-group
+      .form-group
         = f.label :mobile_number
         %em
           (079 / 123 45 67)
         = f.text_field :mobile_number, class: 'form-control'
-      .field.form-group
+      .form-group
         = f.label :password
         %i (leave blank if you don't want to change it)
         = f.password_field :password, autocomplete: "off", class: 'form-control'
-      .field.form-group
+      .form-group
         = f.label :password_confirmation
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       - if current_user.admin? and resource == current_user
-        = '------------------------ Administrator part --------------------------------'
-        .field.form-group
+        .form-group
           = f.label :full_name
           %i (first and last name)
           = f.text_field :full_name, class: 'form-control'
-        .field.form-group
+        .form-group
           = f.label :area_of_responsibility
           %i (Bern, Zurich, Geneva, ...?)
           = f.text_field :area_of_responsibility, class: 'form-control'
-        .field.form-group
+        .form-group
           = f.label :challonge_username
           = f.text_field :challonge_username, class: 'form-control'
-        .field.form-group
+        .form-group
           = f.label :challonge_api_key do
             = 'Challonge api key ('
             = link_to 'https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank'
             = ')'
           = f.text_field :challonge_api_key, class: 'form-control'
-      .field.form-group.mb-0
+      .form-group.mb-0
         .form-check
           = f.check_box :wants_major_email, class:'form-check-input mr-2'
           = f.label :wants_major_email, 'Inform me when a major tournament was added', class:'form-check-label'
-      .field.form-group
+      .form-group
         .form-check
           = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
           = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
-      .field.form-group
+      .form-group
         = f.label :current_password
         %i (enter your current password to confirm the changes)
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'

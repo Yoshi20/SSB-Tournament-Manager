@@ -5,3 +5,15 @@
     }
   }
 }
+
+td.admin-actions {
+  position: absolute;
+  right: 2rem;
+  display: none;
+  background-color: $color-grey-light;
+  justify-content: space-between;
+  padding: 0.3rem;
+  .admin-actions__link {
+    margin-right: 0.5rem;
+  }
+}

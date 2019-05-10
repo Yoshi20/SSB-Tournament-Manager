@@ -49,3 +49,10 @@
     }
   }
 }
+
+.tournament-edit {
+  .tournament-edit__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

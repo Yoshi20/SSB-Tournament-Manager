@@ -24,7 +24,7 @@
 document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
-     unless ($(this).hasClass('actions'))
+    unless ($(e.target).hasClass('admin-actions__link__icon') || $(e.target).hasClass('btn-square'))
       id = $(this).attr('data-id') # the first td must containt the id
       component = $(this).attr('data-component') 
       unless component == 'user'

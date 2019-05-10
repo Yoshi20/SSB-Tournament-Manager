@@ -1,4 +1,4 @@
-#tournament-form.sub-form.internal-tournament
+.tournament-edit__form
   = form_for @tournament, role: 'form' do |f|
 
     - if @tournament.errors.any?
@@ -8,69 +8,69 @@
           - @tournament.errors.full_messages.each do |message|
             %li= message
 
-    %br
-    .tournament-subform
-      .field.form-group.hidden
-        = f.text_field :subtype, class: 'form-control', value: 'internal'
-      .field.form-group
-        = f.label :registration_deadline
-        %br= f.datetime_select :registration_deadline, class: 'form-control', start_year: Time.now.year
-      .field.form-group
-        = f.label :date, 'Tournament start date'
-        %br= f.datetime_select :date, class: 'form-control', start_year: Time.now.year
-      .field.form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Tournament ...' : @tournament.name)
-      .field.form-group
-        = f.label :location
-        %em
-          = '(separate new lines with commas)'
-        = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'locality, adress, postcode, floor' : @tournament.location)
-      .field.form-group
-        = f.label :registration_fee, 'Registration fee [CHF]'
-        = f.number_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? 5 : @tournament.registration_fee)
-      .field.form-group
-        = f.label :total_seats
-        = f.number_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? 40 : @tournament.total_seats)
-      .field.form-group
-        = f.label :total_needed_game_stations
-        = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
-      .field.form-group
-        = f.label :min_needed_registrations, 'Minimal required registrations'
-        = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.new_record? ? 16 : @tournament.min_needed_registrations)
-      .field.form-group
-        = f.label :host_username, 'Hostname'
-        = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
-      .field.form-group
-        = f.label :description, 'Description (HTML)'
-        = f.text_area :description, class: 'form-control'
-      - if @tournament.new_record?
-        .field.form-group.hide
-          = f.label :active
-          = f.check_box :active, checked: true
-        .field.form-group
-          = f.check_box :is_registration_allowed, checked: true, style: 'margin-left: 5px; margin-right: 10px;'
-          = f.label :is_registration_allowed, 'Are registrations allowed?'
-        .field.form-group{style: 'margin-top: -10px;'}
-          = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
-          = label_tag :send_mails, 'Send all players an email'
-      - else
-        .field.form-group
-          = f.label :setup
-          = f.check_box :setup, style: 'margin-left: 5px;'
-        .field.form-group
-          = f.label :started
-          = f.check_box :started, style: 'margin-left: 5px;'
-        .field.form-group
-          = f.label :finished
-          = f.check_box :finished, style: 'margin-left: 5px;'
-        .field.form-group
-          = f.label :active
-          = f.check_box :active, style: 'margin-left: 5px;'
-        .field.form-group
-          = f.label :is_registration_allowed, 'Registrations allowed?'
-          = f.check_box :is_registration_allowed, style: 'margin-left: 5px;'
+    .form-group.d-none
+      = f.text_field :subtype, class: 'form-control', value: 'internal'
+    .form-group
+      = f.label :registration_deadline
+      .form-group-inline
+        = f.datetime_select :registration_deadline, { start_year: Time.now.year }, class: 'form-control'
+    .form-group
+      = f.label :date, 'Tournament start date'
+      .form-group-inline
+        = f.datetime_select :date, { start_year: Time.now.year }, class: 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Tournament ...' : @tournament.name)
+    .form-group
+      = f.label :location
+      %em
+        = '(separate new lines with commas)'
+      = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'locality, adress, postcode, floor' : @tournament.location)
+    .form-group
+      = f.label :registration_fee, 'Registration fee [CHF]'
+      = f.number_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? 5 : @tournament.registration_fee)
+    .form-group
+      = f.label :total_seats
+      = f.number_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? 40 : @tournament.total_seats)
+    .form-group
+      = f.label :total_needed_game_stations
+      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
+    .form-group
+      = f.label :min_needed_registrations, 'Minimal required registrations'
+      = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.new_record? ? 16 : @tournament.min_needed_registrations)
+    .form-group
+      = f.label :host_username, 'Hostname'
+      = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
+    .form-group
+      = f.label :description, 'Description (HTML)'
+      = f.text_area :description, class: 'form-control'
+    - if @tournament.new_record?
+      .form-group.hide
+        = f.label :active
+        = f.check_box :active, checked: true
+      .form-group
+        = f.check_box :is_registration_allowed, checked: true, style: 'margin-left: 5px; margin-right: 10px;'
+        = f.label :is_registration_allowed, 'Are registrations allowed?'
+      .form-group{style: 'margin-top: -10px;'}
+        = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
+        = label_tag :send_mails, 'Send all players an email'
+    - else
+      .form-group
+        = f.label :setup
+        = f.check_box :setup, style: 'margin-left: 5px;'
+      .form-group
+        = f.label :started
+        = f.check_box :started, style: 'margin-left: 5px;'
+      .form-group
+        = f.label :finished
+        = f.check_box :finished, style: 'margin-left: 5px;'
+      .form-group
+        = f.label :active
+        = f.check_box :active, style: 'margin-left: 5px;'
+      .form-group
+        = f.label :is_registration_allowed, 'Registrations allowed?'
+        = f.check_box :is_registration_allowed, style: 'margin-left: 5px;'
 
     .actions.form-group
       = hidden_field_tag(:subtype, 'internal')
-      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} Internal Tournament", class:'btn btn-primary form-control'
+      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} Internal Tournament", class:'btn btn-ghost'

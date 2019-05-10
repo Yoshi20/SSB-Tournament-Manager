@@ -1,61 +1,58 @@
-.row.title-div
-  .col-md-6
-    %h1= "User list"
+.row
+  .col
+    %h1.page__title= "User list"
 
-  .col-md-6{style: "positon: relative"}
-    %p{style: "position: absolute; top: 50%; transform: translate(0, 150%);"}= "Total users count = #{User.all.count}"
+.row
+  .col
+    %p= "Total users count = #{User.all.count}"
 
--# user list
-.row.user-list
-  .col-md-12
-    %table.table.table-striped
-      %thead.user-list-header
-        %tr
-          %th Username
-          - if current_user.present? and current_user.admin?
-            %th Email
-            %th Mobile Number
-          %th Last Log in at
-          %th Created at
-          %th.text-center Log in counter
-          %th.text-center Club member
-          %th.text-center Admin
-          %th.text-center Super Admin
-          %th.text-center.action Edit
+.user-list
+  %table.table.table-hover.table-borderless
+    %thead
+      %tr
+        %th Username
+        %th Last Log in at
+        %th.text-center Log in counter
+        %th.text-center Club member
+        %th.text-center Admin
+        %th.text-center Super Admin
 
-      %tbody.user-list-body
-        - @users.each do |user|
-          %tr
-            %td= user.username
-            - if current_user.present? and current_user.admin?
-              %td= user.email
-              %td= user.mobile_number
-            %td= user.current_sign_in_at.to_s(:custom_datetime)
-            %td= user.created_at.to_s(:custom_datetime)
-            %td.text-center= user.sign_in_count
-            %td.text-center
-              - if user.is_club_member
-                .glyphicon.glyphicon-ok
-              - elsif current_user.present? and current_user.super_admin?
+    %tbody.user-list-body
+      - @users.each do |user|
+        %tr{'data-id': user.id, 'data-component'=>'user'}
+          %td= user.username
+          %td= user.current_sign_in_at.to_s(:custom_datetime)
+          %td.text-center= user.sign_in_count
+          %td.text-center
+            - if user.is_club_member
+              .material-icons
+                done
+          %td.text-center
+            - if user.admin?
+              .material-icons
+                done
+          %td.text-center
+            - if user.super_admin?
+              .material-icons
+                done
+
+          - if current_user.present? and current_user.super_admin?
+            %td.admin-actions
+              .admin-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
-                  .field
-                    = f.check_box :is_club_member, checked: true, class: 'hidden'
-                    = f.submit 'New Member', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
-            %td.text-center
-              - if user.admin?
-                .glyphicon.glyphicon-ok
-              - elsif current_user.present? and current_user.super_admin?
+                  = f.check_box :is_club_member, checked: true, class: 'd-none'
+                  = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
+                    %span.material-icons.admin-actions__link__icon
+                      group_add
+
+              .admin-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
-                  .field
-                    = f.check_box :is_admin, checked: true, class: 'hidden'
-                    = f.submit 'New Admin', data: { confirm: 'Are you sure?' }, class:'btn btn-primary btn-xs'
-            %td.text-center
-              - if user.super_admin?
-                .glyphicon.glyphicon-ok
-            %td.text-center.actions
-              - if user == current_user
-                = link_to edit_user_registration_path, class:'btn btn-default btn-xs' do
-                  %span.glyphicon.glyphicon-pencil
-              - if current_user.present? and (current_user.super_admin? or user == current_user)
-                = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
-                  %span.glyphicon.glyphicon-trash
+                  = f.check_box :is_admin, checked: true, class: 'd-none'
+                  = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
+                    %span.material-icons.admin-actions__link__icon
+                      verified_user
+
+              .admin-actions__link
+                = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+                  %span.material-icons.admin-actions__link__icon
+                    delete

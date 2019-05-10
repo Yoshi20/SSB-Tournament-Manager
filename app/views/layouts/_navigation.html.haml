@@ -36,22 +36,24 @@
         %li.nav-item.dropdown
           %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
             %span.material-icons.d-none.d-lg-block.ml-lg-3
-              = 'account_circle'
+              - if current_user.admin?
+                = 'supervisor_account'
+              - else
+                = 'account_circle'
             %span.d-block.d-lg-none
               - if user_signed_in?
                 = 'Account'
               - else 
                 = 'Login'
           .dropdown-menu{'aria-labelledby':'navbarDropdown'}
-            - if current_user.admin?
-              %b
-              = '(Administrator)'
             - if current_user.player.present?
               = link_to 'Show Profile', player_path(current_user.player), class: 'dropdown-item'
               = link_to 'Edit Profile', edit_player_path(current_user.player), class: 'dropdown-item'
             = link_to 'Account', edit_user_registration_path, class: 'dropdown-item'
             - if current_user.admin?
+              .dropdown-divider
               = link_to 'Show all users', users_path, class: 'dropdown-item'
+              = link_to 'Add Tournament', new_tournament_path, class: 'dropdown-item'
             -#
             .divider
             = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'dropdown-item'

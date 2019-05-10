@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
   post 'tournaments/cancel/:id' => 'tournaments#cancel'
-  resources :players
+  resources :players, except: [:new]
 
   resources :registrations, only: [:update]
 

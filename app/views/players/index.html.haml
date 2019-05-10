@@ -9,12 +9,12 @@
       %thead
         %tr
           %th.text-center #
-          %th.text-center.d-none.d-md-block Points
+          %th.text-center.d-none.d-md-table-cell Points
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center.d-none.d-md-block Self assessment
-          %th.text-center.d-none.d-md-block XP
-          %th.text-center.d-none.d-md-block W/L
+          %th.text-center.d-none.d-md-table-cell Self assessment
+          %th.text-center.d-none.d-md-table-cell XP
+          %th.text-center.d-none.d-md-table-cell W/L
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -22,7 +22,7 @@
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
               %td.text-center= (last_player_points == player.points) ? '' : "#{i+1}."
-              %td.text-center.d-none.d-md-block= player.points
+              %td.text-center.d-none.d-md-table-cell= player.points
               - last_player_points = player.points
               %td= player.gamer_tag
               %td.text-center
@@ -31,10 +31,21 @@
                     - player.main_characters[0...3].each do |char|
                       - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                         = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-              %td.text-center.d-none.d-md-block= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
-              %td.text-center.d-none.d-md-block= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center.d-none.d-md-block
+              %td.text-center.d-none.d-md-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
+              %td.text-center.d-none.d-md-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+              %td.text-center.d-none.d-md-table-cell
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
+              - if current_user.present? and current_user.admin?
+                %td.admin-actions
+                  .admin-actions__link
+                    = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
+                      %span.material-icons.admin-actions__link__icon
+                        edit
+
+                  .admin-actions__link
+                    = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+                      %span.material-icons.admin-actions__link__icon
+                        delete
