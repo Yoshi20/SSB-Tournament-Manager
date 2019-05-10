@@ -48,7 +48,7 @@
                 - else
                   = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
               %span
-                Registration
+                Registration deadline
       .tournament__details
         .row
           .col
@@ -202,3 +202,15 @@
                     = "#{ranking[1]}"
                   %td
                     = "#{points_repartition_table(ranking[0].to_i)}"
+
+  - if current_user.present? and current_user.admin?
+    .admin-actions
+      .admin-actions__link
+        = link_to edit_tournament_path(@tournament), class:'btn btn-ghost btn-square' do
+          %span.material-icons.admin-actions__link__icon
+            edit
+
+      .admin-actions__link
+        = link_to @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+          %span.material-icons.admin-actions__link__icon
+            delete

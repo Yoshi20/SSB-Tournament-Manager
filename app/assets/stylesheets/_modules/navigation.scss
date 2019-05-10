@@ -57,7 +57,9 @@
       .nav-link {
         color: $color-white;
         font-weight: 500;
-        &:hover, .active {
+      }
+      &:hover, &.active {
+        .nav-link {
           text-decoration: underline;
         }
       }
@@ -65,6 +67,7 @@
   }
   .navbar-account {
     .dropdown-menu {
+      left: -200%;
       border-radius: $border-radius-box;
       a {
         color: $color-red;

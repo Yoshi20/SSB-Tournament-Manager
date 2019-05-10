@@ -1,5 +1,6 @@
 .table {
   font-size: .75rem;
+  position: relative;
   tr  {
     cursor: pointer;
     position: relative;
@@ -18,7 +19,7 @@
     }
     tr:hover {
       background-color: $color-grey-light;
-      .admin-actions {
+      .admin-list-actions {
         display: flex;
       }
     }

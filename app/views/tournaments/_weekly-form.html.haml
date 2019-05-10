@@ -52,7 +52,7 @@
       = f.label :description, 'Description (HTML)'
       = f.text_area :description, class: 'form-control', rows: '15'
     - if @tournament.new_record?
-      .form-group.hide
+      .form-group.d-none
         = f.label :active
         = f.check_box :active, checked: true, style: 'margin-left: 5px;'
       .form-group

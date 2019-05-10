@@ -5,6 +5,14 @@
 .row
   .col
     %p= "Total users count = #{User.all.count}"
+    .d-flex
+      %span.material-icons.admin-list-actions__link__icon
+        verified_user
+      = '= Admin'
+    .d-flex
+      %span.material-icons.admin-list-actions__link__icon
+        group_add
+      = '= Club Member'
 
 .user-list
   %table.table.table-hover.table-borderless
@@ -12,8 +20,8 @@
       %tr
         %th Username
         %th Last Log in at
-        %th.text-center Log in counter
-        %th.text-center Club member
+        %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Log in counter
+        %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Club member
         %th.text-center Admin
         %th.text-center Super Admin
 
@@ -22,8 +30,8 @@
         %tr{'data-id': user.id, 'data-component'=>'user'}
           %td= user.username
           %td= user.current_sign_in_at.to_s(:custom_datetime)
-          %td.text-center= user.sign_in_count
-          %td.text-center
+          %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= user.sign_in_count
+          %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
             - if user.is_club_member
               .material-icons
                 done
@@ -37,22 +45,22 @@
                 done
 
           - if current_user.present? and current_user.super_admin?
-            %td.admin-actions
-              .admin-actions__link
+            %td.admin-list-actions
+              .admin-list-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
                   = f.check_box :is_club_member, checked: true, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon
+                    %span.material-icons.admin-list-actions__link__icon
                       group_add
 
-              .admin-actions__link
+              .admin-list-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
                   = f.check_box :is_admin, checked: true, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon
+                    %span.material-icons.admin-list-actions__link__icon
                       verified_user
 
-              .admin-actions__link
+              .admin-list-actions__link
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                  %span.material-icons.admin-actions__link__icon
+                  %span.material-icons.admin-list-actions__link__icon
                     delete

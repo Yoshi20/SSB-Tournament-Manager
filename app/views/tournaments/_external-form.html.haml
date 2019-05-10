@@ -29,10 +29,10 @@
       = f.label :external_registration_link
       = f.text_field :external_registration_link, class: 'form-control'
     - if @tournament.new_record?
-      .form-group.hide
+      .form-group.d-none
         = f.label :active
         = f.check_box :active, checked: true
-      .form-group.hide
+      .form-group.d-none
         = f.label :is_registration_allowed
         = f.check_box :is_registration_allowed, checked: false
       .form-group

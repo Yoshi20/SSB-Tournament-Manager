@@ -8,7 +8,12 @@
           = render 'color_legend'
       .col
         .calendar__footer__actions
+          .mb-3
+            %strong
+              = 'Link: '
+            = request.base_url + calendar_path + '.ics'
           = link_to "iCal Export", calendar_path + '.ics', class:'btn btn-ghost'
+
 
 :coffeescript
   document.addEventListener 'turbolinks:load', ->

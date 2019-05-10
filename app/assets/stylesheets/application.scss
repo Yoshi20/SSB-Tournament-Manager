@@ -44,7 +44,7 @@ html, body {
 main {          
   margin-bottom: 2rem;                  
   flex: 1 0 auto;             
-}                   
+}                       
                       
   
 body {                 
@@ -53,7 +53,7 @@ body {
 }   
           
 .footer {      
-  flex-shrink: 0;
+  flex-shrink: 0; 
   background-color: $color-grey-dark;          
   color: $color-white;
   text-align: center;  
@@ -61,6 +61,6 @@ body {
   img { 
     margin-top: 1rem; 
     margin-bottom: 1rem;
-  }
+  }     
 
 }

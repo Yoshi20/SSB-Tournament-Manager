@@ -32,5 +32,9 @@ document.addEventListener 'turbolinks:load', ->
         window.location.href = url
   $('#join-tournament-button').on 'click', (e) ->
     $('.navbar-account').dropdown('toggle')
+  $('.scroll-top').on 'click', (e) ->
+    $('html, body').animate({
+      scrollTop: 0
+    }, 500);
 
   $('.toast').toast({delay: 10000}).toast('show')

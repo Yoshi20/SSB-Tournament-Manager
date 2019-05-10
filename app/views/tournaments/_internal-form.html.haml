@@ -45,7 +45,7 @@
       = f.label :description, 'Description (HTML)'
       = f.text_area :description, class: 'form-control'
     - if @tournament.new_record?
-      .form-group.hide
+      .form-group.d-none
         = f.label :active
         = f.check_box :active, checked: true
       .form-group

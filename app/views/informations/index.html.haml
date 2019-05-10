@@ -14,7 +14,7 @@
       = 'the players rank at the end of a tournament decides the amount of points he or she receives.'
 .row
   .col
-    %table.table.table-striped
+    %table.table.table-hover.table-borderless
       %thead.ranking-system-header
         %tr
           %th.text-center Rank
@@ -75,7 +75,7 @@
       = 'The top 3 ranks must be unambiguous. That means, if there are two or more players with the same amount of points, they have to play rematches (e.g. best of 5 games) until the three winners are clear. Each player will only receive one price.'
 .row
   .col
-    %table.table.table-striped
+    %table.table.table-hover.table-borderless
       %thead.prices-header
         %tr
           %th.text-center Rank or Points (p)
@@ -112,6 +112,8 @@
 
 .row.mt-3
   .col
+    .img-responsive
+      = link_to image_tag('Discord-Logo_Wordmark-Black.svg', height: '30%', width: '30%'), 'https://discord.gg/wA89CyA', target: '_blank' 
     = 'Join us on'
     %strong= link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
     = 'if you want to stay up-to-date with the Swiss Smash Community.'

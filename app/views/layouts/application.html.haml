@@ -21,17 +21,17 @@
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
         .row 
-          .col-12.col-lg-3.order-3.order-lg-1.mb-4.mb-lg-0
+          .d-none.d-lg-block.col-lg-3
             .sidebar
               = render '/partials/players'
-          .col-12.col-lg-6.order-1.order-lg-2.mb-4.mb-lg-0
+          .col-12.col-lg-6
             .content
               = yield
-          .col-12.col-lg-3.order-2.order-lg-3.mb-4.mb-lg-0
+          .d-none.d-lg-block.col-lg-3
             .sidebar
               = render '/partials/events'
     .footer
-      = button_tag '', onclick: 'topFunction()', title: 'Go to top', style: 'background-color: #222; border: none;' do
+      = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
         = image_tag('logo.png', height: '50px', width: '50px')
       %p.small
         = link_to 'Feedback & Questions', :feedbacks

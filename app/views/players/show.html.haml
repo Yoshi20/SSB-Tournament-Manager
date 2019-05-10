@@ -118,3 +118,14 @@
                   - else 
                     - player_rank = player_rank +'th'
                   %strong= "#{player_rank}"
+  - if current_user.present? and current_user.admin?
+    .admin-actions
+      .admin-actions__link
+        = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
+          %span.material-icons.admin-actions__link__icon
+            edit
+
+      .admin-actions__link
+        = link_to @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+          %span.material-icons.admin-actions__link__icon
+            delete
