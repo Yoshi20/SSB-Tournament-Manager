@@ -11,42 +11,30 @@
 # about supported directives.
 #
 #= require jquery
+#= require popper
+#= require turbolinks
+#= require bootstrap
 #= require jquery.turbolinks
 #= require bootstrap-sprockets
 #= require jquery_ujs
-#= require turbolinks
 #= require moment
 #= require fullcalendar
 #= require_tree .
 
 document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
-  $('tbody.with-show').on 'click', 'td', (e) ->
-     unless ($(this).hasClass('actions'))
-      id = +$(this).closest("tr").find("td").html() # the first td must containt the id
-      str = this.closest("tbody").className
-      str = str.substring(10) # filter the "with-show"
-      component = str.substring(0, str.indexOf('-'))
+  $('tbody.with-show').on 'click', 'tr', (e) ->
+    unless ($(e.target).hasClass('admin-actions__link__icon') || $(e.target).hasClass('btn-square'))
+      id = $(this).attr('data-id') # the first td must containt the id
+      component = $(this).attr('data-component') 
       unless component == 'user'
         url = "/#{component}s/#{id}"
-        if component == 'tournament'
-          external_url = $(this).closest("tr").find("td:last-child").html()
-          if external_url.length > 2
-            window.open(external_url, '_blank');
-            return
         window.location.href = url
+  $('#join-tournament-button').on 'click', (e) ->
+    $('.navbar-account').dropdown('toggle')
+  $('.scroll-top').on 'click', (e) ->
+    $('html, body').animate({
+      scrollTop: 0
+    }, 500);
 
-  # change mouse icon
-  $('tbody.with-show').css('cursor', 'pointer')
-
-# # function to get the current url params as hash
-# getParamsAsHash = ->
-#   paramsHash = {}
-#   currentParamsArray = window.location.search.substring(1).split('&')
-#   for param in currentParamsArray
-#     currentParamArray = param.split('=')
-#     paramsHash[currentParamArray[0]] = currentParamArray[1]
-#   return paramsHash
-
-# console.log("bla = #{bla}")
-# console.log($(bla))
+  $('.toast').toast({delay: 10000}).toast('show')

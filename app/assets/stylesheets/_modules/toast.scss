@@ -1,0 +1,11 @@
+
+.toast-holder {
+  position: fixed; 
+  top: 1rem; 
+  left: 50%;
+  transform: translateX(-50%); 
+  z-index: 10;
+  .toast-body {
+    color: $color-grey-dark;
+  }
+}

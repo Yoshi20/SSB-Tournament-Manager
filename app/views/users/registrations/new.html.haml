@@ -1,64 +1,63 @@
-%h1 Signing up
 .row
-  .col-md-8
+  .col 
+    %h1.page__title Signing up
+.row
+  .col
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
       = devise_error_messages!
-      .row
-        .col-md-12.col-xs-12
-          .field.form-group
-            = f.label :username, 'Username *'
-            %em
-              (= Gamer tag)
-            = f.text_field :username, autofocus: true, class: 'form-control'
-          .field.form-group
-            = f.label :email, 'Email *'
-            = f.email_field :email, class: 'form-control'
-          .field.form-group
-            = f.label :mobile_number
-            %em
-              (079 / 123 45 67)
-            = f.text_field :mobile_number, class: 'form-control'
-          .field.form-group
-            = f.label :password, 'Password *'
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, autocomplete: "off", class: 'form-control'
-          .field.form-group
-            = f.label :password_confirmation, 'Password confirmation *'
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-          %p
-            = label_tag :self_assessment
-            - self_assessment_defines.count.times do |i|
-              = radio_button_tag :self_assessment, i, false
+      .form-group
+        = f.label :username, 'Username *'
+        %em
+          (= Gamer tag)
+        = f.text_field :username, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :email, 'Email *'
+        = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :mobile_number
+        %em
+          (079 / 123 45 67)
+        = f.text_field :mobile_number, class: 'form-control'
+      .form-group
+        = f.label :password, 'Password *'
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, 'Password confirmation *'
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      .form-group
+        = label_tag :self_assessment
+        - self_assessment_defines.count.times do |i|
+          .form-check.mb-1
+            %input{type: 'radio', value: i, class:'form-check-input'}
+            %label.form-check-label.ml-2
               = self_assessment_defines[i]
-          %p
-            = label_tag :tournament_experience
-            - tournament_experience_defines.count.times do |i|
-              = radio_button_tag :tournament_experience, i, false
+      .form-group
+        = label_tag :tournament_experience
+        - tournament_experience_defines.count.times do |i|
+          .form-check.mb-1
+            %input{type: 'radio', value: i, class:'form-check-input'}
+            %label.form-check-label.ml-2
               = tournament_experience_defines[i]
-          .field.form-group
-            = label_tag :main_characters
-            %em
-              (you can add up to three by separating them with a comma)
-            %br
-            = text_field_tag :main_characters, nil, class: 'form-control'
-          .field.form-group
-            = label_tag :comment, "Comment"
-            %em
-              (for what ever you want to tell the world)
-            %br
-            = text_area_tag :comment, nil, class: 'form-control'
-          .field.form-group
-            = f.check_box :wants_major_email, checked: true, style: 'margin-left: 5px;'
-            = f.label :wants_major_email, 'Inform me when a major tournament was added'
-          .field.form-group{style: 'margin-top: -15px;'}
-            = f.check_box :wants_weekly_email, checked: true, style: 'margin-left: 5px;'
-            = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added'
-      .row
-        .col-md-12.col-xs-12.actions
-          = f.submit "Register", class:'btn btn-primary'
-
-  .col-md-4
-    %strong
-      %p= link_to 'Back', :back
+      .form-group
+        = label_tag :main_characters
+        %em
+          (you can add up to three by separating them with a comma)
+        = text_field_tag :main_characters, nil, class: 'form-control'
+      .form-group
+        = label_tag :comment, "Comment"
+        %em
+          (for what ever you want to tell the world)
+        = text_area_tag :comment, nil, class: 'form-control'
+      .form-group.mb-0
+        .form-check
+          = f.check_box :wants_major_email, checked: true, class:'form-check-input mr-2'
+          = f.label :wants_major_email, 'Inform me when a major tournament was added', class:'form-check-label'
+      .form-group
+        .form-check
+          = f.check_box :wants_weekly_email, checked: true, class:'form-check-input mr-2'
+          = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
+      .form-group
+        = f.submit "Register", class:'btn btn-ghost'

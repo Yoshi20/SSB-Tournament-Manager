@@ -1,0 +1,30 @@
+.administrators {
+  .administrators__single {
+    p {
+      word-break: break-all;
+    }
+  }
+}
+
+td.admin-list-actions {
+  position: absolute;
+  right: 0;
+  display: none;
+  background-color: $color-grey-light;
+  justify-content: space-between;
+  padding: 0.3rem;
+  .admin-list-actions__link {
+    margin-right: 0.5rem;
+  }
+}
+
+.admin-actions {
+  display: flex;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  .admin-actions__link {
+    margin-right: 0.5rem;
+  }
+}

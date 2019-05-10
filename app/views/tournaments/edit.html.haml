@@ -1,21 +1,19 @@
-%h1 Editing tournament
+.row
+  .col
+    %h1.page__title Editing tournament
 
-.row.form
-  .col-md-8
-    - if @tournament.subtype.nil? or @tournament.subtype == 'internal'
-      = render 'internal-form', tournament: @tournament
-    - elsif @tournament.subtype == 'external'
-      = render 'external-form', tournament: @tournament
-    - elsif @tournament.subtype == 'weekly'
-      = render 'weekly-form', tournament: @tournament
+.tournament-edit
+  - if @tournament.subtype.nil? or @tournament.subtype == 'internal'
+    = render 'internal-form', tournament: @tournament
+  - elsif @tournament.subtype == 'external'
+    = render 'external-form', tournament: @tournament
+  - elsif @tournament.subtype == 'weekly'
+    = render 'weekly-form', tournament: @tournament
 
-  .col-md-4
-    %strong
-      %p= link_to 'Show', tournament_path(@tournament)
-      - if current_user.admin?
-        - if @tournament.subtype == 'weekly'
-          %p= link_to 'Delete this weekly', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
-          %p= link_to 'Delete all upcoming weeklies of this kind', tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: 'Are you sure?' }
-        - else
-          %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }
-      %p= link_to 'Back', :back
+  .tournament-edit__actions
+    - if current_user.admin?
+      - if @tournament.subtype == 'weekly'
+        %p= link_to 'Delete this weekly', @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
+        %p= link_to 'Delete all upcoming weeklies of this kind', tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
+      - else
+        %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'

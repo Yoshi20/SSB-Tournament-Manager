@@ -62,8 +62,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added gems:
 
-#https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass', '~> 3.4.0'
+gem 'popper_js', '~> 1.14.5'
+
+#See https://github.com/twbs/bootstrap-rubygem
+gem 'bootstrap', '~> 4.3.1'
+
+#See https://github.com/Angelmmiguel/material_icons
+gem 'material_icons'
 
 #
 gem 'bcrypt'

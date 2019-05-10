@@ -1,0 +1,12 @@
+.content {
+  border-radius: $border-radius-box;
+  background-color: $color-white;
+  padding: $padding-box $padding-box * 2;
+  position: relative;
+
+  .page__title {
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid $color-grey-light;
+  }
+}

@@ -1,0 +1,29 @@
+.nav.nav-fill {
+  margin-bottom: 2rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-bottom: 1px solid $color-grey-light;
+
+  .nav-link {
+    font-weight: 600;
+    border: none;
+    display: inline-block;
+    background: transparent;
+    color: $color-grey;
+    text-transform: uppercase;
+    border-radius: 0;
+    &.active {
+      color: $color-red;
+      border-bottom: 2px solid $color-red;
+    }
+    &:hover {
+      color: $color-red;
+    }
+  }
+}
+
+.tab-pane {
+  .table th {
+    padding-top: 0;
+  }
+}

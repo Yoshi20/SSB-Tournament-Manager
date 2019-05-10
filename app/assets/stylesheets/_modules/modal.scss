@@ -1,0 +1,26 @@
+.modal {
+  .modal-content {
+    border-radius: $border-radius-box;
+    background-color: $color-white;
+    padding: $padding-box;
+    border: none;
+    .modal-header, .modal-body, .modal-footer {
+      padding: 0 $padding-box;
+    }
+    .modal-body {
+      padding-top: 1rem;
+    }
+    .modal-header {
+      align-items: center;
+      border-bottom: 1px solid $color-grey-light;
+      h3 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+    .modal-footer {
+      border: none;
+      justify-content: flex-start;
+    }
+  }
+}

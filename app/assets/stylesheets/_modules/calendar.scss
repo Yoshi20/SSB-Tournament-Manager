@@ -1,0 +1,114 @@
+.calendar {
+  .calendar__footer {
+    margin-top: 2rem;
+    .calendar__footer__legend {
+      .calendar__footer__legend__item {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+      .circle {
+        display: inline-block;
+        width: 1rem;
+        margin-right: 0.5rem;
+        height: 1rem;
+        border-radius: 50%;
+      }
+    }
+    .calendar__footer__actions {
+      text-align: right;
+    }
+  }
+}
+
+#fullcalendar {
+  .fc-right, .fc-left {
+    float: none;
+  }
+  .fc-header-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    @media (min-width: 992px) { 
+      flex-direction: row;
+    }
+    .fc-right {
+      .fc-button-group:last-child {
+        margin-top: 1rem;
+        @media (min-width: 768px) { 
+          margin-top: 0;
+        }
+      }
+    }
+    .fc-center, .fc-clear {
+      display: none;
+    }
+    h2 {
+      font-size: 1rem;
+      color: $color-grey;
+      padding: .625rem 0;
+      margin-bottom: .3125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    h2:after {
+      display: none;
+      margin-bottom: 0;
+    }
+    .fc-today-button {
+      margin-left: 1rem;
+    }
+  }
+  .fc-view-container {
+    margin-top: 2rem;
+    .fc-bg {
+      .fc-today {
+        background-color: $color-grey-light;
+      }
+    }
+    .calendar-tournament {
+      color: $color-grey-dark;
+    }
+  }
+  .fc-button {
+    background: $color-grey-light;
+    border: none;
+    border-radius: $border-radius-input;
+    padding: 0 .625rem;
+    position: relative;
+    height: 1.875rem;
+    font-size: $fontsize-input;
+    line-height: 1.775rem;
+
+    font-weight: normal;
+    float: none;
+    height: auto;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &.fc-state-default {
+      background: transparent;
+      border: 1px solid $color-red;
+      color: $color-red;
+    }
+    &.fc-state-active {
+      box-shadow: none;
+      background: $color-red;
+      color: $color-white;
+    }
+  }
+  .fc-button-group {
+    .fc-button {
+      margin: 0 0 0 -1px;
+      border-radius: 0px;
+      &.fc-corner-left {
+        border-top-left-radius: $border-radius-input;
+        border-bottom-left-radius: $border-radius-input;
+      }
+      &.fc-corner-right {
+        border-top-right-radius: $border-radius-input;
+        border-bottom-right-radius: $border-radius-input;
+      }
+    }
+  }
+}

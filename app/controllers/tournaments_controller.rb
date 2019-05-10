@@ -226,7 +226,7 @@ class TournamentsController < ApplicationController
       return;
     end
 
-    if Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+    if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Registration deadline exceeded."
       return;
     end
@@ -278,7 +278,7 @@ class TournamentsController < ApplicationController
       return;
     end
 
-    if Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+    if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Registration deadline exceeded."
       return;
     end

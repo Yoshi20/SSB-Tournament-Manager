@@ -1,0 +1,19 @@
+.modal.fade#loginModal{tabindex: '-1', role: 'dialog', 'aria-hidden'=>'true'}
+  .modal-dialog.modal-dialog-centered{role: 'document'}
+    .modal-content
+      = form_tag session_path(:user), class: "form" do
+        .modal-header
+          .modal-title
+            %h3 Login
+          %button.close{type: 'button', 'data-dismiss'=>'modal', 'aria-label'=>'close'}
+            %span{'aria-hidden'=>'true'}
+              &times;
+        .modal-body
+          .form-group
+            = text_field_tag "user[login]", "", class: "form-control", placeholder: "Username"
+          .form-group
+            = password_field_tag "user[password]", "", class: "form-control", placeholder: "Password"
+        .modal-footer
+          = submit_tag "Log in", class: "btn btn-sstm"
+          = link_to "Sign up", new_user_registration_path,  class: "btn btn-ghost"
+        

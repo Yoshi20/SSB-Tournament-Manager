@@ -1,51 +1,39 @@
 !!!
 %html
   %head
-    %title SSB Tournaments Bern
+    %title SwissSmash.ch Tournament Manager
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
     = favicon_link_tag 'logo.png'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    
 
   %body
-    .wrapper.fixed-width
-      .banner
-        .fixed-width
-          = image_tag 'banner.jpg', height: '200px', width: '100%', style: 'object-fit: cover;'
-          .inside-banner
-            = link_to image_tag('logistik.png', height: '150px', width: '150px'), root_path
-
-      .header
-        .fixed-width
-          .navigation-header
-            = render '/layouts/navigation'
-
-        -# -# login header
-        -# .col-md-6
-        -#   .row.login-header
-        -#     = render '/layouts/login'
-
-      -# flash notifications and alerts
-      .flashes
-        .fixed-width
-          = render '/layouts/flashes'
-
-      -# main content (index.html)
-      .container.content-wrapper
-        .content
-          = yield
-
+    = render '/layouts/flashes'
+    = render '/partials/login'
+    %main
+      .header.navbar.navbar-expand-lg.navbar-sstm
+        = render '/layouts/navigation'
+      .banner  
+        .banner__overlay   
+        = image_tag 'banner.jpg', class: 'banner__image'
+      .container
+        .row 
+          .d-none.d-lg-block.col-lg-3
+            .sidebar
+              = render '/partials/players'
+          .col-12.col-lg-6
+            .content
+              = yield
+          .d-none.d-lg-block.col-lg-3
+            .sidebar
+              = render '/partials/events'
     .footer
-      = button_tag '', onclick: 'topFunction()', title: 'Go to top', style: 'background-color: #222; border: none;' do
+      = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
         = image_tag('logo.png', height: '50px', width: '50px')
-      %p
-        = 'If you face any problems or have a question, please contact me'
-        = mail_to 'admin@swisssmash.ch', 'via email.', subject: 'I faced a problem or have a question!', body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"
-
-:javascript
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
+      %p.small
+        = link_to 'Feedback & Questions', :feedbacks
+      %p.small
+        = mail_to 'admin@swisssmash.ch', 'Contact', subject: 'I faced a problem or have a question!', body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"

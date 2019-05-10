@@ -1,55 +1,46 @@
-.row.title-div
-  .col-md-12
-    %h1= 'Feedback & Questions'
+.row
+  .col
+    %h1.page__title Feedback & Questions
 
 .row.feedbacks-div
   .col-md-12
     %p= 'Let us know what you think of our tournaments or homepage and tell us if you\'re missing something, found a problem or have a question.'
 
-.row.form
-  .col-md-12
-    %table.table.table-striped
-      %thead.feedback-list-header
-        = render "feedback_list_header"
+.feebacks
+  %table.table.table-hover.table-borderless
+    %thead.table-header
+      = render "feedback_list_header"
 
-      %tbody.with-show.feedback-list-body
-        = render @feedbacks
+    %tbody.with-show.feedback-list-body
+      = render @feedbacks
 
-    .row.feedback-list-footer
-      -# pageinator
-      .col-md-8
-        = render 'paginator'
+  .feedbacks__pagination
+    = render 'paginator'
 
-      .col-md-4
-        .pull-right
-          - if current_user.present?
-            %p= link_to "Create a new feedback or question", new_feedback_path, class: "btn btn-primary"
-          - else
-            %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-primary', id:'join-tournament-button', disabled:true
+.feebacks__actions
+  - if current_user.present?
+    %p= link_to "Create a new feedback or question", new_feedback_path, class: "btn btn-ghost"
+  - else
+    %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-ghost', id:'join-tournament-button', disabled:true
 
-%br
-.row.title-div
-  .col-md-12
-    %h1= 'Administrators'
+%hr
 
-.row.administrators-div
-  - @admins.each do |admin|
-    .col-md-3
-      %p
-        %strong
-          %u= admin.full_name || '?????? ??????'
-          %br
-        %strong= 'Gamer tag:'
-        = link_to admin.player.gamer_tag, admin.player
-        %br
-        %strong= 'E-Mail:'
-        = mail_to admin.email, admin.email, body: "Hi #{admin.username}\n\n..."
-        %br
-        - if admin.mobile_number.present?
-          %strong= 'Mobile:'
-          = admin.mobile_number
-          %br
-        - if admin.area_of_responsibility.present?
-          %strong= 'Area of responsibility:'
-          = admin.area_of_responsibility
-          %br
+.administrators
+  %h3 Administrators
+  .row
+    - @admins.each do |admin|
+      .col-6
+        .administrators__single
+          %p
+            %strong
+              = admin.full_name || '?????? ??????'
+          %p
+            = link_to admin.player.gamer_tag, admin.player
+            %br
+            = mail_to admin.email, admin.email, body: "Hi #{admin.username}\n\n..."
+            %br
+            - if admin.mobile_number.present?
+              = admin.mobile_number
+            %br
+            - if admin.area_of_responsibility.present?
+              = admin.area_of_responsibility

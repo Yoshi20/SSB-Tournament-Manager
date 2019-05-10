@@ -1,63 +1,63 @@
-#player-form.sub-form
-  = form_for @player, role: 'form' do |f|
 
-    - if @player.errors.any?
-      #error_explanation
-        %h2= pluralize(@player.errors.count, "error") + " prohibited this player from being saved:"
-        %ul
-          - @player.errors.full_messages.each do |message|
-            %li= message
+= form_for @player, role: 'form', class:'form' do |f|
 
-    -# :best_rank, :wins, :losses, :created_at, :updated_at)
-    .col-md-12
-      .field.form-group
-        = f.label :gamer_tag
-        = f.text_field :gamer_tag, class: 'form-control'
-      - if current_user.is_admin?
-        .field.form-group
-          = f.label :points
-          = f.number_field :points, class: 'form-control'
-        .field.form-group
-          = f.label :participations
-          = f.number_field :participations, class: 'form-control'
-        .field.form-group
-          = f.label :best_rank
-          = f.number_field :best_rank, class: 'form-control'
-        .field.form-group
-          = f.label :wins
-          = f.number_field :wins, class: 'form-control'
-        .field.form-group
-          = f.label :losses
-          = f.number_field :losses, class: 'form-control'
-      .field.form-group
-        = f.label :self_assessment
-        %br
-        - self_assessment_defines.count.times do |i|
-          = f.radio_button :self_assessment, i, checked: (@player.self_assessment == i ? true : false)
+  - if @player.errors.any?
+    #error_explanation
+      %h2= pluralize(@player.errors.count, "error") + " prohibited this player from being saved:"
+      %ul
+        - @player.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :gamer_tag
+    = f.text_field :gamer_tag, class: 'form-control'
+  - if current_user.is_admin?
+    .field.form-group
+      = f.label :points
+      = f.number_field :points, class: 'form-control'
+    .field.form-group
+      = f.label :participations
+      = f.number_field :participations, class: 'form-control'
+    .field.form-group
+      = f.label :best_rank
+      = f.number_field :best_rank, class: 'form-control'
+    .field.form-group
+      = f.label :wins
+      = f.number_field :wins, class: 'form-control'
+    .field.form-group
+      = f.label :losses
+      = f.number_field :losses, class: 'form-control'
+  .field.form-group
+    = f.label :self_assessment
+    - self_assessment_defines.count.times do |i|
+      .form-check.mb-1
+        %input{type: 'radio', value: i, class:'form-check-input', checked: (@player.self_assessment == i ? true : false)}
+        %label.form-check-label.ml-2
           = self_assessment_defines[i]
-      .field.form-group
-        = f.label :tournament_experience
-        %br
-        - tournament_experience_defines.count.times do |i|
-          = f.radio_button :tournament_experience, i, checked: (@player.tournament_experience == i ? true : false)
+  .field.form-group
+    = f.label :tournament_experience
+    - tournament_experience_defines.count.times do |i|
+      .form-check.mb-1
+        %input{type: 'radio', value: i, class:'form-check-input', checked: (@player.tournament_experience == i ? true : false)}
+        %label.form-check-label.ml-2
           = tournament_experience_defines[i]
-      .field.form-group
-        = f.label :main_characters
-        %em
-          (you can add up to three by separating them with a comma)
-        - main_characters_string = ''
-        - @player.main_characters.each_with_index do |char, i|
-          - if i == 0
-            - main_characters_string = char
-          - else
-            - main_characters_string = main_characters_string + ', ' + char
-        = f.text_field :main_characters, class: 'form-control', value: main_characters_string
-      .field.form-group
-        = f.label :comment, "Comment"
-        %em
-          (for what ever you want to tell the world)
-        %br
-        = f.text_area :comment, class: 'form-control'
+  .field.form-group
+    = f.label :main_characters
+    %em
+      (you can add up to three by separating them with a comma)
+    - main_characters_string = ''
+    - @player.main_characters.each_with_index do |char, i|
+      - if i == 0
+        - main_characters_string = char
+      - else
+        - main_characters_string = main_characters_string + ', ' + char
+    = f.text_field :main_characters, class: 'form-control', value: main_characters_string
+  .field.form-group
+    = f.label :comment, "Comment"
+    %em
+      (for what ever you want to tell the world)
+    %br
+    = f.text_area :comment, class: 'form-control', rows: '10'
 
-      .actions.form-group
-        = f.submit class:'btn btn-primary form-control'
+  .actions.form-group
+    = f.submit class:'btn btn-ghost', value:'Update Profile'

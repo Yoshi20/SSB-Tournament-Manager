@@ -1,0 +1,36 @@
+.form-control {
+  background: $color-grey-light;
+  border: none;
+  border-radius: $border-radius-input;
+  width: 100%;
+  padding: 0 .625rem;
+  position: relative;
+  line-height: 1.875rem;
+  display: block;
+  height: 1.875rem;
+  font-size: $fontsize-input;
+
+  &:focus, .focus {
+    border-color: $color-red;
+    box-shadow: $shadow-input;
+  }
+    
+}
+.form-group {
+  .form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    .form-control {
+      max-width: 6rem;
+    }
+  }
+}
+.form-check {
+  display: flex;
+  align-items: baseline;
+  .form-check-input {
+    position: relative;
+    margin-top: 0;
+  }
+}
+

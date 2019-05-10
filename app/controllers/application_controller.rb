@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index, :show, :location]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
+  before_action :get_top_players
+  before_action :get_next_tournaments
 
   protected
 
@@ -33,6 +35,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     request.referrer
+  end
+
+  def get_top_players
+    @topPlayers = Player.all.order(points: :desc, participations: :asc, created_at: :asc).includes(:user).limit(10)
+  end
+
+  def get_next_tournaments
+    @nextTournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(10)
   end
 
 end

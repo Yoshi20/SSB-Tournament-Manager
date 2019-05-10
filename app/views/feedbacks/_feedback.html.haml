@@ -1,8 +1,5 @@
-%tr
-  %td.hide
-    = feedback.id # used for some js-magic
-
-  %td.text-center
+%tr{'data-id': feedback.id, 'data-component': 'feedback'}
+  %td
     - if feedback.user.present?
       = feedback.user.username
     - else
@@ -10,16 +7,6 @@
 
   %td
     = feedback.text
-    - if !feedback.response.nil? and !feedback.response.blank?
-      %br
-      %br
-      %i= "Administrator \"#{feedback.response_username}\" replied:"
-      %br
-      .a_tab{style: 'margin-left: 10px;'}
-        %i= feedback.response
-
-  %td.text-center.hidden-xs
-    = feedback.updated_at.to_s(:custom_datetime)
 
   - if current_user.present? and current_user.admin?
     %td.text-center.actions

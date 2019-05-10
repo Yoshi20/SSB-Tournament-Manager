@@ -1,11 +1,12 @@
-%h1 Edit player
+.row
+  .col 
+    %h1.page__title Edit Profile
 
-.row.form
-  .col-md-8
+.row
+  .col
     = render 'form', player: @player
 
-  .col-md-4
-    %strong
-      - if current_user.admin?
-        %p= link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }
-      %p= link_to 'Back', :back
+- if current_user.admin?
+  .row
+    .col
+      = link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'

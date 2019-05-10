@@ -1,0 +1,27 @@
+.table {
+  font-size: .75rem;
+  position: relative;
+  tr  {
+    cursor: pointer;
+    position: relative;
+  }
+  .table-header {
+    th {
+      border: none;
+      color: $color-grey;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  } 
+  tbody {
+    td {
+      vertical-align: middle;
+    }
+    tr:hover {
+      background-color: $color-grey-light;
+      .admin-list-actions {
+        display: flex;
+      }
+    }
+  }
+}

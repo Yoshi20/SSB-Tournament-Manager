@@ -1,0 +1,10 @@
+.sidebar {
+  border-radius: $border-radius-box;
+  background-color: $color-white;
+  padding: $padding-box;
+  .sidebar__title {
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid $color-grey-light;
+  }
+}
