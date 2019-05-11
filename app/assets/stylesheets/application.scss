@@ -12,55 +12,53 @@
  *
  */
 
-
- @import "./_includes/variables.scss";
+@import "./_includes/variables";
 
 @import "bootstrap";
-@import "material_icons";          
-@import "fullcalendar";  
- 
-@import "./_modules/content.scss";  
+@import "material_icons";
+@import "fullcalendar";
 
-@import "./_includes/typography.scss";
-@import "./_modules/form.scss";
-@import "./_modules/button.scss";
-            
-@import "./_modules/modal.scss";      
-@import "./_modules/table.scss"; 
-@import "./_modules/sidebar.scss";
-@import "./_modules/navigation.scss";
-@import "./_modules/banner.scss";
-@import "./_modules/toast.scss";
-@import "./_modules/tab.scss";   
-@import "./_modules/tournament.scss"; 
-@import "./_modules/calendar.scss"; 
-@import "./_modules/player.scss";         
-@import "./_modules/administrator.scss"; 
+@import "./_modules/content";
 
-html, body { 
-  height: 100%;        
-  background: $color-grey-light;         
-}    
-main {          
-  margin-bottom: 2rem;                  
-  flex: 1 0 auto;             
-}                       
-                      
-  
-body {                 
-  display: flex;            
-  flex-direction: column; 
-}   
-          
-.footer {      
-  flex-shrink: 0; 
-  background-color: $color-grey-dark;          
+@import "./_includes/typography";
+@import "./_modules/form";
+@import "./_modules/button";
+
+@import "./_modules/modal";
+@import "./_modules/table";
+@import "./_modules/sidebar";
+@import "./_modules/navigation";
+@import "./_modules/banner";
+@import "./_modules/toast";
+@import "./_modules/tab";
+@import "./_modules/tournament";
+@import "./_modules/calendar";
+@import "./_modules/player";
+@import "./_modules/administrator";
+
+html, body {
+  height: 100%;
+  background: $color-grey-light;
+}
+
+main {
+  margin-bottom: 2rem;
+  flex: 1 0 auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  flex-shrink: 0;
+  background-color: $color-grey-dark;
   color: $color-white;
-  text-align: center;  
-                        
-  img { 
-    margin-top: 1rem; 
-    margin-bottom: 1rem;
-  }     
+  text-align: center;
 
+  img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }

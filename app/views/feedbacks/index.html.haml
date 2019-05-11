@@ -21,7 +21,7 @@
   - if current_user.present?
     %p= link_to "Create a new feedback or question", new_feedback_path, class: "btn btn-ghost"
   - else
-    %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-ghost', id:'join-tournament-button', disabled:true
+    %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-ghost', disabled:true
 
 %hr
 

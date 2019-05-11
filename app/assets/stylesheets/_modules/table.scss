@@ -2,7 +2,6 @@
   font-size: .75rem;
   position: relative;
   tr  {
-    cursor: pointer;
     position: relative;
   }
   .table-header {
@@ -12,7 +11,7 @@
       font-weight: 600;
       text-transform: uppercase;
     }
-  } 
+  }
   tbody {
     td {
       vertical-align: middle;
@@ -22,6 +21,11 @@
       .admin-list-actions {
         display: flex;
       }
+    }
+  }
+  .with-show {
+    tr  {
+      cursor: pointer;
     }
   }
 }

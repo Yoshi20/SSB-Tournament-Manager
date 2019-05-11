@@ -43,9 +43,13 @@
     }
   }
   .tournament__players {
+    margin-bottom: 2rem;
     thead h3 {
       margin-bottom: 0;
       padding-bottom: 0;
+    }
+    .row {
+      text-align: center;
     }
   }
 }

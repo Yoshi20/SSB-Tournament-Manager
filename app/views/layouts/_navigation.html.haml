@@ -1,6 +1,6 @@
 -# Std view
-.container 
-  %a.navbar-brand{href: '/'} 
+.container
+  %a.navbar-brand{href: '/'}
     = image_tag('logo.svg', height: '50px', width: '50px')
     %span.d-none.d-sm-block
       = 'SwissSmash'
@@ -30,7 +30,7 @@
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
         = link_to 'Information', informations_path, class: 'nav-link'
-  
+
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
         %li.nav-item.dropdown
@@ -43,9 +43,10 @@
             %span.d-block.d-lg-none
               - if user_signed_in?
                 = 'Account'
-              - else 
+              - else
                 = 'Login'
           .dropdown-menu{'aria-labelledby':'navbarDropdown'}
+            .dropdown-title{style: 'text-align: center; font-weight: lighter;'}= current_user.username
             - if current_user.player.present?
               = link_to 'Show Profile', player_path(current_user.player), class: 'dropdown-item'
               = link_to 'Edit Profile', edit_player_path(current_user.player), class: 'dropdown-item'
@@ -65,5 +66,5 @@
             %span.d-block.d-lg-none
               - if user_signed_in?
                 = 'Account'
-              - else 
+              - else
                 = 'Login'

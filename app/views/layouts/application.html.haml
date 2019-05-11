@@ -1,14 +1,17 @@
 !!!
 %html
   %head
-    %title SwissSmash.ch Tournament Manager
+    - if @section.present?
+      %title= "SwissSmash.ch | #{@section.capitalize}"
+    - else
+      %title= "SwissSmash.ch"
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
     = favicon_link_tag 'logo.png'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    
+
 
   %body
     = render '/layouts/flashes'
@@ -16,11 +19,11 @@
     %main
       .header.navbar.navbar-expand-lg.navbar-sstm
         = render '/layouts/navigation'
-      .banner  
-        .banner__overlay   
+      .banner
+        .banner__overlay
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
-        .row 
+        .row
           .d-none.d-lg-block.col-lg-3
             .sidebar
               = render '/partials/players'

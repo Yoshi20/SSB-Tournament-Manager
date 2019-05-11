@@ -1,5 +1,5 @@
 -if tournament.present?
-  %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+  %tr{'data-id': tournament.id, 'data-component': 'tournament', 'data-external_url': tournament.external_registration_link}
     %td.text-center.d-none.d-md-table-cell
       - if current_user.present? and tournament.players.include?(current_user.player)
         %span.material-icons

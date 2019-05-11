@@ -33,6 +33,7 @@ namespace :sniffer do
       seatsString = p.css("div.my-dashboard-values-sub")[4].css('div')[2].text.strip
       # externalTournament.occupied_seats = seatsString[0...seatsString.index('/')].to_i
       externalTournament.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
+      externalTournament.is_registration_allowed = false
       externalTournament.active = true
       if externalTournament.save
         puts "-> Created: \"" + externalTournament.name + "\"\n\n"
@@ -68,6 +69,7 @@ namespace :sniffer do
       externalTournament.name = titleAnchor.text
       externalTournament.external_registration_link = root + titleAnchor['href']
       externalTournament.city = c.css('div.InfoList span')[1].text unless c.css('div.InfoList span')[1].nil?
+      externalTournament.is_registration_allowed = false
       externalTournament.active = true
       if externalTournament.save
         puts "-> Created: \"" + externalTournament.name + "\""
@@ -110,6 +112,7 @@ namespace :sniffer do
           size = size.to_i
         end
         externalTournament.total_seats = size
+        externalTournament.is_registration_allowed = false
         externalTournament.active = true
         if externalTournament.save
           puts "-> Created: \"" + externalTournament.name + "\"\n\n"

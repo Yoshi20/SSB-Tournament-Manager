@@ -22,16 +22,30 @@
 #= require_tree .
 
 document.addEventListener 'turbolinks:load', ->
+
+  # a click on a nav-link adds an id to the url
+  $('.nav-link').on 'click', (e) ->
+    window.history.replaceState(null, null, "#{$(this).attr('href')}");
+
+  # get id from url and activate the correct nav-link
+  id = window.location.href.split('#')[1]
+  if id
+    $('.nav-link.active').removeClass('active')
+    $('.tab-pane.active').removeClass('active').removeClass('show')
+    $("##{id}-tab").addClass('active')
+    $("##{id}").addClass('active').addClass('show')
+
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
     unless ($(e.target).hasClass('admin-actions__link__icon') || $(e.target).hasClass('btn-square'))
-      id = $(this).attr('data-id') # the first td must containt the id
-      component = $(this).attr('data-component') 
-      unless component == 'user'
-        url = "/#{component}s/#{id}"
-        window.location.href = url
-  $('#join-tournament-button').on 'click', (e) ->
-    $('.navbar-account').dropdown('toggle')
+      external_url = $(this).attr('data-external_url')
+      if external_url
+        window.open(external_url, '_blank');
+      else
+        id = $(this).attr('data-id')
+        component = $(this).attr('data-component')
+        window.location.href = "/#{component}s/#{id}"
+
   $('.scroll-top').on 'click', (e) ->
     $('html, body').animate({
       scrollTop: 0

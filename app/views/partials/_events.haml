@@ -6,6 +6,6 @@
   %tbody.table-content.with-show
     - if @nextTournaments.any?
       - @nextTournaments.each_with_index do |tournament, i|
-        %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+        %tr{'data-id': tournament.id, 'data-component': 'tournament', 'data-external_url': tournament.external_registration_link}
           %td.text-center= tournament.date.to_s(:custom_datetime_date_and_no_time)
           %td= tournament.name
