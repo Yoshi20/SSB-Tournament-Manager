@@ -12,9 +12,10 @@
           %th.text-center.d-none.d-md-table-cell Points
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Self assessment
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell XP
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+          %th.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Self assessment
+          %th.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell XP
+          %th.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+          %th.player-comment-column.text-center.d-none Comment
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -31,13 +32,15 @@
                     - player.main_characters[0...3].each do |char|
                       - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                         = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+              %td.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
+              %td.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+              %td.player-stats-column.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
+              %td.player-comment-column.text-center.d-none= truncate(player.comment, length: 60)
+
               - if current_user.present? and current_user.super_admin?
                 %td.admin-list-actions
                   .admin-list-actions__link
@@ -49,3 +52,8 @@
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                       %span.material-icons.admin-list-actions__link__icon
                         delete
+
+
+.admin-actions.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+  .admin-actions__link
+    = link_to 'Show player comments', '', class: 'btn btn-ghost', id: 'show-player-comments-btn'
