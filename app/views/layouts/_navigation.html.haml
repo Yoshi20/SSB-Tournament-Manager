@@ -46,7 +46,10 @@
               - else
                 = 'Login'
           .dropdown-menu{'aria-labelledby':'navbarDropdown'}
-            .dropdown-title{style: 'text-align: center; font-weight: lighter;'}= current_user.username
+            .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
+              = current_user.username
+              - if current_user.admin?
+                = '(Administrator)'
             - if current_user.player.present?
               = link_to 'Show Profile', player_path(current_user.player), class: 'dropdown-item'
               = link_to 'Edit Profile', edit_player_path(current_user.player), class: 'dropdown-item'

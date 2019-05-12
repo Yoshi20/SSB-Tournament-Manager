@@ -6,7 +6,7 @@
   .col
     = render 'form', player: @player
 
-- if current_user.admin?
+- if current_user.super_admin?
   .row
     .col
       = link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'

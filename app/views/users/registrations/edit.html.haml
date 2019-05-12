@@ -20,11 +20,11 @@
           (079 / 123 45 67)
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
-        = f.label :password
+        = f.label :password, 'New password'
         %i (leave blank if you don't want to change it)
         = f.password_field :password, autocomplete: "off", class: 'form-control'
       .form-group
-        = f.label :password_confirmation
+        = f.label :password_confirmation, 'New password confirmation'
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       - if current_user.admin? and resource == current_user
         .form-group
@@ -52,7 +52,7 @@
         .form-check
           = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
           = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
-      .form-group
+      .form-group{style: 'margin-top: 2rem;'}
         = f.label :current_password
         %i (enter your current password to confirm the changes)
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
@@ -63,5 +63,5 @@
   .col
     %h2 Delete my account
     %p
-      Unhappy? 
+      Unhappy?
       = button_to "Delete account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-block btn-sstm'

@@ -38,7 +38,7 @@
                   = '-'
                 - else
                   = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
-              - if current_user.present? and current_user.admin?
+              - if current_user.present? and current_user.super_admin?
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do

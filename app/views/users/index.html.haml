@@ -7,12 +7,12 @@
     %p= "Total users count = #{User.all.count}"
     .d-flex
       %span.material-icons.admin-list-actions__link__icon
-        verified_user
-      = '= Admin'
-    .d-flex
-      %span.material-icons.admin-list-actions__link__icon
         group_add
       = '= Club Member'
+    .d-flex
+      %span.material-icons.admin-list-actions__link__icon
+        verified_user
+      = '= Admin'
 
 .user-list
   %table.table.table-hover.table-borderless
@@ -48,14 +48,14 @@
             %td.admin-list-actions
               .admin-list-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
-                  = f.check_box :is_club_member, checked: true, class: 'd-none'
+                  = f.check_box :is_club_member, checked: !user.is_club_member, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
                     %span.material-icons.admin-list-actions__link__icon
                       group_add
 
               .admin-list-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
-                  = f.check_box :is_admin, checked: true, class: 'd-none'
+                  = f.check_box :is_admin, checked: !user.is_admin, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
                     %span.material-icons.admin-list-actions__link__icon
                       verified_user

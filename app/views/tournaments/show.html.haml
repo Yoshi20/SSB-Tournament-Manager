@@ -64,7 +64,7 @@
       .tournament__details
         .row
           .col
-            .tournament__details__single.tournament__details__single--last
+            .tournament__details__single
               %strong
                 - if @tournament.registration_fee.to_i%1 != 0  # check if it's a float
                   = @tournament.registration_fee
@@ -74,7 +74,7 @@
               %span
                 Registration Fee
           .col
-            .tournament__details__single.tournament__details__single--last
+            .tournament__details__single
               %strong
                 - if @tournament.total_seats.present?
                   = "#{@tournament.players.count} / #{@tournament.total_seats}"
@@ -85,7 +85,7 @@
 
           - if @tournament.min_needed_registrations.present?
             .col
-              .tournament__details__single.tournament__details__single--last
+              .tournament__details__single
                 %strong
                   = @tournament.min_needed_registrations.to_i
                 %span
