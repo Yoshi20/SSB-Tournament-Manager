@@ -31,14 +31,15 @@
     = f.label :self_assessment
     - self_assessment_defines.count.times do |i|
       .form-check.mb-1
-        %input{type: 'radio', value: i, class:'form-check-input', checked: (@player.self_assessment == i ? true : false)}
+        = f.radio_button :self_assessment_defines, i, checked: (@player.self_assessment == i ? true : false), class:'form-check-input'
         %label.form-check-label.ml-2
           = self_assessment_defines[i]
   .field.form-group
     = f.label :tournament_experience
+
     - tournament_experience_defines.count.times do |i|
       .form-check.mb-1
-        %input{type: 'radio', value: i, class:'form-check-input', checked: (@player.tournament_experience == i ? true : false)}
+        = f.radio_button :tournament_experience, i, checked: (@player.tournament_experience == i ? true : false), class:'form-check-input'
         %label.form-check-label.ml-2
           = tournament_experience_defines[i]
   .field.form-group

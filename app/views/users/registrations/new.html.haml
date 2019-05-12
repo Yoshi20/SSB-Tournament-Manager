@@ -1,5 +1,5 @@
 .row
-  .col 
+  .col
     %h1.page__title Signing up
 .row
   .col
@@ -31,14 +31,14 @@
         = label_tag :self_assessment
         - self_assessment_defines.count.times do |i|
           .form-check.mb-1
-            %input{type: 'radio', value: i, class:'form-check-input'}
+            = radio_button_tag :self_assessment, i, false, class:'form-check-input'
             %label.form-check-label.ml-2
               = self_assessment_defines[i]
       .form-group
         = label_tag :tournament_experience
         - tournament_experience_defines.count.times do |i|
           .form-check.mb-1
-            %input{type: 'radio', value: i, class:'form-check-input'}
+            = radio_button_tag :tournament_experience, i, false, class:'form-check-input'
             %label.form-check-label.ml-2
               = tournament_experience_defines[i]
       .form-group

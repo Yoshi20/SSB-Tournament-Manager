@@ -121,12 +121,13 @@
 
   - if current_user.present?
     .admin-actions
-      -if current_user.super_admin?
+      -if current_user.super_admin? or @player.user == current_user
         .admin-actions__link
           = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
             %span.material-icons.admin-actions__link__icon
               edit
 
+      -if current_user.super_admin?
         .admin-actions__link
           = link_to @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
             %span.material-icons.admin-actions__link__icon
