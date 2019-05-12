@@ -23,24 +23,28 @@
 
 document.addEventListener 'turbolinks:load', ->
 
-  # a click on a nav-link adds an id to the url
+  # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present
   $('.nav-link').on 'click', (e) ->
-    window.history.replaceState(null, null, "#{$(this).attr('href')}");
+    window.history.replaceState(null, null, "#{$(this).attr('href')}")
+    url = new URL(window.location.href)
+    if url.href.includes('page') and url.searchParams.get('page') != 1
+      url.searchParams.set('page', 1)
+      window.location.href = url.href
 
-  # get id from url and activate the correct nav-link
-  id = window.location.href.split('#')[1]
-  if id
+  # get anchor from url and activate the correct nav-link
+  anchor = window.location.href.split('#')[1]
+  if anchor
     $('.nav-link.active').removeClass('active')
     $('.tab-pane.active').removeClass('active').removeClass('show')
-    $("##{id}-tab").addClass('active')
-    $("##{id}").addClass('active').addClass('show')
+    $("##{anchor}-tab").addClass('active')
+    $("##{anchor}").addClass('active').addClass('show')
 
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
     unless ($(e.target).hasClass('admin-actions__link__icon') || $(e.target).hasClass('btn-square'))
       external_url = $(this).attr('data-external_url')
       if external_url
-        window.open(external_url, '_blank');
+        window.open(external_url, '_blank')
       else
         id = $(this).attr('data-id')
         component = $(this).attr('data-component')
@@ -49,6 +53,6 @@ document.addEventListener 'turbolinks:load', ->
   $('.scroll-top').on 'click', (e) ->
     $('html, body').animate({
       scrollTop: 0
-    }, 500);
+    }, 500)
 
   $('.toast').toast({delay: 10000}).toast('show')

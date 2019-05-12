@@ -124,14 +124,14 @@
                   -else
                     - if current_user.present?
                       - if @tournament.players.include?(current_user.player)
-                        = button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}", method:'post', class:'btn btn-sstm', data: { confirm: "Are you sure? You may not be able to join the tournament again if there's a player in the waiting list."}
+                        = button_to ">>> Leave this tournament <<<", "/tournaments/remove_player/#{@tournament.id}#details", method:'post', class:'btn btn-sstm', data: { confirm: "Are you sure? You may not be able to join the tournament again if there's a player in the waiting list."}
                       - elsif @tournament.total_seats.present? and @tournament.players.count >= @tournament.total_seats
                         - if @tournament.waiting_list.include?(current_user.player.gamer_tag)
-                          = button_to ">>> Leave the waiting list <<<", "/tournaments/remove_player/#{@tournament.id}", params:{waiting_list: true}, method:'post', class:'btn btn-sstm', data: { confirm: "Are you sure? You may loose your position in the waiting list if there's another player in it."}
+                          = button_to ">>> Leave the waiting list <<<", "/tournaments/remove_player/#{@tournament.id}#details", params:{waiting_list: true}, method:'post', class:'btn btn-sstm', data: { confirm: "Are you sure? You may loose your position in the waiting list if there's another player in it."}
                         - else
-                          = button_to "Tournament is full >>> Join the waiting list <<<", "/tournaments/add_player/#{@tournament.id}", params:{waiting_list: true}, method:'post', class:'btn btn-info', style:'background-color: #17a2b8;'
+                          = button_to "Tournament is full >>> Join the waiting list <<<", "/tournaments/add_player/#{@tournament.id}#details", params:{waiting_list: true}, method:'post', class:'btn btn-info', style:'background-color: #17a2b8;'
                       - else
-                        = button_to ">>> Join this tournament <<<", "/tournaments/add_player/#{@tournament.id}", method:'post', class:'btn btn-ghost'
+                        = button_to ">>> Join this tournament <<<", "/tournaments/add_player/#{@tournament.id}#details", method:'post', class:'btn btn-ghost'
                     - else
                       = button_to ">>> Log in to join this tournament <<<", '', disabled:true, class:'btn btn-ghost'
 
@@ -218,7 +218,7 @@
                       %li HDMI cable
                       %li Super Smash Bros. Ultimate Game (with the most current version and ruleset)
                   .col
-                    = form_for @registration, role: 'form', method: :patch do |f|
+                    = form_for @registration, as: :registration, url: registration_path(id: @registration.id, anchor: 'players'), role: 'form', method: :patch do |f|
                       = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
                       = f.submit 'I will bring setups', class:'btn btn-ghost', id:'bring-game-stations-button', style: 'display:inline'
                       %br
@@ -234,11 +234,11 @@
             .tournament__players
               .row
                 .col
-                  = form_tag "/tournaments/add_player/#{@tournament.id}", method:'post', class: 'form-group' do
+                  = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
                     = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
                     = submit_tag 'Add player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
                 .col
-                  = form_tag "/tournaments/remove_player/#{@tournament.id}", method:'post', class: 'form-group' do
+                  = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
                     = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
                     = submit_tag 'Remove player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
 
