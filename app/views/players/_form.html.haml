@@ -31,7 +31,7 @@
     = f.label :self_assessment
     - self_assessment_defines.count.times do |i|
       .form-check.mb-1
-        = f.radio_button :self_assessment_defines, i, checked: (@player.self_assessment == i ? true : false), class:'form-check-input'
+        = f.radio_button :self_assessment, i, checked: (@player.self_assessment == i ? true : false), class:'form-check-input'
         %label.form-check-label.ml-2
           = self_assessment_defines[i]
   .field.form-group
