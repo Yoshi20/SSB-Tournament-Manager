@@ -7,6 +7,10 @@ class Player < ApplicationRecord
 
   validates :gamer_tag, :presence => true
 
+  def matches
+    Match.where(player1_id: self.id).or(Match.where(player2_id: self.id))
+  end
+
   def strip_whitespace
     self.gamer_tag.try(:strip!)
   end
