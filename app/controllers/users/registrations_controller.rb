@@ -23,6 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.gamer_tag = user.username
       player.points = 0
       player.participations = 0
+      player.canton = params[:canton]
+      player.gender = params[:gender]
+      player.birth_year = params[:birth_year]
       player.self_assessment = params[:self_assessment] || 0
       player.tournament_experience = params[:tournament_experience] || 0
       params[:main_characters].split(',').each do |char|

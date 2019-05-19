@@ -28,20 +28,20 @@
       = f.label :losses
       = f.number_field :losses, class: 'form-control'
   .field.form-group
+    = f.label :canton
+    = f.select :canton, options_for_select(cantons, @player.canton), {include_blank: true}, class: 'form-control'
+  .field.form-group
+    = f.label :gender
+    = f.select :gender, options_for_select(genders, @player.gender), {include_blank: true}, class: 'form-control'
+  .field.form-group
+    = f.label :birth_year
+    = f.select :birth_year, options_for_select(birth_years, @player.birth_year), {include_blank: true}, class: 'form-control'
+  .field.form-group
     = f.label :self_assessment
-    - self_assessment_defines.count.times do |i|
-      .form-check.mb-1
-        = f.radio_button :self_assessment, i, checked: (@player.self_assessment == i ? true : false), class:'form-check-input'
-        %label.form-check-label.ml-2
-          = self_assessment_defines[i]
+    = f.select :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, @player.self_assessment), {}, class: 'form-control'
   .field.form-group
     = f.label :tournament_experience
-
-    - tournament_experience_defines.count.times do |i|
-      .form-check.mb-1
-        = f.radio_button :tournament_experience, i, checked: (@player.tournament_experience == i ? true : false), class:'form-check-input'
-        %label.form-check-label.ml-2
-          = tournament_experience_defines[i]
+    = f.select :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}, @player.tournament_experience), {}, class: 'form-control'
   .field.form-group
     = f.label :main_characters
     %em
