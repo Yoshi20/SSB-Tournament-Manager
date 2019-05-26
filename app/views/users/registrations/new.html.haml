@@ -7,49 +7,45 @@
       = devise_error_messages!
       .form-group
         = f.label :username, 'Username *'
-        %em
-          (= Gamer tag)
+        %em= "(= Gamer tag)"
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
         = f.label :email, 'Email *'
         = f.email_field :email, class: 'form-control'
       .form-group
         = f.label :mobile_number
-        %em
-          (079 / 123 45 67)
+        %em= "(079 / 123 45 67)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, 'Password *'
         - if @minimum_password_length
-          %em
-            (#{@minimum_password_length} characters minimum)
+          %em= "(#{@minimum_password_length} characters minimum)"
         = f.password_field :password, autocomplete: "off", class: 'form-control'
       .form-group
         = f.label :password_confirmation, 'Password confirmation *'
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       .form-group
+        = label_tag :canton
+        = select_tag :canton, options_for_select(cantons), {include_blank: true, class: 'form-control'}
+      .form-group
+        = label_tag :gender
+        = select_tag :gender, options_for_select(genders), {include_blank: true, class: 'form-control'}
+      .form-group
+        = label_tag :birth_year
+        = select_tag :birth_year, options_for_select(birth_years), {include_blank: true, class: 'form-control'}
+      .form-group
         = label_tag :self_assessment
-        - self_assessment_defines.count.times do |i|
-          .form-check.mb-1
-            = radio_button_tag :self_assessment, i, false, class:'form-check-input'
-            %label.form-check-label.ml-2
-              = self_assessment_defines[i]
+        = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
       .form-group
         = label_tag :tournament_experience
-        - tournament_experience_defines.count.times do |i|
-          .form-check.mb-1
-            = radio_button_tag :tournament_experience, i, false, class:'form-check-input'
-            %label.form-check-label.ml-2
-              = tournament_experience_defines[i]
+        = select_tag :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
       .form-group
         = label_tag :main_characters
-        %em
-          (you can add up to three by separating them with a comma)
+        %em= "(you can add up to three by separating them with a comma)"
         = text_field_tag :main_characters, nil, class: 'form-control'
       .form-group
         = label_tag :comment, "Comment"
-        %em
-          (for what ever you want to tell the world)
+        %em= "(for what ever you want to tell the world)"
         = text_area_tag :comment, nil, class: 'form-control'
       .form-group.mb-0
         .form-check
