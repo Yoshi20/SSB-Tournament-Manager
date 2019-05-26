@@ -12,7 +12,8 @@ module TournamentsHelper
   end
 
   def points_repartition_table(rank)
-      if rank == 1 then 300
+      if rank.nil? then 0
+      elsif rank == 1 then 300
       elsif rank == 2 then 250
       elsif rank == 3 then 200
       elsif rank == 4 then 150
