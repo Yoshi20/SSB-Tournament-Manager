@@ -277,12 +277,15 @@
                 %th
                   Points
             %tbody.table-content
-              - @tournament.ranking_string.split(';').sort_by{|a| a.split(',')[0].to_i}.each do |r|
+              - @tournament.ranking_string.split(';').sort_by{|a| r = a.split(',')[0].to_i; (r != 0) ? r : 10000}.each do |r|
                 - ranking = r.split(',')
                 %tr
                   %td
                     %strong
-                      = "#{ranking[0]}"
+                      - if ranking[0].nil? or ranking[0].empty?
+                        = "-"
+                      - else
+                        = "#{ranking[0]}"
                   %td
                     = "#{ranking[1]}"
                   %td

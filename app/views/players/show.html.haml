@@ -105,7 +105,7 @@
                   - else
                     = tournament.city || '-'
                 %td.text-right
-                  - player_rank = '?'
+                  - player_rank = '-'
                   - if tournament.ranking_string.to_s.include?(@player.gamer_tag)
                     - tournament.ranking_string.split(';').sort.each do |r|
                       - if r.split(',')[1] == @player.gamer_tag
@@ -114,7 +114,8 @@
                     - player_rank = player_rank +'st'
                   - elsif player_rank == '3'
                     - player_rank = player_rank +'rd'
-                  - elsif player_rank == '?'
+                  - elsif player_rank == '-' or player_rank.nil? or player_rank.empty?
+                    - player_rank = '-'
                   - else
                     - player_rank = player_rank +'th'
                   %strong= "#{player_rank}"

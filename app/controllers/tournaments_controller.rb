@@ -414,7 +414,7 @@ class TournamentsController < ApplicationController
               raise ("#{p.display_name} not found in this tournament!").inspect if player.nil?
               player.points += helpers.points_repartition_table(p.final_rank)
               player.participations += 1
-              if player.best_rank == 0 or p.final_rank < player.best_rank then player.best_rank = p.final_rank end
+              if p.final_rank.present? and (player.best_rank == 0 or p.final_rank < player.best_rank) then player.best_rank = p.final_rank end
               ct.matches.each do |m|
                 scores = m.scores_csv.split('-')
                 if m.player1_id == p.id
