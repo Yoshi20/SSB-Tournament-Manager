@@ -170,7 +170,7 @@
                   %h3 Mains
                 %th
                   %h3 Setups
-                - if @tournament.registration_fee > 0
+                - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                   %th{style: 'text-align: center;'}
                     %h3 Fee paid?
             %tbody.table-content
@@ -189,7 +189,7 @@
                     - gs = player_registration.game_stations
                     - if !gs.nil? and gs > 0
                       = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
-                  - if @tournament.registration_fee > 0
+                  - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                     %td{style: 'text-align: center;'}
                       - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
                         .inline-div{style:'display:inline-block'}

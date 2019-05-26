@@ -406,21 +406,43 @@ class TournamentsController < ApplicationController
         ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
 
         if ct.state == 'complete'
-          # updated the participated players
+          # updated the participated players and create the matches if no exception arises
           ActiveRecord::Base.transaction do
-            ct.participants.each do |p|
-              # updated player
-              player = @tournament.players.find_by(:gamer_tag => p.display_name)
-              raise ("#{p.display_name} not found in this tournament!").inspect if player.nil?
-              player.points += helpers.points_repartition_table(p.final_rank)
+            # create matches
+            ct.matches.each do |ctm|
+              match = Match.new
+              match.challonge_match_id = ctm.id
+              match.tournament_id = @tournament.id
+              ct.participants.each do |ctp|
+                if ctp.id == ctm.player1_id
+                  player = Player.find_by(gamer_tag: ctp.display_name)
+                  raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+                  match.player1_id = player.id
+                elsif ctp.id == ctm.player2_id
+                  player = Player.find_by(gamer_tag: ctp.display_name)
+                  raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+                  match.player2_id = player.id
+                end
+              end
+              scores = ctm.scores_csv.split('-')
+              match.player1_score = scores[0]
+              match.player2_score = scores[1]
+              match.save! # raise an exception when match.save failed
+            end
+
+            # updated players
+            ct.participants.each do |ctp|
+              player = Player.find_by(gamer_tag: ctp.display_name)
+              raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+              player.points += helpers.points_repartition_table(ctp.final_rank)
               player.participations += 1
-              if p.final_rank.present? and (player.best_rank == 0 or p.final_rank < player.best_rank) then player.best_rank = p.final_rank end
-              ct.matches.each do |m|
-                scores = m.scores_csv.split('-')
-                if m.player1_id == p.id
+              if ctp.final_rank.present? and (player.best_rank == 0 or ctp.final_rank < player.best_rank) then player.best_rank = ctp.final_rank end
+              ct.matches.each do |ctm|
+                scores = ctm.scores_csv.split('-')
+                if ctm.player1_id == ctp.id
                   player.wins += scores[0].to_i
                   player.losses += scores[1].to_i
-                elsif m.player2_id == p.id
+                elsif ctm.player2_id == ctp.id
                   player.wins += scores[1].to_i
                   player.losses += scores[0].to_i
                 end
@@ -430,7 +452,7 @@ class TournamentsController < ApplicationController
               player.update_tournament_experience
 
               # updated raking_string on the tournament
-              ranking_string = "#{p.final_rank},#{p.display_name};"
+              ranking_string = "#{ctp.final_rank},#{ctp.display_name};"
               @tournament.ranking_string += ranking_string
             end
           end

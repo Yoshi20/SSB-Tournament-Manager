@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 2019_05_18_194800) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "tournament_id"
+    t.bigint "challonge_match_id"
+    t.bigint "player1_id"
+    t.bigint "player2_id"
+    t.integer "player1_score"
+    t.integer "player2_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_matches_on_tournament_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "gamer_tag"
     t.integer "points"
