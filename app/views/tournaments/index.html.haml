@@ -23,6 +23,7 @@
 
       %tbody.with-show.tournament-list-body
         = render @ongoing_tournaments
+
   .tab-pane.fade.show.active#upcoming{role: 'tabpanel', 'aria-labelledby'=>'upcoming-tab'}
     .tournaments__filter
       .tournaments__filter__button= link_to 'All', tournaments_path(filter: 'all', anchor: 'upcoming'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"

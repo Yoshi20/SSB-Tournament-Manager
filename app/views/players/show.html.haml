@@ -1,5 +1,7 @@
 .row
   .col
+    - if @player.canton.present?
+      = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
     %h1.page__title
       = @player.gamer_tag
 
@@ -10,6 +12,31 @@
         - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
           .player__characters__single
             = image_tag "characters/#{char}.png", class: 'player__characters__image'
+
+  - if @player.canton.present? || @player.birth_year.present? || @player.gender.present?
+    .player__stats
+      .row
+        - if @player.canton.present?
+          .col
+            .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
+              %strong
+                = @player.canton
+              %span
+                Canton
+        - if @player.birth_year.present?
+          .col
+            .player__stats__single{class: (@player.gender.nil?) ? 'player__stats__single--last' : ''}
+              %strong
+                = @player.birth_year
+              %span
+                Birth year
+        - if @player.gender.present?
+          .col
+            .player__stats__single.player__stats__single--last
+              %strong
+                = @player.gender
+              %span
+                Gender
 
   .player__stats
     .row
@@ -37,32 +64,34 @@
             = @player.points
           %span
             Points
-    .player__stats
-      .row
-        .col
-          .player__stats__single
-            %strong
-              = self_assessment_defines[@player.self_assessment]
-            %span
-              Assessement
-        .col
-          .player__stats__single
-            %strong
-              - if @player.losses == 0 and @player.wins == 0
-                = '-'
-              - else
-                = "#{(@player.wins.to_f/(@player.wins+@player.losses)*100).round(2)} %"
-            %span
-              Win/Loss
-        .col
-          .player__stats__single.player__stats__single--last
-            %strong
-              = tournament_experience_defines[@player.tournament_experience]
-            %span
-              Experience
+
+  .player__stats
+    .row
+      .col
+        .player__stats__single
+          %strong
+            = self_assessment_defines[@player.self_assessment]
+          %span
+            Assessement
+      .col
+        .player__stats__single
+          %strong
+            - if @player.losses == 0 and @player.wins == 0
+              = '-'
+            - else
+              = "#{(@player.wins.to_f/(@player.wins+@player.losses)*100).round(2)} %"
+          %span
+            Win/Loss
+      .col
+        .player__stats__single.player__stats__single--last
+          %strong
+            = tournament_experience_defines[@player.tournament_experience]
+          %span
+            Experience
+
   - if not @player.comment.empty?
     .player__comment
-      %h3 Description
+      %h3 Comment
       = @player.comment || '-'
 
   - if @player.tournaments.any?
@@ -105,7 +134,7 @@
                   - else
                     = tournament.city || '-'
                 %td.text-right
-                  - player_rank = '?'
+                  - player_rank = '-'
                   - if tournament.ranking_string.to_s.include?(@player.gamer_tag)
                     - tournament.ranking_string.split(';').sort.each do |r|
                       - if r.split(',')[1] == @player.gamer_tag
@@ -114,7 +143,8 @@
                     - player_rank = player_rank +'st'
                   - elsif player_rank == '3'
                     - player_rank = player_rank +'rd'
-                  - elsif player_rank == '?'
+                  - elsif player_rank == '-' or player_rank.nil? or player_rank.empty?
+                    - player_rank = '-'
                   - else
                     - player_rank = player_rank +'th'
                   %strong= "#{player_rank}"
