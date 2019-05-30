@@ -15,22 +15,17 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th.text-center #
-          %th.text-center.d-none.d-md-table-cell Points
           %th Gamer tag
           %th.text-center Mains
           %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Self assessment
           %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell XP
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+          %th.text-center W/L
 
       %tbody.table-content.with-show
         - if @players.any?
           - last_player_points = nil
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
-              %td.text-center= (last_player_points == player.points) ? '' : "#{i+1}."
-              %td.text-center.d-none.d-md-table-cell= player.points
-              - last_player_points = player.points
               %td= player.gamer_tag
               %td.text-center
                 - if player.main_characters.any?
@@ -40,7 +35,7 @@
                         = image_tag "characters/#{char}.png", height: '25px', width: '25px'
               %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
               %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+              %td.text-center
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else

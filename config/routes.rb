@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'calendar' => 'calendar#index'
   get 'calendar_for_iframe' => 'calendar#show'
 
+  get 'rankings' => 'rankings#index'
+
   resources :feedbacks
 
   resources :tournaments
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
   post 'tournaments/cancel/:id' => 'tournaments#cancel'
+
   resources :players, except: [:new]
 
   resources :registrations, only: [:update]
