@@ -22,6 +22,9 @@
       %li.nav-item{role: "presentation", class: (@section == 'calendar' ? 'active' : 'inactive')}
         = link_to 'Calendar', calendar_path, class: 'nav-link'
 
+      %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
+        = link_to 'Rankings', rankings_path, class: 'nav-link'
+
       %li.nav-item{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
         = link_to 'Players', players_path, class: 'nav-link'
 

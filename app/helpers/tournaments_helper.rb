@@ -1,5 +1,13 @@
 module TournamentsHelper
 
+  def tournament_cities
+    ['Baden', 'Bern', 'Geneva', 'Solothurn', 'Zurich']
+  end
+
+  def tournament_majors
+    ['PK Bern', 'Saint Smash']
+  end
+
   def min_needed_game_stations_per_tournament(seats)
     if seats.nil? then return 0 end
     min_needed_game_stations = seats/4

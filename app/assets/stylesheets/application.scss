@@ -18,23 +18,23 @@
 @import "material_icons";
 @import "fullcalendar";
 
-@import "./_modules/content";
-
 @import "./_includes/typography";
-@import "./_modules/form";
-@import "./_modules/button";
 
-@import "./_modules/modal";
-@import "./_modules/table";
-@import "./_modules/sidebar";
-@import "./_modules/navigation";
-@import "./_modules/banner";
-@import "./_modules/toast";
-@import "./_modules/tab";
-@import "./_modules/tournament";
-@import "./_modules/calendar";
-@import "./_modules/player";
 @import "./_modules/administrator";
+@import "./_modules/banner";
+@import "./_modules/button";
+@import "./_modules/calendar";
+@import "./_modules/content";
+@import "./_modules/form";
+@import "./_modules/modal";
+@import "./_modules/navigation";
+@import "./_modules/player";
+@import "./_modules/ranking";
+@import "./_modules/sidebar";
+@import "./_modules/tab";
+@import "./_modules/table";
+@import "./_modules/toast";
+@import "./_modules/tournament";
 
 html, body {
   height: 100%;

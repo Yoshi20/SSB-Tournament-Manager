@@ -19,40 +19,13 @@ class TournamentsController < ApplicationController
     elsif params[:filter] == 'weekly'
       @tournaments = Tournament.active_2019.upcoming.where(subtype: 'weekly').order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
       @past_tournaments = Tournament.active_2019.past.where(subtype: 'weekly').order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'baden'
-      @tournaments = Tournament.active_2019.upcoming.where(city: 'Baden').or(
-        Tournament.active_2019.upcoming.from_city('Baden')
+    elsif helpers.tournament_cities.include?(params[:filter].capitalize)
+      city = params[:filter].capitalize
+      @tournaments = Tournament.active_2019.upcoming.where(city: city).or(
+        Tournament.active_2019.upcoming.from_city(city)
       ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: 'Baden').or(
-        Tournament.active_2019.past.from_city('Baden')
-      ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'bern'
-      @tournaments = Tournament.active_2019.upcoming.where(city: 'Bern').or(
-        Tournament.active_2019.upcoming.from_city('Bern')
-      ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: 'Bern').or(
-        Tournament.active_2019.past.from_city('Bern')
-      ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'geneva'
-      @tournaments = Tournament.active_2019.upcoming.where(city: 'Geneva').or(
-        Tournament.active_2019.upcoming.from_city('Geneva')
-      ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: 'Geneva').or(
-        Tournament.active_2019.past.from_city('Geneva')
-      ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'solothurn'
-      @tournaments = Tournament.active_2019.upcoming.where(city: 'Solothurn').or(
-        Tournament.active_2019.upcoming.from_city('Solothurn')
-      ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: 'Solothurn').or(
-        Tournament.active_2019.past.from_city('Solothurn')
-      ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'zurich'
-      @tournaments = Tournament.active_2019.upcoming.where(city: 'Zurich').or(
-        Tournament.active_2019.upcoming.from_city('Zurich')
-      ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: 'Zurich').or(
-        Tournament.active_2019.past.from_city('Zurich')
+      @past_tournaments = Tournament.active_2019.past.where(city: city).or(
+        Tournament.active_2019.past.from_city(city)
       ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     end
   end
@@ -406,7 +379,7 @@ class TournamentsController < ApplicationController
         ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
 
         if ct.state == 'complete'
-          # updated the participated players and create the matches if no exception arises
+          # updated the participated players and create the matches and results if no exception arises
           ActiveRecord::Base.transaction do
             # create matches
             ct.matches.each do |ctm|
@@ -430,23 +403,37 @@ class TournamentsController < ApplicationController
               match.save! # raise an exception when match.save failed
             end
 
-            # updated players
+            # create results and update players
             ct.participants.each do |ctp|
               player = Player.find_by(gamer_tag: ctp.display_name)
               raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
-              player.points += helpers.points_repartition_table(ctp.final_rank)
+              result = Result.new
+              result.player = player
+              result.tournament = @tournament
+              result.city = @tournament.city
+              result.rank = ctp.final_rank
+              result.points = helpers.points_repartition_table(ctp.final_rank)
+              player.points += result.points
               player.participations += 1
               if ctp.final_rank.present? and (player.best_rank == 0 or ctp.final_rank < player.best_rank) then player.best_rank = ctp.final_rank end
+              result.wins = 0
+              result.losses = 0
               ct.matches.each do |ctm|
                 scores = ctm.scores_csv.split('-')
                 if ctm.player1_id == ctp.id
-                  player.wins += scores[0].to_i
-                  player.losses += scores[1].to_i
+                  result.wins += scores[0].to_i
+                  result.losses += scores[1].to_i
                 elsif ctm.player2_id == ctp.id
-                  player.wins += scores[1].to_i
-                  player.losses += scores[0].to_i
+                  result.wins += scores[1].to_i
+                  result.losses += scores[0].to_i
                 end
               end
+              player.wins += result.wins
+              player.losses += result.losses
+              if @tournament.subtype == 'internal'
+                result.major_name = @tournament.name
+              end
+              result.save! # raise an exception when result.save failed
               player.save! # raise an exception when player.save failed
 
               player.update_tournament_experience
