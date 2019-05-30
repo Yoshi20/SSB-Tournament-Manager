@@ -291,14 +291,13 @@
                   %td
                     = "#{points_repartition_table(ranking[0].to_i)}"
 
-  - if !@tournament.finished
+  - if @tournament.is_registration_allowed and !@tournament.finished and current_user.present? and current_user.admin?
     .row
       .col{style: 'text-align: left;'}
-        - if @tournament.is_registration_allowed
-          - if !@tournament.setup and !@tournament.started
-            = button_to "Set up tournament", "/tournaments/setup/#{@tournament.id}", class:'btn btn-ghost', id:'setup-tournament-button', :data => {:confirm => 'Are you sure? A tournament on challonge.com will be created.'}
-          - elsif @tournament.setup and !@tournament.started
-            = button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-sstm', id:'start-tournament-button', :data => {:confirm => 'Are you sure? The tournament on challonge.com will be started.'}
+        - if !@tournament.setup and !@tournament.started
+          = button_to "Set up tournament", "/tournaments/setup/#{@tournament.id}", class:'btn btn-ghost', id:'setup-tournament-button', :data => {:confirm => 'Are you sure? A tournament on challonge.com will be created.'}
+        - elsif @tournament.setup and !@tournament.started
+          = button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-sstm', id:'start-tournament-button', :data => {:confirm => 'Are you sure? The tournament on challonge.com will be started.'}
       .col{style: 'text-align: right;'}
         - if @tournament.started
           = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-sstm', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
