@@ -315,11 +315,7 @@ class TournamentsController < ApplicationController
 
           # sort the participants by the best player
           seeded_participants = @tournament.players.sort_by do |p|
-            seed_points = (p.participations == 0 ? p.points : p.points.to_f/p.participations)
-            seed_points += ((p.losses == 0) ? 0 : p.wins.to_f/(p.wins+p.losses))
-            seed_points += p.self_assessment.to_f/5
-            seed_points += p.tournament_experience.to_f/10
-            seed_points
+            p.seed_points
           end.reverse
 
           # add the participants to the challonge tournament

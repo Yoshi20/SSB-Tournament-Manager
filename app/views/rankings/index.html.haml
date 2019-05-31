@@ -39,7 +39,7 @@
               - if player.wins == 0 and player.losses == 0
                 - win_loss_ratio = nil
               - else
-                - win_loss_ratio = player.wins.to_f/(player.wins + player.losses)
+                - win_loss_ratio = player.win_loss_ratio
             - else
               - results_sum = player.results_sum(params[:major] || params[:filter])
               - points = results_sum[0]
@@ -59,7 +59,7 @@
                           = image_tag "characters/#{char}.png", height: '25px', width: '25px'
                 %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
                 %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
-                  = win_loss_ratio.nil? ? '-' : "#{(win_loss_ratio*100).round(2)} %"
+                  = win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
 
                 - if current_user.present? and current_user.super_admin?
                   %td.admin-list-actions

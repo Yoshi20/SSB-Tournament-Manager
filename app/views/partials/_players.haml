@@ -5,7 +5,7 @@
   %thead.table-header
     %tr
       %th{colspan: '2'} Player
-      %th Points
+      %th{style: 'text-align: center;'} W/L
 
   %tbody.table-content.with-show
     - if @topPlayers.any?
@@ -17,4 +17,4 @@
                 - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                   = image_tag "characters/#{char}.png", height: '25px', width: '25px'
           %td= player.gamer_tag
-          %td= player.points
+          %td{style: 'text-align: center;'}= "#{player.win_loss_ratio}%"

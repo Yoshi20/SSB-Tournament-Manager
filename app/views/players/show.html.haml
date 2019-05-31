@@ -79,7 +79,7 @@
             - if @player.losses == 0 and @player.wins == 0
               = '-'
             - else
-              = "#{(@player.wins.to_f/(@player.wins+@player.losses)*100).round(2)} %"
+              = "#{@player.win_loss_ratio} %"
           %span
             Win/Loss
       .col

@@ -8,6 +8,22 @@ class Player < ApplicationRecord
 
   validates :gamer_tag, :presence => true
 
+  def win_loss_ratio
+    if self.wins == 0 and self.losses == 0
+      return 0
+    else
+      return (self.wins.to_f/(self.wins+self.losses)*100).round(2)
+    end
+  end
+
+  def seed_points
+    seed_points = (self.participations == 0 ? 0 : self.points.to_f/self.participations)
+    seed_points += ((self.wins == 0 and self.losses == 0) ? 0 : self.wins.to_f/(self.wins+self.losses))
+    seed_points += self.self_assessment.to_f/5
+    seed_points += self.tournament_experience.to_f/10
+    return seed_points
+  end
+
   def results_sum(city_or_major)
     points = 0
     participations = 0
@@ -24,7 +40,7 @@ class Player < ApplicationRecord
     if wins == 0 and losses == 0
       return [points, participations, nil]
     else
-      return [points, participations, wins.to_f/(wins+losses)]
+      return [points, participations, (wins.to_f/(wins+losses)*100).round(2)]
     end
   end
 

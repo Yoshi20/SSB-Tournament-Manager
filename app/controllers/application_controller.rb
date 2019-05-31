@@ -38,7 +38,9 @@ class ApplicationController < ActionController::Base
   end
 
   def get_top_players
-    @topPlayers = Player.all.order(points: :desc, participations: :asc, created_at: :asc).includes(:user).limit(10)
+    @topPlayers = Player.all.sort_by do |p|
+      [p.win_loss_ratio, -p.created_at.to_i]
+    end.reverse[0...10]
   end
 
   def get_next_tournaments

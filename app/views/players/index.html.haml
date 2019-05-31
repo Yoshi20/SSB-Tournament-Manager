@@ -39,7 +39,7 @@
                 - if player.losses == 0 and player.wins == 0
                   = '-'
                 - else
-                  = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
+                  = "#{player.win_loss_ratio} %"
 
               - if current_user.present? and current_user.super_admin?
                 %td.admin-list-actions
