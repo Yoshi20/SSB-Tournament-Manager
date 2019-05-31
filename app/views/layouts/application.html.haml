@@ -24,15 +24,20 @@
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
         .row
-          .d-none.d-lg-block.col-lg-3
-            .sidebar
-              = render '/partials/players'
-          .col-12.col-lg-6
-            .content
-              = yield
-          .d-none.d-lg-block.col-lg-3
-            .sidebar
-              = render '/partials/events'
+          - if request.original_fullpath == '/calendar'
+            .col-12
+              .content
+                = yield
+          - else
+            .d-none.d-lg-block.col-lg-3
+              .sidebar
+                = render '/partials/players'
+            .col-12.col-lg-6
+              .content
+                = yield
+            .d-none.d-lg-block.col-lg-3
+              .sidebar
+                = render '/partials/events'
     .footer
       = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
         = image_tag('logo.png', height: '50px', width: '50px')

@@ -14,10 +14,11 @@
   .tab-pane.fade.show.active#a{role: 'tabpanel', 'aria-labelledby'=>'a-tab'}
     .rankings__filter
       .rankings__filter__button= link_to 'All', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+      .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
       - tournament_majors.each do |major|
-        .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn btn-ghost #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       - tournament_cities.each do |city|
-        .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn btn-ghost #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
 
     %table.table.table-hover.table-borderless
       %thead.table-header
@@ -33,8 +34,11 @@
         - if @players.any?
           - last_player_points = nil
           - @players.each_with_index do |player, i|
-            - if (params[:filter].nil? or params[:filter] == 'all')
-              - points = player.points
+            - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'seed_points')
+              - if params[:filter] == 'seed_points'
+                - points = player.seed_points.round(2)
+              - else
+                - points = player.points
               - participations = player.participations
               - if player.wins == 0 and player.losses == 0
                 - win_loss_ratio = nil

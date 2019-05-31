@@ -1,5 +1,5 @@
 %tr{'data-id': feedback.id, 'data-component': 'feedback'}
-  %td
+  %td{style: 'vertical-align: top;'}
     - if feedback.user.present?
       = feedback.user.username
     - else
@@ -7,10 +7,10 @@
 
   %td
     = feedback.text
-
-  - if current_user.present? and current_user.admin?
-    %td.text-center.actions
-      = link_to edit_feedback_path(feedback), class:'btn btn-default btn-xs' do
-        %span.glyphicon.glyphicon-pencil
-      = link_to feedback, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' do
-        %span.glyphicon.glyphicon-trash
+    - if !feedback.response.nil? and !feedback.response.blank?
+      %br
+      %br
+      %i= "Administrator \"#{feedback.response_username}\" replied:"
+      %br
+      .a_tab{style: 'margin-left: 10px;'}
+        %i= feedback.response
