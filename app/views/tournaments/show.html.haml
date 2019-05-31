@@ -49,7 +49,7 @@
                 - else
                   = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
               %span
-                Registration deadline
+                Online registration deadline
       .tournament__details
         .row
           .col
@@ -120,7 +120,7 @@
               .col
                 .tournament__details__single.tournament__details__single--last
                   - if @tournament.registration_deadline.present? and Time.now > @tournament.registration_deadline
-                    = button_to "Registration deadline exceeded", nil, class:'btn btn-primary', style:'background-color: #007bff;', disabled:true
+                    = button_to "Online registration deadline exceeded", nil, class:'btn btn-primary', style:'background-color: #007bff;', disabled:true
                   -else
                     - if current_user.present?
                       - if @tournament.players.include?(current_user.player)
@@ -161,10 +161,10 @@
       .tab-pane.fade#players{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
         - mail_string = ''
         .tournament__players
-          %table.table.table-borderless
+          %table.table.table-hover.table-borderless
             %thead
               %tr
-                %th{colspan:'2'}
+                %%th
                   %h3 Name
                 %th{style: 'text-align: center;'}
                   %h3 Mains
@@ -173,12 +173,11 @@
                 - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                   %th{style: 'text-align: center;'}
                     %h3 Fee paid?
-            %tbody.table-content
+            %tbody.table-content.with-show
               - @tournament.players.includes(:registrations).order('registrations.created_at').each do |player, i|
                 - mail_string = mail_string + player.user.email + '; '
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td{colspan:'2'}
-                    = link_to "#{player.gamer_tag}", player
+                  %td= player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -248,48 +247,55 @@
           %table.table.table-hover.table-borderless
             %thead
               %tr
-                %th{colspan:'2'}
-                  %h3 Name
                 %th
-                  = '#'
+                  %h3 Name
+                %th{style: 'text-align: center;'}
+                  %h3 Mains
+                %th{style: 'text-align: center;'}
+                  %h3 Waiting position
+
             %tbody.table-content.with-show
-              - @tournament.waiting_list.each_with_index do |player, i|
+              - @tournament.waiting_list.each_with_index do |gt, i|
+                - player = Player.find_by(gamer_tag: gt)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td
-                    = link_to "#{player.gamer_tag}", player
-                  %td
+                  %td= player.gamer_tag
+                  %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
-                      - player.main_characters[0...1].each do |char|
+                      - player.main_characters[0...3].each do |char|
                         - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                           = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-                  %td
-                    = "##{i+1}"
+                  %td{style: 'text-align: center;'}= "##{i+1}"
     - if @tournament.started and @tournament.finished
       .tab-pane.fade#ranking{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
         .tournament__players
           %table.table.table-hover.table-borderless
             %thead
               %tr
-                %th{colspan:'1'}
+                %th{style: 'text-align: center;'}
                   %h3 Ranking
                 %th
-                  Name
-                %th
-                  Points
-            %tbody.table-content
-              - @tournament.ranking_string.split(';').sort_by{|a| r = a.split(',')[0].to_i; (r != 0) ? r : 10000}.each do |r|
-                - ranking = r.split(',')
-                %tr
-                  %td
-                    %strong
-                      - if ranking[0].nil? or ranking[0].empty?
-                        = "-"
-                      - else
-                        = "#{ranking[0]}"
-                  %td
-                    = "#{ranking[1]}"
-                  %td
-                    = "#{points_repartition_table(ranking[0].to_i)}"
+                  %h3 Name
+                %th{style: 'text-align: center;'}
+                  %h3 Points
+                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %h3 Matches
+                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %h3 W/L
+            %tbody.table-contentt.with-show
+              - @tournament.results.sort_by{|r| -r.points}.each do |r|
+                - player = Player.find(r.player_id)
+                %tr{'data-id': player.id, 'data-component'=>'player'}
+                  %td{style: 'text-align: center;'}
+                    %strong= r.rank.nil? ? "-" : r.rank
+                  %td= player.gamer_tag
+                  %td{style: 'text-align: center;'}= r.points
+                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                    = player.matches.where(tournament_id: @tournament.id).count
+                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                    - if r.wins == 0 and r.losses == 0
+                      = '-'
+                    - else
+                      = "#{(player.wins.to_f/(player.wins+player.losses)*100).round(2)} %"
 
   - if @tournament.is_registration_allowed and !@tournament.finished and current_user.present? and current_user.admin?
     .row

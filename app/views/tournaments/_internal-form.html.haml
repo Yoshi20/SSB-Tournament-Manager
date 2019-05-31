@@ -11,7 +11,7 @@
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'internal'
     .form-group
-      = f.label :registration_deadline
+      = f.label :registration_deadline, 'Online registration deadline'
       .form-group-inline
         = f.datetime_select :registration_deadline, { start_year: Time.now.year }, class: 'form-control'
     .form-group

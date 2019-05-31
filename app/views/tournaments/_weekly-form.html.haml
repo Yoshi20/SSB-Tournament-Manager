@@ -11,7 +11,7 @@
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'weekly'
     .form-group
-      = f.label :registration_deadline
+      = f.label :registration_deadline, 'Online registration deadline'
       .form-group-inline
         = f.datetime_select :registration_deadline, {start_year: Time.now.year}, class: 'form-control'
     .form-group
@@ -62,6 +62,10 @@
         = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
         = label_tag :send_mails, 'Send all players an email'
     - else
+      - if @tournament.finished?
+        .form-group
+          = f.label :ranking_string
+          = f.text_area :ranking_string, class: 'form-control', rows: '2'
       .form-group
         = f.label :setup
         = f.check_box :setup, style: 'margin-left: 5px;'
