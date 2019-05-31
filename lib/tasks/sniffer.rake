@@ -74,7 +74,8 @@ namespace :sniffer do
       if externalTournament.save
         puts "-> Created: \"" + externalTournament.name + "\""
         if isDateError
-          puts '=> Invalid date! You have to edit the date manually!'
+          puts '==> Invalid date! You have to edit the date manually!'
+          TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later
         end
         puts "\n"
       else

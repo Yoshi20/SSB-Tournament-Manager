@@ -20,4 +20,8 @@ class TournamentMailerPreview < ActionMailer::Preview
     TournamentMailer.with(tournament: Tournament.first, user: User.first).waiting_player_upgraded_email
   end
 
+  def invalid_date_email
+    TournamentMailer.with(tournament: Tournament.where(subtype: 'external').first).invalid_date_email
+  end
+
 end

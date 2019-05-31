@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @tournament.name %></h1>
+    <p>
+      The date of the external tournament "<%= @tournament.name %>" couldn't be sniffed out correctly.
+    </p>
+    <p>
+      It was temporarily added on the following date: <strong><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></strong>
+    </p>
+    <p>
+      Please correct this manually by following <%= link_to "this link", @url %>.
+    </p>
+  </body>
+</html>
