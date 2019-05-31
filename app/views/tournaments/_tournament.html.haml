@@ -52,10 +52,10 @@
       %td.admin-list-actions
         .admin-list-actions__link
           = link_to edit_tournament_path(tournament), class:'btn btn-ghost btn-square' do
-            %span.material-icons.admin-list-actions__link__icon
+            %span.material-icons.admin-actions__link__icon
               edit
 
         .admin-list-actions__link
           = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-            %span.material-icons.admin-list-actions__link__icon
+            %span.material-icons.admin-actions__link__icon
               delete

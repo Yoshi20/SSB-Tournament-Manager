@@ -45,12 +45,12 @@
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                      %span.material-icons.admin-list-actions__link__icon
+                      %span.material-icons.admin-actions__link__icon
                         edit
 
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-list-actions__link__icon
+                      %span.material-icons.admin-actions__link__icon
                         delete
 
   .tab-pane.fade#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
@@ -80,10 +80,10 @@
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                      %span.material-icons.admin-list-actions__link__icon
+                      %span.material-icons.admin-actions__link__icon
                         edit
 
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-list-actions__link__icon
+                      %span.material-icons.admin-actions__link__icon
                         delete
