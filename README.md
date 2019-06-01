@@ -16,17 +16,17 @@ Local commands:
 
 Stage commands:
 - git push stage master
-- heroku logs --tail --app ssb-tournament-manager-stage
-- heroku run rake db:migrate --app ssb-tournament-manager-stage
-- heroku run rails c --app ssb-tournament-manager-stage
-- heroku restart --app ssb-tournament-manager-stage
+- heroku logs --tail --remote stage
+- heroku run rake db:migrate --remote stage
+- heroku run rails c --remote stage
+- heroku restart --remote stage
 
 Prod commands:
 - git push prod master
-- heroku logs --tail
-- heroku run rake db:migrate
-- heroku run rails c
-- heroku restart
+- heroku logs --tail --remote prod
+- heroku run rake db:migrate --remote prod
+- heroku run rails c --remote prod
+- heroku restart --remote prod
 
 - heroku run rake sniffer:all
 - (heroku run rake sniffer:braacket)
