@@ -42,7 +42,7 @@ document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
     $et = $(e.target)
-    unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox')
+    unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox') || $et.hasClass('game-stations-number-field')
       external_url = $(this).attr('data-external_url')
       if external_url
         window.open(external_url, '_blank')

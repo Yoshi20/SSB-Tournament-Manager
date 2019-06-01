@@ -4,6 +4,27 @@
 
 document.addEventListener 'turbolinks:load', ->
 
+  # hide the game stations submit button in tournament#show
+  $('.game-stations-button').hide()
+
+  # a click on a game stations number field sends an AJAX request in tournament#show
+  $('.game-stations-number-field').bind('change', ->
+    $t = $(this)
+    $form = $t.closest('form')[0]
+    data =
+      'registration':
+        game_stations: $t[0].value
+    $.ajax
+      method: 'patch'
+      url: $form.action
+      data: data
+      dataType: 'json'
+      error: ->
+        console.log("error: update game_stations ajax request")
+      success: (response) ->
+        # console.log(response)
+  )
+
   # hide the paid fee submit button in tournament#show
   $('.paid-fee-button').hide()
 

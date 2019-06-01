@@ -186,8 +186,14 @@
                   %td
                     - player_registration = player.registrations.where(tournament_id: @tournament.id).first
                     - gs = player_registration.game_stations
-                    - if !gs.nil? and gs > 0
-                      = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
+                    - if current_user.present? and current_user.admin? and !@tournament.started
+                      = form_for player_registration, role: 'form', method: :patch do |f|
+                        .admin-actions__link__icon
+                          = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
+                          = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
+                    - else
+                      - if !gs.nil? and gs > 0
+                        = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
                   - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                     %td{style: 'text-align: center;'}
                       - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
