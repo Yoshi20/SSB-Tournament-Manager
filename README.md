@@ -1,18 +1,37 @@
 # SSB-Tournament-Manager
 Simple tournament manager for Super Smash Bros. matches (Ruby on Rails project)
 
-Commands:
+Local commands:
 - bundle update
-- git push heroku master
+- rake db:migrate
+- rake db:rollback
 - rails s
 - rails c
+
+- dropdb ssb-tournament-manager_development
+- heroku pg:pull <postgresql-name> ssb-tournament-manager_development --app ssb-tournament-manager
+
+- heroku pg:reset --app ssb-tournament-manager-stage --confirm ssb-tournament-manager-stage
+- heroku pg:push ssb-tournament-manager_development <postgresql-name> --app ssb-tournament-manager-stage
+
+Stage commands:
+- git push stage master
+- heroku logs --tail --app ssb-tournament-manager-stage
+- heroku run rake db:migrate --app ssb-tournament-manager-stage
+- heroku run rails c --app ssb-tournament-manager-stage
+- heroku restart --app ssb-tournament-manager-stage
+
+Prod commands:
+- git push prod master
 - heroku logs --tail
 - heroku run rake db:migrate
+- heroku run rails c
+- heroku restart
+
 - heroku run rake sniffer:all
 - (heroku run rake sniffer:braacket)
 - (heroku run rake sniffer:smash_gg)
 - (heroku run rake sniffer:toornament)
-- heroku restart
 
 Links:
 - https://ssb-tournament-manager.herokuapp.com
