@@ -44,9 +44,9 @@
         = '-'
       - else
         - if (tournament.players.count == 0 and tournament.subtype == 'external') or !tournament.is_registration_allowed
-          = "? / #{tournament.total_seats}"
+          = tournament.total_seats
         - else
-          = "#{tournament.players.count} / #{tournament.total_seats}"
+          = "#{tournament.players.count}/#{tournament.total_seats}"
 
     - if current_user.present? and current_user.admin?
       %td.admin-list-actions

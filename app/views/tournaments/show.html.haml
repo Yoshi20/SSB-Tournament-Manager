@@ -76,10 +76,10 @@
           .col
             .tournament__details__single
               %strong
-                - if @tournament.total_seats.present?
-                  = "#{@tournament.players.count} / #{@tournament.total_seats}"
+                - if (@tournament.players.count == 0 and @tournament.subtype == 'external') or !@tournament.is_registration_allowed
+                  = @tournament.total_seats
                 - else
-                  = @tournament.players.count
+                  = "#{@tournament.players.count} / #{@tournament.total_seats}"
               %span
                 Seats
 
