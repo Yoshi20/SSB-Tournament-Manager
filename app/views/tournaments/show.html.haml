@@ -221,7 +221,7 @@
                       %li Nintendo Switch console
                       %li Docking station with its power supply
                       %li HDMI cable
-                      %li Super Smash Bros. Ultimate Game (with the most current version and ruleset)
+                      %li Super Smash Bros. Ultimate Game (all characters unlocked, current version and ruleset preinstalled)
                   .col
                     = form_for @registration, as: :registration, url: registration_path(id: @registration.id, anchor: 'players'), role: 'form', method: :patch do |f|
                       = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
