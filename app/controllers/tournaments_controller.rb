@@ -375,14 +375,18 @@ class TournamentsController < ApplicationController
         ct = Challonge::Tournament.find(@tournament.challonge_tournament_id)
 
         if ct.state == 'complete'
+          # get participants and matches (to reduce the request to challonge.com)
+          ctps = ct.participants
+          ctms = ct.matches
+
           # updated the participated players and create the matches and results if no exception arises
           ActiveRecord::Base.transaction do
             # create matches
-            ct.matches.each do |ctm|
+            ctms.each do |ctm|
               match = Match.new
               match.challonge_match_id = ctm.id
               match.tournament_id = @tournament.id
-              ct.participants.each do |ctp|
+              ctps.each do |ctp|
                 if ctp.id == ctm.player1_id
                   player = Player.find_by(gamer_tag: ctp.display_name)
                   raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
@@ -400,7 +404,7 @@ class TournamentsController < ApplicationController
             end
 
             # create results and update players
-            ct.participants.each do |ctp|
+            ctps.each do |ctp|
               player = Player.find_by(gamer_tag: ctp.display_name)
               raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
               result = Result.new
@@ -414,7 +418,7 @@ class TournamentsController < ApplicationController
               if ctp.final_rank.present? and (player.best_rank == 0 or ctp.final_rank < player.best_rank) then player.best_rank = ctp.final_rank end
               result.wins = 0
               result.losses = 0
-              ct.matches.each do |ctm|
+              ctms.each do |ctm|
                 scores = ctm.scores_csv.split('-')
                 if ctm.player1_id == ctp.id
                   result.wins += scores[0].to_i
