@@ -22,7 +22,7 @@
       header:
         left: 'title'
         center: ''
-        right: 'today month,agendaWeek,agendaDay,listAll prev,next'
+        right: 'today month,agendaWeek,agendaDay prev,next'
       contentHeight: 600
       views:
         month:
@@ -32,11 +32,6 @@
           columnFormat: 'ddd, DD.MM.'
         agendaDay:
           titleFormat: 'DD. MMMM YYYY'
-        listAll:
-          type: 'list'
-          duration: { years: 10 }
-          listDayFormat: 'dddd, DD. MMMM YYYY'
-          listDayAltFormat: ''
       defaultView: 'month'
       events: calendar.data('events')
       firstDay: 1
