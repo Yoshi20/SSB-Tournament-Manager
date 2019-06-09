@@ -33,12 +33,12 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
-    players_per_game_station = (@tournament.total_seats.to_f/@tournament.total_needed_game_stations).ceil() if @tournament.total_needed_game_stations.to_i != 0
-    @min_needed_game_stations = (@tournament.min_needed_registrations.to_f/players_per_game_station).ceil() if players_per_game_station.to_i != 0
+    players_per_game_station = (@tournament.total_seats.to_f/@tournament.total_needed_game_stations).ceil() if @tournament.total_needed_game_stations.to_i > 0
+    @min_needed_game_stations = (@tournament.min_needed_registrations.to_f/players_per_game_station).ceil() if players_per_game_station.to_i > 0
     if @tournament.players.count < @tournament.min_needed_registrations.to_i
-      @currently_needed_game_stations = @min_needed_game_stations - get_game_stations_count(@tournament) if @min_needed_game_stations.present?
+      @currently_needed_game_stations = @min_needed_game_stations - @tournament.game_stations_count if @min_needed_game_stations.present?
     else
-      @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - get_game_stations_count(@tournament) if players_per_game_station.to_i != 0
+      @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - @tournament.game_stations_count if players_per_game_station.to_i > 0
     end
     host_user = User.find_by(username: @tournament.host_username)
     @host_player = host_user.player if host_user.present? and @tournament.host_username.present?
@@ -295,7 +295,7 @@ class TournamentsController < ApplicationController
       redirect_to @tournament, alert: 'Tournament is already set up, started or finished.'
     else
       min_needed_game_stations_count = helpers.min_needed_game_stations_per_tournament(@tournament.players.count)
-      current_game_stations_count = get_game_stations_count(@tournament)
+      current_game_stations_count = @tournament.game_stations_count
       if current_game_stations_count < min_needed_game_stations_count
         delta_game_stations = min_needed_game_stations_count - current_game_stations_count
         redirect_to @tournament, alert: "At least #{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
@@ -524,14 +524,6 @@ class TournamentsController < ApplicationController
         Challonge::API.key = ENV['CHALLONGE_API_KEY']
         return false
       end
-    end
-
-    def get_game_stations_count(tournament)
-      gs_count = 0
-      Registration.where(tournament_id: tournament.id).where('game_stations is not NULL').each do |r|
-        gs_count += r.game_stations
-      end
-      gs_count
     end
 
 end
