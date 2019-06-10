@@ -9,10 +9,10 @@ Local commands:
 - rails c
 
 - dropdb ssb-tournament-manager_development
-- heroku pg:pull <postgresql-name> ssb-tournament-manager_development --app ssb-tournament-manager
+- heroku pg:pull \<postgresql-name\> ssb-tournament-manager_development --app ssb-tournament-manager
 
 - heroku pg:reset --app ssb-tournament-manager-stage --confirm ssb-tournament-manager-stage
-- heroku pg:push ssb-tournament-manager_development <postgresql-name> --app ssb-tournament-manager-stage
+- heroku pg:push ssb-tournament-manager_development \<postgresql-name\> --app ssb-tournament-manager-stage
 
 Stage commands:
 - git push stage master
