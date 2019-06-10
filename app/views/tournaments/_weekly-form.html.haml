@@ -40,11 +40,11 @@
       = f.label :total_seats
       = f.number_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? 40 : @tournament.total_seats)
     .form-group
-      = f.label :total_needed_game_stations
-      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
-    .form-group
       = f.label :min_needed_registrations, 'Minimal required registrations'
       = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.new_record? ? 16 : @tournament.min_needed_registrations)
+    .form-group
+      = f.label :total_needed_game_stations
+      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
     .form-group
       = f.label :host_username, 'Hostname'
       = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)

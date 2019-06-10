@@ -95,7 +95,7 @@
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  - if @tournament.total_needed_game_stations.to_i > 0
+                  - if @tournament.total_needed_game_stations.to_i > 0 and @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
                     = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
                   - else
                     = @tournament.total_needed_game_stations.to_i
@@ -213,8 +213,7 @@
                 %h2 Please bring a setup with you
                 %p
                   = 'If you bring the following hard- and software to the tournament, you will get a voucher for the venue or the buffet.'
-                  %br
-                  = 'After agreeing to bring a setup, you will be obligated to also do so and provide it until the end of the tournament or it is not needed anymore.'
+                  = 'But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer.'
                 .row.add-game-stations
                   .col{style: 'text-align: left;'}
                     %ul
@@ -293,7 +292,12 @@
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td{style: 'text-align: center;'}
                     %strong= r.rank.nil? ? "-" : r.rank
-                  %td= player.gamer_tag
+                  %td
+                    - if player.main_characters.any?
+                      - player.main_characters[0...1].each do |char|
+                        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                          = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                    = player.gamer_tag
                   %td{style: 'text-align: center;'}= r.points
                   %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     = player.matches.where(tournament_id: @tournament.id).count
