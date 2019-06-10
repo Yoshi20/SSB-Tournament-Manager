@@ -89,7 +89,9 @@ gem 'jquery-turbolinks'
 gem 'haml-rails'
 
 # See https://devcenter.heroku.com/articles/getting-started-with-rails4#visit-your-application
-gem 'rails_12factor', group: :production
+group :staging, :production do
+  gem 'rails_12factor'
+end
 
 # See https://github.com/airblade/paper_trail
 gem 'paper_trail'
