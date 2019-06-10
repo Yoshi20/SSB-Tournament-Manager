@@ -301,7 +301,7 @@
                     - if r.wins == 0 and r.losses == 0
                       = '-'
                     - else
-                      = "#{player.win_loss_ratio} %"
+                      = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
 
   - if @tournament.is_registration_allowed and !@tournament.finished and current_user.present? and current_user.admin?
     .row
