@@ -67,7 +67,16 @@
         - if @players.any?
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
-              %td= player.gamer_tag
+              %td
+                - if player.main_characters.any?
+                  - player.main_characters[0...1].each do |char|
+                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                - else
+                  .div{style: 'display: inline;'}
+                    %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
+                      = 'help'
+                = player.gamer_tag
               %td.text-center
                 - if player.canton.present?
                   = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
