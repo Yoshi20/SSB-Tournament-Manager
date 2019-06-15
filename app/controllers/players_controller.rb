@@ -5,10 +5,25 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    # @players = Player.all.includes(:user).sort_by do |p|
-    #   [p.win_loss_ratio, -p.created_at.to_i]
-    # end.reverse
-    @players = Player.all.order(created_at: :desc)
+    @players = Player.all
+    # handle sort parameter
+    sort = params[:sort]
+    if sort.present?
+      case sort
+      when 'win_loss_ratio'
+        @players = @players.sort_by do |p|
+          [p.win_loss_ratio, -p.created_at.to_i]
+        end.reverse
+      else
+        @players = @players.order("players.#{params[:sort]}")
+      end
+    else
+      @players = @players.order(created_at: :desc)
+    end
+    # handle the order parameter
+    if params[:order] == "desc"
+      @players = @players.reverse
+    end
   end
 
   # GET /players/1

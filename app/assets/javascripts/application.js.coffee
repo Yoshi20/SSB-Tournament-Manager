@@ -38,6 +38,7 @@ document.addEventListener 'turbolinks:load', ->
     $('.tab-pane.active').removeClass('active').removeClass('show')
     $("##{anchor}-tab").addClass('active')
     $("##{anchor}").addClass('active').addClass('show')
+    $(window).scrollTop(0)  # workaround to prevent scroll from anchor tag
 
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
@@ -50,6 +51,15 @@ document.addEventListener 'turbolinks:load', ->
         id = $(this).attr('data-id')
         component = $(this).attr('data-component')
         window.location.href = "/#{component}s/#{id}"
+
+  # a click on sort table header toggels its order param
+  $('th a').on 'click', (e) ->
+    wlhref = window.location.href
+    if wlhref.includes('order=') && this.href.includes('order=')
+      if wlhref.includes('order=asc')
+        this.href = this.href.replace('order=asc', 'order=desc')
+      else if wlhref.includes('order=desc')
+        this.href = this.href.replace('order=desc', 'order=asc')
 
   $('.scroll-top').on 'click', (e) ->
     $('html, body').animate({

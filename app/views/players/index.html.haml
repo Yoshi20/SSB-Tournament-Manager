@@ -15,11 +15,11 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th Gamer tag
-          %th.text-center Mains
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Self assessment
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell XP
-          %th.text-center W/L
+          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to 'Mains', players_path(sort: 'main_characters', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Self assessment', players_path(sort: 'self_assessment', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'XP', players_path(sort: 'tournament_experience', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to 'W/L', players_path(sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -57,11 +57,11 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th Gamer tag
-          %th.text-center Canton
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Age
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Gender
-          %th.text-center Comment
+          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'data')
+          %th.text-center= link_to 'Canton', players_path(sort: 'canton', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Age', players_path(sort: 'birth_year', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Gender', players_path(sort: 'gender', order: 'asc', anchor: 'data')
+          %th.text-center= link_to 'Comment', players_path(sort: 'comment', order: 'desc', anchor: 'data')
 
       %tbody.table-content.with-show
         - if @players.any?
