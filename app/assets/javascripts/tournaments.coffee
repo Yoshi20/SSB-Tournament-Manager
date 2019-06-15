@@ -45,3 +45,8 @@ document.addEventListener 'turbolinks:load', ->
       success: (response) ->
         # console.log(response)
   )
+
+  # styling bugfix when field_with_errors class was added to a form-group-inline class
+  $('.form-group-inline').each (i, fgi) =>
+    if fgi.childNodes[1].className == 'field_with_errors'
+      fgi.style.display = 'block'
