@@ -5,16 +5,15 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all.includes(:user).sort_by do |p|
-      [p.win_loss_ratio, -p.created_at.to_i]
-    end.reverse
-    @started_and_finished_tournaments_count_2019 = Tournament.active_2019.where(started: true, finished: true).count
+    # @players = Player.all.includes(:user).sort_by do |p|
+    #   [p.win_loss_ratio, -p.created_at.to_i]
+    # end.reverse
+    @players = Player.all.order(created_at: :desc)
   end
 
   # GET /players/1
   # GET /players/1.json
   def show
-    @started_and_finished_tournaments_count_2019 = Tournament.active_2019.where(started: true, finished: true).count
   end
 
   # # GET /players/new

@@ -20,7 +20,6 @@ class RankingsController < ApplicationController
         p.results_sum(city) << -p.created_at.to_i
       end.reverse
     end
-    @started_and_finished_tournaments_count_2019 = Tournament.active_2019.where(started: true, finished: true).count
   end
 
 end
