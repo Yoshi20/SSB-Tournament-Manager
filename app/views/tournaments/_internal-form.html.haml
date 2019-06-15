@@ -51,9 +51,9 @@
       .form-group
         = f.check_box :is_registration_allowed, checked: true, style: 'margin-left: 5px; margin-right: 10px;'
         = f.label :is_registration_allowed, 'Are registrations allowed?'
-      .form-group{style: 'margin-top: -10px;'}
-        = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
-        = label_tag :send_mails, 'Send all players an email'
+      -# .form-group{style: 'margin-top: -10px;'}
+      -#   = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
+      -#   = label_tag :send_mails, 'Send all players an email'
     - else
       - if @tournament.finished?
         .form-group
