@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 namespace :resultsSniffer do
-  desc "braacket.com -> Find all past tournaments, payers, matches and results"
+  desc "braacket.com -> Find and create all tournaments, players, matches and results"
   task all: :environment do
     Rake::Task["resultsSniffer:findTournaments"].invoke
     Rake::Task["resultsSniffer:findPlayers"].invoke
@@ -12,16 +12,15 @@ namespace :resultsSniffer do
     puts "done"
   end
 
-  desc "Creates past external tournaments from braacket.com"
+  desc "Find and create past external tournaments from braacket.com"
   task findTournaments: :environment do
     puts 'Sniffing https://braacket.com/league/ALLOFTHEM/tournament...'
     root = 'https://braacket.com'
-    doc = Nokogiri::HTML(open('https://braacket.com/league/ALLOFTHEM/tournament?rows=200&country=ch&game=ssbu&registration_status=2'))
+    doc = Nokogiri::HTML(open('https://braacket.com/league/ALLOFTHEM/tournament?rows=200'))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
       externalTournament = Tournament.new
       externalTournament.subtype = 'external'
-      externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[2].css('div')[1].text)
       p.css('div.panel-heading a').each do |a|
         externalTournament.name = a.text.strip unless a.text.strip.empty?
       end
@@ -31,8 +30,14 @@ namespace :resultsSniffer do
           externalTournament.external_registration_link = root + a['href']
         end
       end
-      seatsString = p.css("div.my-dashboard-values-sub")[3].css('div')[2].text.strip
-      # externalTournament.occupied_seats = seatsString[0...seatsString.index('/')].to_i
+      seatsString = ''
+      if p.css("div.my-dashboard-values-sub").count < 6
+        externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[1].css('div')[1].text)
+        seatsString = p.css("div.my-dashboard-values-sub")[3].css('div')[1].text.strip
+      else
+        externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[2].css('div')[1].text)
+        seatsString = p.css("div.my-dashboard-values-sub")[4].css('div')[1].text.strip
+      end
       externalTournament.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
       externalTournament.is_registration_allowed = false
       externalTournament.active = true
@@ -50,85 +55,95 @@ namespace :resultsSniffer do
     end
   end
 
-  desc "Creates upcoming external tournaments from smash.gg"
-  task smash_gg: :environment do
-    puts 'Sniffing https://smash.gg/tournaments...'
-    root = 'https://smash.gg'
-    doc = Nokogiri::HTML(open('https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}'))
-    doc.css('div.gg-component-reset.TournamentCard').each_with_index do |c, i|
-      # each tournament card (c)
-      externalTournament = Tournament.new
-      externalTournament.subtype = 'external'
-      infoSpans = c.css('div.TournamentCardHeading__information span')
-      externalTournament.date = Date.parse(infoSpans[infoSpans.count-1].text)
-      isDateError = false
-      if externalTournament.date < Date.yesterday
-        externalTournament.date = Date.tomorrow
-        isDateError = true
+  desc "Find players from braacket.com and add them to it's external tournament"
+  task findPlayers: :environment do
+    puts 'Sniffing https://braacket.com/league/ALLOFTHEM/tournament...'
+    root = 'https://braacket.com'
+    doc = Nokogiri::HTML(open('https://braacket.com/league/ALLOFTHEM/tournament?rows=200'))
+    doc.css('div.my-panel-mosaic').each_with_index do |p, i|
+      # each tournament panel (p)
+      et = Tournament.new
+      et.subtype = 'external'
+      p.css('div.panel-heading a').each do |a|
+        et.name = a.text.strip unless a.text.strip.empty?
       end
-      titleAnchor = c.css('div.TournamentCardHeading__title a')[0]
-      externalTournament.name = titleAnchor.text
-      externalTournament.external_registration_link = root + titleAnchor['href']
-      externalTournament.city = c.css('div.InfoList span')[1].text unless c.css('div.InfoList span')[1].nil?
-      externalTournament.is_registration_allowed = false
-      externalTournament.active = true
-      if externalTournament.save
-        puts "-> Created: \"" + externalTournament.name + "\""
-        if isDateError
-          puts '==> Invalid date! You have to edit the date manually!'
-          TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later
+      et.city = ''
+      p.css('div.panel-heading td.ellipsis').each do |td|
+        td.css('a').each do |a|
+          et.external_registration_link = root + a['href']
         end
-        puts "\n"
+      end
+      seatsString = ''
+      if p.css("div.my-dashboard-values-sub").count < 6
+        et.date = Date.parse(p.css("div.my-dashboard-values-sub")[1].css('div')[1].text)
+        seatsString = p.css("div.my-dashboard-values-sub")[3].css('div')[1].text.strip
       else
-        puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
-        if externalTournament.errors.any?
-          externalTournament.errors.full_messages.each do |message|
-            puts "==> " + message
-          end
-          puts "\n"
-        end
+        et.date = Date.parse(p.css("div.my-dashboard-values-sub")[2].css('div')[1].text)
+        seatsString = p.css("div.my-dashboard-values-sub")[4].css('div')[1].text.strip
       end
-    end
-  end
+      et.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
+      et.is_registration_allowed = false
+      et.active = true
 
-  desc "Creates upcoming external tournaments from toornament.com"
-  task toornament: :environment do
-    puts 'Sniffing https://www.toornament.com/tournaments...'
-    root = 'https://toornament.com'
-    validFlag = 'flag-ch'
-    doc = Nokogiri::HTML(open('https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming'))
-    doc.css('div.tournament-list a.tournament').each_with_index do |a, i|
-      locationItalic = a.css('div.event div.location i')[0]
-      if !locationItalic.nil? and locationItalic['class'].include?(validFlag)
-        # we have a valid tournament
-        externalTournament = Tournament.new
-        externalTournament.subtype = 'external'
-        externalTournament.date = Date.parse(a.css('div.event div.dates time').text.strip)
-        externalTournament.name = a.css('div.identity div.name').text.strip
-        externalTournament.city = a.css('div.event div.location span').text.strip
-        externalTournament.external_registration_link = root + a['href']
-        size = a.css('div.size div.number').text.strip
-        if size.include?('/')
-          size = size[size.index('/')+1..-1].strip.to_i
+      # find all players per tournament
+      players = []
+      doc = Nokogiri::HTML(open(et.external_registration_link + '/player?rows=200'))
+      doc.css('table tbody tr').each do |tr|
+        player = ''
+        if tr.css('td a')[1].nil?
+          player = tr.css('td a')[0].text.strip.split('[').first
         else
-          size = size.to_i
+          player = tr.css('td a')[1]['aria-label'].strip
         end
-        externalTournament.total_seats = size
-        externalTournament.is_registration_allowed = false
-        externalTournament.active = true
-        if externalTournament.save
-          puts "-> Created: \"" + externalTournament.name + "\"\n\n"
-        else
-          puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
-          if externalTournament.errors.any?
-            externalTournament.errors.full_messages.each do |message|
-              puts "==> " + message
-            end
-            puts "\n"
-          end
+        player = player.gsub(' (invitation pending)', '')
+        if !players.include?(player)
+          players << player
         end
       end
+
+      # get tournament from the DB
+      externalTournament = Tournament.find_by(name: et.name, subtype: et.subtype, total_seats: et.total_seats, date: et.date)
+      if externalTournament.present?
+        puts 'Searching for players to add to ' + externalTournament.name + '...'
+        allGamerTags = Player.all.map {|p| p.gamer_tag}
+        etGamerTags = externalTournament.players.map {|p| p.gamer_tag}
+        players.each do |p|
+          # check if player exists in the DB but was not added to the tournament yet
+          if allGamerTags.include?(p) and !etGamerTags.include?(p)
+            externalTournament.players << Player.find_by(gamer_tag: p)
+            puts '-> Added ' + p
+          end
+        end
+      else
+        puts 'Tournament: ' + et.name + 'not found!'
+      end
+
     end
+
   end
 
 end
+
+# externalTournaments.each do |et|
+#   puts et.name
+#
+#   matchURLs = []
+#   doc = Nokogiri::HTML(open(et.url + '/match'))
+#   doc.css('div.my-panel-collapsed')[0].css('a').each do |a|
+#     matchURLs << root + a['href']
+#   end
+# end
+# matchURLs.each do |mURL|
+#   puts mURL
+#   doc = Nokogiri::HTML(open(mURL + 'mode=table&display=1&status=2'))
+#   doc.css('table.tournament_encounter-row').each do |ter|
+#     p1 = ter.css('a')[0].text.split('[').first
+#     p2 = ter.css('a')[1].text.split('[').first
+#     rp1 = ter.css('td.tournament_encounter-score')[0].text.strip.to_i
+#     rp2 = ter.css('td.tournament_encounter-score')[1].text.strip.to_i
+#     puts rp1.to_s + ' -> ' + p1
+#     puts rp2.to_s + ' -> ' + p2
+#     puts '-------------'
+#   end
+# end
+# puts ''
