@@ -35,32 +35,46 @@
     .tab-pane.fade.show.active#details{role: 'tabpanel', 'aria-labelledby'=>'details-tab'}
       .tournament__details
         .row
-          .col
-            .tournament__details__single
-              %strong
-                = @tournament.date.to_s(:custom_datetime_with_weekday)
-              %span
-                Start
-          .col
-            .tournament__details__single.tournament__details__single--last
-              %strong
-                - if @tournament.registration_deadline.nil?
-                  = '-'
-                - else
+          - if @tournament.registration_deadline.nil?
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %strong
+                  = @tournament.date.to_s(:custom_datetime_with_weekday)
+                %span
+                  Start
+          - else
+            .col
+              .tournament__details__single
+                %strong
+                  = @tournament.date.to_s(:custom_datetime_with_weekday)
+                %span
+                  Start
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %strong
                   = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
-              %span
-                Online registration deadline
-      .tournament__details
-        .row
-          .col
-            .tournament__details__single.tournament__details__single--last
-              %strong
-                - if @tournament.location.present?
-                  = @tournament.location
-                - else
-                  = @tournament.city
-              %span
-                Location
+                %span
+                  Online registration deadline
+      - if @tournament.location.present? or @tournament.city.present?
+        .tournament__details
+          .row
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %strong
+                  - if @tournament.location.present?
+                    = @tournament.location
+                  - else
+                    = @tournament.city
+                %span
+                  Location
+      - if @tournament.external_registration_link.present?
+        .tournament__details
+          .row
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %strong
+                  = link_to '>>> External registration link <<<', @tournament.external_registration_link, target: '_blank'
+
       .tournament__details
         .row
           .col
