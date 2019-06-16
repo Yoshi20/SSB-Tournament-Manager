@@ -50,6 +50,12 @@
 
     - if current_user.present? and current_user.admin?
       %td.admin-list-actions
+        - if tournament.subtype == 'external'
+          .admin-list-actions__link
+            = link_to tournament_path(tournament), class:'btn btn-ghost btn-square' do
+              %span.material-icons.admin-actions__link__icon
+                visibility
+
         .admin-list-actions__link
           = link_to edit_tournament_path(tournament), class:'btn btn-ghost btn-square' do
             %span.material-icons.admin-actions__link__icon
