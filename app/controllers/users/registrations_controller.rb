@@ -21,6 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # User seems to be created successfully -> Create a new player and assign it to this user
       player = Player.new
       player.gamer_tag = user.username
+      player.prefix = params[:prefix]
       player.points = 0
       player.participations = 0
       player.canton = params[:canton]

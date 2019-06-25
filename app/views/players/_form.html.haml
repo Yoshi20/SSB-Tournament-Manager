@@ -11,6 +11,9 @@
   .field.form-group
     = f.label :gamer_tag
     = f.text_field :gamer_tag, class: 'form-control'
+  .field.form-group
+    = f.label :prefix, 'Sponsor prefix'
+    = f.text_field :prefix, class: 'form-control'
   - if current_user.admin?
     .field.form-group
       = f.label :points
