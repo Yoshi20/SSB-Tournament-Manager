@@ -54,7 +54,7 @@
                 %td.text-center= (last_player_points == points) ? '' : "#{i+1}."
                 %td.text-center= points
                 - last_player_points = points
-                %td= player.gamer_tag
+                %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                 %td.text-center
                   - if player.main_characters.any?
                     %div

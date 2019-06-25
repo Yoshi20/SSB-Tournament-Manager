@@ -26,7 +26,7 @@
           - last_player_points = nil
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
-              %td= player.gamer_tag
+              %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.main_characters.any?
                   %div
@@ -76,7 +76,7 @@
                   .div{style: 'display: inline;'}
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
                       = 'help'
-                = player.gamer_tag
+                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.canton.present?
                   = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'

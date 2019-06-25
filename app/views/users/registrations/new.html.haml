@@ -10,6 +10,9 @@
         %em= "(= Gamer tag)"
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
+        = label_tag :prefix, 'Sponsor prefix'
+        = text_field_tag :prefix, nil, class: 'form-control'
+      .form-group
         = f.label :email, 'Email *'
         = f.email_field :email, class: 'form-control'
       .form-group

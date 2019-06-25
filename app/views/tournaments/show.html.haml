@@ -191,7 +191,7 @@
               - @tournament.players.includes(:registrations).order('registrations.created_at').each do |player, i|
                 - mail_string = mail_string + player.user.email + '; '
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td= player.gamer_tag
+                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -277,7 +277,7 @@
               - @tournament.waiting_list.each_with_index do |gt, i|
                 - player = Player.find_by(gamer_tag: gt)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td= player.gamer_tag
+                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -315,7 +315,7 @@
                       .div{style: 'display: inline;'}
                         %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
                           = 'help'
-                    = player.gamer_tag
+                    = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}= r.points
                   %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     = player.matches.where(tournament_id: @tournament.id).count
