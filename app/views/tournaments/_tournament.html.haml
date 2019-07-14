@@ -2,20 +2,15 @@
   %tr{'data-id': tournament.id, 'data-component': 'tournament', 'data-external_url': tournament.external_registration_link}
     %td.text-center.d-none.d-md-table-cell
       - if current_user.present? and tournament.players.include?(current_user.player)
-        %span.material-icons
-          = 'check_circle'
+        %span.material-icons= 'check_circle'
       - elsif tournament.subtype == 'external'
-        %span.material-icons
-          = 'open_in_new'
+        %span.material-icons= 'open_in_new'
       - elsif tournament.registration_deadline < Time.now
-        %span.material-icons
-          = 'lock'
+        %span.material-icons= 'lock'
       - elsif !tournament.is_registration_allowed
-        %span.material-icons
-          = 'info'
+        %span.material-icons= 'info'
       - else
-        %span.material-icons
-          = 'radio_button_unchecked'
+        %span.material-icons= 'radio_button_unchecked'
 
     %td
       = tournament.date.to_s(:custom_datetime_date_and_no_time)
@@ -53,15 +48,12 @@
         - if tournament.subtype == 'external'
           .admin-list-actions__link
             = link_to tournament_path(tournament), class:'btn btn-ghost btn-square' do
-              %span.material-icons.admin-actions__link__icon
-                visibility
+              %span.material-icons.admin-actions__link__icon= 'visibility'
 
         .admin-list-actions__link
           = link_to edit_tournament_path(tournament), class:'btn btn-ghost btn-square' do
-            %span.material-icons.admin-actions__link__icon
-              edit
+            %span.material-icons.admin-actions__link__icon= 'edit'
 
         .admin-list-actions__link
           = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-            %span.material-icons.admin-actions__link__icon
-              delete
+            %span.material-icons.admin-actions__link__icon= 'delete'

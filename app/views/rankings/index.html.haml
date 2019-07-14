@@ -69,13 +69,11 @@
                   %td.admin-list-actions
                     .admin-list-actions__link
                       = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                        %span.material-icons.admin-actions__link__icon
-                          edit
+                        %span.material-icons.admin-actions__link__icon= 'edit'
 
                     .admin-list-actions__link
                       = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                        %span.material-icons.admin-actions__link__icon
-                          delete
+                        %span.material-icons.admin-actions__link__icon= 'delete'
 
     - if !@players.any?
       %p{style: 'text-align: center;'}
