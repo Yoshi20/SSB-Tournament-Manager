@@ -39,9 +39,16 @@ class ApplicationController < ActionController::Base
   end
 
   def get_top_players
-    @topPlayers = Player.all.sort_by do |p|
-      [p.win_loss_ratio, -p.created_at.to_i]
+    # @topPlayers = Player.all.sort_by do |p|
+    #   [p.win_loss_ratio, -p.created_at.to_i]
+    # end.reverse[0...10]
+
+    #blup: show only bern results for now
+    @topPlayers = Player.includes(:user).includes(:results).where("results.major_name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like('PK Bern')}%").references(:results).or(Player.includes(:user).includes(:results).where(results: {city: 'Bern'})).sort_by do |p|
+      p.results_sum('Bern') << -p.created_at.to_i
     end.reverse[0...10]
+
+
   end
 
   def get_next_tournaments
