@@ -39,16 +39,22 @@
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  = @tournament.date.to_s(:custom_datetime_with_weekday)
+                  - if @tournament.date.hour == 0 && @tournament.date.min == 0
+                    = @tournament.date.to_s(:custom_datetime_weekday_date_and_year)
+                  - else
+                    = @tournament.date.to_s(:custom_datetime_with_weekday)
                 %span
-                  Start
+                  Start date
           - else
             .col
               .tournament__details__single
                 %strong
-                  = @tournament.date.to_s(:custom_datetime_with_weekday)
+                  - if @tournament.date.hour == 0 && @tournament.date.min == 0
+                    = @tournament.date.to_s(:custom_datetime_weekday_date_and_year)
+                  - else
+                    = @tournament.date.to_s(:custom_datetime_with_weekday)
                 %span
-                  Start
+                  Start date
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
@@ -80,11 +86,14 @@
           .col
             .tournament__details__single
               %strong
-                - if @tournament.registration_fee.to_i%1 != 0  # check if it's a float
-                  = @tournament.registration_fee
+                - if @tournament.registration_fee.nil?
+                  = '?'
                 - else
-                  = @tournament.registration_fee.to_i
-                = 'CHF'
+                  - if @tournament.registration_fee.to_i%1 != 0  # check if it's a float
+                    = @tournament.registration_fee
+                  - else
+                    = @tournament.registration_fee.to_i
+                  = 'CHF'
               %span
                 Registration Fee
           .col
