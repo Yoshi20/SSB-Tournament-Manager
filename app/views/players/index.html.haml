@@ -26,7 +26,7 @@
           - last_player_points = nil
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
-              %td= player.gamer_tag
+              %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.main_characters.any?
                   %div
@@ -45,13 +45,11 @@
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                      %span.material-icons.admin-actions__link__icon
-                        edit
+                      %span.material-icons.admin-actions__link__icon= 'edit'
 
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon
-                        delete
+                      %span.material-icons.admin-actions__link__icon= 'delete'
 
   .tab-pane.fade#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
     %table.table.table-hover.table-borderless
@@ -74,9 +72,8 @@
                       = image_tag "characters/#{char}.png", height: '25px', width: '25px'
                 - else
                   .div{style: 'display: inline;'}
-                    %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
-                      = 'help'
-                = player.gamer_tag
+                    %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.canton.present?
                   = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
@@ -89,10 +86,8 @@
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                      %span.material-icons.admin-actions__link__icon
-                        edit
+                      %span.material-icons.admin-actions__link__icon= 'edit'
 
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon
-                        delete
+                      %span.material-icons.admin-actions__link__icon= 'delete'

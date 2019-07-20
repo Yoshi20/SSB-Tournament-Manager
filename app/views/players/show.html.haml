@@ -3,7 +3,7 @@
     - if @player.canton.present?
       = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
     %h1.page__title
-      = @player.gamer_tag
+      = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
 
 .player
   .player__characters
@@ -154,20 +154,17 @@
       -if current_user.super_admin? or @player.user == current_user
         .admin-actions__link
           = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
-            %span.material-icons.admin-actions__link__icon
-              edit
+            %span.material-icons.admin-actions__link__icon= 'edit'
 
       -if current_user.super_admin?
         .admin-actions__link
           = link_to @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-            %span.material-icons.admin-actions__link__icon
-              delete
+            %span.material-icons.admin-actions__link__icon= 'delete'
 
       - if @player.user != current_user
         .admin-actions__link
           - if @player.user.admin? or current_user.admin?
             = mail_to @player.user.email, body: "Hi #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
-              %span.material-icons.admin-actions__link__icon
-                email
+              %span.material-icons.admin-actions__link__icon= 'email'
           - if current_user.admin? and @player.user.mobile_number.present?
             = " (#{@player.user.mobile_number})"

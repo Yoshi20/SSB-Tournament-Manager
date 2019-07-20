@@ -13,7 +13,7 @@
 .tab-content#rankings-tabs-content
   .tab-pane.fade.show.active#a{role: 'tabpanel', 'aria-labelledby'=>'a-tab'}
     .rankings__filter
-      .rankings__filter__button= link_to 'All', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+      .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
       .rankings__filter__button{style: 'display: none;'}= link_to 'Seed points', rankings_path(filter: 'seed_points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
       - tournament_majors.each do |major|
         .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
@@ -54,7 +54,7 @@
                 %td.text-center= (last_player_points == points) ? '' : "#{i+1}."
                 %td.text-center= points
                 - last_player_points = points
-                %td= player.gamer_tag
+                %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                 %td.text-center
                   - if player.main_characters.any?
                     %div
@@ -69,14 +69,12 @@
                   %td.admin-list-actions
                     .admin-list-actions__link
                       = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                        %span.material-icons.admin-actions__link__icon
-                          edit
+                        %span.material-icons.admin-actions__link__icon= 'edit'
 
                     .admin-list-actions__link
                       = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                        %span.material-icons.admin-actions__link__icon
-                          delete
+                        %span.material-icons.admin-actions__link__icon= 'delete'
 
     - if !@players.any?
       %p{style: 'text-align: center;'}
-        No players found
+        No players found yet

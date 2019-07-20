@@ -191,7 +191,7 @@
               - @tournament.players.includes(:registrations).order('registrations.created_at').each do |player, i|
                 - mail_string = mail_string + player.user.email + '; '
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td= player.gamer_tag
+                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -217,8 +217,7 @@
                               = f.check_box :paid_fee, {class: 'paid-fee-checkbox'}, @tournament.registration_fee
                               = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button', style:'background-color: #007bff;'
                       - elsif player_registration.paid_fee.present?
-                        .material-icons
-                          done
+                        .material-icons= 'done'
 
         - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
           .tournament__players
@@ -277,7 +276,7 @@
               - @tournament.waiting_list.each_with_index do |gt, i|
                 - player = Player.find_by(gamer_tag: gt)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td= player.gamer_tag
+                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -313,9 +312,8 @@
                           = image_tag "characters/#{char}.png", height: '25px', width: '25px'
                     - else
                       .div{style: 'display: inline;'}
-                        %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
-                          = 'help'
-                    = player.gamer_tag
+                        %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                    = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}= r.points
                   %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     = player.matches.where(tournament_id: @tournament.id).count
@@ -346,10 +344,8 @@
     .admin-actions
       .admin-actions__link
         = link_to edit_tournament_path(@tournament), class:'btn btn-ghost btn-square' do
-          %span.material-icons.admin-actions__link__icon
-            edit
+          %span.material-icons.admin-actions__link__icon= 'edit'
 
       .admin-actions__link
         = link_to @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-          %span.material-icons.admin-actions__link__icon
-            delete
+          %span.material-icons.admin-actions__link__icon= 'delete'

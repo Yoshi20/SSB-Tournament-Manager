@@ -6,12 +6,10 @@
   .col
     %p= "Total users count = #{User.all.count}"
     .d-flex
-      %span.material-icons.admin-actions__link__icon
-        group_add
+      %span.material-icons.admin-actions__link__icon= 'group_add'
       = '= Club Member'
     .d-flex
-      %span.material-icons.admin-actions__link__icon
-        verified_user
+      %span.material-icons.admin-actions__link__icon= 'verified_user'
       = '= Admin'
 
 .user-list
@@ -33,16 +31,13 @@
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= user.sign_in_count
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
             - if user.is_club_member
-              .material-icons
-                done
+              .material-icons= 'done'
           %td.text-center
             - if user.admin?
-              .material-icons
-                done
+              .material-icons= 'done'
           %td.text-center
             - if user.super_admin?
-              .material-icons
-                done
+              .material-icons= 'done'
 
           - if current_user.present? and current_user.super_admin?
             %td.admin-list-actions
@@ -50,17 +45,14 @@
                 = form_for user, role: 'form', method: :patch do |f|
                   = f.check_box :is_club_member, checked: !user.is_club_member, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon
-                      group_add
+                    %span.material-icons.admin-actions__link__icon= 'group_add'
 
               .admin-list-actions__link
                 = form_for user, role: 'form', method: :patch do |f|
                   = f.check_box :is_admin, checked: !user.is_admin, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure?' }, class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon
-                      verified_user
+                    %span.material-icons.admin-actions__link__icon= 'verified_user'
 
               .admin-list-actions__link
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                  %span.material-icons.admin-actions__link__icon
-                    delete
+                  %span.material-icons.admin-actions__link__icon= 'delete'

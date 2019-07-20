@@ -1,5 +1,5 @@
 %h2.sidebar__title
-  Top Players
+  Top Players in Bern
 
 %table.table.table-hover.table-borderless
   %thead.table-header
@@ -18,7 +18,6 @@
                   = image_tag "characters/#{char}.png", height: '25px', width: '25px'
             - else
               .div{style: 'display: inline;'}
-                %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}
-                  = 'help'
-          %td= player.gamer_tag
+                %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+          %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
           %td{style: 'text-align: center;'}= "#{player.win_loss_ratio}%"
