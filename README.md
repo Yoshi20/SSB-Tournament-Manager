@@ -33,6 +33,11 @@ Prod commands:
 - (heroku run rake sniffer:smash_gg)
 - (heroku run rake sniffer:toornament)
 
+- heroku run rake resultsSniffer:all
+- (heroku run rake resultsSniffer:createTournaments)
+- (heroku run rake resultsSniffer:findPlayers)
+- (heroku run rake resultsSniffer:createMatches)
+
 Links:
 - https://ssb-tournament-manager.herokuapp.com
 - https://ssb-club-bern.ch
