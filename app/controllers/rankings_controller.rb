@@ -5,10 +5,9 @@ class RankingsController < ApplicationController
   # GET /rankings.json
   def index
     if params[:filter].nil? or params[:filter] == 'all'
-      # @players = Player.all.includes(:user).order(points: :desc, participations: :asc, created_at: :asc)
-      @players = []  # blup: no results for now
+      @players = Player.all.includes(:user).order(points: :desc, participations: :asc, created_at: :asc)
     elsif params[:filter] == 'major'
-      @players = Player.includes(:user).includes(:results).where("results.major_name LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(params[:major])}%").references(:results).sort_by do |p|
+      @players = Player.includes(:user).includes(:results).where("results.major_name ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(params[:major])}%").references(:results).sort_by do |p|
         p.results_sum(params[:major]) << -p.created_at.to_i
       end.reverse
     elsif params[:filter] == 'seed_points'

@@ -30,7 +30,7 @@ class Player < ApplicationRecord
     wins = 0
     losses = 0
     self.results.each do |r|
-      if city_or_major.capitalize == r.city or (r.major_name.present? and r.major_name.include?(city_or_major))
+      if city_or_major.capitalize == r.city or (r.major_name.present? and r.major_name.downcase.include?(city_or_major.downcase))
         points += r.points
         participations += 1
         wins += r.wins
@@ -38,7 +38,7 @@ class Player < ApplicationRecord
       end
     end
     if wins == 0 and losses == 0
-      return [points, participations, nil]
+      return [points, participations, 0]
     else
       return [points, participations, (wins.to_f/(wins+losses)*100).round(2)]
     end

@@ -3,9 +3,9 @@
     %td.text-center.d-none.d-md-table-cell
       - if current_user.present? and tournament.players.include?(current_user.player)
         %span.material-icons= 'check_circle'
-      - elsif tournament.subtype == 'external'
+      - elsif tournament.external_registration_link.present?
         %span.material-icons= 'open_in_new'
-      - elsif tournament.registration_deadline < Time.now
+      - elsif tournament.registration_deadline.nil? || tournament.registration_deadline < Time.now
         %span.material-icons= 'lock'
       - elsif !tournament.is_registration_allowed
         %span.material-icons= 'info'
@@ -45,7 +45,7 @@
 
     - if current_user.present? and current_user.admin?
       %td.admin-list-actions
-        - if tournament.subtype == 'external'
+        - if tournament.external_registration_link.present?
           .admin-list-actions__link
             = link_to tournament_path(tournament), class:'btn btn-ghost btn-square' do
               %span.material-icons.admin-actions__link__icon= 'visibility'

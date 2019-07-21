@@ -187,12 +187,13 @@
           %table.table.table-hover.table-borderless
             %thead
               %tr
-                %%th
+                %th
                   %h3 Name
                 %th{style: 'text-align: center;'}
                   %h3 Mains
-                %th
-                  %h3 Setups
+                - if @tournament.is_registration_allowed
+                  %th
+                    %h3 Setups
                 - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                   %th{style: 'text-align: center;'}
                     %h3 Fee paid?
@@ -206,17 +207,18 @@
                       - player.main_characters[0...3].each do |char|
                         - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                           = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-                  %td
-                    - player_registration = player.registrations.where(tournament_id: @tournament.id).first
-                    - gs = player_registration.game_stations
-                    - if current_user.present? and current_user.admin? and !@tournament.started
-                      = form_for player_registration, role: 'form', method: :patch do |f|
-                        .admin-actions__link__icon
-                          = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
-                          = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
-                    - else
-                      - if !gs.nil? and gs > 0
-                        = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
+                  - if @tournament.is_registration_allowed
+                    %td
+                      - player_registration = player.registrations.where(tournament_id: @tournament.id).first
+                      - gs = player_registration.game_stations
+                      - if current_user.present? and current_user.admin? and !@tournament.started
+                        = form_for player_registration, role: 'form', method: :patch do |f|
+                          .admin-actions__link__icon
+                            = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
+                            = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
+                      - else
+                        - if !gs.nil? and gs > 0
+                          = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
                   - if !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                     %td{style: 'text-align: center;'}
                       - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
@@ -309,8 +311,8 @@
                 %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 W/L
             %tbody.table-contentt.with-show
-              - @tournament.results.sort_by{|r| -r.points}.each do |r|
-                - player = Player.find(r.player_id)
+              - @tournament.results.sort_by{|r| r.rank}.each do |r|
+                - player = @tournament.players.find(r.player_id)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td{style: 'text-align: center;'}
                     %strong= r.rank.nil? ? "-" : r.rank

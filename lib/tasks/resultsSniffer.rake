@@ -1,18 +1,33 @@
 require 'nokogiri'
 require 'open-uri'
+require "#{Rails.root}/app/helpers/tournaments_helper"
+include TournamentsHelper
 
 namespace :resultsSniffer do
   foundTournaments = []
+  notFoundPlayers = []
   root = 'https://braacket.com'
 
   desc "braacket.com -> Find and create all tournaments, players, matches and results"
   task all: :environment do
     Rake::Task["resultsSniffer:createTournaments"].invoke
     # Rake::Task["resultsSniffer:findPlayers"].invoke
-    Rake::Task["resultsSniffer:createMatches"].invoke
-    # Rake::Task["resultsSniffer:createResults"].invoke
+    # Rake::Task["resultsSniffer:createMatches"].invoke
+    Rake::Task["resultsSniffer:createResults"].invoke
     puts "\n"
     puts "done"
+
+    puts "\n"
+    puts "notFoundPlayers:"
+    nfps = ""
+    notFoundPlayers.sort.each_with_index do |p, i|
+      nfps += "#{p}, "
+      if i == 9
+        puts nfps.strip
+        nfps = ""
+      end
+    end
+
   end
 
   desc "Find and create past external tournaments from braacket.com"
@@ -23,11 +38,23 @@ namespace :resultsSniffer do
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
       externalTournament = Tournament.new
-      externalTournament.subtype = 'external'
       p.css('div.panel-heading a').each do |a|
         externalTournament.name = a.text.strip unless a.text.strip.empty?
       end
-      externalTournament.city = ''
+      if externalTournament.name.include?('Weekly')
+        # tournament is a weekly -> check if we know it's city
+        externalTournament.subtype = 'weekly'
+        externalTournament.city = '?'
+        externalTournament.name.split(' ').each do |word|
+          if tournament_cities().include?(word)
+            externalTournament.city = word
+            break
+          end
+        end
+      else
+        externalTournament.subtype = 'external'
+        externalTournament.city = ''
+      end
       p.css('div.panel-heading td.ellipsis').each do |td|
         td.css('a').each do |a|
           externalTournament.external_registration_link = root + a['href']
@@ -77,7 +104,7 @@ namespace :resultsSniffer do
         else
           player = tr.css('td a')[1]['aria-label'].strip
         end
-        player = player.gsub(' (invitation pending)', '')
+        player = player.gsub(' (invitation pending)', '').strip
         player = player.split('|')[1].strip if player.split('|').length > 1
         if !players.include?(player)
           players << player
@@ -91,7 +118,7 @@ namespace :resultsSniffer do
         etGamerTags = externalTournament.players.map {|p| p.gamer_tag}
         players.each do |p|
           # check if player exists in the DB but was not added to the tournament yet
-          if allGamerTags.include?(p) and !etGamerTags.include?(p)
+          if allGamerTags.include?(p) && !etGamerTags.include?(p)
             externalTournament.players << Player.find_by(gamer_tag: p)
             puts '-> Added ' + p
           end
@@ -121,9 +148,9 @@ namespace :resultsSniffer do
         puts "  Sniffing #{link}..."
         doc = Nokogiri::HTML(open(link))
         doc.css('table.tournament_encounter-row').each_with_index do |ter, i|
-          p1 = ter.css('a')[0].text.split('[').first.gsub(' (invitation pending)', '')
+          p1 = ter.css('a')[0].text.split('[').first.gsub(' (invitation pending)', '').strip
           p1 = p1.split('|')[1].strip if p1.split('|').length > 1
-          p2 = ter.css('a')[1].text.split('[').first.gsub(' (invitation pending)', '')
+          p2 = ter.css('a')[1].text.split('[').first.gsub(' (invitation pending)', '').strip
           p2 = p2.split('|')[1].strip if p2.split('|').length > 1
           rp1 = ter.css('td.tournament_encounter-score')[0].text.strip.to_i
           rp2 = ter.css('td.tournament_encounter-score')[1].text.strip.to_i
@@ -163,6 +190,96 @@ namespace :resultsSniffer do
           puts '    -------------'
         end
       end
+    end
+  end
+
+  desc "Find and create results from braacket.com and add them to it's external tournament and player"
+  task createResults: :environment do
+    allGamerTags = Player.all.map {|p| p.gamer_tag}
+    foundTournaments.each_with_index do |t, i|
+      tournament = Tournament.find_by(name: t.name)
+      puts "\nSearching for all results from #{t.name}..."
+      if tournament.results.count == tournament.players.count
+        puts 'this tournament has already all results for the moment -> continue with the next tournament'
+        next  # continue
+      end
+      doc = Nokogiri::HTML(open(t.external_registration_link + '/ranking?rows=200'))
+      doc.css('div.my-panel-collapsed').css('tbody').css('tr').each do |tr|
+        foundPlayer = ''
+        if tr.css('td a')[1].nil?
+          foundPlayer = tr.css('td a')[0].text.strip.split('[').first
+        else
+          foundPlayer = tr.css('td a')[1]['aria-label'].strip
+        end
+        foundPlayer = foundPlayer.gsub(' (invitation pending)', '').strip
+        foundPlayer = foundPlayer.split('|')[1].strip if foundPlayer.split('|').length > 1
+        # check if this player doesn't exists in the db
+        if !allGamerTags.include?(foundPlayer)
+          puts 'Player: ' + foundPlayer + ' not found!'
+          if !notFoundPlayers.include?(foundPlayer)
+            notFoundPlayers << foundPlayer
+          end
+          next #continue
+        end
+        # check if this players result was already added to this tournament
+        player = tournament.players.find_by(gamer_tag: foundPlayer)
+        if player.nil?
+          puts 'Player: "' + foundPlayer + '" is nil for some reason! <====================='
+          puts 'tournament.players:'
+          puts tournament.players.map{|p| p.gamer_tag}
+          puts '---'
+          next  # continue
+        end
+        if (tournament.results.map {|r| r.player_id}).include?(player.id)
+          puts player.gamer_tag + 's result was already added -> continue with the next result'
+          next  # continue
+        end
+        # create a new result
+        result = Result.new
+        result.player = Player.find_by(gamer_tag: player.gamer_tag)
+        result.tournament = tournament
+        if tournament.name.include?('Weekly')
+          # tournament is a weekly -> check if we know it's city
+          result.city = '?'
+          tournament.name.split(' ').each do |word|
+            if tournament_cities().include?(word)
+              result.city = word
+              break
+            end
+          end
+        else
+          result.major_name = tournament.name
+        end
+        result.rank = tr.css('td')[0].text.strip.to_i
+        result.points = points_repartition_table(result.rank)
+        result.wins = tr.css('td')[5].text.strip.to_i # wins
+        result.losses = tr.css('td')[7].text.strip.to_i # losses
+        if result.save
+          puts "-> Created result for: \"" + player.gamer_tag + "\""
+          # update player
+          player.points += result.points
+          player.participations += 1
+          if result.rank.present? and (player.best_rank == 0 or result.rank < player.best_rank) then player.best_rank = result.rank end
+          player.wins += result.wins
+          player.losses += result.losses
+          player.save! # raise an exception when player.save failed
+          player.update_tournament_experience
+          # update the tournament ranking string
+          if !tournament.ranking_string.to_s.include?(player.gamer_tag)
+            rs = "#{result.rank.to_s},#{player.gamer_tag};"
+            tournament.update(ranking_string: tournament.ranking_string.to_s + rs)
+          end
+        else
+          puts "-> Result for: \"" + result.name + "\" couldn't be saved!"
+          if result.errors.any?
+            result.errors.full_messages.each do |message|
+              puts "==> " + message
+            end
+            puts "\n"
+          end
+        end
+      end
+
     end
   end
 

@@ -13,12 +13,14 @@
 .tab-content#rankings-tabs-content
   .tab-pane.fade.show.active#a{role: 'tabpanel', 'aria-labelledby'=>'a-tab'}
     .rankings__filter
-      .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
-      .rankings__filter__button{style: 'display: none;'}= link_to 'Seed points', rankings_path(filter: 'seed_points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
-      - tournament_majors.each do |major|
-        .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
-      - tournament_cities.each do |city|
-        .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+      .row
+        .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+        - tournament_majors.each do |major|
+          .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
+      .row
+        - tournament_cities.each do |city|
+          .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
 
     %table.table.table-hover.table-borderless
       %thead.table-header
