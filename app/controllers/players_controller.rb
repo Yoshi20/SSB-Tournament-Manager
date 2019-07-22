@@ -62,14 +62,12 @@ class PlayersController < ApplicationController
     respond_to do |format|
       old_gamer_tag = @player.gamer_tag
       if @player.update(player_params)
-
         # update main_characters
         @player.main_characters.clear
         player_params[:main_characters].split(',').each do |char|
           @player.main_characters << char.strip.downcase.gsub(' ', '_')
         end
         @player.save
-
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
           Tournament.all.each do |t|
@@ -79,7 +77,15 @@ class PlayersController < ApplicationController
           end
           AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag)
         end
-
+        # update alternative_gamer_tags if it was changed
+        alts = ""
+        @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
+        if params[:alternative_gamer_tags] != alts
+          params[:alternative_gamer_tags].split(',').each do |alt|
+            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip)
+          end
+        end
+        # render
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else

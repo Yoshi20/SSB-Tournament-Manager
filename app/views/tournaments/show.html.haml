@@ -311,7 +311,7 @@
                 %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 W/L
             %tbody.table-contentt.with-show
-              - @tournament.results.sort_by{|r| r.rank}.each do |r|
+              - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
                 - player = @tournament.players.find(r.player_id)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td{style: 'text-align: center;'}

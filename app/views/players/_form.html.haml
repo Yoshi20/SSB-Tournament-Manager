@@ -1,4 +1,3 @@
-
 = form_for @player, role: 'form', class:'form' do |f|
 
   - if @player.errors.any?
@@ -15,6 +14,11 @@
     = f.label :prefix, 'Sponsor prefix'
     = f.text_field :prefix, class: 'form-control'
   - if current_user.admin?
+    .field.form-group
+      = label_tag :alternative_gamer_tags
+      - alts = ""
+      - @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
+      = text_field_tag :alternative_gamer_tags, alts, class: 'form-control'
     .field.form-group
       = f.label :points
       = f.number_field :points, class: 'form-control'

@@ -12,7 +12,7 @@ namespace :resultsSniffer do
   task all: :environment do
     Rake::Task["resultsSniffer:createTournaments"].invoke
     Rake::Task["resultsSniffer:findPlayers"].invoke
-    # Rake::Task["resultsSniffer:createMatches"].invoke
+    Rake::Task["resultsSniffer:createMatches"].invoke
     Rake::Task["resultsSniffer:createResults"].invoke
     puts "\n"
     puts "done"
@@ -92,6 +92,8 @@ namespace :resultsSniffer do
 
   desc "Find players from braacket.com and add them to it's external tournament"
   task findPlayers: :environment do
+    allGamerTags = Player.all.map {|p| p.gamer_tag}
+    allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       # find all players per tournament
       players = []
@@ -123,8 +125,6 @@ namespace :resultsSniffer do
       externalTournament = Tournament.find_by(name: t.name)
       if externalTournament.present?
         puts 'Searching for players to add to ' + externalTournament.name + '...'
-        allGamerTags = Player.all.map {|p| p.gamer_tag}
-        allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
         etGamerTags = externalTournament.players.map {|p| p.gamer_tag}
         players.each do |p|
           # check if player exists in the DB but was not added to the tournament yet
