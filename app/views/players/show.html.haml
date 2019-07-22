@@ -2,8 +2,19 @@
   .col
     - if @player.canton.present?
       = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-    %h1.page__title
-      = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
+    .page__title
+      %h1
+        = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
+      - alts = @player.alternative_gamer_tags
+      - if alts.any?
+        %p{style: 'margin-top: -15px;'}
+          = '('
+          - alts.each_with_index do |alt, i|
+            - if alts.count == i+1
+              = "#{alt.gamer_tag}"
+            - else
+              = "#{alt.gamer_tag}, "
+          = ')'
 
 .player
   .player__characters

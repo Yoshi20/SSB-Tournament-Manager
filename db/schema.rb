@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_165200) do
+ActiveRecord::Schema.define(version: 2019_07_21_224100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alternative_gamer_tags", force: :cascade do |t|
+    t.bigint "player_id"
+    t.string "gamer_tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_alternative_gamer_tags_on_player_id"
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.bigint "user_id"

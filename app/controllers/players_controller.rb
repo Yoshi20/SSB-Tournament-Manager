@@ -70,13 +70,14 @@ class PlayersController < ApplicationController
         end
         @player.save
 
-        # update all tournament ranking_strings if the gamer_tag was changed
+        # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
           Tournament.all.each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
           end
+          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag)
         end
 
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }

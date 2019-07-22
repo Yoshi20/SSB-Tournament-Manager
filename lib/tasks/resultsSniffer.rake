@@ -11,22 +11,23 @@ namespace :resultsSniffer do
   desc "braacket.com -> Find and create all tournaments, players, matches and results"
   task all: :environment do
     Rake::Task["resultsSniffer:createTournaments"].invoke
-    # Rake::Task["resultsSniffer:findPlayers"].invoke
+    Rake::Task["resultsSniffer:findPlayers"].invoke
     # Rake::Task["resultsSniffer:createMatches"].invoke
     Rake::Task["resultsSniffer:createResults"].invoke
     puts "\n"
     puts "done"
 
     puts "\n"
-    puts "notFoundPlayers:"
+    puts "Couldn't finde the following #{notFoundPlayers.count} players:"
     nfps = ""
     notFoundPlayers.sort.each_with_index do |p, i|
       nfps += "#{p}, "
-      if i == 9
+      if (i+1)%10 == 0
         puts nfps.strip
         nfps = ""
       end
     end
+    puts nfps.strip
 
   end
 
@@ -98,16 +99,24 @@ namespace :resultsSniffer do
       puts "\nSniffing #{link}..."
       doc = Nokogiri::HTML(open(link))
       doc.css('table tbody tr').each do |tr|
-        player = ''
+        firstGamerTag = tr.css('td a')[0].text.strip.split('[').first
+        firstGamerTag = firstGamerTag.gsub(' (invitation pending)', '').strip
+        firstGamerTag = firstGamerTag.split('|')[1].strip if firstGamerTag.split('|').length > 1
+        gamerTag = ''
         if tr.css('td a')[1].nil?
-          player = tr.css('td a')[0].text.strip.split('[').first
+          gamerTag = firstGamerTag
         else
-          player = tr.css('td a')[1]['aria-label'].strip
+          gamerTag = tr.css('td a')[1]['aria-label'].strip
+          gamerTag = gamerTag.gsub(' (invitation pending)', '').strip
+          gamerTag = gamerTag.split('|')[1].strip if gamerTag.split('|').length > 1
+          if firstGamerTag != gamerTag
+            # try to create an AlternativeGamerTag if the firstGamerTag doesn't match the second
+            player = Player.find_by(gamer_tag: gamerTag)
+            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag) unless player.nil?
+          end
         end
-        player = player.gsub(' (invitation pending)', '').strip
-        player = player.split('|')[1].strip if player.split('|').length > 1
-        if !players.include?(player)
-          players << player
+        if !players.include?(gamerTag)
+          players << gamerTag
         end
       end
       # get tournament from the DB and add the found players
@@ -115,11 +124,17 @@ namespace :resultsSniffer do
       if externalTournament.present?
         puts 'Searching for players to add to ' + externalTournament.name + '...'
         allGamerTags = Player.all.map {|p| p.gamer_tag}
+        allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
         etGamerTags = externalTournament.players.map {|p| p.gamer_tag}
         players.each do |p|
           # check if player exists in the DB but was not added to the tournament yet
           if allGamerTags.include?(p) && !etGamerTags.include?(p)
-            externalTournament.players << Player.find_by(gamer_tag: p)
+            player = Player.find_by(gamer_tag: p)
+            if player.nil?
+              alt = AlternativeGamerTag.find_by(gamer_tag: p)
+              player = alt.player unless alt.nil?
+            end
+            externalTournament.players << player
             puts '-> Added ' + p
           end
         end
@@ -157,7 +172,15 @@ namespace :resultsSniffer do
           puts '    ' + rp1.to_s + ' -> ' + p1
           puts '    ' + rp2.to_s + ' -> ' + p2
           player1 = Player.find_by(gamer_tag: p1)
+          if player1.nil?
+            alt1 = AlternativeGamerTag.find_by(gamer_tag: p1)
+            player1 = alt1.player unless alt1.nil?
+          end
           player2 = Player.find_by(gamer_tag: p2)
+          if player2.nil?
+            alt2 = AlternativeGamerTag.find_by(gamer_tag: p2)
+            player2 = alt2.player unless alt2.nil?
+          end
           if player1.nil? then puts "    couldn't find player1" end
           if player2.nil? then puts "    couldn't find player2" end
           if !player1.nil? && !player2.nil?
@@ -196,6 +219,7 @@ namespace :resultsSniffer do
   desc "Find and create results from braacket.com and add them to it's external tournament and player"
   task createResults: :environment do
     allGamerTags = Player.all.map {|p| p.gamer_tag}
+    allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       tournament = Tournament.find_by(name: t.name)
       puts "\nSearching for all results from #{t.name}..."
@@ -205,26 +229,38 @@ namespace :resultsSniffer do
       end
       doc = Nokogiri::HTML(open(t.external_registration_link + '/ranking?rows=200'))
       doc.css('div.my-panel-collapsed').css('tbody').css('tr').each do |tr|
-        foundPlayer = ''
+        firstGamerTag = tr.css('td a')[0].text.strip.split('[').first
+        firstGamerTag = firstGamerTag.gsub(' (invitation pending)', '').strip
+        firstGamerTag = firstGamerTag.split('|')[1].strip if firstGamerTag.split('|').length > 1
+        gamerTag = ''
         if tr.css('td a')[1].nil?
-          foundPlayer = tr.css('td a')[0].text.strip.split('[').first
+          gamerTag = firstGamerTag
         else
-          foundPlayer = tr.css('td a')[1]['aria-label'].strip
+          gamerTag = tr.css('td a')[1]['aria-label'].strip
+          gamerTag = gamerTag.gsub(' (invitation pending)', '').strip
+          gamerTag = gamerTag.split('|')[1].strip if gamerTag.split('|').length > 1
+          if firstGamerTag != gamerTag
+            # try to create an AlternativeGamerTag if the firstGamerTag doesn't match the second
+            player = Player.find_by(gamer_tag: gamerTag)
+            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag) unless player.nil?
+          end
         end
-        foundPlayer = foundPlayer.gsub(' (invitation pending)', '').strip
-        foundPlayer = foundPlayer.split('|')[1].strip if foundPlayer.split('|').length > 1
         # check if this player doesn't exists in the db
-        if !allGamerTags.include?(foundPlayer)
-          puts 'Player: ' + foundPlayer + ' not found!'
-          if !notFoundPlayers.include?(foundPlayer)
-            notFoundPlayers << foundPlayer
+        if !allGamerTags.include?(gamerTag)
+          puts 'Player: ' + gamerTag + ' not found!'
+          if !notFoundPlayers.include?(gamerTag)
+            notFoundPlayers << gamerTag
           end
           next #continue
         end
         # check if this players result was already added to this tournament
-        player = tournament.players.find_by(gamer_tag: foundPlayer)
+        player = tournament.players.find_by(gamer_tag: gamerTag)
         if player.nil?
-          puts 'Player: "' + foundPlayer + '" is nil for some reason! <====================='
+          alt = AlternativeGamerTag.find_by(gamer_tag: gamerTag)
+          player = alt.player unless alt.nil?
+        end
+        if player.nil?
+          puts 'Player: "' + gamerTag + '" is nil for some reason! <====================='
           puts 'tournament.players:'
           puts tournament.players.map{|p| p.gamer_tag}
           puts '---'
