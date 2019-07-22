@@ -4,6 +4,8 @@
       = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
     %h1.page__title
       = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
+    - if @player.user.discord_username.present?
+      = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.user.username, style: 'position: absolute; top: 5px; right: 0px;'
 
 .player
   .player__characters

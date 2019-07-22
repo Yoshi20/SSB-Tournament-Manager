@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_25_203500) do
+ActiveRecord::Schema.define(version: 2019_07_22_231800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alternative_gamer_tags", force: :cascade do |t|
+    t.bigint "player_id"
+    t.string "gamer_tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_alternative_gamer_tags_on_player_id"
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.bigint "user_id"
@@ -34,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_06_25_203500) do
     t.integer "player2_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "braacket_match_id"
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
   end
 
@@ -134,6 +143,7 @@ ActiveRecord::Schema.define(version: 2019_06_25_203500) do
     t.boolean "is_club_member", default: false
     t.boolean "wants_major_email", default: true
     t.boolean "wants_weekly_email", default: true
+    t.string "discord_username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
