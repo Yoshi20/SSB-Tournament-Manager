@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_224100) do
+ActiveRecord::Schema.define(version: 2019_07_22_231800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_224100) do
     t.string "gender"
     t.integer "birth_year"
     t.string "prefix"
+    t.string "discord_username"
   end
 
   create_table "registrations", force: :cascade do |t|
