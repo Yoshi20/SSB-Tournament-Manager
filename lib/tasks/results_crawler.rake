@@ -3,17 +3,17 @@ require 'open-uri'
 require "#{Rails.root}/app/helpers/tournaments_helper"
 include TournamentsHelper
 
-namespace :resultsSniffer do
+namespace :results_crawler do
   foundTournaments = []
   notFoundPlayers = []
   root = 'https://braacket.com'
 
-  desc "braacket.com -> Find and create all tournaments, players, matches and results"
+  desc "braacket.com -> Find and create all tournaments, players, matches and results..."
   task all: :environment do
-    Rake::Task["resultsSniffer:createTournaments"].invoke
-    Rake::Task["resultsSniffer:findPlayers"].invoke
-    Rake::Task["resultsSniffer:createMatches"].invoke
-    Rake::Task["resultsSniffer:createResults"].invoke
+    Rake::Task["results_crawler:createTournaments"].invoke
+    Rake::Task["results_crawler:findPlayers"].invoke
+    Rake::Task["results_crawler:createMatches"].invoke
+    Rake::Task["results_crawler:createResults"].invoke
     puts "\n"
     puts "done"
 
@@ -34,7 +34,7 @@ namespace :resultsSniffer do
   desc "Find and create past external tournaments from braacket.com"
   task createTournaments: :environment do
     link = 'https://braacket.com/league/ALLOFTHEM/tournament?rows=200'
-    puts "\nSniffing #{link}..."
+    puts "\nCrawling #{link}..."
     doc = Nokogiri::HTML(open(link))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
@@ -98,7 +98,7 @@ namespace :resultsSniffer do
       # find all players per tournament
       players = []
       link = t.external_registration_link + '/player?rows=200'
-      puts "\nSniffing #{link}..."
+      puts "\nCrawling #{link}..."
       doc = Nokogiri::HTML(open(link))
       doc.css('table tbody tr').each do |tr|
         firstGamerTag = tr.css('td a')[0].text.strip.split('[').first
@@ -160,7 +160,7 @@ namespace :resultsSniffer do
       end
       matchURLs.each do |mURL|
         link = mURL + 'mode=table&display=1&status=2'
-        puts "  Sniffing #{link}..."
+        puts "  Crawling #{link}..."
         doc = Nokogiri::HTML(open(link))
         doc.css('table.tournament_encounter-row').each_with_index do |ter, i|
           p1 = ter.css('a')[0].text.split('[').first.gsub(' (invitation pending)', '').strip

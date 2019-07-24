@@ -1,19 +1,21 @@
 require 'nokogiri'
 require 'open-uri'
 
-namespace :sniffer do
-  desc "Calls all sniffer tasks"
+namespace :tournaments_crawler do
+  desc "Calls all the tournaments web crawler tasks"
   task all: :environment do
-    Rake::Task["sniffer:braacket"].invoke
-    Rake::Task["sniffer:smash_gg"].invoke
-    Rake::Task["sniffer:toornament"].invoke
+    tCtr = Tournament.all.count
+    puts "Running all tournaments web crawlers..."
+    Rake::Task["tournaments_crawler:braacket"].invoke
+    Rake::Task["tournaments_crawler:smash_gg"].invoke
+    Rake::Task["tournaments_crawler:toornament"].invoke
     puts "\n"
-    puts "done"
+    puts "done (#{tCtr - Tournament.all.count} new tournament(s))"
   end
 
   desc "Creates upcoming external tournaments from braacket.com"
   task braacket: :environment do
-    puts 'Sniffing https://braacket.com/tournament...'
+    puts 'Crawling https://braacket.com/tournament...'
     root = 'https://braacket.com'
     doc = Nokogiri::HTML(open('https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1'))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
@@ -51,7 +53,7 @@ namespace :sniffer do
 
   desc "Creates upcoming external tournaments from smash.gg"
   task smash_gg: :environment do
-    puts 'Sniffing https://smash.gg/tournaments...'
+    puts 'Crawling https://smash.gg/tournaments...'
     root = 'https://smash.gg'
     doc = Nokogiri::HTML(open('https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}'))
     doc.css('div.gg-component-reset.TournamentCard').each_with_index do |c, i|
@@ -92,7 +94,7 @@ namespace :sniffer do
 
   desc "Creates upcoming external tournaments from toornament.com"
   task toornament: :environment do
-    puts 'Sniffing https://www.toornament.com/tournaments...'
+    puts 'Crawling https://www.toornament.com/tournaments...'
     root = 'https://toornament.com'
     validFlag = 'flag-ch'
     doc = Nokogiri::HTML(open('https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming'))
