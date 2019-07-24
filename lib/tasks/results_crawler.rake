@@ -38,53 +38,73 @@ namespace :results_crawler do
     doc = Nokogiri::HTML(open(link))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
-      externalTournament = Tournament.new
+      etName = ""
       p.css('div.panel-heading a').each do |a|
-        externalTournament.name = a.text.strip unless a.text.strip.empty?
+        etName = a.text.strip unless a.text.strip.empty?
       end
-      if externalTournament.name.include?('Weekly')
-        # tournament is a weekly -> check if we know it's city
-        externalTournament.subtype = 'weekly'
-        externalTournament.city = '?'
-        externalTournament.name.split(' ').each do |word|
-          if tournament_cities().include?(word)
-            externalTournament.city = word
-            break
+      externalTournament = Tournament.find_by(name: etName)
+      if !externalTournament.nil?
+        externalTournament.started = true
+        externalTournament.finished = true
+        if externalTournament.save
+          puts "-> Found and updated: \"" + externalTournament.name + "\"\n\n"
+          foundTournaments << externalTournament
+        else
+          puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
+          if externalTournament.errors.any?
+            externalTournament.errors.full_messages.each do |message|
+              puts "==> " + message
+            end
+            puts "\n"
           end
         end
       else
-        externalTournament.subtype = 'external'
-        externalTournament.city = ''
-      end
-      p.css('div.panel-heading td.ellipsis').each do |td|
-        td.css('a').each do |a|
-          externalTournament.external_registration_link = root + a['href']
-        end
-      end
-      seatsString = ''
-      if p.css("div.my-dashboard-values-sub").count < 6
-        externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[1].css('div')[1].text)
-        seatsString = p.css("div.my-dashboard-values-sub")[3].css('div')[1].text.strip
-      else
-        externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[2].css('div')[1].text)
-        seatsString = p.css("div.my-dashboard-values-sub")[4].css('div')[1].text.strip
-      end
-      externalTournament.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
-      externalTournament.is_registration_allowed = false
-      # externalTournament.setup = true
-      externalTournament.started = true
-      externalTournament.finished = true
-      externalTournament.active = true
-      foundTournaments << externalTournament
-      if externalTournament.save
-        puts "-> Created: \"" + externalTournament.name + "\"\n\n"
-      else
-        puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
-        if externalTournament.errors.any?
-          externalTournament.errors.full_messages.each do |message|
-            puts "==> " + message
+        externalTournament = Tournament.new
+        externalTournament.name = etName
+        if externalTournament.name.include?('Weekly')
+          # tournament is a weekly -> check if we know it's city
+          externalTournament.subtype = 'weekly'
+          externalTournament.city = '?'
+          externalTournament.name.split(' ').each do |word|
+            if tournament_cities().include?(word)
+              externalTournament.city = word
+              break
+            end
           end
-          puts "\n"
+        else
+          externalTournament.subtype = 'external'
+          externalTournament.city = ''
+        end
+        p.css('div.panel-heading td.ellipsis').each do |td|
+          td.css('a').each do |a|
+            externalTournament.external_registration_link = root + a['href']
+          end
+        end
+        seatsString = ''
+        if p.css("div.my-dashboard-values-sub").count < 6
+          externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[1].css('div')[1].text)
+          seatsString = p.css("div.my-dashboard-values-sub")[3].css('div')[1].text.strip
+        else
+          externalTournament.date = Date.parse(p.css("div.my-dashboard-values-sub")[2].css('div')[1].text)
+          seatsString = p.css("div.my-dashboard-values-sub")[4].css('div')[1].text.strip
+        end
+        externalTournament.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
+        externalTournament.is_registration_allowed = false
+        # externalTournament.setup = true
+        externalTournament.started = true
+        externalTournament.finished = true
+        externalTournament.active = true
+        if externalTournament.save
+          puts "-> Created: \"" + externalTournament.name + "\"\n\n"
+          foundTournaments << externalTournament
+        else
+          puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
+          if externalTournament.errors.any?
+            externalTournament.errors.full_messages.each do |message|
+              puts "==> " + message
+            end
+            puts "\n"
+          end
         end
       end
     end
@@ -134,8 +154,10 @@ namespace :results_crawler do
               alt = AlternativeGamerTag.find_by(gamer_tag: p)
               player = alt.player unless alt.nil?
             end
-            externalTournament.players << player
-            puts '-> Added ' + p
+            if !externalTournament.players.include?(player)
+              externalTournament.players << player
+              puts '-> Added ' + p
+            end
           end
         end
       else
