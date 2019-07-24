@@ -23,6 +23,21 @@
 
 document.addEventListener 'turbolinks:load', ->
 
+  # a click on a user discord icon copies it's discord username to the clipboard
+  $('#copy_discord_name').on 'click', (e) ->
+    event.preventDefault()
+    discordUserName = $($(this).parent()[0]).attr('data-value')
+    dummyTextArea = document.createElement("textarea")
+    dummyTextArea.style.position = 'absolute'
+    document.body.appendChild(dummyTextArea)
+    dummyTextArea.value = '@' + discordUserName
+    dummyTextArea.select()
+    if document.execCommand("copy")
+      alert("Copied \"" + dummyTextArea.value + "\" to the clipboard")
+    else
+      alert("Oops, unable to copy \"" + discordUserName + "\" to the clipboard")
+    document.body.removeChild(dummyTextArea)
+
   # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present
   $('.nav-link').on 'click', (e) ->
     window.history.replaceState(null, null, "#{$(this).attr('href')}")

@@ -6,12 +6,18 @@
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
       = devise_error_messages!
       .form-group
-        = f.label :username, 'Username *'
-        %em= "(= Gamer tag)"
+        = f.label :username, 'Login username *'
         = f.text_field :username, autofocus: true, class: 'form-control'
+      .form-group
+        = label_tag :gamer_tag, 'Gamer tag *'
+        = text_field_tag :gamer_tag, nil, class: 'form-control'
       .form-group
         = label_tag :prefix, 'Sponsor prefix'
         = text_field_tag :prefix, nil, class: 'form-control'
+      .form-group
+        = label_tag :discord_username
+        %em= "(User#1234)"
+        = text_field_tag :discord_username, nil, class: 'form-control'
       .form-group
         = f.label :email, 'Email *'
         = f.email_field :email, class: 'form-control'
