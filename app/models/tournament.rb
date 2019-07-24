@@ -11,7 +11,7 @@ class Tournament < ApplicationRecord
   scope :ongoing, -> { where('date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
   scope :past, -> { where('date < ?', Time.now - 6.hours) }
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
-  scope :from_city, -> (city) { where("name LIKE ? OR name LIKE ? OR location LIKE ? OR location LIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
+  scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 10
 
