@@ -4,8 +4,8 @@
       = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
     %h1.page__title
       = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
-    - if @player.user.discord_username.present?
-      = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.user.username, style: 'position: absolute; top: 5px; right: 0px;'
+    - if @player.discord_username.present?
+      = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, style: 'position: absolute; top: 5px; right: 0px;'
 
 .player
   .player__characters
@@ -168,5 +168,5 @@
           - if @player.user.admin? or current_user.admin?
             = mail_to @player.user.email, body: "Hi #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
               %span.material-icons.admin-actions__link__icon= 'email'
-          - if current_user.admin? and @player.user.mobile_number.present?
-            = " (#{@player.user.mobile_number})"
+        - if current_user.admin? and @player.user.mobile_number.present?
+          .mobile_number= " (#{@player.user.mobile_number})"

@@ -6,7 +6,7 @@
     = form_for(resource, class: 'form', as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
       = devise_error_messages!
       .form-group
-        = f.label :username
+        = f.label :username, 'Login username'
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
         = f.label :email

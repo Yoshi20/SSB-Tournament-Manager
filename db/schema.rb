@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_231800) do
     t.string "gender"
     t.integer "birth_year"
     t.string "prefix"
+    t.string "discord_username"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -143,7 +144,6 @@ ActiveRecord::Schema.define(version: 2019_07_22_231800) do
     t.boolean "is_club_member", default: false
     t.boolean "wants_major_email", default: true
     t.boolean "wants_weekly_email", default: true
-    t.string "discord_username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

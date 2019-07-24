@@ -14,7 +14,10 @@
   .field.form-group
     = f.label :prefix, 'Sponsor prefix'
     = f.text_field :prefix, class: 'form-control'
-  - if current_user.admin?
+  .field.form-group
+    = f.label :discord_username
+    = f.text_field :discord_username, class: 'form-control'
+  - if current_user.super_admin?
     .field.form-group
       = f.label :points
       = f.number_field :points, class: 'form-control'
