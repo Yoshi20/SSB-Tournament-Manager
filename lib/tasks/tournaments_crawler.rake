@@ -9,8 +9,7 @@ namespace :tournaments_crawler do
     Rake::Task["tournaments_crawler:braacket"].invoke
     Rake::Task["tournaments_crawler:smash_gg"].invoke
     Rake::Task["tournaments_crawler:toornament"].invoke
-    puts "\n"
-    puts "done (#{tCtr - Tournament.all.count} new tournament(s))"
+    puts "\ndone -> #{Tournament.all.count - tCtr} new tournament(s)\n"
   end
 
   desc "Creates upcoming external tournaments from braacket.com"
@@ -61,9 +60,9 @@ namespace :tournaments_crawler do
       externalTournament = Tournament.new
       externalTournament.subtype = 'external'
       infoSpans = c.css('div.TournamentCardHeading__information span')
-      externalTournament.date = Date.parse(infoSpans[infoSpans.count-1].text)
+      externalTournament.date = Date.parse(infoSpans[infoSpans.count-1].text) rescue nil
       isDateError = false
-      if externalTournament.date < Date.yesterday
+      if externalTournament.date.nil? || externalTournament.date < Date.yesterday
         externalTournament.date = Date.tomorrow
         isDateError = true
       end

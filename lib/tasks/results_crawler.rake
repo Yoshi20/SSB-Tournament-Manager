@@ -14,11 +14,9 @@ namespace :results_crawler do
     Rake::Task["results_crawler:findPlayers"].invoke
     Rake::Task["results_crawler:createMatches"].invoke
     Rake::Task["results_crawler:createResults"].invoke
-    puts "\n"
-    puts "done"
+    puts "\ndone"
 
-    puts "\n"
-    puts "Couldn't finde the following #{notFoundPlayers.count} players:"
+    puts "\nCouldn't finde the following #{notFoundPlayers.count} players:"
     nfps = ""
     notFoundPlayers.sort.each_with_index do |p, i|
       nfps += "#{p}, "
@@ -28,6 +26,7 @@ namespace :results_crawler do
       end
     end
     puts nfps.strip
+    puts "\n"
 
   end
 
