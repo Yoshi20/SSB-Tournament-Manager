@@ -15,6 +15,7 @@
     = f.text_field :prefix, class: 'form-control'
   .field.form-group
     = f.label :discord_username
+    %em= "(User#1234)"
     = f.text_field :discord_username, class: 'form-control'
   - if current_user.super_admin?
     .field.form-group
