@@ -21,6 +21,9 @@
       .row
         - tournament_cities.each do |city|
           .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+      .row
+        .col{style: 'font-size: 12px;'}
+          (Note: Only on SwissSmash registered players will appear in these rankings)
 
     %table.table.table-hover.table-borderless
       %thead.table-header
