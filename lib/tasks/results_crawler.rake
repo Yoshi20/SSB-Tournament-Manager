@@ -43,9 +43,11 @@ namespace :results_crawler do
       end
       externalTournament = Tournament.find_by(name: etName)
       if !externalTournament.nil?
-        p.css('div.panel-heading td.ellipsis').each do |td|
-          td.css('a').each do |a|
-            externalTournament.external_registration_link = root + a['href']
+        if externalTournament.subtype == 'external'
+          p.css('div.panel-heading td.ellipsis').each do |td|
+            td.css('a').each do |a|
+              externalTournament.external_registration_link = root + a['href']
+            end
           end
         end
         externalTournament.started = true
