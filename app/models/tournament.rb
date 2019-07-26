@@ -13,7 +13,7 @@ class Tournament < ApplicationRecord
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
-  MAX_PAST_TOURNAMENTS_PER_PAGE = 10
+  MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 
   def cancelled?
     !self.started and self.finished
