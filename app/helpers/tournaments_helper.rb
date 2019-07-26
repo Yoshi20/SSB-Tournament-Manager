@@ -1,7 +1,7 @@
 module TournamentsHelper
 
   def tournament_cities
-    ['Baden', 'Bern', 'Geneva', 'Solothurn', 'Trimbach', 'Zurich']
+    ['Baden', 'Basel', 'Bern', 'Geneva', 'Solothurn', 'Trimbach', 'Zurich']
   end
 
   def tournament_majors

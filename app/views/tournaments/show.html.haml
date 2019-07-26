@@ -60,7 +60,10 @@
                 %strong
                   = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
                 %span
-                  Online registration deadline
+                  - if @tournament.is_registration_allowed
+                    = "Online registration deadline"
+                  - else
+                    = "Registration deadline"
       - if @tournament.location.present? or @tournament.city.present?
         .tournament__details
           .row
@@ -106,7 +109,7 @@
               %span
                 Seats
 
-          - if @tournament.min_needed_registrations.present?
+          - if @tournament.min_needed_registrations.present? && @tournament.min_needed_registrations > 0
             .col
               .tournament__details__single
                 %strong
@@ -118,7 +121,7 @@
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  - if @tournament.total_needed_game_stations.to_i > 0 and @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
+                  - if @min_needed_game_stations > 0 && @tournament.total_needed_game_stations.to_i > 0 && @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
                     = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
                   - else
                     = @tournament.total_needed_game_stations.to_i

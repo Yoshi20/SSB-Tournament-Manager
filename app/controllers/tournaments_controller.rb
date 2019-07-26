@@ -120,7 +120,7 @@ class TournamentsController < ApplicationController
               return
             end
           end
-          format.html { redirect_to @tournament, notice: 'One or more weekly were successfully created.' }
+          format.html { redirect_to @tournament, notice: 'One or more weeklies were successfully created.' }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -141,8 +141,48 @@ class TournamentsController < ApplicationController
     # update tournament
     if @tournament.subtype.nil? or @tournament.subtype == 'internal' or  @tournament.subtype == 'weekly'
       respond_to do |format|
+        oldName = @tournament.name
+        oldDate = @tournament.date
+        oldcity = @tournament.city
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
-          format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+          # also update weekly name if city was edited
+          if @tournament.subtype == 'weekly' && @tournament.city != oldcity
+            puts 'blup'
+            @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
+            unless @tournament.save
+              format.html { render :edit }
+              format.json { render json: t.errors, status: :unprocessable_entity }
+              return
+            end
+          end
+
+          # check the 'all' parameter and update all upcoming tournaments of this type if it's true
+          if @tournament.subtype == 'weekly' and params[:commit].include?('all')
+            last_weekly = @tournament
+            edited_tournament_params = tournament_params
+            old_name_without_kw = oldName[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
+            Tournament.where('date >= ?', oldDate + 7.days).where("name ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(old_name_without_kw)}%").order(:date).each do |t|
+              edited_tournament_params[:name] = generate_weekly_name(last_weekly.city, last_weekly.date + 7.days)
+              if t.update(edited_tournament_params)
+                t.date = last_weekly.date + 7.days
+                t.registration_deadline = last_weekly.registration_deadline + 7.days
+                if t.save
+                  last_weekly = t
+                else
+                  format.html { render :edit }
+                  format.json { render json: t.errors, status: :unprocessable_entity }
+                  return
+                end
+              else
+                format.html { render :edit }
+                format.json { render json: t.errors, status: :unprocessable_entity }
+                return
+              end
+            end
+            format.html { redirect_to @tournament, notice: 'One or more weeklies were successfully updated.' }
+          else
+            format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+          end
           format.json { render :show, status: :ok, location: @tournament }
         else
           format.html { render :edit }
