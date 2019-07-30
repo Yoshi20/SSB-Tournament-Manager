@@ -64,8 +64,9 @@ document.addEventListener 'turbolinks:load', ->
         window.open(external_url, '_blank')
       else
         id = $(this).attr('data-id')
-        component = $(this).attr('data-component')
-        window.location.href = "/#{component}s/#{id}"
+        if id != undefined
+          component = $(this).attr('data-component')
+          window.location.href = "/#{component}s/#{id}"
 
   # a click on sort table header toggels its order param
   $('th a').on 'click', (e) ->

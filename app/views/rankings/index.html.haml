@@ -2,25 +2,111 @@
   .col
     %h1.page__title= "Rankings"
 
--# %ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
--#   %li.nav-item
--#     %a#A-tab.nav-link.active{'data-toggle'=>'tab', href: '#A', role: 'tab', 'aria-controls'=>'all'}
--#       = 'A'
--#   %li.nav-item
--#     %a#B-tab.nav-link{'data-toggle'=>'tab', href: '#B', role: 'tab', 'aria-controls'=>'all'}
--#       = 'B'
+%ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#power_ranking-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking', role: 'tab', 'aria-controls'=>'all'}
+      = 'Official Power Rankings'
+  %li.nav-item
+    %a#points-tab.nav-link{'data-toggle'=>'tab', href: '#points', role: 'tab', 'aria-controls'=>'all'}
+      = 'Tournament specific'
 
 .tab-content#rankings-tabs-content
-  .tab-pane.fade.show.active#a{role: 'tabpanel', 'aria-labelledby'=>'a-tab'}
+  -# Power Rankings ------------------------------------------------------------
+  .tab-pane.fade.show.active#power_ranking{role: 'tabpanel', 'aria-labelledby'=>'power_ranking-tab'}
+    %ul#power_rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#s2_19-tab.nav-link{'data-toggle'=>'tab', href: '#s2_19', role: 'tab', 'aria-controls'=>'all'}
+          = 'Season2 2019'
+      %li.nav-item
+        %a#s1_19-tab.nav-link.active{'data-toggle'=>'tab', href: '#s1_19', role: 'tab', 'aria-controls'=>'all'}
+          = 'Season1 2019'
+
+    .tab-content#power_rankings-tabs-content
+      -# Power Ranking S2 2019 -------------------------------------------------
+      .tab-pane.fade#s2_19{role: 'tabpanel', 'aria-labelledby'=>'s2_19-tab'}
+        %p{style: 'text-align: center;'}
+          No ranking available yet
+
+      -# Power Ranking S1 2019 -------------------------------------------------
+      .tab-pane.fade.show.active#s1_19{role: 'tabpanel', 'aria-labelledby'=>'s1_19-tab'}
+        = image_tag "rankings/pr_s1_19.jpg", width: '100%'
+        %br
+        %br
+        %h2
+          Top 10:
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center #
+              %th.text-center Points
+              %th Gamer tag
+              %th.text-center Mains
+              -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+              -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+
+          %tbody.table-content.with-show
+            %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
+              %td.text-center= '1.'
+              %td.text-center= 1000
+              %td= 'Destany'
+              %td.text-center
+                %div
+                  - ['meta_knight', 'wolf', 'little_mac'].each do |char|
+                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+              -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+
+        %h2
+          Counted tournaments:
+        %ul
+          %li Ultimon Stadion
+          %li University of Smash IV
+          %li Swissgeek Smash Ultimate Lausanne
+          %li Japan Impact 2019 - Saturday
+          %li Ultimon Stadion 2: Into the Reset
+          %li Colosseum Basel XI
+          %li Smile & Wave(s)
+          %li Tournoi Mix-Imax/jeuxvideo.ch du 23 mars 2019
+          %li Carrefour Sud Monthly
+          %li Ultimon Stadion 3
+          %li Smash the Cake
+          %li Colosseim Basel XII
+          %li Tournoi «Smash Ultimate> Swissgeek (Lausanne)
+          %li Smash Temple 2 day 1
+          %li Smash Temple 2 day 2
+          %li Smash at PolyLan
+          %li Polymanga Satuday
+          %li PK Bern #1
+          %li Blick Esports Masters 1
+          %li Ultimelt #15
+          %li Fantasy Basel day 1
+          %li Fantasy Basel day 2
+          %li Blick Esports Masters 2
+          %li Ultimelt #16
+          %li Ultimon 4
+          %li University of Smash V
+          %li TheReset #6
+
+        %h2
+          Considered but deemed ineligible:
+        %ul
+          %li Japan Impact 2019 - Sunday (Not announced in time)
+          %li Polymanga Sunday  (Lack of proper setups)
+          %li Casino - Let’s Play #1  (Not announced in time)
+          %li Super Smash Saga - Calm before the storm (Seeding)
+
+  -# Points --------------------------------------------------------------------
+  .tab-pane.fade#points{role: 'tabpanel', 'aria-labelledby'=>'points-tab'}
     .rankings__filter
       .row
-        .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
-        .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
         - tournament_majors.each do |major|
-          .rankings__filter__button= link_to major, rankings_path(filter: 'major', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
+          .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       .row
         - tournament_cities.each do |city|
-          .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+          .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase, anchor: 'points'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
       .row
         .col{style: 'font-size: 12px;'}
           (Note: Only on SwissSmash registered players will appear in these rankings)
