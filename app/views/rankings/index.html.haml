@@ -24,77 +24,11 @@
     .tab-content#power_rankings-tabs-content
       -# Power Ranking S2 2019 -------------------------------------------------
       .tab-pane.fade#s2_19{role: 'tabpanel', 'aria-labelledby'=>'s2_19-tab'}
-        %p{style: 'text-align: center;'}
-          No ranking available yet
+        = render 's2_19'
 
       -# Power Ranking S1 2019 -------------------------------------------------
       .tab-pane.fade.show.active#s1_19{role: 'tabpanel', 'aria-labelledby'=>'s1_19-tab'}
-        = image_tag "rankings/pr_s1_19.jpg", width: '100%'
-        %br
-        %br
-        %h2
-          Top 10:
-        %table.table.table-hover.table-borderless
-          %thead.table-header
-            %tr
-              %th.text-center #
-              %th.text-center Points
-              %th Gamer tag
-              %th.text-center Mains
-              -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
-              -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
-
-          %tbody.table-content.with-show
-            %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
-              %td.text-center= '1.'
-              %td.text-center= 1000
-              %td= 'Destany'
-              %td.text-center
-                %div
-                  - ['meta_knight', 'wolf', 'little_mac'].each do |char|
-                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-              -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-              -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
-
-        %h2
-          Counted tournaments:
-        %ul
-          %li Ultimon Stadion
-          %li University of Smash IV
-          %li Swissgeek Smash Ultimate Lausanne
-          %li Japan Impact 2019 - Saturday
-          %li Ultimon Stadion 2: Into the Reset
-          %li Colosseum Basel XI
-          %li Smile & Wave(s)
-          %li Tournoi Mix-Imax/jeuxvideo.ch du 23 mars 2019
-          %li Carrefour Sud Monthly
-          %li Ultimon Stadion 3
-          %li Smash the Cake
-          %li Colosseim Basel XII
-          %li Tournoi «Smash Ultimate> Swissgeek (Lausanne)
-          %li Smash Temple 2 day 1
-          %li Smash Temple 2 day 2
-          %li Smash at PolyLan
-          %li Polymanga Satuday
-          %li PK Bern #1
-          %li Blick Esports Masters 1
-          %li Ultimelt #15
-          %li Fantasy Basel day 1
-          %li Fantasy Basel day 2
-          %li Blick Esports Masters 2
-          %li Ultimelt #16
-          %li Ultimon 4
-          %li University of Smash V
-          %li TheReset #6
-
-        %h2
-          Considered but deemed ineligible:
-        %ul
-          %li Japan Impact 2019 - Sunday (Not announced in time)
-          %li Polymanga Sunday  (Lack of proper setups)
-          %li Casino - Let’s Play #1  (Not announced in time)
-          %li Super Smash Saga - Calm before the storm (Seeding)
+        = render 's1_19'
 
   -# Points --------------------------------------------------------------------
   .tab-pane.fade#points{role: 'tabpanel', 'aria-labelledby'=>'points-tab'}

@@ -1,0 +1,165 @@
+= image_tag "rankings/pr_s1_19.jpg", width: '100%'
+%br
+%br
+%h2
+  Top 10:
+%table.table.table-hover.table-borderless
+  %thead.table-header
+    %tr
+      %th.text-center #
+      %th.text-center Points
+      %th Gamer tag
+      %th.text-center Mains
+      -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+      -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+
+  %tbody.table-content.with-show
+    %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
+      %td.text-center= '1.'
+      %td.text-center= 10000
+      %td= 'mYi | Destany'
+      %td.text-center
+        %div
+          - ['meta_knight', 'wolf', 'little_mac'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Deepfreeze').try(:id), 'data-component'=>'player'}
+      %td.text-center= '2.'
+      %td.text-center= 9000
+      %td= 'EQX | Deepfreeze'
+      %td.text-center
+        %div
+          - ['falco'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: ' Smuff').try(:id), 'data-component'=>'player'}
+      %td.text-center= '3.'
+      %td.text-center= 8000
+      %td= 'ELV | Smuff'
+      %td.text-center
+        %div
+          - ['greninja', 'captain_falcon'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Severe Calamari').try(:id), 'data-component'=>'player'}
+      %td.text-center= '4.'
+      %td.text-center= 7000
+      %td= 'ELV | Severe Calamari'
+      %td.text-center
+        %div
+          - ['wolf'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Benji').try(:id), 'data-component'=>'player'}
+      %td.text-center= '5.'
+      %td.text-center= 6000
+      %td= 'AG | Benji'
+      %td.text-center
+        %div
+          - ['wario'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Crash').try(:id), 'data-component'=>'player'}
+      %td.text-center= '6.'
+      %td.text-center= 5000
+      %td= 'BG | Crash'
+      %td.text-center
+        %div
+          - ['wii_fit_trainer', 'bowser'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Silent Kepler').try(:id), 'data-component'=>'player'}
+      %td.text-center= '7.'
+      %td.text-center= 4000
+      %td= 'Silent Kepler'
+      %td.text-center
+        %div
+          - ['snake'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'CrzyShroom').try(:id), 'data-component'=>'player'}
+      %td.text-center= '8.'
+      %td.text-center= 3000
+      %td= 'SoS | CrzyShroom'
+      %td.text-center
+        %div
+          - ['wolf'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Sylph').try(:id), 'data-component'=>'player'}
+      %td.text-center= '9.'
+      %td.text-center= 2000
+      %td= 'QMG | Sylph'
+      %td.text-center
+        %div
+          - ['yoshi', 'ganondorf', 'link'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+    %tr{'data-id': Player.find_by(gamer_tag: 'Olivia').try(:id), 'data-component'=>'player'}
+      %td.text-center= '10.'
+      %td.text-center= 1000
+      %td= 'Olivia'
+      %td.text-center
+        %div
+          - ['wii_fit_trainer', 'duck_hunt'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+
+%h2
+  Counted tournaments:
+%ul
+  %li Ultimon Stadion
+  %li University of Smash IV
+  %li Swissgeek Smash Ultimate Lausanne
+  %li Japan Impact 2019 - Saturday
+  %li Ultimon Stadion 2: Into the Reset
+  %li Colosseum Basel XI
+  %li Smile & Wave(s)
+  %li Tournoi Mix-Imax/jeuxvideo.ch du 23 mars 2019
+  %li Carrefour Sud Monthly
+  %li Ultimon Stadion 3
+  %li Smash the Cake
+  %li Colosseim Basel XII
+  %li Tournoi «Smash Ultimate> Swissgeek (Lausanne)
+  %li Smash Temple 2 day 1
+  %li Smash Temple 2 day 2
+  %li Smash at PolyLan
+  %li Polymanga Satuday
+  %li PK Bern #1
+  %li Blick Esports Masters 1
+  %li Ultimelt #15
+  %li Fantasy Basel day 1
+  %li Fantasy Basel day 2
+  %li Blick Esports Masters 2
+  %li Ultimelt #16
+  %li Ultimon 4
+  %li University of Smash V
+  %li TheReset #6
+
+%h2
+  Considered but deemed ineligible:
+%ul
+  %li Japan Impact 2019 - Sunday (Not announced in time)
+  %li Polymanga Sunday  (Lack of proper setups)
+  %li Casino - Let’s Play #1  (Not announced in time)
+  %li Super Smash Saga - Calm before the storm (Seeding)
