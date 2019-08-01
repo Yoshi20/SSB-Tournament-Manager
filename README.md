@@ -53,5 +53,8 @@ Sniffer Links:
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
 
+Google Analytics:
+- https://analytics.google.com/analytics/web/#/report-home/a145089919w206718824p199562205
+
 Queries:
 - Players that haven't joined a tournament yet: ```Player.includes(:tournaments).where(tournaments: {id: nil})```
