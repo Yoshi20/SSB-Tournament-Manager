@@ -22,9 +22,9 @@
   .player__characters
     - if @player.main_characters.any?
       - @player.main_characters[0...3].each do |char|
-        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
           .player__characters__single
-            = image_tag "characters/#{char}.png", class: 'player__characters__image'
+            = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
 
   - if @player.canton.present? || @player.birth_year.present? || @player.gender.present?
     .player__stats
