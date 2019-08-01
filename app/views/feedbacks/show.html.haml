@@ -1,6 +1,10 @@
 .row
   .col
-    %h1.page__title= "#{@feedback.user.present? ? @feedback.user.username : '?'}'s feedback or question"
+    %h1.page__title
+      - if @feedback.user.present?
+        = "#{@feedback.user.present?}'s feedback or question"
+      - else
+        = "Someone's feedback or question"
 
 .feedback
   %p= @feedback.text

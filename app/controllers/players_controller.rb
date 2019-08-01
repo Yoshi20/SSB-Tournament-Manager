@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
           [p.win_loss_ratio, -p.created_at.to_i]
         end.reverse
       else
-        @players = @players.order("players.#{params[:sort]}")
+        @players = @players.order("players.?".gsub('?', params[:sort]))
       end
     else
       @players = @players.order(created_at: :desc)
