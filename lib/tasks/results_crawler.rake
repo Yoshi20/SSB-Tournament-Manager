@@ -121,6 +121,10 @@ namespace :results_crawler do
     allGamerTags = Player.all.map {|p| p.gamer_tag}
     allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
+      if t.subtype == 'internal'
+        puts "\n#{t.name} is an internal tournament -> continue with the next tournament"
+        next  # continue
+      end
       # find all players per tournament
       players = []
       link = t.external_registration_link + '/player?rows=200'
@@ -179,6 +183,10 @@ namespace :results_crawler do
       puts "\nSearching for all matches from #{t.name}..."
       if !tournament.challonge_tournament_id.nil?
         puts 'this tournament has a challonge id -> continue with the next tournament'
+        next  # continue
+      end
+      if tournament.subtype == 'internal'
+        puts 'this tournament is an internal tournament -> continue with the next tournament'
         next  # continue
       end
       doc = Nokogiri::HTML(open(t.external_registration_link + '/match'))
@@ -253,6 +261,10 @@ namespace :results_crawler do
       puts "\nSearching for all results from #{t.name}..."
       if tournament.results.count == tournament.players.count
         puts 'this tournament has already all results for the moment -> continue with the next tournament'
+        next  # continue
+      end
+      if tournament.subtype == 'internal'
+        puts 'this tournament is an internal tournament -> continue with the next tournament'
         next  # continue
       end
       doc = Nokogiri::HTML(open(t.external_registration_link + '/ranking?rows=200'))

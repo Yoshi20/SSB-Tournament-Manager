@@ -62,6 +62,10 @@
       -#   = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
       -#   = label_tag :send_mails, 'Send all players an email'
     - else
+      - if !@tournament.is_registration_allowed
+        .form-group
+          = f.label :external_registration_link
+          = f.text_field :external_registration_link, class: 'form-control'
       - if @tournament.finished?
         .form-group
           = f.label :ranking_string

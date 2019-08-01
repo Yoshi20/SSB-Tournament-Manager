@@ -7,7 +7,7 @@
   %thead.table-header
     %tr
       %th.text-center #
-      %th.text-center Points
+      -# %th.text-center Points
       %th Gamer tag
       %th.text-center Mains
       -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
@@ -16,7 +16,7 @@
   %tbody.table-content.with-show
     %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
       %td.text-center= '1.'
-      %td.text-center= 10000
+      -# %td.text-center= 10000
       %td= 'mYi | Destany'
       %td.text-center
         %div
@@ -27,7 +27,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Deepfreeze').try(:id), 'data-component'=>'player'}
       %td.text-center= '2.'
-      %td.text-center= 9000
+      -# %td.text-center= 9000
       %td= 'EQX | Deepfreeze'
       %td.text-center
         %div
@@ -38,7 +38,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: ' Smuff').try(:id), 'data-component'=>'player'}
       %td.text-center= '3.'
-      %td.text-center= 8000
+      -# %td.text-center= 8000
       %td= 'ELV | Smuff'
       %td.text-center
         %div
@@ -49,7 +49,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Severe Calamari').try(:id), 'data-component'=>'player'}
       %td.text-center= '4.'
-      %td.text-center= 7000
+      -# %td.text-center= 7000
       %td= 'ELV | Severe Calamari'
       %td.text-center
         %div
@@ -60,7 +60,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Benji').try(:id), 'data-component'=>'player'}
       %td.text-center= '5.'
-      %td.text-center= 6000
+      -# %td.text-center= 6000
       %td= 'AG | Benji'
       %td.text-center
         %div
@@ -71,7 +71,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Crash').try(:id), 'data-component'=>'player'}
       %td.text-center= '6.'
-      %td.text-center= 5000
+      -# %td.text-center= 5000
       %td= 'BG | Crash'
       %td.text-center
         %div
@@ -82,7 +82,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Silent Kepler').try(:id), 'data-component'=>'player'}
       %td.text-center= '7.'
-      %td.text-center= 4000
+      -# %td.text-center= 4000
       %td= 'Silent Kepler'
       %td.text-center
         %div
@@ -93,7 +93,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'CrzyShroom').try(:id), 'data-component'=>'player'}
       %td.text-center= '8.'
-      %td.text-center= 3000
+      -# %td.text-center= 3000
       %td= 'SoS | CrzyShroom'
       %td.text-center
         %div
@@ -104,7 +104,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Sylph').try(:id), 'data-component'=>'player'}
       %td.text-center= '9.'
-      %td.text-center= 2000
+      -# %td.text-center= 2000
       %td= 'QMG | Sylph'
       %td.text-center
         %div
@@ -115,7 +115,7 @@
       -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
     %tr{'data-id': Player.find_by(gamer_tag: 'Olivia').try(:id), 'data-component'=>'player'}
       %td.text-center= '10.'
-      %td.text-center= 1000
+      -# %td.text-center= 1000
       %td= 'Olivia'
       %td.text-center
         %div
