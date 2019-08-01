@@ -6,7 +6,7 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      The date of the external tournament "<%= @tournament.name %>" couldn't be sniffed out correctly.
+      The date of the external tournament "<%= @tournament.name %>" couldn't be extracted correctly.
     </p>
     <p>
       It was temporarily added on the following date: <strong><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></strong>

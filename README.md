@@ -21,6 +21,9 @@ Stage commands:
 - heroku run rails c --remote stage
 - heroku restart --remote stage
 
+- heroku run rake tournaments_crawler:all --remote stage
+- heroku run rake results_crawler:all --remote stage
+
 Prod commands:
 - git push prod master
 - heroku logs --tail --remote prod
@@ -28,15 +31,8 @@ Prod commands:
 - heroku run rails c --remote prod
 - heroku restart --remote prod
 
-- heroku run rake sniffer:all
-- (heroku run rake sniffer:braacket)
-- (heroku run rake sniffer:smash_gg)
-- (heroku run rake sniffer:toornament)
-
-- heroku run rake resultsSniffer:all
-- (heroku run rake resultsSniffer:createTournaments)
-- (heroku run rake resultsSniffer:findPlayers)
-- (heroku run rake resultsSniffer:createMatches)
+- heroku run rake tournaments_crawler:all --remote prod
+- heroku run rake results_crawler:all --remote prod
 
 Links:
 - https://ssb-tournament-manager.herokuapp.com
