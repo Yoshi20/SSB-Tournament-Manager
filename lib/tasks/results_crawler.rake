@@ -125,6 +125,10 @@ namespace :results_crawler do
         puts "\n#{t.name} is an internal tournament -> continue with the next tournament"
         next  # continue
       end
+      if t.external_registration_link.nil?
+        puts "\n#{t.name}s external registration link is nil! -> continue with the next tournament"
+        next  # continue
+      end
       # find all players per tournament
       players = []
       link = t.external_registration_link + '/player?rows=200'
@@ -187,6 +191,10 @@ namespace :results_crawler do
       end
       if tournament.subtype == 'internal'
         puts 'this tournament is an internal tournament -> continue with the next tournament'
+        next  # continue
+      end
+      if t.external_registration_link.nil?
+        puts "this tournaments external registration link is nil! -> continue with the next tournament"
         next  # continue
       end
       doc = Nokogiri::HTML(open(t.external_registration_link + '/match'))
@@ -265,6 +273,10 @@ namespace :results_crawler do
       end
       if tournament.subtype == 'internal'
         puts 'this tournament is an internal tournament -> continue with the next tournament'
+        next  # continue
+      end
+      if t.external_registration_link.nil?
+        puts "this tournaments external registration link is nil! -> continue with the next tournament"
         next  # continue
       end
       doc = Nokogiri::HTML(open(t.external_registration_link + '/ranking?rows=200'))
