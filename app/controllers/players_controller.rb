@@ -95,6 +95,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  # GET /players/unregistered
+  def unregistered
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
