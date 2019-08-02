@@ -5,9 +5,9 @@ module TournamentsHelper
   end
 
   def tournament_majors
-    ["Blick Esports Masters", "Colosseum Basel", "Fantasy Basel",
-      "Japan Impact", "PK Bern", "Polymanga", "Saint Smash", "SwissGeek",
-      "TheReset", "UltiBaits", "UltiMelt", "UltiMon", "University of Smash"]
+    ["Colosseum Basel", "Fantasy Basel", "Japan Impact", "PK Bern", "Polymanga",
+      "Saint Smash", "SwissGeek", "TheReset", "UltiBaits", "UltiMelt",
+      "UltiMon", "University of Smash"]
     # Unspecific tournaments:
     # Smash Temple
     # Smash Ultimate Release Tournament Card Tower Solothurn
