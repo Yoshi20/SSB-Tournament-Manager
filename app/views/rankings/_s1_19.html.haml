@@ -10,8 +10,8 @@
       -# %th.text-center Points
       %th Gamer tag
       %th.text-center Mains
-      -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
-      -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+      %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+      %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
 
   %tbody.table-content.with-show
     %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
@@ -23,8 +23,8 @@
           - ['meta_knight', 'wolf', 'little_mac'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 11
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 83.17 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Deepfreeze').try(:id), 'data-component'=>'player'}
       %td.text-center= '2.'
       -# %td.text-center= 9000
@@ -34,8 +34,8 @@
           - ['falco'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 11
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 80 %
     %tr{'data-id': Player.find_by(gamer_tag: ' Smuff').try(:id), 'data-component'=>'player'}
       %td.text-center= '3.'
       -# %td.text-center= 8000
@@ -45,8 +45,8 @@
           - ['greninja', 'captain_falcon'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 8
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 84.85 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Severe Calamari').try(:id), 'data-component'=>'player'}
       %td.text-center= '4.'
       -# %td.text-center= 7000
@@ -56,8 +56,8 @@
           - ['wolf'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 3
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 82.14 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Benji').try(:id), 'data-component'=>'player'}
       %td.text-center= '5.'
       -# %td.text-center= 6000
@@ -67,8 +67,8 @@
           - ['wario'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 12
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 73.56 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Crash').try(:id), 'data-component'=>'player'}
       %td.text-center= '6.'
       -# %td.text-center= 5000
@@ -78,8 +78,8 @@
           - ['wii_fit_trainer', 'bowser'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 8
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 74.55 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Silent Kepler').try(:id), 'data-component'=>'player'}
       %td.text-center= '7.'
       -# %td.text-center= 4000
@@ -89,8 +89,8 @@
           - ['snake'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 5
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 77.14 %
     %tr{'data-id': Player.find_by(gamer_tag: 'CrzyShroom').try(:id), 'data-component'=>'player'}
       %td.text-center= '8.'
       -# %td.text-center= 3000
@@ -100,8 +100,8 @@
           - ['wolf'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 11
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 71.76 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Sylph').try(:id), 'data-component'=>'player'}
       %td.text-center= '9.'
       -# %td.text-center= 2000
@@ -111,8 +111,8 @@
           - ['yoshi', 'ganondorf', 'link'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 3
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 76 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Olivia').try(:id), 'data-component'=>'player'}
       %td.text-center= '10.'
       -# %td.text-center= 1000
@@ -122,8 +122,8 @@
           - ['wii_fit_trainer', 'duck_hunt'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-      -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 12
+      %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell 74.47 %
 
 %h2
   Counted tournaments:
