@@ -23,6 +23,10 @@ class Tournament < ApplicationRecord
     self.date < Time.now
   end
 
+  def has_pools?
+    self.number_of_pools > 0
+  end
+
   def game_stations_count
     gs_count = 0
     self.registrations.where('game_stations is not NULL').each do |r|

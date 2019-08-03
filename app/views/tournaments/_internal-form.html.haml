@@ -23,8 +23,7 @@
       = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Tournament ...' : @tournament.name)
     .form-group
       = f.label :location
-      %em
-        = '(separate new lines with commas)'
+      %em= '(separate new lines with commas)'
       = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'locality, address, postcode, floor' : @tournament.location)
     .form-group
       = f.label :registration_fee, 'Registration fee [CHF]'
@@ -38,6 +37,10 @@
     .form-group
       = f.label :total_needed_game_stations
       = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
+    .form-group
+      = f.label :number_of_pools
+      %em= '(if > 0 it\'s a two-stage tournament)'
+      = f.number_field :number_of_pools, class: 'form-control', min: 0, value: (@tournament.new_record? ? 0 : @tournament.number_of_pools)
     .form-group
       = f.label :host_username, 'Hostname'
       = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)

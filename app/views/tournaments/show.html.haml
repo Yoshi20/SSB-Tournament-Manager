@@ -201,7 +201,7 @@
                   %th{style: 'text-align: center;'}
                     %h3 Fee paid?
             %tbody.table-content.with-show
-              - @tournament.players.includes(:registrations).order('registrations.created_at').each do |player, i|
+              - @tournament.players.includes(:user).order('registrations.created_at').each do |player, i|
                 - mail_string = mail_string + player.user.email + '; '
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
@@ -240,8 +240,8 @@
               %p
                 - @tournament.players.sort_by do |p|
                   - p.seed_points
-                - end.reverse.each do |p|
-                  = "#{p.gamer_tag}, "
+                - end.reverse.each_with_index do |p, i|
+                  = "#{i+1}. #{p.gamer_tag}, "
 
         - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
           .tournament__players

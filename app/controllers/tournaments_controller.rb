@@ -147,7 +147,6 @@ class TournamentsController < ApplicationController
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
           # also update weekly name if city was edited
           if @tournament.subtype == 'weekly' && @tournament.city != oldcity
-            puts 'blup'
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
             unless @tournament.save
               format.html { render :edit }
@@ -347,6 +346,7 @@ class TournamentsController < ApplicationController
           ct.name = @tournament.name #'SSBU Bern KW1' or 'PK Bern #1'
           ct.url = helpers.valid_challonge_url(@tournament.name) #'ssbu_bern_kw1' or 'pk_bern_1'
           ct.tournament_type = 'double elimination'
+          ct.group_stages_enabled = @tournament.has_pools?
           ct.game_name = 'Super Smash Bros. Ultimate'
           ct.description = @tournament.description
           if ct.save == false
@@ -354,19 +354,52 @@ class TournamentsController < ApplicationController
           end
 
           # sort the participants by the best player
-          seeded_participants = @tournament.players.sort_by do |p|
+          seeded_participants_array = @tournament.players.sort_by do |p|
             p.seed_points
-          end.reverse
+          end.reverse.map { |p| p.gamer_tag }
+
+          # change the order if there are pools
+          if @tournament.has_pools?
+            num_of_pools = @tournament.number_of_pools
+            players_per_pool = (seeded_participants_array.size.to_f/num_of_pools).round
+            pools_hash = Hash.new
+            num_of_pools.times do |n|
+              pools_hash[n] = Array.new
+            end
+            i = 0
+            (players_per_pool.to_f/2).round.times do
+              num_of_pools.times do |n|
+                pools_hash[n%num_of_pools] << seeded_participants_array[i]
+                i += 1
+              end
+              num_of_pools.times do |n|
+                pools_hash[(num_of_pools-1-n)%num_of_pools] << seeded_participants_array[i]
+                i += 1
+              end
+            end
+            seeded_participants_array = []
+            num_of_pools.times do |n|
+              seeded_participants_array += pools_hash[n]
+              if seeded_participants_array.include?(nil) && n != (num_of_pools-1)
+                seeded_participants_array.pop # remove the nil at the end
+                seeded_participants_array << pools_hash[(num_of_pools-1)].pop # add the last player
+              end
+            end
+          end
 
           # add the participants to the challonge tournament
-          seeded_participants.each do |p|
-            Challonge::Participant.create(:name => p.gamer_tag, :tournament => ct)
+          seeded_participants_array.each do |p|
+            Challonge::Participant.create(:name => p, :tournament => ct)
           end
 
           @tournament.setup = true
           @tournament.challonge_tournament_id = ct.id
           if @tournament.save
-            redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+            if @tournament.has_pools?
+              redirect_to @tournament, notice: "Tournament was successfully set up. This is a two-stage tournament -> Check out the preferences on challonge.com to configure your pools."
+            else
+              redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+            end
           else
             redirect_to @tournament, alert: "Tournament couldn't be set up."
           end
@@ -555,7 +588,7 @@ class TournamentsController < ApplicationController
         :host_username, :setup, :started, :finished, :active, :created_at,
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations,
-        :is_registration_allowed)
+        :is_registration_allowed, :number_of_pools)
     end
 
     def set_challonge_username_and_api_key

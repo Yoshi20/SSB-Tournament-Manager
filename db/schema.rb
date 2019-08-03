@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_231800) do
+ActiveRecord::Schema.define(version: 2019_08_03_133700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_231800) do
     t.integer "total_needed_game_stations"
     t.integer "min_needed_registrations"
     t.boolean "is_registration_allowed", default: true
+    t.integer "number_of_pools", default: 0
   end
 
   create_table "users", force: :cascade do |t|
