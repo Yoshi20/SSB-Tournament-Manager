@@ -20,14 +20,17 @@ td.admin-list-actions {
 
 .admin-actions {
   display: flex;
-
   position: absolute;
   top: 1rem;
-  right: 3rem;
+  right: 0rem;
   .admin-actions__link {
     margin-right: 0.5rem;
   }
   .mobile_number {
     margin-top: 4px;
   }
+}
+
+.right_3rem {
+  right: 3rem;
 }

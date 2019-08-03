@@ -233,6 +233,16 @@
                       - elsif player_registration.paid_fee.present?
                         .material-icons= 'done'
 
+        .tournament__players.hidden
+          .row
+            .col
+              %h2 Hidden seeded player list
+              %p
+                - @tournament.players.sort_by do |p|
+                  - p.seed_points
+                - end.reverse.each do |p|
+                  = "#{p.gamer_tag}, "
+
         - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
           .tournament__players
             .row.game-stations-text

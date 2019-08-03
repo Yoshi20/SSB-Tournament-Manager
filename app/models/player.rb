@@ -21,6 +21,7 @@ class Player < ApplicationRecord
   def seed_points
     seed_points = (self.participations == 0 ? 0 : self.points.to_f/self.participations)
     seed_points += self.win_loss_ratio
+    seed_points += self.participations
     seed_points += self.self_assessment.to_f/5
     seed_points += self.tournament_experience.to_f/10
     return seed_points

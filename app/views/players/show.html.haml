@@ -163,7 +163,7 @@
                   %strong= "#{player_rank}"
 
   - if current_user.present?
-    .admin-actions
+    .admin-actions.right_3rem
       -if current_user.super_admin? or @player.user == current_user
         .admin-actions__link
           = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
