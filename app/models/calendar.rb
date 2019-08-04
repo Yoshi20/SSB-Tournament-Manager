@@ -21,7 +21,7 @@ class Calendar
         editable:  false,
         className: 'calendar-tournament',
         color:     get_event_color(tournament, current_user),
-        url:       tournament.external_registration_link || "/tournaments/#{tournament.id}",
+        url:       tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}",
       }
     end
 
