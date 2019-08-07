@@ -65,7 +65,7 @@ class PlayersController < ApplicationController
         # update main_characters
         @player.main_characters.clear
         player_params[:main_characters].split(',').each do |char|
-          @player.main_characters << char.strip.downcase.gsub(' ', '_')
+          @player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
         end
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag

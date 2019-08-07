@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       player.self_assessment = params[:self_assessment] || 0
       player.tournament_experience = params[:tournament_experience] || 0
       params[:main_characters].split(',').each do |char|
-        player.main_characters << char.strip.downcase.gsub(' ', '_')
+        player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
       end
       player.comment = params[:comment]
       player.best_rank = 0
