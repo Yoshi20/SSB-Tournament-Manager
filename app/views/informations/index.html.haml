@@ -35,9 +35,10 @@
       .col
         %h2 Tournaments
         %p
-          With the help of self written web crawler programs
-          = link_to '(wikipedia)', 'https://wikipedia.org/wiki/Web_crawler', target: '_blank'
-          SwissSmash is able to find and list all the SSBU tournaments in switzerland that were added to either one of the following sites:
+          With the help of a self written
+          = link_to 'web crawler', 'https://wikipedia.org/wiki/Web_crawler', target: '_blank'
+          program, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in switzerland
+          that were added to either one of the following sites:
         %ul
           %li= link_to 'smash.gg', 'https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}', target: '_blank'
           %li= link_to 'braacket.com', 'https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1', target: '_blank'
@@ -72,6 +73,16 @@
           %li Enough lagless setups with decent sitting opportunities
           %li Must be held on a weekend and with reasonable start and end times
           %li Weeklies do not count to the PR
+
+    .row
+      .col
+        %h2 Results
+        %p
+          Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, swisssmash.ch is also able to get the results from all other tournaments in switzerland.
+          %br
+          The only condition is, that the tournament was imported on braacket.com in the
+          = link_to 'Swiss Ultimate Tournaments', 'https://braacket.com/league/ALLOFTHEM/tournament?rows=200', target: '_blank'
+          league.
 
     .row
       .col
