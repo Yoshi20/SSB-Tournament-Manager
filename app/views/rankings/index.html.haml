@@ -72,7 +72,7 @@
             - else
               - results_sum = player.results_sum(params[:major] || params[:filter])
               - points = results_sum[0]
-              - participations = results_sum[1]
+              - participations = -results_sum[1]
               - win_loss_ratio = results_sum[2]
             - if participations > 0
               %tr{'data-id': player.id, 'data-component'=>'player'}

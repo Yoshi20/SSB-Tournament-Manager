@@ -41,9 +41,9 @@ class Player < ApplicationRecord
       end
     end
     if wins == 0 and losses == 0
-      return [points, participations, 0]
+      return [points, -participations, 0]
     else
-      return [points, participations, (wins.to_f/(wins+losses)*100).round(2)]
+      return [points, -participations, (wins.to_f/(wins+losses)*100).round(2)]
     end
   end
 
