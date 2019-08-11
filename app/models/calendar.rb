@@ -4,7 +4,7 @@ class Calendar
   class << self
 
     def full_calendar_events(current_user)
-      tournaments = Tournament.for_calendar
+      tournaments = Tournament.for_calendar.includes(:players)
       tournaments.map do |tournament|
         full_calendar_event(tournament, current_user)
       end.to_json
