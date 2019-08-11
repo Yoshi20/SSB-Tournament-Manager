@@ -35,4 +35,8 @@ class Tournament < ApplicationRecord
     gs_count
   end
 
+  def host
+    User.find_by(username: self.host_username) if self.host_username.present?
+  end
+
 end

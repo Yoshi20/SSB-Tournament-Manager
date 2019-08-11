@@ -127,16 +127,14 @@
                     = @tournament.total_needed_game_stations.to_i
                 %span
                   Setups
-      - if @tournament.host_username.present?
+      - host_user = @tournament.host
+      - if host_user.present? and host_user.player.present?
         .tournament__details
           .row
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  - if @host_player.present?
-                    = link_to @host_player.gamer_tag, @host_player
-                  - else
-                    = @tournament.host_username
+                  = link_to host_user.player.gamer_tag, host_user.player
                 %span
                   Host
       - if @tournament.is_registration_allowed

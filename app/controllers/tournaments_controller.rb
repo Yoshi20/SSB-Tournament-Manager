@@ -40,8 +40,6 @@ class TournamentsController < ApplicationController
     else
       @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - @tournament.game_stations_count if players_per_game_station.to_i > 0
     end
-    host_user = User.find_by(username: @tournament.host_username)
-    @host_player = host_user.player if host_user.present? and @tournament.host_username.present?
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
   end
 
@@ -460,12 +458,13 @@ class TournamentsController < ApplicationController
               match.challonge_match_id = ctm.id
               match.tournament_id = @tournament.id
               ctps.each do |ctp|
+                gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
                 if ctp.id == ctm.player1_id
-                  player = Player.find_by(gamer_tag: ctp.display_name)
+                  player = Player.find_by(gamer_tag: gamer_tag)
                   raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
                   match.player1_id = player.id
                 elsif ctp.id == ctm.player2_id
-                  player = Player.find_by(gamer_tag: ctp.display_name)
+                  player = Player.find_by(gamer_tag: gamer_tag)
                   raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
                   match.player2_id = player.id
                 end
@@ -478,7 +477,8 @@ class TournamentsController < ApplicationController
 
             # create results and update players
             ctps.each do |ctp|
-              player = Player.find_by(gamer_tag: ctp.display_name)
+              gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
+              player = Player.find_by(gamer_tag: gamer_tag)
               raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
               result = Result.new
               result.player = player
@@ -512,7 +512,7 @@ class TournamentsController < ApplicationController
               player.update_tournament_experience
 
               # updated raking_string on the tournament
-              ranking_string = "#{ctp.final_rank},#{ctp.display_name};"
+              ranking_string = "#{ctp.final_rank},#{gamer_tag};"
               @tournament.ranking_string += ranking_string
             end
           end
@@ -592,7 +592,12 @@ class TournamentsController < ApplicationController
     end
 
     def set_challonge_username_and_api_key
-      if current_user.challonge_username.present? and current_user.challonge_api_key.present?
+      host_user = @tournament.host
+      if host_user.present? and host_user.challonge_username.present? and host_user.challonge_api_key.present?
+        Challonge::API.username = host_user.challonge_username
+        Challonge::API.key = host_user.challonge_api_key
+        return true
+      elsif current_user.challonge_username.present? and current_user.challonge_api_key.present?
         Challonge::API.username = current_user.challonge_username
         Challonge::API.key = current_user.challonge_api_key
         return true
