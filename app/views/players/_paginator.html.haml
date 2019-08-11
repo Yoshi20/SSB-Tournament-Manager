@@ -1,0 +1,25 @@
+- if players.any? && players.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', players.total_pages
+      %li.left-arrow
+        - if players.current_page.present? && players.current_page > 1
+          = link_to players_path(order: params[:order], sort: params[:sort], page: players.current_page-1, anchor: anchor), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+
+      - (1..players.total_pages).each do |page|
+        %li{class: "#{"active" if page == players.current_page}"}= link_to page.to_s, players_path(order: params[:order], sort: params[:sort], page: page, anchor: anchor), value: page
+      %li.right-arrow
+        - if players.try(:current_page).present? && players.current_page < players.total_pages
+          = link_to players_path(order: params[:order], sort: params[:sort], page: players.current_page+1, anchor: anchor), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

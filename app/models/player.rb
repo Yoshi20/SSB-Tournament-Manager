@@ -10,6 +10,8 @@ class Player < ApplicationRecord
   validates :gamer_tag, presence: true
   validates :gamer_tag, uniqueness: true
 
+  MAX_PLAYERS_PER_PAGE = 50
+
   def win_loss_ratio
     if self.wins == 0 and self.losses == 0
       return 0

@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  require 'will_paginate/array'
+
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   before_action { @section = 'players' }
 
@@ -11,18 +13,24 @@ class PlayersController < ApplicationController
     if sort.present?
       case sort
       when 'win_loss_ratio'
-        @players = @players.sort_by do |p|
-          [p.win_loss_ratio, -p.created_at.to_i]
-        end.reverse
+        if params[:order] == "desc"
+          @players = @players.sort_by do |p|
+            [p.win_loss_ratio, -p.created_at.to_i]
+          end.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        else
+          @players = @players.sort_by do |p|
+            [p.win_loss_ratio, -p.created_at.to_i]
+          end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        end
       else
-        @players = @players.order("players.?".gsub('?', params[:sort]))
+        @players = @players.order("players.?".gsub('?', params[:sort])).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
       end
     else
-      @players = @players.order(created_at: :desc)
+      @players = @players.order(created_at: :desc).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     end
     # handle the order parameter
-    if params[:order] == "desc"
-      @players = @players.reverse
+    if params[:order] == "desc" and !@players.is_a?(Array)
+      @players = @players.reverse_order
     end
   end
 

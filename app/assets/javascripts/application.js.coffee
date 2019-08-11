@@ -38,11 +38,11 @@ document.addEventListener 'turbolinks:load', ->
       alert("Oops, unable to copy \"" + discordUserName + "\" to the clipboard")
     document.body.removeChild(dummyTextArea)
 
-  # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present
+  # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present and '/tournaments'
   $('.nav-link').on 'click', (e) ->
     window.history.replaceState(null, null, "#{$(this).attr('href')}")
     url = new URL(window.location.href)
-    if url.href.includes('page') and url.searchParams.get('page') != 1
+    if url.href.includes('page') and url.searchParams.get('page') != 1 and url.href.includes('tournaments')
       url.searchParams.set('page', 1)
       window.location.href = url.href
 

@@ -29,3 +29,18 @@
     }
   }
 }
+
+.pagination {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  li {
+    display: inline-block;
+    &.active {
+      font-weight: bold;
+    }
+    a:hover {
+      color: $color-red;
+    }
+  }
+}

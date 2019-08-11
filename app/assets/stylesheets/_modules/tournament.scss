@@ -9,22 +9,6 @@
   }
 }
 
-.tournament-list-footer {
-  .pagination {
-    text-align: center;
-    display: block;
-    li {
-      display: inline-block;
-      &.active {
-        font-weight: bold;
-      }
-      a:hover {
-        color: $color-red;
-      }
-    }
-  }
-}
-
 .tournament {
   .tournament__details {
     margin-bottom: 2rem;

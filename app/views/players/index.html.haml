@@ -21,7 +21,7 @@
           %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'XP', players_path(sort: 'tournament_experience', order: 'asc', anchor: 'stats')
           %th.text-center= link_to 'W/L', players_path(sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
-      %tbody.table-content.with-show
+      %tbody.table-content.with-show.player-list-body
         - if @players.any?
           - last_player_points = nil
           - @players.each_with_index do |player, i|
@@ -50,6 +50,9 @@
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'delete'
+
+    .player-list-footer
+      = render 'paginator', players: @players, anchor: 'stats'
 
   .tab-pane.fade#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
     %table.table.table-hover.table-borderless
@@ -91,3 +94,6 @@
                   .admin-list-actions__link
                     = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'delete'
+
+    .player-list-footer
+      = render 'paginator', players: @players, anchor: 'data'

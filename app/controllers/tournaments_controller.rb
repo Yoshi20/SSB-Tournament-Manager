@@ -6,27 +6,22 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @ongoing_tournaments = Tournament.active_2019.ongoing
-    if params[:filter].nil? or params[:filter] == 'all'
-      @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'external'
-      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'external').order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(subtype: 'external').order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'internal'
-      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'internal').order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(subtype: 'internal').order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif params[:filter] == 'weekly'
-      @tournaments = Tournament.active_2019.upcoming.where(subtype: 'weekly').order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(subtype: 'weekly').order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    elsif helpers.tournament_cities.include?(params[:filter].capitalize)
-      city = params[:filter].capitalize
-      @tournaments = Tournament.active_2019.upcoming.where(city: city).or(
-        Tournament.active_2019.upcoming.from_city(city)
-      ).order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-      @past_tournaments = Tournament.active_2019.past.where(city: city).or(
-        Tournament.active_2019.past.from_city(city)
-      ).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @ongoing_tournaments = Tournament.active_2019.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @past_tournaments = Tournament.active_2019.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    if params[:filter].present?
+      if helpers.tournament_cities.include?(params[:filter].capitalize)
+        city = params[:filter].capitalize
+        @tournaments = @tournaments.where(city: city).or(
+          @tournaments.from_city(city)
+        )
+        @past_tournaments = @past_tournaments.where(city: city).or(
+          @past_tournaments.from_city(city)
+        )
+      else  # 'weekly', 'internal' or 'external'
+        @tournaments = @tournaments.where(subtype: params[:filter])
+        @past_tournaments = @past_tournaments.where(subtype: params[:filter])
+      end
     end
   end
 
