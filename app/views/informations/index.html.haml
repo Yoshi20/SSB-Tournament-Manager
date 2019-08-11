@@ -14,7 +14,52 @@
   .tab-pane.fade.show.active#general{role: 'tabpanel', 'aria-labelledby'=>'general-tab'}
     .row
       .col
-        %p Here you'll find some general information concerning the SwissSmash scene
+        %p
+          Here you'll find some general information about
+          = link_to 'swisssmash.ch', '/'
+          and the SwissSmash scene.
+
+    .row
+      .col
+        %h2 Swisssmash.ch
+        %p
+          This web application/site was primarly created to give an overview over the Super Smash Bros. scene in switzerland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.
+          %br
+          %br
+          It shall also present an entry point for new players to find their respective local smash community.
+          %br
+          %br
+          In the meantime it now also provides quite a big list of swiss smashers with relevant stats, player data and rankings.
+
+    .row
+      .col
+        %h2 Tournaments
+        %p
+          With the help of self written web crawler programs
+          = link_to '(wikipedia)', 'https://wikipedia.org/wiki/Web_crawler', target: '_blank'
+          SwissSmash is able to find and list all the SSBU tournaments in switzerland that were added to either one of the following sites:
+        %ul
+          %li= link_to 'smash.gg', 'https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}', target: '_blank'
+          %li= link_to 'braacket.com', 'https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1', target: '_blank'
+          %li= link_to 'toornament.com', 'https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming', target: '_blank'
+
+    .row
+      .col
+        %h2 Calendar
+        %p
+          The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.
+          %br
+          It distinguishes between the following tournament types:
+        %ul
+          %span.circle{style: "background: #61bf9b;"}
+          %span Weekly (on swisssmash.ch created weekly tournament)
+          %br
+          %span.circle{style: "background: orchid;"}
+          %span Internal (on swisssmash.ch created tournament)
+          %br
+          %span.circle{style: "background: cornflowerblue;"}
+          %span External (on an external site created tournament)
+
 
     .row
       .col
@@ -38,22 +83,30 @@
       .col
         .img-responsive
           = link_to image_tag('Discord-Logo_Wordmark-Black.svg', height: '30%', width: '30%'), 'https://discord.gg/wA89CyA', target: '_blank'
-        = 'Join us on'
+        Join us on
         %strong= link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
-        = 'if you want to stay up-to-date with the Swiss Smash Community.'
+        if you want to stay up-to-date with the Swiss Smash Community.
+
 
   .tab-pane.fade.show#tournament-manager{role: 'tabpanel', 'aria-labelledby'=>'tournament-manager-tab'}
     .row
       .col
-        %p Here you'll find some information concerning the SwissSmash Tournament Manager
+        %p Here you'll find some information concerning the SwissSmash Tournament Manager.
+
 
     .row
       .col
-        %h2
-          = 'Ranking system'
+        %h2 Bracket tool
         %p
-          = 'Regardless of the number of participants per tournament,'
-          = 'the players rank at the end of a tournament decides the amount of points he or she receives.'
+          Because of its free, lagless and easy to use brackets and API, the SwissSmash tournament manager uses
+          = link_to 'Challonge', 'https://challonge.com/', target: '_blank'
+          for now.
+
+    .row
+      .col
+        %h2 Ranking system
+        %p Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives.
+
     .row
       .col
         %table.table.table-hover.table-borderless
@@ -98,15 +151,14 @@
 
     .row.mt-3
       .col
-        %h2
-          = 'Match seeding'
+        %h2 Bracket pre seeding
         %p
-          = 'The initial seeding is done by providing the Challonge Tournament Manager a player list sorted by skill:'
+          The initial seeding is done by providing the Challonge Tournament Manager a player list sorted by skill:
           %br
-          %i= 'player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10'
+          %div{style: 'margin-left: 20px;'}
+            %i player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10
           %br
-          = 'The final seeding is done manually by a TO or his/her representatives.'
-          %br
+          The final seeding is done manually by a TO or his/her representatives.
 
     -# .row.mt-3
     -#   .col
@@ -148,7 +200,7 @@
 
     .row.mt-3
       .col
-        %h2= 'Tournament organiser'
+        %h2 Tournament organiser
         %p
-          = 'Are you organising tournaments yourself and would like to use the SwissSmash Tournament Manager? Just let me know'
+          Are you organising tournaments yourself and would like to use the SwissSmash Tournament Manager? Just let me know
           = mail_to 'admin@swisssmash.ch', 'via email.', subject: 'I would like to be an administrator!', body: "Hi SwissSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
