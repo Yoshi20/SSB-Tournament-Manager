@@ -58,6 +58,8 @@
       %tbody.table-content.with-show
         - if @players.any?
           - last_player_points = nil
+          - page_multiplicator = Player::MAX_PLAYERS_PER_PAGE*params[:page].to_i
+          - page_multiplicator -= Player::MAX_PLAYERS_PER_PAGE if params[:page].to_i != 0
           - @players.each_with_index do |player, i|
             - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'seed_points')
               - if params[:filter] == 'seed_points'
@@ -74,9 +76,9 @@
               - points = results_sum[0]
               - participations = -results_sum[1]
               - win_loss_ratio = results_sum[2]
-            - if participations > 0
+            - if participations > 0 or params[:filter] == 'seed_points'
               %tr{'data-id': player.id, 'data-component'=>'player'}
-                %td.text-center= (last_player_points == points) ? '' : "#{i+1}."
+                %td.text-center= (last_player_points == points) ? '' : "#{page_multiplicator+i+1}."
                 %td.text-center= points
                 - last_player_points = points
                 %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
@@ -99,6 +101,9 @@
                     .admin-list-actions__link
                       = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                         %span.material-icons.admin-actions__link__icon= 'delete'
+
+    .ranking-list-footer
+      = render 'paginator', players: @players, anchor: 'points'
 
     - if !@players.any?
       %p{style: 'text-align: center;'}
