@@ -14,6 +14,11 @@
   %li.nav-item
     %a#past-tab.nav-link{'data-toggle'=>'tab', href: '#past', role: 'tab', 'aria-controls'=>'all'}
       = 'Past'
+  - if @inactive_tournaments.present? and @inactive_tournaments.any?
+    %li.nav-item
+      %a#inactive-tab.nav-link{'data-toggle'=>'tab', href: '#inactive', role: 'tab', 'aria-controls'=>'all'}
+        = 'Deleted'
+        %i{style: 'font-size: 10px;'}= '(admins)'
 
 .tab-content#tournaments-tabs-content
   .tab-pane.fade#ongoing{role: 'tabpanel', 'aria-labelledby'=>'ongoing-tab'}
@@ -65,6 +70,18 @@
 
     .tournament-list-footer
       = render 'paginator', tournaments: @past_tournaments, anchor: 'past'
+
+  - if @inactive_tournaments.present? and @inactive_tournaments.any?
+    .tab-pane.fade#inactive{role: 'tabpanel', 'aria-labelledby'=>'inactive-tab'}
+      %table.table.table-hover.table-tournaments
+        %thead.table-header
+          = render "tournament_list_header"
+
+        %tbody.with-show.tournament-list-body
+          = render @inactive_tournaments
+
+      .tournament-list-footer
+        = render 'paginator', tournaments: @inactive_tournaments, anchor: 'inactive'
 
 - if current_user.present? and current_user.admin?
   .admin-actions

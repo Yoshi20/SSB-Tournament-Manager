@@ -23,6 +23,9 @@ class TournamentsController < ApplicationController
         @past_tournaments = @past_tournaments.where(subtype: params[:filter])
       end
     end
+    if current_user.present? and current_user.super_admin?
+      @inactive_tournaments = Tournament.where(active: false).order(date: :desc).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    end
   end
 
   # GET /tournaments/1
