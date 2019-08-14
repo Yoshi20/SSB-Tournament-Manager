@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
   resources :users, only: [:index, :update, :destroy]
 
+  mount Thredded::Engine => '/forum'
+
   root to: "welcome#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
