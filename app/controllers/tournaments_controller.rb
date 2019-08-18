@@ -9,7 +9,15 @@ class TournamentsController < ApplicationController
     @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     @ongoing_tournaments = Tournament.active_2019.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     @past_tournaments = Tournament.active_2019.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    if params[:filter].present?
+    # handle search parameter
+    if params[:search].present?
+      @tournaments = @tournaments.search(params[:search])
+      @past_tournaments = @past_tournaments.search(params[:search])
+      if @tournaments.empty? and @past_tournaments.empty?
+        flash.now[:alert] = "There were no tournaments found with this search query."
+      end
+    end
+    if params[:filter].present? and params[:filter] != 'all'
       if helpers.tournament_cities.include?(params[:filter].capitalize)
         city = params[:filter].capitalize
         @tournaments = @tournaments.where(city: city).or(

@@ -15,6 +15,16 @@ class Tournament < ApplicationRecord
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 
+  def self.search(search)
+    if search
+      sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
+      # name location city ranking_string
+      where("name ILIKE ? or location ILIKE ? or city ILIKE ?", "%#{sanitizedSearch}%", "%#{sanitizedSearch}%", "%#{sanitizedSearch}%")
+    else
+      :all
+    end
+  end
+
   def cancelled?
     !self.started and self.finished
   end

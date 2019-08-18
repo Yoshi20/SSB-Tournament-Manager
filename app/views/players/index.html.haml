@@ -14,9 +14,9 @@
 .row{style: 'margin-top: -15px;'}
   .col
     .search-form.form-group
-      = form_tag players_path, method:'get', class: 'form-inline' do
-        = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search'
-        = button_tag type: 'submit', class: 'btn btn-ghost' do
+      = form_tag players_path, method: 'get', class: 'form-inline' do
+        = search_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search'
+        = button_tag type: 'submit', class: 'btn btn-ghost', name: nil do
           %span.material-icons= 'search'
 
 .tab-content#players-tabs-content
