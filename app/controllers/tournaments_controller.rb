@@ -19,7 +19,7 @@ class TournamentsController < ApplicationController
       if @tournaments.empty? and @past_tournaments.empty?
         flash.now[:alert] = "There were no tournaments found with this search query."
       end
-      @inactive_tournaments = @inactive_tournaments.search(params[:search])
+      @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
     if params[:filter].present? and params[:filter] != 'all'
       if helpers.tournament_cities.include?(params[:filter].capitalize)
