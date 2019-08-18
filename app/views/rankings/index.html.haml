@@ -52,8 +52,8 @@
           %th.text-center Points
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -88,8 +88,8 @@
                       - player.main_characters[0...3].each do |char|
                         - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
                           = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-                %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
-                %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+                %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+                %td.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
                   = win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
 
                 - if current_user.present? and current_user.super_admin?

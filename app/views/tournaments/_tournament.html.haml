@@ -24,7 +24,7 @@
       - else
         = tournament.city || '-'
 
-    %td.text-center.d-none.d-md-table-cell
+    %td.text-center.d-none.d-sm-table-cell.d-md-table-cell
       - if tournament.registration_fee.present?
         - if tournament.registration_fee%1 != 0  # check if it's a float
           = tournament.registration_fee
@@ -34,7 +34,7 @@
       - else
         = '-'
 
-    %td.text-center.d-none.d-md-table-cell
+    %td.text-center.d-none.d-sm-table-cell.d-md-table-cell
       - if tournament.total_seats.nil?
         = '-'
       - else
