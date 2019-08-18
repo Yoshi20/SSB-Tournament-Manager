@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_locale
   before_action :authenticate_user!, except: [:index, :show, :location]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
@@ -50,5 +51,10 @@ class ApplicationController < ActionController::Base
   def get_next_tournaments
     @nextTournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(10)
   end
+
+  private
+    def set_locale
+      I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+    end
 
 end

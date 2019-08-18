@@ -105,3 +105,6 @@ gem 'challonge-api'
 
 # See https://github.com/mislav/will_paginate
 gem 'will_paginate', '~> 3.1.0'
+
+# See https://github.com/iain/http_accept_language
+gem 'http_accept_language'

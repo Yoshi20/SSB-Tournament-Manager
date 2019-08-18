@@ -122,6 +122,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    http_accept_language (2.1.1)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     icalendar (2.5.3)
@@ -286,6 +287,7 @@ DEPENDENCIES
   figaro
   fullcalendar-rails
   haml-rails
+  http_accept_language
   icalendar
   jbuilder (~> 2.8)
   jquery-rails
