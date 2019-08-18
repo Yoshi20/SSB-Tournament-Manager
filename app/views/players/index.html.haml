@@ -10,16 +10,25 @@
     %a#data-tab.nav-link{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
       = 'Data'
 
+-# search form
+.row{style: 'margin-top: -15px;'}
+  .col
+    .search-form.form-group
+      = form_tag players_path, method:'get', class: 'form-inline' do
+        = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search'
+        = button_tag type: 'submit', class: 'btn btn-ghost' do
+          %span.material-icons= 'search'
+
 .tab-content#players-tabs-content
   .tab-pane.fade.show.active#stats{role: 'tabpanel', 'aria-labelledby'=>'stats-tab'}
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to 'Mains', players_path(sort: 'main_characters', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Self assessment', players_path(sort: 'self_assessment', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'XP', players_path(sort: 'tournament_experience', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to 'W/L', players_path(sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
+          %th= link_to 'Gamer tag', players_path(search: params[:search], sort: 'gamer_tag', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to 'Mains', players_path(search: params[:search], sort: 'main_characters', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Self assessment', players_path(search: params[:search], sort: 'self_assessment', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'XP', players_path(search: params[:search], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to 'W/L', players_path(search: params[:search], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
       %tbody.table-content.with-show.player-list-body
         - if @players.any?
@@ -58,11 +67,11 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'data')
-          %th.text-center= link_to 'Canton', players_path(sort: 'canton', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Age', players_path(sort: 'birth_year', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Gender', players_path(sort: 'gender', order: 'asc', anchor: 'data')
-          %th.text-center= link_to 'Comment', players_path(sort: 'comment', order: 'desc', anchor: 'data')
+          %th= link_to 'Gamer tag', players_path(search: params[:search], sort: 'gamer_tag', order: 'asc', anchor: 'data')
+          %th.text-center= link_to 'Canton', players_path(search: params[:search], sort: 'canton', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Age', players_path(search: params[:search], sort: 'birth_year', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Gender', players_path(search: params[:search], sort: 'gender', order: 'asc', anchor: 'data')
+          %th.text-center= link_to 'Comment', players_path(search: params[:search], sort: 'comment', order: 'desc', anchor: 'data')
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -97,3 +106,7 @@
 
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'data'
+
+  - if !@players.any?
+    %p{style: 'text-align: center;'}
+      No players found

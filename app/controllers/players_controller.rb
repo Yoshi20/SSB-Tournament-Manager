@@ -8,6 +8,13 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = Player.all
+    # handle search parameter
+    if params[:search].present?
+      @players = @players.search(params[:search])
+      if @players.empty?
+        flash.now[:alert] = "There were no players found with this search query."
+      end
+    end
     # handle sort parameter
     sort = params[:sort]
     if sort.present?

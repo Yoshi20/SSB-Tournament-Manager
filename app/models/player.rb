@@ -12,6 +12,15 @@ class Player < ApplicationRecord
 
   MAX_PLAYERS_PER_PAGE = 50
 
+  def self.search(search)
+    if search
+      sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
+      where("gamer_tag ILIKE ? or prefix ILIKE ?", "%#{sanitizedSearch}%", "%#{sanitizedSearch}%")
+    else
+      :all
+    end
+  end
+
   def win_loss_ratio
     if self.wins == 0 and self.losses == 0
       return 0
