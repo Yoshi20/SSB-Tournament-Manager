@@ -60,7 +60,7 @@
   }
   .navbar-main {
     .nav-item {
-      .nav-link {
+      .nav-link, .locales {
         color: $color-white;
         font-weight: 500;
       }
@@ -68,6 +68,14 @@
         .nav-link {
           text-decoration: underline;
         }
+      }
+    }
+    .locales-list {
+      color: $color-white;
+      margin-top: 8px;
+      margin-left: 20px;
+      @media screen and (max-width: 991px) {
+        margin-left: 0px;
       }
     }
   }

@@ -35,8 +35,12 @@
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
         = link_to t('navigation.information'), informations_path, class: 'nav-link'
 
-      .locales.nav-link
-        = "#{link_to 'en', '?locale=en', class: 'nav-link'}/#{link_to 'de', '?locale=de', class: 'nav-link'}/#{link_to 'fr', '?locale=fr', class: 'nav-link'}".html_safe
+      %li.nav-item.locales-list
+        = link_to 'en', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"
+        = '/'
+        = link_to 'de', url_for(locale: 'de'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'de' ? 'underline' : ''}"
+        = '/'
+        = link_to 'fr', url_for(locale: 'fr'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'fr' ? 'underline' : ''}"
 
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
