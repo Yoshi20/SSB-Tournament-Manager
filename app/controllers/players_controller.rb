@@ -95,7 +95,7 @@ class PlayersController < ApplicationController
         # update alternative_gamer_tags if it was changed
         alts = ""
         @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
-        if params[:alternative_gamer_tags] != alts
+        if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
           params[:alternative_gamer_tags].split(',').each do |alt|
             AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip)
           end
