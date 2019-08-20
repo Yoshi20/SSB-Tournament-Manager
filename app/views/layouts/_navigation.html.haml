@@ -35,6 +35,9 @@
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
         = link_to t('navigation.information'), informations_path, class: 'nav-link'
 
+      .locales.nav-link
+        = "#{link_to 'en', '?locale=en', class: 'nav-link'}/#{link_to 'de', '?locale=de', class: 'nav-link'}/#{link_to 'fr', '?locale=fr', class: 'nav-link'}".html_safe
+
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
         %li.nav-item.dropdown
