@@ -24,6 +24,19 @@ en:
       mail_subject: "I faced a problem or have a question!"
       mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"
 
+  partials:
+    events: "Next Tournamets"
+    login:
+      title: "Login"
+      username: "Username"
+      password: "Password"
+      log_in: "Log in"
+      sign_up: "Sign up"
+    players:
+      title: "Top Players"
+      player: "Player"
+      w_l: "W/L"
+
   welcome:
     title: "Welcome to SwissSmash.ch"
     body1: "If you want to stay up-to-date with the Swiss Smash Community, join us on %{discord_link} and follow the Swiss Smash %{twitter_link} Account."

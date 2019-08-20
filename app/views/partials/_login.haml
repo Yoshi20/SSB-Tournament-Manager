@@ -4,16 +4,15 @@
       = form_tag session_path(:user), class: "form" do
         .modal-header
           .modal-title
-            %h3 Login
+            %h3= t('partials.login.title')
           %button.close{type: 'button', 'data-dismiss'=>'modal', 'aria-label'=>'close'}
             %span{'aria-hidden'=>'true'}
               &times;
         .modal-body
           .form-group
-            = text_field_tag "user[login]", "", class: "form-control", placeholder: "Username"
+            = text_field_tag "user[login]", "", class: "form-control", placeholder: t('partials.login.username')
           .form-group
-            = password_field_tag "user[password]", "", class: "form-control", placeholder: "Password"
+            = password_field_tag "user[password]", "", class: "form-control", placeholder: t('partials.login.password')
         .modal-footer
-          = submit_tag "Log in", class: "btn btn-sstm"
-          = link_to "Sign up", new_user_registration_path,  class: "btn btn-ghost"
-        
+          = submit_tag t('partials.login.log_in'), class: "btn btn-sstm"
+          = link_to t('partials.login.sign_up'), new_user_registration_path,  class: "btn btn-ghost"

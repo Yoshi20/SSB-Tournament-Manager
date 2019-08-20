@@ -1,11 +1,11 @@
 %h2.sidebar__title
-  Top Players
+  = t('partials.players.title')
 
 %table.table.table-hover.table-borderless
   %thead.table-header
     %tr
-      %th{colspan: '2'} Player
-      %th{style: 'text-align: center;'} W/L
+      %th{colspan: '2'}= t('partials.players.player')
+      %th{style: 'text-align: center;'}= t('partials.players.w_l')
 
   %tbody.table-content.with-show
     - if @topPlayers.any?
