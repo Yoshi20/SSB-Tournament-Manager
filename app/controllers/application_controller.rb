@@ -62,6 +62,7 @@ class ApplicationController < ActionController::Base
         I18n.locale = localeCookie
       else
         I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+        cookies.permanent[:locale] = I18n.locale.to_s
       end
     end
 

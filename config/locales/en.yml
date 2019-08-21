@@ -89,3 +89,15 @@ en:
       tournament_organiser_mail: "via email"
       tournament_organiser_mail_subject: "I would like to be an administrator!"
       tournament_organiser_mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+
+  calendar:
+    title: "Calendar"
+    color_legend:
+      past: "Past"
+      cancelled: "Cancelled"
+      ongoing: "Ongoing"
+      external: "External"
+      internal: "Internal"
+      internal_joined: "Internal joined"
+      weekly: "Weekly"
+      weekly_joined: "Weekly joined"
