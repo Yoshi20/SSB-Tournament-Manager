@@ -2,7 +2,7 @@
 
   - if @player.errors.any?
     #error_explanation
-      %h2= pluralize(@player.errors.count, "error") + " prohibited this player from being saved:"
+      %h2= pluralize(@player.errors.count, "error") + ' ' + t('players.prohibited')
       %ul
         - @player.errors.full_messages.each do |message|
           %li= message
@@ -11,52 +11,52 @@
     = f.label :gamer_tag
     = f.text_field :gamer_tag, class: 'form-control'
   .field.form-group
-    = f.label :prefix, 'Sponsor prefix'
+    = f.label :prefix, t('players.prefix')
     = f.text_field :prefix, class: 'form-control'
   .field.form-group
-    = f.label :discord_username
+    = f.label :discord_username, t('players.discord_username')
     %em= "(User#1234)"
     = f.text_field :discord_username, class: 'form-control'
   - if current_user.super_admin?
     .field.form-group
-      = label_tag :alternative_gamer_tags
+      = label_tag :alternative_gamer_tags, t('players.alternative_gamer_tags')
       - alts = ""
       - @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
       = text_field_tag :alternative_gamer_tags, alts, class: 'form-control'
     .field.form-group
-      = f.label :points
+      = f.label :points, t('players.points')
       = f.number_field :points, class: 'form-control'
     .field.form-group
-      = f.label :participations
+      = f.label :participations, t('players.participations')
       = f.number_field :participations, class: 'form-control'
     .field.form-group
-      = f.label :best_rank
+      = f.label :best_rank, t('players.best_rank')
       = f.number_field :best_rank, class: 'form-control'
     .field.form-group
-      = f.label :wins
+      = f.label :wins, t('players.wins')
       = f.number_field :wins, class: 'form-control'
     .field.form-group
-      = f.label :losses
+      = f.label :losses, t('players.losses')
       = f.number_field :losses, class: 'form-control'
   .field.form-group
-    = f.label :canton
+    = f.label :canton, t('players.canton')
     = f.select :canton, options_for_select(cantons, @player.canton), {include_blank: true}, class: 'form-control'
   .field.form-group
-    = f.label :gender
+    = f.label :gender, t('players.gender')
     = f.select :gender, options_for_select(genders, @player.gender), {include_blank: true}, class: 'form-control'
   .field.form-group
-    = f.label :birth_year
+    = f.label :birth_year, t('players.birth_year')
     = f.select :birth_year, options_for_select(birth_years, @player.birth_year), {include_blank: true}, class: 'form-control'
   .field.form-group
-    = f.label :self_assessment
+    = f.label :self_assessment, t('players.self_assessment')
     = f.select :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, @player.self_assessment), {}, class: 'form-control'
   .field.form-group
-    = f.label :tournament_experience
+    = f.label :tournament_experience, t('players.tournament_experience')
     = f.select :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}, @player.tournament_experience), {}, class: 'form-control'
   .field.form-group
-    = f.label :main_characters
+    = f.label :main_characters, t('players.main_characters')
     %em
-      (you can add up to three by separating them with a comma)
+      = t('players.up_to_three')
     - main_characters_string = ''
     - @player.main_characters.each_with_index do |char, i|
       - if i == 0
@@ -65,11 +65,11 @@
         - main_characters_string = main_characters_string + ', ' + char
     = f.text_field :main_characters, class: 'form-control', value: main_characters_string
   .field.form-group
-    = f.label :comment, "Comment"
+    = f.label :comment, t('players.comment')
     %em
-      (for what ever you want to tell the world)
+      = t('players.for_what_ever')
     %br
     = f.text_area :comment, class: 'form-control', rows: '10'
 
   .actions.form-group
-    = f.submit class:'btn btn-ghost', value:'Update Profile'
+    = f.submit class:'btn btn-ghost', value:t('players.update_profile')

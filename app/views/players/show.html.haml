@@ -35,21 +35,21 @@
               %strong
                 = @player.canton
               %span
-                Canton
+                = t('players.canton')
         - if @player.birth_year.present?
           .col
             .player__stats__single{class: (@player.gender.nil?) ? 'player__stats__single--last' : ''}
               %strong
                 = @player.birth_year
               %span
-                Birth year
+                = t('players.birth_year')
         - if @player.gender.present?
           .col
             .player__stats__single.player__stats__single--last
               %strong
                 = @player.gender
               %span
-                Gender
+                = t('players.gender')
 
   .player__stats
     .row
@@ -58,25 +58,25 @@
           %strong
             = @player.best_rank
           %span
-            Best Rank
+            = t('players.best_rank')
       .col
         .player__stats__single
           %strong
             = @player.wins
           %span
-            Wins
+            = t('players.wins')
       .col
         .player__stats__single
           %strong
             = @player.losses
           %span
-            Losses
+            = t('players.losses')
       .col
         .player__stats__single.player__stats__single--last
           %strong
             = @player.points
           %span
-            Points
+            = t('players.points')
 
   .player__stats
     .row
@@ -85,7 +85,7 @@
           %strong
             = self_assessment_defines[@player.self_assessment]
           %span
-            Self Assessment
+            = t('players.self_assessment')
       .col
         .player__stats__single
           %strong
@@ -94,17 +94,17 @@
             - else
               = "#{@player.win_loss_ratio} %"
           %span
-            Win/Loss
+            = t('players.win_loss')
       .col
         .player__stats__single.player__stats__single--last
           %strong
             = tournament_experience_defines[@player.tournament_experience]
           %span
-            Experience
+            = t('players.experience')
 
   - if not @player.comment.empty?
     .player__comment
-      %h3 Comment
+      %h3= t('players.comment')
       = @player.comment || '-'
 
   - if @player.tournaments.any?
@@ -114,8 +114,8 @@
           %thead.table-header
             %tr
               %th{colspan: '2'}
-                %h3 Joined Tournaments
-              %th At
+                %h3= t('players.joined_tournaments')
+              %th= t('players.joined_tournament_at')
           %tbody.table-content.with-show
             - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).each_with_index do |tournament, i|
               %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
@@ -135,7 +135,7 @@
           %thead.table-header
             %tr
               %th{colspan: '2'}
-                %h3 Past Tournaments
+                %h3= t('players.past_tournaments')
               %th.text-right #
           %tbody.table-content.with-show
             - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |tournament|
@@ -171,13 +171,13 @@
 
       -if current_user.super_admin?
         .admin-actions__link
-          = link_to @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+          = link_to @player, method: :delete, data: { confirm: t('players.confirm') }, class: 'btn btn-sstm btn-square' do
             %span.material-icons.admin-actions__link__icon= 'delete'
 
       - if @player.user != current_user
         .admin-actions__link
           - if @player.user.admin? or current_user.admin?
-            = mail_to @player.user.email, body: "Hi #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
+            = mail_to @player.user.email, body: "#{t('players.hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
               %span.material-icons.admin-actions__link__icon= 'email'
         - if current_user.admin? and @player.user.mobile_number.present?
           .mobile_number= " (#{@player.user.mobile_number})"

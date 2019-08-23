@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title Edit Profile
+    %h1.page__title= t('players.edit')
 
 .row
   .col
@@ -9,4 +9,4 @@
 - if current_user.super_admin?
   .row
     .col
-      = link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
+      = link_to t('players.delete'), @player, method: :delete, data: { confirm: t('players.confirm') }, class: 'btn btn-sstm'
