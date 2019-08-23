@@ -36,6 +36,7 @@
       .row
         .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
         .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to 'Participations', rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
         - tournament_majors.each do |major|
           .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       .row
@@ -61,8 +62,10 @@
           - page_multiplicator = Player::MAX_PLAYERS_PER_PAGE*params[:page].to_i
           - page_multiplicator -= Player::MAX_PLAYERS_PER_PAGE if params[:page].to_i != 0
           - @players.each_with_index do |player, i|
-            - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'seed_points')
-              - if params[:filter] == 'seed_points'
+            - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'participations' or params[:filter] == 'seed_points')
+              - if params[:filter] == 'participations'
+                - points = player.participations
+              - elsif params[:filter] == 'seed_points'
                 - points = player.seed_points.round(2)
               - else
                 - points = player.points
