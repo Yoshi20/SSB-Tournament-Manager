@@ -10,7 +10,7 @@
     - if !feedback.response.nil? and !feedback.response.blank?
       %br
       %br
-      %i= "Administrator \"#{feedback.response_username}\" replied:"
+      %i= t('feedback.admin_replied', user: feedback.response_username).html_safe
       %br
       .a_tab{style: 'margin-left: 10px;'}
         %i= feedback.response

@@ -4,15 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @user.username %></h1>
+    <h1><%= t('feedback.mailer.hi') %> <%= @user.username %></h1>
+    <p><%= t('feedback.mailer.thanks') %></p>
     <p>
-      Thanks a lot for your feedback or question.
+      <%= t('feedback.mailer.response') %> <%= link_to "this link", @url %>.
     </p>
     <p>
-      You can check out my response by following <%= link_to "this link", @url %>.
-    </p>
-    <p>
-      Best regards<br>
+      <%= t('feedback.mailer.best_regards') %>
+      <br>
       <%= @admin.username %>
     </p>
   </body>
