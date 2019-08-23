@@ -50,10 +50,18 @@
       %thead.table-header
         %tr
           %th.text-center #
-          %th.text-center Points
+          %th.text-center
+            - if params[:filter] == 'participations'
+              = "Participations"
+            - else
+              = "Points"
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+            - if params[:filter] == 'participations'
+              = "Points"
+            - else
+              = "Participations"
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
 
       %tbody.table-content.with-show
@@ -69,7 +77,10 @@
                 - points = player.seed_points.round(2)
               - else
                 - points = player.points
-              - participations = player.participations
+              - if params[:filter] == 'participations'
+                - participations = player.points
+              - else
+                - participations = player.participations
               - if player.wins == 0 and player.losses == 0
                 - win_loss_ratio = nil
               - else
