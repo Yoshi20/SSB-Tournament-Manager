@@ -1,15 +1,17 @@
 .row
   .col
-    %h1.page__title Login
+    %h1.page__title.row
+      .col
+        %h1.page__title= t('devise.sessions.title')
 
 .login
   = form_tag session_path(:user), class: "form" do
     .form-group
-      = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: "Username", autofocus: 'true'
+      = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: t('devise.sessions.username'), autofocus: 'true'
     .form-group
-      = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: "Password"
+      = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: t('devise.sessions.password')
     .form-group
-      = submit_tag "Log in", class: "btn btn-sstm"
-      = link_to "Sign up", new_user_registration_path,  class: "btn btn-ghost"
+      = submit_tag t('devise.sessions.log_in'), class: "btn btn-sstm"
+      = link_to t('devise.sessions.sing_up'), new_user_registration_path,  class: "btn btn-ghost"
     .form-group
-      = link_to "Forgot your password?", new_password_path(resource_name)
+      = link_to t('devise.sessions.forgot_pw'), new_password_path(resource_name)

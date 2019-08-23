@@ -101,3 +101,45 @@ en:
       internal_joined: "Internal joined"
       weekly: "Weekly"
       weekly_joined: "Weekly joined"
+
+  devise:
+    confirmations:
+      title: "Resend confirmation instructions"
+      resend: "Resend confirmation instructions"
+    mailer:
+      welcome: "Welcome"
+      confirm: "You can confirm your account email through the link below:"
+      confirm_account: "Confirm my account"
+      hello: "Hello"
+      change_pw_request: "Someone has requested a link to change your password. You can do this through the link below"
+      change_my_pw: "Change my password"
+      change_pw_ignore: "If you didn't request this, please ignore this email."
+      pw_wont_change: "Your password won't change until you access the link above and create a new one."
+      account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      unlock_account: "Click the link below to unlock your account:"
+      unlock_my_account: "Unlock my account"
+    passwords:
+      title: "Change your password"
+      new_pw: "New password"
+      chars_min: "characters minimum"
+      confirm: "Confirm new password"
+      change_my_pw: "Change my password"
+      title_forgot: "Forgot your password?"
+      reset_pw: "Please send me reset password instructions"
+    sessions:
+      title: "Login"
+      username: "Username"
+      password: "Password"
+      log_in: "Log in"
+      sing_up: "Sign up"
+      forgot_pw: "Forgot your password?"
+    share:
+      log_in: "Log in"
+      sign_up: "Sign up"
+      forgot_pw: "Forgot your password?"
+      no_conf_inst: "Didn't receive confirmation instructions?"
+      no_unlock_inst: "Didn't receive unlock instructions?"
+      log_in_with: "Log in with"
+    unlocks:
+      title: "Resend unlock instructions"
+      resend_unlock_inst: "Resend unlock instructions"
