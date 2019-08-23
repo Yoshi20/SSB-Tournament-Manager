@@ -190,6 +190,8 @@
               %tr
                 %th
                   %h3 Name
+                %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %h3 Canton
                 %th{style: 'text-align: center;'}
                   %h3 Mains
                 - if @tournament.is_registration_allowed
@@ -203,6 +205,9 @@
                 - mail_string = mail_string + player.user.email + '; '
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                    - if player.canton.present?
+                      = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
                       - player.main_characters[0...3].each do |char|
@@ -317,9 +322,9 @@
                   %h3 Name
                 %th{style: 'text-align: center;'}
                   %h3 Points
-                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 Matches
-                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 W/L
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
@@ -337,9 +342,9 @@
                         %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                     = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}= r.points
-                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     = player.matches.where(tournament_id: @tournament.id).count
-                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     - if r.wins == 0 and r.losses == 0
                       = '-'
                     - else
