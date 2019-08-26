@@ -56,10 +56,6 @@
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'edit'
 
-                  .admin-list-actions__link
-                    = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon= 'delete'
-
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'stats'
 
@@ -99,10 +95,6 @@
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'edit'
-
-                  .admin-list-actions__link
-                    = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon= 'delete'
 
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'data'

@@ -214,19 +214,33 @@ class TournamentsController < ApplicationController
   # DELETE /tournaments/1
   # DELETE /tournaments/1.json
   def destroy
-    if @tournament.subtype == 'weekly' and params[:all]
-      # deactivate all upcoming weeklies of this type
-      name_without_kw = @tournament.name[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
-      Tournament.where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|
-        if tt.name[0.. -10].strip == name_without_kw
-          tt.update(active: false)
+    if @tournament.active == false
+      if @tournament.destroy
+        respond_to do |format|
+          format.html { redirect_to tournaments_url, notice: 'Tournament was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      else
+        redirect_to tournaments_url, alert: "Player couldn't be destroyed!"
+      end
+    else
+      if @tournament.subtype == 'weekly' and params[:all]
+        # deactivate all upcoming weeklies of this type
+        name_without_kw = @tournament.name[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
+        Tournament.where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|
+          if tt.name[0.. -10].strip == name_without_kw
+            tt.update(active: false)
+          end
         end
       end
-    end
-    @tournament.update(active: false)
-    respond_to do |format|
-      format.html { redirect_to tournaments_url, notice: 'Tournament was successfully deleted.' }
-      format.json { head :no_content }
+      if @tournament.update(active: false)
+        respond_to do |format|
+          format.html { redirect_to tournaments_url, notice: 'Tournament was successfully deactivated.' }
+          format.json { head :no_content }
+        end
+      else
+        redirect_to tournaments_url, alert: "Player couldn't be deactivated!"
+      end
     end
   end
 
