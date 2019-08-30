@@ -4,6 +4,7 @@
 
 .login
   = form_tag session_path(:user), class: "form" do
+    = recaptcha_v3(action: 'login')
     .form-group
       = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: "Username", autofocus: 'true'
     .form-group
