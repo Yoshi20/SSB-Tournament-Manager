@@ -4,6 +4,7 @@
 .row
   .col
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
+      = recaptcha_v3(action: 'registration')
       = devise_error_messages!
       .form-group
         = f.label :username, 'Login username *'

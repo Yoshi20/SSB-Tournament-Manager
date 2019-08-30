@@ -108,3 +108,6 @@ gem 'will_paginate', '~> 3.1.0'
 
 # See https://nokogiri.org/
 gem 'nokogiri', '>= 1.10.4'
+
+# See https://github.com/ambethia/recaptcha
+gem 'recaptcha'
