@@ -9,9 +9,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    if params['noReCaptcha'] == 'true' || verify_recaptcha(action: 'login', minimum_score: 0.5)
+      super
+    else
+      render 'new'
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
