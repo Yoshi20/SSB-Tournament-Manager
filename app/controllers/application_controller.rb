@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
   before_action :get_top_players
   before_action :get_next_tournaments
+  before_action :prepare_exception_notifier
 
   protected
 
@@ -49,6 +50,12 @@ class ApplicationController < ActionController::Base
 
   def get_next_tournaments
     @nextTournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(10)
+  end
+
+  def prepare_exception_notifier
+    request.env["exception_notifier.exception_data"] = {
+      current_user: current_user
+    }
   end
 
 end

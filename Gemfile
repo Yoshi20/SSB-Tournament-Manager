@@ -111,3 +111,6 @@ gem 'nokogiri', '>= 1.10.4'
 
 # See https://github.com/ambethia/recaptcha
 gem 'recaptcha'
+
+# See https://github.com/smartinez87/exception_notification
+gem 'exception_notification'

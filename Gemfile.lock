@@ -98,6 +98,9 @@ GEM
       warden (~> 1.2.3)
     erubi (1.8.0)
     erubis (2.7.0)
+    exception_notification (4.4.0)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     execjs (2.7.0)
     ffi (1.11.1)
     figaro (1.1.1)
@@ -282,6 +285,7 @@ DEPENDENCIES
   challonge-api
   coffee-rails (~> 4.2.2)
   devise
+  exception_notification
   figaro
   fullcalendar-rails
   haml-rails
