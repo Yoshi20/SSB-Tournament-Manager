@@ -23,9 +23,9 @@
         %th.text-center Admin
         %th.text-center Super Admin
 
-    %tbody.user-list-body
+    %tbody.user-list-body.with-show
       - @users.each do |user|
-        %tr{'data-id': user.id, 'data-component'=>'user'}
+        %tr{'data-id': user.player.id, 'data-component'=>'player'}
           %td= user.username
           %td= user.current_sign_in_at.to_s(:custom_datetime)
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= user.sign_in_count

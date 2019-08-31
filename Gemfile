@@ -108,3 +108,12 @@ gem 'will_paginate', '~> 3.1.0'
 
 # See https://github.com/iain/http_accept_language
 gem 'http_accept_language'
+
+# See https://nokogiri.org/
+gem 'nokogiri', '>= 1.10.4'
+
+# See https://github.com/ambethia/recaptcha
+gem 'recaptcha'
+
+# See https://github.com/smartinez87/exception_notification
+gem 'exception_notification'

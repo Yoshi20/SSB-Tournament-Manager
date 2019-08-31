@@ -18,7 +18,7 @@
       %li.nav-item
         %a#location-tab.nav-link{'data-toggle'=>'tab', href: '#location', role: 'tab', 'aria-controls'=>'all'}
           = 'Location'
-    - if @tournament.players.any?
+    - if @tournament.is_registration_allowed
       %li.nav-item
         %a#players-tab.nav-link{'data-toggle'=>'tab', href: '#players', role: 'tab', 'aria-controls'=>'all'}
           = 'Players'
@@ -121,7 +121,7 @@
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  - if @min_needed_game_stations > 0 && @tournament.total_needed_game_stations.to_i > 0 && @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
+                  - if @min_needed_game_stations.to_i > 0 && @tournament.total_needed_game_stations.to_i > 0 && @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
                     = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
                   - else
                     = @tournament.total_needed_game_stations.to_i
@@ -181,105 +181,114 @@
           - address = (address_array[1].to_s.strip + ',' + address_array[2].to_s).gsub(' ', '+')
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "600", :src => "https://www.google.com/maps/embed/v1/search?q=#{address}&key=#{ENV['GOOGLE_MAPS_API_KEY']}", :style => "border:0", :width => "100%"}
 
-    - if @tournament.players.any?
+    - if @tournament.is_registration_allowed
       .tab-pane.fade#players{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
-        - mail_string = ''
-        .tournament__players
-          %table.table.table-hover.table-borderless
-            %thead
-              %tr
-                %th
-                  %h3 Name
-                %th{style: 'text-align: center;'}
-                  %h3 Mains
-                - if @tournament.is_registration_allowed
+        - if not @tournament.players.any?
+          %p{style: 'text-align: center;'}
+            No player has joined this tournament yet
+        - else
+          - mail_string = ''
+          .tournament__players
+            %table.table.table-hover.table-borderless
+              %thead
+                %tr
                   %th
-                    %h3 Setups
-                - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
+                    %h3 Name
+                  %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                    %h3 Canton
                   %th{style: 'text-align: center;'}
-                    %h3 Fee paid?
-            %tbody.table-content.with-show
-              - @tournament.players.includes(:user).order('registrations.created_at').each do |player, i|
-                - mail_string = mail_string + player.user.email + '; '
-                %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
-                  %td{style: 'text-align: center;'}
-                    - if player.main_characters.any?
-                      - player.main_characters[0...3].each do |char|
-                        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                          = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                    %h3 Mains
                   - if @tournament.is_registration_allowed
-                    %td
-                      - player_registration = player.registrations.where(tournament_id: @tournament.id).first
-                      - gs = player_registration.game_stations
-                      - if current_user.present? and current_user.admin? and !@tournament.started
-                        = form_for player_registration, role: 'form', method: :patch do |f|
-                          .admin-actions__link__icon
-                            = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
-                            = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
-                      - else
-                        - if !gs.nil? and gs > 0
-                          = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
+                    %th
+                      %h3 Setups
                   - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
+                    %th{style: 'text-align: center;'}
+                      %h3 Fee paid?
+              %tbody.table-content.with-show
+                - @tournament.players.includes(:user).order('registrations.created_at').each do |player, i|
+                  - mail_string = mail_string + player.user.email + '; '
+                  %tr{'data-id': player.id, 'data-component'=>'player'}
+                    %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      - if player.canton.present?
+                        = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
                     %td{style: 'text-align: center;'}
-                      - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
-                        .inline-div{style:'display:inline-block'}
+                      - if player.main_characters.any?
+                        - player.main_characters[0...3].each do |char|
+                          - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                            = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                    - if @tournament.is_registration_allowed
+                      %td
+                        - player_registration = player.registrations.where(tournament_id: @tournament.id).first
+                        - gs = player_registration.game_stations
+                        - if current_user.present? and current_user.admin? and !@tournament.started
                           = form_for player_registration, role: 'form', method: :patch do |f|
                             .admin-actions__link__icon
-                              = f.check_box :paid_fee, {class: 'paid-fee-checkbox'}, @tournament.registration_fee
-                              = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button', style:'background-color: #007bff;'
-                      - elsif player_registration.paid_fee.present?
-                        .material-icons= 'done'
+                              = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
+                              = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
+                        - else
+                          - if !gs.nil? and gs > 0
+                            = "#{!@tournament.finished ? 'Brings' : 'Brought'} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
+                    - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
+                      %td{style: 'text-align: center;'}
+                        - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
+                          .inline-div{style:'display:inline-block'}
+                            = form_for player_registration, role: 'form', method: :patch do |f|
+                              .admin-actions__link__icon
+                                = f.check_box :paid_fee, {class: 'paid-fee-checkbox'}, @tournament.registration_fee
+                                = f.submit 'Submit', class:'btn btn-primary btn-xs paid-fee-button', style:'background-color: #007bff;'
+                        - elsif player_registration.paid_fee.present?
+                          .material-icons= 'done'
 
-        .tournament__players.hidden
-          .row
-            .col
-              %h2 Hidden seeded player list
-              %p
-                - @tournament.players.sort_by do |p|
-                  - p.seed_points
-                - end.reverse.each_with_index do |p, i|
-                  = "#{i+1}. #{p.gamer_tag}, "
-
-        - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
-          .tournament__players
-            .row.game-stations-text
-              .col
-                %h2 Please bring a setup with you
-                %p
-                  = 'If you bring the following hard- and software to the tournament, you will get a voucher for the venue or the buffet.'
-                  = 'But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer.'
-                .row.add-game-stations
-                  .col{style: 'text-align: left;'}
-                    %ul
-                      %li Nintendo Switch console
-                      %li Docking station with its power supply
-                      %li HDMI cable
-                      %li Super Smash Bros. Ultimate Game (all characters unlocked, current version and ruleset preinstalled)
-                  .col
-                    = form_for @registration, as: :registration, url: registration_path(id: @registration.id, anchor: 'players'), role: 'form', method: :patch do |f|
-                      = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
-                      = f.submit 'I will bring setups', class:'btn btn-ghost', id:'bring-game-stations-button', style: 'display:inline'
-                      %br
-                      = "(max. #{@currently_needed_game_stations} more #{@currently_needed_game_stations > 1 ? 'setups are' : 'setup is'} needed atm.)"
-
-        - if current_user.present? and current_user.admin?
-          .tournament__players
+          .tournament__players.hidden
             .row
               .col
-                = mail_to "", "Write all registered players an email", bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-ghost'
+                %h2 Hidden seeded player list
+                %p
+                  - @tournament.players.sort_by do |p|
+                    - p.seed_points
+                  - end.reverse.each_with_index do |p, i|
+                    = "#{i+1}. #{p.gamer_tag}, "
 
-          - if !@tournament.setup and !@tournament.started and !@tournament.finished
+          - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
+            .tournament__players
+              .row.game-stations-text
+                .col
+                  %h2 Please bring a setup with you
+                  %p
+                    = 'If you bring the following hard- and software to the tournament, you will get a voucher for the venue or the buffet.'
+                    = 'But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer.'
+                  .row.add-game-stations
+                    .col{style: 'text-align: left;'}
+                      %ul
+                        %li Nintendo Switch console
+                        %li Docking station with its power supply
+                        %li HDMI cable
+                        %li Super Smash Bros. Ultimate Game (all characters unlocked, current version and ruleset preinstalled)
+                    .col
+                      = form_for @registration, as: :registration, url: registration_path(id: @registration.id, anchor: 'players'), role: 'form', method: :patch do |f|
+                        = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
+                        = f.submit 'I will bring setups', class:'btn btn-ghost', id:'bring-game-stations-button', style: 'display:inline'
+                        %br
+                        = "(max. #{@currently_needed_game_stations} more #{@currently_needed_game_stations > 1 ? 'setups are' : 'setup is'} needed atm.)"
+
+          - if current_user.present? and current_user.admin?
             .tournament__players
               .row
                 .col
-                  = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
-                    = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                    = submit_tag 'Add player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
-                .col
-                  = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
-                    = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                    = submit_tag 'Remove player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+                  = mail_to "", "Write all registered players an email", bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-ghost'
+
+            - if !@tournament.setup and !@tournament.started and !@tournament.finished
+              .tournament__players
+                .row
+                  .col
+                    = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
+                      = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+                      = submit_tag 'Add player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+                  .col
+                    = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
+                      = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+                      = submit_tag 'Remove player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
 
     - if @tournament.waiting_list.length > 0
       .tab-pane.fade#waiting{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
@@ -317,9 +326,9 @@
                   %h3 Name
                 %th{style: 'text-align: center;'}
                   %h3 Points
-                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 Matches
-                %th.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3 W/L
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
@@ -337,9 +346,9 @@
                         %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                     = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}= r.points
-                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     = player.matches.where(tournament_id: @tournament.id).count
-                  %td.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     - if r.wins == 0 and r.losses == 0
                       = '-'
                     - else

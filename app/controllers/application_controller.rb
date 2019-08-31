@@ -4,11 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_locale
-  before_action :authenticate_user!, except: [:index, :show, :location]
+  before_action :authenticate_user!, except: [:index, :show, :location, :unregistered]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :get_top_players
   before_action :get_next_tournaments
+  before_action :prepare_exception_notifier
 
   protected
 
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if (request.referer.include?('/users/sign_in'))
+    if request.referer.nil? or request.referer.include?('/users/')
      root_path
     else
      request.referer
@@ -64,6 +65,12 @@ class ApplicationController < ActionController::Base
         I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
         cookies.permanent[:locale] = I18n.locale.to_s
       end
+    end
+
+    def prepare_exception_notifier
+      request.env["exception_notifier.exception_data"] = {
+        current_user: current_user
+      }
     end
 
 end

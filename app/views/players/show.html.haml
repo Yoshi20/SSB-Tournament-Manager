@@ -102,7 +102,7 @@
           %span
             = t('players.experience')
 
-  - if not @player.comment.empty?
+  - if not @player.comment.nil? and not @player.comment.empty?
     .player__comment
       %h3= t('players.comment')
       = @player.comment || '-'
@@ -168,11 +168,6 @@
         .admin-actions__link
           = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
             %span.material-icons.admin-actions__link__icon= 'edit'
-
-      -if current_user.super_admin?
-        .admin-actions__link
-          = link_to @player, method: :delete, data: { confirm: t('players.confirm') }, class: 'btn btn-sstm btn-square' do
-            %span.material-icons.admin-actions__link__icon= 'delete'
 
       - if @player.user != current_user
         .admin-actions__link

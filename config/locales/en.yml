@@ -212,3 +212,8 @@ en:
     joined_tournament_at: "At"
     past_tournaments: "Past Tournaments"
     hi: "Hi"
+
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA was incorrect, please try again.'
+      recaptcha_unreachable: 'reCAPTCHA verification server error, please try again.'

@@ -5,8 +5,3 @@
 .row
   .col
     = render 'form', player: @player
-
-- if current_user.super_admin?
-  .row
-    .col
-      = link_to t('players.delete'), @player, method: :delete, data: { confirm: t('players.confirm') }, class: 'btn btn-sstm'

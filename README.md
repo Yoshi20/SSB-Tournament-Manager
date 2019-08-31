@@ -23,6 +23,7 @@ Stage commands:
 
 - heroku run rake tournaments_crawler:all --remote stage
 - heroku run rake results_crawler:all --remote stage
+- heroku run rake utils:remove_player_from_finished_tournament[<t_id>,<p_id>] --remote stage
 
 Prod commands:
 - git push prod master
@@ -33,6 +34,7 @@ Prod commands:
 
 - heroku run rake tournaments_crawler:all --remote prod
 - heroku run rake results_crawler:all --remote prod
+- heroku run rake utils:remove_player_from_finished_tournament[<t_id>,<p_id>] --remote prod
 
 General links:
 - https://ssb-tournament-manager.herokuapp.com

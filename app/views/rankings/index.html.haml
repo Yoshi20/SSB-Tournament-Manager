@@ -36,6 +36,7 @@
       .row
         .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
         .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to 'Participations', rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
         - tournament_majors.each do |major|
           .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       .row
@@ -49,10 +50,18 @@
       %thead.table-header
         %tr
           %th.text-center #
-          %th.text-center Points
+          %th.text-center
+            - if params[:filter] == 'participations'
+              = "Participations"
+            - else
+              = "Points"
           %th Gamer tag
           %th.text-center Mains
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+            - if params[:filter] == 'participations'
+              = "Points"
+            - else
+              = "Participations"
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
 
       %tbody.table-content.with-show
@@ -61,12 +70,17 @@
           - page_multiplicator = Player::MAX_PLAYERS_PER_PAGE*params[:page].to_i
           - page_multiplicator -= Player::MAX_PLAYERS_PER_PAGE if params[:page].to_i != 0
           - @players.each_with_index do |player, i|
-            - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'seed_points')
-              - if params[:filter] == 'seed_points'
+            - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'participations' or params[:filter] == 'seed_points')
+              - if params[:filter] == 'participations'
+                - points = player.participations
+              - elsif params[:filter] == 'seed_points'
                 - points = player.seed_points.round(2)
               - else
                 - points = player.points
-              - participations = player.participations
+              - if params[:filter] == 'participations'
+                - participations = player.points
+              - else
+                - participations = player.participations
               - if player.wins == 0 and player.losses == 0
                 - win_loss_ratio = nil
               - else

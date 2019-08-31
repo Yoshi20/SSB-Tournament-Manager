@@ -2,6 +2,8 @@
   .modal-dialog.modal-dialog-centered{role: 'document'}
     .modal-content
       = form_tag session_path(:user), class: "form" do
+        = hidden_field_tag "noReCaptcha", true
+        -# = recaptcha_v3(action: 'login')  # TODO
         .modal-header
           .modal-title
             %h3= t('partials.login.title')

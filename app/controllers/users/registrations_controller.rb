@@ -1,3 +1,6 @@
+include Recaptcha::Adapters::ViewMethods
+include Recaptcha::Adapters::ControllerMethods
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -12,41 +15,47 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    user_params = Hash.new
-    super do |current_user_params|
-      user_params = current_user_params
-    end
-    user = User.last
-    if user.id == user_params[:id]
-      # User seems to be created successfully -> Create a new player and assign it to this user
-      player = Player.new
-      player.gamer_tag = params[:gamer_tag]
-      player.prefix = params[:prefix]
-      player.discord_username = params[:discord_username]
-      player.points = 0
-      player.participations = 0
-      player.canton = params[:canton]
-      player.gender = params[:gender]
-      player.birth_year = params[:birth_year]
-      player.self_assessment = params[:self_assessment] || 0
-      player.tournament_experience = params[:tournament_experience] || 0
-      params[:main_characters].split(',').each do |char|
-        player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
+    if verify_recaptcha(action: 'registration', minimum_score: 0.3)
+      user_params = Hash.new
+      super do |current_user_params|
+        user_params = current_user_params
       end
-      player.comment = params[:comment]
-      player.best_rank = 0
-      player.wins = 0
-      player.losses = 0
-      player.user = user
-      if player.save
-        flash[:notice] = "Player was successfully created"
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.with(user: user).welcome_email.deliver_later
-      else
-        flash.delete(:notice)
-        flash[:alert] = "Creating player failed!"
-        user.delete
+      user = User.last
+      if user.id == user_params[:id]
+        # User seems to be created successfully -> Create a new player and assign it to this user
+        player = Player.new
+        player.gamer_tag = params[:gamer_tag]
+        player.prefix = params[:prefix]
+        player.discord_username = params[:discord_username]
+        player.points = 0
+        player.participations = 0
+        player.canton = params[:canton]
+        player.gender = params[:gender]
+        player.birth_year = params[:birth_year]
+        player.self_assessment = params[:self_assessment] || 0
+        player.tournament_experience = params[:tournament_experience] || 0
+        params[:main_characters].split(',').each do |char|
+          player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
+        end
+        player.comment = params[:comment]
+        player.best_rank = 0
+        player.wins = 0
+        player.losses = 0
+        player.user = user
+        if player.save
+          flash[:notice] = "Player was successfully created"
+          # Tell the UserMailer to send a welcome email after save
+          UserMailer.with(user: user).welcome_email.deliver_later
+        else
+          flash.delete(:notice)
+          flash[:alert] = "Creating player failed!"
+          user.destroy
+        end
       end
+    else
+      self.resource = resource_class.new sign_up_params
+      resource.validate
+      respond_with_navigational(resource) { render :new }
     end
   end
 

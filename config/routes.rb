@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :registrations, only: [:update]
 
-  devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :users, only: [:index, :update, :destroy]
 
   root to: "welcome#index"
