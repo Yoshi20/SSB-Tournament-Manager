@@ -608,7 +608,7 @@ class TournamentsController < ApplicationController
         :location, :description, :registration_fee, :total_seats,
         :host_username, :setup, :started, :finished, :active, :created_at,
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
-        :total_needed_game_stations, :min_needed_registrations,
+        :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools)
     end
 
