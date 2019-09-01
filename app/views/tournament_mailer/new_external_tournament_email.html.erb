@@ -6,23 +6,23 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      Hi <%= @user.username %>.
+      <%= t('tournaments.mailer.hi') %> <%= @user.username %>.
     </p>
     <p>
-      A new external tournament was added to the SwissSmash Tournament Manager.
+      <%= t('tournaments.mailer.new_external') %>
     </p>
     <p>
-      <strong>Name:</strong> <%= @tournament.name %><br>
-      <strong>Date:</strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+      <strong><%= t('tournaments.mailer.name') %></strong> <%= @tournament.name %><br>
+      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
     </p>
     <p>
-      To check out this tournament, just follow <%= link_to "this link", @url %>.
+      <%= t('tournaments.mailer.to_check_out', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>
     </p>
     <p>
-      We wish you good luck during your matches!
+      <%= t('tournaments.mailer.we_wish_you_good_luck') %>
     </p>
     <p>
-      (If you don't want to get this email anymore, you can now configure so in your user settings.)
+      <%= t('tournaments.mailer.if_you_dont_want') %>
     </p>
   </body>
 </html>

@@ -274,6 +274,24 @@ en:
       li7: "Stage hazards: Off"
       li8: "The winner of a match is obligated to report the results to an administrator"
 
+  tournaments:
+    mailer:
+      hi: "Hi"
+      new_external: "A new external tournament was added to the SwissSmash Tournament Manager."
+      new_tournament: "A new tournament was added to the SwissSmash Tournament Manager."
+      new_weekly: "One or more weeklies were added to the SwissSmash Tournament Manager. Here are the data of the first:"
+      name: "Name:"
+      date: "Date:"
+      fee: "Registration fee:"
+      location: "Location:"
+      to_check_out: "To check out this tournament, just follow %{link}."
+      to_check_out2: "To check out this tournament, just follow the link:"
+      to_join: "To join this tournament, just follow %{link} and click the button."
+      to_join2: "To join this tournament, just follow the link and click the button:"
+      this_link: "this link"
+      we_wish_you_good_luck: "We wish you good luck during your matches!"
+      if_you_dont_want: "(If you don't want to get this email anymore, you can now configure so in your user settings.)"
+
   recaptcha:
     errors:
       verification_failed: 'reCAPTCHA was incorrect, please try again.'
