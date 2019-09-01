@@ -67,3 +67,9 @@ body {
 .hidden {
   display: none;
 }
+
+a.disabled {
+  color: #b7b7b7 !important;
+  pointer-events: none;
+  cursor: default;
+}
