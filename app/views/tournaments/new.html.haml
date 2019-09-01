@@ -1,29 +1,26 @@
 .row
   .col
-    %h1.page__title New tournament
+    %h1.page__title= t('tournaments.new.title')
 
 .new-tournament
   %p
-    You can create either an internal, an external or one or more weekly tournaments.
+    = t('tournaments.new.body')
     %ul
-      %li Internal tournaments are supporting all the SwissSmash Tournament Manager functionalitly
-      %li External tournaments are used to link a different registration website with the SwissSmash Tournament Manager
-      %li
-        Weeklies are the same as internal tournaments. But you can create multiple tournaments at once by setting an end date.
-        The weeklies name will be generated from the defined city and date to e.g: 'SSBU Weekly Bern KW20 2019'
-
+      %li= t('tournaments.new.li1')
+      %li= t('tournaments.new.li2')
+      %li= t('tournaments.new.li3')
 
   %ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
     %li.nav-item
       %a#internal-tab.nav-link.active{'data-toggle'=>'tab', href: '#internal', role: 'tab', 'aria-controls'=>'all'}
-        Internal
+        = t('tournaments.internal')
     %li.nav-item
       %a#external-tab.nav-link{'data-toggle'=>'tab', href: '#external', role: 'tab', 'aria-controls'=>'all'}
-        External
+        = t('tournaments.external')
     %li.nav-item
       %a#weekly-tab.nav-link{'data-toggle'=>'tab', href: '#weekly', role: 'tab', 'aria-controls'=>'all'}
-        Weekly
-      
+        = t('tournaments.weekly')
+
   .tab-content#tournaments-tabs-content
     .tab-pane.fade.show.active#internal{role: 'tabpanel', 'aria-labelledby'=>'internal-tab'}
       = render 'internal-form'

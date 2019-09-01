@@ -21,7 +21,7 @@
           = t('navigation.tournaments')
         .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
           = link_to t('navigation.calendar'), calendar_path, class: 'dropdown-item'
-          = link_to t('navigation.link'), tournaments_path, class: 'dropdown-item'
+          = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
 
       %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
         = link_to t('navigation.rankings'), rankings_path, class: 'nav-link'

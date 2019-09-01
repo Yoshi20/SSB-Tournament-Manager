@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title Editing tournament
+    %h1.page__title= t('tournaments.edit')
 
 .tournament-edit
   - if @tournament.subtype.nil? or @tournament.subtype == 'internal'
