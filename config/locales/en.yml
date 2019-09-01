@@ -242,6 +242,38 @@ en:
       title: "Season 2 2019"
       no_ranking: "No ranking available yet"
 
+  rules:
+    title: "Rules"
+    general_rules:
+      title: "General rules"
+      body: "So that we can continue playing tournaments in the found locations, we all have to follow some common sense rules. If any of these rules are broken the host has the right to throw out and ban any player without further explanation."
+      li1: "Smoking indoors is prohibited"
+      li2: "Take care of all used hard- and software, the furnishings and other inventory. If you break something, report it to the host"
+      li3: "Be friendly and helpful to all participants"
+      li4: "Follow the instructions of the host. A hosts word is law"
+      li5: "Physical fights will not be tolerated. Disputes must be dealt with by playing 1 vs. 1 matches"
+      li6: "Thieving will not be tolerated"
+    tournament_rules:
+      title: "SSBU tournament rules"
+      li1: "The registrations fee must be payed on site before the tournament games begin"
+      li2: "If you come too late (>15min) to a tournament or a match, you will be disqualified"
+      li3: "Bring your own controller (and it's extras) if you don't want to play with Joy-Cons"
+      li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
+      li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
+    match_rules:
+      title: "SSBU match rules (Ruleset)"
+      body: "For now (mid 2019) the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found"
+      here: "here"
+      overview: "Short overview:"
+      li1: "1 vs. 1"
+      li2: "Best of 3 (Final matches: Best of 5)"
+      li3: "3 stocks per game"
+      li4: "7 min per game"
+      li5: "No items"
+      li6: "Pause: Off"
+      li7: "Stage hazards: Off"
+      li8: "The winner of a match is obligated to report the results to an administrator"
+
   recaptcha:
     errors:
       verification_failed: 'reCAPTCHA was incorrect, please try again.'

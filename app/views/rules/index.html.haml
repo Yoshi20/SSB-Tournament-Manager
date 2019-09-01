@@ -1,53 +1,53 @@
 .row
   .col
-    %h1.page__title= 'Rules'
+    %h1.page__title= t('rules.title')
 
 .row
   .col
-    %h2= 'General rules'
+    %h2= t('rules.general_rules.title')
 .row
   .col
-    %p= 'So that we can continue playing tournaments in the found locations, we all have to follow some common sense rules. If any of these rules are broken the host has the right to throw out and ban any player without further explanation.'
+    %p= t('rules.general_rules.body')
     %ul
-      %li= 'Smoking indoors is prohibited'
-      %li= 'Take care of all used hard- and software, the furnishings and other inventory. If you break something, report it to the host'
-      %li= 'Be friendly and helpful to all participants'
-      %li= 'Follow the instructions of the host. A hosts word is law'
-      %li= 'Physical fights will not be tolerated. Disputes must be dealt with by playing 1 vs. 1 matches'
-      %li= 'Thieving will not be tolerated'
+      %li= t('rules.general_rules.li1')
+      %li= t('rules.general_rules.li2')
+      %li= t('rules.general_rules.li3')
+      %li= t('rules.general_rules.li4')
+      %li= t('rules.general_rules.li5')
+      %li= t('rules.general_rules.li6')
 
 .row.mt-3
   .col
-    %h2= 'SSBU tournament rules'
+    %h2= t('rules.tournament_rules.title')
 .row
   .col
     %ul
-      %li= 'The registrations fee must be payed on site before the tournament games begin'
-      %li= 'If you come too late (>15min) to a tournament or a match, you will be disqualified'
-      %li= 'Bring your own controller (and it\'s extras) if you don\'t want to play with Joy-Cons'
-      %li= 'If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you\'re out of the tournament)'
-      %li= 'Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it'
+      %li= t('rules.tournament_rules.li1')
+      %li= t('rules.tournament_rules.li2')
+      %li= t('rules.tournament_rules.li3')
+      %li= t('rules.tournament_rules.li4')
+      %li= t('rules.tournament_rules.li5')
 
 .row.mt-3
   .col
-    %h2= 'SSBU match rules (Ruleset)'
+    %h2= t('rules.match_rules.title')
 .row
   .col
     %p
-      = 'For now (mid 2019) the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found'
-      %strong= link_to 'here', 'https://drive.google.com/file/d/1-B6jUl0o8EDrASswJ1ReYK-3vT_7Kb54/view', target: 'blank'
+      = t('rules.match_rules.body')
+      %strong= link_to t('rules.match_rules.here'), 'https://drive.google.com/file/d/1-B6jUl0o8EDrASswJ1ReYK-3vT_7Kb54/view', target: 'blank'
       = '.'
     %p
-      = 'Short overview:'
+      = t('rules.match_rules.overview')
     %ul
-      %li= '1 vs. 1'
-      %li= 'Best of 3 (Final matches: Best of 5)'
-      %li= '3 stocks per game'
-      %li= '7 min per game'
-      %li= 'No items'
-      %li= 'Pause: Off'
-      %li= 'Stage hazards: Off'
-      %li= 'The winner of a match is obligated to report the results to an administrator'
+      %li= t('rules.match_rules.li1')
+      %li= t('rules.match_rules.li2')
+      %li= t('rules.match_rules.li3')
+      %li= t('rules.match_rules.li4')
+      %li= t('rules.match_rules.li5')
+      %li= t('rules.match_rules.li6')
+      %li= t('rules.match_rules.li7')
+      %li= t('rules.match_rules.li8')
 
 .row.mt-3
   .col
