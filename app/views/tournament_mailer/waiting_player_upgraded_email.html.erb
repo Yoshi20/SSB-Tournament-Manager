@@ -6,14 +6,14 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      Hi <%= @user.username %>.
+      <%= t('tournaments.mailer.hi') %> <%= @user.username %>.
     </p>
     <p>
-      Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament.
+      <%= t('tournaments.mailer.player_left_tournament') %>
     </p>
     <p>
-      To check out your registration, just follow <%= link_to "this link", @url %>.
+      <%= t('tournaments.mailer.to_check_out_registration', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>
     </p>
-    <p>We wish you good luck during your matches!</p>
+    <p><%= t('tournaments.mailer.we_wish_you_good_luck') %></p>
   </body>
 </html>
