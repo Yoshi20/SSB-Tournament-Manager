@@ -1,14 +1,14 @@
 .row
   .col
-    %h1.page__title= "Rankings"
+    %h1.page__title= t('rankings.title')
 
 %ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
   %li.nav-item
     %a#power_ranking-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking', role: 'tab', 'aria-controls'=>'all'}
-      = 'Official Power Rankings'
+      = t('rankings.official_power_ranking')
   %li.nav-item
     %a#points-tab.nav-link{'data-toggle'=>'tab', href: '#points', role: 'tab', 'aria-controls'=>'all'}
-      = 'Tournament specific'
+      = t('rankings.tournament_specific')
 
 .tab-content#rankings-tabs-content
   -# Power Rankings ------------------------------------------------------------
@@ -16,10 +16,10 @@
     %ul#power_rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
       %li.nav-item
         %a#s2_19-tab.nav-link{'data-toggle'=>'tab', href: '#s2_19', role: 'tab', 'aria-controls'=>'all'}
-          = 'Season 2 2019'
+          = t('rankings.s2_19.title')
       %li.nav-item
         %a#s1_19-tab.nav-link.active{'data-toggle'=>'tab', href: '#s1_19', role: 'tab', 'aria-controls'=>'all'}
-          = 'Season 1 2019'
+          = t('rankings.s1_19.title')
 
     .tab-content#power_rankings-tabs-content
       -# Power Ranking S2 2019 -------------------------------------------------
@@ -34,9 +34,9 @@
   .tab-pane.fade#points{role: 'tabpanel', 'aria-labelledby'=>'points-tab'}
     .rankings__filter
       .row
-        .rankings__filter__button= link_to 'Overall', rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
-        .rankings__filter__button= link_to 'Seed points', rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
-        .rankings__filter__button= link_to 'Participations', rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to t('rankings.filter.overall'), rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to t('rankings.filter.seed_points'), rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to t('rankings.filter.participations'), rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
         - tournament_majors.each do |major|
           .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       .row
@@ -44,7 +44,7 @@
           .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase, anchor: 'points'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
       .row
         .col{style: 'font-size: 12px;'}
-          (Note: Only on SwissSmash registered players will appear in these rankings)
+          = t('rankings.filter.note')
 
     %table.table.table-hover.table-borderless
       %thead.table-header
@@ -52,17 +52,17 @@
           %th.text-center #
           %th.text-center
             - if params[:filter] == 'participations'
-              = "Participations"
+              = t('rankings.participations')
             - else
-              = "Points"
-          %th Gamer tag
-          %th.text-center Mains
+              = t('rankings.points')
+          %th= t('rankings.gamer_tag')
+          %th.text-center= t('rankings.mains')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
             - if params[:filter] == 'participations'
-              = "Points"
+              = t('rankings.points')
             - else
-              = "Participations"
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+              = t('rankings.participations')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= t('rankings.w_l')
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -113,7 +113,7 @@
                         %span.material-icons.admin-actions__link__icon= 'edit'
 
                     .admin-list-actions__link
-                      = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+                      = link_to player, method: :delete, data: { confirm: t('rankings.confirm') }, class: 'btn btn-sstm btn-square' do
                         %span.material-icons.admin-actions__link__icon= 'delete'
 
     .ranking-list-footer
@@ -121,4 +121,4 @@
 
     - if !@players.any?
       %p{style: 'text-align: center;'}
-        No players found yet
+        = t('rankings.no_players_found')

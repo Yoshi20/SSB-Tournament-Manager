@@ -213,6 +213,35 @@ en:
     past_tournaments: "Past Tournaments"
     hi: "Hi"
 
+  rankings:
+    title: "Rankings"
+    official_power_ranking: "Official Power Rankings"
+    tournament_specific: "Tournament specific"
+    filter:
+      overall: "Overall"
+      seed_points: "Seed points"
+      participations: "Participations"
+      note: "(Note: Only on SwissSmash registered players will appear in these rankings)"
+    gamer_tag: "Gamer tag"
+    mains: "Mains"
+    points: "Points"
+    participations: "Participations"
+    w_l: "W/L"
+    confirm: "Are you sure?"
+    no_players_found: "No players found yet"
+    s1_19:
+      title: "Season 1 2019"
+      top10: "Top 10:"
+      gamer_tag: "Gamer tag"
+      mains: "Mains"
+      participations: "Participations"
+      w_l: "W/L"
+      counted_tournaments: "Counted tournaments:"
+      considered_tournaments: "Considered but deemed ineligible:"
+    s2_19:
+      title: "Season 2 2019"
+      no_ranking: "No ranking available yet"
+
   recaptcha:
     errors:
       verification_failed: 'reCAPTCHA was incorrect, please try again.'
