@@ -1,9 +1,9 @@
-Welcome to the SwissSmash Tournament Manager
+<%= t('users.mailer.welcome') %>
 ===============================================
 
-You have successfully signed up. Your username is: <%= @user.username %>.
+<%= t('users.mailer.signed_up') %> <%= @user.username %>.
 
-To join some tournaments, just follow this link:
+<%= t('users.mailer.to_join2') %>
   <%= @url %>.
 
-Thanks for your registration and good luck during your matches!
+<%= t('users.mailer.thanks') %>

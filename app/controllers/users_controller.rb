@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.order(:created_at)
+    @users = User.all.includes(:player).order(:created_at)
   end
 
   # PATCH/PUT /users/1

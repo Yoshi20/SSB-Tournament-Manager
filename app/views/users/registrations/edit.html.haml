@@ -1,67 +1,64 @@
 .row
   .col
-    %h1.page__title My Account
+    %h1.page__title= t('users.my_account')
 .row.mb-3
   .col
     = form_for(resource, class: 'form', as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
       = devise_error_messages!
       .form-group
-        = f.label :username, 'Login username'
+        = f.label :username, t('users.login_username')
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
-        = f.label :email
+        = f.label :email, t('users.email')
         = f.email_field :email, class: 'form-control'
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .form-group
-        = f.label :mobile_number
+        = f.label :mobile_number, t('users.mobile_number')
         %em
           (079 / 123 45 67)
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
-        = f.label :password, 'New password'
-        %i (leave blank if you don't want to change it)
+        = f.label :password, t('users.new_password')
+        %i= t('users.leave_blank')
         = f.password_field :password, autocomplete: "off", class: 'form-control'
       .form-group
-        = f.label :password_confirmation, 'New password confirmation'
+        = f.label :password_confirmation, t('users.new_password_conf')
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       - if current_user.admin? and resource == current_user
         .form-group
-          = f.label :full_name
-          %i (first and last name)
+          = f.label :full_name, t('users.full_name')
+          %i= t('users.first_and_last_name')
           = f.text_field :full_name, class: 'form-control'
         .form-group
-          = f.label :area_of_responsibility
+          = f.label :area_of_responsibility, t('users.area_of_responsibility')
           %i (Bern, Zurich, Geneva, ...?)
           = f.text_field :area_of_responsibility, class: 'form-control'
         .form-group
-          = f.label :challonge_username
+          = f.label :challonge_username, t('users.challonge_username')
           = f.text_field :challonge_username, class: 'form-control'
         .form-group
-          = f.label :challonge_api_key do
-            = 'Challonge api key ('
-            = link_to 'https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank'
-            = ')'
+          = f.label :challonge_api_key, t('users.challonge_api_key', link: link_to('https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank')).html_safe
           = f.text_field :challonge_api_key, class: 'form-control'
       .form-group.mb-0
         .form-check
           = f.check_box :wants_major_email, class:'form-check-input mr-2'
-          = f.label :wants_major_email, 'Inform me when a major tournament was added', class:'form-check-label'
+          = f.label :wants_major_email, t('users.wants_major_email'), class:'form-check-label'
       .form-group
         .form-check
           = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
-          = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
+          = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
       .form-group{style: 'margin-top: 2rem;'}
-        = f.label :current_password
-        %i (enter your current password to confirm the changes)
+        = f.label :current_password, t('users.current_password')
+        %i= t('users.enter_current_password')
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
       .actions
-        = f.submit "Update", class: 'btn btn-block btn-ghost'
+        = f.submit t('users.update'), class: 'btn btn-block btn-ghost'
 %hr
 .row
   .col
-    %h2 Delete my account
+    %h2= t('users.delete_my_account')
     %p
-      Unhappy?
-      = button_to "Delete account", user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-block btn-sstm'
+      = t('users.unhappy')
+      = button_to t('users.delete_account'), user_registration_path, data: { confirm: t('users.confirm') }, method: :delete, class: 'btn btn-block btn-sstm'
