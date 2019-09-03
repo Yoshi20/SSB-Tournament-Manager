@@ -298,6 +298,7 @@ en:
       we_wish_you_good_luck: "We wish you good luck during your matches!"
       we_hope_to_see_you: "We hope to see you soon in a different tournament."
       if_you_dont_want: "(If you don't want to get this email anymore, you can now configure so in your user settings.)"
+    confirm: "Are you sure?"
     prohibited: "prohibited this tournament from being saved:"
     start_date: "Tournament start date"
     start_date_short: "Start date"
@@ -385,6 +386,20 @@ en:
       li3: "HDMI cable"
       li4: "Super Smash Bros. Ultimate Game (all characters unlocked, current version and ruleset preinstalled)"
       i_will_bring: "I will bring setups"
+      max_one_more_needed_setup: "(max. 1 more setup is needed atm.)"
+      max_more_needed_setups: "(max. %{setups} more setups are needed atm.)"
+    mail_all_players: "Write all registered players an email"
+    mail_all_players_subject: "Concerning the tournament:" #{@tournament.name}"
+    add_player: "Add player"
+    remove_player: "Remove player"
+    waiting_position: "Waiting position"
+    matches: "Matches"
+    set_up_tournament: "Set up tournament"
+    set_up_tournament_confirm: "Are you sure? A tournament on challonge.com will be created."
+    start_tournament: "Start tournament"
+    start_tournament_confirm: "Are you sure? The tournament on challonge.com will be started."
+    finish_tournament: "Finish tournament"
+    cancel_tournament: "Cancel tournament"
 
   recaptcha:
     errors:

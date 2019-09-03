@@ -220,7 +220,7 @@
                               = f.submit 'Submit', class:'btn btn-primary btn-xs game-stations-button', style:'background-color: #007bff;'
                         - else
                           - if !gs.nil? and gs > 0
-                            = "#{!@tournament.finished ? = t('tournaments.brings') : = t('tournaments.brought')} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
+                            = "#{!@tournament.finished ? t('tournaments.brings') : t('tournaments.brought')} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
                     - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                       %td{style: 'text-align: center;'}
                         - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
@@ -246,30 +246,27 @@
             .tournament__players
               .row.game-stations-text
                 .col
-                  %h2= t('tournaments.bring_a_setup.title') Please bring a setup with you
-                  %p
-                    = t('tournaments.bring_a_setup.body')'If you bring the following hard- and software to the tournament, you will get a voucher for the venue or the buffet.'
-                    = 'But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer.'
+                  %h2= t('tournaments.bring_a_setup.title')
+                  %p= t('tournaments.bring_a_setup.body')
                   .row.add-game-stations
                     .col{style: 'text-align: left;'}
                       %ul
-                        %li= t('tournaments.bring_a_setup.li1') Nintendo Switch console
-                        %li= t('tournaments.bring_a_setup.li2') Docking station with its power supply
-                        %li= t('tournaments.bring_a_setup.li3') HDMI cable
-                        %li= t('tournaments.bring_a_setup.li4') Super Smash Bros. Ultimate Game (all characters unlocked, current version and ruleset preinstalled)
+                        %li= t('tournaments.bring_a_setup.li1')
+                        %li= t('tournaments.bring_a_setup.li2')
+                        %li= t('tournaments.bring_a_setup.li3')
+                        %li= t('tournaments.bring_a_setup.li4')
                     .col
                       = form_for @registration, as: :registration, url: registration_path(id: @registration.id, anchor: 'players'), role: 'form', method: :patch do |f|
                         = f.number_field :game_stations, value: 1, style: 'width:35px', min: 0, max: @currently_needed_game_stations
-                        = f.submit = t('tournaments.bring_a_setup.i_will_bring')'I will bring setups', class:'btn btn-ghost', id:'bring-game-stations-button', style: 'display:inline'
+                        = f.submit t('tournaments.bring_a_setup.i_will_bring'), class:'btn btn-ghost', id:'bring-game-stations-button', style: 'display:inline'
                         %br
-                        blup: TODO -> translate
-                        = "(max. #{@currently_needed_game_stations} more #{@currently_needed_game_stations > 1 ? 'setups are' : 'setup is'} needed atm.)"
+                        = (@currently_needed_game_stations > 1) ? t('tournaments.bring_a_setup.max_more_needed_setups', setups: @currently_needed_game_stations) : t('tournaments.bring_a_setup.max_one_more_needed_setup')
 
           - if current_user.present? and current_user.admin?
             .tournament__players
               .row
                 .col
-                  = mail_to "", "Write all registered players an email", bcc: mail_string, subject: "Concerning the tournament: #{@tournament.name}", class: 'btn btn-ghost'
+                  = mail_to "", t('tournaments.mail_all_players'), bcc: mail_string, subject: "#{t('tournaments.mail_all_players_subject')} #{@tournament.name}", class: 'btn btn-ghost'
 
             - if !@tournament.setup and !@tournament.started and !@tournament.finished
               .tournament__players
@@ -277,11 +274,11 @@
                   .col
                     = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
                       = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                      = submit_tag 'Add player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+                      = submit_tag t('tournaments.add_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
                   .col
                     = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
                       = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                      = submit_tag 'Remove player', name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+                      = submit_tag t('tournaments.remove_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
 
     - if @tournament.waiting_list.length > 0
       .tab-pane.fade#waiting{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
@@ -290,11 +287,11 @@
             %thead
               %tr
                 %th
-                  %h3 Name
+                  %h3= t('tournaments.name')
                 %th{style: 'text-align: center;'}
-                  %h3 Mains
+                  %h3= t('players.mains')
                 %th{style: 'text-align: center;'}
-                  %h3 Waiting position
+                  %h3= t('tournaments.waiting_position')
 
             %tbody.table-content.with-show
               - @tournament.waiting_list.each_with_index do |gt, i|
@@ -314,15 +311,15 @@
             %thead
               %tr
                 %th{style: 'text-align: center;'}
-                  %h3 Ranking
+                  %h3= t('tournaments.ranking')
                 %th
-                  %h3 Name
+                  %h3= t('tournaments.name')
                 %th{style: 'text-align: center;'}
-                  %h3 Points
+                  %h3= t('players.points')
                 %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                  %h3 Matches
+                  %h3= t('tournaments.matches')
                 %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                  %h3 W/L
+                  %h3= t('rankings.w_l')
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
                 - player = @tournament.players.find(r.player_id)
@@ -351,18 +348,18 @@
     .row
       .col{style: 'text-align: left;'}
         - if @tournament.is_registration_allowed and !@tournament.setup and !@tournament.started
-          = button_to "Set up tournament", "/tournaments/setup/#{@tournament.id}", class:'btn btn-ghost', id:'setup-tournament-button', :data => {:confirm => 'Are you sure? A tournament on challonge.com will be created.'}
+          = button_to t('tournaments.set_up_tournament'), "/tournaments/setup/#{@tournament.id}", class:'btn btn-ghost', id:'setup-tournament-button', :data => {:confirm => t('tournaments.set_up_tournament_confirm')}
         - elsif @tournament.is_registration_allowed and @tournament.setup and !@tournament.started
-          = button_to "Start tournament", "/tournaments/start/#{@tournament.id}", class:'btn btn-sstm', id:'start-tournament-button', :data => {:confirm => 'Are you sure? The tournament on challonge.com will be started.'}
+          = button_to t('tournaments.start_tournament'), "/tournaments/start/#{@tournament.id}", class:'btn btn-sstm', id:'start-tournament-button', :data => {:confirm => t('tournaments.start_tournament_confirm')}
       .col{style: 'text-align: right;'}
         - if @tournament.is_registration_allowed and @tournament.started
-          = button_to "Finish tournament", "/tournaments/finish/#{@tournament.id}", class:'btn btn-sstm', id:'finish-tournament-button', :data => {:confirm => 'Are you sure?'}
+          = button_to t('tournaments.finish_tournament'), "/tournaments/finish/#{@tournament.id}", class:'btn btn-sstm', id:'finish-tournament-button', :data => {:confirm => t('tournaments.confirm')}
         - else
           -# cancel tournament form
           = form_for @tournament, role: 'form', as: :tournament, url: "/tournaments/cancel/#{@tournament.id}", method: :post do |f|
             = f.text_field :name, value: "(cancelled) #{@tournament.name}", style: 'display: none;'
             = f.check_box :finished, checked: true, style: 'display: none;'
-            = f.submit 'Cancel tournament', class:'btn btn-sstm', id:'cancel-tournament-button', data: { confirm: 'Are you sure?' }
+            = f.submit t('tournaments.cancel_tournament'), class:'btn btn-sstm', id:'cancel-tournament-button', data: { confirm: t('tournaments.confirm') }
 
   - if current_user.present? and current_user.admin?
     .admin-actions
@@ -371,5 +368,5 @@
           %span.material-icons.admin-actions__link__icon= 'edit'
 
       .admin-actions__link
-        = link_to @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+        = link_to @tournament, method: :delete, data: { confirm: t('tournaments.confirm') }, class: 'btn btn-sstm btn-square' do
           %span.material-icons.admin-actions__link__icon= 'delete'
