@@ -4,7 +4,7 @@ class Tournament < ApplicationRecord
   has_many :matches, dependent: :destroy
   has_many :results, dependent: :destroy
 
-  validates :name, uniqueness: true
+  validates :name, uniqueness: true, presence: true
 
   scope :active_2019, -> { where(active: true).where('date > ? AND date < ?', Time.local(2019,1,1), Time.local(2019,12,31,23,59,59)) }
   scope :upcoming, -> { where('date > ?', Time.now) }

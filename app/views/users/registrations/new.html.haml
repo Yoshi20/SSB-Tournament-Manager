@@ -11,14 +11,14 @@
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
         = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
-        = text_field_tag :gamer_tag, nil, class: 'form-control'
+        = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
       .form-group
         = label_tag :prefix, t('players.sponsor_prefix')
-        = text_field_tag :prefix, nil, class: 'form-control'
+        = text_field_tag :prefix, params[:prefix], class: 'form-control'
       .form-group
         = label_tag :discord_username, t('players.discord_username')
         %em= "(User#1234)"
-        = text_field_tag :discord_username, nil, class: 'form-control'
+        = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
       .form-group
         = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
@@ -36,34 +36,35 @@
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       .form-group
         = label_tag :canton, t('players.canton')
-        = select_tag :canton, options_for_select(cantons), {include_blank: true, class: 'form-control'}
+        = select_tag :canton, options_for_select(cantons, params[:canton]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :gender, t('players.gender')
-        = select_tag :gender, options_for_select(genders), {include_blank: true, class: 'form-control'}
+        = select_tag :gender, options_for_select(genders, params[:gender]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :birth_year, t('players.birth_year')
-        = select_tag :birth_year, options_for_select(birth_years), {include_blank: true, class: 'form-control'}
+        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :self_assessment, t('players.self_assessment')
-        = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
+        = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, params[:self_assessment]), {class: 'form-control'}
       .form-group
         = label_tag :tournament_experience, t('players.tournament_experience')
-        = select_tag :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
+        = select_tag :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}, params[:tournament_experience]), {class: 'form-control'}
       .form-group
         = label_tag :main_characters, t('players.main_characters')
         %em= t('players.up_to_three')
-        = text_field_tag :main_characters, nil, class: 'form-control'
+        = text_field_tag :main_characters, params[:main_characters], class: 'form-control'
       .form-group
         = label_tag :comment, t('players.comment')
         %em= t('players.for_what_ever')
-        = text_area_tag :comment, nil, class: 'form-control'
+        = text_area_tag :comment, params[:comment], class: 'form-control'
       .form-group.mb-0
         .form-check
-          = f.check_box :wants_major_email, checked: true, class:'form-check-input mr-2'
+          = f.check_box :wants_major_email, checked: (params[:user].present? ? (params[:user][:wants_major_email] == "1") : true), class:'form-check-input mr-2'
           = f.label :wants_major_email, t('users.wants_major_email'), class:'form-check-label'
       .form-group
         .form-check
-          = f.check_box :wants_weekly_email, checked: true, class:'form-check-input mr-2'
+          = params[:wants_weekly_email]
+          = f.check_box :wants_weekly_email, checked: (params[:user].present? ? (params[:user][:wants_weekly_email] == "1") : true), class:'form-check-input mr-2'
           = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
       .form-group
         = f.submit t('users.register'), class:'btn btn-ghost'

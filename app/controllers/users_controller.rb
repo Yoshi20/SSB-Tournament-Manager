@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if current_user.admin? and @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_path, notice: t('flash.notice.updating_user') }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { redirect_to users_path, alert: "User couldn't be updated." }
+        format.html { redirect_to users_path, alert: t('flash.alert.updating_user') }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if current_user.super_admin? or current_user == @user
       @user.player.destroy
       @user.destroy
-      flash[:notice] = "User was successfully deleted"
+      flash[:notice] = t('flash.notice.deleting_user')
     else
       raise 'impossibru!'
     end

@@ -1,5 +1,14 @@
 en:
 
+  flash:
+    notice:
+      creating_player: "Player was successfully created. Check out other players or look for a tournament you would like to join"
+      updating_user: "User was successfully updated"
+      deleting_user: "User was successfully deleted"
+    alert:
+      creating_player: "Creating player failed! You may have selected an already taken gamer tag. Please try again"
+      updating_user: "User couldn't be updated"
+
   navigation:
     tournaments: "Tournaments"
     calendar: "Calendar"
@@ -440,5 +449,5 @@ en:
 
   recaptcha:
     errors:
-      verification_failed: "reCAPTCHA was incorrect, please try again."
-      recaptcha_unreachable: "reCAPTCHA verification server error, please try again."
+      verification_failed: "Sorry but something went wrong, please try again"
+      recaptcha_unreachable: "reCAPTCHA server error, please try again"
