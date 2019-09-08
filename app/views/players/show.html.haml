@@ -172,7 +172,7 @@
       - if @player.user != current_user
         .admin-actions__link
           - if @player.user.admin? or current_user.admin?
-            = mail_to @player.user.email, body: "#{t('players.hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
+            = mail_to @player.user.email, body: "#{t('hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
               %span.material-icons.admin-actions__link__icon= 'email'
         - if current_user.admin? and @player.user.mobile_number.present?
           .mobile_number= " (#{@player.user.mobile_number})"

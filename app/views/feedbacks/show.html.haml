@@ -19,7 +19,7 @@
   %strong
     - if current_user.present? and (current_user.admin? or current_user == @feedback.user)
       %p= link_to t('feedback.edit'), edit_feedback_path(@feedback)
-      %p= link_to t('feedback.delete'), @feedback, method: :delete, data: { confirm: t('feedback.confirm') }
+      %p= link_to t('feedback.delete'), @feedback, method: :delete, data: { confirm: t('confirm') }
 
 .row.show-feedback
   .col-md-12

@@ -8,5 +8,5 @@
     %strong
       %p= link_to 'Show', feedback_path(@feedback)
       - if current_user.admin? or current_user == @feedback.user
-        %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: t('feedback.confirm') }
+        %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: t('confirm') }
       %p= link_to 'Back', :back

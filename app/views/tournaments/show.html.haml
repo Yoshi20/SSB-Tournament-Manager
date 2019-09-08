@@ -21,7 +21,7 @@
     - if @tournament.is_registration_allowed
       %li.nav-item
         %a#players-tab.nav-link{'data-toggle'=>'tab', href: '#players', role: 'tab', 'aria-controls'=>'all'}
-          = t('tournaments.players')
+          = t('players.title')
     - if @tournament.waiting_list.length > 0
       %li.nav-item
         %a#waiting-tab.nav-link{'data-toggle'=>'tab', href: '#waiting', role: 'tab', 'aria-controls'=>'all'}
@@ -189,7 +189,7 @@
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('tournaments.canton')
                   %th{style: 'text-align: center;'}
-                    %h3= t('tournaments.mains')
+                    %h3= t('players.mains')
                   - if @tournament.is_registration_allowed
                     %th
                       %h3= t('tournaments.setups')
@@ -319,7 +319,7 @@
                 %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                   %h3= t('tournaments.matches')
                 %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                  %h3= t('rankings.w_l')
+                  %h3= t('w_l')
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
                 - player = @tournament.players.find(r.player_id)
@@ -353,13 +353,13 @@
           = button_to t('tournaments.start_tournament'), "/tournaments/start/#{@tournament.id}", class:'btn btn-sstm', id:'start-tournament-button', :data => {:confirm => t('tournaments.start_tournament_confirm')}
       .col{style: 'text-align: right;'}
         - if @tournament.is_registration_allowed and @tournament.started
-          = button_to t('tournaments.finish_tournament'), "/tournaments/finish/#{@tournament.id}", class:'btn btn-sstm', id:'finish-tournament-button', :data => {:confirm => t('tournaments.confirm')}
+          = button_to t('tournaments.finish_tournament'), "/tournaments/finish/#{@tournament.id}", class:'btn btn-sstm', id:'finish-tournament-button', :data => {:confirm => t('confirm')}
         - else
           -# cancel tournament form
           = form_for @tournament, role: 'form', as: :tournament, url: "/tournaments/cancel/#{@tournament.id}", method: :post do |f|
             = f.text_field :name, value: "(cancelled) #{@tournament.name}", style: 'display: none;'
             = f.check_box :finished, checked: true, style: 'display: none;'
-            = f.submit t('tournaments.cancel_tournament'), class:'btn btn-sstm', id:'cancel-tournament-button', data: { confirm: t('tournaments.confirm') }
+            = f.submit t('tournaments.cancel_tournament'), class:'btn btn-sstm', id:'cancel-tournament-button', data: { confirm: t('confirm') }
 
   - if current_user.present? and current_user.admin?
     .admin-actions
@@ -368,5 +368,5 @@
           %span.material-icons.admin-actions__link__icon= 'edit'
 
       .admin-actions__link
-        = link_to @tournament, method: :delete, data: { confirm: t('tournaments.confirm') }, class: 'btn btn-sstm btn-square' do
+        = link_to @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
           %span.material-icons.admin-actions__link__icon= 'delete'

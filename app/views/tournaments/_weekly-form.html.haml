@@ -66,7 +66,7 @@
         = f.label :host_username, t('tournaments.hostname')
         = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
     .form-group
-      = f.label :description, t('tournaments.description')
+      = f.label :description, t('tournaments.description_html')
       = f.text_area :description, class: 'form-control', rows: '15'
     - if @tournament.new_record?
       .form-group.d-none
@@ -105,7 +105,7 @@
 
     .form-group
       = hidden_field_tag(:subtype, 'weekly')
-      = f.submit "#{@tournament.new_record? ? t('tournaments.create') : t('tournaments.update')} #{t('tournaments.weekly_tournament')}", class:'btn btn-ghost'
+      = f.submit "#{@tournament.new_record? ? t('create') : t('update')} #{t('tournaments.weekly_tournament')}", class:'btn btn-ghost'
 
     - if !@tournament.new_record?
       .form-group

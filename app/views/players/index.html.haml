@@ -28,7 +28,7 @@
           %th.text-center= link_to t('players.mains'), players_path(search: params[:search], sort: 'main_characters', order: 'asc', anchor: 'stats')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.self_assessment'), players_path(search: params[:search], sort: 'self_assessment', order: 'asc', anchor: 'stats')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.xp'), players_path(search: params[:search], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to t('players.win_loss_ratio'), players_path(search: params[:search], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('w_l'), players_path(search: params[:search], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
       %tbody.table-content.with-show.player-list-body
         - if @players.any?

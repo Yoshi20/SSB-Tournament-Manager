@@ -9,10 +9,10 @@
   %span= t('calendar.color_legend.ongoing')
 .calendar__footer__legend__item
   %span.circle{style: "background: cornflowerblue;"}
-  %span= t('calendar.color_legend.external')
+  %span= t('external')
 .calendar__footer__legend__item
   %span.circle{style: "background: orchid;"}
-  %span= t('calendar.color_legend.internal')
+  %span= t('internal')
 
 -if current_user.present?
   .calendar__footer__legend__item
@@ -21,7 +21,7 @@
 
 .calendar__footer__legend__item
   %span.circle{style: "background: #61bf9b;"}
-  %span= t('calendar.color_legend.weekly')
+  %span= t('weekly')
 
 -if current_user.present?
   .calendar__footer__legend__item

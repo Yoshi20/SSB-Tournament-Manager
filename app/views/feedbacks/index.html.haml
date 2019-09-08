@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title= t('feedback.title')
+    %h1.page__title= t('feedback_and_questions')
 
 .row.feedbacks-div
   .col-md-12
@@ -37,7 +37,7 @@
           %p
             = link_to admin.player.gamer_tag, admin.player
             %br
-            = mail_to admin.email, admin.email, body: "#{t('feedback.mailer.hi')} #{admin.username}\n\n..."
+            = mail_to admin.email, admin.email, body: "#{t('hi')} #{admin.username}\n\n..."
             %br
             - if admin.mobile_number.present?
               = admin.mobile_number

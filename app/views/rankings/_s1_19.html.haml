@@ -6,10 +6,10 @@
   %thead.table-header
     %tr
       %th.text-center #
-      %th= t('rankings.s1_19.gamer_tag')
-      %th.text-center= t('rankings.s1_19.mains')
-      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('rankings.s1_19.participations')
-      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('rankings.s1_19.w_l')
+      %th= t('players.gamer_tag')
+      %th.text-center= t('players.mains')
+      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('players.participations')
+      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
 
   %tbody.table-content.with-show
     %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}

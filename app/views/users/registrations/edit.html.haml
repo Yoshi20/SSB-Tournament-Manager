@@ -54,11 +54,11 @@
         %i= t('users.enter_current_password')
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
       .actions
-        = f.submit t('users.update'), class: 'btn btn-block btn-ghost'
+        = f.submit t('update'), class: 'btn btn-block btn-ghost'
 %hr
 .row
   .col
     %h2= t('users.delete_my_account')
     %p
       = t('users.unhappy')
-      = button_to t('users.delete_account'), user_registration_path, data: { confirm: t('users.confirm') }, method: :delete, class: 'btn btn-block btn-sstm'
+      = button_to t('users.delete_account'), user_registration_path, data: { confirm: t('confirm') }, method: :delete, class: 'btn btn-block btn-sstm'

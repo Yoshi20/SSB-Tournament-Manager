@@ -18,4 +18,4 @@
           = f.text_area :response, class: 'form-control', style: 'height: 120px'
           = f.text_field :response_username, value: current_user.username, hidden: true
       .actions.form-group
-        = f.submit ((@feedback.new_record? ? t('feedback.create') : t('feedback.update')) + ' ' + t('feedback.feedback_or_question')), class:'btn btn-ghost'
+        = f.submit ((@feedback.new_record? ? t('create') : t('update')) + ' ' + t('feedback.feedback_or_question')), class:'btn btn-ghost'

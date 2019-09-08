@@ -1,7 +1,7 @@
 <%= @tournament.name %>
 ===============================================
 
-<%= t('tournaments.mailer.hi') %> <%= @user.username %>.
+<%= t('hi') %> <%= @user.username %>.
 
 <%= t('tournaments.mailer.too_few_registrations', tournament: @tournament.name.gsub('(cancelled) ', '')).html_safe %>
 

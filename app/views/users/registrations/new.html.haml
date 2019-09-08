@@ -27,7 +27,7 @@
         %em= "(079 / 123 45 67)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
-        = f.label :password, "#{t('users.password')} *"
+        = f.label :password, "#{t('password')} *"
         - if @minimum_password_length
           %em= t('users.chars_min', pw_length: @minimum_password_length)
         = f.password_field :password, autocomplete: "off", class: 'form-control'

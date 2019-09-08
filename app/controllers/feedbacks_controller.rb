@@ -32,7 +32,7 @@ class FeedbacksController < ApplicationController
         User.where(is_admin:true).each do |admin|
           FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
-        format.html { redirect_to feedbacks_path, notice: 'Feedback or Question was successfully created.' }
+        format.html { redirect_to feedbacks_path, notice: t('flash.notice.feedback_created') }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class FeedbacksController < ApplicationController
         end
       end
       if @feedback.update(p)
-        format.html { redirect_to @feedback, notice: 'Feedback or Question was successfully updated.' }
+        format.html { redirect_to @feedback, notice: t('flash.notice.feedback_updated') }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback or Question was successfully destroyed.' }
+      format.html { redirect_to feedbacks_url, notice: t('flash.notice.feedback_deleted') }
       format.json { head :no_content }
     end
   end

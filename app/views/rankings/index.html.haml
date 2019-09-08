@@ -36,7 +36,7 @@
       .row
         .rankings__filter__button= link_to t('rankings.filter.overall'), rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
         .rankings__filter__button= link_to t('rankings.filter.seed_points'), rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
-        .rankings__filter__button= link_to t('rankings.filter.participations'), rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
+        .rankings__filter__button= link_to t('players.participations'), rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
         - tournament_majors.each do |major|
           .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
       .row
@@ -52,17 +52,17 @@
           %th.text-center #
           %th.text-center
             - if params[:filter] == 'participations'
-              = t('rankings.participations')
+              = t('players.participations')
             - else
-              = t('rankings.points')
-          %th= t('rankings.gamer_tag')
-          %th.text-center= t('rankings.mains')
+              = t('players.points')
+          %th= t('players.gamer_tag')
+          %th.text-center= t('players.mains')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
             - if params[:filter] == 'participations'
-              = t('rankings.points')
+              = t('players.points')
             - else
-              = t('rankings.participations')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= t('rankings.w_l')
+              = t('players.participations')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -113,7 +113,7 @@
                         %span.material-icons.admin-actions__link__icon= 'edit'
 
                     .admin-list-actions__link
-                      = link_to player, method: :delete, data: { confirm: t('rankings.confirm') }, class: 'btn btn-sstm btn-square' do
+                      = link_to player, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
                         %span.material-icons.admin-actions__link__icon= 'delete'
 
     .ranking-list-footer
