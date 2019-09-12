@@ -12,6 +12,8 @@ en:
   weekly: "Weekly"
   create: "Create"
   update: "Update"
+  edit: "Edit"
+  delete: "Delete"
   confirm: "Are you sure?"
 
   flash:
@@ -214,8 +216,6 @@ en:
     new: "New feedback or question"
     users_feedback: "%{user}'s feedback or question"
     someones_feedback: "Someone's feedback or question"
-    edit: "Edit"
-    delete: "Delete"
     updated_at: "Updated at:"
     created_at: "Created at:"
 
@@ -242,7 +242,6 @@ en:
     for_what_ever: "(for what ever you want to tell the world)"
     update_profile: "Update Profile"
     edit: "Edit Profile"
-    delete: "Delete"
     stats: "Stats"
     data: "Data"
     search: "Search"
