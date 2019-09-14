@@ -7,7 +7,7 @@
     <h1><%= t('hi') %> <%= @user.username %></h1>
     <p><%= t('feedback.mailer.thanks') %></p>
     <p>
-      <%= t('feedback.mailer.response') %> <%= link_to "this link", @url %>.
+      <%= t('feedback.mailer.response', link: link_to(t('feedback.mailer.this_link'), @url)).html_safe %>.
     </p>
     <p>
       <%= t('feedback.mailer.best_regards') %>

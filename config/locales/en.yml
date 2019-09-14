@@ -201,7 +201,8 @@ en:
   feedback:
     mailer:
       thanks: "Thanks a lot for your feedback or question."
-      response: "You can check out my response by following"
+      response: "You can check out my response by following %{link}."
+      this_link: "this link"
       best_regards: "Best regards"
     text: "Text"
     admin_replied: "Administrator \"%{user}\" replied:"
@@ -239,7 +240,7 @@ en:
     main_characters: "Main characters"
     up_to_three: "(you can add up to three by separating them with a comma)"
     comment: "Comment"
-    for_what_ever: "(for what ever you want to tell the world)"
+    for_what_ever: "(for whatever you want to tell the world)"
     update_profile: "Update Profile"
     edit: "Edit Profile"
     stats: "Stats"
@@ -403,7 +404,7 @@ en:
     brought: "Brought"
     bring_a_setup:
       title: "Please bring a setup with you"
-      body: "If you bring the following hard- and software to the tournament, you will get a voucher for the venue or the buffet. But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer."
+      body: "If you bring the following hard- and software to the tournament, you may get a voucher for the venue or the buffet. But once you have agreed to bring one, you are obligated to provide it until it is not needed any longer."
       li1: "Nintendo Switch console"
       li2: "Docking station with its power supply"
       li3: "HDMI cable"
@@ -454,7 +455,6 @@ en:
     unhappy: "Unhappy?"
     delete_account: "Delete account"
     signing_up: "Signing up"
-    mobile_number: "Mobile number"
     chars_min: "(%{pw_length} characters minimum)"
     password_confirmation: "Password confirmation"
     register: "Register"
