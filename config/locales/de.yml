@@ -16,6 +16,10 @@ de:
   delete: "Löschen"
   confirm: "Bist du sicher?"
 
+  coffee:
+    copied: "\"%{item}\" in die Zwischenablage kopiert"
+    not_copied: "Ups, \"%{item}\" kann nicht in die Zwischenablage kopiert werden"
+
   flash:
     notice:
       creating_player: "Spieler wurde erfolgreich erstellt. Schaue dir andere Spieler an oder suche nach einem Turnier dem du beiterten möchtest"
@@ -105,7 +109,11 @@ de:
     title: "Willkommen bei SwissSmash.ch"
     body1: "Wenn du mit der Swiss Smash Community auf dem Laufenden bleiben willst, schließe dich uns auf %{discord_link} an und folge dem Swiss Smash %{twitter_link} Account."
     body2: "Du finden die bevorstehenden Ereignisse in der %{tournaments_link} oder im %{calendar_link}."
-    body3: "Um an einem Turnier teilnehmen zu können und ein Feedback oder eine Frage zu schreiben, %{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan haben solltest."
+    tournament_list: "Turnier Liste"
+    calendar: "Kalender"
+    body3: "%{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan hast, um an einem Turnier teilnehmen zu können und ein Feedback oder eine Frage zu schreiben."
+    log_in: "Logge dich ein"
+    sign_up: "melde dich an"
 
   information:
     title: "Informationen"
