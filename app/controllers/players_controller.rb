@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
     if params[:search].present?
       @players = @players.search(params[:search])
       if @players.empty?
-        flash.now[:alert] = "There were no players found with this search query."
+        flash.now[:alert] = t('flash.alert.search_players')
       end
     end
     # handle sort parameter
@@ -101,7 +101,7 @@ class PlayersController < ApplicationController
           end
         end
         # render
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to @player, notice: t('flash.notice.player_updated') }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }

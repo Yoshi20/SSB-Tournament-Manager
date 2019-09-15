@@ -1,4 +1,4 @@
-en:
+fr:
   login: "Login"
   feedback_and_questions: "Feedback & Questions"
   username: "Username"
@@ -519,5 +519,5 @@ en:
 
   recaptcha:
     errors:
-      verification_failed: "reCAPTCHA thinks that you're not a human. Please re-enter password and try again"
+      verification_failed: "reCAPTCHA thinks that you're not a human. Please re-enter password try again"
       recaptcha_unreachable: "reCAPTCHA server error. Please try again"

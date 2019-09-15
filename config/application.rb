@@ -17,5 +17,7 @@ module SSBTournamentManager
 
     config.time_zone = 'Bern'
 
+    config.i18n.available_locales = %w(en de fr)
+
   end
 end

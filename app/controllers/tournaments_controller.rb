@@ -17,7 +17,7 @@ class TournamentsController < ApplicationController
       @tournaments = @tournaments.search(params[:search])
       @past_tournaments = @past_tournaments.search(params[:search])
       if @tournaments.empty? and @past_tournaments.empty?
-        flash.now[:alert] = "There were no tournaments found with this search query."
+        flash.now[:alert] = t('flash.alert.search_tournaments')
       end
       @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
@@ -75,7 +75,7 @@ class TournamentsController < ApplicationController
               end
             end
           end
-          format.html { redirect_to @tournament, notice: 'Internal tournament was successfully created.' }
+          format.html { redirect_to @tournament, notice: t('flash.notice.create_internal_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -92,7 +92,7 @@ class TournamentsController < ApplicationController
               end
             end
           end
-          format.html { redirect_to tournaments_path, notice: 'External tournament was successfully created.' }
+          format.html { redirect_to tournaments_path, notice: t('flash.notice.create_external_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -125,7 +125,7 @@ class TournamentsController < ApplicationController
               return
             end
           end
-          format.html { redirect_to @tournament, notice: 'One or more weeklies were successfully created.' }
+          format.html { redirect_to @tournament, notice: t('flash.notice.create_weekly_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { render :new }
@@ -183,9 +183,9 @@ class TournamentsController < ApplicationController
                 return
               end
             end
-            format.html { redirect_to @tournament, notice: 'One or more weeklies were successfully updated.' }
+            format.html { redirect_to @tournament, notice: t('flash.notice.update_weekly_tournament') }
           else
-            format.html { redirect_to @tournament, notice: 'Tournament was successfully updated.' }
+            format.html { redirect_to @tournament, notice: t('flash.notice.update_internal_tournament') }
           end
           format.json { render :show, status: :ok, location: @tournament }
         else
@@ -196,7 +196,7 @@ class TournamentsController < ApplicationController
     elsif @tournament.subtype == 'external'
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
-          format.html { redirect_to tournaments_path, notice: 'External tournament was successfully updated.' }
+          format.html { redirect_to tournaments_path, notice: t('flash.notice.update_external_tournament') }
           format.json { render :show, status: :ok, location: @tournament }
         else
           format.html { render :edit }
@@ -217,11 +217,11 @@ class TournamentsController < ApplicationController
     if @tournament.active == false
       if @tournament.destroy
         respond_to do |format|
-          format.html { redirect_to tournaments_url, notice: 'Tournament was successfully destroyed.' }
+          format.html { redirect_to tournaments_url, notice: t('flash.notice.delete_tournament') }
           format.json { head :no_content }
         end
       else
-        redirect_to tournaments_url, alert: "Player couldn't be destroyed!"
+        redirect_to tournaments_url, alert: t('flash.alert.delete_tournament')
       end
     else
       if @tournament.subtype == 'weekly' and params[:all]
@@ -235,11 +235,11 @@ class TournamentsController < ApplicationController
       end
       if @tournament.update(active: false)
         respond_to do |format|
-          format.html { redirect_to tournaments_url, notice: 'Tournament was successfully deactivated.' }
+          format.html { redirect_to tournaments_url, notice: t('flash.notice.deactivate_tournament') }
           format.json { head :no_content }
         end
       else
-        redirect_to tournaments_url, alert: "Player couldn't be deactivated!"
+        redirect_to tournaments_url, alert: t('flash.alert.deactivate_tournament')
       end
     end
   end
@@ -253,17 +253,17 @@ class TournamentsController < ApplicationController
     end
 
     if player_to_add.nil?
-      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player not found."
+      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.player_not_found')}"
       return;
     end
 
     if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Online registration deadline exceeded."
+      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end
 
     if @tournament.players.include?(player_to_add)
-      redirect_to @tournament, alert: "Player couldn't be added to the tournament -> Player was already added."
+      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.player_already_added')}"
       return;
     end
 
@@ -274,24 +274,24 @@ class TournamentsController < ApplicationController
       if @tournament.waiting_list.include?(player_to_add.gamer_tag)
         @tournament.waiting_list.delete(player_to_add.gamer_tag)
         if @tournament.save
-          redirect_to @tournament, notice: 'Player was added to the tournament and removed from the waiting list.'
+          redirect_to @tournament, notice: "#{t('flash.notice.add_player')} #{t('flash.notice.removed_from_wating_list')}"
         else
-          redirect_to @tournament, alert: "Player was added to the tournament but couldn't be removed from the waiting list."
+          redirect_to @tournament, alert: "#{t('flash.notice.add_player')} #{t('flash.alert.not_removed_from_wating_list')}"
         end
       else
-        redirect_to @tournament, notice: 'Player was added to the tournament.'
+        redirect_to @tournament, notice: t('flash.notice.add_player')
       end
     else
       # tournament is full
       if params[:waiting_list] == 'true' or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add))
         @tournament.waiting_list.push(player_to_add.gamer_tag)
         if @tournament.save
-          redirect_to @tournament, notice: "Player was added to the waiting list."
+          redirect_to @tournament, notice: t('flash.notice.add_player_to_waiting_list')
         else
-          redirect_to @tournament, alert: "Player couldn't be added to the waiting list."
+          redirect_to @tournament, alert: t('flash.alert.add_player_to_waiting_list')
         end
       else
-        redirect_to @tournament, alert: "Player couldn't be added to the tournament -> The tournament is full."
+        redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.tournament_full')}"
       end
     end
   end
@@ -305,12 +305,12 @@ class TournamentsController < ApplicationController
     end
 
     if player_to_remove.nil?
-      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player not found."
+      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.player_not_found')}"
       return;
     end
 
     if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-      redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Online registration deadline exceeded."
+      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end
 
@@ -318,12 +318,12 @@ class TournamentsController < ApplicationController
       if @tournament.waiting_list.include?(player_to_remove.gamer_tag)
         @tournament.waiting_list.delete(player_to_remove.gamer_tag)
         if @tournament.save
-          redirect_to @tournament, notice: 'Player was removed from the waiting list.'
+          redirect_to @tournament, notice: t('flash.notice.remove_player_from_waiting_list')
         else
-          redirect_to @tournament, alert: "Player couldn't be removed from the waiting list."
+          redirect_to @tournament, alert: t('flash.alert.remove_player_from_waiting_list')
         end
       else
-        redirect_to @tournament, alert: "Player couldn't be removed from the tournament -> Player is not in the tournament."
+        redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.player_not_in_tournament')}"
       end
       return;
     end
@@ -338,23 +338,23 @@ class TournamentsController < ApplicationController
       @tournament.players << player_to_add
       TournamentMailer.with(tournament: @tournament, user: player_to_add.user).waiting_player_upgraded_email.deliver_later
       if @tournament.save
-        redirect_to @tournament, notice: 'Player was removed from the tournament and the first player in the waiting list took the seat.'
+        redirect_to @tournament, notice: "#{t('flash.notice.remove_player')} #{t('flash.notice.first_waiting_player')}"
       else
-        redirect_to @tournament, alert: "Player was removed from the tournament but the first player in the waiting list couldn't take the seat."
+        redirect_to @tournament, alert: "#{t('flash.notice.remove_player')} #{t('flash.alert.first_waiting_player')}"
       end
     else
-      redirect_to @tournament, notice: 'Player was removed from the tournament.'
+      redirect_to @tournament, notice: t('flash.notice.remove_player')
     end
   end
 
   # POST /tournaments/setup/1'
   def setup
     if @tournament.setup or @tournament.started or @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already set up, started or finished.'
+      redirect_to @tournament, alert: t('flash.alert.tournament_status_error')
     else
-      min_needed_game_stations_count = helpers.min_needed_game_stations_per_tournament(@tournament.players.count)
-      current_game_stations_count = @tournament.game_stations_count
-      if current_game_stations_count < min_needed_game_stations_count
+      # min_needed_game_stations_count = helpers.min_needed_game_stations_per_tournament(@tournament.players.count)
+      # current_game_stations_count = @tournament.game_stations_count
+      if false # current_game_stations_count < min_needed_game_stations_count
         delta_game_stations = min_needed_game_stations_count - current_game_stations_count
         redirect_to @tournament, alert: "At least #{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
       else
@@ -415,15 +415,15 @@ class TournamentsController < ApplicationController
           @tournament.challonge_tournament_id = ct.id
           if @tournament.save
             if @tournament.has_pools?
-              redirect_to @tournament, notice: "Tournament was successfully set up. This is a two-stage tournament -> Check out the preferences on challonge.com to configure your pools."
+              redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.two_stage_tournament')}"
             else
-              redirect_to @tournament, notice: "Tournament was successfully set up. Check it out on challonge.com and click 'Start tournament' if you're ready."
+              redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.check_out_challonge')}"
             end
           else
-            redirect_to @tournament, alert: "Tournament couldn't be set up."
+            redirect_to @tournament, alert: t('flash.alert.tournament_set_up')
           end
         else
-          redirect_to @tournament, alert: "Tournament cannot be set up. Challonge data are missing. Add them #{view_context.link_to('here', edit_user_registration_path, target: '_blank')}".html_safe
+          redirect_to @tournament, alert: "#{t('flash.alert.tournament_set_up')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
         end
       end
     end
@@ -432,9 +432,9 @@ class TournamentsController < ApplicationController
   # POST /tournaments/start/1
   def start
     if !@tournament.setup
-      redirect_to @tournament, alert: "Tournament wasn't set up yet."
+      redirect_to @tournament, alert: t('flash.alert.not_set_up_yet')
     elsif @tournament.started or @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already started or finished.'
+      redirect_to @tournament, alert: t('flash.alert.already_started')
     else
       if set_challonge_username_and_api_key()
 
@@ -444,12 +444,12 @@ class TournamentsController < ApplicationController
         ct.start!
         @tournament.started = true
         if @tournament.save
-          redirect_to @tournament, notice: 'Tournament was successfully started.'
+          redirect_to @tournament, notice: t('flash.notice.tournament_started')
         else
-          redirect_to @tournament, alert: "Tournament couldn't be started."
+          redirect_to @tournament, alert: t('flash.alert.tournament_started')
         end
       else
-        redirect_to @tournament, alert: "Tournament cannot be started. Challonge data are missing. Add them #{view_context.link_to('here', edit_user_registration_path, target: '_blank')}".html_safe
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_started')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end
@@ -457,9 +457,9 @@ class TournamentsController < ApplicationController
   # POST /tournaments/finish/1
   def finish
     if !@tournament.setup or !@tournament.started
-      redirect_to @tournament, alert: "Tournament wasn't set up or started yet."
+      redirect_to @tournament, alert: t('flash.alert.not_set_up_or_started_yet')
     elsif @tournament.finished
-      redirect_to @tournament, alert: 'Tournament is already finished.'
+      redirect_to @tournament, alert: t('flash.alert.tournament_finished')
     else
       if set_challonge_username_and_api_key()
 
@@ -543,14 +543,14 @@ class TournamentsController < ApplicationController
 
           @tournament.finished = true
           @tournament.save
-          redirect_to @tournament, notice: 'Tournament was successfully finished and the participated players were updated.'
+          redirect_to @tournament, notice: t('flash.notice.tournament_finished')
         else
           if ct.started_at.nil? then @tournament.update(started: false) end # this happens when a ct was reset
           link = "https://challonge.com/#{ct.url}"
-          redirect_to @tournament, alert: "Tournament was not fineshed yet. You have to finish it first on: #{view_context.link_to link, link, target: '_blank'}".html_safe
+          redirect_to @tournament, alert: t('flash.alert.tournament_not_finished', link: view_context.link_to(link, link, target: '_blank')).html_safe
         end
       else
-        redirect_to @tournament, alert: "Tournament cannot be finished. Challonge data are missing. Add them #{view_context.link_to('here', edit_user_registration_path, target: '_blank')}".html_safe
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_cannot_finish')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end
@@ -562,7 +562,7 @@ class TournamentsController < ApplicationController
       TournamentMailer.with(tournament: @tournament, user: p.user).tournament_cancelled_email.deliver_later
     end
     @tournament.update(tournament_params)
-    redirect_to @tournament, notice: 'Tournament was successfully cancelled.'
+    redirect_to @tournament, notice: t('flash.notice.tournament_cancelled')
   end
 
   # GET /tournaments/location/1
@@ -580,7 +580,7 @@ class TournamentsController < ApplicationController
     def check_if_admin
       unless current_user.is_admin
         respond_to do |format|
-          format.html { redirect_to @tournament, alert: 'Unauthorized! You must be an administrator to make this action.' }
+          format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
           format.json { render json: @tournament.errors, status: :unauthorized }
         end
       end
@@ -591,7 +591,7 @@ class TournamentsController < ApplicationController
       date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
       registration_deadline = Time.new(tp['registration_deadline(1i)'], tp['registration_deadline(2i)'], tp['registration_deadline(3i)'],  tp['registration_deadline(4i)'],  tp['registration_deadline(5i)'])
       if registration_deadline >= date
-        @tournament.errors.add(:registration_deadline, "must be less than the tournament start date")
+        @tournament.errors.add(:registration_deadline, t('tournaments.errors.registration_deadline'))
         return false
       else
         return true

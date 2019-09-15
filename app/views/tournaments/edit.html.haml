@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title Editing tournament
+    %h1.page__title= t('tournaments.edit')
 
 .tournament-edit
   - if @tournament.subtype.nil? or @tournament.subtype == 'internal'
@@ -13,7 +13,7 @@
   .tournament-edit__actions
     - if current_user.admin?
       - if @tournament.subtype == 'weekly'
-        %p= link_to 'Delete this weekly', @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
-        %p= link_to 'Delete all upcoming weeklies of this kind', tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
+        %p= link_to "#{t('delete')} #{t('tournaments.this_weekly')}", @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'
+        %p= link_to "#{t('delete')} #{t('tournaments.all_upcoming_weeklies')}", tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'
       - else
-        %p= link_to 'Delete', @tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'
+        %p= link_to t('delete'), @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'

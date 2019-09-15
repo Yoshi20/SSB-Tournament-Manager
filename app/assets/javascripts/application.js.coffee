@@ -10,6 +10,7 @@
 # Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 # about supported directives.
 #
+#= require i18n/translations
 #= require jquery
 #= require popper
 #= require turbolinks
@@ -33,9 +34,9 @@ document.addEventListener 'turbolinks:load', ->
     dummyTextArea.value = '@' + discordUserName
     dummyTextArea.select()
     if document.execCommand("copy")
-      alert("Copied \"" + dummyTextArea.value + "\" to the clipboard")
+      alert(I18n.t('coffee.copied', {item: dummyTextArea.value}))
     else
-      alert("Oops, unable to copy \"" + discordUserName + "\" to the clipboard")
+      alert(I18n.t('coffee.not_copied', {item: discordUserName}))
     document.body.removeChild(dummyTextArea)
 
   # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present and '/tournaments'

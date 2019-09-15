@@ -106,6 +106,9 @@ gem 'challonge-api'
 # See https://github.com/mislav/will_paginate
 gem 'will_paginate', '~> 3.1.0'
 
+# See https://github.com/iain/http_accept_language
+gem 'http_accept_language'
+
 # See https://nokogiri.org/
 gem 'nokogiri', '>= 1.10.4'
 
@@ -114,3 +117,12 @@ gem 'recaptcha'
 
 # See https://github.com/smartinez87/exception_notification
 gem 'exception_notification'
+
+# See https://github.com/svenfuchs/rails-i18n
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+
+# See https://github.com/tigrish/devise-i18n
+gem 'devise-i18n'
+
+# See https://github.com/fnando/i18n-js
+gem 'i18n-js'

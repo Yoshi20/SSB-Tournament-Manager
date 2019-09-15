@@ -18,22 +18,29 @@
     %ul.navbar-nav.navbar-main.ml-auto
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
-          Tournaments
+          = t('tournaments.title')
         .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
-          = link_to 'Calendar', calendar_path, class: 'dropdown-item'
-          = link_to 'List', tournaments_path, class: 'dropdown-item'
+          = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
+          = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
 
       %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
-        = link_to 'Rankings', rankings_path, class: 'nav-link'
+        = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
-        = link_to 'Players', players_path, class: 'nav-link'
+        = link_to t('players.title'), players_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
-        = link_to 'Rules', rules_path, class: 'nav-link'
+        = link_to t('rules.title'), rules_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-        = link_to 'Information', informations_path, class: 'nav-link'
+        = link_to t('information.title'), informations_path, class: 'nav-link'
+
+      %li.nav-item.locales-list
+        = link_to 'en', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"
+        = '/'
+        = link_to 'de', url_for(locale: 'de'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'de' ? 'underline' : ''}"
+        = '/'
+        = link_to 'fr', url_for(locale: 'fr'), class: 'locales disabled', style: "text-decoration: #{cookies[:locale] == 'fr' ? 'underline' : ''}"
 
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
@@ -46,25 +53,25 @@
                 = 'account_circle'
             %span.d-block.d-lg-none
               - if user_signed_in?
-                = 'Account'
+                = t('navigation.account.account')
               - else
-                = 'Login'
+                = t('login')
           .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
             .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
               = current_user.username
               - if current_user.admin?
-                = '(Administrator)'
+                = t('navigation.account.admin')
             - if current_user.player.present?
-              = link_to 'Show Profile', player_path(current_user.player), class: 'dropdown-item'
-              = link_to 'Edit Profile', edit_player_path(current_user.player), class: 'dropdown-item'
-            = link_to 'Account', edit_user_registration_path, class: 'dropdown-item'
+              = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
+              = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
+            = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
             - if current_user.admin?
               .dropdown-divider
-              = link_to 'Show all users', users_path, class: 'dropdown-item'
-              = link_to 'Add Tournament', new_tournament_path, class: 'dropdown-item'
+              = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
+              = link_to t('navigation.account.add_tournament'), new_tournament_path, class: 'dropdown-item'
             -#
             .divider
-            = link_to 'Log out', destroy_user_session_path, method: :delete, confirm:'Are you sure you want to log out?', class: 'dropdown-item'
+            = link_to t('navigation.account.log_out'), destroy_user_session_path, method: :delete, confirm: t('navigation.account.log_out_confirm'), class: 'dropdown-item'
       - else
         %li.nav-item.dropdown
           %a.nav-link{href:"#", role:"button", 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
@@ -72,6 +79,6 @@
               = 'account_circle'
             %span.d-block.d-lg-none
               - if user_signed_in?
-                = 'Account'
+                = t('navigation.account.account')
               - else
-                = 'Login'
+                = t('login')

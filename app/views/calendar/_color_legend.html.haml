@@ -1,29 +1,29 @@
 .calendar__footer__legend__item
   %span.circle{style: "background: lightgray;"}
-  %span Past
+  %span= t('calendar.color_legend.past')
 .calendar__footer__legend__item
   %span.circle{style: "background: lightsalmon;"}
-  %span Cancelled
+  %span= t('calendar.color_legend.cancelled')
 .calendar__footer__legend__item
   %span.circle{style: "background: darkorange;"}
-  %span Ongoing
+  %span= t('calendar.color_legend.ongoing')
 .calendar__footer__legend__item
   %span.circle{style: "background: cornflowerblue;"}
-  %span External
+  %span= t('external')
 .calendar__footer__legend__item
   %span.circle{style: "background: orchid;"}
-  %span Internal
-  
+  %span= t('internal')
+
 -if current_user.present?
   .calendar__footer__legend__item
     %span.circle{style: "background: mediumorchid;"}
-    %span Internal joined
+    %span= t('calendar.color_legend.internal_joined')
 
 .calendar__footer__legend__item
   %span.circle{style: "background: #61bf9b;"}
-  %span Weekly
+  %span= t('weekly')
 
 -if current_user.present?
   .calendar__footer__legend__item
     %span.circle{style: "background: #07a468;"}
-    %span Weekly joined
+    %span= t('calendar.color_legend.weekly_joined')

@@ -6,28 +6,28 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      Hi <%= @user.username %>.
+      <%= t('hi') %> <%= @user.username %>.
     </p>
     <p>
-      A new tournament was added to the SwissSmash Tournament Manager.
+      <%= t('tournaments.mailer.new_tournament') %>
     </p>
     <p>
-      <strong>Name:</strong> <%= @tournament.name %><br>
-      <strong>Date:</strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
-      <strong>Registration fee:</strong> <%= @tournament.registration_fee %> CHF<br>
-      <strong>Location:</strong><br>
+      <strong><%= t('tournaments.mailer.name') %></strong> <%= @tournament.name %><br>
+      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+      <strong><%= t('tournaments.mailer.fee') %></strong> <%= @tournament.registration_fee %> CHF<br>
+      <strong><%= t('tournaments.mailer.location') %></strong><br>
       <%- @tournament.location.split(',').each do |str| %>
         &emsp;<%= str.strip %><br>
       <%- end %>
     </p>
     <p>
-      To join this tournament, just follow <%= link_to "this link", @url %> and click the button.
+      <%= t('tournaments.mailer.to_join', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>
     </p>
     <p>
-      We wish you good luck during your matches!
+      <%= t('tournaments.mailer.we_wish_you_good_luck') %>
     </p>
     <p>
-      (If you don't want to get this email anymore, you can now configure so in your user settings.)
+      <%= t('tournaments.mailer.if_you_dont_want') %>
     </p>
   </body>
 </html>

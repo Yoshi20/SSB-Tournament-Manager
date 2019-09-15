@@ -1,16 +1,15 @@
 = image_tag "rankings/pr_s1_19.jpg", width: '100%'
 %br
 %br
-%h2
-  Top 10:
+%h2= t('rankings.s1_19.top10')
 %table.table.table-hover.table-borderless
   %thead.table-header
     %tr
       %th.text-center #
-      %th Gamer tag
-      %th.text-center Mains
-      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Participations
-      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell W/L
+      %th= t('players.gamer_tag')
+      %th.text-center= t('players.mains')
+      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('players.participations')
+      %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
 
   %tbody.table-content.with-show
     %tr{'data-id': Player.find_by(gamer_tag: 'Destany').try(:id), 'data-component'=>'player'}
@@ -114,8 +113,7 @@
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 12
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 74.47 %
 
-%h2
-  Counted tournaments:
+%h2= t('rankings.s1_19.counted_tournaments')
 %ul
   %li Ultimon Stadion
   %li University of Smash IV
@@ -145,8 +143,7 @@
   %li University of Smash V
   %li TheReset #6
 
-%h2
-  Considered but deemed ineligible:
+%h2= t('rankings.s1_19.considered_tournaments')
 %ul
   %li Japan Impact 2019 - Sunday (Not announced in time)
   %li Polymanga Sunday  (Lack of proper setups)

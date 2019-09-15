@@ -1,10 +1,10 @@
 .row
   .col
-    %h1.page__title Feedback & Questions
+    %h1.page__title= t('feedback_and_questions')
 
 .row.feedbacks-div
   .col-md-12
-    %p= 'Let us know what you think of our tournaments or homepage and tell us if you\'re missing something, found a problem or have a question.'
+    %p= t('feedback.let_us_know')
 
 .feedbacks
   %table.table.table-hover.table-borderless
@@ -19,14 +19,14 @@
 
 .feedbacks__actions
   - if current_user.present?
-    %p= link_to "Create a new feedback or question", new_feedback_path, class: "btn btn-ghost"
+    %p= link_to t('feedback.creat_new'), new_feedback_path, class: "btn btn-ghost"
   - else
-    %p= button_to "Log in to create a new feedback or question", nil, class:'btn btn-ghost', disabled:true
+    %p= button_to t('feedback.log_in_to_create'), nil, class:'btn btn-ghost', disabled:true
 
 %hr
 
 .administrators
-  %h3 Administrators
+  %h3= t('feedback.admins')
   .row
     - @admins.each do |admin|
       .col-6
@@ -37,7 +37,7 @@
           %p
             = link_to admin.player.gamer_tag, admin.player
             %br
-            = mail_to admin.email, admin.email, body: "Hi #{admin.username}\n\n..."
+            = mail_to admin.email, admin.email, body: "#{t('hi')} #{admin.username}\n\n..."
             %br
             - if admin.mobile_number.present?
               = admin.mobile_number

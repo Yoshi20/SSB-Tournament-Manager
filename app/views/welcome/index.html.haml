@@ -1,20 +1,16 @@
 %h1.page__title
-  Welcome to SwissSmash.ch
+  = t('welcome.title')
 %p
-  = 'If you want to stay up-to-date with the Swiss Smash Community, join us on'
-  %strong= link_to 'Discord', 'https://discord.gg/wA89CyA', target: '_blank'
-  = 'and follow the Swiss Smash'
-  %strong= link_to 'Twitter', 'https://twitter.com/swiss_smash', target: '_blank'
-  = 'Account.'
+  = t('welcome.body1',
+    discord_link: link_to('Discord', 'https://discord.gg/wA89CyA', target: '_blank', style: 'font-weight: 600;'),
+    twitter_link: link_to('Twitter', 'https://twitter.com/swiss_smash', target: '_blank', style: 'font-weight: 600;')).html_safe
+
 %p
-  = 'You can find the upcoming events in the'
-  %strong= link_to 'Tournaments list', tournaments_path
-  = 'or in the'
-  %strong= link_to 'Calendar', calendar_path
-  = '.'
+  = t('welcome.body2',
+    tournaments_link: link_to(t('welcome.tournament_list'), tournaments_path, style: 'font-weight: 600;'),
+    calendar_link: link_to(t('welcome.calendar'), calendar_path, style: 'font-weight: 600;')).html_safe
+
 %p
-  = 'To be able to join a tournament and write a feedback or a question'
-  %strong= link_to 'Log in', new_user_session_path
-  = 'or'
-  %strong= link_to 'Sign up', new_user_registration_path
-  = 'if you haven\'t yet.'
+  = t('welcome.body3',
+    log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe

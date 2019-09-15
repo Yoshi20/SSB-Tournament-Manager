@@ -1,10 +1,10 @@
-Hi <%= @user.username %>
+<%= t('hi') %> <%= @user.username %>
 ===============================================
 
-Thanks a lot for your feedback or question.
+<%= t('feedback.mailer.thanks') %>
 
-You can check out my response by following this link:
+<%= t('feedback.mailer.response') %>
   <%= @url %>
 
-Best regards
+<%= t('feedback.mailer.best_regards') %>
 <%= @admin.username %>

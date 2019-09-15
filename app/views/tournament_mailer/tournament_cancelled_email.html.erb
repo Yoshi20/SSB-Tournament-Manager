@@ -6,17 +6,17 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      Hi <%= @user.username %>.
+      <%= t('hi') %> <%= @user.username %>.
     </p>
     <p>
-      Because of too few registrations or other reasons, an administrator has cancelled the tournament "<strong><%= @tournament.name.gsub('(cancelled) ', '') %></strong>".
+      <%= t('tournaments.mailer.too_few_registrations', tournament: @tournament.name.gsub('(cancelled) ', '')).html_safe %>
     </p>
     <p>
-      <strong>Date:</strong> <del><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></del><br>
+      <strong><%= t('tournaments.mailer.date') %></strong> <del><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></del><br>
     </p>
     <p>
-      To join an other tournament, just follow <%= link_to "this link", @url %>.
+      <%= t('tournaments.mailer.to_join_an_other', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>
     </p>
-    <p>We hope to see you soon in a different tournament.</p>
+    <p><%= t('tournaments.mailer.we_hope_to_see_you') %></p>
   </body>
 </html>
