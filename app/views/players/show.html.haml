@@ -1,7 +1,7 @@
 .row
   .col
     - if @player.canton.present?
-      = image_tag "cantons/#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+      = image_tag "cantons/#{@player.canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
     .page__title
       %h1
         = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
@@ -33,7 +33,7 @@
           .col
             .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
               %strong
-                = t("defines.cantons.#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}")
+                = t("defines.cantons.#{@player.canton}")
               %span
                 = t('players.canton')
         - if @player.birth_year.present?
@@ -47,7 +47,7 @@
           .col
             .player__stats__single.player__stats__single--last
               %strong
-                = t("defines.genders.#{@player.gender.downcase}")
+                = t("defines.genders.#{@player.gender}")
               %span
                 = t('players.gender')
 

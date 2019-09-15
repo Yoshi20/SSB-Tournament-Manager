@@ -40,10 +40,10 @@
       = f.number_field :losses, class: 'form-control'
   .field.form-group
     = f.label :canton, t('players.canton')
-    = f.select :canton, options_for_select(cantons, @player.canton), {include_blank: true}, class: 'form-control'
+    = f.select :canton, options_for_select(cantons_for_select, @player.canton), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :gender, t('players.gender')
-    = f.select :gender, options_for_select(genders, @player.gender), {include_blank: true}, class: 'form-control'
+    = f.select :gender, options_for_select(genders_for_select, @player.gender), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :birth_year, t('players.birth_year')
     = f.select :birth_year, options_for_select(birth_years, @player.birth_year), {include_blank: true}, class: 'form-control'

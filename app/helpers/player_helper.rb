@@ -10,14 +10,28 @@ module PlayerHelper
       scope: 'defines.tournament_experiences')
   end
 
+  def cantons_raw
+    ['aargau', 'appenzell_ausserrhoden', 'appenzell_innerrhoden', 'basel-land', 'basel-stadt', 'bern', 'freiburg', 'genf', 'glarus', 'graubünden', 'jura', 'luzern', 'neuenburg', 'nidwalden', 'obwalden', 'schaffhausen', 'schwyz', 'solothurn', 'st_gallen', 'tessin', 'thurgau', 'uri', 'waadt', 'wallis', 'zug', 'zürich']
+  end
+
   def cantons
-    t(['aargau', 'appenzell_outer', 'appenzell_inner', 'basel_land', 'basel_city', 'bern', 'friborg', 'geneva', 'glarus', 'graubünden', 'jura', 'lucerne', 'neuchâtel', 'nidwalden', 'obwalden', 'schaffhausen', 'schwyz', 'solothurn', 'st_gallen', 'ticino', 'thurgau', 'uri', 'vaud', 'valais', 'zug', 'zurich'],
-      scope: 'defines.cantons')
+    t(cantons_raw, scope: 'defines.cantons')
+  end
+
+  def cantons_for_select
+    cantons.zip(cantons_raw)
+  end
+
+  def genders_raw
+    ['male', 'female', 'other']
   end
 
   def genders
-    t(['male', 'female', 'other'],
-      scope: 'defines.genders')
+    t(genders_raw, scope: 'defines.genders')
+  end
+
+  def genders_for_select
+    genders.zip(genders_raw)
   end
 
   def birth_years

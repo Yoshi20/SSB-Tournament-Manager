@@ -84,10 +84,10 @@
                 = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.canton.present?
-                  = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
-                  = t("defines.cantons.#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}")
+                  = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
+                  = t("defines.cantons.#{player.canton}")
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
-              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender.downcase}")
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
               %td.text-center= truncate(player.comment, length: 60)
 
               - if current_user.present? and current_user.super_admin?

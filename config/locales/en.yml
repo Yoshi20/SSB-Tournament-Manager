@@ -39,7 +39,7 @@ en:
       appenzell_ausserrhoden: "Appenzell Outer Rhodes"
       appenzell_innerrhoden: "Appenzell Inner Rhodes"
       basel-land: "Basel-Land"
-      basel-city: "Basel-City"
+      basel-stadt: "Basel-City"
       bern: "Bern"
       freiburg: "Friborg"
       genf: "Geneva"
@@ -519,5 +519,5 @@ en:
 
   recaptcha:
     errors:
-      verification_failed: "reCAPTCHA thinks that you're not a human. Please try again"
+      verification_failed: "reCAPTCHA thinks that you're not a human. Please re-enter password and try again"
       recaptcha_unreachable: "reCAPTCHA server error. Please try again"

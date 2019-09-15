@@ -203,7 +203,7 @@
                     %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.canton.present?
-                        = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
+                        = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
                     %td{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each do |char|
