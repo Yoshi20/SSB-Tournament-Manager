@@ -1,19 +1,23 @@
 module PlayerHelper
 
   def self_assessment_defines
-    ['Beginner', 'Noob', 'Doing okay', 'Intermediate', 'Advanced', 'Expert', 'Professional', 'Godlike']
+    t(['beginner', 'noob', 'doing_okay', 'intermediate', 'advanced', 'expert', 'professional', 'godlike'],
+      scope: 'defines.self_assessments')
   end
 
   def tournament_experience_defines
-    ['None', 'A little', 'Some', 'A lot', 'Very much']
+    t(['none', 'a_little', 'some', 'a_lot', 'very_much'],
+      scope: 'defines.tournament_experiences')
   end
 
   def cantons
-    ['Aargau', 'Appenzell Ausserrhoden', 'Appenzell Innerrhoden', 'Basel-Land', 'Basel-Stadt', 'Bern', 'Freiburg', 'Genf', 'Glarus', 'Graubünden', 'Jura', 'Luzern', 'Neuenburg', 'Nidwalden', 'Obwalden', 'Schaffhausen', 'Schwyz', 'Solothurn', 'St. Gallen', 'Tessin', 'Thurgau', 'Uri', 'Waadt', 'Wallis', 'Zug', 'Zürich']
+    t(['aargau', 'appenzell_outer', 'appenzell_inner', 'basel_land', 'basel_city', 'bern', 'friborg', 'geneva', 'glarus', 'graubünden', 'jura', 'lucerne', 'neuchâtel', 'nidwalden', 'obwalden', 'schaffhausen', 'schwyz', 'solothurn', 'st_gallen', 'ticino', 'thurgau', 'uri', 'vaud', 'valais', 'zug', 'zurich'],
+      scope: 'defines.cantons')
   end
 
   def genders
-    ['Male', 'Female', 'Other']
+    t(['male', 'female', 'other'],
+      scope: 'defines.genders')
   end
 
   def birth_years

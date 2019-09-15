@@ -35,10 +35,8 @@ document.addEventListener 'turbolinks:load', ->
     dummyTextArea.select()
     if document.execCommand("copy")
       alert(I18n.t('coffee.copied', {item: dummyTextArea.value}))
-      # alert("Copied \"" + dummyTextArea.value + "\" to the clipboard")
     else
       alert(I18n.t('coffee.not_copied', {item: discordUserName}))
-      # alert("Oops, unable to copy \"" + discordUserName + "\" to the clipboard")
     document.body.removeChild(dummyTextArea)
 
   # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present and '/tournaments'

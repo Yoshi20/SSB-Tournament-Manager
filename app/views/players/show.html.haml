@@ -33,7 +33,7 @@
           .col
             .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
               %strong
-                = @player.canton
+                = t("defines.cantons.#{@player.canton.downcase.gsub('.', '').gsub(' ', '_')}")
               %span
                 = t('players.canton')
         - if @player.birth_year.present?
@@ -47,7 +47,7 @@
           .col
             .player__stats__single.player__stats__single--last
               %strong
-                = @player.gender
+                = t("defines.genders.#{@player.gender.downcase}")
               %span
                 = t('players.gender')
 
