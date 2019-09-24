@@ -31,7 +31,9 @@ document.addEventListener 'turbolinks:load', ->
     dummyTextArea = document.createElement("textarea")
     dummyTextArea.style.position = 'absolute'
     document.body.appendChild(dummyTextArea)
-    dummyTextArea.value = '@' + discordUserName
+    if discordUserName[0] != '@'
+      dummyTextArea.value = '@'
+    dummyTextArea.value += discordUserName
     dummyTextArea.select()
     if document.execCommand("copy")
       alert(I18n.t('coffee.copied', {item: dummyTextArea.value}))
