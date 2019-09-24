@@ -9,11 +9,14 @@
       - if alts.any?
         %p{style: 'margin-top: -15px;'}
           = '('
-          - alts.each_with_index do |alt, i|
-            - if alts.count == i+1
+          - firstAlt = true
+          - alts.each do |alt|
+            - next if alt.hidden
+            - if firstAlt
               = "#{alt.gamer_tag}"
+              - firstAlt = false
             - else
-              = "#{alt.gamer_tag}, "
+              = ", #{alt.gamer_tag}"
           = ')'
       - if @player.discord_username.present?
         = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, style: 'position: absolute; top: 5px; right: 0px;'
