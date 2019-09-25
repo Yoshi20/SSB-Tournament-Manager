@@ -34,8 +34,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.birth_year = params[:birth_year]
         player.self_assessment = params[:self_assessment] || 0
         player.tournament_experience = params[:tournament_experience] || 0
-        params[:main_characters].split(',').each do |char|
-          player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
+        main_characters = [
+          params[:main_char1].present? ? params[:main_char1][0] : nil,
+          params[:main_char2].present? ? params[:main_char2][0] : nil,
+          params[:main_char3].present? ? params[:main_char3][0] : nil
+        ].compact
+        main_characters.each do |char|
+          player.main_characters << char
         end
         player.comment = params[:comment]
         player.best_rank = 0

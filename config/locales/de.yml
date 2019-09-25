@@ -72,7 +72,7 @@ de:
 
   flash:
     notice:
-      creating_player: "Spieler wurde erfolgreich erstellt. Schaue dir andere Spieler an oder suche nach einem Turnier dem du beiterten möchtest"
+      creating_player: "Spieler wurde erfolgreich erstellt. Schaue dir andere Spieler an oder suche nach einem Turnier dem du beitreten möchtest"
       updating_user: "Benutzer wurde erfolgreich aktualisiert"
       deleting_user: "Benutzer wurde erfolgreich gelöscht"
       updating_registration: "Registration wurde erfolgreich aktualisiert"
@@ -296,7 +296,7 @@ de:
     self_assessment: "Selbsteinschätzung"
     tournament_experience: "Turniererfahrung"
     main_characters: "Main Charaktere"
-    up_to_three: "(du kannst bis zu drei hinzufügen, indem du sie mit einem Komma trennst)"
+    up_to_three: "(du kannst bis zu drei auswählen)"
     comment: "Kommentar"
     for_what_ever: "(für was auch immer du der Welt erzählen möchtest)"
     update_profile: "Profil aktualisieren"
