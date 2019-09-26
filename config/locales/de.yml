@@ -347,7 +347,7 @@ de:
       title: "SSBU Turnierregeln"
       li1: "Die Anmeldegebühr muss vor Beginn der Turnierspiele vor Ort bezahlt werden"
       li2: "Wenn du zu spät (>15min) zu einem Turnier oder Match kommst, wirst du disqualifiziert"
-      li3: "Bring deinen eigenen Controller (und dessen Zubehör) mit, wenn du nicht mit Joy-Cons spielen willst"
+      li3: "Bringe deinen eigenen Controller (und dessen Zubehör) mit"
       li4: "Falls nicht anders definiert, werden Double Elimination Matches gespielt (wenn du zwei Matches verlierst, scheidest du aus dem Turnier aus)"
       li5: "Unbenutzte Turnierspielstationen (Setups) können für Freundschaftsspiele verwendet werden, sobald ein Host dies erlaubt"
     match_rules:
@@ -484,6 +484,8 @@ de:
     cancel_tournament: "Turnier stornieren"
     errors:
       registration_deadline: "muss kleiner als das Turnier Startdatum sein"
+    seed_players: "Spieler Seeden"
+    seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
 
   users:
     mailer:

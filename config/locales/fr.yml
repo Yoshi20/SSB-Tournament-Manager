@@ -347,7 +347,7 @@ fr:
       title: "SSBU tournament rules"
       li1: "The registrations fee must be payed on site before the tournament games begin"
       li2: "If you come too late (>15min) to a tournament or a match, you will be disqualified"
-      li3: "Bring your own controller (and it's extras) if you don't want to play with Joy-Cons"
+      li3: "Bring your own controller (and it's extras)"  #blup: deleted 'if you don't want to play with Joy-Cons'
       li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
       li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
     match_rules:
@@ -484,6 +484,8 @@ fr:
     cancel_tournament: "Cancel tournament"
     errors:
       registration_deadline: "must be less than the tournament start date"
+    seed_players: "Seed players"  #blup: new
+    seed_players_tournament_confirm: "Are you sure? The current player seeding will be overwritten."  #blup: new
 
   users:
     mailer:

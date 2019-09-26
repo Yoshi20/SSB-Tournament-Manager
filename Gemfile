@@ -83,6 +83,9 @@ gem 'figaro'
 # See https://github.com/rails/jquery-rails
 gem 'jquery-rails'
 
+# See https://github.com/jquery-ui-rails/jquery-ui-rails
+gem 'jquery-ui-rails'
+
 # See https://github.com/kossnocorp/jquery.turbolinks
 gem 'jquery-turbolinks'
 
@@ -126,3 +129,6 @@ gem 'devise-i18n'
 
 # See https://github.com/fnando/i18n-js
 gem 'i18n-js'
+
+# See https://github.com/brendon/acts_as_list
+gem 'acts_as_list'
