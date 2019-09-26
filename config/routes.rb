@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
   post 'tournaments/cancel/:id' => 'tournaments#cancel'
+  patch 'tournaments/sort_players/:id' => 'tournaments#sort_players'
+  patch 'tournaments/seed_players/:id' => 'tournaments#seed_players'
 
   get 'players/unregistered' => 'players#unregistered'
   resources :players, except: [:new]

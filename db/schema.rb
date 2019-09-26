@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_185000) do
+ActiveRecord::Schema.define(version: 2019_09_26_001600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_185000) do
     t.float "paid_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["player_id"], name: "index_registrations_on_player_id"
     t.index ["tournament_id"], name: "index_registrations_on_tournament_id"
   end

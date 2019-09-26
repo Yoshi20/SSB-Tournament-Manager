@@ -270,6 +270,7 @@ class TournamentsController < ApplicationController
     if @tournament.total_seats.present? and @tournament.players.count < @tournament.total_seats
       # tournament is not full yet -> add the player to the tournament
       @tournament.players << player_to_add
+      Registration.last.set_list_position(@tournament.registrations.count)
       # remove the player from the waiting list
       if @tournament.waiting_list.include?(player_to_add.gamer_tag)
         @tournament.waiting_list.delete(player_to_add.gamer_tag)
@@ -372,10 +373,17 @@ class TournamentsController < ApplicationController
             raise ct.errors.full_messages.inspect
           end
 
-          # sort the participants by the best player
-          seeded_participants_array = @tournament.players.sort_by do |p|
-            p.seed_points
-          end.reverse.map { |p| p.gamer_tag }
+          # get seeded players
+          seeded_participants_array = []
+          all_registrations = @tournament.registrations
+          if all_registrations.where(position: nil).any?
+            # use seed_points if a position is nil
+            seeded_participants_array = @tournament.players.sort_by do |p|
+              p.seed_points
+            end.reverse.map { |p| p.gamer_tag }
+          else
+            seeded_participants_array = all_registrations.order(:position).map { |r| r.player.gamer_tag }
+          end
 
           # change the order if there are pools
           if @tournament.has_pools?
@@ -569,6 +577,25 @@ class TournamentsController < ApplicationController
   # GET /tournaments/location/1.json
   def location
 
+  end
+
+  # PATCH /tournaments/sort_players/1
+  def sort_players
+    params[:player].each_with_index do |id, i|
+      @tournament.registrations.find_by(player_id: id).update(position: i+1)
+    end
+    head :ok
+  end
+
+  # PATCH /tournaments/seed_players/1
+  def seed_players
+    seeded_participants_id_array = @tournament.players.sort_by do |p|
+      p.seed_points
+    end.reverse.map { |p| p.id }
+    seeded_participants_id_array.each_with_index do |id, i|
+      @tournament.registrations.find_by(player_id: id).update(position: i+1)
+    end
+    redirect_to tournament_path(id: @tournament.id, anchor: 'players')
   end
 
   private

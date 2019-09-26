@@ -12,6 +12,8 @@
 #
 #= require i18n/translations
 #= require jquery
+#= require jquery-ui/widget
+#= require jquery-ui/widgets/sortable
 #= require popper
 #= require turbolinks
 #= require bootstrap
@@ -23,6 +25,21 @@
 #= require_tree .
 
 document.addEventListener 'turbolinks:load', ->
+
+  $('.sortable').sortable update: (e, ui) ->
+    $.ajax
+      method: 'patch'
+      url: $(this).data('url')
+      data: $(this).sortable('serialize')
+      dataType: 'text'
+      error: ->
+        console.log("error: update sort_players ajax request")
+      success: (response) ->
+        # update seed
+        $('.sortable tr').each( (i) ->
+          $(this).find('td')[0].innerHTML = i+1
+        )
+    return
 
   # a click on a user discord icon copies it's discord username to the clipboard
   $('#copy_discord_name').on 'click', (e) ->

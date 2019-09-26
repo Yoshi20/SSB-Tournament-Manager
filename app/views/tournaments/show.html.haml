@@ -184,27 +184,39 @@
             %table.table.table-hover.table-borderless
               %thead
                 %tr
+                  %th{style: 'text-align: center;'}
+                    %h3= "Seed"
                   %th
                     %h3= t('tournaments.name')
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('tournaments.canton')
-                  %th{style: 'text-align: center;'}
+                  %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('players.mains')
                   - if @tournament.is_registration_allowed
                     %th
                       %h3= t('tournaments.setups')
                   - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
-                    %th{style: 'text-align: center;'}
+                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       %h3= t('tournaments.fee_paid')
-              %tbody.table-content.with-show
-                - @tournament.players.includes(:user).order('registrations.created_at').each do |player, i|
+              %tbody.table-content{class: ((current_user.present? and current_user.admin?) ? "sortable" : "with-show"), 'data-url': "/tournaments/sort_players/#{@tournament.id}"}
+                - @tournament.players.includes(:user).order('registrations.position', 'registrations.created_at').each_with_index do |player, i|
                   - mail_string = mail_string + player.user.email + '; '
-                  %tr{'data-id': player.id, 'data-component'=>'player'}
-                    %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                  %tr{'data-id': player.id, 'data-component'=>'player', id: dom_id(player)}
+                    %td{style: 'text-align: center;'}= i+1 #player.registrations.find_by(tournament_id: @tournament.id).position
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                    %td.d-sm-none.d-md-none.d-lg-table-cell.d-xl-none
+                      - if player.main_characters.any?
+                        - player.main_characters[0...1].each do |char|
+                          - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                            = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                      - else
+                        .div{style: 'display: inline;'}
+                          %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                      = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.canton.present?
                         = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
-                    %td{style: 'text-align: center;'}
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each do |char|
                           - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
@@ -222,7 +234,7 @@
                           - if !gs.nil? and gs > 0
                             = "#{!@tournament.finished ? t('tournaments.brings') : t('tournaments.brought')} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
                     - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
-                      %td{style: 'text-align: center;'}
+                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                         - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
                           .inline-div{style:'display:inline-block'}
                             = form_for player_registration, role: 'form', method: :patch do |f|
@@ -264,6 +276,10 @@
 
           - if current_user.present? and current_user.admin?
             .tournament__players
+              - if !@tournament.setup and !@tournament.started and !@tournament.finished
+                .row{style: 'margin-bottom: 2rem;'}
+                  .col
+                    = button_to t('tournaments.seed_players'), "/tournaments/seed_players/#{@tournament.id}", method: 'patch', class:'btn btn-ghost', id:'seed_players-tournament-button', :data => {:confirm => t('tournaments.seed_players_tournament_confirm')}
               .row
                 .col
                   = mail_to "", t('tournaments.mail_all_players'), bcc: mail_string, subject: "#{t('tournaments.mail_all_players_subject')} #{@tournament.name}", class: 'btn btn-ghost'
