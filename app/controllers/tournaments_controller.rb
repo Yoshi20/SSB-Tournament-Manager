@@ -584,6 +584,7 @@ class TournamentsController < ApplicationController
     params[:player].each_with_index do |id, i|
       @tournament.registrations.find_by(player_id: id).update(position: i+1)
     end
+    head :ok
   end
 
   # PATCH /tournaments/seed_players/1
