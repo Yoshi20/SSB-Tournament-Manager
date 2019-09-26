@@ -202,7 +202,7 @@
                 - @tournament.players.includes(:user).order('registrations.position', 'registrations.created_at').each_with_index do |player, i|
                   - mail_string = mail_string + player.user.email + '; '
                   %tr{'data-id': player.id, 'data-component'=>'player', id: dom_id(player)}
-                    %td{style: 'text-align: center;'}= i+1
+                    %td{style: 'text-align: center;'}= i+1 #player.registrations.find_by(tournament_id: @tournament.id).position
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                     %td.d-sm-none.d-md-none.d-lg-table-cell.d-xl-none
                       - if player.main_characters.any?

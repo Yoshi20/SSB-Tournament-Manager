@@ -270,6 +270,7 @@ class TournamentsController < ApplicationController
     if @tournament.total_seats.present? and @tournament.players.count < @tournament.total_seats
       # tournament is not full yet -> add the player to the tournament
       @tournament.players << player_to_add
+      Registration.last.set_list_position(@tournament.registrations.count)
       # remove the player from the waiting list
       if @tournament.waiting_list.include?(player_to_add.gamer_tag)
         @tournament.waiting_list.delete(player_to_add.gamer_tag)
