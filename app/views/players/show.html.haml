@@ -5,13 +5,12 @@
     .page__title
       %h1
         = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
-      - alts = @player.alternative_gamer_tags
+      - alts = @player.alternative_gamer_tags.where.not(hidden: true)
       - if alts.any?
         %p{style: 'margin-top: -15px;'}
           = '('
           - firstAlt = true
           - alts.each do |alt|
-            - next if alt.hidden
             - if firstAlt
               = "#{alt.gamer_tag}"
               - firstAlt = false
