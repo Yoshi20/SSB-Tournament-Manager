@@ -13,12 +13,11 @@
         %em
           = @minimum_password_length
           = t('devise.passwords.chars_min')
-
-      = f.password_field :password, autofocus: true, autocomplete: "off"
+      = f.password_field :password, autofocus: true, autocomplete: "off", class:"form-control"
 
     .form-group
       = f.label :password_confirmation, t('devise.passwords.confirm')
-      = f.password_field :password_confirmation, autocomplete: "off"
+      = f.password_field :password_confirmation, autocomplete: "off", class:"form-control"
 
     .form-group
       = f.submit t('devise.passwords.change_my_pw'), class:'btn btn-ghost'
