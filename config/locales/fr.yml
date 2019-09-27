@@ -201,8 +201,8 @@ fr:
       ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
       ranking_system_rank: "Rank"
       ranking_system_points: "Points"
-      seeding: "Bracket pre seeding"
-      seeding_body1: "The initial seeding is done by providing the Challonge Tournament Manager a player list sorted by skill:"
+      seeding: "Bracket seeding"  #blup: deleted 'pre '
+      seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SwissSmash.ch:"  #blup: updated
       seeding_body2: "The final seeding is done manually by a TO or his/her representatives."
       tournament_organiser: "Tournament organiser"
       tournament_organiser_body: "Are you organising tournaments yourself and would like to use the SwissSmash Tournament Manager? Just let me know %{link}."
@@ -335,15 +335,17 @@ fr:
   rules:
     title: "Rules"
     general_rules:
+      title_short: "General" #blup: new
       title: "General rules"
       body: "So that we can continue playing tournaments in the found locations, we all have to follow some common sense rules. If any of these rules are broken the host has the right to throw out and ban any player without further explanation."
       li1: "Smoking indoors is prohibited"
       li2: "Take care of all used hard- and software, the furnishings and other inventory. If you break something, report it to the host"
       li3: "Be friendly and helpful to all participants"
       li4: "Follow the instructions of the host. A hosts word is law"
-      li5: "Physical fights will not be tolerated. Disputes must be dealt with by playing 1 vs. 1 matches"
+      li5: "Physical fights will not be tolerated"  #blup: deleted '. Disputes must be dealt with by playing 1 vs. 1 matches'
       li6: "Thieving will not be tolerated"
     tournament_rules:
+      title_short: "Tournaments" #blup: new
       title: "SSBU tournament rules"
       li1: "The registrations fee must be payed on site before the tournament games begin"
       li2: "If you come too late (>15min) to a tournament or a match, you will be disqualified"
@@ -351,8 +353,9 @@ fr:
       li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
       li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
     match_rules:
+      title_short: "Ruleset" #blup: new
       title: "SSBU match rules (Ruleset)"
-      body: "For now (mid 2019) the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found"
+      body: "For now the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found" #blup: deleted '(mid 2019) '
       here: "here"
       overview: "Short overview:"
       li1: "1 vs. 1"
