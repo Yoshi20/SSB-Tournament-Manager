@@ -8,7 +8,7 @@
       %th{style: 'text-align: center;'}= t('w_l')
 
   %tbody.table-content.with-show
-    - if @topPlayers.any?
+    - if !@topPlayers.nil? and @topPlayers.any?
       - @topPlayers.each_with_index do |player, i|
         %tr{'data-id': player.id, 'data-component'=>'player'}
           %td
