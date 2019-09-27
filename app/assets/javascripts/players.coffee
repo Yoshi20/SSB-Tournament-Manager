@@ -13,4 +13,6 @@ document.addEventListener 'turbolinks:load', ->
       wasChecked = false
   $('.main_char input:radio').on 'click', (e) ->
     if wasChecked
-      this.checked = false
+      setTimeout(uncheck(this), 50)
+  uncheck = (t) ->
+    t.checked = false
