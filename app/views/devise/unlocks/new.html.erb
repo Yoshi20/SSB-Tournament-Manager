@@ -1,16 +1,14 @@
 <h2><%= t('devise.unlocks.title') %></h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="actions">
     <%= f.submit t('devise.unlocks.resend_unlock_inst') %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

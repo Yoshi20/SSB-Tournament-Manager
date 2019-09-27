@@ -4,7 +4,7 @@
 .row.mb-3
   .col
     = form_for(resource, class: 'form', as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
-      = devise_error_messages!
+      = render "devise/shared/error_messages", resource: resource
       .form-group
         = f.label :username, t('users.login_username')
         = f.text_field :username, autofocus: true, class: 'form-control'

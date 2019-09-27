@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index, :show, :location, :unregistered]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
-  before_action :get_top_players, only: [:index, :show, :new, :edit]
-  before_action :get_next_tournaments, only: [:index, :show, :new, :edit]
+  before_action :get_top_players
+  before_action :get_next_tournaments
   before_action :prepare_exception_notifier
 
   protected
