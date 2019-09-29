@@ -368,9 +368,14 @@ class TournamentsController < ApplicationController
           ct.tournament_type = 'double elimination'
           ct.group_stages_enabled = @tournament.has_pools?
           ct.game_name = 'Super Smash Bros. Ultimate'
-          ct.description = @tournament.description
-          if ct.save == false
-            raise ct.errors.full_messages.inspect
+          ct.description = helpers.valid_challonge_description(@tournament.description)
+          ActiveRecord::Base.transaction do
+            if ct.save! == false
+              raise ct.errors.full_messages.inspect
+            end
+          rescue => error
+            redirect_to @tournament, alert: error
+            return
           end
 
           # get seeded players
