@@ -8,11 +8,13 @@ class RankingsController < ApplicationController
   def index
     @players = Player.all.includes(:user)
     if params[:filter].nil? or params[:filter] == 'all'
-      @players = @players.where('participations > 0').order(points: :desc, participations: :asc, created_at: :asc).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+      @players = @players.where('participations >= 3').sort_by do |p|
+        [p.points.to_f/p.participations, p.participations, -p.created_at.to_i]
+      end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     elsif params[:filter] == 'participations'
       @players = @players.where('participations > 0').order(participations: :desc, points: :desc, created_at: :asc).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     elsif params[:filter] == 'seed_points'
-      @players = @players.order(points: :desc, participations: :asc, created_at: :asc).sort_by do |p|
+      @players = @players.sort_by do |p|
         [p.seed_points, -p.created_at.to_i]
       end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     elsif params[:filter] == 'major'
