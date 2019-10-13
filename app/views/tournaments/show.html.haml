@@ -341,7 +341,7 @@
                 - player = @tournament.players.find(r.player_id)
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td{style: 'text-align: center;'}
-                    %strong= r.rank.nil? ? "-" : r.rank
+                    %strong= r.rank.nil? ? "-" : r.rank.ordinalize
                   %td
                     - if player.main_characters.any?
                       - player.main_characters[0...1].each do |char|

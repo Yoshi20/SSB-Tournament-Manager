@@ -93,7 +93,7 @@
               - win_loss_ratio = results_sum[2]
             - if participations > 0 or params[:filter] == 'seed_points'
               %tr{'data-id': player.id, 'data-component'=>'player'}
-                %td.text-center= (last_player_points == points) ? '' : "#{page_multiplicator+i+1}."
+                %td.text-center= (last_player_points == points) ? '' : (page_multiplicator+i+1).ordinalize
                 %td.text-center= points
                 - last_player_points = points
                 %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag

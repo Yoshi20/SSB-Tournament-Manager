@@ -138,7 +138,7 @@
             %tr
               %th{colspan: '2'}
                 %h3= t('players.past_tournaments')
-              %th.text-right #
+              %th.text-center #
           %tbody.table-content.with-show
             - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |tournament|
               %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
@@ -148,20 +148,16 @@
                     = tournament.location.split(',')[0]
                   - else
                     = tournament.city || '-'
-                %td.text-right
+                %td.text-center
                   - player_rank = '-'
                   - if tournament.ranking_string.to_s.include?(@player.gamer_tag)
                     - tournament.ranking_string.split(';').sort.each do |r|
                       - if r.split(',')[1] == @player.gamer_tag
                         - player_rank = r.split(',')[0]
-                  - if player_rank == '1'
-                    - player_rank = player_rank +'st'
-                  - elsif player_rank == '3'
-                    - player_rank = player_rank +'rd'
-                  - elsif player_rank == '-' or player_rank.nil? or player_rank.empty?
+                  - if player_rank == '-' or player_rank.nil? or player_rank.empty?
                     - player_rank = '-'
                   - else
-                    - player_rank = player_rank +'th'
+                    - player_rank = player_rank.to_i.ordinalize
                   %strong= "#{player_rank}"
 
   - if current_user.present?
