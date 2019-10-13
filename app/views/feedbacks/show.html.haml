@@ -11,9 +11,9 @@
   - if !@feedback.response.nil? and !@feedback.response.blank?
     %br
     %p
-      %strong= t('feedback.admin_replied', user: @feedback.response_username)
+      %strong= t('feedback.admin_replied', user: @feedback.response_username).html_safe
       %br
-      = @feedback.response
+      = @feedback.response.html_safe
 
 .feedback__actions
   %strong
