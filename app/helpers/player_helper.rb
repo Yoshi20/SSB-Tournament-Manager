@@ -39,6 +39,12 @@ module PlayerHelper
     ((year-100)..year).to_a.sort().reverse()
   end
 
+  def seed_players(players)
+    players.sort_by do |p|
+      [p.seed_points, -p.created_at.to_i]
+    end.reverse
+  end
+
   def top_players_s1_19
     ['Destany', 'DeepFreeze', 'Smuff', 'Severe Calamari', 'Benji', 'Crash', 'Kepler', 'CrzyShroom', 'Sylph', 'Olivia', 'Ryuji', 'Zudenka', 'SickBoy', 'Phonky', 'Radiance', 'Godoh', 'Jesuischoq', 'ItseMePG', 'TunaLink', 'Acsor', 'Rampage', 'N3rthus', 'TheBlerton', 'Fr0zen', 'Karpador64']
   end

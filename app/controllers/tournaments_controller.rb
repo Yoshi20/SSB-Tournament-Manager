@@ -270,7 +270,12 @@ class TournamentsController < ApplicationController
     if @tournament.total_seats.present? and @tournament.players.count < @tournament.total_seats
       # tournament is not full yet -> add the player to the tournament
       @tournament.players << player_to_add
-      Registration.last.set_list_position(@tournament.registrations.count)
+      # re-seed players
+      tournament_registrations = @tournament.registrations
+      seeded_participants_id_array = helpers.seed_players(@tournament.players).map { |p| p.id }
+      seeded_participants_id_array.each_with_index do |id, i|
+        tournament_registrations.find_by(player_id: id).set_list_position(i+1)
+      end
       # remove the player from the waiting list
       if @tournament.waiting_list.include?(player_to_add.gamer_tag)
         @tournament.waiting_list.delete(player_to_add.gamer_tag)
@@ -383,9 +388,7 @@ class TournamentsController < ApplicationController
           all_registrations = @tournament.registrations
           if all_registrations.where(position: nil).any?
             # use seed_points if a position is nil
-            seeded_participants_array = @tournament.players.sort_by do |p|
-              p.seed_points
-            end.reverse.map { |p| p.gamer_tag }
+            seeded_participants_array = helpers.seed_players(@tournament.players).map { |p| p.gamer_tag }
           else
             seeded_participants_array = all_registrations.order(:position).map { |r| r.player.gamer_tag }
           end
@@ -594,11 +597,10 @@ class TournamentsController < ApplicationController
 
   # PATCH /tournaments/seed_players/1
   def seed_players
-    seeded_participants_id_array = @tournament.players.sort_by do |p|
-      p.seed_points
-    end.reverse.map { |p| p.id }
+    tournament_registrations = @tournament.registrations
+    seeded_participants_id_array = helpers.seed_players(@tournament.players).map { |p| p.id }
     seeded_participants_id_array.each_with_index do |id, i|
-      @tournament.registrations.find_by(player_id: id).update(position: i+1)
+      tournament_registrations.find_by(player_id: id).set_list_position(i+1)
     end
     redirect_to tournament_path(id: @tournament.id, anchor: 'players')
   end
