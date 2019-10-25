@@ -150,7 +150,7 @@ en:
       mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"
 
   partials:
-    events: "Next Tournamets"
+    events: "Next Tournaments"
     players:
       title: "Top Players"
       player: "Player"
