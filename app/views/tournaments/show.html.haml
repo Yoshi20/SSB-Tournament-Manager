@@ -279,6 +279,8 @@
                 .row{style: 'margin-bottom: 2rem;'}
                   .col
                     = button_to t('tournaments.seed_players'), "/tournaments/seed_players/#{@tournament.id}", method: 'patch', class:'btn btn-ghost', id:'seed_players-tournament-button', :data => {:confirm => t('tournaments.seed_players_tournament_confirm')}
+                  .col
+                    = button_to t('tournaments.seed_players_randomly'), "/tournaments/seed_players/#{@tournament.id}", method: 'patch', class:'btn btn-ghost', id:'seed_players-tournament-button', params: {randomly: true}, :data => {:confirm => t('tournaments.seed_players_tournament_confirm')}
               .row
                 .col
                   = mail_to "", t('tournaments.mail_all_players'), bcc: mail_string, subject: "#{t('tournaments.mail_all_players_subject')} #{@tournament.name}", class: 'btn btn-ghost'

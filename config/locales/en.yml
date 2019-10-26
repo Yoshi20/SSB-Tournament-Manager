@@ -488,6 +488,7 @@ en:
     errors:
       registration_deadline: "must be less than the tournament start date"
     seed_players: "Seed players"
+    seed_players_randomly: "Seed players randomly"
     seed_players_tournament_confirm: "Are you sure? The current player seeding will be overwritten."
 
   users:

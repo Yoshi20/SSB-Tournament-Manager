@@ -488,6 +488,7 @@ fr:
     errors:
       registration_deadline: "must be less than the tournament start date"
     seed_players: "Seed players"  #blup: new
+    seed_players_randomly: "Seed players randomly"  #blup: new
     seed_players_tournament_confirm: "Are you sure? The current player seeding will be overwritten."  #blup: new
 
   users:

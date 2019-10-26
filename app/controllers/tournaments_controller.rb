@@ -604,6 +604,7 @@ class TournamentsController < ApplicationController
   def seed_players
     tournament_registrations = @tournament.registrations
     seeded_participants_id_array = helpers.seed_players(@tournament.players).map { |p| p.id }
+    seeded_participants_id_array.shuffle! if params[:randomly] == "true"
     seeded_participants_id_array.each_with_index do |id, i|
       tournament_registrations.find_by(player_id: id).set_list_position(i+1)
     end

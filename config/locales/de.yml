@@ -488,6 +488,7 @@ de:
     errors:
       registration_deadline: "muss kleiner als das Turnier Startdatum sein"
     seed_players: "Spieler Seeden"
+    seed_players_randomly: "Spieler zufällig Seeden"
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
 
   users:
