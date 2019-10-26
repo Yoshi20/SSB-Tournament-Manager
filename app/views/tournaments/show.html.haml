@@ -283,17 +283,17 @@
                 .col
                   = mail_to "", t('tournaments.mail_all_players'), bcc: mail_string, subject: "#{t('tournaments.mail_all_players_subject')} #{@tournament.name}", class: 'btn btn-ghost'
 
-            - if !@tournament.setup and !@tournament.started and !@tournament.finished
-              .tournament__players
-                .row
-                  .col
-                    = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
-                      = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                      = submit_tag t('tournaments.add_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
-                  .col
-                    = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
-                      = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
-                      = submit_tag t('tournaments.remove_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+        - if current_user.present? and current_user.admin? and !@tournament.setup and !@tournament.started and !@tournament.finished
+          .tournament__players
+            .row
+              .col
+                = form_tag "/tournaments/add_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
+                  = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+                  = submit_tag t('tournaments.add_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+              .col
+                = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
+                  = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+                  = submit_tag t('tournaments.remove_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
 
     - if @tournament.waiting_list.length > 0
       .tab-pane.fade#waiting{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
