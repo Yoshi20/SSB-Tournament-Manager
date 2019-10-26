@@ -401,5 +401,9 @@
           %span.material-icons.admin-actions__link__icon= 'edit'
 
       .admin-actions__link
+        = link_to new_tournament_path(id: @tournament.id), class:'btn btn-ghost btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add_to_photos'
+
+      .admin-actions__link
         = link_to @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
           %span.material-icons.admin-actions__link__icon= 'delete'

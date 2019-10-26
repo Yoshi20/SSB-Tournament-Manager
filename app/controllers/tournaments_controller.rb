@@ -53,7 +53,11 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments/new
   def new
-    @tournament = Tournament.new
+    if params[:id].present?
+      @tournament = Tournament.new(Tournament.find(params[:id]).attributes)
+    else
+      @tournament = Tournament.new
+    end
   end
 
   # GET /tournaments/1/edit
