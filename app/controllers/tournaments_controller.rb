@@ -48,6 +48,7 @@ class TournamentsController < ApplicationController
       @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - @tournament.game_stations_count if players_per_game_station.to_i > 0
     end
     @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
+    @seeded_participants_array = @tournament.registrations.order(:position).map { |r| r.player.gamer_tag }
   end
 
   # GET /tournaments/new

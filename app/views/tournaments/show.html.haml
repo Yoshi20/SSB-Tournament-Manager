@@ -246,13 +246,12 @@
 
           .tournament__players.hidden
             .row
-              .col
+              .col{style: 'text-align: center;'}
                 %h2 Hidden seeded player list
                 %p
-                  - @tournament.players.sort_by do |p|
-                    - p.seed_points
-                  - end.reverse.each_with_index do |p, i|
-                    = "#{i+1}. #{p.gamer_tag}, "
+                  - @seeded_participants_array.each do |gt, i|
+                    = gt
+                    %br
 
           - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
             .tournament__players
