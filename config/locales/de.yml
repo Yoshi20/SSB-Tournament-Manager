@@ -188,7 +188,7 @@ de:
       power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
       power_ranking_li_6: "Weeklies zählen nicht zum PR"
       results: "Resultate"
-      results_body: "Nebst den Resultate (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers, kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+      results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
       personal_data: "Persönliche Daten"
       personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
       discord: "Tritt uns auf %{link} bei, wenn du über die Swiss Smash Community auf dem Laufenden bleiben möchtest."
