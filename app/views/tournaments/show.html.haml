@@ -98,7 +98,9 @@
           .col
             .tournament__details__single
               %strong
-                - if (@tournament.players.count == 0 and @tournament.subtype == 'external') or !@tournament.is_registration_allowed
+                - if @tournament.total_seats.nil?
+                  = '?'
+                - elsif (@tournament.players.count == 0 and @tournament.subtype == 'external') or !@tournament.is_registration_allowed
                   = @tournament.total_seats
                 - else
                   = "#{@tournament.players.count} / #{@tournament.total_seats}"
@@ -161,6 +163,20 @@
                 %strong
                   = link_to 'Challonge', "https://challonge.com/de/#{valid_challonge_url(@tournament.name)}", target: '_blank', class:'btn btn-sstm'
                 %span= t('tournaments.bracket')
+
+      - if current_user.present? and current_user.super_admin?
+        .tournament__details
+          .row
+            .col
+              .tournament__details__single
+                %strong
+                  = @tournament.created_at.to_s(:custom_datetime)
+                %span= "Created at"
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %strong
+                  = @tournament.updated_at.to_s(:custom_datetime)
+                %span= "Updated at"
 
     - if @tournament.description.present?
       .tab-pane.fade#description{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
