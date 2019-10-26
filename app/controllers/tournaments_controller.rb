@@ -270,11 +270,15 @@ class TournamentsController < ApplicationController
     if @tournament.total_seats.present? and @tournament.players.count < @tournament.total_seats
       # tournament is not full yet -> add the player to the tournament
       @tournament.players << player_to_add
-      # re-seed players
+      # re-seed players if not added manually
       tournament_registrations = @tournament.registrations
-      seeded_participants_id_array = helpers.seed_players(@tournament.players).map { |p| p.id }
-      seeded_participants_id_array.each_with_index do |id, i|
-        tournament_registrations.find_by(player_id: id).set_list_position(i+1)
+      if params[:gamer_tag].present?
+        tournament_registrations.last.set_list_position(@tournament.registrations.count)
+      else
+        seeded_participants_id_array = helpers.seed_players(@tournament.players).map { |p| p.id }
+        seeded_participants_id_array.each_with_index do |id, i|
+          tournament_registrations.find_by(player_id: id).set_list_position(i+1)
+        end
       end
       # remove the player from the waiting list
       if @tournament.waiting_list.include?(player_to_add.gamer_tag)
