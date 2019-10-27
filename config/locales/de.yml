@@ -465,11 +465,11 @@ de:
     brought: "Brachte"
     bring_a_setup:
       title: "Bitte bring ein Setup mit"
-      body: "Wenn du folgende Hard- und Software zum Turnier mitbringst, erhälst du möglicherweise einen Gutschein für den Veranstaltungsort oder das Buffet. Sobald du dich bereit erklärt hast, bist du verpflichtet, diese zur Verfügung zu stellen, bis sie nicht mehr benötigt wird."
+      body: "Wenn du dich bereit erklärt hast die nachfolgende Hard- und Software mitzubringen, bist du verpflichtet diese zur Verfügung zu stellen, bis sie nicht mehr benötigt wird."
       li1: "Nintendo Switch Konsole"
       li2: "Docking Station mit Stromversorgung"
       li3: "HDMI Kabel"
-      li4: "Super Smash Bros. Ultimate Game (alle Charaktere freigeschaltet, aktuelle Version und Ruleset vorinstalliert)"
+      li4: "Super Smash Bros. Ultimate Game (mit allen Charakteren und aktuellstem Ruleset)"
       i_will_bring: "Ich werde Setups mitbringen"
       max_one_more_needed_setup: "(max. 1 weiteres Setup wird im Moment benötigt)"
       max_more_needed_setups: "(max. %{setups} weitere Setups werden im Moment benötigt)"

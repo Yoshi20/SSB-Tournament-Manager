@@ -40,14 +40,8 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
-    players_per_game_station = (@tournament.total_seats.to_f/@tournament.total_needed_game_stations).ceil() if @tournament.total_needed_game_stations.to_i > 0
-    @min_needed_game_stations = (@tournament.min_needed_registrations.to_f/players_per_game_station).ceil() if players_per_game_station.to_i > 0
-    if @tournament.players.count < @tournament.min_needed_registrations.to_i
-      @currently_needed_game_stations = @min_needed_game_stations - @tournament.game_stations_count if @min_needed_game_stations.present?
-    else
-      @currently_needed_game_stations = (@tournament.players.count.to_f/players_per_game_station).ceil() - @tournament.game_stations_count if players_per_game_station.to_i > 0
-    end
-    @registration = @tournament.registrations.where(player_id: current_user.player.id).first if current_user.present?
+    @currently_needed_game_stations = @tournament.total_needed_game_stations - @tournament.game_stations_count if @tournament.total_needed_game_stations.present?
+    @registration = @tournament.registrations.find_by(player_id: current_user.player.id) if current_user.present?
     @seeded_participants_array = @tournament.registrations.order(:position).map { |r| r.player.gamer_tag }
   end
 
@@ -367,89 +361,82 @@ class TournamentsController < ApplicationController
     if @tournament.setup or @tournament.started or @tournament.finished
       redirect_to @tournament, alert: t('flash.alert.tournament_status_error')
     else
-      # min_needed_game_stations_count = helpers.min_needed_game_stations_per_tournament(@tournament.players.count)
-      # current_game_stations_count = @tournament.game_stations_count
-      if false # current_game_stations_count < min_needed_game_stations_count
-        delta_game_stations = min_needed_game_stations_count - current_game_stations_count
-        redirect_to @tournament, alert: "At least #{delta_game_stations} more game #{delta_game_stations > 1 ? 'stations are' : 'station is'} needed to setup the tournament."
-      else
-        if set_challonge_username_and_api_key()
+      if set_challonge_username_and_api_key()
 
-          # setup a challonge tournament
-          ct = Challonge::Tournament.new
-          ct.name = @tournament.name #'SSBU Bern KW1' or 'PK Bern #1'
-          ct.url = helpers.valid_challonge_url(@tournament.name) #'ssbu_bern_kw1' or 'pk_bern_1'
-          ct.tournament_type = 'double elimination'
-          ct.group_stages_enabled = @tournament.has_pools?
-          ct.game_name = 'Super Smash Bros. Ultimate'
-          ct.description = helpers.valid_challonge_description(@tournament.description)
-          ActiveRecord::Base.transaction do
-            if ct.save! == false
-              raise ct.errors.full_messages.inspect
-            end
-          rescue => error
-            redirect_to @tournament, alert: error
-            return
+        # setup a challonge tournament
+        ct = Challonge::Tournament.new
+        ct.name = @tournament.name #'SSBU Bern KW1' or 'PK Bern #1'
+        ct.url = helpers.valid_challonge_url(@tournament.name) #'ssbu_bern_kw1' or 'pk_bern_1'
+        ct.tournament_type = 'double elimination'
+        ct.group_stages_enabled = @tournament.has_pools?
+        ct.game_name = 'Super Smash Bros. Ultimate'
+        ct.description = helpers.valid_challonge_description(@tournament.description)
+        ActiveRecord::Base.transaction do
+          if ct.save! == false
+            raise ct.errors.full_messages.inspect
           end
+        rescue => error
+          redirect_to @tournament, alert: error
+          return
+        end
 
-          # get seeded players
+        # get seeded players
+        seeded_participants_array = []
+        all_registrations = @tournament.registrations
+        if all_registrations.where(position: nil).any?
+          # use seed_points if a position is nil
+          seeded_participants_array = helpers.seed_players(@tournament.players).map { |p| p.gamer_tag }
+        else
+          seeded_participants_array = all_registrations.order(:position).map { |r| r.player.gamer_tag }
+        end
+
+        # change the order if there are pools
+        if @tournament.has_pools?
+          num_of_pools = @tournament.number_of_pools
+          players_per_pool = (seeded_participants_array.size.to_f/num_of_pools).round
+          pools_hash = Hash.new
+          num_of_pools.times do |n|
+            pools_hash[n] = Array.new
+          end
+          i = 0
+          (players_per_pool.to_f/2).round.times do
+            num_of_pools.times do |n|
+              pools_hash[n%num_of_pools] << seeded_participants_array[i]
+              i += 1
+            end
+            num_of_pools.times do |n|
+              pools_hash[(num_of_pools-1-n)%num_of_pools] << seeded_participants_array[i]
+              i += 1
+            end
+          end
           seeded_participants_array = []
-          all_registrations = @tournament.registrations
-          if all_registrations.where(position: nil).any?
-            # use seed_points if a position is nil
-            seeded_participants_array = helpers.seed_players(@tournament.players).map { |p| p.gamer_tag }
-          else
-            seeded_participants_array = all_registrations.order(:position).map { |r| r.player.gamer_tag }
+          num_of_pools.times do |n|
+            seeded_participants_array += pools_hash[n]
+            if seeded_participants_array.include?(nil) && n != (num_of_pools-1)
+              seeded_participants_array.pop # remove the nil at the end
+              seeded_participants_array << pools_hash[(num_of_pools-1)].pop # add the last player
+            end
           end
+        end
 
-          # change the order if there are pools
+        # add the participants to the challonge tournament
+        seeded_participants_array.each do |p|
+          Challonge::Participant.create(:name => p, :tournament => ct)
+        end
+
+        @tournament.setup = true
+        @tournament.challonge_tournament_id = ct.id
+        if @tournament.save
           if @tournament.has_pools?
-            num_of_pools = @tournament.number_of_pools
-            players_per_pool = (seeded_participants_array.size.to_f/num_of_pools).round
-            pools_hash = Hash.new
-            num_of_pools.times do |n|
-              pools_hash[n] = Array.new
-            end
-            i = 0
-            (players_per_pool.to_f/2).round.times do
-              num_of_pools.times do |n|
-                pools_hash[n%num_of_pools] << seeded_participants_array[i]
-                i += 1
-              end
-              num_of_pools.times do |n|
-                pools_hash[(num_of_pools-1-n)%num_of_pools] << seeded_participants_array[i]
-                i += 1
-              end
-            end
-            seeded_participants_array = []
-            num_of_pools.times do |n|
-              seeded_participants_array += pools_hash[n]
-              if seeded_participants_array.include?(nil) && n != (num_of_pools-1)
-                seeded_participants_array.pop # remove the nil at the end
-                seeded_participants_array << pools_hash[(num_of_pools-1)].pop # add the last player
-              end
-            end
-          end
-
-          # add the participants to the challonge tournament
-          seeded_participants_array.each do |p|
-            Challonge::Participant.create(:name => p, :tournament => ct)
-          end
-
-          @tournament.setup = true
-          @tournament.challonge_tournament_id = ct.id
-          if @tournament.save
-            if @tournament.has_pools?
-              redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.two_stage_tournament')}"
-            else
-              redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.check_out_challonge')}"
-            end
+            redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.two_stage_tournament')}"
           else
-            redirect_to @tournament, alert: t('flash.alert.tournament_set_up')
+            redirect_to @tournament, notice: "#{t('flash.notice.tournament_set_up')}. #{t('flash.notice.check_out_challonge')}"
           end
         else
-          redirect_to @tournament, alert: "#{t('flash.alert.tournament_set_up')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
+          redirect_to @tournament, alert: t('flash.alert.tournament_set_up')
         end
+      else
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_set_up')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end

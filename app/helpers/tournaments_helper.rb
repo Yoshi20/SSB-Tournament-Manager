@@ -26,13 +26,6 @@ module TournamentsHelper
     # Super Smash Saga - Calm before the Storm
   end
 
-  def min_needed_game_stations_per_tournament(seats)
-    if seats.nil? then return 0 end
-    min_needed_game_stations = seats/4
-    if min_needed_game_stations == 0 then min_needed_game_stations = 1 end
-    return min_needed_game_stations
-  end
-
   def valid_challonge_url(str)
     str.downcase.gsub(/[^0-9A-Za-z\s]/, '').strip.gsub(' ', '_').gsub('__', '_').gsub('__', '_')
   end

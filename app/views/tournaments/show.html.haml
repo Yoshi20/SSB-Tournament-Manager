@@ -117,10 +117,7 @@
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  - if @min_needed_game_stations.to_i > 0 && @tournament.total_needed_game_stations.to_i > 0 && @min_needed_game_stations < @tournament.total_needed_game_stations.to_i
-                    = "#{@min_needed_game_stations}..#{@tournament.total_needed_game_stations}"
-                  - else
-                    = @tournament.total_needed_game_stations.to_i
+                  = @tournament.total_needed_game_stations.to_i
                 %span= t('tournaments.setups')
 
       - host_user = @tournament.host
