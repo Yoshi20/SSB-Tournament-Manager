@@ -463,6 +463,7 @@ fr:
     fee_paid: "Fee paid?"
     brings: "Brings"
     brought: "Brought"
+    group: "Group"  #blup: new
     bring_a_setup:
       title: "Please bring a setup with you"
       body: "If you agreed to bring the following hard- and software to the tournament, you are obligated to provide it until it is not needed any longer." #blup: updated

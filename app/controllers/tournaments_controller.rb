@@ -43,6 +43,7 @@ class TournamentsController < ApplicationController
     @currently_needed_game_stations = @tournament.total_needed_game_stations - @tournament.game_stations_count if @tournament.total_needed_game_stations.present?
     @registration = @tournament.registrations.find_by(player_id: current_user.player.id) if current_user.present?
     @seeded_participants_array = @tournament.registrations.order(:position).map { |r| r.player.gamer_tag }
+    @seeded_participants_array = reorder_for_pools(@seeded_participants_array, @tournament.number_of_pools) if @tournament.has_pools?
   end
 
   # GET /tournaments/new
@@ -391,31 +392,18 @@ class TournamentsController < ApplicationController
         end
 
         # change the order if there are pools
-        if @tournament.has_pools?
-          num_of_pools = @tournament.number_of_pools
-          players_per_pool = (seeded_participants_array.size.to_f/num_of_pools).round
-          pools_hash = Hash.new
-          num_of_pools.times do |n|
-            pools_hash[n] = Array.new
-          end
-          i = 0
-          (players_per_pool.to_f/2).round.times do
-            num_of_pools.times do |n|
-              pools_hash[n%num_of_pools] << seeded_participants_array[i]
-              i += 1
-            end
-            num_of_pools.times do |n|
-              pools_hash[(num_of_pools-1-n)%num_of_pools] << seeded_participants_array[i]
-              i += 1
-            end
-          end
-          seeded_participants_array = []
-          num_of_pools.times do |n|
-            seeded_participants_array += pools_hash[n]
-            if seeded_participants_array.include?(nil) && n != (num_of_pools-1)
-              seeded_participants_array.pop # remove the nil at the end
-              seeded_participants_array << pools_hash[(num_of_pools-1)].pop # add the last player
-            end
+        seeded_participants_array = reorder_for_pools(seeded_participants_array, @tournament.number_of_pools) if @tournament.has_pools?
+
+        # add "bye"-players if there are nils
+        bye_ctr = 0
+        seeded_participants_array = seeded_participants_array.map do |p|
+          if p.nil?
+            bye_gamer_tag = "bye#{bye_ctr}"
+            bye_ctr += 1
+            @tournament.players << Player.find_by(gamer_tag: bye_gamer_tag)
+            bye_gamer_tag
+          else
+            p
           end
         end
 
@@ -660,4 +648,28 @@ class TournamentsController < ApplicationController
       end
     end
 
+    def reorder_for_pools(seeded_participants_array, number_of_pools)
+      players_per_pool = (seeded_participants_array.size.to_f/number_of_pools).round
+      pools_hash = Hash.new
+      number_of_pools.times do |n|
+        pools_hash[n] = Array.new
+      end
+      i = 0
+      (players_per_pool.to_f/2).round.times do
+        number_of_pools.times do |n|
+          pools_hash[n%number_of_pools] << seeded_participants_array[i]
+          i += 1
+        end
+        number_of_pools.times do |n|
+          pools_hash[(number_of_pools-1-n)%number_of_pools] << seeded_participants_array[i]
+          i += 1
+        end
+      end
+      seeded_participants_array = []
+      number_of_pools.times do |n|
+        pools_hash[n].pop if pools_hash[n].size > players_per_pool
+        seeded_participants_array += pools_hash[n]
+      end
+      return seeded_participants_array
+    end
 end

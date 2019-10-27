@@ -463,6 +463,7 @@ de:
     fee_paid: "Gebühr bezahlt?"
     brings: "Bringt"
     brought: "Brachte"
+    group: "Gruppe"
     bring_a_setup:
       title: "Bitte bring ein Setup mit"
       body: "Wenn du dich bereit erklärt hast die nachfolgende Hard- und Software mitzubringen, bist du verpflichtet diese zur Verfügung zu stellen, bis sie nicht mehr benötigt wird."
