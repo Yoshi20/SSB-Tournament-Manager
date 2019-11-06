@@ -8,6 +8,7 @@ class Player < ApplicationRecord
   before_validation :strip_whitespace
 
   validates :gamer_tag, uniqueness: true, presence: true
+  validates :prefix, length: { maximum: 12 }
 
   MAX_PLAYERS_PER_PAGE = 50
 
