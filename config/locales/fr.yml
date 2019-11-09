@@ -1,6 +1,7 @@
 fr:
   login: "Login"
   feedback_and_questions: "Feedback & Questions"
+  please_donate: "Please donate something"  #blup: new
   username: "Username"
   password: "Password"
   log_in: "Log in"
