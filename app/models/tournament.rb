@@ -34,7 +34,7 @@ class Tournament < ApplicationRecord
   end
 
   def has_pools?
-    self.number_of_pools > 0
+    self.number_of_pools.to_i > 0
   end
 
   def game_stations_count
