@@ -1,15 +1,15 @@
 fr:
   login: "Connexion"
   feedback_and_questions: "Feedback & Questions"
-  please_donate: "Please donate something"  #blup: new
+  please_donate: "Vous pouvez faire un don ici"
   username: "Nom d'utilisateur"
   password: "Mot de passe"
   log_in: "Se connecter"
   sign_up: "S'inscrire"
   w_l: "W/L"
   hi: "Bonjour"
-  s1_2019: "S1/19"  #blup: new
-  s2_2019: "S2/19"  #blup: new
+  s1_2019: "S1/19"
+  s2_2019: "S2/19"
   external: "Externe"
   internal: "Interne"
   weekly: "Hebdomadaire"
@@ -160,8 +160,8 @@ fr:
 
   welcome:
     title: "Bienvenue sur SwissSmash.ch"
-    body1: "Si vous voulez rester à jour avec la Communauté Suisse de Smash, rejoignez-nous sur %{discord_link} et suivez le %{twitter_link} compte Swiss Smash."
-    body2: "Vous pouvez trouver les évènements à venir dans le %{tournaments_link} ou le %{calendar_link}."
+    body1: "Si vous voulez rester à jour avec la Communauté Suisse de Smash, rejoignez-nous sur %{discord_link} et suivez le compte %{twitter_link} Swiss Smash."
+    body2: "Vous pouvez trouver les évènements à venir dans la %{tournaments_link} ou le %{calendar_link}."
     tournament_list: "Liste des tournois"
     calendar: "Calendrier"
     body3: "%{log_in_link} ou %{sign_up_link} si vous ne l'avez pas encore fait, pour pouvoir rejoindre un tournoi et écrire un feedback ou une question."
@@ -205,7 +205,7 @@ fr:
       ranking_system_rank: "Rang"
       ranking_system_points: "Points"
       seeding: "Bracket seeding"
-      seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SwissSmash.ch:"  #blup: updated   -> this is yours: seeding_body1: "Le seeding initial est fait en fournissant au gestionnaire de tournoi Challonge une liste des joueurs classés par talent:"
+      seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
       seeding_body2: "Le seeding final est fait manuellement par un TO ou ses représentants."
       tournament_organiser: "Organisateur de tournoi"
       tournament_organiser_body: "Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash ? Faites-le moi savoir %{link}."
@@ -320,7 +320,7 @@ fr:
   rankings:
     title: "Classements"
     official_power_ranking: "Power Rankings officiels"
-    tournament_specific: "Par tournament spécifique"
+    tournament_specific: "Par tournoi spécifique"
     filter:
       overall: "Global"
       seed_points: "Points de Seed"
@@ -338,25 +338,25 @@ fr:
   rules:
     title: "Règles"
     general_rules:
-      title_short: "General" #blup: new
+      title_short: "Général"
       title: "Règles générales"
       body: "Afin qu'on puisse continuer à faire des tournois dans les lieux dédiés, on se doit de suivre quelques règles de bon sens. Si l'une de ces règles n'est pas respectée l'hébergeur a le droit de virer et bannir n'importe quel joueur sans avoir à s'expliquer plus que ça."
       li1: "Fumer en intérieur est interdit"
       li2: "Prenez soin de tous les matériels et logiciels utilisés, ainsi que de l'ameublement et autre. Si vous cassez quelque chose, reportez-le à l'hébergeur"
       li3: "Soyez amicaux et bienveillants envers tous les participants"
       li4: "Suivez les instructions de l'hébergeur. La parole d'un hébergeur fait loi"
-      li5: "Physical fights will not be tolerated"  #blup: deleted '. Disputes must be dealt with by playing 1 vs. 1 matches' -> this is yours: li5: "Les combats physiques ne seront pas tolérés. Les disputes doivent être réglées en jouant des matchs en 1 vs. 1"
+      li5: "Les combats physiques ne seront pas tolérés"
       li6: "Le vol ne sera pas toléré"
     tournament_rules:
-      title_short: "Tournaments" #blup: new
+      title_short: "Tournois"
       title: "Règles de tournoi SSBU"
-      li1: "Les frais d'inscriptions doivent être payées sur place avant que le tournoi ne commence."
+      li1: "Les frais d'inscriptions doivent être payés sur place avant que le tournoi ne commence."
       li2: "Si vous arrivez en retard (>15min) à un tournoi ou un match, vous serez disqualifés"
-      li3: "Bring your own controller (and it's extras)"  #blup: deleted 'if you don't want to play with Joy-Cons' -> this is yours: li3: "Amenez votre propre manette (et ce qui va avec) si vous ne voulez pas jouer avec des Joy-Cons"
-      li4: "Si cela n'a pas été défini autrement, des matchs en Double Elimination Matches seront joués (si vous perdez deux matchs vous êtes sorti du tournoi)"
+      li3: "Amenez votre propre manette (et ce qui va avec)"
+      li4: "Si cela n'a pas été défini autrement, des matchs en Double Élimination seront joués (si vous perdez deux matchs vous êtes sorti du tournoi)"
       li5: "Le stations de jeu (setups) inutilisées peuvent être utilisées pour des matchs amicaux aussitôt qu'un hébergeur l'a autorisé"
     match_rules:
-      title_short: "Ruleset" #blup: new
+      title_short: "Règlement"
       title: "Règles de match SSBU (Règlement)"
       body: "Pour l'instant le règlement de Mirakuru est utilisé dans la plupart des tournois officiels suisses. Le règlement complet peut être trouvé"
       here: "ici"
@@ -403,7 +403,7 @@ fr:
     registration_fee: "Frais d'inscription [CHF]"
     registration_fee_short: "Frais d'inscription"
     total_seats: "Places totales"
-    external_registration_link: "Lien d'inscriptio externe"
+    external_registration_link: "Lien d'inscription externe"
     is_registration_allowed: "Les inscriptions sont-elles ouvertes?"
     send_all_players_an_email: "Envoyer un email à tous les joueurs"
     ranking_string: "Fil de classement"
@@ -411,7 +411,7 @@ fr:
     started: "Démarrée"
     finished: "Terminée"
     active: "Activé"
-    external_tournament: "Tournoi ExterneExternal"
+    external_tournament: "Tournoi Externe"
     registration_deadline: "Délai d'inscription en ligne"
     registration_deadline_short: "Délai d'inscription"
     location: "Lieu"
@@ -466,14 +466,14 @@ fr:
     fee_paid: "Frais payés?"
     brings: "Apporte"
     brought: "A apporté"
-    group: "Group"  #blup: new
+    group: "Groupe"
     bring_a_setup:
       title: "S'il vous plaît apportez un setup avec vous"
-      body: "If you agreed to bring the following hard- and software to the tournament, you are obligated to provide it until it is not needed any longer." #blup: updated -> this is yours: body: "Si vous apportez les matériels et logiciels suivants au tournoi, vous pourriez avoir un coupon pour le lieu ou le buffet. Mais une fois que vous avez accepté de l'amener, vous êtes obligé de le fournir jusqu'à ce qu'il ne soit plus nécessaire."
+      body: "Si vous étiez d'accord d'apporter les matériels et logiciels suivants au tournoi, vous êtes prié de le fournir jusqu'à ce qu'il ne soit plus nécessaire."
       li1: "Console Nintendo Switch"
       li2: "Station d'accueil (Dock) avec son câble d'alimentation"
       li3: "Câble HDMI"
-      li4: "Super Smash Bros. Ultimate Game (with all characters and most current ruleset)" #blup: updated -> this is yours: li4: "Le jeu Super Smash Bros. Ultimate (tous les personnages débloqués, version actuelle et règles préinstallées)"
+      li4: "Le jeu Super Smash Bros. Ultimate (avec tous les personnages et le règlement le plus actuel)"
       i_will_bring: "J'apporterais des setups"
       max_one_more_needed_setup: "(max. 1 setup en plus nécessaire pour l'instant.)"
       max_more_needed_setups: "(max. %{setups} setups en plus nécessaire pour l'instant.)"
@@ -491,9 +491,9 @@ fr:
     cancel_tournament: "Annuler le tournoi"
     errors:
       registration_deadline: "doit être antérieur à la date de début du tournoi"
-    seed_players: "Seed players"  #blup: new
-    seed_players_randomly: "Seed players randomly"  #blup: new
-    seed_players_tournament_confirm: "Are you sure? The current player seeding will be overwritten."  #blup: new
+    seed_players: "Seeder les joueurs"
+    seed_players_randomly: "Seeder les joueurs aléatoirement"
+    seed_players_tournament_confirm: "Êtes-vous sûr(e)? Le seeding actuel sera écrasé."
 
   users:
     mailer:
