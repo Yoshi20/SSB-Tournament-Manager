@@ -300,7 +300,7 @@ class TournamentsController < ApplicationController
       end
     else
       # tournament is full
-      if params[:waiting_list] == 'true' or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add))
+      if params[:waiting_list] == 'true' or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add) and !@tournament.waiting_list.include?(player_to_add.gamer_tag))
         @tournament.waiting_list.push(player_to_add.gamer_tag)
         if @tournament.save
           redirect_to @tournament, notice: t('flash.notice.add_player_to_waiting_list')
