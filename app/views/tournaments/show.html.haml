@@ -264,18 +264,19 @@
                 - @tournament.number_of_pools.times do |i|
                   .col{style: 'text-align: center;'}
                     %h2= t('tournaments.group') + (i+1).to_s
-                    - (@tournament.players.count.to_f / @tournament.number_of_pools).round.times do |j|
+                    - (@tournament.players.count.to_f / @tournament.number_of_pools).ceil.times do |j|
                       = @seeded_participants_array[n]
                       %br
                       - n += 1
-            - else
-              .row.hidden
-                .col{style: 'text-align: center;'}
-                  %h2 Hidden seeded player list
-                  %p
-                    - @seeded_participants_array.each do |gt, i|
-                      = gt
-                      %br
+
+          .tournament__players.hidden
+            .row
+              .col{style: 'text-align: center;'}
+                %h2 Hidden seeded player list
+                %p
+                  - @seeded_participants_array.each do |gt, i|
+                    = gt
+                    %br
 
           - if current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
             .tournament__players

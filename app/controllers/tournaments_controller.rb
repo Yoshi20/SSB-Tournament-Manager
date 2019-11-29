@@ -656,13 +656,13 @@ class TournamentsController < ApplicationController
     end
 
     def reorder_for_pools(seeded_participants_array, number_of_pools)
-      players_per_pool = (seeded_participants_array.size.to_f/number_of_pools).round
+      players_per_pool = (seeded_participants_array.size.to_f/number_of_pools).ceil
       pools_hash = Hash.new
       number_of_pools.times do |n|
         pools_hash[n] = Array.new
       end
       i = 0
-      (players_per_pool.to_f/2).round.times do
+      (players_per_pool.to_f/2).ceil.times do
         number_of_pools.times do |n|
           pools_hash[n%number_of_pools] << seeded_participants_array[i]
           i += 1
