@@ -221,6 +221,54 @@ en:
       ongoing: "Ongoing"
       internal_joined: "Internal joined"
       weekly_joined: "Weekly joined"
+    allDayText: "all-day"
+    buttonText:
+      today: "Today"
+      month: "Month"
+      agendaWeek: 'Week'
+      agendaDay: 'Day'
+    monthNames:
+      - "January"
+      - "February"
+      - "March"
+      - "April"
+      - "May"
+      - "June"
+      - "July"
+      - "August"
+      - "September"
+      - "October"
+      - "November"
+      - "December"
+    monthNamesShort:
+      - "Jan"
+      - "Feb"
+      - "Mar"
+      - "Apr"
+      - "May"
+      - "June"
+      - "July"
+      - "Aug"
+      - "Sept"
+      - "Oct"
+      - "Nov"
+      - "Dec"
+    dayNames:
+      - "Sunday"
+      - "Monday"
+      - "Tuesday"
+      - "Wednesday"
+      - "Thursday"
+      - "Friday"
+      - "Saturday"
+    dayNamesShort:
+      - "Sun"
+      - "Mon"
+      - "Tue"
+      - "Wed"
+      - "Thu"
+      - "Fri"
+      - "Sat"
 
   devise:
     confirmations:
@@ -531,3 +579,9 @@ en:
     errors:
       verification_failed: "reCAPTCHA thinks that you're not a human. Please re-enter password and try again"
       recaptcha_unreachable: "reCAPTCHA server error. Please try again"
+
+  time:
+    formats:
+      custom_datetime_date_and_no_time: "%d %B"
+      custom_datetime_weekday_date_and_year: "%A, %d %B %Y"
+      custom_datetime_with_weekday: "%A, %d %B at %H:%M"

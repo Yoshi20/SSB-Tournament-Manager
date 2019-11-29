@@ -13,7 +13,7 @@
         %span.material-icons= 'radio_button_unchecked'
 
     %td
-      = tournament.date.to_s(:custom_datetime_date_and_no_time)
+      = l(tournament.date, format: :custom_datetime_date_and_no_time)
 
     %td
       = tournament.name

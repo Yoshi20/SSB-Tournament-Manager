@@ -31,7 +31,7 @@
       = f.text_field :city, class: 'form-control'
     .form-group
       = f.label :location, t('tournaments.location')
-      %em= '(separate new lines with commas)'
+      %em= t('tournaments.separate')
       = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
     - if params[:tournament].present?
       .form-group

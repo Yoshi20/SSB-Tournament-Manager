@@ -40,23 +40,23 @@
               .tournament__details__single.tournament__details__single--last
                 %strong
                   - if @tournament.date.hour == 0 && @tournament.date.min == 0
-                    = @tournament.date.to_s(:custom_datetime_weekday_date_and_year)
+                    = l(@tournament.date, format: :custom_datetime_weekday_date_and_year)
                   - else
-                    = @tournament.date.to_s(:custom_datetime_with_weekday)
+                    = l(@tournament.date, format: :custom_datetime_with_weekday)
                 %span= t('tournaments.start_date_short')
           - else
             .col
               .tournament__details__single
                 %strong
                   - if @tournament.date.hour == 0 && @tournament.date.min == 0
-                    = @tournament.date.to_s(:custom_datetime_weekday_date_and_year)
+                    = l(@tournament.date, format: :custom_datetime_weekday_date_and_year)
                   - else
-                    = @tournament.date.to_s(:custom_datetime_with_weekday)
+                    = l(@tournament.date, format: :custom_datetime_with_weekday)
                 %span= t('tournaments.start_date_short')
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  = @tournament.registration_deadline.to_s(:custom_datetime_with_weekday)
+                  = l(@tournament.registration_deadline, format: :custom_datetime_with_weekday)
                 %span
                   - if @tournament.is_registration_allowed
                     = t('tournaments.registration_deadline')

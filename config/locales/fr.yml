@@ -221,6 +221,54 @@ fr:
       ongoing: "En cours"
       internal_joined: "Interne"
       weekly_joined: "Hebdomadaire"
+    allDayText: "toute la jour"
+    buttonText:
+      today: "Aujourd'hui"
+      month: "Mois"
+      agendaWeek: 'Semaine'
+      agendaDay: 'Jour'
+    monthNames:
+      - "Janvier"
+      - "Février"
+      - "Mars"
+      - "Avril"
+      - "Mai"
+      - "Juin"
+      - "Juillet"
+      - "Août"
+      - "Septembre"
+      - "Octobre"
+      - "Novembre"
+      - "Décembre"
+    monthNamesShort:
+      - "Janv"
+      - "Févr"
+      - "Mars"
+      - "Avr"
+      - "Mai"
+      - "Juin"
+      - "Juill"
+      - "Août"
+      - "Sept"
+      - "Oct"
+      - "Nov"
+      - "Déc"
+    dayNames:
+      - "Dimanche"
+      - "Lundi"
+      - "Mardi"
+      - "Mercredi"
+      - "Jeudi"
+      - "Vendredi"
+      - "Samedi"
+    dayNamesShort:
+      - "Di"
+      - "Lu"
+      - "Ma"
+      - "Me"
+      - "Je"
+      - "Ve"
+      - "Sa"
 
   devise:
     confirmations:
@@ -531,3 +579,9 @@ fr:
     errors:
       verification_failed: "reCAPTCHA pense que vous n'êtes pas humain. S'il vous plaît entrez à nouveau votre mot de passe"
       recaptcha_unreachable: "Erreur du serveur reCAPTCHA. Veuillez réessayer"
+
+  time:
+    formats:
+      custom_datetime_date_and_no_time: "%d %B"
+      custom_datetime_weekday_date_and_year: "%A, %d %B %Y"
+      custom_datetime_with_weekday: "%A, %d %B à %H:%M"
