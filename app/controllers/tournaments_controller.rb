@@ -640,6 +640,10 @@ class TournamentsController < ApplicationController
 
     def set_challonge_username_and_api_key
       host_user = @tournament.host
+      # workaround for outdated ruby gem
+      Challonge::Tournament.site = "https://api.challonge.com/v1"
+      Challonge::Participant.site = "https://api.challonge.com/v1/tournaments/:tournament_id/"
+      Challonge::Match.site = "https://api.challonge.com/v1/tournaments/:tournament_id/"
       if host_user.present? and host_user.challonge_username.present? and host_user.challonge_api_key.present?
         Challonge::API.username = host_user.challonge_username
         Challonge::API.key = host_user.challonge_api_key
