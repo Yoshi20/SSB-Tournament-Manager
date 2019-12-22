@@ -6,7 +6,8 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
 
-  scope :active_2019, -> { where(active: true).where('date > ? AND date < ?', Time.local(2019,1,1), Time.local(2019,12,31,23,59,59)) }
+  scope :active_2019, -> { where(active: true).where('date > ? AND date < ?', Time.local(2019,1,1), Time.local(2020,1,31,23,59,59)) }
+  scope :active_2020, -> { where(active: true).where('date > ? AND date < ?', Time.local(2020,1,1), Time.local(2021,1,31,23,59,59)) }
   scope :upcoming, -> { where('date > ?', Time.now) }
   scope :ongoing, -> { where('date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
   scope :past, -> { where('date < ?', Time.now - 6.hours) }
