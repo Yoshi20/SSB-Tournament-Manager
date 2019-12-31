@@ -6,9 +6,9 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    @ongoing_tournaments = Tournament.active_2019.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    @past_tournaments = Tournament.active_2019.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @tournaments = Tournament.active.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @ongoing_tournaments = Tournament.active.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @past_tournaments = Tournament.active.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     if current_user.present? and current_user.super_admin?
       @inactive_tournaments = Tournament.where(active: false).order(date: :desc).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     end
@@ -33,10 +33,15 @@ class TournamentsController < ApplicationController
       elsif params[:filter] == 's1_2019'
         @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
         @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
-
       elsif params[:filter] == 's2_2019'
         @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2019,6,16), Time.local(2019,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
         @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2019,6,16), Time.local(2019,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+      elsif params[:filter] == 's1_2020'
+        @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2020,1,1), Time.local(2020,6,30)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+        @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2020,1,1), Time.local(2020,6,30)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+      elsif params[:filter] == 's2_2020'
+        @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2020,6,30), Time.local(2020,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+        @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2020,6,30), Time.local(2020,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
       else  # 'weekly', 'internal' or 'external'
         @tournaments = @tournaments.where(subtype: params[:filter])
         @past_tournaments = @past_tournaments.where(subtype: params[:filter])

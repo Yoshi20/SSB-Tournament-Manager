@@ -10,6 +10,8 @@ de:
   hi: "Hi"
   s1_2019: "S1/19"
   s2_2019: "S2/19"
+  s1_2020: "S1/20"
+  s2_2020: "S2/20"
   external: "Externe"
   internal: "Interne"
   weekly: "Weekly"
@@ -495,7 +497,7 @@ de:
       li1: "Interne Turniere unterstützen alle Funktionen des SwissSmash Turniermanagers"
       li2: "Externe Turniere werden verwendet, um eine andere Registrierungs-Website mit dem SwissSmash Turniermanager zu verknüpfen"
       li3: "Weekly Turniere sind gleich wie interne Turniere. Jedoch kannst du mehrere Turniere auf ein Mal erstellen, indem du ein Enddatum setzt.
-        Der Name der Weeklies wird aus der definierten Stadt und dem Datum generiert. Zum Beispiel: 'SSBU Weekly Bern KW20 2019'"
+        Der Name der Weeklies wird aus der definierten Stadt und dem Datum generiert. Zum Beispiel: 'SSBU Weekly Bern KW20 2020'"
     details: "Details"
     waiting_list: "Warteliste"
     ranking: "Rangliste"

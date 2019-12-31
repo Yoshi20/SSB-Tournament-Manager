@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_next_tournaments
-    @nextTournaments = Tournament.active_2019.upcoming.order(date: :asc).includes(:players).limit(10)
+    @nextTournaments = Tournament.active.upcoming.order(date: :asc).includes(:players).limit(10)
   end
 
   private

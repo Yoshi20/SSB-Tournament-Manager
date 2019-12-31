@@ -10,6 +10,8 @@ fr:
   hi: "Bonjour"
   s1_2019: "S1/19"
   s2_2019: "S2/19"
+  s1_2020: "S1/20"
+  s2_2020: "S2/20"
   external: "Externe"
   internal: "Interne"
   weekly: "Hebdomadaire"
@@ -495,7 +497,7 @@ fr:
       li1: "Les tournois internes supportent toutes les fonctionnalités du Gestionnaire de Tournoi SwissSmash"
       li2: "Les tournois externes sont utilisés pour lier un autre site web d'inscription avec le Gestionnaire de Tournoi SwissSmash"
       li3: "Les hebdomadaires fonctionnent comme des tournois internes. Mais vous pouvez créer plusieurs tournois d'un coup en choisissant une date de fin.
-        Le nom des hebdomadaires sera généré par la ville définie et la date par ex: 'SSBU Weekly Bern KW20 2019'"
+        Le nom des hebdomadaires sera généré par la ville définie et la date par ex: 'SSBU Weekly Bern KW20 2020'"
     details: "Détails"
     waiting_list: "Liste d'attente"
     ranking: "Classement"

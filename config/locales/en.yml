@@ -10,6 +10,8 @@ en:
   hi: "Hi"
   s1_2019: "S1/19"
   s2_2019: "S2/19"
+  s1_2020: "S1/20"
+  s2_2020: "S2/20"
   external: "External"
   internal: "Internal"
   weekly: "Weekly"
@@ -495,7 +497,7 @@ en:
       li1: "Internal tournaments are supporting all the SwissSmash Tournament Manager functionalitly"
       li2: "External tournaments are used to link a different registration website with the SwissSmash Tournament Manager"
       li3: "Weeklies are the same as internal tournaments. But you can create multiple tournaments at once by setting an end date.
-        The weeklies name will be generated from the defined city and date to e.g: 'SSBU Weekly Bern KW20 2019'"
+        The weeklies name will be generated from the defined city and date to e.g: 'SSBU Weekly Bern KW20 2020'"
     details: "Details"
     waiting_list: "Waiting List"
     ranking: "Ranking"

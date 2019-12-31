@@ -5,25 +5,9 @@ module TournamentsHelper
   end
 
   def tournament_majors
-    ["Colosseum Basel", "Fantasy Basel", "Japan Impact", "PK Bern", "Polymanga",
-      "Saint Smash", "SwissGeek", "TheReset", "UltiBaits", "UltiMelt",
-      "UltiMon", "University of Smash"]
-    # Unspecific tournaments:
-    # Smash Temple
-    # Smash Ultimate Release Tournament Card Tower Solothurn
-    # Qwertz Ultimate Tournament #1
-    # Hardread 10.1.
-    # random
-    # seed
-    # Casino - Let&#039;s Play #1
-    # Smile & Wave(s) - A SILENTGAMING Smas
-    # Super Smash Bros Ultimate - Tournoi Mix-Image/jeuxvideo.ch du 23 mars 2019
-    # Carrefour Sud Monthly
-    # Smash at Frag #1
-    # Smash the Cake
-    # Smash at PolyLan
-    # Chablais LAN #2
-    # Super Smash Saga - Calm before the Storm
+    ["Carrefour Sud", "Casino", "Colosseum Basel", "Exodus", "Fantasy Basel", "HeroFest", "Japan Impact",
+      "Orcus Smash", "PK Bern", "Polymanga", "Qwertz", "Saint Smash", "SNWC", "SoluSmash", "SwissGeek",
+      "TheReset", "UltiBaits", "UltiMelt", "UltiMon", "University of Smash"]
   end
 
   def valid_challonge_url(str)
