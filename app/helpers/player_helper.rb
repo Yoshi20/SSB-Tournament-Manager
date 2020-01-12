@@ -50,7 +50,7 @@ module PlayerHelper
   end
 
   def top_players_s2_19
-    []
+    ['Destany', 'Karpador64', 'Crash', 'Phonky', 'DeepFreeze', 'Olivia', 'Kepler', 'SickBoy', 'Jaka', 'ItseMePG', 'Benji', 'Purist', 'Acsor', 'Rampage', 'Yannwatts']
   end
 
 end

@@ -383,6 +383,11 @@ fr:
       considered_tournaments: "Considérés mais jugés inéligibles:"
     s2_19:
       title: "Saison 2 2019"
+      top15: "Top 15:"
+      counted_tournaments: "Tournois comptés:"
+      considered_tournaments: "Considérés mais jugés inéligibles:"
+    s1_20:
+      title: "Saison 1 2020"
       no_ranking: "Aucun classement disponible pour le moment"
 
   rules:

@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
 
   def get_top_players
     @topPlayers = []
-    helpers.top_players_s1_19.each do |p|
+    helpers.top_players_s2_19.each do |p|
       player = Player.find_by(gamer_tag: p)
       @topPlayers << player unless player.nil?
       break if @topPlayers.size >= 10 # limit(10)

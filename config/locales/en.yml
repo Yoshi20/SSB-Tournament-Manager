@@ -383,6 +383,11 @@ en:
       considered_tournaments: "Considered but deemed ineligible:"
     s2_19:
       title: "Season 2 2019"
+      top15: "Top 15:"
+      counted_tournaments: "Counted tournaments:"
+      considered_tournaments: "Considered but deemed ineligible:"
+    s1_20:
+      title: "Season 1 2020"
       no_ranking: "No ranking available yet"
 
   rules:

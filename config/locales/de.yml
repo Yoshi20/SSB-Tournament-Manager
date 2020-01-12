@@ -383,6 +383,11 @@ de:
       considered_tournaments: "Betrachtete, aber als nicht legitim eingestufte Turniere:"
     s2_19:
       title: "Saison 2 2019"
+      top15: "Top 15:"
+      counted_tournaments: "Gezählte Turniere:"
+      considered_tournaments: "Betrachtete, aber als nicht legitim eingestufte Turniere:"
+    s1_20:
+      title: "Saison 1 2020"
       no_ranking: "Noch keine Rangliste vorhanden"
 
   rules:

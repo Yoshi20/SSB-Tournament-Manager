@@ -131,34 +131,12 @@
                   %strong
                     = l(tournament.date, format: :custom_datetime_date_and_no_time)
 
-    - if @player.tournaments.where('active = ? AND date < ?', true, Time.now).any?
-      .player__tournaments
-        %table.table.table-hover.table-borderless
-          %thead.table-header
-            %tr
-              %th{colspan: '2'}
-                %h3= t('players.past_tournaments')
-              %th.text-center #
-          %tbody.table-content.with-show
-            - @player.tournaments.where('active = ? AND date < ?', true, Time.now).order(date: :desc).each do |tournament|
-              %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
-                %td= tournament.name
-                %td
-                  - if tournament.location.present?
-                    = tournament.location.split(',')[0]
-                  - else
-                    = tournament.city || '-'
-                %td.text-center
-                  - player_rank = '-'
-                  - if tournament.ranking_string.to_s.include?(@player.gamer_tag)
-                    - tournament.ranking_string.split(';').sort.each do |r|
-                      - if r.split(',')[1] == @player.gamer_tag
-                        - player_rank = r.split(',')[0]
-                  - if player_rank == '-' or player_rank.nil? or player_rank.empty?
-                    - player_rank = '-'
-                  - else
-                    - player_rank = player_rank.to_i.ordinalize
-                  %strong= "#{player_rank}"
+    - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.now)
+    - if past_tournaments.any?
+      - past_tournaments_2020 = past_tournaments.where('date >= ?', Time.local(2020,1,1))
+      = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2020, year: '2020'
+      - past_tournaments_2019 = past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2020,1,1))
+      = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2019, year: '2019'
 
   - if current_user.present?
     .admin-actions.right_3rem

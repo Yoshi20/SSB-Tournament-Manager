@@ -32,7 +32,7 @@
               = image_tag "characters/#{char}.png", height: '25px', width: '25px'
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 11
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 80 %
-    %tr{'data-id': Player.find_by(gamer_tag: ' Smuff').try(:id), 'data-component'=>'player'}
+    %tr{'data-id': Player.find_by(gamer_tag: 'Smuff').try(:id), 'data-component'=>'player'}
       %td.text-center= 3.ordinalize
       %td= 'ELV | Smuff'
       %td.text-center
