@@ -388,7 +388,7 @@ fr:
       considered_tournaments: "Considérés mais jugés inéligibles:"
     s1_20:
       title: "Saison 1 2020"
-      no_ranking: "Aucun classement disponible pour le moment"
+      no_ranking: "Devrait apparaître en juillet 2020"
 
   rules:
     title: "Règles"
