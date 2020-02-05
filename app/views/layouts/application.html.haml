@@ -40,7 +40,7 @@
                 = render '/partials/events'
     .footer
       = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
-        = image_tag('logo.png', height: '50px', width: '50px')
+        = image_tag('logo.png', class: 'swisssmash_logo', eight: '50px', width: '50px')
       .container
         .row
           .col
@@ -51,8 +51,9 @@
               = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
           .col{style: 'text-align: right;'}
             %p
-              = link_to t('please_donate'), "https://paypal.me/swisssmash", target: '_blank', class: "btn btn-sstm"
-              = image_tag('paypal_icon_dark.png', height: '30px', width: '30px')
+              = link_to("https://paypal.me/swisssmash", target: '_blank', class: "btn btn-sstm") do
+                = t('please_donate')
+                = image_tag('paypal_icon.png', class: 'paypal', height: '30px', width: '30px')
 
 :javascript
   I18n.defaultLocale = "#{I18n.default_locale}";

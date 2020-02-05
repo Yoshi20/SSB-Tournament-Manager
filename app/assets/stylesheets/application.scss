@@ -58,9 +58,13 @@ body {
   color: $color-white;
   text-align: center;
 
-  img {
+  .swisssmash_logo {
     margin-top: 1rem;
     margin-bottom: 1rem;
+  }
+
+  .paypal {
+    margin-right: -0.5rem;
   }
 }
 
