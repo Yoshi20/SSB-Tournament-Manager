@@ -16,6 +16,9 @@
       background-color: $color-white;
       border: 1px solid $color-white;
       border-radius: 50%;
+      @media screen and (max-width: 575px) {
+        margin-right: 0rem;
+      }
     }
   }
   .navbar-toggler {
