@@ -53,23 +53,24 @@ namespace :tournaments_crawler do
   desc "Creates upcoming external tournaments from smash.gg"
   task smash_gg: :environment do
     puts 'Crawling https://smash.gg/tournaments...'
-    root = 'https://smash.gg'
-    doc = Nokogiri::HTML(open('https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22CH%22%7D'))
-    doc.css('div.TournamentCard').each_with_index do |c, i|
-      # each tournament card (c)
+    root = 'https://smash.gg/'
+
+    # URL to get the data as JSON
+    doc = Nokogiri::HTML(open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true'))
+    jsonHash = JSON.parse doc
+    jsonHash['total_count'].times do |i|
+      tournamentHash = jsonHash['items']['entities']['tournament'][i]
       externalTournament = Tournament.new
       externalTournament.subtype = 'external'
-      infoSpans = c.css('div.TournamentCardHeading__information span')
-      externalTournament.date = Date.parse(infoSpans[infoSpans.count-1].text) rescue nil
+      externalTournament.date = Time.at(tournamentHash['startAt']).to_date rescue nil
       isDateError = false
       if externalTournament.date.nil? || externalTournament.date < Date.yesterday
-        externalTournament.date = Date.tomorrow
+        externalTournament.date = Date.today
         isDateError = true
       end
-      titleAnchor = c.css('div.TournamentCardHeading__title a')[0]
-      externalTournament.name = titleAnchor.text
-      externalTournament.external_registration_link = root + titleAnchor['href']
-      externalTournament.city = c.css('div.InfoList span')[1].text unless c.css('div.InfoList span')[1].nil?
+      externalTournament.name = tournamentHash['name']
+      externalTournament.external_registration_link = root + tournamentHash['slug']
+      externalTournament.city = tournamentHash['city']
       externalTournament.is_registration_allowed = false
       externalTournament.active = true
       if externalTournament.save
@@ -89,6 +90,43 @@ namespace :tournaments_crawler do
         end
       end
     end
+
+    # URL to get the data as web page
+    # doc = Nokogiri::HTML(open('https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22CH%22%7D'))
+    # doc.css('div.TournamentCard').each_with_index do |c, i|
+    #   # each tournament card (c)
+    #   externalTournament = Tournament.new
+    #   externalTournament.subtype = 'external'
+    #   infoSpans = c.css('div.TournamentCardHeading__information span')
+    #   externalTournament.date = Date.parse(infoSpans[infoSpans.count-1].text) rescue nil
+    #   isDateError = false
+    #   if externalTournament.date.nil? || externalTournament.date < Date.yesterday
+    #     externalTournament.date = Date.today
+    #     isDateError = true
+    #   end
+    #   titleAnchor = c.css('div.TournamentCardHeading__title a')[0]
+    #   externalTournament.name = titleAnchor.text
+    #   externalTournament.external_registration_link = root + titleAnchor['href']
+    #   externalTournament.city = c.css('div.InfoList span')[1].text unless c.css('div.InfoList span')[1].nil?
+    #   externalTournament.is_registration_allowed = false
+    #   externalTournament.active = true
+    #   if externalTournament.save
+    #     puts "-> Created: \"" + externalTournament.name + "\""
+    #     if isDateError
+    #       puts '==> Invalid date! You have to edit the date manually!'
+    #       TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later
+    #     end
+    #     puts "\n"
+    #   else
+    #     puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
+    #     if externalTournament.errors.any?
+    #       externalTournament.errors.full_messages.each do |message|
+    #         puts "==> " + message
+    #       end
+    #       puts "\n"
+    #     end
+    #   end
+    # end
   end
 
   desc "Creates upcoming external tournaments from toornament.com"
