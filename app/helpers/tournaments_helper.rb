@@ -1,13 +1,13 @@
 module TournamentsHelper
 
   def tournament_cities
-    ['Baden', 'Basel', 'Bern', 'Burgdorf', 'Geneva', 'Solothurn', 'Trimbach', 'Zurich']
+    ['Basel', 'Bern', 'Burgdorf', 'Burgdorf #2', 'Solothurn', 'Trimbach', 'Zurich']
   end
 
   def tournament_majors
     ["Carrefour Sud", "Casino", "Colosseum Basel", "Exodus", "Fantasy Basel", "HeroFest", "Japan Impact",
-      "Orcus Smash", "PK Bern", "Polymanga", "Qwertz", "Saint Smash", "SNWC", "SoluSmash", "SwissGeek",
-      "TheReset", "UltiBaits", "UltiMelt", "UltiMon", "University of Smash"]
+      "Orcus Smash", "PK Bern", "Polymanga", "Qwertz", "Saint Smash", "Smash Club", "SNWC", "SoluSmash",
+      "SwissGeek", "TheReset", "UltiBaits", "UltiMelt", "UltiMon", "University of Smash"]
   end
 
   def valid_challonge_url(str)
