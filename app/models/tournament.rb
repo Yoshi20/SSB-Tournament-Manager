@@ -8,8 +8,8 @@ class Tournament < ApplicationRecord
 
   scope :active, -> { where(active: true) }
   scope :upcoming, -> { where('date > ?', Time.now) }
-  scope :ongoing, -> { where('date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
-  scope :past, -> { where('date < ?', Time.now - 6.hours) }
+  scope :ongoing, -> { where('finished IS NULL AND date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
+  scope :past, -> { where('started AND finished OR date < ?', Time.now - 6.hours) }
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
