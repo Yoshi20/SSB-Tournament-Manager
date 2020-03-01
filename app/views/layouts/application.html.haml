@@ -41,29 +41,33 @@
     .footer
       .container
         .row.footer-nav
-          .col
-            %p.small{style: 'padding-top: 1.2rem;'}
-              = link_to t('feedback_and_questions').sub(" &", "<br>&").html_safe, :feedbacks
-          .col
-            %p.small
-              = link_to t('navigation.footer.administrators_short'), :administrators
-          .col
-            %p.small
-              = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
-          .col
+          .col-5
+            .row
+              .col
+                %p.small
+                  = link_to t('feedback_and_questions'), :feedbacks
+              .col
+                %p.small
+                  = link_to t('navigation.footer.administrators_short'), :administrators
+              .col
+                %p.small
+                  = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
+          .col-2
             = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
               = image_tag('logo.png', class: 'swisssmash_logo', eight: '50px', width: '50px')
-          .col
-            %p.small
-              = link_to t('navigation.footer.imprint'), :imprint
-          .col
-            %p.small
-              = link_to t('navigation.footer.privacy_policy'), :privacy_policy
-          .col
-            %p{style: 'padding-top: 1.3rem;'}
-              = link_to("https://paypal.me/swisssmash", target: '_blank', class: "btn btn-sstm") do
-                = t('please_donate')
-                = image_tag('paypal_icon.png', class: 'paypal', height: '30px', width: '30px')
+          .col-5
+            .row
+              .col
+                %p.small
+                  = link_to t('navigation.footer.imprint'), :imprint
+              .col
+                %p.small
+                  = link_to t('navigation.footer.privacy_policy'), :privacy_policy
+              .col
+                %p{style: 'padding-top: 1.3rem;'}
+                  = link_to("https://paypal.me/swisssmash", target: '_blank', class: "btn btn-sstm") do
+                    = t('please_donate')
+                    = image_tag('paypal_icon.png', class: 'paypal', height: '30px', width: '30px')
 
 :javascript
   I18n.defaultLocale = "#{I18n.default_locale}";
