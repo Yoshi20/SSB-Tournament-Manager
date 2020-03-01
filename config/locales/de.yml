@@ -150,6 +150,10 @@ de:
       log_out: "Ausloggen"
       log_out_confirm: "Möchten Sie sich wirklich abmelden?"
     footer:
+      administrators_short: "TOs"
+      administrators: "Tournament Organisers"
+      imprint: "Impressum"
+      privacy_policy: "Datenschutzerklärung"
       contact: "Kontakt"
       mail_subject: "Ich habe ein Problem oder eine Frage!"
       mail_body: "Hallo SwissSmash\n\nIch bin ??? und ich möchte ???"

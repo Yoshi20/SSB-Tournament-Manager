@@ -6,7 +6,6 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     @feedbacks = Feedback.all.order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
-    @admins = User.where(is_admin: true).order(:area_of_responsibility)
   end
 
   # GET /feedbacks/1

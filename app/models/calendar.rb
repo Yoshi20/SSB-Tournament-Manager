@@ -26,7 +26,10 @@ class Calendar
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.date + 6.hours < DateTime.now and tournament.subtype != 'external'
+      if tournament.started and tournament.finished
+        # past tournament
+        'lightgray'
+      elsif tournament.subtype != 'external' and tournament.date + 6.hours < DateTime.now
         # past tournament
         'lightgray'
       elsif tournament.subtype == 'external'

@@ -150,6 +150,10 @@ en:
       log_out: "Log out"
       log_out_confirm: "Are you sure you want to log out?"
     footer:
+      administrators_short: "TOs"
+      administrators: "Tournament Organisers"
+      imprint: "Imprint"
+      privacy_policy: "Privacy Policy"
       contact: "Contact"
       mail_subject: "I faced a problem or have a question!"
       mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"

@@ -24,23 +24,3 @@
     %p= button_to t('feedback.log_in_to_create'), nil, class:'btn btn-ghost', disabled:true
 
 %hr
-
-.administrators
-  %h3= t('feedback.admins')
-  .row
-    - @admins.each do |admin|
-      .col-6
-        .administrators__single
-          %p
-            %strong
-              = admin.full_name || '?????? ??????'
-          %p
-            = link_to admin.player.gamer_tag, admin.player
-            %br
-            = mail_to admin.email, admin.email, body: "#{t('hi')} #{admin.username}\n\n..."
-            %br
-            - if admin.mobile_number.present?
-              = admin.mobile_number
-            %br
-            - if admin.area_of_responsibility.present?
-              = admin.area_of_responsibility
