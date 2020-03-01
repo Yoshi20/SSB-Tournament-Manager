@@ -1,13 +1,13 @@
 .rankings__filter
-  .row
+  .row.without_col
     .rankings__filter__button= link_to t('rankings.filter.overall'), rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
     .rankings__filter__button= link_to t('rankings.filter.seed_points'), rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
     .rankings__filter__button= link_to t('players.participations'), rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
-  .row
+  .row.without_col
     - tournament_majors.each do |major|
       .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
-  .row
-    - tournament_cities.each do |city|
+  .row.without_col
+    - tournament_cities_with_a_weeekly.each do |city|
       .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase, anchor: 'points'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
   .row
     .col{style: 'font-size: 12px;'}

@@ -1,6 +1,11 @@
 module TournamentsHelper
 
   def tournament_cities
+    ['Basel', 'Bellinzona', 'Bern', 'Biel', 'Burgdorf', 'Genève', 'Lausanne', 'Luzern', 'Neuchâtel',
+      'Solothurn', 'St. Gallen', 'Trimbach', 'Zurich', 'Zug']
+  end
+
+  def tournament_cities_with_a_weeekly
     ['Basel', 'Bern', 'Burgdorf', 'Burgdorf #2', 'Solothurn', 'Trimbach', 'Zurich']
   end
 
