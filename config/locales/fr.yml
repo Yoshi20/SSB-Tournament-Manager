@@ -178,16 +178,19 @@ fr:
     title: "Information"
     general:
       title: "Général"
-      intro: "Ici vous trouverez quelques informations générales sur %{link} et la scène SwissSmash."
       swisssmash: |
         Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
         Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
         En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
+    calendar:
+      title: "Calendrier"
       tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
       calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
-      calendar_weekly: "Hebdomadaire (tournoi hebdomadaire créé sur swisssmash.ch)"
-      calendar_internal: "Interne (tournoi créé sur swisssmash.ch)"
-      calendar_external: "Externe (tournoi créé sur un site externe)"
+      calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur swisssmash.ch"
+      calendar_internal: "Interne -> Tournoi créé sur swisssmash.ch"
+      calendar_external: "Externe -> Tournoi créé sur un site externe"
+    power_ranking:
+      title: "Power Ranking"
       power_ranking: "Power Ranking (PR)"
       power_ranking_body: "Un tournoi sera considéré comme un tournoi officiel SwissSmash et comptera pour le PR quand les conditions suivantes seront remplies:"
       power_ranking_li_1: "Annoncé au moins 2 semaines avant sa date de début sur swisssmash.ch ou sur le canal tournois du discord Swiss Smash"
@@ -196,28 +199,27 @@ fr:
       power_ranking_li_4: "Assez de setups sans lags avec des places assises décentes"
       power_ranking_li_5: "Doit avoir lieu durant le weekend et doit avoir des heures raisonnables de début et de fin"
       power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
-      results: "Résultats"
-      results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
-      personal_data: "Données personnelles"
-      personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
-      discord: "Rejoignez-nous sur %{link} si vous voulez rester à jour avec la Communauté Swiss Smash."
     tournament_manager:
       title: "Gestionnaire de tournoi"
-      intro: "Ici vous trouverez quelques informations concernant le Gestionnaire de Tournoi SwissSmash."
       bracket_tool: "Outil de Bracket"
       bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
-      ranking_system: "Système de Classement"
-      ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
-      ranking_system_rank: "Rang"
-      ranking_system_points: "Points"
-      seeding: "Bracket seeding"
-      seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
-      seeding_body2: "Le seeding final est fait manuellement par un TO ou ses représentants."
       tournament_organiser: "Organisateur de tournoi"
       tournament_organiser_body: "Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash ? Faites-le moi savoir %{link}."
       tournament_organiser_mail: "via email"
       tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
       tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
+    results:
+      title: "Résultats"
+      results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
+      ranking_system: "Système de Classement"
+      ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
+      ranking_system_rank: "Rang"
+      ranking_system_points: "Points"
+    seeding:
+      title: "Seeding"
+      seeding: "Bracket seeding"
+      seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
+      seeding_body2: "Le seeding final est fait manuellement par un TO ou ses représentants."
 
   calendar:
     title: "Calendrier"
