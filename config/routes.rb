@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'rankings' => 'rankings#index'
 
   resources :feedbacks
+  get 'administrators' => 'administrators#index'
+  get 'imprint' => 'imprint#index'
+  get 'privacy_policy' => 'privacy_policy#index'
 
   resources :tournaments
   post 'tournaments/add_player/:id' => 'tournaments#add_player'
