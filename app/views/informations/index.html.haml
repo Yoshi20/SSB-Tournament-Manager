@@ -21,6 +21,9 @@
   %li.nav-item
     %a#seeding-tab.nav-link{'data-toggle'=>'tab', href: '#seeding', role: 'tab', 'aria-controls'=>'all'}
       = t('information.seeding.title')
+  %li.nav-item
+    %a#personal-data-tab.nav-link{'data-toggle'=>'tab', href: '#personal-data', role: 'tab', 'aria-controls'=>'all'}
+      = t('information.personal_data.title')
 
 .tab-content#information-tabs-content
   -# general
@@ -142,3 +145,9 @@
             %i player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10
           %br
           = t('information.seeding.seeding_body2')
+  -# personal-data
+  .tab-pane.fade.show#personal-data{role: 'tabpanel', 'aria-labelledby'=>'personal-data-tab'}
+    .row
+      .col
+        %h2= t('information.personal_data.title')
+        %p= t('information.personal_data.personal_data_body').html_safe

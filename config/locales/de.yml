@@ -220,6 +220,9 @@ de:
       seeding: "Bracket Seeding"
       seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf SwissSmash.ch generiert wird:"
       seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO oder dessen Vertreter."
+    personal_data:
+      title: "Persönliche Daten"
+      personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
 
   calendar:
     title: "Kalender"
