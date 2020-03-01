@@ -165,7 +165,7 @@ fr:
       player: "Joueur"
 
   welcome:
-    title: "Bienvenue sur SwissSmash.ch"
+    title: "Bienvenue sur SwissSmash"
     body1: "Si vous voulez rester à jour avec la Communauté Suisse de Smash, rejoignez-nous sur %{discord_link} et suivez le compte %{twitter_link} Swiss Smash."
     body2: "Vous pouvez trouver les évènements à venir dans la %{tournaments_link} ou le %{calendar_link}."
     tournament_list: "Liste des tournois"

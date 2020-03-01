@@ -86,3 +86,17 @@ a.disabled {
   padding-right: 0.3125rem;
   padding-left: 0.3125rem;
 }
+
+.welcome_image {
+  height: 200px;
+  width: 200px;
+
+  @media screen and (max-width: 1340px) {
+    height: 150px;
+    width: 150px;
+  }
+  @media screen and (max-width: 575px) {
+    height: 96px;
+    width: 96px;
+  }
+}
