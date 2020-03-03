@@ -5,7 +5,7 @@ module TournamentsHelper
       'Solothurn', 'St. Gallen', 'Trimbach', 'Zurich', 'Zug']
   end
 
-  def tournament_cities_with_a_weeekly
+  def tournament_cities_with_a_weekly
     ['Basel', 'Bern', 'Burgdorf', 'Burgdorf #2', 'Solothurn', 'Trimbach', 'Zurich']
   end
 

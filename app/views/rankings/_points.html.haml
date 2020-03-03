@@ -7,7 +7,7 @@
     - tournament_majors.each do |major|
       .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
   .row.without_col
-    - tournament_cities_with_a_weeekly.each do |city|
+    - tournament_cities_with_a_weekly.each do |city|
       .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase, anchor: 'points'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
   .row
     .col{style: 'font-size: 12px;'}
