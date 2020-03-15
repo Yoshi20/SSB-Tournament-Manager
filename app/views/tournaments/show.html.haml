@@ -2,7 +2,9 @@
   .col
     %h1.page__title= @tournament.name
 
-- if @tournament.name.include?('PK Bern')
+- if @tournament.name.include?('PK Bern #9')
+  = image_tag 'pk_bern_corona.png', height: '100%', width: '100%'
+- elsif @tournament.name.include?('PK Bern')
   = image_tag 'pk_bern.png', height: '100%', width: '100%'
 
 .tournament
