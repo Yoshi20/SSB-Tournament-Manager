@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_001600) do
+ActiveRecord::Schema.define(version: 2020_03_21_160800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_001600) do
     t.integer "birth_year"
     t.string "prefix"
     t.string "discord_username"
+    t.string "twitter_username"
+    t.string "instagram_username"
   end
 
   create_table "registrations", force: :cascade do |t|

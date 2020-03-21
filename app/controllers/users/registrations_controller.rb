@@ -27,6 +27,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.gamer_tag = params[:gamer_tag]
         player.prefix = params[:prefix]
         player.discord_username = params[:discord_username]
+        player.twitter_username = params[:twitter_username]
+        player.instagram_username = params[:instagram_username]
         player.points = 0
         player.participations = 0
         player.canton = params[:canton]

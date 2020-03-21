@@ -20,6 +20,12 @@
         %em= "(User#1234)"
         = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
       .form-group
+        = label_tag :twitter_username, t('players.twitter_username')
+        = text_field_tag :twitter_username, params[:twitter_username], class: 'form-control'
+      .form-group
+        = label_tag :instagram_username, t('players.instagram_username')
+        = text_field_tag :instagram_username, params[:instagram_username], class: 'form-control'
+      .form-group
         = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
       .form-group

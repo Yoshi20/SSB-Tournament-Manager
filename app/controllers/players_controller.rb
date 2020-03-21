@@ -130,7 +130,7 @@ class PlayersController < ApplicationController
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
         :losses, :main_characters, :created_at, :updated_at, :canton, :gender,
-        :birth_year, :prefix, :discord_username)
+        :birth_year, :prefix, :discord_username, :twitter_username, :instagram_username)
     end
 
 end

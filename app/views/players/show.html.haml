@@ -1,154 +1,190 @@
-.row
-  .col
-    - if @player.canton.present?
-      = image_tag "cantons/#{@player.canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-    .page__title
-      %h1
-        = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
-      - alts = @player.alternative_gamer_tags.where.not(hidden: true)
-      - if alts.any?
-        %p{style: 'margin-top: -15px;'}
-          = '('
-          - firstAlt = true
-          - alts.each do |alt|
-            - if firstAlt
-              = "#{alt.gamer_tag}"
-              - firstAlt = false
-            - else
-              = ", #{alt.gamer_tag}"
-          = ')'
-      - if @player.discord_username.present?
-        = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, style: 'position: absolute; top: 5px; right: 0px;'
-
 .player
-  .player__characters
-    - if @player.main_characters.any?
-      - @player.main_characters[0...3].each do |char|
-        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
-          .player__characters__single
-            = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
+  .row
+    .col
+      - if @player.canton.present?
+        = image_tag "cantons/#{@player.canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+      .page__title
+        %h1
+          = @player.prefix.present? ? "#{@player.prefix} | #{@player.gamer_tag}" : @player.gamer_tag
+        - alts = @player.alternative_gamer_tags.where.not(hidden: true)
+        - if alts.any?
+          %p{style: 'margin-top: -15px;'}
+            = '('
+            - firstAlt = true
+            - alts.each do |alt|
+              - if firstAlt
+                = "#{alt.gamer_tag}"
+                - firstAlt = false
+              - else
+                = ", #{alt.gamer_tag}"
+            = ')'
+        - logos_shown = 0;
+        - if @player.discord_username.present?
+          = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, style: 'position: absolute; top: 5px; right: 0px;'
+          - logos_shown = logos_shown + 1;
+        - if @player.twitter_username.present?
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          - logos_shown = logos_shown + 1;
+        - if @player.instagram_username.present?
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
 
-  - if @player.canton.present? || @player.birth_year.present? || @player.gender.present?
-    .player__stats
-      .row
-        - if @player.canton.present?
+    -# admin actions -------------------------------------------------------------
+    - if current_user.present?
+      .admin-actions
+        -if current_user.super_admin? or @player.user == current_user
+          .admin-actions__link
+            = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
+              %span.material-icons.admin-actions__link__icon= 'edit'
+
+        - if @player.user != current_user
+          .admin-actions__link
+            - if @player.user.admin? or current_user.admin?
+              = mail_to @player.user.email, body: "#{t('hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
+                %span.material-icons.admin-actions__link__icon= 'email'
+          - if current_user.admin? and @player.user.mobile_number.present?
+            .mobile_number= " (#{@player.user.mobile_number})"
+
+  - if @player.tournaments.any? #or player.videos.any?
+    %ul#player-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#data-tab.nav-link.active{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
+          = t('players.data')
+      - if @player.tournaments.any?
+        %li.nav-item
+          %a#tournaments-tab.nav-link{'data-toggle'=>'tab', href: '#tournaments', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.tournaments')
+      -#if player.videos.any?
+      %li.nav-item
+        %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
+          = t('players.videos')
+
+  .tab-content#information-tabs-content
+    -# data ----------------------------------------------------------------------
+    .tab-pane.fade.show.active#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
+      .player__characters
+        - if @player.main_characters.any?
+          - @player.main_characters[0...3].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
+              .player__characters__single
+                = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
+
+      - if @player.canton.present? || @player.birth_year.present? || @player.gender.present?
+        .player__stats
+          .row
+            - if @player.canton.present?
+              .col
+                .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
+                  %strong
+                    = t("defines.cantons.#{@player.canton}")
+                  %span
+                    = t('players.canton')
+            - if @player.birth_year.present?
+              .col
+                .player__stats__single{class: (@player.gender.nil?) ? 'player__stats__single--last' : ''}
+                  %strong
+                    = @player.birth_year
+                  %span
+                    = t('players.birth_year')
+            - if @player.gender.present?
+              .col
+                .player__stats__single.player__stats__single--last
+                  %strong
+                    = t("defines.genders.#{@player.gender}")
+                  %span
+                    = t('players.gender')
+
+      .player__stats
+        .row
           .col
-            .player__stats__single{class: (@player.gender.nil? && @player.birth_year.nil?) ? 'player__stats__single--last' : ''}
+            .player__stats__single
               %strong
-                = t("defines.cantons.#{@player.canton}")
+                = @player.best_rank
               %span
-                = t('players.canton')
-        - if @player.birth_year.present?
+                = t('players.best_rank')
           .col
-            .player__stats__single{class: (@player.gender.nil?) ? 'player__stats__single--last' : ''}
+            .player__stats__single
               %strong
-                = @player.birth_year
+                = @player.wins
               %span
-                = t('players.birth_year')
-        - if @player.gender.present?
+                = t('players.wins')
+          .col
+            .player__stats__single
+              %strong
+                = @player.losses
+              %span
+                = t('players.losses')
           .col
             .player__stats__single.player__stats__single--last
               %strong
-                = t("defines.genders.#{@player.gender}")
+                = @player.points
               %span
-                = t('players.gender')
+                = t('players.points')
 
-  .player__stats
-    .row
-      .col
-        .player__stats__single
-          %strong
-            = @player.best_rank
-          %span
-            = t('players.best_rank')
-      .col
-        .player__stats__single
-          %strong
-            = @player.wins
-          %span
-            = t('players.wins')
-      .col
-        .player__stats__single
-          %strong
-            = @player.losses
-          %span
-            = t('players.losses')
-      .col
-        .player__stats__single.player__stats__single--last
-          %strong
-            = @player.points
-          %span
-            = t('players.points')
+      .player__stats
+        .row
+          .col
+            .player__stats__single
+              %strong
+                = self_assessment_defines[@player.self_assessment]
+              %span
+                = t('players.self_assessment')
+          .col
+            .player__stats__single
+              %strong
+                - if @player.losses == 0 and @player.wins == 0
+                  = '-'
+                - else
+                  = "#{@player.win_loss_ratio} %"
+              %span
+                = t('players.win_loss')
+          .col
+            .player__stats__single.player__stats__single--last
+              %strong
+                = tournament_experience_defines[@player.tournament_experience]
+              %span
+                = t('players.experience')
 
-  .player__stats
-    .row
-      .col
-        .player__stats__single
-          %strong
-            = self_assessment_defines[@player.self_assessment]
-          %span
-            = t('players.self_assessment')
-      .col
-        .player__stats__single
-          %strong
-            - if @player.losses == 0 and @player.wins == 0
-              = '-'
-            - else
-              = "#{@player.win_loss_ratio} %"
-          %span
-            = t('players.win_loss')
-      .col
-        .player__stats__single.player__stats__single--last
-          %strong
-            = tournament_experience_defines[@player.tournament_experience]
-          %span
-            = t('players.experience')
+      - if not @player.comment.nil? and not @player.comment.empty?
+        .player__comment
+          %h3= t('players.comment')
+          = @player.comment || '-'
 
-  - if not @player.comment.nil? and not @player.comment.empty?
-    .player__comment
-      %h3= t('players.comment')
-      = @player.comment || '-'
+    -# tournaments ---------------------------------------------------------------
+    - if @player.tournaments.any?
+      .tab-pane.fade.show#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
+        -if @player.tournaments.where('active = ? AND date >= ?', true, Time.now).any?
+          .player__tournaments
+            %table.table.table-hover.table-borderless
+              %thead.table-header
+                %tr
+                  %th{colspan: '2'}
+                    %h3= t('players.joined_tournaments')
+                  %th= t('players.joined_tournament_at')
+              %tbody.table-content.with-show
+                - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).each_with_index do |tournament, i|
+                  %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+                    %td= tournament.name
+                    %td
+                      - if tournament.location.present?
+                        = tournament.location.split(',')[0]
+                      - else
+                        = tournament.city || '-'
+                    %td
+                      %strong
+                        = l(tournament.date, format: :custom_datetime_date_and_no_time)
 
-  - if @player.tournaments.any?
-    -if @player.tournaments.where('active = ? AND date >= ?', true, Time.now).any?
-      .player__tournaments
-        %table.table.table-hover.table-borderless
-          %thead.table-header
-            %tr
-              %th{colspan: '2'}
-                %h3= t('players.joined_tournaments')
-              %th= t('players.joined_tournament_at')
-          %tbody.table-content.with-show
-            - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).each_with_index do |tournament, i|
-              %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
-                %td= tournament.name
-                %td
-                  - if tournament.location.present?
-                    = tournament.location.split(',')[0]
-                  - else
-                    = tournament.city || '-'
-                %td
-                  %strong
-                    = l(tournament.date, format: :custom_datetime_date_and_no_time)
+        - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.now)
+        - if past_tournaments.any?
+          - past_tournaments_2020 = past_tournaments.where('date >= ?', Time.local(2020,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2020, year: '2020'
+          - past_tournaments_2019 = past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2020,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2019, year: '2019'
 
-    - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.now)
-    - if past_tournaments.any?
-      - past_tournaments_2020 = past_tournaments.where('date >= ?', Time.local(2020,1,1))
-      = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2020, year: '2020'
-      - past_tournaments_2019 = past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2020,1,1))
-      = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2019, year: '2019'
-
-  - if current_user.present?
-    .admin-actions.right_3rem
-      -if current_user.super_admin? or @player.user == current_user
-        .admin-actions__link
-          = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
-            %span.material-icons.admin-actions__link__icon= 'edit'
-
-      - if @player.user != current_user
-        .admin-actions__link
-          - if @player.user.admin? or current_user.admin?
-            = mail_to @player.user.email, body: "#{t('hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
-              %span.material-icons.admin-actions__link__icon= 'email'
-        - if current_user.admin? and @player.user.mobile_number.present?
-          .mobile_number= " (#{@player.user.mobile_number})"
+    -# videos --------------------------------------------------------------------
+    -#if player.videos.any?
+    .tab-pane.fade.show#videos{role: 'tabpanel', 'aria-labelledby'=>'videos-tab'}
+      .row
+        .col
+          %h2 player vids
+          %p
+            = "blup"

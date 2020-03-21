@@ -17,6 +17,12 @@
     = f.label :discord_username, t('players.discord_username')
     %em= "(User#1234)"
     = f.text_field :discord_username, class: 'form-control'
+  .field.form-group
+    = f.label :twitter_username, t('players.twitter_username')
+    = f.text_field :twitter_username, class: 'form-control'
+  .field.form-group
+    = f.label :instagram_username, t('players.instagram_username')
+    = f.text_field :instagram_username, class: 'form-control'
   - if current_user.super_admin?
     .field.form-group
       = label_tag :alternative_gamer_tags, t('players.alternative_gamer_tags')

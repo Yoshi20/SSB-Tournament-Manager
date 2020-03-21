@@ -346,6 +346,8 @@ de:
     gamer_tag: "Gamer-Tag"
     prefix: "Sponsor-Präfix"
     discord_username: "Discord Benutzername"
+    twitter_username: "Twitter Benutzername"
+    instagram_username: "Instagram Benutzername"
     alternative_gamer_tags: "Alternative Gamer-Tags"
     points: "Punkte"
     participations: "Teilnahmen"
@@ -372,9 +374,11 @@ de:
     no_players_found: "Keine Spieler gefunden"
     win_loss: "Win/Loss"
     experience: "Erfahrung"
+    tournaments: "Turniere"
     joined_tournaments: "Beigetretene Turniere"
     joined_tournament_at: "Am"
     past_tournaments: "Vergangene Turniere"
+    videos: "Videos"
 
   rankings:
     title: "Ranglisten"

@@ -1,4 +1,10 @@
 .player {
+  margin-bottom: 10px;
+  .admin-actions {
+    top: 1rem;
+    right: auto;
+    left: 3.2rem;
+  }
   .player__characters {
     width: 50%;
     display: flex;
