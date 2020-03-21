@@ -13,7 +13,7 @@ class TournamentMailerPreview < ActionMailer::Preview
   end
 
   def tournament_cancelled_email
-    TournamentMailer.with(tournament: Tournament.where('started is FALSE or started is NULL AND finished is TRUE').first, user: User.first).tournament_cancelled_email
+    TournamentMailer.with(tournament: Tournament.where('(started is FALSE or started is NULL) AND finished is TRUE').first, user: User.first).tournament_cancelled_email
   end
 
   def waiting_player_upgraded_email
