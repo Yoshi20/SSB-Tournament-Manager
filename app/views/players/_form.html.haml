@@ -72,10 +72,13 @@
           = radio_button('main_char3', nil, character, style: 'margin-left: -3px; margin-right: 8px;', checked: ((@player.main_characters[2] == character) ? 'checked' : ''))
   .field.form-group
     = f.label :comment, t('players.comment')
-    %em
-      = t('players.for_what_ever')
-    %br
-    = f.text_area :comment, class: 'form-control', rows: '10'
+    %em= t('players.for_what_ever')
+    = f.text_area :comment, class: 'form-control', rows: '5'
+  %br
+  .field.form-group
+    = f.label :youtube_video_ids, t('players.youtube_video_ids')
+    %em= t('players.youtube_video_ids_examples').html_safe
+    = f.text_area :youtube_video_ids, class: 'form-control', rows: '2'
 
   .actions.form-group
     = f.submit class:'btn btn-ghost', value: t('players.update_profile')

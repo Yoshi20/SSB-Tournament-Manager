@@ -44,4 +44,12 @@
       margin-right: -0.75rem;
     }
   }
+  .player__videos {
+    margin-top: 2rem;
+    iframe {
+      text-align: center;
+      height: 315px;
+      width: 100%;
+    }
+  }
 }

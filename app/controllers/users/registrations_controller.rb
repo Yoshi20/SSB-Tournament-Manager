@@ -29,6 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.discord_username = params[:discord_username]
         player.twitter_username = params[:twitter_username]
         player.instagram_username = params[:instagram_username]
+        player.youtube_video_ids = params[:youtube_video_ids]
         player.points = 0
         player.participations = 0
         player.canton = params[:canton]

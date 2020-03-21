@@ -348,6 +348,8 @@ fr:
     discord_username: "Nom d'utilisateur Discord"
     twitter_username: "Nom d'utilisateur Twitter"
     instagram_username: "Nom d'utilisateur Instagram"
+    youtube_video_ids: "YouTube vidéos IDs"
+    youtube_video_ids_examples: "(p. ex. <strong>dQw4w9WgXcQ</strong> ou <strong>dQw4w9WgXcQ?start=42</strong> pour commencer à 42 secondes. Séparer plusieurs IDs avec un virgule)"
     alternative_gamer_tags: "Gamertags alternatifs"
     points: "Points"
     participations: "Participations"

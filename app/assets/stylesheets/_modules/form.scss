@@ -17,6 +17,9 @@
 }
 
 .form-group {
+  em {
+    font-size: small;
+  }
   .form-group-inline {
     display: flex;
     justify-content: space-between;

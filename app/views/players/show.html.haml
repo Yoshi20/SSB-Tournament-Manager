@@ -1,3 +1,6 @@
+- youtube_video_ids = []
+- if @player.youtube_video_ids.present?
+  - youtube_video_ids = @player.youtube_video_ids.gsub('https://youtu.be/', '').gsub(' ', '').split(',')
 .player
   .row
     .col
@@ -44,7 +47,7 @@
           - if current_user.admin? and @player.user.mobile_number.present?
             .mobile_number= " (#{@player.user.mobile_number})"
 
-  - if @player.tournaments.any? #or player.videos.any?
+  - if @player.tournaments.any? or youtube_video_ids.any?
     %ul#player-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
       %li.nav-item
         %a#data-tab.nav-link.active{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
@@ -53,10 +56,10 @@
         %li.nav-item
           %a#tournaments-tab.nav-link{'data-toggle'=>'tab', href: '#tournaments', role: 'tab', 'aria-controls'=>'all'}
             = t('players.tournaments')
-      -#if player.videos.any?
-      %li.nav-item
-        %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
-          = t('players.videos')
+      - if youtube_video_ids.any?
+        %li.nav-item
+          %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.videos')
 
   .tab-content#information-tabs-content
     -# data ----------------------------------------------------------------------
@@ -152,7 +155,8 @@
     -# tournaments ---------------------------------------------------------------
     - if @player.tournaments.any?
       .tab-pane.fade.show#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
-        -if @player.tournaments.where('active = ? AND date >= ?', true, Time.now).any?
+        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.now)
+        -if joined_tournaments.any?
           .player__tournaments
             %table.table.table-hover.table-borderless
               %thead.table-header
@@ -161,7 +165,7 @@
                     %h3= t('players.joined_tournaments')
                   %th= t('players.joined_tournament_at')
               %tbody.table-content.with-show
-                - @player.tournaments.where('active = ? AND date >= ?', true, Time.now).each_with_index do |tournament, i|
+                - joined_tournaments.each_with_index do |tournament, i|
                   %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
                     %td= tournament.name
                     %td
@@ -181,10 +185,18 @@
           = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2019, year: '2019'
 
     -# videos --------------------------------------------------------------------
-    -#if player.videos.any?
-    .tab-pane.fade.show#videos{role: 'tabpanel', 'aria-labelledby'=>'videos-tab'}
-      .row
-        .col
-          %h2 player vids
-          %p
-            = "blup"
+    - if youtube_video_ids.any?
+      .tab-pane.fade.show#videos{role: 'tabpanel', 'aria-labelledby'=>'videos-tab'}
+        .player__videos
+          .newest_video
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{youtube_video_ids[0]}"}
+          .other_videos{style: 'margin-top: 1rem;'}
+            - require 'open-uri'
+            - require 'json'
+            - youtube_video_ids[1.. -1].each do |v_id|
+              - video_info = JSON.parse(open("https://www.youtube.com/oembed?url=https://youtu.be/#{v_id}&format=json").read)
+              .row{style: 'margin-bottom: 1rem;'}
+                .col-4{style: 'text-align: center;'}
+                  = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
+                  = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'

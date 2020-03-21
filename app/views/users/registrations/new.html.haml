@@ -69,7 +69,11 @@
       .form-group
         = label_tag :comment, t('players.comment')
         %em= t('players.for_what_ever')
-        = text_area_tag :comment, params[:comment], class: 'form-control'
+        = text_area_tag :comment, params[:comment], rows: '5', class: 'form-control'
+      .form-group
+        = label_tag :youtube_video_ids, t('players.youtube_video_ids')
+        %em= t('players.youtube_video_ids_examples').html_safe
+        = text_area_tag :youtube_video_ids, params[:youtube_video_ids], rows: '2', class: 'form-control'
       .form-group.mb-0
         .form-check
           = f.check_box :wants_major_email, checked: (params[:user].present? ? (params[:user][:wants_major_email] == "1") : true), class:'form-check-input mr-2'
