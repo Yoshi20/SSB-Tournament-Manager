@@ -194,9 +194,14 @@
             - require 'open-uri'
             - require 'json'
             - youtube_video_ids[1.. -1].each do |v_id|
-              - video_info = JSON.parse(open("https://www.youtube.com/oembed?url=https://youtu.be/#{v_id}&format=json").read)
-              .row{style: 'margin-bottom: 1rem;'}
-                .col-4{style: 'text-align: center;'}
-                  = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
-                .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
-                  = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
+              - begin
+                - video_info = JSON.parse(open("https://www.youtube.com/oembed?url=https://youtu.be/#{v_id}&format=json").read)
+                .row{style: 'margin-bottom: 1rem;'}
+                  .col-4{style: 'text-align: center;'}
+                    = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                  .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
+                    = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
+              - rescue OpenURI::HTTPError => ex
+                %p
+                  %strong= "#{ex}:"
+                  = "https://youtu.be/#{v_id}"

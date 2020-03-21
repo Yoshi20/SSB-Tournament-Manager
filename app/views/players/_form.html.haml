@@ -78,7 +78,7 @@
   .field.form-group
     = f.label :youtube_video_ids, t('players.youtube_video_ids')
     %em= t('players.youtube_video_ids_examples').html_safe
-    = f.text_area :youtube_video_ids, class: 'form-control', rows: '2'
+    = f.text_area :youtube_video_ids, class: 'form-control', rows: '3'
 
   .actions.form-group
     = f.submit class:'btn btn-ghost', value: t('players.update_profile')
