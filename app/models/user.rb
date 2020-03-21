@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   validate :validate_username
 
+  MAX_USERS_PER_PAGE = 100
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

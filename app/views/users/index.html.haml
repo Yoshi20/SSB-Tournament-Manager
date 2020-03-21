@@ -62,3 +62,7 @@
               .admin-list-actions__link
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                   %span.material-icons.admin-actions__link__icon= 'delete'
+
+
+  .user-list-footer
+    = render 'paginator', users: @users, anchor: 'data'
