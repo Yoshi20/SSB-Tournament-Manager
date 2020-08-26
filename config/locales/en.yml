@@ -529,7 +529,7 @@ en:
     leave_waiting_list: ">>> Leave the waiting list <<<"
     tournament_full: "Tournament is full >>> Join the waiting list <<<"
     join_tournament: ">>> Join this tournament <<<"
-    log_in_to_join: ">>> Log in to join this tournament <<<"
+    log_in_to_join: ">>> Log in to be able to join this tournament <<<"
     bracket: "Bracket"
     no_players_joined: "No player has joined this tournament yet"
     canton: "Canton"

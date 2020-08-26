@@ -529,7 +529,7 @@ fr:
     leave_waiting_list: ">>> Quitter la liste d'attente <<<"
     tournament_full: "Le tournoi est plein >>> Rejoindre la liste d'attente <<<"
     join_tournament: ">>> Rejoindre ce tournoi <<<"
-    log_in_to_join: ">>> S'identifier pour rejoindre ce tournoi <<<"
+    log_in_to_join: ">>> S'identifier pour pouvoir rejoindre ce tournoi <<<"
     bracket: "Bracket"
     no_players_joined: "Aucun joueur n'a rejoint ce tournoi pour l'instant"
     canton: "Canton"

@@ -152,7 +152,7 @@
                       - else
                         = button_to t('tournaments.join_tournament'), "/tournaments/add_player/#{@tournament.id}#details", method:'post', class:'btn btn-ghost'
                     - else
-                      = button_to t('tournaments.log_in_to_join'), '', disabled:true, class:'btn btn-ghost'
+                      = button_tag t('tournaments.log_in_to_join'), class:'btn btn-ghost', 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'
 
       - if @tournament.setup
         .tournament__details
