@@ -15,6 +15,17 @@ class Player < ApplicationRecord
   def self.search(search)
     if search
       sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
+      where("gamer_tag ~* '.*" + ApplicationController.helpers.unaccent(sanitizedSearch) + ".*'").or(where(  # ~* is the case-insensitive regexp operator
+        "prefix ~* '.*" + ApplicationController.helpers.unaccent(sanitizedSearch) + ".*'"
+      ))
+    else
+      :all
+    end
+  end
+
+  def self.iLikeSearch(search)
+    if search
+      sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
       where("gamer_tag ILIKE ? or prefix ILIKE ?", "%#{sanitizedSearch}%", "%#{sanitizedSearch}%")
     else
       :all

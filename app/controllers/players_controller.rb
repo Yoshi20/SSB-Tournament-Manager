@@ -10,9 +10,16 @@ class PlayersController < ApplicationController
     @players = Player.all
     # handle search parameter
     if params[:search].present?
-      @players = @players.search(params[:search])
-      if @players.empty?
-        flash.now[:alert] = t('flash.alert.search_players')
+      begin
+        @players = @players.search(params[:search])
+        if @players.empty?
+          flash.now[:alert] = t('flash.alert.search_players')
+        end
+      rescue ActiveRecord::StatementInvalid
+        @players = Player.all.iLikeSearch(params[:search])
+        if @players.empty?
+          flash.now[:alert] = t('flash.alert.search_players')
+        end
       end
     end
     # handle sort parameter
