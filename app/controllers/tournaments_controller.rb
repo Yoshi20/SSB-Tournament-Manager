@@ -439,7 +439,7 @@ class TournamentsController < ApplicationController
           redirect_to @tournament, alert: t('flash.alert.tournament_set_up')
         end
       else
-        redirect_to @tournament, alert: "#{t('flash.alert.tournament_set_up')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_set_up')}. #{t('flash.alert.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end
@@ -464,7 +464,7 @@ class TournamentsController < ApplicationController
           redirect_to @tournament, alert: t('flash.alert.tournament_started')
         end
       else
-        redirect_to @tournament, alert: "#{t('flash.alert.tournament_started')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_started')}. #{t('flash.alert.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end
@@ -570,7 +570,7 @@ class TournamentsController < ApplicationController
           redirect_to @tournament, alert: t('flash.alert.tournament_not_finished', link: view_context.link_to(link, link, target: '_blank')).html_safe
         end
       else
-        redirect_to @tournament, alert: "#{t('flash.alert.tournament_cannot_finish')}. #{t('flash.alet.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
+        redirect_to @tournament, alert: "#{t('flash.alert.tournament_cannot_finish')}. #{t('flash.alert.challonge_data_missing', link: view_context.link_to(t('flash.alert.here'), edit_user_registration_path, target: '_blank')).html_safe}"
       end
     end
   end
@@ -617,7 +617,7 @@ class TournamentsController < ApplicationController
     end
 
     def check_if_admin
-      unless current_user.is_admin
+      unless current_user.admin?
         respond_to do |format|
           format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
           format.json { render json: @tournament.errors, status: :unauthorized }

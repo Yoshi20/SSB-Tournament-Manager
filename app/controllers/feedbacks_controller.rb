@@ -28,7 +28,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     respond_to do |format|
       if @feedback.save
-        User.where(is_admin:true).each do |admin|
+        User.where(is_super_admin: true).each do |admin|
           FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
         format.html { redirect_to feedbacks_path, notice: t('flash.notice.feedback_created') }
@@ -46,7 +46,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       p = feedback_params
       p.delete('user_id') unless @feedback.new_record?
-      if current_user.admin?
+      if current_user.super_admin?
         if feedback_params[:response] != @feedback.response and feedback_params[:response] != ""
           FeedbackMailer.with(feedback: @feedback, admin: current_user).feedback_response_email.deliver_later
         else

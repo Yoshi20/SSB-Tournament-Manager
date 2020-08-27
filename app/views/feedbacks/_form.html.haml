@@ -12,7 +12,7 @@
       .field.form-group
         = f.text_field :user_id, class: 'd-none form-control', value: current_user.id
         = f.text_area :text, class: 'form-control', style: 'height: 120px'
-      - if current_user.admin? and !@feedback.new_record?
+      - if current_user.super_admin? and !@feedback.new_record?
         .field.form-group
           = f.label :response, t('feedback.admin_response')
           = f.text_area :response, class: 'form-control', style: 'height: 120px'

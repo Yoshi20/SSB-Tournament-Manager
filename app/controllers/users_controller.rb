@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if current_user.admin? and @user.update(user_params)
+      if current_user.super_admin? and @user.update(user_params)
         format.html { redirect_to users_path, notice: t('flash.notice.updating_user') }
         format.json { render :show, status: :ok, location: @user }
       else
