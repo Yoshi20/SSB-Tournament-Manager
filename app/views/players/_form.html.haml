@@ -64,12 +64,16 @@
     %em= t('players.up_to_three')
     .main_chars{style: 'display: inline-block;'}
       - Dir.entries("#{Rails.root}/app/assets/images/characters").map{|f| f if !f.include?("200x200") and f[0] != '.'}.compact.sort.each_with_index do |file, i|
+        - character = file.sub('.png', '')
         .main_char{style: 'float: left;'}
-          = image_tag "characters/#{file}", height: '25px', width: '25px'
-          - character = file.sub('.png', '')
-          = radio_button('main_char1', nil, character, style: 'margin-left: -4px;', checked: ((@player.main_characters[0] == character) ? 'checked' : ''))
-          = radio_button('main_char2', nil, character, style: 'margin-left: -3px;', checked: ((@player.main_characters[1] == character) ? 'checked' : ''))
-          = radio_button('main_char3', nil, character, style: 'margin-left: -3px; margin-right: 8px;', checked: ((@player.main_characters[2] == character) ? 'checked' : ''))
+          .tooltip.tooltip_character
+            = image_tag "characters/#{file}", height: '25px', width: '25px'
+            %span.tooltiptext
+              = character.gsub('_', ' ').capitalize
+            = radio_button('main_char1', nil, character, style: 'margin-left: -3px;', checked: ((@player.main_characters[0] == character) ? 'checked' : ''))
+            = radio_button('main_char2', nil, character, style: 'margin-left: -2px;', checked: ((@player.main_characters[1] == character) ? 'checked' : ''))
+            = radio_button('main_char3', nil, character, style: 'margin-left: -2px; margin-right: 8px;', checked: ((@player.main_characters[2] == character) ? 'checked' : ''))
+
   .field.form-group
     = f.label :comment, t('players.comment')
     %em= t('players.for_what_ever')
