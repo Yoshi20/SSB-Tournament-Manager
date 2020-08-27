@@ -183,7 +183,7 @@ en:
         It shall also present an entry point for new players to find their respective local smash community.<br><br>
         In the meantime it now also provides quite a big list of swiss smashers with relevant stats, player data and rankings.
     calendar:
-      title: "Calendrier"
+      title: "Calendar"
       tournaments_body: "With the help of a self written %{link} program, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in switzerland that were added to either one of the following sites:"
       calendar_body: "The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
       calendar_weekly: "Weekly -> On swisssmash.ch created weekly tournament"
