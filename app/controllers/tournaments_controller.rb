@@ -260,6 +260,7 @@ class TournamentsController < ApplicationController
   def add_player
     if params[:gamer_tag].present?
       player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
+      player_to_add = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_add.nil?
     else
       player_to_add = current_user.player
     end
@@ -305,7 +306,7 @@ class TournamentsController < ApplicationController
       end
     else
       # tournament is full
-      if params[:waiting_list] == 'true' or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add) and !@tournament.waiting_list.include?(player_to_add.gamer_tag))
+      if (params[:waiting_list] == 'true' and !@tournament.waiting_list.include?(player_to_add.gamer_tag)) or (params[:gamer_tag].present? and !@tournament.players.include?(player_to_add) and !@tournament.waiting_list.include?(player_to_add.gamer_tag))
         @tournament.waiting_list.push(player_to_add.gamer_tag)
         if @tournament.save
           redirect_to @tournament, notice: t('flash.notice.add_player_to_waiting_list')
@@ -322,6 +323,7 @@ class TournamentsController < ApplicationController
   def remove_player
     if params[:gamer_tag].present?
       player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
+      player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
     else
       player_to_remove = current_user.player
     end
@@ -357,6 +359,7 @@ class TournamentsController < ApplicationController
     if @tournament.waiting_list.length > 0
       gamer_tag_to_add = @tournament.waiting_list.shift # shift is the same as pop_first
       player_to_add = Player.find_by(gamer_tag: gamer_tag_to_add)
+      player_to_add = AlternativeGamerTag.find_by(gamer_tag: gamer_tag_to_add).try(:player) if player_to_add.nil?
       @tournament.players << player_to_add
       TournamentMailer.with(tournament: @tournament, user: player_to_add.user).waiting_player_upgraded_email.deliver_later
       if @tournament.save
