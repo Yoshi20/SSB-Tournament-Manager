@@ -10,8 +10,8 @@ fr:
   hi: "Bonjour"
   s1_2019: "S1/19"
   s2_2019: "S2/19"
-  s1_2020: "S1/20"
-  s2_2020: "S2/20"
+  s12_2020: "S1&2/20"
+  s1_2021: "S1/21"
   external: "Externe"
   internal: "Interne"
   weekly: "Hebdomadaire"
@@ -402,8 +402,8 @@ fr:
       counted_tournaments: "Tournois comptés:"
       considered_tournaments: "Considérés mais jugés inéligibles:"
     s1_20:
-      title: "Saison 1 2020"
-      no_ranking: "Devrait apparaître en juillet 2020"
+      title: "Saison 1&2 2020"
+      no_ranking: "En raison du COVID-19, les saisons 2020 seront fusionnées. Le classement devrait apparaître en janvier 2021"
 
   rules:
     title: "Règles"
