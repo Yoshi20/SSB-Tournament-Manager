@@ -565,6 +565,11 @@ de:
     seed_players_randomly: "Spieler zufällig Seeden"
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
 
+  video:
+    title: "Videos"
+    title2: "Spieler Videos"
+    players_videos: "%{player}'s Video%{s}:"
+
   users:
     mailer:
       welcome: "Willkommen beim SwissSmash Turniermanager"

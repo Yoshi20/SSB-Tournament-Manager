@@ -11,6 +11,7 @@ class Player < ApplicationRecord
   validates :prefix, length: { maximum: 12 }
 
   MAX_PLAYERS_PER_PAGE = 50
+  MAX_PLAYER_VIDEOS_PER_PAGE = 5
 
   def self.search(search)
     if search

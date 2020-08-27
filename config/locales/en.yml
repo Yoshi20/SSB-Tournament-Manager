@@ -565,6 +565,11 @@ en:
     seed_players_randomly: "Seed players randomly"
     seed_players_tournament_confirm: "Are you sure? The current player seeding will be overwritten."
 
+  video:
+    title: "Videos"
+    title2: "Player videos"
+    players_videos: "%{player}'s video%{s}:"
+
   users:
     mailer:
       welcome: "Welcome to the SwissSmash Tournament Manager"

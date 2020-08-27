@@ -1,0 +1,25 @@
+- if @players.any? && @players.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', @players.total_pages
+      %li.left-arrow
+        -# table_params is a helper methode to whitelist the needed params to sort and order
+        - if @players.current_page.present? && @players.current_page > 1
+          = link_to videos_path(page: @players.current_page-1), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+      - (1..@players.total_pages).each do |page|
+        %li{class: "#{"active" if page == @players.current_page}"}= link_to page.to_s, videos_path(page: page), value: page
+      %li.right-arrow
+        - if @players.try(:current_page).present? && @players.current_page < @players.total_pages
+          = link_to videos_path(page: @players.current_page+1), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

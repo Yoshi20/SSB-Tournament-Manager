@@ -4,7 +4,7 @@
     = image_tag('logo.svg', height: '50px', width: '50px')
     %span.d-none.d-sm-block.d-lg-none.d-xl-block
       = 'SwissSmash'
-  %ul.navbar-nav.navbar-discord
+  %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
       = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '40'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
@@ -38,6 +38,9 @@
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
         = link_to t('information.title'), informations_path, class: 'nav-link'
+
+      %li.nav-item{role: "presentation", class: (@section == 'videos' ? 'active' : 'inactive')}
+        = link_to t('video.title'), videos_path, class: 'nav-link'
 
       %li.nav-item.locales-list
         = link_to 'en', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"

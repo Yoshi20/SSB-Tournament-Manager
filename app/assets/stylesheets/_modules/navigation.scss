@@ -107,7 +107,15 @@
     }
   }
 
-  .navbar-discord {
+  .navbar-icons {
     flex-direction: row;
+    .nav-item {
+      @media screen and (max-width: 1200px) {
+        margin-left: -0.75rem !important;
+      }
+      @media screen and (max-width: 991px) {
+        margin-left: inherit !important;
+      }
+    }
   }
 }

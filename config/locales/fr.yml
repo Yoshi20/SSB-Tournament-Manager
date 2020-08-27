@@ -565,6 +565,11 @@ fr:
     seed_players_randomly: "Seeder les joueurs aléatoirement"
     seed_players_tournament_confirm: "Êtes-vous sûr(e)? Le seeding actuel sera écrasé."
 
+  video:
+    title: "Vidéos"
+    title2: "Vidéos des joueurs"
+    players_videos: "Vidéo%{s} de %{player}:"
+
   users:
     mailer:
       welcome: "Bienvenue sur le Gestionnaire de Tournoi SwissSmash"
