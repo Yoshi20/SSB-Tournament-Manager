@@ -340,6 +340,7 @@
             %tbody.table-content.with-show
               - @tournament.waiting_list.each_with_index do |gt, i|
                 - player = Player.find_by(gamer_tag: gt)
+                - player = AlternativeGamerTag.find_by(gamer_tag: gt).try(:player) if player.nil?
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}

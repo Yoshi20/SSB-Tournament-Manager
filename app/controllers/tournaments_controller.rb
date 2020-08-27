@@ -484,74 +484,79 @@ class TournamentsController < ApplicationController
           ctms = ct.matches
 
           # updated the participated players and create the matches and results if no exception arises
-          ActiveRecord::Base.transaction do
-            # create matches
-            ctms.each do |ctm|
-              match = Match.new
-              match.challonge_match_id = ctm.id
-              match.tournament_id = @tournament.id
+          begin
+            ActiveRecord::Base.transaction do
+              # create matches
+              ctms.each do |ctm|
+                match = Match.new
+                match.challonge_match_id = ctm.id
+                match.tournament_id = @tournament.id
+                ctps.each do |ctp|
+                  gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
+                  if ctp.id == ctm.player1_id
+                    player = Player.find_by(gamer_tag: gamer_tag)
+                    player = AlternativeGamerTag.find_by(gamer_tag: gamer_tag).try(:player) if player.nil?
+                    raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+                    match.player1_id = player.id
+                  elsif ctp.id == ctm.player2_id
+                    player = Player.find_by(gamer_tag: gamer_tag)
+                    player = AlternativeGamerTag.find_by(gamer_tag: gamer_tag).try(:player) if player.nil?
+                    raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+                    match.player2_id = player.id
+                  end
+                end
+                scores = ctm.scores_csv.split('-')
+                match.player1_score = scores[0]
+                match.player2_score = scores[1]
+                match.save! # raise an exception when match.save failed
+              end
+
+              # create results and update players
               ctps.each do |ctp|
                 gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
-                if ctp.id == ctm.player1_id
-                  player = Player.find_by(gamer_tag: gamer_tag)
-                  raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
-                  match.player1_id = player.id
-                elsif ctp.id == ctm.player2_id
-                  player = Player.find_by(gamer_tag: gamer_tag)
-                  raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
-                  match.player2_id = player.id
+                player = Player.find_by(gamer_tag: gamer_tag)
+                player = AlternativeGamerTag.find_by(gamer_tag: gamer_tag).try(:player) if player.nil?
+                raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
+                result = Result.new
+                result.player = player
+                result.tournament = @tournament
+                result.city = @tournament.city
+                result.rank = ctp.final_rank
+                result.points = helpers.points_repartition_table(ctp.final_rank)
+                player.points += result.points
+                player.participations += 1
+                if ctp.final_rank.present? and (player.best_rank == 0 or ctp.final_rank < player.best_rank) then player.best_rank = ctp.final_rank end
+                result.wins = 0
+                result.losses = 0
+                ctms.each do |ctm|
+                  scores = ctm.scores_csv.split('-')
+                  if ctm.player1_id == ctp.id
+                    result.wins += scores[0].to_i
+                    result.losses += scores[1].to_i
+                  elsif ctm.player2_id == ctp.id
+                    result.wins += scores[1].to_i
+                    result.losses += scores[0].to_i
+                  end
                 end
-              end
-              scores = ctm.scores_csv.split('-')
-              match.player1_score = scores[0]
-              match.player2_score = scores[1]
-              match.save! # raise an exception when match.save failed
-            end
-
-            # create results and update players
-            ctps.each do |ctp|
-              gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
-              player = Player.find_by(gamer_tag: gamer_tag)
-              raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
-              result = Result.new
-              result.player = player
-              result.tournament = @tournament
-              result.city = @tournament.city
-              result.rank = ctp.final_rank
-              result.points = helpers.points_repartition_table(ctp.final_rank)
-              player.points += result.points
-              player.participations += 1
-              if ctp.final_rank.present? and (player.best_rank == 0 or ctp.final_rank < player.best_rank) then player.best_rank = ctp.final_rank end
-              result.wins = 0
-              result.losses = 0
-              ctms.each do |ctm|
-                scores = ctm.scores_csv.split('-')
-                if ctm.player1_id == ctp.id
-                  result.wins += scores[0].to_i
-                  result.losses += scores[1].to_i
-                elsif ctm.player2_id == ctp.id
-                  result.wins += scores[1].to_i
-                  result.losses += scores[0].to_i
+                player.wins += result.wins
+                player.losses += result.losses
+                if @tournament.subtype == 'internal'
+                  result.major_name = @tournament.name
                 end
-              end
-              player.wins += result.wins
-              player.losses += result.losses
-              if @tournament.subtype == 'internal'
-                result.major_name = @tournament.name
-              end
-              result.save! # raise an exception when result.save failed
-              player.save! # raise an exception when player.save failed
+                result.save! # raise an exception when result.save failed
+                player.save! # raise an exception when player.save failed
 
-              player.update_tournament_experience
+                player.update_tournament_experience
 
-              # updated raking_string on the tournament
-              ranking_string = "#{ctp.final_rank},#{gamer_tag};"
-              @tournament.ranking_string += ranking_string
+                # updated raking_string on the tournament
+                ranking_string = "#{ctp.final_rank},#{gamer_tag};"
+                @tournament.ranking_string += ranking_string
+              end
             end
+          rescue => error
+            redirect_to @tournament, alert: "#{t('flash.alert.tournament_cannot_finish')}.<br/><br/>Error:<br/>#{error}"
+            return
           end
-          # rescue ActiveRecord::RecordInvalid
-          #   puts "Something went wrong while updating the players!"
-          # end
 
           @tournament.finished = true
           @tournament.save

@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
     @topPlayers = []
     helpers.top_players_s2_19.each do |p|
       player = Player.find_by(gamer_tag: p)
+      player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
       @topPlayers << player unless player.nil?
       break if @topPlayers.size >= 10 # limit(10)
     end
