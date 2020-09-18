@@ -13,7 +13,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if params['noReCaptcha'] == 'true' || verify_recaptcha(action: 'login', minimum_score: 0.5)
+    # if params['noReCaptcha'] == 'true' || verify_recaptcha(action: 'login', minimum_score: 0.5)
+    if params['noReCaptcha'] == 'true' || verify_recaptcha
       super
     else
       render 'new'

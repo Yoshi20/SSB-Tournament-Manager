@@ -6,11 +6,13 @@
 
 .login
   = form_tag session_path(:user), class: "form" do
-    = recaptcha_v3(action: 'login')
+    -# = recaptcha_v3(action: 'login')
     .form-group
       = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: t('username'), autofocus: 'true'
     .form-group
       = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: t('password')
+    .form-group
+      = recaptcha_tags
     .form-group
       = submit_tag t('log_in'), class: "btn btn-sstm"
       = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-ghost", style: "position: absolute; right: 20px;"

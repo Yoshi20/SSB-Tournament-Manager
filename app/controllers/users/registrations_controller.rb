@@ -15,7 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if true #blup: disable reCaptcha for the moment      verify_recaptcha(action: 'registration', minimum_score: 0.3)
+    # if verify_recaptcha(action: 'registration', minimum_score: 0.3)
+    if verify_recaptcha
       user_params = Hash.new
       super do |current_user_params|
         user_params = current_user_params

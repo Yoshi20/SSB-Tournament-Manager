@@ -4,7 +4,7 @@
 .row
   .col
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
-      = recaptcha_v3(action: 'registration')
+      -# = recaptcha_v3(action: 'registration')
       = render "devise/shared/error_messages", resource: resource
       .form-group
         = f.label :username, "#{t('users.login_username')} *"
@@ -86,5 +86,7 @@
           = params[:wants_weekly_email]
           = f.check_box :wants_weekly_email, checked: (params[:user].present? ? (params[:user][:wants_weekly_email] == "1") : true), class:'form-check-input mr-2'
           = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
+      .form-group
+        = recaptcha_tags
       .form-group
         = f.submit t('users.register'), class:'btn btn-ghost'
