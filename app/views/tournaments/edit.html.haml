@@ -7,12 +7,12 @@
     = render 'internal-form', tournament: @tournament
   - elsif @tournament.subtype == 'external'
     = render 'external-form', tournament: @tournament
-  - elsif @tournament.subtype == 'weekly'
+  - elsif @tournament.weekly?
     = render 'weekly-form', tournament: @tournament
 
   .tournament-edit__actions
     - if current_user.admin?
-      - if @tournament.subtype == 'weekly'
+      - if @tournament.weekly?
         %p= link_to "#{t('delete')} #{t('tournaments.this_weekly')}", @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'
         %p= link_to "#{t('delete')} #{t('tournaments.all_upcoming_weeklies')}", tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'
       - else

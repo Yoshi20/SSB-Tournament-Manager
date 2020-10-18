@@ -16,7 +16,7 @@ class Calendar
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       isFullDayEvent ? nil : (tournament.date + 6.hours),
+        end:       isFullDayEvent ? nil : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours)),
         allDay:    isFullDayEvent,
         editable:  false,
         className: 'calendar-tournament',
@@ -89,13 +89,14 @@ class Calendar
     end
 
     def ical_event_internal(calendar, tournament, tzid)
+      isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      end_time = isFullDayEvent ? (tournament.date + 1.day) : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours))
       calendar.event do |event|
-        end_time = tournament.date + 6.hours
-        if false
+        if isFullDayEvent
           # whole-day tournament structure
           event.dtstart = ical_date(tournament.date.to_date)
-          event.dtend   = ical_date(end_time.to_date)
           event.dtstart.ical_param 'VALUE', 'DATE'
+          event.dtend   = ical_date(end_time.to_date)
           event.dtend.ical_param 'VALUE', 'DATE'
         else
           event.dtstart = ical_datetime(tournament.date, tzid)
@@ -104,6 +105,7 @@ class Calendar
         event.summary     = tournament.name.to_s.strip
         event.description = tournament.description.to_s.strip
         event.location    = tournament.location.to_s.strip
+        event.url         = tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}"
         if tournament.cancelled?
           event.status = 'CANCELLED'
         end

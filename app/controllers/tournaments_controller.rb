@@ -111,7 +111,7 @@ class TournamentsController < ApplicationController
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
-    elsif @tournament.subtype == 'weekly'
+    elsif @tournament.weekly?
       @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
@@ -156,14 +156,14 @@ class TournamentsController < ApplicationController
   # PATCH/PUT /tournaments/1.json
   def update
     # update tournament
-    if @tournament.subtype.nil? or @tournament.subtype == 'internal' or  @tournament.subtype == 'weekly'
+    if @tournament.subtype.nil? or @tournament.subtype == 'internal' or  @tournament.weekly?
       respond_to do |format|
         oldName = @tournament.name
         oldDate = @tournament.date
         oldcity = @tournament.city
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
           # also update weekly name if city was edited
-          if @tournament.subtype == 'weekly' && @tournament.city != oldcity
+          if @tournament.weekly? && @tournament.city != oldcity
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
             unless @tournament.save
               format.html { render :edit }
@@ -173,7 +173,7 @@ class TournamentsController < ApplicationController
           end
 
           # check the 'all' parameter and update all upcoming tournaments of this type if it's true
-          if @tournament.subtype == 'weekly' and params[:commit].include?('all')
+          if @tournament.weekly? and params[:commit].include?('all')
             last_weekly = @tournament
             edited_tournament_params = tournament_params
             old_name_without_kw = oldName[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
@@ -236,7 +236,7 @@ class TournamentsController < ApplicationController
         redirect_to tournaments_url, alert: t('flash.alert.delete_tournament')
       end
     else
-      if @tournament.subtype == 'weekly' and params[:all]
+      if @tournament.weekly? and params[:all]
         # deactivate all upcoming weeklies of this type
         name_without_kw = @tournament.name[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
         Tournament.where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|

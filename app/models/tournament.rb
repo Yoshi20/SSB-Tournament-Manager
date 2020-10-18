@@ -37,6 +37,10 @@ class Tournament < ApplicationRecord
     self.number_of_pools.to_i > 0
   end
 
+  def weekly?
+    self.subtype == 'weekly'
+  end
+
   def game_stations_count
     gs_count = 0
     self.registrations.where('game_stations is not NULL').each do |r|
