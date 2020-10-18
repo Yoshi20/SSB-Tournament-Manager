@@ -22,7 +22,7 @@ class RankingsController < ApplicationController
     elsif params[:filter] == 'seed_points'
       @players = helpers.seed_players(@players).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
       # @players_2019 = helpers.seed_players(@players_2019).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
-    elsif params[:filter] == 'major'
+    elsif params[:filter] == 'major' && params[:major].present?
       @players = @players.where('participations > 0').includes(:results).where("results.major_name ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(params[:major])}%").references(:results).sort_by do |p|
         p.results_sum(params[:major]) << -p.created_at.to_i
       end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
