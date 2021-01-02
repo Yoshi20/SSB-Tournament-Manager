@@ -64,18 +64,19 @@ Rails.application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager-stage.herokuapp.com'}
-  config.action_mailer.perform_deliveries = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.perform_deliveries = false
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default :charset => "utf-8"
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'SwissSmash <admin@swisssmash.ch>'}
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    user_name: ENV['SENDGRID_USERNAME'], #ENV['GMAIL_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'], #ENV['GMAIL_PASSWORD'],
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587, #or 25,
+    domain: 'heroku.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
     authentication: 'plain',
-    openssl_verify_mode: 'none',
     enable_starttls_auto: true
   }
 
