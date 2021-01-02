@@ -404,6 +404,9 @@ fr:
     s1_20:
       title: "Saison 1&2 2020"
       no_ranking: "En raison du COVID-19, les saisons 2020 seront fusionnées. Le classement devrait apparaître en janvier 2021"
+    s1_21:
+      title: "Saison 1 2021"
+      no_ranking: "Le classement devrait apparaître en juillet 2021"
 
   rules:
     title: "Règles"

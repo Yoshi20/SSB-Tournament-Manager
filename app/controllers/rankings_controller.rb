@@ -7,7 +7,7 @@ class RankingsController < ApplicationController
   # GET /rankings.json
   def index
     @players = Player.all.includes(:user)
-    # @players = Player.all.includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2020,1,1)).references(:results)
+    # @players_2020 = Player.all.includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2020,1,1)).references(:results)
     # @players_2019 = Player.all.includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2019,1,1)).references(:results)
     if params[:filter].nil? or params[:filter] == 'all'
       @players = @players.where('participations >= 3').sort_by do |p|

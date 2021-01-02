@@ -404,6 +404,9 @@ en:
     s1_20:
       title: "Season 1&2 2020"
       no_ranking: "Due to COVID-19, the 2020 seasons will be merged. The ranking is expected to appear in January 2021"
+    s1_21:
+      title: "Season 1 2021"
+      no_ranking: "The ranking is expected to appear in July 2021"
 
   rules:
     title: "Rules"

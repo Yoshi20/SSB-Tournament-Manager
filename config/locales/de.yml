@@ -404,6 +404,9 @@ de:
     s1_20:
       title: "Saison 1&2 2020"
       no_ranking: "Aufgrund COVID-19 werden die 2020 Saisons zusammengelegt. Das Ranking erscheint voraussichtlich im Januar 2021"
+    s1_21:
+      title: "Saison 1 2021"
+      no_ranking: "Das Ranking erscheint voraussichtlich im Juli 2021"
 
   rules:
     title: "Regeln"
