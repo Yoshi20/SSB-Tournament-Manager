@@ -113,7 +113,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'http_accept_language'
 
 # See https://nokogiri.org/
-gem 'nokogiri', '>= 1.10.4'
+gem "nokogiri", ">= 1.11.0.rc4"
 
 # See https://github.com/ambethia/recaptcha
 gem 'recaptcha'
