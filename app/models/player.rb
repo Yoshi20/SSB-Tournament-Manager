@@ -10,6 +10,11 @@ class Player < ApplicationRecord
   validates :gamer_tag, uniqueness: true, presence: true
   validates :prefix, length: { maximum: 12 }
 
+  scope :from_2018, -> { where('created_at >= ? AND created_at < ?', Time.local(2018,1,1), Time.local(2019,1,1)) }
+  scope :from_2019, -> { where('created_at >= ? AND created_at < ?', Time.local(2019,1,1), Time.local(2020,1,1)) }
+  scope :from_2020, -> { where('created_at >= ? AND created_at < ?', Time.local(2020,1,1), Time.local(2021,1,1)) }
+  scope :from_2021, -> { where('created_at >= ? AND created_at < ?', Time.local(2021,1,1), Time.local(2022,1,1)) }
+
   MAX_PLAYERS_PER_PAGE = 50
   MAX_PLAYER_VIDEOS_PER_PAGE = 5
 

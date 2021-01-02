@@ -23,6 +23,8 @@
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
           = t('tournaments.title')
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
         .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
           = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
           = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
@@ -30,8 +32,14 @@
       %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
         = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
-      %li.nav-item{role: "presentation", class: (@section == 'players' ? 'active' : 'inactive')}
-        = link_to t('players.title'), players_path, class: 'nav-link'
+      %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics') ? 'active' : 'inactive')}
+        %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          = t('players.title')
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+          = link_to t('players.individuals'), players_path, class: 'dropdown-item'
+          = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
 
       %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
         = link_to t('rules.title'), rules_path, class: 'nav-link'

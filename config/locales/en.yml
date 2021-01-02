@@ -381,6 +381,25 @@ en:
     joined_tournament_at: "At"
     past_tournaments: "Past Tournaments"
     videos: "Videos"
+    individuals: "Individuals"
+
+  statistics:
+    title: "Statistics"
+    title2: "Player statistics"
+    count_total: "Total registered players at SwissSmash"
+    in_2018: "in 2018"
+    in_2019: "in 2019"
+    in_2020: "in 2020"
+    in_2021: "in 2021"
+    male: "Male"
+    female: "Female"
+    undefined: "Undefined"
+    youngest: "Youngest"
+    mean-age: "Ø age"
+    oldest: "Oldest"
+    canton: "Canton"
+    number_of_players: "Number of players"
+    character: "Character"
 
   rankings:
     title: "Rankings"

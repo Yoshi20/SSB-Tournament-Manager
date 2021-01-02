@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'rankings' => 'rankings#index'
 
+  get 'statistics' => 'statistics#index'
+
   get 'videos' => 'videos#index'
 
   resources :feedbacks
