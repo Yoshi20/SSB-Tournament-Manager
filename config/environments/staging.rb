@@ -64,7 +64,7 @@ Rails.application.configure do
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager-stage.herokuapp.com'}
-  # config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = false
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default :charset => "utf-8"
   config.action_mailer.raise_delivery_errors = true
@@ -74,8 +74,8 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: 587, #or 25,
     domain: 'heroku.com',
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
     authentication: 'plain',
     enable_starttls_auto: true
   }

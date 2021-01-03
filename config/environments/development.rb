@@ -26,23 +26,28 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Use a real queuing backend for Active Job (and separate queues per environment)
+  # config.active_job.queue_adapter     = :resque
+  # config.active_job.queue_name_prefix = "ssb-tournament-manager_#{Rails.env}"
+  config.action_mailer.perform_caching = false
+
   # ActionMailer config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.perform_deliveries = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default :charset => "utf-8"
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default :charset => "utf-8"
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'SwissSmash <admin@swisssmash.ch>'}
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    user_name: ENV['SENDGRID_USERNAME'], #ENV['GMAIL_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'], #ENV['GMAIL_PASSWORD'],
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587, #or 25,
+    domain: 'heroku.com',
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
     authentication: 'plain',
-    openssl_verify_mode: 'none',
     enable_starttls_auto: true
   }
-  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
