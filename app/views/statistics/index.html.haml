@@ -101,7 +101,7 @@
                 %td.text-center
                   = canton_players.count
                 %td.text-center
-                  - wl_array = canton_players.map{ |p| p.win_loss_ratio}.compact
+                  - wl_array = canton_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                   = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
       .col
         %table.table.table-hover.table-borderless
@@ -122,7 +122,7 @@
                 %td.text-center
                   = canton_players.count
                 %td.text-center
-                  - wl_array = canton_players.map{ |p| p.win_loss_ratio}.compact
+                  - wl_array = canton_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                   = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
 
   .statistic__stats{style: "margin-top: 0;"}
@@ -150,7 +150,7 @@
                   %td.text-center
                     = character_players.count
                   %td.text-center
-                    - wl_array = character_players.map{ |p| p.win_loss_ratio}.compact
+                    - wl_array = character_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                     = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
       .col
         %table.table.table-hover.table-borderless
@@ -174,5 +174,5 @@
                   %td.text-center
                     = character_players.count
                   %td.text-center
-                    - wl_array = character_players.map{ |p| p.win_loss_ratio}.compact
+                    - wl_array = character_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                     = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
