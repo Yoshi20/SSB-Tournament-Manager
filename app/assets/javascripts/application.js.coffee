@@ -80,8 +80,11 @@ document.addEventListener 'turbolinks:load', ->
     $et = $(e.target)
     unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox') || $et.hasClass('game-stations-number-field')
       external_url = $(this).attr('data-external_url')
+      internal_url = $(this).attr('data-internal_url')
       if external_url
         window.open(external_url, '_blank')
+      else if internal_url
+        window.location.href = internal_url
       else
         id = $(this).attr('data-id')
         if id != undefined

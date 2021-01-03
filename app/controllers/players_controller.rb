@@ -7,7 +7,16 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
+    if params[:filter].present? && params['filter-data'].present?
+      if params[:filter] == 'canton'
+        @players = Player.where(canton: params['filter-data'])
+      elsif params[:filter] == 'character'
+        @players = Player.where("? = ANY (main_characters)", params['filter-data'])
+      end
+    else
+      @players = Player.all
+    end
+
     # handle search parameter
     if params[:search].present?
       begin

@@ -92,7 +92,7 @@
           %tbody.table-content.with-show
             - cantons_raw[0... cantons_raw.length/2].each do |canton|
               - canton_players = @players.where(canton: canton)
-              %tr
+              %tr{'data-internal_url': players_path(filter: 'canton', 'filter-data': canton)}
                 %td.text-center
                   .tooltip.tooltip_canton
                     = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
@@ -113,7 +113,7 @@
           %tbody.table-content.with-show
             - cantons_raw[cantons_raw.length/2.. -1].each do |canton|
               - canton_players = @players.where(canton: canton)
-              %tr
+              %tr{'data-internal_url': players_path(filter: 'canton', 'filter-data': canton)}
                 %td.text-center
                   .tooltip.tooltip_canton
                     = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
@@ -140,7 +140,7 @@
               - all_char_files[0... all_char_files.length/2].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
-                %tr
+                %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}
                   %td.text-center
                     .main_char
                       .tooltip.tooltip_character
@@ -164,7 +164,7 @@
               - all_char_files[all_char_files.length/2.. -1].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
-                %tr
+                %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}
                   %td.text-center
                     .main_char
                       .tooltip.tooltip_character

@@ -24,11 +24,11 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], sort: 'gamer_tag', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to t('players.mains'), players_path(search: params[:search], sort: 'main_characters', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.self_assessment'), players_path(search: params[:search], sort: 'self_assessment', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.xp'), players_path(search: params[:search], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to t('w_l'), players_path(search: params[:search], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('players.mains'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'main_characters', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.self_assessment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'self_assessment', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.xp'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('w_l'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
       %tbody.table-content.with-show.player-list-body
         - if @players.any?
@@ -63,11 +63,11 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], sort: 'gamer_tag', order: 'asc', anchor: 'data')
-          %th.text-center= link_to t('players.canton'), players_path(search: params[:search], sort: 'canton', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], sort: 'birth_year', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], sort: 'gender', order: 'asc', anchor: 'data')
-          %th.text-center= link_to t('players.comment'), players_path(search: params[:search], sort: 'comment', order: 'desc', anchor: 'data')
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.canton'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'canton', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'birth_year', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gender', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.comment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'comment', order: 'desc', anchor: 'data')
 
       %tbody.table-content.with-show
         - if @players.any?
