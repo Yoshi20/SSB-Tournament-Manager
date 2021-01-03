@@ -6,7 +6,6 @@ class StatisticsController < ApplicationController
   def index
     @players = Player.all
     @player_count_total = @players.count
-    @player_count_2018 = @players.from_2018.count
     @player_count_2019 = @players.from_2019.count
     @player_count_2020 = @players.from_2020.count
     @player_count_2021 = @players.from_2021.count
