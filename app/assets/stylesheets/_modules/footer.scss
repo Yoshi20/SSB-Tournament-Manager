@@ -1,0 +1,7 @@
+.footer {
+  .small {
+    @media screen and (max-width: 575px) {
+      font-size: 50%;
+    }
+  }
+}

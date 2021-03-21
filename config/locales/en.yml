@@ -181,7 +181,7 @@ en:
       swisssmash: |
         This web application/site was primarly created to give an overview over the Super Smash Bros. scene in switzerland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
         It shall also present an entry point for new players to find their respective local smash community.<br><br>
-        In the meantime it now also provides quite a big list of swiss smashers with relevant stats, player data and rankings.
+        In the meantime it now also provides an almost complete list of swiss smashers with relevant stats, player data and rankings.
     calendar:
       title: "Calendar"
       tournaments_body: "With the help of a self written %{link} program, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in switzerland that were added to either one of the following sites:"
@@ -421,7 +421,7 @@ en:
       considered_tournaments: "Considered but deemed ineligible:"
     s1_20:
       title: "Season 1&2 2020"
-      no_ranking: "Due to COVID-19, the 2020 seasons will be merged. The ranking is expected to appear in January 2021"
+      no_ranking: "Due to COVID-19, there is no 2020 ranking"
     s1_21:
       title: "Season 1 2021"
       no_ranking: "The ranking is expected to appear in July 2021"

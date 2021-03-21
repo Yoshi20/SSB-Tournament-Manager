@@ -71,6 +71,8 @@
                 = t('navigation.account.account')
               - else
                 = t('login')
+            .d-lg-none.d-block{style: "height: 24px;"}
+              %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
           .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
             .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
               = current_user.username
