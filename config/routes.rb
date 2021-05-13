@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'videos' => 'videos#index'
 
+  resources :news
   resources :feedbacks
   get 'administrators' => 'administrators#index'
   get 'imprint' => 'imprint#index'

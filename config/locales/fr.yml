@@ -101,6 +101,9 @@ fr:
       tournament_started: "Tournoi démarré avec succès"
       tournament_finished: "Tournoi terminé avec succès et participants mis à jour"
       tournament_cancelled: "Tournoi annulé avec succès"
+      news_created: "News post créé(e) avec succès"
+      news_updated: "News post mis(e) à jour avec succès"
+      news_deleted: "News post supprimé(e) avec succès"
       feedback_created: "Feedback ou Question créé(e) avec succès"
       feedback_updated: "Feedback ou Question mis(e) à jour avec succès"
       feedback_deleted: "Feedback ou Question supprimé(e) avec succès"
@@ -176,6 +179,7 @@ fr:
 
   information:
     title: "Information"
+    title_short: "Infos"
     general:
       title: "Général"
       swisssmash: |
@@ -317,6 +321,22 @@ fr:
     unlocks:
       title: "Renvoyer les instructions de déblocage"
       resend_unlock_inst: "Renvoyer les instructions de déblocage"
+
+  news:
+    title: "News"
+    post_title: "Titre"
+    teaser: "Teaser"
+    text: "Texte"
+    post: "Publier"
+    update: "Update"
+    prohibited: "a interdit la sauvegarde de ce news post:"
+    title_edit: "Modifier le news post"
+    creat_new: "Créer un nouveau news post"
+    new: "Nouveau news post"
+    updated_at: "Mis à jour à:"
+    created_at: "Créé à:"
+    created_by: "Créé par:"
+    no_news_found: "Aucun news trouvés"
 
   feedback:
     mailer:

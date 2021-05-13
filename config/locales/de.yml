@@ -101,6 +101,9 @@ de:
       tournament_started: "Turnier wurde erfolgreich gestartet"
       tournament_finished: "Turnier wurde erfolgreich beendet und die teilgenommenen Spieler wurden aktualisiert"
       tournament_cancelled: "Turnier wurde erfolgreich storniert"
+      news_created: "News-Post wurde erfolgreich erstellt"
+      news_updated: "News-Post wurde erfolgreich aktualisiert"
+      news_deleted: "News-Post wurde erfolgreich gelöscht"
       feedback_created: "Rückmeldung oder Frage wurde erfolgreich erstellt"
       feedback_updated: "Rückmeldung oder Frage wurde erfolgreich aktualisiert"
       feedback_deleted: "Rückmeldung oder Frage wurde erfolgreich gelöscht"
@@ -176,6 +179,7 @@ de:
 
   information:
     title: "Informationen"
+    title_short: "Infos"
     general:
       title: "Allgemein"
       swisssmash: |
@@ -317,6 +321,22 @@ de:
     unlocks:
       title: "Anweisungen zum Entsperren erneut senden"
       resend_unlock_inst: "Anweisungen zum Entsperren erneut senden"
+
+  news:
+    title: "News"
+    post_title: "Titel"
+    teaser: "Teaser"
+    text: "Text"
+    post: "Veröffentlichen"
+    update: "Aktualisieren"
+    prohibited: "hat das Speichern dieses News-Posts verhindert:"
+    title_edit: "Bearbeite News-Post"
+    creat_new: "Erstelle News-Post"
+    new: "Neuer News-Post"
+    updated_at: "Aktualisiert am:"
+    created_at: "Erstellt am:"
+    created_by: "Erstellt von:"
+    no_news_found: "Keine News gefunden"
 
   feedback:
     mailer:

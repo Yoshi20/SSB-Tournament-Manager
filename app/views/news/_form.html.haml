@@ -1,0 +1,23 @@
+= form_for @news, role: 'form', class:'form' do |f|
+
+  - if @news.errors.any?
+    #error_explanation
+      %h2= pluralize(@news.errors.count, "error") + ' ' + t('news.prohibited')
+      %ul
+        - @news.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.text_field :user_id, class: 'd-none form-control', value: current_user.id
+    = f.label :title, t('news.post_title')
+    = f.text_field :title, class: 'form-control'
+  .field.form-group
+    = f.label :teaser, t('news.teaser')
+    = f.text_field :teaser, class: 'form-control'
+  .field.form-group
+    = f.label :text, t('news.text')
+    %em= "(HTML)"
+    = f.text_area :text, class: 'form-control', rows: '5'
+
+  .actions.form-group
+    = f.submit class:'btn btn-ghost', value: @news.new_record? ? t('news.post') : t('news.update')

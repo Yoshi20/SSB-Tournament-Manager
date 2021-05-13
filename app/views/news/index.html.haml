@@ -1,0 +1,27 @@
+.row
+  .col
+    %h1.page__title= t('news.title')
+
+- if @news.any?
+  .news
+    - @news.each do |news|
+      = link_to news, class: "thumbnail" do
+        .row
+          .col-2.text-center{style: "padding-top: 10px; font-size: 10px; border-right: 1px lightgray solid;"}
+            = news.created_at.to_s(:custom_datetime_date)
+          .col-10{style: "padding-left: 10px;"}
+            %strong= news.title
+            %br
+            = news.teaser
+
+    .news__pagination
+      = render 'paginator'
+- else
+  .text-center
+    = t('news.no_news_found')
+
+- if current_user.present? and current_user.admin?
+  .admin-actions
+    .admin-actions__link
+      = link_to new_news_path, class:'btn btn-ghost btn-square' do
+        %span.material-icons.admin-actions__link__icon= 'add'
