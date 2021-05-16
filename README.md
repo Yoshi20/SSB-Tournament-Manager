@@ -16,6 +16,7 @@ Local commands:
 
 Stage commands:
 - git push stage master
+- git push stage <branch>:main
 - heroku logs --tail --remote stage
 - heroku run rake db:migrate --remote stage
 - heroku run rails c --remote stage

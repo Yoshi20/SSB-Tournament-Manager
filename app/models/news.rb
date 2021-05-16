@@ -5,6 +5,6 @@ class News < ApplicationRecord
   validates :teaser, :presence => true
   validates :text, :presence => true
 
-  MAX_NEWS_PER_PAGE = 10
+  MAX_NEWS_PER_PAGE = 20
 
 end

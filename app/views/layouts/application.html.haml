@@ -64,7 +64,7 @@
                 %p.small
                   = link_to t('navigation.footer.privacy_policy'), :privacy_policy
               .col
-                %p{style: 'padding-top: 1.3rem;'}
+                %p#donate-btn
                   = link_to("https://paypal.me/swisssmash", target: '_blank', class: "btn btn-sstm") do
                     = t('please_donate')
                     = image_tag('paypal_icon.png', class: 'paypal', height: '30px', width: '30px')

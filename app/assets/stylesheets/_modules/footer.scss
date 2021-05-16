@@ -1,7 +1,33 @@
 .footer {
-  .small {
-    @media screen and (max-width: 575px) {
-      font-size: 50%;
+  flex-shrink: 0;
+  background-color: $color-grey-dark;
+  color: $color-white;
+  text-align: center;
+
+  p {
+    padding-top: 1.7rem;
+  }
+
+  #donate-btn {
+    padding-top: 1.3rem;
+  }
+
+  .swisssmash_logo {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .paypal {
+    margin-right: -0.5rem;
+  }
+
+  @media screen and (max-width: 575px) {
+    .small {
+      font-size: 48%;
+    }
+
+    #donate-btn {
+      padding-top: 0;
     }
   }
 }
