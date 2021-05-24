@@ -66,8 +66,19 @@
         = f.label :host_username, t('tournaments.hostname')
         = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
     .form-group
+      = f.label :image_link, t('tournaments.image_link')
+      %em= t('tournaments.image_owner')
+      = f.text_field :image_link, placeholder: "https://www.my-image.com", class: 'form-control'
+    .row
+      .col.form-group
+        = f.label :image_height, t('tournaments.image_height')
+        = f.text_field :image_height, placeholder: t('tournaments.image_height_placeholder'), class: 'form-control'
+      .col.form-group
+        = f.label :image_width, t('tournaments.image_width')
+        = f.text_field :image_width, placeholder: t('tournaments.image_height_placeholder'), class: 'form-control'
+    .form-group
       = f.label :description, t('tournaments.description_html')
-      = f.text_area :description, class: 'form-control', rows: '15'
+      = f.text_area :description, class: 'form-control', rows: '10'
     - if @tournament.new_record?
       .form-group.d-none
         = f.label :active, t('tournaments.active')

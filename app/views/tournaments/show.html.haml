@@ -2,11 +2,14 @@
   .col
     %h1.page__title= @tournament.name
 
-- if @tournament.name.include?('PK Bern')
-  - if @tournament.date >= Time.local(2020,3,1) && @tournament.date < Time.local(2022,1,1)
-    = image_tag 'pk_bern_corona.png', height: '100%', width: '100%'
-  - else
-    = image_tag 'pk_bern.png', height: '100%', width: '100%'
+.text-center
+  - if @tournament.name.include?('PK Bern')
+    - if @tournament.date >= Time.local(2020,3,1) && @tournament.date < Time.local(2022,1,1)
+      = image_tag 'pk_bern_corona.png', height: '100%', width: '100%'
+    - else
+      = image_tag 'pk_bern.png', height: '100%', width: '100%'
+  - elsif @tournament.image_link.present?
+    = image_tag @tournament.image_link, height: @tournament.image_height.present? ? @tournament.image_height : '100%', width: @tournament.image_width.present? ? @tournament.image_width : '100%'
 
 .tournament
   %ul#tournament-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
