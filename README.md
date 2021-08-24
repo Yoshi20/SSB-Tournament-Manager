@@ -53,5 +53,8 @@ Tournaments crawler links:
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
 
+Banner:
+- https://www.ssbwiki.com/Super_Smash_Bros._Ultimate
+
 Google Analytics:
 - https://analytics.google.com/analytics/web/#/report-home/a145089919w206718824p199562205
