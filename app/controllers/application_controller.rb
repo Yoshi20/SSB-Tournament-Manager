@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_auth_token
 
   before_action :set_locale
   before_action :authenticate_user!, except: [:index, :show, :location, :unregistered]
@@ -73,6 +74,10 @@ class ApplicationController < ActionController::Base
       request.env["exception_notifier.exception_data"] = {
         current_user: current_user
       }
+    end
+
+    def rescue_invalid_auth_token
+      redirect_to new_user_session_path, alert: t('flash.alert.login_failed')
     end
 
 end

@@ -140,6 +140,7 @@ en:
       tournament_not_finished: "Tournament was not fineshed yet. You have to finish it first on: %{link}"
       tournament_cannot_finish: "Tournament cannot be finished"
       unauthorized: "Unauthorized! You must be an administrator to make this action"
+      login_failed: "Login failed! Please try again"
 
   navigation:
     list: "List"

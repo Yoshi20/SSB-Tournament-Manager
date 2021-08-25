@@ -140,6 +140,7 @@ fr:
       tournament_not_finished: "Ce tournoi n'est pas encore terminé. Vous devez d'abord le finir: %{link}"
       tournament_cannot_finish: "Ce tournoi ne peut pas être terminé"
       unauthorized: "Non-autorisé! Vous devez être un administrateur pour faire cette action"
+      login_failed: "Échec de la connexion! Veuillez réessayer"
 
   navigation:
     list: "Liste"

@@ -140,6 +140,7 @@ de:
       tournament_not_finished: "Turnier wurde nocht nicht beendet. Du musst es zuerst beenden auf: %{link}"
       tournament_cannot_finish: "Turnier kann nicht beendet werden"
       unauthorized: "Nicht autorisiert! Sie müssen ein Administrator sein, um diese Aktion auszuführen"
+      login_failed: "Login fehlgeschlagen! Bitte versuche es erneut"
 
   navigation:
     list: "Liste"
