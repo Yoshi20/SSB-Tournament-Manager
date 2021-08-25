@@ -11,7 +11,7 @@ de:
   s1_2019: "S1/19"
   s2_2019: "S2/19"
   s12_2020: "S1&2/20"
-  s1_2021: "S1/21"
+  s12_2021: "S1&2/21"
   external: "Externe"
   internal: "Interne"
   weekly: "Weekly"
@@ -165,7 +165,7 @@ de:
   partials:
     events: "Nächsten Turniere"
     players:
-      title: "Top Spieler"
+      title: "Top Spieler (2019)"
       player: "Spieler"
 
   welcome:
@@ -365,7 +365,7 @@ de:
     title: "Spieler"
     prohibited: "hat das Speichern dieses Spielers verhindert:"
     gamer_tag: "Gamer-Tag"
-    prefix: "Sponsor-Präfix"
+    prefix: "Sponsor- oder Team-Präfix"
     discord_username: "Discord Benutzername"
     twitter_username: "Twitter Benutzername"
     instagram_username: "Instagram Benutzername"
@@ -444,8 +444,8 @@ de:
       title: "Saison 1&2 2020"
       no_ranking: "Aufgrund von COVID-19 gibt es kein 2020 Ranking"
     s1_21:
-      title: "Saison 1 2021"
-      no_ranking: "Das Ranking erscheint voraussichtlich im Juli 2021"
+      title: "Saison 1&2 2021"
+      no_ranking: "Das Ranking erscheint voraussichtlich im Januar 2022"
 
   rules:
     title: "Regeln"
@@ -551,9 +551,9 @@ de:
     edit: "Turnier bearbeiten"
     this_weekly: "dieses Weekly"
     all_upcoming_weeklies: "all kommenden Weeklies dieser Art"
-    upcoming: "Bevorstehend"
-    ongoing: "Laufend"
-    past: "Vergangen"
+    upcoming: "Bevorstehende"
+    ongoing: "Laufende"
+    past: "Vergangene"
     search_placeholder: "Suchen"
     all: "Alle"
     no_upcoming: "Keine bevorstehende Turniere gefunden"

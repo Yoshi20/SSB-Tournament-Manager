@@ -13,7 +13,8 @@
         = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
         = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
       .form-group
-        = label_tag :prefix, t('players.sponsor_prefix')
+        = label_tag :prefix, t('players.prefix')
+        %em= "(XYZ)"
         = text_field_tag :prefix, params[:prefix], class: 'form-control'
       .form-group
         = label_tag :discord_username, t('players.discord_username')

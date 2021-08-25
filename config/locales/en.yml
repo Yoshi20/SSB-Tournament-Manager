@@ -11,7 +11,7 @@ en:
   s1_2019: "S1/19"
   s2_2019: "S2/19"
   s12_2020: "S1&2/20"
-  s1_2021: "S1/21"
+  s12_2021: "S1&2/21"
   external: "External"
   internal: "Internal"
   weekly: "Weekly"
@@ -165,7 +165,7 @@ en:
   partials:
     events: "Next Tournaments"
     players:
-      title: "Top Players"
+      title: "Top Players (2019)"
       player: "Player"
 
   welcome:
@@ -365,7 +365,7 @@ en:
     title: "Players"
     prohibited: "prohibited this player from being saved:"
     gamer_tag: "Gamer tag"
-    prefix: "Sponsor prefix"
+    prefix: "Sponsor or team prefix"
     discord_username: "Discord username"
     twitter_username: "Twitter username"
     instagram_username: "Instagram username"
@@ -444,8 +444,8 @@ en:
       title: "Season 1&2 2020"
       no_ranking: "Due to COVID-19, there is no 2020 ranking"
     s1_21:
-      title: "Season 1 2021"
-      no_ranking: "The ranking is expected to appear in July 2021"
+      title: "Season 1&2 2021"
+      no_ranking: "The ranking is expected to appear in January 2022"
 
   rules:
     title: "Rules"

@@ -11,7 +11,7 @@ fr:
   s1_2019: "S1/19"
   s2_2019: "S2/19"
   s12_2020: "S1&2/20"
-  s1_2021: "S1/21"
+  s12_2021: "S1&2/21"
   external: "Externe"
   internal: "Interne"
   weekly: "Hebdomadaire"
@@ -165,7 +165,7 @@ fr:
   partials:
     events: "Prochains Tournois"
     players:
-      title: "Meilleurs joueurs"
+      title: "Meilleurs joueurs (2019)"
       player: "Joueur"
 
   welcome:
@@ -365,7 +365,7 @@ fr:
     title: "Joueurs"
     prohibited: "a interdit la sauvegarde de ce joueur:"
     gamer_tag: "Gamertag"
-    prefix: "Préfixe de Sponsor"
+    prefix: "Préfixe de sponsor ou de l'équipe"
     discord_username: "Nom d'utilisateur Discord"
     twitter_username: "Nom d'utilisateur Twitter"
     instagram_username: "Nom d'utilisateur Instagram"
@@ -444,8 +444,8 @@ fr:
       title: "Saison 1&2 2020"
       no_ranking: "En raison du COVID-19, il n'y a pas de classement 2020"
     s1_21:
-      title: "Saison 1 2021"
-      no_ranking: "Le classement devrait apparaître en juillet 2021"
+      title: "Saison 1&2 2021"
+      no_ranking: "Le classement devrait apparaître en janvier 2022"
 
   rules:
     title: "Règles"
