@@ -24,7 +24,7 @@ Stage commands:
 
 - heroku run rake tournaments_crawler:all --remote stage
 - heroku run rake results_crawler:all --remote stage
-- heroku run rake utils:remove_player_from_finished_tournament[<t_id>,<p_id>] --remote stage
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage
 
 Prod commands:
 - git push prod master
@@ -35,7 +35,7 @@ Prod commands:
 
 - heroku run rake tournaments_crawler:all --remote prod
 - heroku run rake results_crawler:all --remote prod
-- heroku run rake utils:remove_player_from_finished_tournament[<t_id>,<p_id>] --remote prod
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
 - https://ssb-tournament-manager.herokuapp.com
@@ -44,6 +44,7 @@ General links:
 - https://challonge.com
 - http://sac-bern.ch
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
+- https://braacket.com/league/SSBUCHS20-21/tournament?rows=200
 
 Tournaments crawler links:
 - https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}
