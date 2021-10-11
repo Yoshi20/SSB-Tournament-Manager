@@ -1,7 +1,7 @@
 
 .banner {
   position: relative;
-  height: 200px;
+  height: 220px;
   margin-bottom: 2rem;
   margin-top: 76px;
   .banner__image, .banner__overlay {
@@ -12,13 +12,13 @@
   }
   .banner__image {
     object-fit: cover;
-    height: 200px;
+    height: 240px;
     width: 100%;
   }
   .banner__overlay {
     z-index: 1;
     width: 100%;
-    height: 200px;
+    height: 240px;
     opacity: 0.3;
     background-color: $color-grey-dark;
   }
