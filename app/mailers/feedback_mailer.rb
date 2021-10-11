@@ -4,7 +4,7 @@ class FeedbackMailer < ApplicationMailer
     feedback = params[:feedback]
     admin = params[:admin]
     @user = feedback.user
-    @url  = "https://ssb-tournament-manager.herokuapp.com/feedbacks/#{feedback.id}"
+    @url  = "https://www.swisssmash.ch/feedbacks/#{feedback.id}"
     mail(to: admin.email, subject: "A new feedback or question was added")
   end
 
@@ -12,7 +12,7 @@ class FeedbackMailer < ApplicationMailer
     feedback = params[:feedback]
     @admin = params[:admin]
     @user = feedback.user
-    @url  = "https://ssb-tournament-manager.herokuapp.com/feedbacks/#{feedback.id}"
+    @url  = "https://www.swisssmash.ch/feedbacks/#{feedback.id}"
     mail(to: @user.email, subject: "Your feedback or question was answered")
   end
 

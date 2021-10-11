@@ -39,8 +39,8 @@ Prod commands:
 
 General links:
 - https://ssb-tournament-manager.herokuapp.com
-- https://ssb-club-bern.ch
-- https://swisssmash.ch
+- https://www.ssb-club-bern.ch
+- https://www.swisssmash.ch
 - https://challonge.com
 - http://sac-bern.ch
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200

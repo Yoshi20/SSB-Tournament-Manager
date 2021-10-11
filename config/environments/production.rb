@@ -63,7 +63,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'https://www.swisssmash.ch'}
   # config.action_mailer.perform_deliveries = false
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default :charset => "utf-8"
