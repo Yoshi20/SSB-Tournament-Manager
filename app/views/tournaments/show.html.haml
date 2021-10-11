@@ -4,7 +4,9 @@
 
 .text-center
   - if @tournament.name.include?('PK Bern')
-    - if @tournament.date >= Time.local(2021,6,1)
+    - if @tournament.date.month == 10
+      = image_tag 'pk_bern_erupted_halloween.png', height: '100%', width: '100%'
+    - elsif @tournament.date >= Time.local(2021,6,1)
       = image_tag 'pk_bern_erupted_corona.png', height: '100%', width: '100%'
     - elsif @tournament.date >= Time.local(2020,3,1) && @tournament.date < Time.local(2021,6,1)
       = image_tag 'pk_bern_corona.png', height: '100%', width: '100%'
