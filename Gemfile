@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.8'
 
 gem 'icalendar'
 gem 'fullcalendar-rails'
-gem 'momentjs-rails'
+gem 'momentjs-rails', '2.20.1' #blup: i18n (js) seems to not work with v2.29.1
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
