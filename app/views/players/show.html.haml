@@ -158,7 +158,7 @@
     -# tournaments ---------------------------------------------------------------
     - if @player.tournaments.any?
       .tab-pane.fade.show#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
-        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.now)
+        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(:date)
         -if joined_tournaments.any?
           .player__tournaments
             %table.table.table-hover.table-borderless
