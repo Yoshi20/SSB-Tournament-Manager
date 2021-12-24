@@ -58,6 +58,21 @@ document.addEventListener 'turbolinks:load', ->
       alert(I18n.t('coffee.not_copied', {item: discordUserName}))
     document.body.removeChild(dummyTextArea)
 
+  # a click on a copy gamer tag icon copies it to the clipboard
+  $('.copy-gamer-tag').on 'click', (e) ->
+    event.preventDefault()
+    gamerTag = $(this).attr('data-value')
+    dummyTextArea = document.createElement("textarea")
+    dummyTextArea.style.position = 'absolute'
+    document.body.appendChild(dummyTextArea)
+    dummyTextArea.value = gamerTag
+    dummyTextArea.select()
+    if document.execCommand("copy")
+      alert(I18n.t('coffee.copied', {item: dummyTextArea.value}))
+    else
+      alert(I18n.t('coffee.not_copied', {item: gamerTag}))
+    document.body.removeChild(dummyTextArea)
+
   # a click on a nav-link adds an anchor to the url and sets the page parameter to 1 if present and '/tournaments'
   $('.nav-link').on 'click', (e) ->
     window.history.replaceState(null, null, "#{$(this).attr('href')}")
@@ -78,7 +93,7 @@ document.addEventListener 'turbolinks:load', ->
   # a click on a component-column links to its show
   $('tbody.with-show').on 'click', 'tr', (e) ->
     $et = $(e.target)
-    unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox') || $et.hasClass('game-stations-number-field')
+    unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox') || $et.hasClass('game-stations-number-field') || $et.hasClass('copy-gamer-tag')
       external_url = $(this).attr('data-external_url')
       internal_url = $(this).attr('data-internal_url')
       if external_url

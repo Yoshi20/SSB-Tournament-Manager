@@ -226,7 +226,13 @@
                   - mail_string = mail_string + player.user.email + '; '
                   %tr{'data-id': player.id, 'data-component'=>'player', id: dom_id(player)}
                     %td{style: 'text-align: center;'}= i+1 #player.registrations.find_by(tournament_id: @tournament.id).position
-                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+                      %span.material-icons.copy-gamer-tag{style: 'vertical-align: middle; margin-left: 6px; font-size: 16px; cursor: pointer;', 'data-value': player.gamer_tag}= 'content_copy'
+                      - name = (player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag)
+                      - if current_user.present? and current_user.admin?
+                        = link_to name, player
+                      - else
+                        = name
                     %td.d-sm-none.d-md-none.d-lg-table-cell.d-xl-none
                       - if player.main_characters.any?
                         - player.main_characters[0...1].each do |char|
