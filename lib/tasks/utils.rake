@@ -4,7 +4,7 @@ namespace :utils do
   task :remove_player_from_finished_tournament, [:t_id, :p_id] => :environment do |t, args|
     args.with_defaults(t_id: nil, p_id: nil)
     if args.t_id.nil? or args.p_id.nil?
-      puts "  invalid params! Call => rake utils:remove_player_from_finished_tournament[<t_id>,<p_id>]\n\n"
+      puts "  invalid params! Call => rake utils:remove_player_from_finished_tournament\\[<t_id>,<p_id>\\]\n\n"
       return
     end
     t_id = args.t_id
