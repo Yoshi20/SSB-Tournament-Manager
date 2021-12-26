@@ -34,7 +34,10 @@ gem 'jbuilder', '~> 2.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# See https://github.com/icalendar/icalendar
 gem 'icalendar'
+
+# See https://github.com/bokmann/fullcalendar-rails
 gem 'fullcalendar-rails'
 gem 'momentjs-rails', '2.20.1' #blup: i18n (js) seems to not work with v2.29.1
 

@@ -13,13 +13,14 @@ class Calendar
     def full_calendar_event(tournament, current_user)
       # TODO change date to from and to?
       isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      icon = tournament.canton
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
         end:       isFullDayEvent ? nil : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours)),
         allDay:    isFullDayEvent,
         editable:  false,
-        className: 'calendar-tournament',
+        className: icon.present? ? "calendar-tournament calendar-has-icon-class #{icon}" : "calendar-tournament",
         color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}",
       }

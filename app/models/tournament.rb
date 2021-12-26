@@ -53,4 +53,39 @@ class Tournament < ApplicationRecord
     User.find_by(username: self.host_username) if self.host_username.present?
   end
 
+  def canton
+    cantons_raw = ApplicationController.helpers.cantons_raw
+    cantons_de = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :de).map(&:downcase)
+    cantons_fr = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :fr).map(&:downcase)
+    cantons_en = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :en).map(&:downcase)
+    canton = nil
+    if self.city.present?
+      city = self.city.downcase
+      city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+      canton = city if (cantons_de.include?(city) || cantons_fr.include?(city) || cantons_en.include?(city))
+    end
+    if canton.nil? && self.location.present?
+      self.location.downcase.split(' ').each do |l|
+        l = l.gsub(',', '').gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+        if (cantons_de.include?(l) || cantons_fr.include?(l) || cantons_en.include?(l))
+          canton = cantons_raw[cantons_de.index(l)] if cantons_de.index(l).present?
+          canton = cantons_raw[cantons_fr.index(l)] if cantons_fr.index(l).present?
+          canton = cantons_raw[cantons_en.index(l)] if cantons_en.index(l).present?
+          break
+        elsif self.name.present?
+          self.name.downcase.split(' ').each do |n|
+            n = n.gsub(',', '').gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+            if (cantons_de.include?(n) || cantons_fr.include?(n) || cantons_en.include?(n))
+              canton = cantons_raw[cantons_de.index(n)] if cantons_de.index(n).present?
+              canton = cantons_raw[cantons_fr.index(n)] if cantons_fr.index(n).present?
+              canton = cantons_raw[cantons_en.index(n)] if cantons_en.index(n).present?
+              break
+            end
+          end
+        end
+      end
+    end
+    return canton
+  end
+
 end
