@@ -1,10 +1,11 @@
 .row
   .col
-    - if @tournament.canton.present?
+    - canton = @tournament.canton
+    - if canton.present?
       .tooltip
-        = image_tag "cantons/#{@tournament.canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
         %span.tooltiptext
-          = t("defines.cantons.#{@tournament.canton}")
+          = t("defines.cantons.#{canton}")
     %h1.page__title= @tournament.name
 
 .text-center

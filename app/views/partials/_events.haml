@@ -9,3 +9,7 @@
         %tr{'data-id': tournament.id, 'data-component': 'tournament', 'data-external_url': tournament.external_registration_link}
           %td.text-center= l(tournament.date, format: :custom_datetime_date_and_no_time)
           %td= tournament.name
+          %td.text-center
+            - canton = tournament.canton
+            - if canton.present?
+              = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px'
