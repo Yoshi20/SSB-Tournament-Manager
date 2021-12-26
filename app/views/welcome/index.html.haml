@@ -30,4 +30,18 @@
 %p
   = t('welcome.body3',
     log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
-    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;'),
+    feedbacks_link: link_to(t('feedback.feedback_or_question'), feedbacks_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.body4',
+    rankings_link: link_to(t('rankings.title'), rankings_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.body5',
+    players_link: link_to(t('players.title'), players_path, style: 'font-weight: 600;'),
+    statistics_link: link_to(t('statistics.title2'), statistics_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.body6',
+    informations_link: link_to(t('information.title_short'), informations_path, style: 'font-weight: 600;')).html_safe

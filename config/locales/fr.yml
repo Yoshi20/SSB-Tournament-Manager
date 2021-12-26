@@ -169,12 +169,15 @@ fr:
       player: "Joueur"
 
   welcome:
-    title: "Bienvenue sur SwissSmash"
+    title: "SwissSmash"
     body1: "Si vous voulez rester à jour avec la Communauté Suisse de Smash, rejoignez-nous sur %{discord_link} et suivez le compte %{twitter_link} Swiss Smash."
     body2: "Vous pouvez trouver les évènements à venir dans la %{tournaments_link} ou le %{calendar_link}."
+    body3: "%{log_in_link} ou %{sign_up_link} si vous ne l'avez pas encore fait, pour pouvoir rejoindre un tournoi et écrire un %{feedbacks_link}."
+    body4: "Vous pouvez trouver le Power Ranking officiel de la Suisse sous %{rankings_link}"
+    body5: "Voici tous les %{players_link} inscrits sur SwissSmash et voici les %{statistics_link}."
+    body6: "Vous pouvez trouver de plus amples informations sur SwissSmash sous %{informations_link}."
     tournament_list: "Liste des tournois"
     calendar: "Calendrier"
-    body3: "%{log_in_link} ou %{sign_up_link} si vous ne l'avez pas encore fait, pour pouvoir rejoindre un tournoi et écrire un feedback ou une question."
     log_in: "Se connecter"
     sign_up: "S'inscrire"
 
