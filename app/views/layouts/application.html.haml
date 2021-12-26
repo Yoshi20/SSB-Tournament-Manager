@@ -24,7 +24,7 @@
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
         .row
-          - if request.original_fullpath == '/calendar'
+          - if request.original_fullpath.start_with?('/calendar')
             .col-12
               .content
                 = yield
