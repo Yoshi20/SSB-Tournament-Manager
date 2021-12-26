@@ -26,7 +26,10 @@
             = ')'
         - logos_shown = 0;
         - if @player.discord_username.present?
-          = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, style: 'position: absolute; top: 5px; right: 0px;'
+          .tooltip{style: 'position: absolute; top: 5px; right: 0px; z-index: 1;'}
+            = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
+            %span.tooltiptext{style: 'margin-left: -78px;'}
+              = @player.discord_username
           - logos_shown = logos_shown + 1;
         - if @player.twitter_username.present?
           = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
