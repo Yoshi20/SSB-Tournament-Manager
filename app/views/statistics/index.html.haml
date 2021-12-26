@@ -146,7 +146,7 @@
                       .tooltip.tooltip_character
                         = image_tag "characters/#{file}", height: '25px', width: '25px'
                         %span.tooltiptext.tooltiptext_character
-                          = character.gsub('_', ' ').capitalize
+                          = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
                   %td.text-center
                     = character_players.count
                   %td.text-center
@@ -170,7 +170,7 @@
                       .tooltip.tooltip_character
                         = image_tag "characters/#{file}", height: '25px', width: '25px'
                         %span.tooltiptext.tooltiptext_character
-                          = character.gsub('_', ' ').capitalize
+                          = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
                   %td.text-center
                     = character_players.count
                   %td.text-center
