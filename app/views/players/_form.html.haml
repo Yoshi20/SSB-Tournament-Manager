@@ -85,5 +85,10 @@
     %em= t('players.youtube_video_ids_examples').html_safe
     = f.text_area :youtube_video_ids, class: 'form-control', rows: '3'
 
+  - if current_user.admin?
+    .field.form-group
+      = f.label :warnings, t('players.warnings') + ' (TOs only)'
+      = f.number_field :warnings, class: 'form-control'
+
   .actions.form-group
     = f.submit class:'btn btn-ghost', value: t('players.update_profile')

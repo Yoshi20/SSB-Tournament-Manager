@@ -236,6 +236,11 @@
                       - name = (player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag)
                       - if current_user.present? and current_user.admin?
                         = link_to name, player
+                        - if player.warnings.present? && player.warnings > 0
+                          .tooltip{style: 'display: inline; font-size: .5rem; padding-left: 4px; padding-top: 3px;'}
+                            = "(#{player.warnings})"
+                            %span.tooltiptext{style: 'margin-left: -58px; margin-bottom: -3px;'}
+                              = t('players.warnings')
                       - else
                         = name
                     %td.d-sm-none.d-md-none.d-lg-table-cell.d-xl-none
@@ -322,6 +327,11 @@
                 = form_tag "/tournaments/remove_player/#{@tournament.id}#players", method:'post', class: 'form-group' do
                   = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
                   = submit_tag t('tournaments.remove_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+                  .form-group{style: 'margin-bottom: -2rem;'}
+                    (
+                    = check_box_tag :warn
+                    = label_tag :warn, t('tournaments.warn'), style: 'font-size: 14px;'
+                    )
 
         - if @tournament.players.any? and current_user.present? and @tournament.players.include?(current_user.player) and @currently_needed_game_stations.to_i > 0 and !@tournament.setup and !@tournament.started and !@tournament.finished
           .tournament__players

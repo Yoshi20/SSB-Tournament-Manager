@@ -150,6 +150,16 @@
               %span
                 = t('players.experience')
 
+      - if not @player.warnings.nil? and @player.warnings > 0
+        .player__stats
+          .row
+            .col
+              .player__stats__single.player__stats__single--last
+                %strong
+                  = @player.warnings
+                %span
+                  = t('players.warnings') + ' (TOs only)'
+
       - if not @player.comment.nil? and not @player.comment.empty?
         .player__comment
           %h3= t('players.comment')

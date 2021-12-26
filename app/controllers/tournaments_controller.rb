@@ -324,6 +324,7 @@ class TournamentsController < ApplicationController
     if params[:gamer_tag].present?
       player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
       player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
+      player_to_remove.update(warnings: player_to_remove.warnings.to_i + 1) if params[:warn].present?
     else
       player_to_remove = current_user.player
     end
