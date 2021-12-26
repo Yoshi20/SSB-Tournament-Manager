@@ -44,7 +44,7 @@ General links:
 - https://challonge.com
 - http://sac-bern.ch
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
-- https://braacket.com/league/SSBUCHS20-21/tournament?rows=200
+- https://braacket.com/league/SSBUCHPRs/tournament?rows=200
 
 Tournaments crawler links:
 - https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}
