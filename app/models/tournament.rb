@@ -62,7 +62,11 @@ class Tournament < ApplicationRecord
     if self.city.present?
       city = self.city.downcase
       city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-      canton = city if (cantons_de.include?(city) || cantons_fr.include?(city) || cantons_en.include?(city))
+      if (cantons_de.include?(city) || cantons_fr.include?(city) || cantons_en.include?(city))
+        canton = cantons_raw[cantons_de.index(city)] if cantons_de.index(city).present?
+        canton = cantons_raw[cantons_fr.index(city)] if cantons_fr.index(city).present?
+        canton = cantons_raw[cantons_en.index(city)] if cantons_en.index(city).present?
+      end
     end
     if canton.nil? && self.location.present?
       self.location.downcase.split(' ').each do |l|
