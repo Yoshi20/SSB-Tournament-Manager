@@ -71,6 +71,7 @@ namespace :tournaments_crawler do
       externalTournament.name = tournamentHash['name']
       externalTournament.external_registration_link = root + tournamentHash['slug']
       externalTournament.city = tournamentHash['city']
+      externalTournament.location = tournamentHash['venueAddress']
       externalTournament.is_registration_allowed = false
       externalTournament.active = true
       if externalTournament.save
