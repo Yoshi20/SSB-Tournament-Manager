@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_action :get_top_players
   before_action :get_next_tournaments
   before_action :prepare_exception_notifier
+  after_action :set_response_language_header
 
   protected
 
@@ -68,6 +69,10 @@ class ApplicationController < ActionController::Base
         I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
         cookies.permanent[:locale] = I18n.locale.to_s
       end
+    end
+
+    def set_response_language_header
+        response.headers["Content-Language"] = I18n.locale.to_s
     end
 
     def prepare_exception_notifier
