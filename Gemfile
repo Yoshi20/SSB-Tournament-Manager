@@ -135,3 +135,6 @@ gem 'i18n-js'
 
 # See https://github.com/brendon/acts_as_list
 gem 'acts_as_list'
+
+# See https://github.com/kpumuk/meta-tags
+gem 'meta-tags'
