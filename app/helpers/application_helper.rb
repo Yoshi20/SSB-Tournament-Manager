@@ -63,8 +63,6 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'swisssmash.ch',
-      title: 'SwissSmash',
       reverse: true,
       separator: '|',
       description: 'Swiss Super Smash Brothers Community',
@@ -81,7 +79,7 @@ module ApplicationHelper
         description: 'Swiss Super Smash Brothers Community',
         type: 'website',
         url: request.original_url,
-        image: image_url('login-page.png')
+        image: image_url('banner.jpg') #this should be better image that is 1200×627px
       }
     }
   end
