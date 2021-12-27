@@ -9,16 +9,6 @@ module ApplicationHelper
     end
   end
 
-  # # to keep the sort and order parameters
-  # def table_params
-  #   {
-  #     sort: params[:sort],
-  #     order: params[:order],
-  #     order_by_letter: params[:order_by_letter],
-  #     search: params[:search],
-  #     limit: params[:limit],
-  #   }
-  # end
 
   def unaccent(text)
     charactersProcessed = "" # To avoid doing a replace multiple times
@@ -69,6 +59,29 @@ module ApplicationHelper
       end
     end
     return newText
+  end
+
+  def default_meta_tags
+    {
+      reverse: true,
+      separator: '|',
+      description: 'Swiss Super Smash Brothers Community',
+      keywords: 'super smash brother, nintendo, smash brothers',
+      canonical: request.original_url,
+      noindex: !Rails.env.production?,
+      icon: [
+        { href: image_url('favicon.ico') },
+        { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+      ],
+      og: {
+        site_name: 'swisssmash.ch',
+        title: 'SwissSmash',
+        description: 'Swiss Super Smash Brothers Community',
+        type: 'website',
+        url: request.original_url,
+        image: image_url('banner.jpg') #this should be better image that is 1200×627px
+      }
+    }
   end
 
 end
