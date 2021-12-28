@@ -13,7 +13,7 @@ document.addEventListener 'turbolinks:load', ->
         classes = $currentElement[0].classList
         icon = classes.item(classes.length-1)
         img = document.createElement("img");
-        img.src = "/assets/cantons/" + icon + ".svg";
+        img.src = $("##{icon}").attr('src');
         img.width = 20;
         img.height = 20;
         img.style = 'margin-right: 2px; margin-left: -2px;'
