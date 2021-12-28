@@ -7,6 +7,12 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @full_calendar_events = Calendar.full_calendar_events(current_user)
+        @cantons = []
+        JSON.parse(@full_calendar_events).each do |t|
+          canton = t['className'].split(' ')[-1]
+          @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+        end
+        @cantons = @cantons.uniq
       end
       format.ics do
         send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
@@ -20,6 +26,12 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html do
         @full_calendar_events = Calendar.full_calendar_events(current_user)
+        @cantons = []
+        JSON.parse(@full_calendar_events).each do |t|
+          canton = t['className'].split(' ')[-1]
+          @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+        end
+        @cantons = @cantons.uniq
         render "show", layout: "for_iframe"
       end
     end
