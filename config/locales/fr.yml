@@ -477,11 +477,11 @@ fr:
       li4: "Si cela n'a pas été défini autrement, des matchs en Double Élimination seront joués (si vous perdez deux matchs vous êtes sorti du tournoi)"
       li5: "Le stations de jeu (setups) inutilisées peuvent être utilisées pour des matchs amicaux aussitôt qu'un hébergeur l'a autorisé"
     match_rules:
-      title_short: "Règlement"
-      title: "Règles de match SSBU (Règlement)"
-      body: "Pour l'instant le règlement de Mirakuru est utilisé dans la plupart des tournois officiels suisses. Le règlement complet peut être trouvé"
-      here: "ici"
-      overview: "Vue d'ensemble rapide:"
+      title_short: "Règlements"
+      title: "Règles de match SSBU (Règlements)"
+      body: "Pour l'instant les règlements de néerlandaise ou de Mirakuru est utilisé dans la plupart des tournois officiels suisses."
+      overview_dutch: "Aperçu des règles néerlandaises:"
+      overview: "Aperçu des règles Mirakuru:"
       li1: "1 vs. 1"
       li2: "Best of 3 (Matchs finaux: Best of 5)"
       li3: "3 vies par partie"
@@ -490,6 +490,8 @@ fr:
       li6: "Pause: Sans"
       li7: "Aléas des stages: Sans"
       li8: "Le gagnant d'un match est obligé de rapporter les résultats à un administrateur"
+      complete_mirakuru: "Le règlement complet peut être trouvé"
+      here: "ici"
 
   tournaments:
     title: "Tournois"

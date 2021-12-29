@@ -477,11 +477,11 @@ de:
       li4: "Falls nicht anders definiert, werden Double Elimination Matches gespielt (wenn du zwei Matches verlierst, scheidest du aus dem Turnier aus)"
       li5: "Unbenutzte Turnierspielstationen (Setups) können für Freundschaftsspiele verwendet werden, sobald ein Host dies erlaubt"
     match_rules:
-      title_short: "Ruleset"
-      title: "SSBU-Matchregeln (Ruleset)"
-      body: "Derzeit wird das Mirakuru-Ruleset in den meisten offiziellen Schweizer Turnieren verwendet. Das komplette Ruleset findest du"
-      here: "hier"
-      overview: "Kurzübersicht:"
+      title_short: "Rulesets"
+      title: "SSBU-Matchregeln (Rulesets)"
+      body: "Derzeit wird das Niederländische- oder das Mirakuru-Ruleset in den meisten offiziellen Schweizer Turnieren verwendet."
+      overview_dutch: "Übersicht Niederländische-Ruleset:"
+      overview: "Übersicht Mirakuru-Ruleset:"
       li1: "1 vs. 1"
       li2: "Best of 3 (Finale Matches: Best of 5)"
       li3: "3 Stocks pro Spiel"
@@ -490,6 +490,8 @@ de:
       li6: "Pause: Off"
       li7: "Stage hazards: Off"
       li8: "Der Sieger eines Matches ist verpflichtet, das Ergebniss einem Administrator zu melden"
+      complete_mirakuru: "Das komplette Mirakuru-Ruleset findest du"
+      here: "hier"
 
   tournaments:
     title: "Turniere"

@@ -477,11 +477,11 @@ en:
       li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
       li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
     match_rules:
-      title_short: "Ruleset"
-      title: "SSBU match rules (Ruleset)"
-      body: "For now the Mirakuru ruleset is used in most of the official swiss tournaments. The complete ruleset can be found"
-      here: "here"
-      overview: "Short overview:"
+      title_short: "Rulesets"
+      title: "SSBU match rules (Rulesets)"
+      body: "For now the Dutch or the Mirakuru ruleset is used in most of the official Swiss tournaments"
+      overview_dutch: "Overview Dutch ruleset:"
+      overview: "Overview Mirakuru ruleset:"
       li1: "1 vs. 1"
       li2: "Best of 3 (Final matches: Best of 5)"
       li3: "3 stocks per game"
@@ -490,6 +490,8 @@ en:
       li6: "Pause: Off"
       li7: "Stage hazards: Off"
       li8: "The winner of a match is obligated to report the results to an administrator"
+      complete_mirakuru: "The complete ruleset can be found"
+      here: "here"
 
   tournaments:
     title: "Tournaments"
