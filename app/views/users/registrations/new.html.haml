@@ -92,11 +92,11 @@
           = params[:allows_emails_from_swisssmash]
           = f.check_box :allows_emails_from_swisssmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_swisssmash] == "1") : true), class:'form-check-input mr-2'
           = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
-      .form-group
-        .form-check
-          = params[:allows_emails_from_partners]
-          = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
-          = f.label :allows_emails_from_partners, t('users.allows_emails_from_partners'), class:'form-check-label'
+      -# .form-group #blup: hide for now
+      -#   .form-check
+      -#     = params[:allows_emails_from_partners]
+      -#     = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
+      -#     = f.label :allows_emails_from_partners, t('users.allows_emails_from_partners'), class:'form-check-label'
       .form-group
         = recaptcha_tags
       .form-group
