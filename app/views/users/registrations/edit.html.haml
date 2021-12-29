@@ -41,20 +41,28 @@
         .form-group
           = f.label :challonge_api_key, t('users.challonge_api_key', link: link_to('https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank')).html_safe
           = f.text_field :challonge_api_key, class: 'form-control'
-      .form-group.mb-0
-        .form-check
-          = f.check_box :wants_major_email, class:'form-check-input mr-2'
-          = f.label :wants_major_email, t('users.wants_major_email'), class:'form-check-label'
+      -# .form-group.mb-0
+      -#   .form-check
+      -#     = f.check_box :wants_major_email, class:'form-check-input mr-2'
+      -#     = f.label :wants_major_email, t('users.wants_major_email'), class:'form-check-label'
+      -# .form-group
+      -#   .form-check
+      -#     = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
+      -#     = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
       .form-group
         .form-check
-          = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
-          = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
+          = f.check_box :allows_emails_from_swisssmash, class:'form-check-input mr-2'
+          = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
+      .form-group
+        .form-check
+          = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'
+          = f.label :allows_emails_from_partners, t('users.allows_emails_from_partners'), class:'form-check-label'
       .form-group{style: 'margin-top: 2rem;'}
         = f.label :current_password, t('users.current_password')
         %i= t('users.enter_current_password')
         = f.password_field :current_password, autocomplete: "off", class: 'form-control'
       .actions
-        = f.submit t('update'), class: 'btn btn-block btn-ghost'
+        = f.submit t('update'), class: 'btn btn-block btn-cyan'
 %hr
 .row
   .col

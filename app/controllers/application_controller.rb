@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
       :mobile_number, :area_of_responsibility, :is_club_member,
       :wants_major_email, :wants_weekly_email, :canton, :gender, :birth_year,
       :prefix, :discord_username, :twitter_username, :instagram_username,
-      :youtube_video_ids]
+      :youtube_video_ids, :allows_emails_from_swisssmash,
+      :allows_emails_from_partners]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end

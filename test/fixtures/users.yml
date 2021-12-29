@@ -23,3 +23,5 @@ admin:
   is_club_member: false
   wants_major_email: false
   wants_weekly_email: false
+  allows_emails_from_swisssmash: false
+  allows_emails_from_partners: false

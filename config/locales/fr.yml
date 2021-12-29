@@ -644,6 +644,8 @@ fr:
     challonge_api_key: "Clef api Challonge api (%{link})"
     wants_major_email: "M'informer quand un tournoi majeur est ajouté"
     wants_weekly_email: "M'informer quand un tournoi hebdomadaire est ajouté"
+    allows_emails_from_swisssmash : "J'accepte que SwissSmash m'envoie de temps en temps des e-mails sur des sujets importants pour la communauté & sur les grandes annonces de tournois"
+    allows_emails_from_partners : "Je suis d'accord pour que les partenaires de SwissSmash m'envoient des e-mails de temps en temps"
     current_password: "Mot de passe actuel"
     enter_current_password: "(entrer votre mot de passe actuel pour confirmer les modifications)"
     delete_my_account: "Supprimer mon compte"
