@@ -55,11 +55,9 @@
         = link_to t('video.title'), videos_path, class: 'nav-link'
 
       %li.nav-item.locales-list
-        = link_to 'en', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"
-        = '/'
-        = link_to 'de', url_for(locale: 'de'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'de' ? 'underline' : ''}"
-        = '/'
-        = link_to 'fr', url_for(locale: 'fr'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'fr' ? 'underline' : ''}"
+        = link_to '🇬🇧', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"
+        = link_to '🇩🇪', url_for(locale: 'de'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'de' ? 'underline' : ''}"
+        = link_to '🇫🇷', url_for(locale: 'fr'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'fr' ? 'underline' : ''}"
 
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
