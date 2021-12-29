@@ -2,9 +2,10 @@
 %html
   %head
     %title= "SwissSmash.ch | iframe"
+    = display_meta_tags(default_meta_tags)
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
-    = favicon_link_tag 'logo.png'
+    = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = render '/layouts/google_analytics'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true

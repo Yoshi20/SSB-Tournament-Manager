@@ -65,8 +65,8 @@ module ApplicationHelper
     {
       reverse: true,
       separator: '|',
-      description: 'Swiss Super Smash Brothers Community',
-      keywords: 'super smash brother, nintendo, smash brothers',
+      description: 'Swiss Super Smash Brothers E-Sports Community',
+      keywords: 'super smash brothers, nintendo, e-sports',
       canonical: request.original_url,
       noindex: !Rails.env.production?,
       icon: [
@@ -76,10 +76,10 @@ module ApplicationHelper
       og: {
         site_name: 'swisssmash.ch',
         title: 'SwissSmash',
-        description: 'Swiss Super Smash Brothers Community',
+        description: 'Swiss Super Smash Brothers E-Sports Community',
         type: 'website',
         url: request.original_url,
-        image: image_url('banner.jpg') #this should be better image that is 1200×627px
+        image: image_url('logo.png')
       }
     }
   end
