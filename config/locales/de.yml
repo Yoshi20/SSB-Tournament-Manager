@@ -12,6 +12,7 @@ de:
   s2_2019: "S2/19"
   s12_2020: "S1&2/20"
   s12_2021: "S1&2/21"
+  s12_2022: "S1&2/22"
   external: "Externe"
   internal: "Interne"
   weekly: "Weekly"
@@ -415,6 +416,7 @@ de:
     in_2019: "im 2019"
     in_2020: "im 2020"
     in_2021: "im 2021"
+    in_2022: "im 2022"
     male: "Männlich"
     female: "Weiblich"
     undefined: "Undefiniert"
@@ -450,6 +452,9 @@ de:
     s1_21:
       title: "Saison 1&2 2021"
       no_ranking: "Das Ranking erscheint voraussichtlich im Januar 2022"
+    s1_22:
+      title: "Saison 1&2 2022"
+      no_ranking: "Das Ranking erscheint voraussichtlich im Januar 2023"
 
   rules:
     title: "Regeln"

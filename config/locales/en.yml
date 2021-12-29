@@ -12,6 +12,7 @@ en:
   s2_2019: "S2/19"
   s12_2020: "S1&2/20"
   s12_2021: "S1&2/21"
+  s12_2022: "S1&2/22"
   external: "External"
   internal: "Internal"
   weekly: "Weekly"
@@ -415,6 +416,7 @@ en:
     in_2019: "in 2019"
     in_2020: "in 2020"
     in_2021: "in 2021"
+    in_2022: "in 2022"
     male: "Male"
     female: "Female"
     undefined: "Undefined"
@@ -450,6 +452,9 @@ en:
     s1_21:
       title: "Season 1&2 2021"
       no_ranking: "The ranking is expected to appear in January 2022"
+    s1_22:
+      title: "Season 1&2 2022"
+      no_ranking: "The ranking is expected to appear in January 2023"
 
   rules:
     title: "Rules"

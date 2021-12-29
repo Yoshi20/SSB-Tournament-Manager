@@ -42,6 +42,9 @@ class TournamentsController < ApplicationController
       elsif params[:filter] == 's12_2021'
         @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2021,1,1), Time.local(2021,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
         @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2021,1,1), Time.local(2021,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+      elsif params[:filter] == 's12_2022'
+        @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2022,1,1), Time.local(2022,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
+        @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2022,1,1), Time.local(2022,12,31,23,59,59)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
       else  # 'weekly', 'internal' or 'external'
         @tournaments = @tournaments.where(subtype: params[:filter])
         @past_tournaments = @past_tournaments.where(subtype: params[:filter])
