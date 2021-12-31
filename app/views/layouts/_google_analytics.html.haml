@@ -1,8 +1,7 @@
 - if Rails.env.production?
-  -# Google Analytics
-  %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-145089919-1"}
+  %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS']}"}
   :javascript
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', ENV['GOOGLE_ANALYTICS']);
+    gtag('config', "#{ENV['GOOGLE_ANALYTICS']}");
