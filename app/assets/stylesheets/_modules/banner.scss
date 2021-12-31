@@ -14,6 +14,12 @@
     object-fit: cover;
     height: 240px;
     width: 100%;
+    @media screen and (max-width: 992px) {
+      height: 180px;
+    }
+    @media screen and (max-width: 600px) {
+      height: 120px;
+    }
   }
   .banner__overlay {
     z-index: 1;
@@ -21,5 +27,17 @@
     height: 240px;
     opacity: 0.3;
     background-color: $color-grey-dark;
+    @media screen and (max-width: 992px) {
+      height: 180px;
+    }
+    @media screen and (max-width: 600px) {
+      height: 120px;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    height: 160px;
+  }
+  @media screen and (max-width: 600px) {
+    height: 100px;
   }
 }

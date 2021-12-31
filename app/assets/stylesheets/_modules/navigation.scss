@@ -16,7 +16,7 @@
       background-color: $color-white;
       border: 1px solid $color-white;
       border-radius: 50%;
-      @media screen and (max-width: 575px) {
+      @media screen and (max-width: 600px) {
         margin-right: 0rem;
       }
     }
@@ -78,7 +78,7 @@
       color: $color-white;
       margin-top: 2px;
       margin-left: 20px;
-      @media screen and (max-width: 991px) {
+      @media screen and (max-width: 992px) {
         margin-left: 0px;
       }
     }
@@ -114,7 +114,7 @@
       @media screen and (max-width: 1200px) {
         margin-left: -0.75rem !important;
       }
-      @media screen and (max-width: 991px) {
+      @media screen and (max-width: 992px) {
         margin-left: inherit !important;
       }
     }
