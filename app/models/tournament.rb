@@ -13,6 +13,8 @@ class Tournament < ApplicationRecord
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
+  before_create :set_canton
+
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 
   def self.search(search)
@@ -53,43 +55,58 @@ class Tournament < ApplicationRecord
     User.find_by(username: self.host_username) if self.host_username.present?
   end
 
-  def get_canton
+  def set_canton
+    return if self.canton.present?
     cantons_raw = ApplicationController.helpers.cantons_raw
     cantons_de = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :de).map(&:downcase)
     cantons_fr = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :fr).map(&:downcase)
     cantons_en = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :en).map(&:downcase)
-    canton = nil
+    # First: Try to determine canton from city
     if self.city.present?
       city = self.city.downcase
       city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
       if (cantons_de.include?(city) || cantons_fr.include?(city) || cantons_en.include?(city))
-        canton = cantons_raw[cantons_de.index(city)] if cantons_de.index(city).present?
-        canton = cantons_raw[cantons_fr.index(city)] if cantons_fr.index(city).present?
-        canton = cantons_raw[cantons_en.index(city)] if cantons_en.index(city).present?
+        self.canton = cantons_raw[cantons_de.index(city)] if cantons_de.index(city).present?
+        self.canton = cantons_raw[cantons_fr.index(city)] if cantons_fr.index(city).present?
+        self.canton = cantons_raw[cantons_en.index(city)] if cantons_en.index(city).present?
+        return # as soon as canton was found
       end
     end
-    if canton.nil? && self.location.present?
+    # Second: Try to determine canton from a word in location
+    if self.location.present?
       self.location.downcase.split(' ').each do |l|
         l = l.gsub(',', '').gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
         if (cantons_de.include?(l) || cantons_fr.include?(l) || cantons_en.include?(l))
-          canton = cantons_raw[cantons_de.index(l)] if cantons_de.index(l).present?
-          canton = cantons_raw[cantons_fr.index(l)] if cantons_fr.index(l).present?
-          canton = cantons_raw[cantons_en.index(l)] if cantons_en.index(l).present?
-          break
-        elsif self.name.present?
-          self.name.downcase.split(' ').each do |n|
-            n = n.gsub(',', '').gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-            if (cantons_de.include?(n) || cantons_fr.include?(n) || cantons_en.include?(n))
-              canton = cantons_raw[cantons_de.index(n)] if cantons_de.index(n).present?
-              canton = cantons_raw[cantons_fr.index(n)] if cantons_fr.index(n).present?
-              canton = cantons_raw[cantons_en.index(n)] if cantons_en.index(n).present?
-              break
+          self.canton = cantons_raw[cantons_de.index(l)] if cantons_de.index(l).present?
+          self.canton = cantons_raw[cantons_fr.index(l)] if cantons_fr.index(l).present?
+          self.canton = cantons_raw[cantons_en.index(l)] if cantons_en.index(l).present?
+          return # as soon as canton was found
+        end
+      end
+      # Third: Try to find the canton with the help of Google Maps
+      require 'open-uri'
+      require 'json'
+      begin
+        json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:CH&key=#{ENV['GOOGLE_MAPS_API_KEY']}&outputFormat=json").read)
+        if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
+          json_data["results"][0]["address_components"].each do |res|
+            if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
+              if res["long_name"].present?
+                ln = res["long_name"].downcase
+                if (cantons_de.include?(ln) || cantons_fr.include?(ln) || cantons_en.include?(ln))
+                  self.canton = cantons_raw[cantons_de.index(ln)] if cantons_de.index(ln).present?
+                  self.canton = cantons_raw[cantons_fr.index(ln)] if cantons_fr.index(ln).present?
+                  self.canton = cantons_raw[cantons_en.index(ln)] if cantons_en.index(ln).present?
+                  return # as soon as canton was found
+                end
+              end
             end
           end
         end
+      rescue OpenURI::HTTPError => ex
+        puts ex
       end
     end
-    return canton
   end
 
 end

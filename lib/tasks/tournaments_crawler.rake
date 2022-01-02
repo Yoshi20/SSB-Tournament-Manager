@@ -16,7 +16,7 @@ namespace :tournaments_crawler do
   task braacket: :environment do
     puts 'Crawling https://braacket.com/tournament...'
     root = 'https://braacket.com'
-    doc = Nokogiri::HTML(open('https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1'))
+    doc = Nokogiri::HTML(URI.open('https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1'))
     doc.css('div.my-panel-mosaic').each_with_index do |p, i|
       # each tournament panel (p)
       externalTournament = Tournament.new
@@ -56,7 +56,7 @@ namespace :tournaments_crawler do
     root = 'https://smash.gg/'
 
     # URL to get the data as JSON
-    doc = Nokogiri::HTML(open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true'))
+    doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true'))
     jsonHash = JSON.parse doc
     jsonHash['total_count'].times do |i|
       tournamentHash = jsonHash['items']['entities']['tournament'][i]
@@ -93,7 +93,7 @@ namespace :tournaments_crawler do
     end
 
     # URL to get the data as web page
-    # doc = Nokogiri::HTML(open('https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22CH%22%7D'))
+    # doc = Nokogiri::HTML(URI.open('https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22CH%22%7D'))
     # doc.css('div.TournamentCard').each_with_index do |c, i|
     #   # each tournament card (c)
     #   externalTournament = Tournament.new
@@ -135,7 +135,7 @@ namespace :tournaments_crawler do
     puts 'Crawling https://www.toornament.com/tournaments...'
     root = 'https://toornament.com'
     validFlag = 'flag-ch'
-    doc = Nokogiri::HTML(open('https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming'))
+    doc = Nokogiri::HTML(URI.open('https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming'))
     doc.css('div.tournament-list a.tournament').each_with_index do |a, i|
       locationItalic = a.css('div.event div.location i')[0]
       if !locationItalic.nil? and locationItalic['class'].include?(validFlag)

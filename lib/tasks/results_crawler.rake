@@ -39,7 +39,7 @@ namespace :results_crawler do
     ]
     links.each do |link|
       puts "\nCrawling #{link}..."
-      doc = Nokogiri::HTML(open(link))
+      doc = Nokogiri::HTML(URI.open(link))
       doc.css('div.my-panel-mosaic').each_with_index do |p, i|
         # each tournament panel (p)
         etName = ""
@@ -139,7 +139,7 @@ namespace :results_crawler do
       players = []
       link = t.external_registration_link + '/player?rows=200'
       puts "\nCrawling #{link}..."
-      doc = Nokogiri::HTML(open(link))
+      doc = Nokogiri::HTML(URI.open(link))
       doc.css('table tbody tr').each do |tr|
         firstGamerTag = tr.css('td a')[0].text.strip.split('[').first
         firstGamerTag = firstGamerTag.gsub(' (invitation pending)', '').strip
@@ -203,7 +203,7 @@ namespace :results_crawler do
         puts "this tournaments external registration link is nil! -> continue with the next tournament"
         next  # continue
       end
-      doc = Nokogiri::HTML(open(t.external_registration_link + '/match'))
+      doc = Nokogiri::HTML(URI.open(t.external_registration_link + '/match'))
       matchURLs = []
       doc.css('div.my-panel-collapsed')[0].css('a').each do |a|
         matchURLs << root + a['href']
@@ -211,7 +211,7 @@ namespace :results_crawler do
       matchURLs.each do |mURL|
         link = mURL + 'mode=table&display=1&status=2'
         puts "  Crawling #{link}..."
-        doc = Nokogiri::HTML(open(link))
+        doc = Nokogiri::HTML(URI.open(link))
         doc.css('table.tournament_encounter-row').each_with_index do |ter, i|
           p1 = ter.css('a')[0].text.split('[').first.gsub(' (invitation pending)', '').strip
           p1 = p1.split('|')[1].strip if p1.split('|').length > 1
@@ -285,7 +285,7 @@ namespace :results_crawler do
         puts "this tournaments external registration link is nil! -> continue with the next tournament"
         next  # continue
       end
-      doc = Nokogiri::HTML(open(t.external_registration_link + '/ranking?rows=200'))
+      doc = Nokogiri::HTML(URI.open(t.external_registration_link + '/ranking?rows=200'))
       doc.css('div.my-panel-collapsed').css('tbody').css('tr').each do |tr|
         firstGamerTag = tr.css('td a')[0].text.strip.split('[').first
         firstGamerTag = firstGamerTag.gsub(' (invitation pending)', '').strip
