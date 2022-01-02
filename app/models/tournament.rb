@@ -53,7 +53,7 @@ class Tournament < ApplicationRecord
     User.find_by(username: self.host_username) if self.host_username.present?
   end
 
-  def canton
+  def get_canton
     cantons_raw = ApplicationController.helpers.cantons_raw
     cantons_de = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :de).map(&:downcase)
     cantons_fr = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :fr).map(&:downcase)

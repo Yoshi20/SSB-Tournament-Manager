@@ -80,6 +80,7 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments/1/edit
   def edit
+    @tournament.assign_attributes(tournament_params) if params[:tournament].present?
   end
 
   # POST /tournaments
@@ -101,7 +102,7 @@ class TournamentsController < ApplicationController
           format.html { redirect_to @tournament, notice: t('flash.notice.create_internal_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
-          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.create_internal_tournament') }
+          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_internal_tournament') }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
@@ -118,7 +119,7 @@ class TournamentsController < ApplicationController
           format.html { redirect_to tournaments_path, notice: t('flash.notice.create_external_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
-          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.create_external_tournament') }
+          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_external_tournament') }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
@@ -143,7 +144,7 @@ class TournamentsController < ApplicationController
             if next_weekly.save
               last_weekly = next_weekly
             else
-              format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
+              format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
               format.json { render json: next_weekly.errors, status: :unprocessable_entity }
               return
             end
@@ -151,7 +152,7 @@ class TournamentsController < ApplicationController
           format.html { redirect_to @tournament, notice: t('flash.notice.create_weekly_tournament') }
           format.json { render :show, status: :created, location: @tournament }
         else
-          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
+          format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
@@ -177,7 +178,7 @@ class TournamentsController < ApplicationController
           if @tournament.weekly? && @tournament.city != oldcity
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
             unless @tournament.save
-              format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
+              format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
               format.json { render json: t.errors, status: :unprocessable_entity }
               return
             end
@@ -196,12 +197,12 @@ class TournamentsController < ApplicationController
                 if t.save
                   last_weekly = t
                 else
-                  format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
+                  format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
                   format.json { render json: t.errors, status: :unprocessable_entity }
                   return
                 end
               else
-                format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
+                format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
                 format.json { render json: t.errors, status: :unprocessable_entity }
                 return
               end
@@ -212,7 +213,7 @@ class TournamentsController < ApplicationController
           end
           format.json { render :show, status: :ok, location: @tournament }
         else
-          format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.update_internal_tournament') }
+          format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_internal_tournament') }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
@@ -222,7 +223,7 @@ class TournamentsController < ApplicationController
           format.html { redirect_to tournaments_path, notice: t('flash.notice.update_external_tournament') }
           format.json { render :show, status: :ok, location: @tournament }
         else
-          format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, anchor: @tournament.subtype), alert: t('flash.alert.update_external_tournament') }
+          format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_external_tournament') }
           format.json { render json: @tournament.errors, status: :unprocessable_entity }
         end
       end
@@ -661,7 +662,7 @@ class TournamentsController < ApplicationController
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools, :image_link, :image_height,
-        :image_width)
+        :image_width, :canton)
     end
 
     def set_challonge_username_and_api_key

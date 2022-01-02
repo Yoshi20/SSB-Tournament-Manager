@@ -7,6 +7,13 @@
         %ul
           - @tournament.errors.full_messages.each do |message|
             %li= message
+    - elsif params[:errors].present? && params[:errors]['count'].to_i > 0
+      #error_explanation
+        %h2= pluralize(params[:errors]['count'].to_i, "error") + " " + t('tournaments.prohibited')
+        %ul
+          - params[:errors]['full_messages'].each do |message|
+            %li= message
+
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'external'
     .form-group
@@ -16,13 +23,17 @@
     .form-group
       = f.label :name, t('tournaments.name')
       = f.text_field :name, class: 'form-control', placeholder: t('tournaments.name_placeholder')
+    - unless @tournament.new_record?
+      .form-group
+        = f.label :city, t('tournaments.city')
+        = f.text_field :city, class: 'form-control'
+      .form-group
+        = f.label :location, t('tournaments.location')
+        %em= t('tournaments.separate')
+        = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
     .form-group
-      = f.label :city, t('tournaments.city')
-      = f.text_field :city, class: 'form-control'
-    .form-group
-      = f.label :location, t('tournaments.location')
-      %em= t('tournaments.separate')
-      = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
+      = f.label :canton, t('players.canton')
+      = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
     .form-group
       = f.label :registration_fee, t('tournaments.registration_fee')
       = f.number_field :registration_fee, class: 'form-control'

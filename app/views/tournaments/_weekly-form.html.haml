@@ -7,6 +7,12 @@
         %ul
           - @tournament.errors.full_messages.each do |message|
             %li= message
+    - elsif params[:errors].present? && params[:errors]['count'].to_i > 0
+      #error_explanation
+        %h2= pluralize(params[:errors]['count'].to_i, "error") + " " + t('tournaments.prohibited')
+        %ul
+          - params[:errors]['full_messages'].each do |message|
+            %li= message
 
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'weekly'
@@ -33,38 +39,24 @@
       = f.label :location, t('tournaments.location')
       %em= t('tournaments.separate')
       = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
-    - if params[:tournament].present?
-      .form-group
-        = f.label :registration_fee, t('tournaments.registration_fee')
-        = f.number_field :registration_fee, class: 'form-control', value: params[:tournament][:registration_fee]
-      .form-group
-        = f.label :total_seats, t('tournaments.total_seats')
-        = f.number_field :total_seats, class: 'form-control', value: params[:tournament][:total_seats]
-      .form-group
-        = f.label :min_needed_registrations, t('tournaments.min_needed_registrations')
-        = f.number_field :min_needed_registrations, class: 'form-control', value: params[:tournament][:min_needed_registrations]
-      .form-group
-        = f.label :total_needed_game_stations, t('tournaments.total_needed_game_stations')
-        = f.number_field :total_needed_game_stations, class: 'form-control', value: params[:tournament][:total_needed_game_stations]
-      .form-group
-        = f.label :host_username, t('tournaments.hostname')
-        = f.text_field :host_username, class: 'form-control', value: params[:tournament][:host_username]
-    - else
-      .form-group
-        = f.label :registration_fee, t('tournaments.registration_fee')
-        = f.number_field :registration_fee, class: 'form-control', value: (@tournament.registration_fee || 5)
-      .form-group
-        = f.label :total_seats, t('tournaments.total_seats')
-        = f.number_field :total_seats, class: 'form-control', value: (@tournament.total_seats || 40)
-      .form-group
-        = f.label :min_needed_registrations, t('tournaments.min_needed_registrations')
-        = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.min_needed_registrations || 16)
-      .form-group
-        = f.label :total_needed_game_stations, t('tournaments.total_needed_game_stations')
-        = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.total_needed_game_stations || 10)
-      .form-group
-        = f.label :host_username, t('tournaments.hostname')
-        = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
+    .form-group
+      = f.label :canton, t('players.canton')
+      = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
+    .form-group
+      = f.label :registration_fee, t('tournaments.registration_fee')
+      = f.number_field :registration_fee, class: 'form-control', value: (@tournament.registration_fee || 5)
+    .form-group
+      = f.label :total_seats, t('tournaments.total_seats')
+      = f.number_field :total_seats, class: 'form-control', value: (@tournament.total_seats || 40)
+    .form-group
+      = f.label :min_needed_registrations, t('tournaments.min_needed_registrations')
+      = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.min_needed_registrations || 16)
+    .form-group
+      = f.label :total_needed_game_stations, t('tournaments.total_needed_game_stations')
+      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.total_needed_game_stations || 10)
+    .form-group
+      = f.label :host_username, t('tournaments.hostname')
+      = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
     .form-group
       = f.label :image_link, t('tournaments.image_link')
       %em= t('tournaments.image_owner')

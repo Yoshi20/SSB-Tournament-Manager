@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_155945) do
+ActiveRecord::Schema.define(version: 2022_01_02_162313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_155945) do
     t.string "image_link"
     t.string "image_height"
     t.string "image_width"
+    t.string "canton"
   end
 
   create_table "users", force: :cascade do |t|

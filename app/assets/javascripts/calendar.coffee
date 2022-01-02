@@ -16,6 +16,9 @@ document.addEventListener 'turbolinks:load', ->
         img.src = $("##{icon}").attr('src');
         img.width = 20;
         img.height = 20;
-        img.style = 'margin-right: 2px; margin-left: -2px;'
+        if $fc_content.find('.fc-time').length == 0
+          img.style = 'margin-right: -2px; margin-left: -2px;';
+        else
+          img.style = 'margin-right: 2px; margin-left: -2px;';
         $fc_content.prepend(img);
   setInterval(run, 1000)
