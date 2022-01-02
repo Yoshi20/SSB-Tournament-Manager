@@ -64,7 +64,15 @@ class TournamentsController < ApplicationController
   # GET /tournaments/new
   def new
     if params[:id].present?
-      @tournament = Tournament.new(Tournament.find(params[:id]).attributes)
+      @tournament = Tournament.find(params[:id]).dup
+      @tournament.active = true
+      @tournament.started = false
+      @tournament.finished = false
+      @tournament.challonge_tournament_id = nil
+      @tournament.ranking_string = nil
+      @tournament.setup = false
+      @tournament.waiting_list = []
+      @tournament.external_registration_link = nil
     else
       @tournament = Tournament.new
     end
