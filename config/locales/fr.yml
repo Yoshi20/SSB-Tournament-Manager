@@ -166,7 +166,7 @@ fr:
   partials:
     events: "Prochains Tournois"
     players:
-      title: "Meilleurs joueurs (2019)"
+      title: "Meilleurs joueurs (2021)"
       player: "Joueur"
 
   welcome:
