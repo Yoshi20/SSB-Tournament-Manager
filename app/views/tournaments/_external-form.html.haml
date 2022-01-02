@@ -20,6 +20,10 @@
       = f.label :city, t('tournaments.city')
       = f.text_field :city, class: 'form-control'
     .form-group
+      = f.label :location, t('tournaments.location')
+      %em= t('tournaments.separate')
+      = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
+    .form-group
       = f.label :registration_fee, t('tournaments.registration_fee')
       = f.number_field :registration_fee, class: 'form-control'
     .form-group
