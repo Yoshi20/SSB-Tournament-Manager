@@ -401,7 +401,7 @@ class TournamentsController < ApplicationController
         ct.game_name = 'Super Smash Bros. Ultimate'
         ct.description = helpers.valid_challonge_description(@tournament.description)
         ActiveRecord::Base.transaction do
-          if ct.save! == false
+          if !ct.save
             raise ct.errors.full_messages.inspect
           end
         rescue => error
