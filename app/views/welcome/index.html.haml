@@ -20,6 +20,9 @@
           %strong= "Find us"
         = image_tag "Calendar_Logo.svg", class: 'welcome_image'
 %p
+  = t('welcome.body0')
+
+%p
   = t('welcome.body1',
     discord_link: link_to('Discord', 'https://discord.gg/wA89CyA', target: '_blank', style: 'font-weight: 600;'),
     twitter_link: link_to('Twitter', 'https://twitter.com/swiss_smash', target: '_blank', style: 'font-weight: 600;')).html_safe
