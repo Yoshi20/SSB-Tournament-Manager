@@ -435,7 +435,7 @@ en:
     in_2022: "in 2022"
     male: "Male"
     female: "Female"
-    undefined: "Undefined"
+    other: "Other"
     youngest: "Youngest"
     mean-age: "Ø age"
     oldest: "Oldest"

@@ -435,7 +435,7 @@ de:
     in_2022: "im 2022"
     male: "Männlich"
     female: "Weiblich"
-    undefined: "Undefiniert"
+    other: "Sonstiges"
     youngest: "Jüngste"
     mean-age: "Ø-Alter"
     oldest: "Älteste"

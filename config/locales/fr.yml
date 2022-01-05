@@ -435,7 +435,7 @@ fr:
     in_2022: "en 2022"
     male: "Masculin"
     female: "Féminin"
-    undefined: "Indéfini"
+    other: "Autre"
     youngest: "Le plus jeune"
     mean-age: "Ø âge"
     oldest: "Le plus vieux"
