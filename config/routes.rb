@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'calendar' => 'calendar#index'
   get 'calendar_for_iframe' => 'calendar#show'
 
+  post 'contact' => 'contact#contact'
+
   get 'rankings' => 'rankings#index'
 
   get 'statistics' => 'statistics#index'

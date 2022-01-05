@@ -109,6 +109,7 @@ de:
       feedback_updated: "Rückmeldung oder Frage wurde erfolgreich aktualisiert"
       feedback_deleted: "Rückmeldung oder Frage wurde erfolgreich gelöscht"
       player_updated: "Spieler wurde erfolgreich aktualisiert"
+      contact: "Vielen Dank. Deine Nachricht wurde gesendet"
     alert:
       creating_player: "Spieler konnte nicht erstellt werden! Möglicherweise hast du einen bereits verwendeten Gamer-Tag ausgewählt. Bitte versuche es erneut"
       updating_user: "Benutzer konnte nicht aktualisiert werden"
@@ -148,6 +149,7 @@ de:
       tournament_cannot_finish: "Turnier kann nicht beendet werden"
       unauthorized: "Nicht autorisiert! Sie müssen ein Administrator sein, um diese Aktion auszuführen"
       login_failed: "Login fehlgeschlagen! Bitte versuche es erneut"
+      contact: "reCAPTCHA denkt, dass du kein Mensch bist. Bitte versuche es erneut"
 
   navigation:
     list: "Liste"
@@ -239,6 +241,12 @@ de:
     personal_data:
       title: "Persönliche Daten"
       personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
+    contact:
+      title: "Schreib mir eine Nachricht"
+      submit: "Absenden"
+      name: "Dein Name oder Gamertag"
+      email: "Deine E-Mail"
+      body: "Deine Nachricht"
 
   calendar:
     title: "Kalender"

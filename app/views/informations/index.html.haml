@@ -26,6 +26,9 @@
   %li.nav-item
     %a#personal-data-tab.nav-link{'data-toggle'=>'tab', href: '#personal-data', role: 'tab', 'aria-controls'=>'all'}
       = t('information.personal_data.title')
+  %li.nav-item
+    %a#contact-tab.nav-link{'data-toggle'=>'tab', href: '#contact', role: 'tab', 'aria-controls'=>'all'}
+      = t('navigation.footer.contact')
 
 .tab-content#information-tabs-content
   -# general
@@ -153,3 +156,19 @@
       .col
         %h2= t('information.personal_data.title')
         %p= t('information.personal_data.personal_data_body').html_safe
+  -# contact
+  .tab-pane.fade.show#contact{role: 'tabpanel', 'aria-labelledby'=>'contact-tab'}
+    .row
+      .col
+        %h2= t('information.contact.title')
+        = form_tag contact_path, method: 'post', class: 'form' do
+          .form-group
+            = text_field_tag :name, params[:name], class: 'form-control', placeholder: t('information.contact.name')
+          .form-group
+            = text_field_tag :email, params[:email], class: 'form-control', placeholder: t('information.contact.email')
+          .form-group
+            = text_area_tag :body, params[:body], class: 'form-control', placeholder: t('information.contact.body')
+          .form-group
+            = recaptcha_tags
+          .form-group
+            = button_tag t('information.contact.submit'), type: 'submit', class: 'btn btn-default'

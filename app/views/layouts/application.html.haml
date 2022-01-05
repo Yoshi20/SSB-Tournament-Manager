@@ -53,10 +53,11 @@
                   = link_to t('navigation.footer.administrators_short'), :administrators
               .col
                 %p.small
-                  = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
+                  -# = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
+                  = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
           .col-2
             = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
-              = image_tag('logo.png', class: 'swisssmash_logo', eight: '50px', width: '50px')
+              = image_tag('logo.png', class: 'swisssmash_logo', height: '50px', width: '50px')
           .col-5
             .row
               .col
