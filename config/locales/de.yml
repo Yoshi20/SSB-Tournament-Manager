@@ -150,6 +150,7 @@ de:
       unauthorized: "Nicht autorisiert! Sie müssen ein Administrator sein, um diese Aktion auszuführen"
       login_failed: "Login fehlgeschlagen! Bitte versuche es erneut"
       contact: "reCAPTCHA denkt, dass du kein Mensch bist. Bitte versuche es erneut"
+      contact_invalid: "Deine E-Mail oder Nachricht fehlt. Bitte versuche es erneut"
 
   navigation:
     list: "Liste"

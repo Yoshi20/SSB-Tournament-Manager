@@ -165,7 +165,7 @@
           .form-group
             = text_field_tag :name, params[:name], class: 'form-control', placeholder: t('information.contact.name')
           .form-group
-            = text_field_tag :email, params[:email], class: 'form-control', placeholder: t('information.contact.email')
+            = email_field_tag :email, params[:email], class: 'form-control', placeholder: t('information.contact.email')
           .form-group
             = text_area_tag :body, params[:body], class: 'form-control', placeholder: t('information.contact.body')
           .form-group

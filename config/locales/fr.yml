@@ -150,6 +150,7 @@ fr:
       unauthorized: "Non-autorisé! Vous devez être un administrateur pour faire cette action"
       login_failed: "Échec de la connexion! Veuillez réessayer"
       contact: "reCAPTCHA pense que vous n'êtes pas humain. Veuillez réessayer"
+      contact_invalid: "Votre e-mail ou message est manquant. Veuillez réessayer"
 
   navigation:
     list: "Liste"

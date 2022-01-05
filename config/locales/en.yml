@@ -150,6 +150,7 @@ en:
       unauthorized: "Unauthorized! You must be an administrator to make this action"
       login_failed: "Login failed! Please try again"
       contact: "reCAPTCHA thinks that you're not a human. Please try again"
+      contact_invalid: "Your email or message is missing. Please try again"
 
   navigation:
     list: "List"
