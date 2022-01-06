@@ -180,14 +180,14 @@ de:
 
   welcome:
     title: "SwissSmash"
-    body0: "Willkommen bei SwissSmash, deinem Einstiegspunkt in die schweizer Super Smash Bros. Szene."
+    body0: "Willkommen bei SwissSmash, deinem Einstiegspunkt in die schweizer Super Smash Bros. Ultimate Szene."
     body1: "Wenn du mit der Swiss Smash Community auf dem Laufenden bleiben willst, schließe dich uns auf %{discord_link} an und folge dem Swiss Smash %{twitter_link} Account."
     body2: "Du findest die bevorstehenden Ereignisse in der %{tournaments_link} oder im %{calendar_link}."
     body3: "%{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan hast, um an einem Turnier teilnehmen zu können und eine %{feedbacks_link} schreiben zu können."
     body4: "Das offizielle Power Ranking der Schweiz findest du unter %{rankings_link}."
     body5: "Hier gehts zu allen auf SwissSmash registrierten %{players_link} und hier zu den %{statistics_link}."
     body6: "Nähere Informationen zu SwissSmash findest du unter %{informations_link}."
-    tournament_list: "Turnier Liste"
+    tournament_list: "Turnierliste"
     calendar: "Kalender"
     log_in: "Logge dich ein"
     sign_up: "melde dich an"

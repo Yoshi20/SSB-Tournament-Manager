@@ -180,7 +180,7 @@ fr:
 
   welcome:
     title: "SwissSmash"
-    body0: "Bienvenue sur SwissSmash, votre point d'entrée dans la scène suisse de Super Smash Bros."
+    body0: "Bienvenue sur SwissSmash, votre point d'entrée dans la scène suisse de Super Smash Bros. Ultimate"
     body1: "Si vous voulez rester à jour avec la Communauté Suisse de Smash, rejoignez-nous sur %{discord_link} et suivez le compte %{twitter_link} Swiss Smash."
     body2: "Vous pouvez trouver les évènements à venir dans la %{tournaments_link} ou le %{calendar_link}."
     body3: "%{log_in_link} ou %{sign_up_link} si vous ne l'avez pas encore fait, pour pouvoir rejoindre un tournoi et écrire un %{feedbacks_link}."
