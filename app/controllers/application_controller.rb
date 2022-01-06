@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
-  before_action :get_top_players
+  before_action :set_top_players
   before_action :get_next_tournaments
   before_action :prepare_exception_notifier
   after_action :set_response_language_header
@@ -44,13 +44,16 @@ class ApplicationController < ActionController::Base
     request.referrer
   end
 
-  def get_top_players
-    @topPlayers = []
-    helpers.top_players_s12_21.each do |p|
-      player = Player.find_by(gamer_tag: p)
-      player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
-      @topPlayers << player unless player.nil?
-      break if @topPlayers.size >= 12 # limit(12)
+  def set_top_players
+    @topPlayers = Rails.cache.fetch("top_players_s12_21", expires_in: 1.day) do
+      @topPlayers = []
+      helpers.top_players_s12_21.each do |p|
+        player = Player.find_by(gamer_tag: p)
+        player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
+        @topPlayers << player unless player.nil?
+        break if @topPlayers.size >= 12 # limit(12)
+      end
+      @topPlayers
     end
   end
 
