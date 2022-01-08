@@ -112,4 +112,7 @@
       }
     }
   }
+  .fc-content {
+    min-height: 20px; // to make sure the icons will always fit
+  }
 }
