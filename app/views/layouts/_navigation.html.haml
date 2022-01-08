@@ -57,9 +57,9 @@
         = link_to t('information.title_short'), informations_path, class: 'nav-link'
 
       %li.nav-item.locales-list
-        = link_to '🇬🇧', url_for(locale: 'en'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'en' ? 'underline' : ''}"
-        = link_to '🇩🇪', url_for(locale: 'de'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'de' ? 'underline' : ''}"
-        = link_to '🇫🇷', url_for(locale: 'fr'), class: 'locales', style: "text-decoration: #{cookies[:locale] == 'fr' ? 'underline' : ''}"
+        = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
+        = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de')
+        = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr')
 
     %ul.navbar-nav.navbar-account
       - if user_signed_in?
