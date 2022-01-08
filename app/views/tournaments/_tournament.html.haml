@@ -18,23 +18,13 @@
     %td
       = tournament.name
 
-    %td.d-none.d-md-table-cell
-      - if tournament.location.present?
-        = tournament.location.split(',')[0]
-      - else
-        = tournament.city || '-'
+    %td.text-center.d-sm-none
+      = tournament.city || '-'
 
-    %td.text-center.d-none.d-sm-table-cell.d-md-table-cell
-      - if tournament.registration_fee.present?
-        - if tournament.registration_fee%1 != 0  # check if it's a float
-          = tournament.registration_fee
-        - else
-          = tournament.registration_fee.to_i
-        = 'CHF'
-      - else
-        = '-'
+    %td.d-none.d-sm-table-cell
+      = tournament.location.gsub(', CH', '').gsub(', Schweiz', '').gsub(', Suisse', '').gsub(', Switzerland', '') if tournament.location.present?
 
-    %td.text-center.d-none.d-sm-table-cell.d-md-table-cell
+    %td.text-center.d-none.d-md-table-cell
       - if tournament.total_seats.nil?
         = '-'
       - else
