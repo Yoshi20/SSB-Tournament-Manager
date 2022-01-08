@@ -7,8 +7,8 @@ module TournamentsHelper
   end
 
   def tournament_cities_with_a_weekly
-    ['Basel', 'Bern', 'Burgdorf', 'Burgdorf #2', 'Fribourg', 'Lausanne',
-      'Solothurn', 'Trimbach', 'Vernier', 'Yverdon-les-Bains', 'Zurich']
+    ['Basel', 'Bern', 'Burgdorf', 'Fribourg', 'Lausanne', 'Solothurn',
+      'Trimbach', 'Vernier', 'Yverdon-les-Bains', 'Zurich']
   end
 
   def tournament_majors
