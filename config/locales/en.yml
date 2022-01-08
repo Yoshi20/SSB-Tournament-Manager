@@ -421,7 +421,7 @@ en:
     joined_tournament_at: "At"
     past_tournaments: "Past Tournaments"
     videos: "Videos"
-    individuals: "Individuals"
+    individuals: "List"
 
   statistics:
     title: "Statistics"

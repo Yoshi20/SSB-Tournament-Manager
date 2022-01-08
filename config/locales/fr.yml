@@ -421,7 +421,7 @@ fr:
     joined_tournament_at: "Le"
     past_tournaments: "Tournois passés"
     videos: "Vidéos"
-    individuals: "Personnes"
+    individuals: "Liste"
 
   statistics:
     title: "Statistiques"
