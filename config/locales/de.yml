@@ -198,7 +198,7 @@ de:
     general:
       title: "Allgemein"
       swisssmash: |
-        Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros.-Szene in der Schweiz zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
+        Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in der Schweiz zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
         Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
         Mittlerweile gibt es auch eine fast komplette Liste von Swiss Smash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
     calendar:
@@ -220,13 +220,16 @@ de:
       power_ranking_li_6: "Weeklies zählen nicht zum PR"
     tournament_manager:
       title: "Turniermanager"
-      bracket_tool: "Bracket tool"
-      bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der SwissSmash-Turniermanager vorerst %{link}."
       tournament_organiser: "Turnierveranstalter"
-      tournament_organiser_body: "Organisierst du selbst Turniere und möchtest den SwissSmash-Turniermanager nutzen? Schreib mir einfach ein %{link}."
+      tournament_organiser_body: "SwissSmash.ch beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den SwissSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
       tournament_organiser_mail: "Email"
       tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
       tournament_organiser_mail_body: "Hi SwissSmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
+      bracket_tool: "Bracket tool"
+      bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der SwissSmash-Turniermanager vorerst %{link}."
+      bracket_seeding: "Bracket seeding"
+      bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
+      bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
     results:
       title: "Resultate"
       results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
@@ -234,11 +237,6 @@ de:
       ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
       ranking_system_rank: "Rang"
       ranking_system_points: "Punkte"
-    seeding:
-      title: "Seeding"
-      seeding: "Bracket Seeding"
-      seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf SwissSmash.ch generiert wird:"
-      seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO oder dessen Vertreter."
     personal_data:
       title: "Persönliche Daten"
       personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."

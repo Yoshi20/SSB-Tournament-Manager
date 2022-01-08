@@ -21,9 +21,6 @@
     %a#results-tab.nav-link{'data-toggle'=>'tab', href: '#results', role: 'tab', 'aria-controls'=>'all'}
       = t('information.results.title')
   %li.nav-item
-    %a#seeding-tab.nav-link{'data-toggle'=>'tab', href: '#seeding', role: 'tab', 'aria-controls'=>'all'}
-      = t('information.seeding.title')
-  %li.nav-item
     %a#personal-data-tab.nav-link{'data-toggle'=>'tab', href: '#personal-data', role: 'tab', 'aria-controls'=>'all'}
       = t('information.personal_data.title')
   %li.nav-item
@@ -79,13 +76,23 @@
   .tab-pane.fade.show#tournament-manager{role: 'tabpanel', 'aria-labelledby'=>'tournament-manager-tab'}
     .row
       .col
+        %h2= t('information.tournament_manager.tournament_organiser')
+        %p= t('information.tournament_manager.tournament_organiser_body', link: mail_to('admin@swisssmash.ch', t('information.tournament_manager.tournament_organiser_mail'), subject: t('information.tournament_manager.tournament_organiser_mail_subject'), body: t('information.tournament_manager.tournament_organiser_mail_body'))).html_safe
+    .row
+      .col
         %h2= t('information.tournament_manager.bracket_tool')
         %p
           = t('information.tournament_manager.bracket_tool_body', link: link_to('Challonge', 'https://challonge.com/', target: '_blank')).html_safe
-    .row.mt-3
+    .row
       .col
-        %h2= t('information.tournament_manager.tournament_organiser')
-        %p= t('information.tournament_manager.tournament_organiser_body', link: mail_to('admin@swisssmash.ch', t('information.tournament_manager.tournament_organiser_mail'), subject: t('information.tournament_manager.tournament_organiser_mail_subject'), body: t('information.tournament_manager.tournament_organiser_mail_body'))).html_safe
+        %h2= t('information.tournament_manager.bracket_seeding')
+        %p
+          = t('information.tournament_manager.bracket_seeding_body1')
+          %br
+          %div{style: 'margin-left: 20px;'}
+            %i player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10
+          %br
+          = t('information.tournament_manager.bracket_seeding_body2')
   -# results
   .tab-pane.fade.show#results{role: 'tabpanel', 'aria-labelledby'=>'results-tab'}
     .row
@@ -138,18 +145,6 @@
             %tr
               %td.text-center= '>'+32.ordinalize
               %td.text-center 5
-  -# seeding
-  .tab-pane.fade.show#seeding{role: 'tabpanel', 'aria-labelledby'=>'seeding-tab'}
-    .row.mt-3
-      .col
-        %h2= t('information.seeding.seeding')
-        %p
-          = t('information.seeding.seeding_body1')
-          %br
-          %div{style: 'margin-left: 20px;'}
-            %i player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10
-          %br
-          = t('information.seeding.seeding_body2')
   -# personal-data
   .tab-pane.fade.show#personal-data{role: 'tabpanel', 'aria-labelledby'=>'personal-data-tab'}
     .row

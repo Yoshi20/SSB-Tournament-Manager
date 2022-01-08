@@ -22,7 +22,7 @@ fr:
   edit: "Éditer"
   delete: "Supprimer"
   back: "Retour"
-  confirm: "Êtes-vous certain ?"
+  confirm: "Êtes-vous certain?"
 
   defines:
     self_assessments:
@@ -198,7 +198,7 @@ fr:
     general:
       title: "Général"
       swisssmash: |
-        Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
+        Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
         Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
         En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
     calendar:
@@ -220,13 +220,16 @@ fr:
       power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
     tournament_manager:
       title: "Gestionnaire de tournoi"
-      bracket_tool: "Outil de Bracket"
-      bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
       tournament_organiser: "Organisateur de tournoi"
-      tournament_organiser_body: "Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash ? Faites-le moi savoir %{link}."
+      tournament_organiser_body: "SwissSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
       tournament_organiser_mail: "via email"
       tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
       tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
+      bracket_tool: "Outil de Bracket"
+      bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
+      bracket_seeding: "Bracket seeding"
+      bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
+      bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
     results:
       title: "Résultats"
       results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
@@ -234,11 +237,6 @@ fr:
       ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
       ranking_system_rank: "Rang"
       ranking_system_points: "Points"
-    seeding:
-      title: "Seeding"
-      seeding: "Bracket seeding"
-      seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
-      seeding_body2: "Le seeding final est fait manuellement par un TO ou ses représentants."
     personal_data:
       title: "Données personnelles"
       personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
