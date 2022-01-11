@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
   require 'will_paginate/array'
 
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_player!, only: [:edit, :update, :destroy]
   before_action { @section = 'players' }
 
   # GET /players
@@ -148,6 +149,15 @@ class PlayersController < ApplicationController
         :losses, :main_characters, :created_at, :updated_at, :canton, :gender,
         :birth_year, :prefix, :discord_username, :twitter_username,
         :instagram_username, :youtube_video_ids, :warnings)
+    end
+
+    def authenticate_player!
+      unless current_user.present? && (@player.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @player, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @player.errors, status: :unauthorized }
+        end
+      end
     end
 
 end
