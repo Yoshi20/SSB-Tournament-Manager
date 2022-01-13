@@ -7,7 +7,7 @@
 .row
   .col
     - @players.each do |player|
-      - youtube_video_ids = player.youtube_video_ids.gsub('https://youtu.be/', '').gsub(' ', '').split(',')
+      - youtube_video_ids = player.sanitized_youtube_video_ids.split(',')
       .player{style: ('border-top: 1px solid #E5E9EB; margin-top: 1rem; padding-top: 1rem;' if player != @players.first)}
         %h2= t('video.players_videos', player: link_to(player.gamer_tag, player), s: youtube_video_ids.length > 1 ? 's' : '').html_safe
         .player__videos

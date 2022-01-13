@@ -97,4 +97,8 @@ class Player < ApplicationRecord
     end
     self.save
   end
+
+  def sanitized_youtube_video_ids
+    self.youtube_video_ids.gsub('https://youtu.be/', '').gsub('https://www.youtube.com/watch?v=', '').gsub('&t', '').gsub(' ', '')
+  end
 end

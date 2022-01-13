@@ -1,6 +1,6 @@
 - youtube_video_ids = []
 - if @player.youtube_video_ids.present?
-  - youtube_video_ids = @player.youtube_video_ids.gsub('https://youtu.be/', '').gsub(' ', '').split(',')
+  - youtube_video_ids = @player.sanitized_youtube_video_ids.split(',')
 .player
   .row
     .col
