@@ -215,7 +215,7 @@
             - require 'json'
             - youtube_video_ids[1.. -1].each do |v_id|
               - begin
-                - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{v_id}&format=json").read)
+                - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{URI.escape(v_id)}&format=json").read)
                 .row{style: 'margin-bottom: 1rem;'}
                   .col-4{style: 'text-align: center;'}
                     = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
