@@ -209,7 +209,7 @@
       .tab-pane.fade.show#videos{role: 'tabpanel', 'aria-labelledby'=>'videos-tab'}
         .player__videos
           .newest_video
-            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{youtube_video_ids[0]}"}
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{URI.escape(youtube_video_ids[0])}"}
           .other_videos{style: 'margin-top: 1rem;'}
             - require 'open-uri'
             - require 'json'

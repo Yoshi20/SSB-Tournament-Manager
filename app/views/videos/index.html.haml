@@ -12,7 +12,8 @@
         %h2= t('video.players_videos', player: link_to(player.gamer_tag, player), s: youtube_video_ids.length > 1 ? 's' : '').html_safe
         .player__videos
           .newest_video
-            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{youtube_video_ids[0]}"}
+
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{URI.escape(youtube_video_ids[0])}"}
           - if youtube_video_ids.length > 1
             .other_videos{style: 'margin-top: 1rem;'}
               - require 'open-uri'
