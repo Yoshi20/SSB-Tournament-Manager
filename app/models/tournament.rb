@@ -8,6 +8,7 @@ class Tournament < ApplicationRecord
 
   scope :active, -> { where(active: true) }
   scope :upcoming, -> { where('date > ?', Time.now) }
+  scope :upcoming_with_today, -> { where('date >= ?', Time.now.beginning_of_day) }
   scope :ongoing, -> { where('(finished IS FALSE OR finished IS NULL) AND date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
   scope :past, -> { where('started AND finished OR date < ?', Time.now - 6.hours) }
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
