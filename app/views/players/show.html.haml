@@ -153,7 +153,7 @@
               %span
                 = t('players.experience')
 
-      - if not @player.warnings.nil? and @player.warnings > 0
+      - if current_user.present? and current_user.admin? and not @player.warnings.nil? and @player.warnings > 0
         .player__stats
           .row
             .col
