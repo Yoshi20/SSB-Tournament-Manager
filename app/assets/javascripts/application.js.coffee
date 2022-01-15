@@ -91,20 +91,34 @@ document.addEventListener 'turbolinks:load', ->
     $(window).scrollTop(0)  # workaround to prevent scroll from anchor tag
 
   # a click on a component-column links to its show
-  $('tbody.with-show').on 'click', 'tr', (e) ->
-    $et = $(e.target)
+  openUrl = (t, e, middle_btn) ->
+    $et = $(e.target);
+    $t = $(t);
     unless $et.hasClass('admin-actions__link__icon') || $et.hasClass('btn-square') || $et.hasClass('paid-fee-checkbox') || $et.hasClass('game-stations-number-field') || $et.hasClass('copy-gamer-tag')
-      external_url = $(this).attr('data-external_url')
-      internal_url = $(this).attr('data-internal_url')
+      external_url = $t.attr('data-external_url');
+      internal_url = $t.attr('data-internal_url');
+      protocol_and_host = window.location.protocol + '//' + window.location.host;
       if external_url
-        window.open(external_url, '_blank')
+        window.open(external_url, '_blank');
       else if internal_url
-        window.location.href = internal_url
+        if middle_btn
+          window.open(protocol_and_host + internal_url, '_blank');
+        else
+          window.location.href = internal_url;
       else
-        id = $(this).attr('data-id')
+        id = $t.attr('data-id');
         if id != undefined
-          component = $(this).attr('data-component')
-          window.location.href = "/#{component}s/#{id}"
+          component = $t.attr('data-component');
+          path = "/#{component}s/#{id}";
+          if middle_btn
+            window.open(protocol_and_host + path, '_blank');
+          else
+            window.location.href = path;
+  $('tbody.with-show').on 'auxclick', 'tr', (e) ->
+    if e.button == 1 # allow only the middle button
+      openUrl(this, e, true);
+  $('tbody.with-show').on 'click', 'tr', (e) ->
+    openUrl(this, e, (e.button == 1));
 
   # a click on sort table header toggels its order param
   $('th a').on 'click', (e) ->
