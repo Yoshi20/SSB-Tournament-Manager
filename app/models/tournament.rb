@@ -15,6 +15,7 @@ class Tournament < ApplicationRecord
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
   before_create :set_canton
+  before_create :set_country_code
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 

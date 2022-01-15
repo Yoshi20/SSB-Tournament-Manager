@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_accessor :login
 
   before_validation :strip_whitespace
+  before_create :set_country_code
 
   validates :username,
     :presence => true,

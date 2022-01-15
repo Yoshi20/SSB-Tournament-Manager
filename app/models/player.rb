@@ -6,6 +6,7 @@ class Player < ApplicationRecord
   has_many :tournaments, through: :registrations
 
   before_validation :strip_whitespace
+  before_create :set_country_code
 
   validates :gamer_tag, uniqueness: true, presence: true
   validates :prefix, length: { maximum: 12 }
