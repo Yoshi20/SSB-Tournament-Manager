@@ -124,7 +124,7 @@ namespace :results_crawler do
 
   desc "Find players from braacket.com and add them to it's external tournament"
   task findPlayers: :environment do
-    allGamerTags = Player.all.map {|p| p.gamer_tag}
+    allGamerTags = Player.all_ch.map {|p| p.gamer_tag}
     allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       if t.subtype == 'internal'
@@ -268,7 +268,7 @@ namespace :results_crawler do
 
   desc "Find and create results from braacket.com and add them to it's external tournament and player"
   task createResults: :environment do
-    allGamerTags = Player.all.map {|p| p.gamer_tag}
+    allGamerTags = Player.all_ch.map {|p| p.gamer_tag}
     allGamerTags += AlternativeGamerTag.all.map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       tournament = Tournament.find_by(name: t.name)

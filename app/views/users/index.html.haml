@@ -6,7 +6,7 @@
 
 .row
   .col
-    %p= "Total users count = #{User.all.count}"
+    %p= "Total users count = #{User.all_ch.count}"
     .d-flex
       %span.material-icons.admin-actions__link__icon= 'group_add'
       = '= Club Member'
@@ -16,7 +16,7 @@
   - if current_user.present? and current_user.super_admin?
     .col{style: 'text-align: right;'}
       - mail_string = ''
-      - User.where(is_admin: true).each do |u|
+      - User.all_ch.where(is_admin: true).each do |u|
         - mail_string = mail_string + u.email + '; '
       = mail_to "", "Write all admins an email", bcc: mail_string, subject: "SwissSmash", body: "Hi SwissSmash admins\n\n", class: 'btn btn-ghost'
 

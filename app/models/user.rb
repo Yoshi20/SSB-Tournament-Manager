@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   validate :validate_username
 
+  scope :all_ch, -> { where(country_code: 'ch') }
+
   MAX_USERS_PER_PAGE = 100
 
   # Include default devise modules. Others available are:
@@ -55,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def validate_username
-    if User.where(email: username).exists?
+    if User.all_ch.where(email: username).exists?
       errors.add(:username, :invalid)
     end
   end

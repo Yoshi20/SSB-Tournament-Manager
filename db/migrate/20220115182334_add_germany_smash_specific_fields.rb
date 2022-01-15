@@ -3,6 +3,8 @@ class AddGermanySmashSpecificFields < ActiveRecord::Migration[5.2]
     add_column :players, :federal_state, :string
     add_column :tournaments, :federal_state, :string
 
+    add_column :users, :allows_emails_from_germanysmash, :boolean, default: true
+
     add_column :users, :country_code, :string
     add_column :players, :country_code, :string
     add_column :tournaments, :country_code, :string
