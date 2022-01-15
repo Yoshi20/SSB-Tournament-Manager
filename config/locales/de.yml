@@ -185,7 +185,7 @@ de:
     body2: "Du findest die bevorstehenden Ereignisse in der %{tournaments_link} oder im %{calendar_link}."
     body3: "%{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan hast, um an einem Turnier teilnehmen zu können und eine %{feedbacks_link} schreiben zu können."
     body4: "Das offizielle Power Ranking der Schweiz findest du unter %{rankings_link}."
-    body5: "Hier gehts zu allen auf SwissSmash registrierten %{players_link} und hier zu den %{statistics_link}."
+    body5: "Hier gehts zu allen auf SwissSmash registrierten %{players_link} und hier zu der %{statistics_link}."
     body6: "Nähere Informationen zu SwissSmash findest du unter %{informations_link}."
     tournament_list: "Turnierliste"
     calendar: "Kalender"
@@ -426,8 +426,8 @@ de:
     individuals: "Liste"
 
   statistics:
-    title: "Statistiken"
-    title2: "Spielerstatistiken"
+    title: "Übersicht"
+    title2: "Spielerübersicht"
     count_total: "Total bei SwissSmash registrierte Spieler"
     in_2019: "im 2019"
     in_2020: "im 2020"

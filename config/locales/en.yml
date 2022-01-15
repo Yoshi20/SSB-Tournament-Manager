@@ -426,8 +426,8 @@ en:
     individuals: "List"
 
   statistics:
-    title: "Statistics"
-    title2: "Player statistics"
+    title: "Overview"
+    title2: "Player overview"
     count_total: "Total registered players on SwissSmash"
     in_2019: "in 2019"
     in_2020: "in 2020"
