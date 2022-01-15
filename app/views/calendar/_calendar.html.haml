@@ -7,11 +7,16 @@
         .calendar__footer__legend
           = render 'color_legend'
       .col
+        .calendar__footer__actions.mb-3
+          %strong= 'ICS-Link: '
+          - ics_link_path = (request.base_url + calendar_path + '.ics')
+          %span.copy-gamer-tag{style: 'font-size: 12px;', 'data-value': ics_link_path}= link_to ics_link_path.gsub('http://', '').gsub('https://', ''), ics_link_path, onclick:"event.preventDefault();"
+        .calendar__footer__actions.mb-3
+          %strong= t('calendar.germany') + ': '
+          %span{style: 'font-size: 12px;'}= link_to "www.germanysmash.de/calendar", "https://www.germanysmash.de/calendar", target: '_blank'
         .calendar__footer__actions
-          .mb-3
-            %strong= 'Link: '
-            %span{style: 'font-size: 12px;'}= request.base_url + calendar_path + '.ics'
-          = link_to "iCal Export", calendar_path + '.ics', class:'btn btn-ghost'
+          %strong= t('calendar.austria') + ': '
+          %span{style: 'font-size: 12px;'}= link_to "twitter.com/SmashBrosAT", "https://twitter.com/SmashBrosAT", target: '_blank'
 
 
 :coffeescript

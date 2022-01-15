@@ -249,6 +249,8 @@ de:
 
   calendar:
     title: "Kalender"
+    germany: "Deutschland"
+    austria: "Österreich"
     color_legend:
       past: "Vergangen"
       cancelled: "Storniert"
