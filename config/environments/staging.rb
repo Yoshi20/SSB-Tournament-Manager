@@ -59,11 +59,11 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "ssb-tournament-manager_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "swisssmash_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager-stage.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'https://swisssmash-stage.herokuapp.com'}
   config.action_mailer.perform_deliveries = false
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default :charset => "utf-8"

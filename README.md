@@ -1,4 +1,4 @@
-# SSB-Tournament-Manager
+# SwissSmash
 Simple tournament manager for Super Smash Bros. matches (Ruby on Rails project)
 
 Local commands:
@@ -8,11 +8,11 @@ Local commands:
 - rails s
 - rails c
 
-- dropdb ssb-tournament-manager_development
-- heroku pg:pull \<postgresql-name\> ssb-tournament-manager_development --app ssb-tournament-manager
+- dropdb swisssmash_development
+- heroku pg:pull \<postgresql-name\> swisssmash_development --app swisssmash
 
-- heroku pg:reset --app ssb-tournament-manager-stage --confirm ssb-tournament-manager-stage
-- heroku pg:push ssb-tournament-manager_development \<postgresql-name\> --app ssb-tournament-manager-stage
+- heroku pg:reset --app swisssmash-stage --confirm swisssmash-stage
+- heroku pg:push swisssmash_development \<postgresql-name\> --app swisssmash-stage
 
 Stage commands:
 - git push stage master
@@ -38,11 +38,10 @@ Prod commands:
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
-- https://ssb-tournament-manager.herokuapp.com
+- https://swisssmash.herokuapp.com
 - https://www.ssb-club-bern.ch
 - https://www.swisssmash.ch
 - https://challonge.com
-- http://sac-bern.ch
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200
 
