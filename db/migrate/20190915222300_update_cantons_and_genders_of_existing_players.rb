@@ -6,7 +6,7 @@ class UpdateCantonsAndGendersOfExistingPlayers < ActiveRecord::Migration[5.2]
     [["Male", "male"], ["Female", "female"], ["Other", "other"]]
   end
   def up
-    Player.all_ch.each do |p|
+    Player.all.each do |p|
       if !p.canton.nil? && !p.canton.empty?
         cantons_lut.each do |c|
           if c[0] == p.canton
@@ -27,7 +27,7 @@ class UpdateCantonsAndGendersOfExistingPlayers < ActiveRecord::Migration[5.2]
     end
   end
   def down
-    Player.all_ch.each do |p|
+    Player.all.each do |p|
       if !p.canton.nil? && !p.canton.empty?
         cantons_lut.each do |c|
           if c[1] == p.canton  # c = [Bern, bern]
