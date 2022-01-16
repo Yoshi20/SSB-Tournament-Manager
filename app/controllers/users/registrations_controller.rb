@@ -21,8 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       super do |current_user_params|
         user_params = current_user_params
       end
-      user = User.all_ch.last
-      if user.id == user_params[:id]
+      user = User.find_by(email: user_params[:email])
+      if user.present? && user.id == user_params[:id]
         # User seems to be created successfully -> Create a new player and assign it to this user
         player = Player.new
         player.gamer_tag = params[:gamer_tag]
