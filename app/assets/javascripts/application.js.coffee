@@ -99,6 +99,8 @@ document.addEventListener 'turbolinks:load', ->
       internal_url = $t.attr('data-internal_url');
       protocol_and_host = window.location.protocol + '//' + window.location.host;
       if external_url
+        if typeof gtag == 'function'
+          gtag('event', 'click', { 'event_category': 'external_url', 'event_label': external_url });
         window.open(external_url, '_blank');
       else if internal_url
         if middle_btn

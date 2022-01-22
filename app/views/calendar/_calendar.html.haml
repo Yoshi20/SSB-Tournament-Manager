@@ -52,6 +52,8 @@
       firstDay: 1
       eventClick: (event) ->
         if event.url and event.url[0] != '/'
+          if typeof gtag == 'function'
+            gtag('event', 'click', { 'event_category': 'external_url', 'event_label': event.url });
           window.open event.url, '_blank'
           return false
 
