@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, except: [:index, :new, :create]
-  before_action :check_if_admin, except: [:index, :show, :add_player, :remove_player, :location]
+  before_action :authenticate_admin!, except: [:index, :show, :add_player, :remove_player]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -270,11 +270,13 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/add_player/1
   def add_player
-    if params[:gamer_tag].present?
-      player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
-      player_to_add = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_add.nil?
-    else
-      player_to_add = current_user.player
+    if current_user.present?
+      if params[:gamer_tag].present? && current_user.admin?
+        player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
+        player_to_add = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_add.nil?
+      else
+        player_to_add = current_user.player
+      end
     end
 
     if player_to_add.nil?
@@ -333,12 +335,14 @@ class TournamentsController < ApplicationController
 
   # POST /tournaments/remove_player/1
   def remove_player
-    if params[:gamer_tag].present?
-      player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
-      player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
-      player_to_remove.update(warnings: player_to_remove.warnings.to_i + 1) if params[:warn].present?
-    else
-      player_to_remove = current_user.player
+    if current_user.present?
+      if params[:gamer_tag].present? && current_user.admin?
+        player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
+        player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
+        player_to_remove.update(warnings: player_to_remove.warnings.to_i + 1) if params[:warn].present?
+      else
+        player_to_remove = current_user.player
+      end
     end
 
     if player_to_remove.nil?
@@ -598,12 +602,6 @@ class TournamentsController < ApplicationController
     redirect_to @tournament, notice: t('flash.notice.tournament_cancelled')
   end
 
-  # GET /tournaments/location/1
-  # GET /tournaments/location/1.json
-  def location
-
-  end
-
   # PATCH /tournaments/sort_players/1
   def sort_players
     params[:player].each_with_index do |id, i|
@@ -629,11 +627,16 @@ class TournamentsController < ApplicationController
       @tournament = Tournament.find(params[:id])
     end
 
-    def check_if_admin
-      unless current_user.admin?
+    def authenticate_admin!
+      unless current_user.present? && current_user.admin?
         respond_to do |format|
-          format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
-          format.json { render json: @tournament.errors, status: :unauthorized }
+          if @tournament.present?
+            format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
+            format.json { render json: @tournament.errors, status: :unauthorized }
+          else
+            format.html { redirect_to tournaments_path, alert: t('flash.alert.unauthorized') }
+            format.json { render json: {}, status: :unauthorized }
+          end
         end
       end
     end
