@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create]
+  before_action :authenticate_news_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'news' }
 
   # GET /news
@@ -70,6 +72,24 @@ class NewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
       params.require(:news).permit(:user_id, :title, :teaser, :text, :created_at, :updated_at)
+    end
+
+    def authenticate_admin!
+      unless current_user.present? && current_user.admin?
+        respond_to do |format|
+          format.html { redirect_to news_index_path, alert: t('flash.alert.unauthorized') }
+          format.json { render json: {}, status: :unauthorized }
+        end
+      end
+    end
+
+    def authenticate_news_creator!
+      unless current_user.present? && (@news.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @news, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @news.errors, status: :unauthorized }
+        end
+      end
     end
 
 end
