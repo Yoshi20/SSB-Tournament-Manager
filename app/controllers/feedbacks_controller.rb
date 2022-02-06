@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_feedback_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'feedbacks' }
 
   # GET /feedbacks
@@ -82,6 +83,15 @@ class FeedbacksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
       params.require(:feedback).permit(:user_id, :text, :response, :response_username, :created_at, :updated_at)
+    end
+
+    def authenticate_feedback_creator!
+      unless current_user.present? && (@feedback.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @feedback, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @feedback.errors, status: :unauthorized }
+        end
+      end
     end
 
 end
