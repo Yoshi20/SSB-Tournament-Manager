@@ -23,6 +23,7 @@ fr:
   delete: "Supprimer"
   back: "Retour"
   confirm: "Êtes-vous certain?"
+  not_uniq: "n'est pas disponible"
 
   defines:
     self_assessments:

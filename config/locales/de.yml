@@ -23,6 +23,7 @@ de:
   delete: "Lösche"
   back: "Zurück"
   confirm: "Bist du sicher?"
+  not_uniq: "ist bereits vergeben"
 
   defines:
     self_assessments:

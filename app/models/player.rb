@@ -7,8 +7,10 @@ class Player < ApplicationRecord
 
   before_validation :strip_whitespace
   before_create :set_country_code
+  after_save :delete_identical_alt
 
   validates :gamer_tag, uniqueness: true, presence: true
+  validate :validate_gamer_tag_is_truly_uniq
   validates :prefix, length: { maximum: 12 }
 
   scope :all_ch, -> { where(country_code: 'ch') }
@@ -19,6 +21,18 @@ class Player < ApplicationRecord
 
   MAX_PLAYERS_PER_PAGE = 50
   MAX_PLAYER_VIDEOS_PER_PAGE = 5
+
+  def delete_identical_alt
+    self.alternative_gamer_tags.each do |agt|
+      agt.delete if agt.gamer_tag == self.gamer_tag
+    end
+  end
+
+  def validate_gamer_tag_is_truly_uniq
+    if AlternativeGamerTag.exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
+      errors.add(:gamer_tag, I18n.t('not_uniq'))
+    end
+  end
 
   def self.search(search)
     if search
