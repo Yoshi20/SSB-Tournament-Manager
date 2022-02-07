@@ -251,6 +251,7 @@ de:
   calendar:
     title: "Kalender"
     germany: "Deutschland"
+    france: "Frankreich"
     austria: "Österreich"
     color_legend:
       past: "Vergangen"
