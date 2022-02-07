@@ -29,7 +29,7 @@ class Player < ApplicationRecord
   end
 
   def validate_gamer_tag_is_truly_uniq
-    if AlternativeGamerTag.exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
+    if AlternativeGamerTag.all_ch.exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
       errors.add(:gamer_tag, I18n.t('not_uniq'))
     end
   end
