@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    self.is_admin == true
+    self.is_admin == true || self.is_super_admin == true
   end
 
   def super_admin?
