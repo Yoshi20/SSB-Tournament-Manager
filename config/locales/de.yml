@@ -193,6 +193,10 @@ de:
     log_in: "Logge dich ein"
     sign_up: "melde dich an"
     no_donations_yet: "Noch keine Spenden vorhanden 😢"
+    all_donations: "Alle Spenden"
+
+  donations:
+    title: "Spendewand"
 
   information:
     title: "Informationen"

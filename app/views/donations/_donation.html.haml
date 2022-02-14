@@ -1,19 +1,20 @@
 .toast.shadow-sm{style: "opacity: 1; margin-bottom: 1rem;"}
   .toast-header.font-weight-bold
-    - if index == 0
-      %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: gold;"}= 'looks_one'
-    - elsif index == 1
-      %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: silver;"}= 'looks_two'
-    - elsif index == 2
-      %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: tan;"}= 'looks_3'
-    - else
-      %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px;"}= "looks_#{index+1}"
+    - if truncate
+      - if index == 0
+        %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: gold;"}= 'looks_one'
+      - elsif index == 1
+        %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: silver;"}= 'looks_two'
+      - elsif index == 2
+        %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px; color: tan;"}= 'looks_3'
+      - else
+        %span.material-icons{style: "margin-left: -5px; margin-right: 5px; font-size: 20px;"}= "looks_#{index+1}"
     %span.mr-auto= donation.from_name
     %span
       %small= donation.currency == 'EUR' ? '€' : '$'
       = donation.amount
   .toast-body
-    %i= donation.message.truncate(64)
+    %i= truncate ? donation.message.truncate(64) : donation.message
     %small.d-block.text-right.text-muted.mt-2
       = Time.parse(donation.timestamp).to_s(:custom_datetime_date)
   -# %a.stretched-link{:href => donation.url, :target => '_blank', :title => ""}

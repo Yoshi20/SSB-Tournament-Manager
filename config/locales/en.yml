@@ -193,6 +193,10 @@ en:
     log_in: "Log in"
     sign_up: "Sign up"
     no_donations_yet: "No donations yet 😢"
+    all_donations: "All donations"
+
+  donations:
+    title: "Donation wall"
 
   information:
     title: "Information"

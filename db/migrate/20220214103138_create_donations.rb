@@ -18,6 +18,8 @@ class CreateDonations < ActiveRecord::Migration[5.2]
       t.string :shop_items
       t.string :tier_name
       t.string :country_code
+
+      t.timestamps
     end
   end
 end

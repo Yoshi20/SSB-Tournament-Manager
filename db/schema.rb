@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2022_02_14_103138) do
     t.string "shop_items"
     t.string "tier_name"
     t.string "country_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
