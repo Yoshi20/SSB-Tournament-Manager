@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_auth_token
 
   before_action :set_locale
-  before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact]
+  before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact, :donation]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_top_players

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_140519) do
+ActiveRecord::Schema.define(version: 2022_02_14_103138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,26 @@ ActiveRecord::Schema.define(version: 2022_02_12_140519) do
     t.string "facebook"
     t.string "youtube"
     t.string "twitch"
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.string "message_id"
+    t.string "timestamp"
+    t.string "type"
+    t.boolean "is_public"
+    t.string "from_name"
+    t.string "message"
+    t.string "amount"
+    t.string "url"
+    t.string "email"
+    t.string "currency"
+    t.boolean "is_subscription_payment"
+    t.boolean "is_first_subscription_payment"
+    t.string "kofi_transaction_id"
+    t.string "verification_token"
+    t.string "shop_items"
+    t.string "tier_name"
+    t.string "country_code"
   end
 
   create_table "feedbacks", force: :cascade do |t|
