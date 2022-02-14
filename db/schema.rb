@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_140518) do
+ActiveRecord::Schema.define(version: 2022_02_12_140519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 2022_02_12_140518) do
     t.boolean "hidden", default: false
     t.string "country_code"
     t.index ["player_id"], name: "index_alternative_gamer_tags_on_player_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "department"
+    t.string "region"
+    t.string "country_code"
+    t.string "discord"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "youtube"
+    t.string "twitch"
   end
 
   create_table "feedbacks", force: :cascade do |t|
