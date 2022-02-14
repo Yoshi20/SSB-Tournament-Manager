@@ -74,7 +74,15 @@
             = radio_button('main_char1', nil, character, style: 'margin-left: -3px;', checked: ((@player.main_characters[0] == character) ? 'checked' : ''))
             = radio_button('main_char2', nil, character, style: 'margin-left: -2px;', checked: ((@player.main_characters[1] == character) ? 'checked' : ''))
             = radio_button('main_char3', nil, character, style: 'margin-left: -2px; margin-right: 8px;', checked: ((@player.main_characters[2] == character) ? 'checked' : ''))
-
+  .field.form-group
+    = f.label :main_character_skins, t('players.main_character_skins')
+    .main_char_skins
+      .main_char_skin1{'data-value': @player.main_character_skins[0]}
+        = render 'character_skins', character: @player.main_characters[0], skin_nr: 1, current_character_skin_nr: @player.main_character_skins[0]
+      .main_char_skin2{'data-value': @player.main_character_skins[1]}
+        = render 'character_skins', character: @player.main_characters[1], skin_nr: 2, current_character_skin_nr: @player.main_character_skins[1]
+      .main_char_skin3{'data-value': @player.main_character_skins[2]}
+        = render 'character_skins', character: @player.main_characters[2], skin_nr: 3, current_character_skin_nr: @player.main_character_skins[2]
   .field.form-group
     = f.label :comment, t('players.comment')
     %em= t('players.for_what_ever')

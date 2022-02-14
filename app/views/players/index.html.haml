@@ -41,9 +41,8 @@
               %td.text-center
                 - if player.main_characters.any?
                   %div
-                    - player.main_characters[0...3].each do |char|
-                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                    - player.main_characters[0...3].each_with_index do |char, i|
+                      = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : t('players.undefined')
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : t('players.undefined')
               %td.text-center
@@ -77,9 +76,8 @@
             %tr{'data-id': player.id, 'data-component'=>'player'}
               %td
                 - if player.main_characters.any?
-                  - player.main_characters[0...1].each do |char|
-                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                  - player.main_characters[0...1].each_with_index do |char, i|
+                    = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                 - else
                   .div{style: 'display: inline;'}
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'

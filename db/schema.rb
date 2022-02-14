@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_103138) do
     t.string "federal_state"
     t.string "country_code"
     t.string "region"
+    t.integer "main_character_skins", default: [], array: true
   end
 
   create_table "registrations", force: :cascade do |t|

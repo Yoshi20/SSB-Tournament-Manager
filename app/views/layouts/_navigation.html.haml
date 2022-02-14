@@ -67,9 +67,10 @@
           %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
             %span.material-icons.d-none.d-lg-block.ml-lg-3
               - if current_user.player.main_characters.any?
-                - char = current_user.player.main_characters[0]
+                - char = current_user.player.main_characters[0] || current_user.player.main_characters[1] || current_user.player.main_characters[2]
+                - skin_nr = current_user.player.main_character_skins[0] || current_user.player.main_character_skins[1] || current_user.player.main_character_skins[2]
                 - if char != 'random' && File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                  = image_tag "characters/#{char}.png", width: '25px', height: '25px', class: 'player__characters__image', style: 'vertical-align: unset;'
+                  #nav-char-image= render partial: 'players/character_image', locals: {character: char, skin_nr: skin_nr}
                 - else
                   = 'person'
               - else

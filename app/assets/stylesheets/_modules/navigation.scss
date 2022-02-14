@@ -126,4 +126,9 @@
       border-bottom: 1px solid white;
     }
   }
+
+  #nav-char-image, img {
+    max-width: 100%;
+    vertical-align: unset;
+  }
 }

@@ -72,10 +72,13 @@
     .tab-pane.fade.show.active#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
       .player__characters
         - if @player.main_characters.any?
-          - @player.main_characters[0...3].each do |char|
+          - @player.main_characters[0...3].each_with_index do |char, i|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
-              .player__characters__single
+              .player__characters__single{style: 'position: relative;'}
                 = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
+                - skin_nr = @player.main_character_skins[i] if @player.main_character_skins.any?
+                - if skin_nr.present? && skin_nr > 0
+                  = image_tag "/character_skins/#{char}_#{skin_nr.to_s.rjust(2, '0')}.png", height: '25px', width: '25px', style: "position: absolute; bottom: 0; right: 0;"
 
       - if @player.canton.present? || @player.birth_year.present? || @player.gender.present?
         .player__stats

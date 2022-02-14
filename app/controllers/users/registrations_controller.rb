@@ -42,9 +42,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
           params[:main_char1].present? ? params[:main_char1][0] : nil,
           params[:main_char2].present? ? params[:main_char2][0] : nil,
           params[:main_char3].present? ? params[:main_char3][0] : nil
-        ].compact
+        ]
         main_characters.each do |char|
           player.main_characters << char
+        end
+        main_character_skins = [
+          params[:main_char_skin1].present? ? params[:main_char_skin1][0].to_i : nil,
+          params[:main_char_skin2].present? ? params[:main_char_skin2][0].to_i : nil,
+          params[:main_char_skin3].present? ? params[:main_char_skin3][0].to_i : nil
+        ]
+        main_character_skins.each do |skin_nr|
+          player.main_character_skins << skin_nr
         end
         player.comment = params[:comment]
         player.best_rank = 0

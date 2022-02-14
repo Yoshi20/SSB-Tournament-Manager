@@ -14,8 +14,7 @@
           %td
             - if player.main_characters.any?
               - char = player.main_characters[0]
-              - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
             - else
               .div{style: 'display: inline;'}
                 %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'

@@ -71,6 +71,21 @@
                 = radio_button('main_char2', nil, character, style: 'margin-left: -2px;', checked: ((params[:main_char2].present? and params[:main_char2][0] == character) ? 'checked' : ''))
                 = radio_button('main_char3', nil, character, style: 'margin-left: -2px; margin-right: 8px;', checked: ((params[:main_char3].present? and params[:main_char3][0] == character) ? 'checked' : ''))
       .form-group
+        = f.label :main_character_skins, t('players.main_character_skins')
+        .main_char_skins
+          - current_character1 = (params[:main_char1].present? ? params[:main_char1][0] : nil)
+          - current_character_skin_nr1 = (params[:main_char_skin1].present? ? params[:main_char_skin1][0].to_i : nil)
+          .main_char_skin1{'data-value': current_character_skin_nr1}
+            = render partial: 'players/character_skins', locals: { character: current_character1, skin_nr: 1, current_character_skin_nr: current_character_skin_nr1 }
+          - current_character2 = (params[:main_char2].present? ? params[:main_char2][0] : nil)
+          - current_character_skin_nr2 = (params[:main_char_skin2].present? ? params[:main_char_skin2][0].to_i : nil)
+          .main_char_skin2{'data-value': current_character_skin_nr2}
+            = render partial: 'players/character_skins', locals: { character: current_character2, skin_nr: 2, current_character_skin_nr: current_character_skin_nr2 }
+          - current_character3 = (params[:main_char3].present? ? params[:main_char3][0] : nil)
+          - current_character_skin_nr3 = (params[:main_char_skin3].present? ? params[:main_char_skin3][0].to_i : nil)
+          .main_char_skin3{'data-value': current_character_skin_nr3}
+            = render partial: 'players/character_skins', locals: { character: current_character3, skin_nr: 3, current_character_skin_nr: current_character_skin_nr3 }
+      .form-group
         = label_tag :comment, t('players.comment')
         %em= t('players.for_what_ever')
         = text_area_tag :comment, params[:comment], rows: '5', class: 'form-control'

@@ -246,9 +246,8 @@
                         = name
                     %td.d-sm-none.d-md-none.d-lg-table-cell.d-xl-none
                       - if player.main_characters.any?
-                        - player.main_characters[0...1].each do |char|
-                          - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                            = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                        - player.main_characters[0...1].each_with_index do |char, i|
+                          = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                       - else
                         .div{style: 'display: inline;'}
                           %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
@@ -258,9 +257,8 @@
                         = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
-                        - player.main_characters[0...3].each do |char|
-                          - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                            = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                        - player.main_characters[0...3].each_with_index do |char, i|
+                          = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                     - if @tournament.is_registration_allowed
                       %td
                         - player_registration = player.registrations.where(tournament_id: @tournament.id).first
@@ -375,9 +373,8 @@
                   %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td{style: 'text-align: center;'}
                     - if player.main_characters.any?
-                      - player.main_characters[0...3].each do |char|
-                        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                          = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                      - player.main_characters[0...3].each_with_index do |char, i|
+                        = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                   %td{style: 'text-align: center;'}= "##{i+1}"
     - if @tournament.started and @tournament.finished
       .tab-pane.fade#ranking{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
@@ -403,9 +400,8 @@
                     %strong= r.rank.nil? ? "-" : r.rank.ordinalize
                   %td
                     - if player.main_characters.any?
-                      - player.main_characters[0...1].each do |char|
-                        - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                          = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                      - player.main_characters[0...1].each_with_index do |char, i|
+                        = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                     - else
                       .div{style: 'display: inline;'}
                         %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
