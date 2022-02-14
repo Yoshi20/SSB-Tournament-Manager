@@ -37,6 +37,17 @@
             .col-12.col-lg-6
               .content
                 = yield
+              - if request.path == '/' || request.path == '/welcome'
+                .content{style: 'margin-top: 10px;'}
+                  %h3 Top donators
+                  .row
+                    - if @donations.any?
+                      - @donations.each_with_index do |donation, i|
+                        .col-6.col-lg-4
+                          = render donation, index: i
+                    - else
+                      .col
+                        %p= t('welcome.no_donations_yet')
             .d-none.d-lg-block.col-lg-3
               .sidebar
                 = render '/partials/events'

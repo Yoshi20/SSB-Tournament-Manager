@@ -192,6 +192,7 @@ fr:
     calendar: "Calendrier"
     log_in: "Se connecter"
     sign_up: "S'inscrire"
+    no_donations_yet: "Pas encore de dons 😢"
 
   information:
     title: "Information"
