@@ -5,11 +5,23 @@
   text-align: center;
 
   p {
-    padding-top: 1.7rem;
+    padding-top: 2.1rem;
   }
 
   #donate-btn {
     padding-top: 1.3rem;
+
+    a {
+      height: 46px;
+      align-items: center;
+      width: max-content;
+      padding: 7px 20px;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      -ms-border-radius: 100px;
+      -o-border-radius: 100px;
+      border-radius: 100px;
+    }
   }
 
   .swisssmash_logo {
@@ -17,15 +29,13 @@
     margin-bottom: 1rem;
   }
 
-  .paypal {
-    margin-right: -0.5rem;
-  }
-
   @media screen and (max-width: 600px) {
     .small {
       font-size: 48%;
     }
+  }
 
+  @media screen and (max-width: 992px) {
     #donate-btn {
       padding-top: 0;
     }
