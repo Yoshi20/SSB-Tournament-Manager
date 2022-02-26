@@ -84,8 +84,8 @@
               .col
                 %p#donate-btn
                   = link_to("https://ko-fi.com/swisssmash", target: '_blank', class: "btn btn-sstm") do
-                    = image_tag("https://storage.ko-fi.com/cdn/cup-border.png", style: 'width: 39px;')
-                    %span{:style => "margin-left: 8px; color:#fff; font-weight: 700;"}= t('please_donate')
+                    = image_tag("https://storage.ko-fi.com/cdn/cup-border.png")
+                    %span= t('please_donate')
 
 :javascript
   I18n.defaultLocale = "#{I18n.default_locale}";
