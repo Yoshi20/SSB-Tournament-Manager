@@ -22,8 +22,12 @@ Stage commands:
 - heroku run rails c --remote stage
 - heroku restart --remote stage
 
-- heroku run rake tournaments_crawler:all --remote stage
-- heroku run rake results_crawler:all --remote stage
+- heroku run rake tournaments_crawler_ch:all --remote stage
+- heroku run rake tournaments_crawler_de:all --remote stage
+- heroku run rake tournaments_crawler_fr:all --remote stage
+- heroku run rake results_crawler_ch:all --remote stage
+- heroku run rake results_crawler_de:all --remote stage
+- heroku run rake results_crawler_fr:all --remote stage
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage
 
 Prod commands:
@@ -33,8 +37,12 @@ Prod commands:
 - heroku run rails c --remote prod
 - heroku restart --remote prod
 
-- heroku run rake tournaments_crawler:all --remote prod
-- heroku run rake results_crawler:all --remote prod
+- heroku run rake tournaments_crawler_ch:all --remote prod
+- heroku run rake tournaments_crawler_de:all --remote prod
+- heroku run rake tournaments_crawler_fr:all --remote prod
+- heroku run rake results_crawler_ch:all --remote prod
+- heroku run rake results_crawler_de:all --remote prod
+- heroku run rake results_crawler_fr:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:

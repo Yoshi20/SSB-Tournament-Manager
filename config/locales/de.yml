@@ -185,7 +185,7 @@ de:
       administrators_short: "TOs"
       administrators: "Tournament Organisers"
       imprint: "Impressum"
-      privacy_policy: "Datenschutzerklärung"
+      privacy_policy: "Datenschutzhinweise"
       contact: "Kontakt"
       mail_subject: "Ich habe ein Problem oder eine Frage!"
       mail_body: "Hallo\n\nIch bin ??? und ich möchte ???"
@@ -763,11 +763,41 @@ de:
     seed_players: "Spieler Seeden"
     seed_players_randomly: "Spieler zufällig Seeden"
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
+    calendar: "Turnierkalender"
 
   video:
     title: "Videos"
     title2: "Spieler Videos"
     players_videos: "%{player}'s Video%{s}:"
+
+  communities:
+    title: "Communities"
+    body: "Die Deutsche SSBU Community kann grob in acht Regionen eingeteilt werden. Klicke auf ein Bundesland, um mehr über die dazugehörgie Region zu erfahren."
+    nds:
+      title: "#NDS"
+      text: "Die NDS-Region besteht aus den folgenden Bundesländer: Niedersachsen & Bremen"
+    nrw:
+      title: "#NRW"
+      text: "Die NRW-Region besteht aus den folgenden Bundesländer: Nordrhein-Westfalen"
+    hessen:
+      title: "#Hessen"
+      text: "Die Hessen-Region besteht aus den folgenden Bundesländer: Hessen, Rheinland-Pfalz & Saarland"
+    bawu:
+      title: "#BaWü"
+      text: "Die BaWü-Region besteht aus den folgenden Bundesländer: Baden-Württemberg"
+    norden:
+      title: "#Norden"
+      text: "Die Nord-Region besteht aus den folgenden Bundesländer: Schleswig-Holstein, Hamburg & Mecklenburg-Vorpommern"
+    berlin:
+      title: "#Berlin"
+      text: "Die Berlin-Region besteht aus den folgenden Bundesländer: Brandenburg & Berlin"
+    osten:
+      title: "#Osten"
+      text: "Die Ost-Region besteht aus den folgenden Bundesländer: Sachsen, Sachsen-Anhalt & Thüringen"
+    bayern:
+      title: "#Bayern"
+      text: "Die Bayern-Region besteht aus den folgenden Bundesländer: Bayern"
+    ranking: "Die besten Spieler aus der Region findest du hier:"
 
   users:
     mailer:

@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   def set_streamers
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers", expires_in: 1.minute) do
-      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=fr"
+      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=#{session['country_code']}"
       puts "Requesting: GET #{url}"
       begin
         json_data = JSON.parse(URI.open(url,

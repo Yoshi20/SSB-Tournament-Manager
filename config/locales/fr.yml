@@ -693,11 +693,41 @@ fr:
     seed_players: "Seeder les joueurs"
     seed_players_randomly: "Seeder les joueurs aléatoirement"
     seed_players_tournament_confirm: "Êtes-vous sûr(e)? Le seeding actuel sera écrasé."
+    calendar: "Calendrier"
 
   video:
     title: "Vidéos"
     title2: "Vidéos des joueurs"
     players_videos: "Vidéo%{s} de %{player}:"
+
+  communities:
+    title: "Communities"
+    body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
+    nds:
+      title: "#NDS"
+      text: "The NDS region consists of the following federal_states: Lower Saxony & Bremen"
+    nrw:
+      title: "#NRW"
+      text: "The NRW region consists of the following federal_states: Northrhine-Westphalia"
+    hessen:
+      title: "#Hesse"
+      text: "The Hesse region consists of the following federal_states: Hesse, Rhineland Palatinate & Saarland"
+    bawu:
+      title: "#BaWü"
+      text: "The BaWü region consists of the following federal_states: Baden-Württemberg"
+    norden:
+      title: "#North"
+      text: "The North region consists of the following federal_states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
+    berlin:
+      title: "#Berlin"
+      text: "The Berlin region consists of the following federal_states: Brandenburg & Berlin"
+    osten:
+      title: "#East"
+      text: "The East region consists of the following federal_states: Saxony, Saxony-Anhalt & Thuringia"
+    bayern:
+      title: "#Bavaria"
+      text: "The Bavaria region consists of the following federal_states: Bavaria"
+    ranking: "The best players from the region can be found here:"
 
   users:
     mailer:

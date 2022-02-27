@@ -1,15 +1,15 @@
 require 'nokogiri'
 require 'open-uri'
 
-namespace :tournaments_crawler do
+namespace :tournaments_crawler_ch do
   desc "Calls all the tournaments web crawler tasks"
   task all: :environment do
-    tCtr = Tournament.all_from(session['country_code']).count
+    tCtr = Tournament.all_from('ch').count
     puts "Running all tournaments web crawlers..."
-    Rake::Task["tournaments_crawler:braacket"].invoke
-    Rake::Task["tournaments_crawler:smash_gg"].invoke
-    Rake::Task["tournaments_crawler:toornament"].invoke
-    puts "\ndone -> #{Tournament.all_from(session['country_code']).count - tCtr} new tournament(s)\n"
+    Rake::Task["tournaments_crawler_ch:braacket"].invoke
+    Rake::Task["tournaments_crawler_ch:smash_gg"].invoke
+    Rake::Task["tournaments_crawler_ch:toornament"].invoke
+    puts "\ndone -> #{Tournament.all_from('ch').count - tCtr} new tournament(s)\n"
   end
 
   desc "Creates upcoming external tournaments from braacket.com"
@@ -36,6 +36,7 @@ namespace :tournaments_crawler do
       externalTournament.total_seats = seatsString[seatsString.index('/')+1..-1].to_i
       externalTournament.is_registration_allowed = false
       externalTournament.active = true
+      externalTournament.country_code = 'ch'
       if externalTournament.save
         puts "-> Created: \"" + externalTournament.name + "\"\n\n"
       else
@@ -74,6 +75,7 @@ namespace :tournaments_crawler do
       externalTournament.location = tournamentHash['venueAddress']
       externalTournament.is_registration_allowed = false
       externalTournament.active = true
+      externalTournament.country_code = 'ch'
       if externalTournament.save
         puts "-> Created: \"" + externalTournament.name + "\""
         if isDateError
@@ -111,6 +113,7 @@ namespace :tournaments_crawler do
     #   externalTournament.city = c.css('div.InfoList span')[1].text unless c.css('div.InfoList span')[1].nil?
     #   externalTournament.is_registration_allowed = false
     #   externalTournament.active = true
+    #   externalTournament.country_code = 'ch'
     #   if externalTournament.save
     #     puts "-> Created: \"" + externalTournament.name + "\""
     #     if isDateError
@@ -155,6 +158,7 @@ namespace :tournaments_crawler do
         externalTournament.total_seats = size
         externalTournament.is_registration_allowed = false
         externalTournament.active = true
+        externalTournament.country_code = 'ch'
         if externalTournament.save
           puts "-> Created: \"" + externalTournament.name + "\"\n\n"
         else
