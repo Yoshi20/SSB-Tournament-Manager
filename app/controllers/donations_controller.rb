@@ -4,9 +4,9 @@ class DonationsController < ApplicationController
   # GET /donations
   def index
     if current_user.present? && current_user.super_admin?
-      @donations = Donation.all_ch.order(created_at: :desc)
+      @donations = Donation.all_from(session['country_code']).order(created_at: :desc)
     else
-      @donations = Donation.all_ch.where(is_public: true).order(created_at: :desc)
+      @donations = Donation.all_from(session['country_code']).where(is_public: true).order(created_at: :desc)
     end
   end
 

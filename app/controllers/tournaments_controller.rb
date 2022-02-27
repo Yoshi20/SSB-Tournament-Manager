@@ -6,11 +6,11 @@ class TournamentsController < ApplicationController
   # GET /tournaments
   # GET /tournaments.json
   def index
-    @tournaments = Tournament.all_ch.active.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    @ongoing_tournaments = Tournament.all_ch.active.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
-    @past_tournaments = Tournament.all_ch.active.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @tournaments = Tournament.all_from(session['country_code']).active.upcoming.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @ongoing_tournaments = Tournament.all_from(session['country_code']).active.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+    @past_tournaments = Tournament.all_from(session['country_code']).active.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     if current_user.present? and current_user.super_admin?
-      @inactive_tournaments = Tournament.all_ch.where(active: false).order(date: :desc).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+      @inactive_tournaments = Tournament.all_from(session['country_code']).where(active: false).order(date: :desc).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     end
     # handle search parameter
     if params[:search].present?
@@ -93,7 +93,7 @@ class TournamentsController < ApplicationController
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
-            Player.all_ch.each do |p|
+            Player.all_from(session['country_code']).each do |p|
               if p.user.allows_emails_from_swisssmash
                 TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
               end
@@ -110,7 +110,7 @@ class TournamentsController < ApplicationController
       respond_to do |format|
         if @tournament.save
           if params[:send_mails]
-            Player.all_ch.each do |p|
+            Player.all_from(session['country_code']).each do |p|
               if p.user.allows_emails_from_swisssmash
                 TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
               end
@@ -128,7 +128,7 @@ class TournamentsController < ApplicationController
       respond_to do |format|
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
-            Player.all_ch.each do |p|
+            Player.all_from(session['country_code']).each do |p|
               if p.user.wants_weekly_email
                 TournamentMailer.with(tournament: @tournament, user: p.user).new_weekly_tournament_email.deliver_later
               end
@@ -189,7 +189,7 @@ class TournamentsController < ApplicationController
             last_weekly = @tournament
             edited_tournament_params = tournament_params
             old_name_without_kw = oldName[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
-            Tournament.all_ch.where('date >= ?', oldDate + 7.days).where("name ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(old_name_without_kw)}%").order(:date).each do |t|
+            Tournament.all_from(session['country_code']).where('date >= ?', oldDate + 7.days).where("name ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(old_name_without_kw)}%").order(:date).each do |t|
               edited_tournament_params[:name] = generate_weekly_name(last_weekly.city, last_weekly.date + 7.days)
               if t.update(edited_tournament_params)
                 t.date = last_weekly.date + 7.days
@@ -251,7 +251,7 @@ class TournamentsController < ApplicationController
       if @tournament.weekly? and params[:all]
         # deactivate all upcoming weeklies of this type
         name_without_kw = @tournament.name[0.. -10].strip  # 'SSBU Weekly xxx KWyy 20zz' -> 'SSBU Weekly xxx'
-        Tournament.all_ch.where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|
+        Tournament.all_from(session['country_code']).where('date >= ?', @tournament.date).where(location: @tournament.location).where(host_username: @tournament.host_username).each do |tt|
           if tt.name[0.. -10].strip == name_without_kw
             tt.update(active: false)
           end

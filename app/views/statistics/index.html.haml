@@ -135,7 +135,7 @@
 
   .statistic__stats{style: "margin-top: 0;"}
     .row
-      - all_char_files = Dir.entries("#{Rails.root}/app/assets/images/characters").map{|f| f if !f.include?("200x200") and f[0] != '.'}.compact.sort
+      - all_from_countryar_files = Dir.entries("#{Rails.root}/app/assets/images/characters").map{|f| f if !f.include?("200x200") and f[0] != '.'}.compact.sort
       .col
         %table.table.table-hover.table-borderless
           %thead.table-header
@@ -145,7 +145,7 @@
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
             .main_chars
-              - all_char_files[0... all_char_files.length/2].each do |file|
+              - all_from_countryar_files[0... all_from_countryar_files.length/2].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
                 %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}
@@ -169,7 +169,7 @@
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
             .main_chars
-              - all_char_files[all_char_files.length/2.. -1].each do |file|
+              - all_from_countryar_files[all_from_countryar_files.length/2.. -1].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
                 %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}

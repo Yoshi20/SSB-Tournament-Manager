@@ -3,8 +3,7 @@ require 'icalendar/tzinfo'
 class Calendar
   class << self
 
-    def full_calendar_events(current_user)
-      tournaments = Tournament.all_ch.for_calendar.includes(:players)
+    def full_calendar_events(current_user, tournaments)
       tournaments.map do |tournament|
         full_calendar_event(tournament, current_user)
       end.to_json
@@ -66,7 +65,7 @@ class Calendar
     end
 
     def ical_events
-      tournaments = Tournament.all_ch.for_calendar
+      tournaments = Tournament.all_from(session['country_code']).for_calendar
       ical_events_internal(tournaments)
     end
 

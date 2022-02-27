@@ -1,0 +1,18 @@
+%table.table.table-hover.table-borderless
+  -# %thead.table-header
+  -#   %tr
+  -#     %th
+  -#     %th= t('partials.streamers.streamer')
+  -#     %th{style: 'text-align: center;'}= t('partials.streamers.view_count')
+
+  %tbody.table-content.with-show
+    - if !@streamers_json.nil? and @streamers_json.any?
+      - @streamers_json.each do |streamer|
+        %tr{'data-external_url': "https://www.twitch.tv/#{streamer['user_login']}"}
+          -# %td= streamer['title']
+          %td
+            .dot{style: "background-color: #{streamer['type'] == 'live' ? 'lawngreen' : 'red'}"}
+          %td= streamer['user_name']
+          %td{style: 'text-align: center;'}= streamer['viewer_count']
+    - else
+      .no_streamers{style: 'margin-top: 1rem; text-align: center;'}= t('partials.streamers.not_found')

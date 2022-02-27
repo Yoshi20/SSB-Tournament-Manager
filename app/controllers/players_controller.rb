@@ -10,12 +10,12 @@ class PlayersController < ApplicationController
   def index
     if params[:filter].present? && params['filter-data'].present?
       if params[:filter] == 'canton'
-        @players = Player.all_ch.where(canton: params['filter-data'])
+        @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
       elsif params[:filter] == 'character'
-        @players = Player.all_ch.where("? = ANY (main_characters)", params['filter-data'])
+        @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
       end
     else
-      @players = Player.all_ch
+      @players = Player.all_from(session['country_code'])
     end
 
     # handle search parameter
@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
           flash.now[:alert] = t('flash.alert.search_players')
         end
       rescue ActiveRecord::StatementInvalid
-        @players = Player.all_ch.iLikeSearch(params[:search])
+        @players = Player.all_from(session['country_code']).iLikeSearch(params[:search])
         if @players.empty?
           flash.now[:alert] = t('flash.alert.search_players')
         end
@@ -117,7 +117,7 @@ class PlayersController < ApplicationController
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
-          Tournament.all_ch.each do |t|
+          Tournament.all_from(session['country_code']).each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end

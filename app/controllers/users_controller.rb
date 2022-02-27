@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all_ch.includes(:player).order(created_at: :desc).paginate(page: params[:page], per_page: User::MAX_USERS_PER_PAGE)
+    @users = User.all_from(session['country_code']).includes(:player).order(created_at: :desc).paginate(page: params[:page], per_page: User::MAX_USERS_PER_PAGE)
   end
 
   # PATCH/PUT /users/1

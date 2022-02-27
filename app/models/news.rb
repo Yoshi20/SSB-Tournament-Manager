@@ -7,7 +7,7 @@ class News < ApplicationRecord
   validates :teaser, :presence => true
   validates :text, :presence => true
 
-  scope :all_ch, -> { where(country_code: 'ch') }
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
 
   MAX_NEWS_PER_PAGE = 20
 

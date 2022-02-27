@@ -6,7 +6,8 @@ class CalendarController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        @full_calendar_events = Calendar.full_calendar_events(current_user)
+        tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
+        @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
         @cantons = []
         JSON.parse(@full_calendar_events).each do |t|
           canton = t['className'].split(' ')[-1]
@@ -25,7 +26,8 @@ class CalendarController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        @full_calendar_events = Calendar.full_calendar_events(current_user)
+        tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
+        @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
         @cantons = []
         JSON.parse(@full_calendar_events).each do |t|
           canton = t['className'].split(' ')[-1]

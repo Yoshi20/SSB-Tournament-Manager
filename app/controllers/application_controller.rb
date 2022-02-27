@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact, :donation]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
+  before_action :set_streamers
   before_action :set_top_players
   before_action :get_next_tournaments
   before_action :prepare_exception_notifier
@@ -45,6 +46,31 @@ class ApplicationController < ActionController::Base
     request.referrer
   end
 
+  require 'open-uri'
+  require 'json'
+  def set_streamers
+    bearer_token = request_twitch_token()
+    @streamers_json = Rails.cache.fetch("streamers", expires_in: 1.minute) do
+      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=fr"
+      puts "Requesting: GET #{url}"
+      begin
+        json_data = JSON.parse(URI.open(url,
+          "Authorization" => "Bearer #{bearer_token}",
+          "Client-Id" => ENV['TWITCH_CLIENT_ID']
+        ).read)
+      rescue OpenURI::HTTPError => ex
+        puts ex
+      end
+      if json_data.present? && !json_data["data"].nil?
+        json_data["data"]
+      else
+        puts "=> No data parameter found! json_data = #{json_data.to_s}"
+        Rails.cache.delete("twitch_token")
+        break # do not cache if theres no valid data
+      end
+    end
+  end
+
   def set_top_players
     @topPlayers = Rails.cache.fetch("top_players_s12_21", expires_in: 1.day) do
       @topPlayers = []
@@ -59,7 +85,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_next_tournaments
-    @nextTournaments = Tournament.all_ch.active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
+    @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
   end
 
   private
@@ -72,8 +98,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'de'
       elsif request.host.include?("francesmash") || request.host.include?("smashultimate.fr")
         session['country_code'] = 'fr'
-      else
+      elsif cookies['country_code'].present?
         session['country_code'] = cookies['country_code']
+      else
+        raise "Couldn't set country_code!"
       end
     end
 
@@ -102,6 +130,30 @@ class ApplicationController < ActionController::Base
 
     def rescue_invalid_auth_token
       redirect_to new_user_session_path, alert: t('flash.alert.login_failed')
+    end
+
+    require 'net/http'
+    def request_twitch_token
+      Rails.cache.fetch("twitch_token") do
+        url = "https://id.twitch.tv/oauth2/token"
+        puts "Requesting: POST #{url}"
+        begin
+          response = Net::HTTP.post_form(URI.parse(url), {
+            client_id: ENV['TWITCH_CLIENT_ID'],
+            client_secret: ENV['TWITCH_CLIENT_SECRET'],
+            grant_type: "client_credentials"
+          })
+          json_data = JSON.parse(response.body) if response.present?
+        rescue OpenURI::HTTPError => ex
+          puts ex
+        end
+        if json_data.present? && !json_data["access_token"].nil?
+          json_data["access_token"]
+        else
+          puts "=> No access_token parameter found! json_data = #{json_data.to_s}"
+          break # do not cache if theres no valid data
+        end
+      end
     end
 
 end

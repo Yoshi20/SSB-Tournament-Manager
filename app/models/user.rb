@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   validate :validate_username
 
-  scope :all_ch, -> { where(country_code: 'ch') }
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
 
   MAX_USERS_PER_PAGE = 100
 

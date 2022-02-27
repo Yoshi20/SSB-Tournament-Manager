@@ -54,7 +54,7 @@
         = link_to t('rules.title'), rules_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-        = link_to t('information.title_short'), informations_path, class: 'nav-link'
+        = link_to t('information.de.title_short'), informations_path, class: 'nav-link'
 
       %li.nav-item.locales-list
         = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')

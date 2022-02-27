@@ -4,12 +4,12 @@ require 'open-uri'
 namespace :tournaments_crawler do
   desc "Calls all the tournaments web crawler tasks"
   task all: :environment do
-    tCtr = Tournament.all_ch.count
+    tCtr = Tournament.all_from(session['country_code']).count
     puts "Running all tournaments web crawlers..."
     Rake::Task["tournaments_crawler:braacket"].invoke
     Rake::Task["tournaments_crawler:smash_gg"].invoke
     Rake::Task["tournaments_crawler:toornament"].invoke
-    puts "\ndone -> #{Tournament.all_ch.count - tCtr} new tournament(s)\n"
+    puts "\ndone -> #{Tournament.all_from(session['country_code']).count - tCtr} new tournament(s)\n"
   end
 
   desc "Creates upcoming external tournaments from braacket.com"

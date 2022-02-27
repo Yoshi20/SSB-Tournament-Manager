@@ -34,7 +34,7 @@ de:
       advanced: "Fortgeschritten"
       expert: "Experte"
       professional: "Professionell"
-      godlike: "Gottähnlich"
+      godlike: "Überirdisch"
     tournament_experiences:
       none: "Keine"
       a_little: "Ein bisschen"
@@ -68,6 +68,23 @@ de:
       wallis: "Wallis"
       zug: "Zug"
       zürich: "Zürich"
+    federal_states:
+      BB: "Brandenburg"
+      BE: "Berlin"
+      BW: "Baden-Württemberg"
+      BY: "Bayern"
+      HB: "Bremen"
+      HE: "Hessen"
+      HH: "Hamburg"
+      MV: "Mecklenburg-Vorpommern"
+      NI: "Niedersachsen"
+      NW: "Nordrhein-Westfalen"
+      RP: "Rheinland-Pfalz"
+      SH: "Schleswig-Holstein"
+      SL: "Saarland"
+      SN: "Sachsen"
+      ST: "Sachsen-Anhalt"
+      TH: "Thüringen"
     genders:
       male: "Männlich"
       female: "Weiblich"
@@ -171,27 +188,53 @@ de:
       privacy_policy: "Datenschutzerklärung"
       contact: "Kontakt"
       mail_subject: "Ich habe ein Problem oder eine Frage!"
-      mail_body: "Hallo SwissSmash\n\nIch bin ??? und ich möchte ???"
+      mail_body: "Hallo\n\nIch bin ??? und ich möchte ???"
 
   partials:
     events: "Nächsten Turniere"
     players:
       title: "Top Spieler (2021)"
       player: "Spieler"
+    streamers:
+      title: "Aktuelle Streams"
+      streamer: "Streamer"
+      view_count: "#"
+      not_found: "Keine Streams gefunden"
 
   welcome:
-    title: "SwissSmash"
-    body0: "Willkommen bei SwissSmash, deinem Einstiegspunkt in die schweizer Super Smash Bros. Ultimate Szene."
-    body1: "Wenn du mit der Swiss Smash Community auf dem Laufenden bleiben willst, schließe dich uns auf %{discord_link} an und folge dem Swiss Smash %{twitter_link} Account."
-    body2: "Du findest die bevorstehenden Ereignisse in der %{tournaments_link} oder im %{calendar_link}."
-    body3: "%{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan hast, um an einem Turnier teilnehmen zu können und eine %{feedbacks_link} schreiben zu können."
-    body4: "Das offizielle Power Ranking der Schweiz findest du unter %{rankings_link}."
-    body5: "Hier gehts zu allen auf SwissSmash registrierten %{players_link} und hier zu der %{statistics_link}."
-    body6: "Nähere Informationen zu SwissSmash findest du unter %{informations_link}."
+    ch:
+      title: "SwissSmash"
+      body0: "Willkommen bei SwissSmash, deinem Einstiegspunkt in die schweizer Super Smash Bros. Ultimate Szene."
+      body1: "Wenn du mit der Swiss Smash Community auf dem Laufenden bleiben willst, schließe dich uns auf %{discord_link} an und folge dem Swiss Smash %{twitter_link} Account."
+      body2: "Du findest die bevorstehenden Ereignisse in der %{tournaments_link} oder im %{calendar_link}."
+      body3: "%{log_in_link} oder %{sign_up_link}, falls du das noch nicht getan hast, um an einem Turnier teilnehmen zu können und eine %{feedbacks_link} schreiben zu können."
+      body4: "Das offizielle Power Ranking der Schweiz findest du unter %{rankings_link}."
+      body5: "Hier gehts zu allen auf SwissSmash registrierten %{players_link} und hier zu der %{statistics_link}."
+      body6: "Nähere Informationen zu SwissSmash findest du unter %{informations_link}."
+    de:
+      title: "Smash Bros. Germany"
+      body0: "Willkommen bei Smash Bros. Germany, deinem Einstiegspunkt in die deutsche Super Smash Bros. Ultimate Turnier Szene."
+      body1: "Du findest die bevorstehenden Events in der %{tournaments_link} oder im %{calendar_link}."
+      body2: "Deine regionale Community sollte unter %{communities} zu finden sein. Dort triffst du auch Ansprechpartner aus deiner Region."
+      body3: "%{log_in_link} oder %{sign_up_link}, um alle funktionen nutzen zu können."
+      body4: "Das offizielle Power Ranking mit den besten Spielern Deutschlands findest du unter %{rankings_link}."
+      body5: "Hier gehts zu allen auf GermanySmash registrierten %{players_link} und hier zu der %{statistics_link}."
+      body6: "Informationen zu GermanySmash findest du unter %{informations_link}."
+      body7: "Wenn du dich mit der deutschen Melee Community verbinden möchtest, besuche %{meele_link}."
+    fr:
+      title: "SmashUltimate.fr"
+      body0: "Welcome to SmashUltimate.fr, your entry point into the France Super Smash Bros. Ultimate tournament scene."
+      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body2: "Your regional community should be able to be found under %{communities}."
+      body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in France under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on SmashUltimate.fr and the %{videos_link} they posted."
+      body6: "Information about SmashUltimate.fr can be found under %{informations_link}."
     tournament_list: "Turnierliste"
     calendar: "Kalender"
     log_in: "Logge dich ein"
-    sign_up: "melde dich an"
+    sign_up: "registriere dich"
+    communities: "Communities"
     no_donations_yet: "Noch keine Spenden vorhanden 😢"
     all_donations: "Alle Spenden"
 
@@ -199,59 +242,111 @@ de:
     title: "Spendewand"
 
   information:
-    title: "Informationen"
-    title_short: "Infos"
-    general:
-      title: "Allgemein"
-      swisssmash: |
-        Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in der Schweiz zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
-        Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
-        Mittlerweile gibt es auch eine fast komplette Liste von Swiss Smash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
-    calendar:
-      title: "Kalender"
-      tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
-      calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
-      calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
-      calendar_internal: "Interne -> Auf swisssmash.ch erstelltes Turnier"
-      calendar_external: "Externe -> Auf einer externen Website erstelltes Turnier"
-    power_ranking:
-      title: "Power Ranking"
-      power_ranking: "Power Ranking (PR)"
-      power_ranking_body: "Ein Turnier wird als offizielles SwissSmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
-      power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf swisssmash.ch oder im Swiss Smash Discord-Turnierkanal angekündigt"
-      power_ranking_li_2: "Mindestens 16 Teilnehmer"
-      power_ranking_li_3: "Vernünftiges Seeding"
-      power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
-      power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
-      power_ranking_li_6: "Weeklies zählen nicht zum PR"
-    tournament_manager:
-      title: "Turniermanager"
-      tournament_organiser: "Turnierveranstalter"
-      tournament_organiser_body: "SwissSmash.ch beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den SwissSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
-      tournament_organiser_mail: "Email"
-      tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
-      tournament_organiser_mail_body: "Hi SwissSmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
-      bracket_tool: "Bracket tool"
-      bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der SwissSmash-Turniermanager vorerst %{link}."
-      bracket_seeding: "Bracket seeding"
-      bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
-      bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
-    results:
-      title: "Resultate"
-      results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
-      ranking_system: "Ranglisten System"
-      ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
-      ranking_system_rank: "Rang"
-      ranking_system_points: "Punkte"
-    personal_data:
-      title: "Persönliche Daten"
-      personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
-    contact:
-      title: "Schreib mir eine Nachricht"
-      submit: "Absenden"
-      name: "Dein Name oder Gamertag"
-      email: "Deine E-Mail"
-      body: "Deine Nachricht"
+    ch:
+      title: "Informationen"
+      title_short: "Infos"
+      general:
+        title: "Allgemein"
+        swisssmash: |
+          Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in der Schweiz zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
+          Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
+          Mittlerweile gibt es auch eine fast komplette Liste von Swiss Smash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
+      calendar:
+        title: "Kalender"
+        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
+        calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
+        calendar_internal: "Interne -> Auf swisssmash.ch erstelltes Turnier"
+        calendar_external: "Externe -> Auf einer externen Website erstelltes Turnier"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Ein Turnier wird als offizielles SwissSmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
+        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf swisssmash.ch oder im Swiss Smash Discord-Turnierkanal angekündigt"
+        power_ranking_li_2: "Mindestens 16 Teilnehmer"
+        power_ranking_li_3: "Vernünftiges Seeding"
+        power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
+        power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
+        power_ranking_li_6: "Weeklies zählen nicht zum PR"
+      tournament_manager:
+        title: "Turniermanager"
+        tournament_organiser: "Turnierveranstalter"
+        tournament_organiser_body: "SwissSmash.ch beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den SwissSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
+        tournament_organiser_mail: "Email"
+        tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
+        tournament_organiser_mail_body: "Hi SwissSmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der SwissSmash-Turniermanager vorerst %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
+        bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
+      results:
+        title: "Resultate"
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        ranking_system: "Ranglisten System"
+        ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Punkte"
+      personal_data:
+        title: "Persönliche Daten"
+        personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>SwissSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
+      contact:
+        title: "Schreib mir eine Nachricht"
+        submit: "Absenden"
+        name: "Dein Name oder Gamertag"
+        email: "Deine E-Mail"
+        body: "Deine Nachricht"
+    de:
+      title: "About"
+      title_short: "About"
+      general:
+        title: "Allgemein"
+        germanysmash: |
+          Diese Website wurde erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in Deutschland zu geben und einen Einstiegspunkt für neue Spieler zu schaffen, damit sie gut in ihre lokale Smash-Community finden.<br><br>
+          Zusätzlich bietet die Webseite einen Turniermanager, der Turnierorganisatoren (TOs) ein einfaches Tool zum Verwalten von Turnieren bereitstellt.<br><br>
+          Die Seite entstand aus der Vorlage von %{swisssmash_link} und wird primär betreut von: %{Yomi} (Entwickler) und %{TaDavidID} (Koordination mit TOs).
+      calendar:
+        title: "Kalender"
+        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann GermanySmash alle SSBU-Turniere in Deutschland finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in Deutschland bis vor zwei Wochen und vier Monaten in der Zukunft. Es werden die folgenden Turniertypen unterschieden:"
+        calendar_weekly: "Weekly -> Auf germanysmash.de erstelltes Weekly Turnier"
+        calendar_internal: "Interne -> Auf germanysmash.de erstelltes Turnier"
+        calendar_external: "Externe -> Auf einer externen Website erstelltes Turnier"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Ein Turnier wird als offizielles GermanySmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
+        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf germanysmash.de angekündigt"
+        power_ranking_li_2: "Mindestens 16 Teilnehmer"
+        power_ranking_li_3: "Vernünftiges Seeding"
+        power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
+        power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
+        power_ranking_li_6: "Weeklies zählen nicht zum PR"
+      tournament_manager:
+        title: "Turniermanager"
+        tournament_organiser: "Turnierveranstalter"
+        tournament_organiser_body: "GermanySmash.de beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den GermanySmash-Turniermanager nutzen? Schreib uns einfach eine %{link}."
+        tournament_organiser_mail: "Email"
+        tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
+        tournament_organiser_mail_body: "Hi GermanySmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der GermanySmash-Turniermanager vorerst %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
+        bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
+      results:
+        title: "Resultate"
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des GermanySmash-Turnier-Managers kann germanysmash.de auch die Resultate aller anderen Turniere in Deutschland abrufen. Die einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        ranking_system: "Ranglisten System"
+        ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Punkte"
+      contact:
+        title: "Schreib mir eine Nachricht"
+        submit: "Absenden"
+        name: "Dein Name oder Gamertag"
+        email: "Deine E-Mail"
+        body: "Deine Nachricht"
 
   calendar:
     title: "Kalender"
@@ -483,40 +578,57 @@ de:
 
   rules:
     title: "Regeln"
-    general_rules:
-      title_short: "Generell"
-      title: "Generelle Regeln"
-      body: "Damit auch weiterhin tolle Turniere in den gefundenen Lokalitäten durchgeführt werden können, müssen wir uns alle an einige Regeln des gesunden Menschenverstands halten. Wenn eine dieser Regeln verletzt wird, hat der Gastgeber (Host) das Recht, jeden Spieler ohne weitere Erklärung vom Turnier auszuschliessen."
-      li1: "Im Gebäude rauchen ist verboten"
-      li2: "Kümmere dich um alle verwendete Hard- und Software, die Einrichtung und anderes Inventar. Wenn du etwas kaputt machst, melde es dem Host"
-      li3: "Sei freundlich und hilfsbereit zu allen Teilnehmern"
-      li4: "Befolge die Anweisungen des Hosts. Das Wort des Hosts ist Gesetz"
-      li5: "Physikalische Kämpfe werden nicht toleriert"
-      li6: "Diebstahl wird nicht toleriert"
-    tournament_rules:
-      title_short: "Turniere"
-      title: "SSBU Turnierregeln"
-      li1: "Die Anmeldegebühr muss vor Beginn der Turnierspiele vor Ort bezahlt werden"
-      li2: "Wenn du zu spät (>15min) zu einem Turnier oder Match kommst, wirst du disqualifiziert"
-      li3: "Bringe deinen eigenen Controller (und dessen Zubehör) mit"
-      li4: "Falls nicht anders definiert, werden Double Elimination Matches gespielt (wenn du zwei Matches verlierst, scheidest du aus dem Turnier aus)"
-      li5: "Unbenutzte Turnierspielstationen (Setups) können für Freundschaftsspiele verwendet werden, sobald ein Host dies erlaubt"
-    match_rules:
-      title_short: "Rulesets"
-      title: "SSBU-Matchregeln (Rulesets)"
-      body: "Derzeit wird das Niederländische- oder das Mirakuru-Ruleset in den meisten offiziellen Schweizer Turnieren verwendet."
-      overview_dutch: "Übersicht Niederländische-Ruleset:"
-      overview: "Übersicht Mirakuru-Ruleset:"
-      li1: "1 vs. 1"
-      li2: "Best of 3 (Finale Matches: Best of 5)"
-      li3: "3 Stocks pro Spiel"
-      li4: "7 min pro Spiel"
-      li5: "Keine Items"
-      li6: "Pause: Off"
-      li7: "Stage hazards: Off"
-      li8: "Der Sieger eines Matches ist verpflichtet, das Ergebniss einem Administrator zu melden"
-      complete_mirakuru: "Das komplette Mirakuru-Ruleset findest du"
-      here: "hier"
+    ch:
+      general_rules:
+        title_short: "Generell"
+        title: "Generelle Regeln"
+        body: "Damit auch weiterhin tolle Turniere in den gefundenen Lokalitäten durchgeführt werden können, müssen wir uns alle an einige Regeln des gesunden Menschenverstands halten. Wenn eine dieser Regeln verletzt wird, hat der Gastgeber (Host) das Recht, jeden Spieler ohne weitere Erklärung vom Turnier auszuschliessen."
+        li1: "Im Gebäude rauchen ist verboten"
+        li2: "Kümmere dich um alle verwendete Hard- und Software, die Einrichtung und anderes Inventar. Wenn du etwas kaputt machst, melde es dem Host"
+        li3: "Sei freundlich und hilfsbereit zu allen Teilnehmern"
+        li4: "Befolge die Anweisungen des Hosts. Das Wort des Hosts ist Gesetz"
+        li5: "Physikalische Kämpfe werden nicht toleriert"
+        li6: "Diebstahl wird nicht toleriert"
+      tournament_rules:
+        title_short: "Turniere"
+        title: "SSBU Turnierregeln"
+        li1: "Die Anmeldegebühr muss vor Beginn der Turnierspiele vor Ort bezahlt werden"
+        li2: "Wenn du zu spät (>15min) zu einem Turnier oder Match kommst, wirst du disqualifiziert"
+        li3: "Bringe deinen eigenen Controller (und dessen Zubehör) mit"
+        li4: "Falls nicht anders definiert, werden Double Elimination Matches gespielt (wenn du zwei Matches verlierst, scheidest du aus dem Turnier aus)"
+        li5: "Unbenutzte Turnierspielstationen (Setups) können für Freundschaftsspiele verwendet werden, sobald ein Host dies erlaubt"
+      match_rules:
+        title_short: "Rulesets"
+        title: "SSBU-Matchregeln (Rulesets)"
+        body: "Derzeit wird das Niederländische- oder das Mirakuru-Ruleset in den meisten offiziellen Schweizer Turnieren verwendet."
+        overview_dutch: "Übersicht Niederländische-Ruleset:"
+        overview: "Übersicht Mirakuru-Ruleset:"
+        li1: "1 vs. 1"
+        li2: "Best of 3 (Finale Matches: Best of 5)"
+        li3: "3 Stocks pro Spiel"
+        li4: "7 min pro Spiel"
+        li5: "Keine Items"
+        li6: "Pause: Off"
+        li7: "Stage hazards: Off"
+        li8: "Der Sieger eines Matches ist verpflichtet, das Ergebniss einem Administrator zu melden"
+        complete_mirakuru: "Das komplette Mirakuru-Ruleset findest du"
+        here: "hier"
+    de:
+      general_rules:
+        title_short: "Verhalten"
+        body: "Jedes Turnier hat eigene Haus- und Verhaltensregeln. Im Zweifel frage immer den Turnier Organisator oder Host des Events."
+        ul: "Einige (hoffentlich selbstverständliche) Regeln sind wie folgt:"
+        li1: "Haltet euch an Regeln des gesunden Menschenverstands und in Deutschland geltendes Recht."
+        li2: "Gehe Respektvoll mit allen Teilnehmern um. Sexismus, Rassismus, Homo- oder Transphobie, Behindertenfeindlichkeit oder Religiöse Diskriminierung werden nicht toleriert."
+        li3: "Jeder Spieler soll sich auf Turnieren sicher fühlen. Sexuelle Belästigung oder physische Gewalt führen zu sofortigen Banns."
+        li4: "Die meisten Turniere sind auch für Jugendliche freigegeben. Alkohol und Zigaretten dürfen nicht für Minderjährige zugänglich gemacht werden. Der Konsum von illegalen Substanzen ist komplett zu unterlassen."
+        li5: "Absichtliche Beschädigung oder Diebstahl von fremdem Eigentum wird nicht geduldet. Solltest du ausversehen etwas beschädigen oder wenn dir etwas suspektes auffällt, melde es bitte dem Host."
+        li6: "Cheaten oder andere Manipulationen des Turniers schaden dem Wettbewerb und führen strenge konsequenzen mit sich."
+        li7: "Wenn Regeln verletzt werden, hat der Gastgeber immer das Recht, jeden Spieler ohne weitere Diskussion vom Event auszuschließen."
+        li8: "Je nach Covid-19 Situation und Schutzkonzept des Events gibt es unterschiedliche Corona Regeln. Halte dich jederzeit an die Vorgaben."
+      match_rules:
+        title_short: "Ruleset"
+        body: "Auf den meisten Turnieren in Deutschland wird das GSC Ruleset bzw. das Niederländische Ruleset verwendet. Informiere dich bitte vor jedem Event welches Regelwerk konkret verwendet wird."
 
   tournaments:
     title: "Turniere"

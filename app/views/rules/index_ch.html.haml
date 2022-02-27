@@ -1,0 +1,81 @@
+- set_meta_tags description: 'Swiss Smash Rules'
+
+.row
+  .col
+    %h1.page__title= t('rules.title')
+
+%ul#rules-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#general-tab.nav-link{'data-toggle'=>'tab', href: '#general', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.ch.general_rules.title_short')
+  %li.nav-item
+    %a#tournaments-tab.nav-link{'data-toggle'=>'tab', href: '#tournaments', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.ch.tournament_rules.title_short')
+  %li.nav-item
+    %a#matches-tab.nav-link.active{'data-toggle'=>'tab', href: '#matches', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.ch.match_rules.title_short')
+
+.tab-content#information-tabs-content
+  .tab-pane.fade#general{role: 'tabpanel', 'aria-labelledby'=>'general-tab'}
+    .row
+      .col
+        %h2= t('rules.ch.general_rules.title')
+    .row
+      .col
+        %p= t('rules.ch.general_rules.body')
+        %ul
+          %li= t('rules.ch.general_rules.li1')
+          %li= t('rules.ch.general_rules.li2')
+          %li= t('rules.ch.general_rules.li3')
+          %li= t('rules.ch.general_rules.li4')
+          %li= t('rules.ch.general_rules.li5')
+          %li= t('rules.ch.general_rules.li6')
+
+  .tab-pane.fade#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
+    .row.mt-3
+      .col
+        %h2= t('rules.ch.tournament_rules.title')
+    .row
+      .col
+        %ul
+          %li= t('rules.ch.tournament_rules.li1')
+          %li= t('rules.ch.tournament_rules.li2')
+          %li= t('rules.ch.tournament_rules.li3')
+          %li= t('rules.ch.tournament_rules.li4')
+          %li= t('rules.ch.tournament_rules.li5')
+
+  .tab-pane.fade.show.active#matches{role: 'tabpanel', 'aria-labelledby'=>'matches-tab'}
+    .row.mt-3
+      .col
+        %h2= t('rules.ch.match_rules.title')
+    .row
+      .col
+        %p
+          = t('rules.ch.match_rules.body')
+    .row
+      .col
+        %p
+          %strong= t('rules.ch.match_rules.overview_dutch')
+    .row
+      = link_to asset_url('dutch_ssbu_ruleset.png') do
+        = image_tag 'dutch_ssbu_ruleset.png', height: '100%', width: '100%'
+
+    %hr
+    .row.mt-3
+      .col
+        %p
+          %strong= t('rules.ch.match_rules.overview')
+        %ul
+          %li= t('rules.ch.match_rules.li1')
+          %li= t('rules.ch.match_rules.li2')
+          %li= t('rules.ch.match_rules.li3')
+          %li= t('rules.ch.match_rules.li4')
+          %li= t('rules.ch.match_rules.li5')
+          %li= t('rules.ch.match_rules.li6')
+          %li= t('rules.ch.match_rules.li7')
+          %li= t('rules.ch.match_rules.li8')
+          %li
+            = t('rules.ch.match_rules.complete_mirakuru')
+            %strong= link_to t('rules.ch.match_rules.here'), 'https://drive.google.com/file/d/1-B6jUl0o8EDrASswJ1ReYK-3vT_7Kb54/view', target: 'blank'
+    .row
+      = image_tag 'mirakuru_stages.png', height: '100%', width: '100%'

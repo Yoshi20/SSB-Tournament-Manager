@@ -138,3 +138,6 @@ gem 'acts_as_list'
 
 # See https://github.com/kpumuk/meta-tags
 gem 'meta-tags'
+
+# See https://github.com/infinum/cookies_eu
+gem 'cookies_eu'

@@ -1,0 +1,29 @@
+.row.footer-nav
+  .col-5
+    .row
+      = link_to "https://smashcontest.de/", target: '_blank' do
+        = image_tag('smash_contest.png', class: 'smash_contest_logo', width: '128.25px', height: '75px')
+      -# blup: not needed atm.
+      -# .col
+      -#   %p.small
+      -#     = link_to t('navigation.footer.administrators_short'), :administrators
+      .col.d-none.d-sm-block
+        %p.small
+          = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
+
+  .col-2
+    = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
+      = image_tag('de_logo.png', class: 'germanysmash_logo', height: '50px', width: '50px')
+  .col-5
+    .row
+      .col
+        %p.small
+          = link_to t('navigation.footer.imprint'), :imprint
+      .col
+        %p.small
+          = link_to t('navigation.footer.privacy_policy'), :privacy_policy
+      .col
+        %p#donate-btn
+          = link_to("https://ko-fi.com/germanysmash", target: '_blank', class: "btn btn-default") do
+            = image_tag("https://storage.ko-fi.com/cdn/cup-border.png")
+            %span= t('please_donate')

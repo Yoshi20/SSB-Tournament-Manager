@@ -1,0 +1,141 @@
+- set_meta_tags description: 'Germany Smash Communities'
+
+.row
+  .col
+    %h1.page__title= t('communities.title')
+
+.row
+  .col
+    %p= t('communities.body')
+
+:css
+  .bl path { cursor:pointer; }
+  .BadenWuerttemberg { fill:#FA8737; }
+  .Bayern { fill:#2ED2EB; }
+  .Berlin { fill:#9471FF; }
+  .Brandenburg { fill:#9471FF; }
+  .Bremen { fill:#FFBC16; }
+  .Hamburg { fill:#308AFF; }
+  .Hessen { fill:#FF3837; }
+  .MecklenburgVorpommern { fill:#308AFF; }
+  .Niedersachsen { fill:#FFBC16; }
+  .NordrheinWestfalen { fill:#29B548; }
+  .RheinlandPfalz { fill:#FF3837; }
+  .Saarland { fill:#FF3837; }
+  .Sachsen { fill:#FF9DB6; }
+  .SachsenAnhalt { fill:#FF9DB6; }
+  .SchleswigHolstein { fill:#308AFF; }
+  .Thueringen { fill:#FF9DB6; }
+
+%figure.svgareamap
+
+.row
+  .col
+    .calendar__footer__legend__item
+      = link_to '/communities/nds' do
+        %span.circle{style: "background: #FFBC16;"}
+        %strong= t('communities.nds.title')
+      %ul
+        %li= t('defines.federal_states.NI')
+        %li= t('defines.federal_states.HB')
+    .calendar__footer__legend__item
+      = link_to '/communities/nrw' do
+        %span.circle{style: "background: #29B548;"}
+        %strong{style: 'color: #29B548;'}= t('communities.nrw.title')
+      %ul
+        %li= t('defines.federal_states.NW')
+    .calendar__footer__legend__item
+      = link_to '/communities/hessen' do
+        %span.circle{style: "background: #FF3837;"}
+        %strong{style: 'color: #FF3837;'}= t('communities.hessen.title')
+      %ul
+        %li= t('defines.federal_states.HE')
+        %li= t('defines.federal_states.RP')
+        %li= t('defines.federal_states.SL')
+    .calendar__footer__legend__item
+      = link_to '/communities/bawu' do
+        %span.circle{style: "background: #FA8737;"}
+        %strong{style: 'color: #FA8737;'}= t('communities.bawu.title')
+      %ul
+        %li= t('defines.federal_states.BW')
+  .col
+    .calendar__footer__legend__item
+      = link_to '/communities/norden' do
+        %span.circle{style: "background: #308AFF;"}
+        %strong{style: 'color: #308AFF;'}= t('communities.norden.title')
+      %ul
+        %li= t('defines.federal_states.SH')
+        %li= t('defines.federal_states.HH')
+        %li= t('defines.federal_states.MV')
+    .calendar__footer__legend__item
+      = link_to '/communities/berlin' do
+        %span.circle{style: "background: #9471FF;"}
+        %strong{style: 'color: #9471FF;'}= t('communities.berlin.title')
+      %ul
+        %li= t('defines.federal_states.BB')
+        %li= t('defines.federal_states.BE')
+    .calendar__footer__legend__item
+      = link_to '/communities/osten' do
+        %span.circle{style: "background: #FF9DB6;"}
+        %strong{style: 'color: #FF9DB6;'}= t('communities.osten.title')
+      %ul
+        %li= t('defines.federal_states.ST')
+        %li= t('defines.federal_states.TH')
+        %li= t('defines.federal_states.SN')
+    .calendar__footer__legend__item
+      = link_to '/communities/bayern' do
+        %span.circle{style: "background: #2ED2EB;"}
+        %strong{style: 'color: #2ED2EB;'}= t('communities.bayern.title')
+      %ul
+        %li= t('defines.federal_states.BY')
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    // https://stackoverflow.com/questions/7981100/how-do-i-dynamically-insert-an-svg-image-into-html
+    if ($('.svgareamap').length > 0) {
+      var xhr = new XMLHttpRequest;
+      xhr.open('get', "#{asset_path('bundeslaender.svg')}",true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4) return;
+        var svg = xhr.responseXML.documentElement;
+        svg = document.importNode(svg,true); // surprisingly optional in these browsers
+        // remove old svg before appending
+        if ($('#BRD').length > 0) $('#BRD')[0].remove();
+        document.querySelector(".svgareamap").appendChild(svg);
+        var all = document.querySelectorAll('.bl path');
+        // var count = all.length;
+        // console.log (count);
+        for (var i=0; i<16; i++) {
+          all[i].addEventListener ('mouseover', function () {
+            var color = this.getAttribute('fill');
+            // this.setAttribute('style','fill:hsl(80,40%,85%)');
+            this.setAttribute('style','fill:#000');
+            this.onmouseout = function () {
+              // this.setAttribute('style','fill:hsl(219,40%,85%)');
+              this.setAttribute('style','fill:invalid');
+            }
+          });
+          all[i].addEventListener ('click', function (e) {
+            var bundesland = e.target.classList[0];
+            if      (bundesland === "BadenWuerttemberg") window.location.href = '/communities/bawu';
+            else if (bundesland === "Bayern") window.location.href = '/communities/bayern';
+            else if (bundesland === "Berlin") window.location.href = '/communities/berlin';
+            else if (bundesland === "Brandenburg") window.location.href = '/communities/berlin';
+            else if (bundesland === "Bremen") window.location.href = '/communities/nds';
+            else if (bundesland === "Hamburg") window.location.href = '/communities/norden';
+            else if (bundesland === "Hessen") window.location.href = '/communities/hessen';
+            else if (bundesland === "MecklenburgVorpommern") window.location.href = '/communities/norden';
+            else if (bundesland === "Niedersachsen") window.location.href = '/communities/nds';
+            else if (bundesland === "NordrheinWestfalen") window.location.href = '/communities/nrw';
+            else if (bundesland === "RheinlandPfalz") window.location.href = '/communities/hessen';
+            else if (bundesland === "Saarland") window.location.href = '/communities/hessen';
+            else if (bundesland === "Sachsen") window.location.href = '/communities/osten';
+            else if (bundesland === "SachsenAnhalt") window.location.href = '/communities/osten';
+            else if (bundesland === "SchleswigHolstein") window.location.href = '/communities/norden';
+            else if (bundesland === "Thueringen") window.location.href = '/communities/osten';
+          });
+        }
+      };
+      xhr.send();
+    }
+  });

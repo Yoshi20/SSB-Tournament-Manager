@@ -4,7 +4,7 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  background-color: $color-red;
+  background-color: $color-default;
 
   .navbar-brand {
     color: $color-white;
@@ -93,7 +93,7 @@
   .dropdown-menu {
     border-radius: $border-radius-box;
     a {
-      color: $color-red;
+      color: $color-default;
     }
     .dropdown-item.active, .dropdown-item:active {
       background-color: $color-grey-light;

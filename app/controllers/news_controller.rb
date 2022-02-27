@@ -7,7 +7,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.all_ch.order(created_at: :desc).paginate(page: params[:page], per_page: News::MAX_NEWS_PER_PAGE)
+    @news = News.all_from(session['country_code']).order(created_at: :desc).paginate(page: params[:page], per_page: News::MAX_NEWS_PER_PAGE)
   end
 
   # GET /news/1

@@ -13,7 +13,7 @@ class Player < ApplicationRecord
   validate :validate_gamer_tag_is_truly_uniq
   validates :prefix, length: { maximum: 12 }
 
-  scope :all_ch, -> { where(country_code: 'ch') }
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
   scope :from_2019, -> { where('created_at >= ? AND created_at < ?', Time.local(2019,1,1), Time.local(2020,1,1)) }
   scope :from_2020, -> { where('created_at >= ? AND created_at < ?', Time.local(2020,1,1), Time.local(2021,1,1)) }
   scope :from_2021, -> { where('created_at >= ? AND created_at < ?', Time.local(2021,1,1), Time.local(2022,1,1)) }
@@ -29,7 +29,7 @@ class Player < ApplicationRecord
   end
 
   def validate_gamer_tag_is_truly_uniq
-    if AlternativeGamerTag.all_ch.exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
+    if AlternativeGamerTag.all_from(session['country_code']).exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
       errors.add(:gamer_tag, I18n.t('not_uniq'))
     end
   end
