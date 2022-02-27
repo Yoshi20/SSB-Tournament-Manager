@@ -1,0 +1,125 @@
+-# Std view
+.container
+  %a.navbar-brand{href: '/'}
+    -# = image_tag('Logo_couleur_long.png', height: '50px')
+    = image_tag('logo.jpg', height: '50px', width: '50px')
+    -# %span.title{style: 'line-height: 0.8;'}
+    %span.d-none.d-sm-block.d-lg-none.d-xl-block
+      = 'SmashUltimate.fr'
+  %ul.navbar-nav.navbar-icons
+    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.com/invite/GYyBUKg', target: '_blank', class: 'nav-link'
+    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/SmashUltimateFR', target: '_blank', class: 'nav-link'
+  %button.navbar-toggler.collapsed{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
+    %span.navbar-toggler-icon
+      %span.line.line--1
+      %span.line.line--2
+      %span.line.line--3
+  .collapse.navbar-collapse#navbarSupportedContent
+    %ul.navbar-nav.navbar-main.ml-auto
+
+      %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
+        = link_to t('news.title'), news_index_path, class: 'nav-link'
+
+      %li.nav-item.dropdown{role: "presentation", class: ((@section == 'communities' or @section == 'regions') ? 'active' : 'inactive')}
+        %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          = t('communities.title')
+          .d-none.d-lg-block{style: "height: 24px;"}
+            %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+          = link_to t('communities.regions'), communities_path, class: 'dropdown-item'
+          = link_to t('communities.characters'), communities_smashcords_path, class: 'dropdown-item'
+
+      %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
+        %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          = t('tournaments.title')
+          .d-none.d-lg-block{style: "height: 24px;"}
+            %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+          = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
+          = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
+
+      %li.nav-item{role: "presentation", class: (@section == 'guides' ? 'active' : 'inactive')}
+        = link_to t('guides.title'), guides_path, class: 'nav-link'
+
+      %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
+        = link_to t('rankings.title'), rankings_path, class: 'nav-link'
+
+      %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics' or @section == 'videos') ? 'active' : 'inactive')}
+        %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          = t('players.title')
+          .d-none.d-lg-block{style: "height: 24px;"}
+            %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+          .d-lg-none.d-block{style: "height: 24px;"}
+            %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+          = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
+          = link_to t('players.individuals'), players_path, class: 'dropdown-item'
+          = link_to t('video.title'), videos_path, class: 'dropdown-item'
+
+      %li.nav-item.d-lg-none.d-block{role: "presentation", class: (@section == 'streams' ? 'active' : 'inactive')}
+        = link_to 'Streams', streams_path, class: 'nav-link'
+
+      %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
+        = link_to t('rules.title'), rules_path, class: 'nav-link'
+
+      %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
+        = link_to t('information.title_short'), informations_path, class: 'nav-link'
+
+      %li.nav-item.locales-list
+        = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
+        = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr')
+
+    %ul.navbar-nav.navbar-account
+      - if user_signed_in?
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+            %span.material-icons.d-none.d-lg-block.ml-lg-3
+              - if current_user.player.main_characters.any?
+                - char = current_user.player.main_characters[0] || current_user.player.main_characters[1] || current_user.player.main_characters[2]
+                - skin_nr = current_user.player.main_character_skins[0] || current_user.player.main_character_skins[1] || current_user.player.main_character_skins[2]
+                - if char != 'random' && File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                  #nav-char-image= render partial: 'players/character_image', locals: {character: char, skin_nr: skin_nr}
+                - else
+                  = 'person'
+              - else
+                = 'person'
+
+            %span.d-block.d-lg-none
+              - if user_signed_in?
+                = t('navigation.account.account')
+              - else
+                = t('login')
+            .d-lg-none.d-block{style: "height: 24px;"}
+              %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+          .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
+            .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
+              = current_user.username
+              - if current_user.admin?
+                = t('navigation.account.admin')
+            - if current_user.player.present?
+              = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
+              = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
+            = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
+            - if current_user.admin?
+              .dropdown-divider
+              = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
+              = link_to t('navigation.account.add_tournament'), new_tournament_path, class: 'dropdown-item'
+            -#
+            .divider
+            = link_to t('navigation.account.log_out'), destroy_user_session_path, method: :delete, confirm: t('navigation.account.log_out_confirm'), class: 'dropdown-item'
+      - else
+        %li.nav-item.dropdown
+          %a.nav-link{href:"#", role:"button", 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+            %span.material-icons.d-none.d-lg-block.ml-lg-3
+              = 'account_circle'
+            %span.d-block.d-lg-none
+              - if user_signed_in?
+                = t('navigation.account.account')
+              - else
+                = t('login')

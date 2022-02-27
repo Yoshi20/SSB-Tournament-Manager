@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_auth_token
 
+  before_action :set_country_code
   before_action :set_locale
   before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact, :donation]
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -62,6 +63,20 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+    def set_country_code
+      puts request.host
+      if request.host.include?("swisssmash")
+        session['country_code'] = 'ch'
+      elsif request.host.include?("germanysmash")
+        session['country_code'] = 'de'
+      elsif request.host.include?("francesmash") || request.host.include?("smashultimate.fr")
+        session['country_code'] = 'fr'
+      else
+        session['country_code'] = cookies['country_code']
+      end
+    end
+
     def set_locale
       if params[:locale].present?
         cookies.permanent[:locale] = params[:locale]
