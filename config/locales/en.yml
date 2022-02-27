@@ -502,6 +502,7 @@ en:
     losses: "Losses"
     canton: "Canton"
     region: "Region"
+    federal_state: "Federal state"
     gender: "Gender"
     birth_year: "Birth year"
     self_assessment: "Self assessment"
@@ -532,7 +533,7 @@ en:
   statistics:
     title: "Overview"
     title2: "Player overview"
-    count_total: "Total registered players on SwissSmash"
+    count_total: "Total registered players"
     in_2019: "in 2019"
     in_2020: "in 2020"
     in_2021: "in 2021"
@@ -544,6 +545,7 @@ en:
     mean-age: "Ø age"
     oldest: "Oldest"
     canton: "Canton"
+    federal_state: "Federal state"
     number_of_players: "Number of players"
     character: "Character"
 
@@ -728,6 +730,7 @@ en:
     bracket: "Bracket"
     no_players_joined: "No player has joined this tournament yet"
     canton: "Canton"
+    federal_state: "Federal state"
     fee_paid: "Fee paid?"
     brings: "Brings"
     brought: "Brought"

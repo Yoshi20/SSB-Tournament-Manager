@@ -22,6 +22,18 @@ module PlayerHelper
     cantons.zip(cantons_raw)
   end
 
+  def federal_states_raw
+    ['BB', 'BE', 'BW', 'BY', 'HB', 'HE', 'HH', 'MV', 'NI', 'NW', 'RP', 'SH', 'SL', 'SN', 'ST', 'TH']
+  end
+
+  def federal_states
+    t(federal_states_raw, scope: 'defines.federal_states')
+  end
+
+  def federal_states_for_select
+    federal_states.zip(federal_states_raw)
+  end
+
   def genders_raw
     ['male', 'female', 'other']
   end
