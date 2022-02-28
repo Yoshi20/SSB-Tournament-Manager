@@ -15,9 +15,9 @@ class Tournament < ApplicationRecord
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
-  before_create :set_country_code
   before_create :set_canton
   before_create :set_federal_state
+  before_create :set_region
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 
@@ -160,6 +160,62 @@ class Tournament < ApplicationRecord
                   self.federal_state = federal_states_raw[federal_states_de.index(ln)] if federal_states_de.index(ln).present?
                   self.federal_state = federal_states_raw[federal_states_en.index(ln)] if federal_states_en.index(ln).present?
                   return # as soon as federal_state was found
+                end
+              end
+            end
+          end
+        end
+      rescue OpenURI::HTTPError => ex
+        puts ex
+      end
+    end
+  end
+
+  def set_region
+    return if self.region.present?
+    regions_raw = ApplicationController.helpers.regions_raw
+    regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)
+    regions_en = I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase)
+    # First: Try to determine region from city
+    if self.city.present?
+      city = self.city.downcase
+      #city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+      if (regions_fr.include?(city) || regions_en.include?(city))
+        self.region = regions_raw[regions_fr.index(city)] if regions_fr.index(city).present?
+        self.region = regions_raw[regions_en.index(city)] if regions_en.index(city).present?
+        return # as soon as region was found
+      end
+    end
+    # Second: Try to determine region from a word in location
+    if self.location.present?
+      self.location.downcase.split(' ').each do |l|
+        l = l.gsub(',', '')#.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+        if (regions_fr.include?(l) || regions_en.include?(l))
+          self.region = regions_raw[regions_fr.index(l)] if regions_fr.index(l).present?
+          self.region = regions_raw[regions_en.index(l)] if regions_en.index(l).present?
+          return # as soon as region was found
+        end
+      end
+      # Third: Try to find the region with the help of Google Maps
+      require 'open-uri'
+      require 'json'
+      begin
+        json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:FR&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+        if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
+          json_data["results"][0]["address_components"].each do |res|
+            if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
+              if res["long_name"].present?
+                sn = res["short_name"]
+                if regions_raw.include?(sn)
+                  self.region = sn
+                  return # as soon as region was found
+                end
+                # long_name will most likely never be necessary
+                ln = res["long_name"].downcase
+                if (regions_fr.include?(ln) || regions_en.include?(ln))
+                  self.region = regions_raw[regions_fr.index(ln)] if regions_fr.index(ln).present?
+                  self.region = regions_raw[regions_en.index(ln)] if regions_en.index(ln).present?
+                  return # as soon as region was found
                 end
               end
             end

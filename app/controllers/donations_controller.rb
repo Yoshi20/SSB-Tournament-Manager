@@ -14,6 +14,13 @@ class DonationsController < ApplicationController
   def donation
     @donation = Donation.new(donation_params)
     @donation.shop_items = donation_params[:shop_items].to_s if donation_params[:shop_items].present?
+    if @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_CH']
+      @donation.country_code = 'ch'
+    elsif @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_DE']
+      @donation.country_code = 'de'
+    elsif @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_FR']
+      @donation.country_code = 'fr'
+    end
     respond_to do |format|
       if @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN']
         if @donation.save

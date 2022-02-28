@@ -122,14 +122,14 @@ class PlayersController < ApplicationController
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
           end
-          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag)
+          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag, country_code: @player.country_code)
         end
         # update alternative_gamer_tags if it was changed
         alts = ""
         @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
         if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
           params[:alternative_gamer_tags].split(',').each do |alt|
-            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip)
+            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
           end
         end
         # render

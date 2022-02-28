@@ -1,8 +1,6 @@
 class News < ApplicationRecord
   belongs_to :user
 
-  before_create :set_country_code
-
   validates :title, :presence => true
   validates :teaser, :presence => true
   validates :text, :presence => true

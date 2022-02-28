@@ -6,7 +6,6 @@ class Player < ApplicationRecord
   has_many :tournaments, through: :registrations
 
   before_validation :strip_whitespace
-  before_create :set_country_code
   after_save :delete_identical_alt
 
   validates :gamer_tag, uniqueness: true, presence: true
@@ -29,7 +28,7 @@ class Player < ApplicationRecord
   end
 
   def validate_gamer_tag_is_truly_uniq
-    if AlternativeGamerTag.all_from(session['country_code']).exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
+    if AlternativeGamerTag.all_from(self.country_code).exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
       errors.add(:gamer_tag, I18n.t('not_uniq'))
     end
   end

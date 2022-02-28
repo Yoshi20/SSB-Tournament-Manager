@@ -6,6 +6,9 @@
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
       -# = recaptcha_v3(action: 'registration')
       = render "devise/shared/error_messages", resource: resource
+      .form-group.hidden
+        = f.label :country_code
+        = f.text_field :country_code, value: session['country_code'], class: 'form-control'
       .form-group
         = f.label :username, "#{t('users.login_username')} *"
         = f.text_field :username, autofocus: true, class: 'form-control'
@@ -31,7 +34,12 @@
         = f.email_field :email, class: 'form-control'
       .form-group
         = f.label :mobile_number, t('users.mobile_number')
-        %em= "(079 / 123 45 67)"
+        - if session['country_code'] == 'ch'
+          %em= "(079 / 123 45 67)"
+        - elsif session['country_code'] == 'de'
+          %em= "(01522 1234567)"
+        - elsif session['country_code'] == 'fr'
+          %em= "(06 12 34 56 78)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, "#{t('password')} *"
@@ -41,15 +49,24 @@
       .form-group
         = f.label :password_confirmation, "#{t('users.password_confirmation')} *"
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-      .form-group
-        = label_tag :canton, t('players.canton')
-        = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true, class: 'form-control'}
+      - if session['country_code'] == 'ch'
+        .form-group
+          = label_tag :canton, t('players.canton')
+          = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true}, class: 'form-control'
+      - elsif session['country_code'] == 'de'
+        .form-group
+          = label_tag :federal_state, t('players.federal_state')
+          = select_tag :federal_state, options_for_select(federal_states_for_select, params[:federal_state]), {include_blank: true}, class: 'form-control'
+      - elsif session['country_code'] == 'fr'
+        .form-group
+          = label_tag :region, t('players.region')
+          = select_tag :region, options_for_select(regions_for_select, params[:region]), {include_blank: true}, class: 'form-control'
       .form-group
         = label_tag :gender, t('players.gender')
-        = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
+        = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true}, class: 'form-control'
       .form-group
         = label_tag :birth_year, t('players.birth_year')
-        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
+        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true}, class: 'form-control'
       .form-group
         = label_tag :self_assessment, t('players.self_assessment')
         = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, params[:self_assessment]), {class: 'form-control'}
@@ -102,17 +119,30 @@
       -#     = params[:wants_weekly_email]
       -#     = f.check_box :wants_weekly_email, checked: (params[:user].present? ? (params[:user][:wants_weekly_email] == "1") : true), class:'form-check-input mr-2'
       -#     = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
+      - if session['country_code'] == 'ch'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_swisssmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_swisssmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'de'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
+      - if session['country_code'] == 'fr'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
       .form-group
         .form-check
-          = params[:allows_emails_from_swisssmash]
-          = f.check_box :allows_emails_from_swisssmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_swisssmash] == "1") : true), class:'form-check-input mr-2'
-          = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
-      -# .form-group #blup: hide for now
-      -#   .form-check
-      -#     = params[:allows_emails_from_partners]
-      -#     = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
-      -#     = f.label :allows_emails_from_partners, t('users.allows_emails_from_partners'), class:'form-check-label'
+          = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
+          = f.label :allows_emails_from_partners, t("users.allows_emails_from_partners_#{session['country_code']}"), class:'form-check-label'
+      .form-group
+        .form-check
+          %input{type:"checkbox", onclick:"return false;", checked:'true', class:'form-check-input mr-2'}
+          = label_tag :data_agreement, t('users.data_agreement'), class:'form-check-label'
       .form-group
         = recaptcha_tags
       .form-group
-        = f.submit t('users.register'), class:'btn btn-ghost'
+        = f.submit t('users.register'), class:'btn btn-default'

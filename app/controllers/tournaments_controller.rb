@@ -96,6 +96,7 @@ class TournamentsController < ApplicationController
   def create
     @tournament = Tournament.new(tournament_params)
     @tournament.ranking_string = ''
+    @tournament.country_code = session['country_code']
     # handle the different subtypes
     if @tournament.subtype.nil? or @tournament.subtype == 'internal'
       respond_to do |format|

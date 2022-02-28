@@ -14,7 +14,7 @@
     .form-group
       = recaptcha_tags
     .form-group
-      = submit_tag t('log_in'), class: "btn btn-sstm"
-      = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-ghost", style: "position: absolute; right: 20px;"
+      = submit_tag t('log_in'), class: "btn btn-cyan"
+      = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-default", style: "position: absolute; right: 20px;"
     .form-group
       = link_to t('devise.sessions.forgot_pw'), new_password_path(resource_name)

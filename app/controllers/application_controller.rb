@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_auth_token
 
-  before_action :set_country_code
+  before_action :set_country_code, except: :donation
   before_action :set_locale
   before_action :authenticate_user!, except: [
     :index, :show, :location, :unregistered, :contact, :donation,
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
       :wants_major_email, :wants_weekly_email, :canton, :gender, :birth_year,
       :prefix, :discord_username, :twitter_username, :instagram_username,
       :youtube_video_ids, :allows_emails_from_swisssmash,
-      :allows_emails_from_partners]
+      :allows_emails_from_partners, :country_code]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end

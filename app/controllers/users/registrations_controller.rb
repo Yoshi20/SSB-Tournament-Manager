@@ -25,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if user.present? && user.id == user_params[:id]
         # User seems to be created successfully -> Create a new player and assign it to this user
         player = Player.new
+        player.country_code = user.country_code
         player.gamer_tag = params[:gamer_tag]
         player.prefix = params[:prefix]
         player.discord_username = params[:discord_username]
