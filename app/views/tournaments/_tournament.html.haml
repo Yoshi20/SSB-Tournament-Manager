@@ -22,7 +22,7 @@
       = tournament.city || '-'
 
     %td.d-none.d-sm-table-cell
-      = tournament.location.gsub(', CH', '').gsub(', Schweiz', '').gsub(', Suisse', '').gsub(', Switzerland', '') if tournament.location.present?
+      = tournament.location.gsub(', CH', '').gsub(', Schweiz', '').gsub(', Suisse', '').gsub(', Switzerland', '').gsub(', Deutschland', '').gsub(', Germany', '').gsub(', France', '') if tournament.location.present?
 
     %td.text-center.d-none.d-md-table-cell
       - if tournament.total_seats.nil?

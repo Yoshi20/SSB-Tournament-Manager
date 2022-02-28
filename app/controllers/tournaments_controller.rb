@@ -30,6 +30,14 @@ class TournamentsController < ApplicationController
         @past_tournaments = @past_tournaments.where(city: city).or(
           @past_tournaments.from_city(city)
         )
+      elsif helpers.federal_states_raw.include?(params[:filter].upcase)
+        federal_state = params[:filter].upcase
+        @tournaments = @tournaments.where(federal_state: federal_state)
+        @past_tournaments = @past_tournaments.where(federal_state: federal_state)
+      elsif helpers.regions_raw.include?(params[:filter])
+        region = params[:filter]
+        @tournaments = @tournaments.where(region: region)
+        @past_tournaments = @past_tournaments.where(region: region)
       elsif params[:filter] == 's1_2019'
         @tournaments = @tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
         @past_tournaments = @past_tournaments.where('date >= ? AND date < ?', Time.local(2019,1,1), Time.local(2019,6,16)).where.not(subtype: 'weekly').where("name NOT ILIKE ?", "%Weekly%")
