@@ -8,12 +8,28 @@ class CalendarController < ApplicationController
       format.html do
         tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
         @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
-        @cantons = []
-        JSON.parse(@full_calendar_events).each do |t|
-          canton = t['className'].split(' ')[-1]
-          @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+        if session['country_code'] == 'ch'
+          @cantons = []
+          JSON.parse(@full_calendar_events).each do |t|
+            canton = t['className'].split(' ')[-1]
+            @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+          end
+          @cantons = @cantons.uniq
+        elsif session['country_code'] == 'de'
+          @federal_states = []
+          JSON.parse(@full_calendar_events).each do |t|
+            federal_state = t['className'].split(' ')[-1]
+            @federal_states << federal_state if ApplicationController.helpers.federal_states_raw.include?(federal_state)
+          end
+          @federal_states = @federal_states.uniq
+        elsif session['country_code'] == 'fr'
+          @regions = []
+          JSON.parse(@full_calendar_events).each do |t|
+            region = t['className'].split(' ')[-1]
+            @regions << region if ApplicationController.helpers.regions_raw.include?(region)
+          end
+          @regions = @regions.uniq
         end
-        @cantons = @cantons.uniq
       end
       format.ics do
         send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
@@ -28,12 +44,28 @@ class CalendarController < ApplicationController
       format.html do
         tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
         @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
-        @cantons = []
-        JSON.parse(@full_calendar_events).each do |t|
-          canton = t['className'].split(' ')[-1]
-          @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+        if session['country_code'] == 'ch'
+          @cantons = []
+          JSON.parse(@full_calendar_events).each do |t|
+            canton = t['className'].split(' ')[-1]
+            @cantons << canton if ApplicationController.helpers.cantons_raw.include?(canton)
+          end
+          @cantons = @cantons.uniq
+        elsif session['country_code'] == 'de'
+          @federal_states = []
+          JSON.parse(@full_calendar_events).each do |t|
+            federal_state = t['className'].split(' ')[-1]
+            @federal_states << federal_state if ApplicationController.helpers.federal_states_raw.include?(federal_state)
+          end
+          @federal_states = @federal_states.uniq
+        elsif session['country_code'] == 'fr'
+          @regions = []
+          JSON.parse(@full_calendar_events).each do |t|
+            region = t['className'].split(' ')[-1]
+            @regions << region if ApplicationController.helpers.regions_raw.include?(region)
+          end
+          @regions = @regions.uniq
         end
-        @cantons = @cantons.uniq
         render "show", layout: "for_iframe"
       end
     end

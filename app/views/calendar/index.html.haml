@@ -4,9 +4,16 @@
   .col
     %h1.page__title= t('calendar.title')
 
--# hidden canton images to get the asset_urls via js
+-# hidden images to get the asset_urls via js
 .hidden
-  - @cantons.each do |canton|
-    = image_tag "cantons/#{canton}.svg", height: '1px', width: '1px', id: canton
+  - if session['country_code'] == 'ch'
+    - @cantons.each do |canton|
+      = image_tag "cantons/#{canton}.svg", height: '1px', width: '1px', id: canton
+  - elsif session['country_code'] == 'de'
+    - @federal_states.each do |federal_state|
+      = image_tag "federal_states/#{federal_state}.svg", height: '1px', width: '1px', id: federal_state
+  - elsif session['country_code'] == 'fr'
+    - @regions.each do |region|
+      = image_tag "regions/#{region}.svg", height: '1px', width: '1px', id: region
 
 = render 'calendar'
