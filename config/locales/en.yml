@@ -5,7 +5,7 @@ en:
   username: "Username"
   password: "Password"
   log_in: "Log in"
-  sign_up: "Sign up"
+  sign_up: "Register"
   w_l: "W/L"
   hi: "Hi"
   s1_2019: "S1/19"
@@ -554,7 +554,7 @@ en:
       forgot_pw: "Forgot your password?"
     share:
       log_in: "Log in"
-      sign_up: "Sign up"
+      sign_up: "Register"
       forgot_pw: "Forgot your password?"
       no_conf_inst: "Didn't receive confirmation instructions?"
       no_unlock_inst: "Didn't receive unlock instructions?"
