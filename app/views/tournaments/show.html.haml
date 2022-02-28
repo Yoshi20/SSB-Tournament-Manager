@@ -422,26 +422,27 @@
                   %h3= t('w_l')
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
-                - player = @tournament.players.find(r.player_id)
-                %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td{style: 'text-align: center;'}
-                    %strong= r.rank.nil? ? "-" : r.rank.ordinalize
-                  %td
-                    - if player.main_characters.any?
-                      - player.main_characters[0...1].each_with_index do |char, i|
-                        = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
-                    - else
-                      .div{style: 'display: inline;'}
-                        %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
-                    = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
-                  %td{style: 'text-align: center;'}= r.points
-                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    = player.matches.where(tournament_id: @tournament.id).count
-                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    - if r.wins == 0 and r.losses == 0
-                      = '-'
-                    - else
-                      = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
+                - player = @tournament.players.find_by_id(r.player_id) # find_by_id() returns nil instead of an exeption when using find()
+                - if player.present?
+                  %tr{'data-id': player.id, 'data-component'=>'player'}
+                    %td{style: 'text-align: center;'}
+                      %strong= r.rank.nil? ? "-" : r.rank.ordinalize
+                    %td
+                      - if player.main_characters.any?
+                        - player.main_characters[0...1].each_with_index do |char, i|
+                          = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
+                      - else
+                        .div{style: 'display: inline;'}
+                          %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                      = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                    %td{style: 'text-align: center;'}= r.points
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      = player.matches.where(tournament_id: @tournament.id).count
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      - if r.wins == 0 and r.losses == 0
+                        = '-'
+                      - else
+                        = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
 
   - if !@tournament.finished and current_user.present? and current_user.admin?
     .row
