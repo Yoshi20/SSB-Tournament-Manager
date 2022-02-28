@@ -69,4 +69,14 @@ class User < ApplicationRecord
     self.is_super_admin == true
   end
 
+  def allows_emails
+    if self.country_code == 'ch'
+      self.allows_emails_from_swisssmash
+    elsif self.country_code == 'de'
+      self.allows_emails_from_germanysmash
+    elsif self.country_code == 'fr'
+      self.allows_emails_from_francesmash
+    end
+  end
+
 end

@@ -15,40 +15,48 @@ Local commands:
 - heroku pg:push swisssmash_development \<postgresql-name\> --app swisssmash-stage
 
 Stage commands:
-- git push stage master
-- git push stage <branch>:main
-- heroku logs --tail --remote stage
-- heroku run rake db:migrate --remote stage
-- heroku run rails c --remote stage
-- heroku restart --remote stage
+- git push stage_ch master
+- git push stage_de master
+- git push stage_fr master
+- git push stage_ch <branch>:master
+- heroku logs --tail --remote stage_ch
+- heroku run rake db:migrate --remote stage_ch
+- heroku run rails c --remote stage_ch
+- heroku restart --remote stage_ch
 
-- heroku run rake tournaments_crawler_ch:all --remote stage
-- heroku run rake tournaments_crawler_de:all --remote stage
-- heroku run rake tournaments_crawler_fr:all --remote stage
-- heroku run rake results_crawler_ch:all --remote stage
-- heroku run rake results_crawler_de:all --remote stage
-- heroku run rake results_crawler_fr:all --remote stage
-- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage
+- heroku run rake tournaments_crawler_ch:all --remote stage_ch
+- heroku run rake tournaments_crawler_de:all --remote stage_ch
+- heroku run rake tournaments_crawler_fr:all --remote stage_ch
+- heroku run rake results_crawler_ch:all --remote stage_ch
+- heroku run rake results_crawler_de:all --remote stage_ch
+- heroku run rake results_crawler_fr:all --remote stage_ch
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
 Prod commands:
-- git push prod master
-- heroku logs --tail --remote prod
-- heroku run rake db:migrate --remote prod
-- heroku run rails c --remote prod
-- heroku restart --remote prod
+- git push prod_ch master
+- git push prod_de master
+- git push prod_fr master
+- heroku logs --tail --remote prod_ch
+- heroku run rake db:migrate --remote prod_ch
+- heroku run rails c --remote prod_ch
+- heroku restart --remote prod_ch
 
-- heroku run rake tournaments_crawler_ch:all --remote prod
-- heroku run rake tournaments_crawler_de:all --remote prod
-- heroku run rake tournaments_crawler_fr:all --remote prod
-- heroku run rake results_crawler_ch:all --remote prod
-- heroku run rake results_crawler_de:all --remote prod
-- heroku run rake results_crawler_fr:all --remote prod
-- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
+- heroku run rake tournaments_crawler_ch:all --remote prod_ch
+- heroku run rake tournaments_crawler_de:all --remote prod_ch
+- heroku run rake tournaments_crawler_fr:all --remote prod_ch
+- heroku run rake results_crawler_ch:all --remote prod_ch
+- heroku run rake results_crawler_de:all --remote prod_ch
+- heroku run rake results_crawler_fr:all --remote prod_ch
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod_ch
 
 General links:
 - https://swisssmash.herokuapp.com
 - https://www.ssb-club-bern.ch
 - https://www.swisssmash.ch
+- https://germanysmash.herokuapp.com
+- https://www.germanysmash.de
+- https://francesmash.herokuapp.com
+- https://www.smashultimate.fr
 - https://challonge.com
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200

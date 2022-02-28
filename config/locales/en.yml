@@ -837,9 +837,15 @@ en:
   tournaments:
     title: "Tournaments"
     mailer:
-      new_external: "A new external tournament was added to the SwissSmash Tournament Manager."
-      new_tournament: "A new tournament was added to the SwissSmash Tournament Manager."
-      new_weekly: "One or more weeklies were added to the SwissSmash Tournament Manager. Here are the data of the first:"
+      new_external_ch: "A new external tournament was added to the SwissSmash Tournament Manager."
+      new_tournament_ch: "A new tournament was added to the SwissSmash Tournament Manager."
+      new_weekly_ch: "One or more weeklies were added to the SwissSmash Tournament Manager. Here are the data of the first:"
+      new_external_de: "A new external tournament was added to the GermanySmash Tournament Manager."
+      new_tournament_de: "A new tournament was added to the GermanySmash Tournament Manager."
+      new_weekly_de: "One or more weeklies were added to the GermanySmash Tournament Manager. Here are the data of the first:"
+      new_external_fr: "A new external tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_tournament_fr: "A new tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_weekly_fr: "One or more weeklies were added to the SmashUltimate.fr Tournament Manager. Here are the data of the first:"
       too_few_registrations: "Because of too few registrations or other reasons, an administrator has cancelled the tournament \"<strong>%{tournament}</strong>\"."
       player_left_tournament: "Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament."
       name: "Name:"

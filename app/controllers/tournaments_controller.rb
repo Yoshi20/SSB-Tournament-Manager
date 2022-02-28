@@ -103,7 +103,7 @@ class TournamentsController < ApplicationController
         if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
-              if p.user.allows_emails_from_swisssmash
+              if p.user.allows_emails
                 TournamentMailer.with(tournament: @tournament, user: p.user).new_tournament_email.deliver_later
               end
             end
@@ -120,7 +120,7 @@ class TournamentsController < ApplicationController
         if @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
-              if p.user.allows_emails_from_swisssmash
+              if p.user.allows_emails
                 TournamentMailer.with(tournament: @tournament, user: p.user).new_external_tournament_email.deliver_later
               end
             end

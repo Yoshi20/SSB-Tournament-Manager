@@ -1,17 +1,17 @@
 <%= @tournament.name %>
 ===============================================
 
-<%= t('hi') %> <%= @user.username %>.
+<%= t('hi', locale: @user.country_code) %> <%= @user.username %>.
 
-<%= t('tournaments.mailer.new_external') %>
+<%= t("tournaments.mailer.new_external_#{@tournament.country_code}", locale: @user.country_code) %>
 
-<%= t('tournaments.mailer.name') %> <%= @tournament.name %>
-<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+<%= t('tournaments.mailer.name', locale: @user.country_code) %> <%= @tournament.name %>
+<%= t('tournaments.mailer.date', locale: @user.country_code) %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
 
-<%= t('tournaments.mailer.to_check_out2') %>
+<%= t('tournaments.mailer.to_check_out2', locale: @user.country_code) %>
   <%= @url %>
 
-<%= t('tournaments.mailer.we_wish_you_good_luck') %>
+<%= t('tournaments.mailer.we_wish_you_good_luck', locale: @user.country_code) %>
 
 
-<%= t('tournaments.mailer.if_you_dont_want') %>
+<%= t('tournaments.mailer.if_you_dont_want', locale: @user.country_code) %>

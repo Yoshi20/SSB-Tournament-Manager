@@ -837,9 +837,15 @@ de:
   tournaments:
     title: "Turniere"
     mailer:
-      new_external: "Ein neues externes Turnier wurde dem SwissSmash Turniermanager hinzugefügt."
-      new_tournament: "Ein neues Turnier wurde dem SwissSmash Turniermanager hinzugefügt."
-      new_weekly: "Ein oder mehr Weeklies wurden dem SwissSmash Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
+      new_external_ch: "Ein neues externes Turnier wurde dem SwissSmash Turniermanager hinzugefügt."
+      new_tournament_ch: "Ein neues Turnier wurde dem SwissSmash Turniermanager hinzugefügt."
+      new_weekly_ch: "Ein oder mehr Weeklies wurden dem SwissSmash Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
+      new_external_de: "Ein neues externes Turnier wurde dem GermanySmash Turniermanager hinzugefügt."
+      new_tournament_de: "Ein neues Turnier wurde dem GermanySmash Turniermanager hinzugefügt."
+      new_weekly_de: "Ein oder mehr Weeklies wurden dem GermanySmash Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
+      new_external_fr: "Ein neues externes Turnier wurde dem SmashUltimate.fr Turniermanager hinzugefügt."
+      new_tournament_fr: "Ein neues Turnier wurde dem SmashUltimate.fr Turniermanager hinzugefügt."
+      new_weekly_fr: "Ein oder mehr Weeklies wurden dem SmashUltimate.fr Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
       too_few_registrations: "Aufgrund von zu wenig Anmeldungen oder anderen Gründen hat ein Administrator das Turnier \"<strong>%{tournament}</strong>\" storniert."
       player_left_tournament: "Da ein Spieler gerade das Turnier verlassen hat und du an der ersten Stelle auf der Warteliste standest, bist du nun für dieses Turnier registriert."
       name: "Name:"

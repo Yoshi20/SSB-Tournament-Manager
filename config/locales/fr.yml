@@ -836,9 +836,15 @@ fr:
   tournaments:
     title: "Tournois"
     mailer:
-      new_external: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi SwissSmash."
-      new_tournament: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi SwissSmash."
-      new_weekly: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi SwissSmash. Voici les données du premier:"
+      new_external_ch: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi SwissSmash."
+      new_tournament_ch: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi SwissSmash."
+      new_weekly_ch: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi SwissSmash. Voici les données du premier:"
+      new_external_de: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi GermanySmash."
+      new_tournament_de: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi GermanySmash."
+      new_weekly_de: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi GermanySmash. Voici les données du premier:"
+      new_external_fr: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi SmashUltimate.fr."
+      new_tournament_fr: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi SmashUltimate.fr."
+      new_weekly_fr: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi SmashUltimate.fr. Voici les données du premier:"
       too_few_registrations: "Dû au trop peu d'inscriptions ou pour d'autres raisons, un administrateur a annulé le tournoi \"<strong>%{tournament}</strong>\"."
       player_left_tournament: "Puisqu'un joueur vient de quitter le tournoi et que vous étiez premier dans la liste d'attente, vous êtes maintenant inscrit dans ce tournoi."
       name: "Nom:"
