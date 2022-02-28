@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
 
   before_action :set_country_code
   before_action :set_locale
-  before_action :authenticate_user!, except: [:index, :show, :location, :unregistered, :contact, :donation]
+  before_action :authenticate_user!, except: [
+    :index, :show, :location, :unregistered, :contact, :donation,
+    :nrw, :hessen, :nds, :bayern, :berlin, :norden, :osten, :bawu
+  ]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_streamers
