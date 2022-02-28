@@ -52,21 +52,21 @@
       - if session['country_code'] == 'ch'
         .form-group
           = label_tag :canton, t('players.canton')
-          = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true}, class: 'form-control'
+          = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true, class: 'form-control'}
       - elsif session['country_code'] == 'de'
         .form-group
           = label_tag :federal_state, t('players.federal_state')
-          = select_tag :federal_state, options_for_select(federal_states_for_select, params[:federal_state]), {include_blank: true}, class: 'form-control'
+          = select_tag :federal_state, options_for_select(federal_states_for_select, params[:federal_state]), {include_blank: true, class: 'form-control'}
       - elsif session['country_code'] == 'fr'
         .form-group
           = label_tag :region, t('players.region')
-          = select_tag :region, options_for_select(regions_for_select, params[:region]), {include_blank: true}, class: 'form-control'
+          = select_tag :region, options_for_select(regions_for_select, params[:region]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :gender, t('players.gender')
-        = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true}, class: 'form-control'
+        = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :birth_year, t('players.birth_year')
-        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true}, class: 'form-control'
+        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :self_assessment, t('players.self_assessment')
         = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, params[:self_assessment]), {class: 'form-control'}
