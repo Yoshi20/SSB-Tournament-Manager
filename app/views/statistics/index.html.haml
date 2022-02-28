@@ -72,7 +72,7 @@
       .col
         .statistic__stats__single
           %strong
-            = current_year - @players.maximum(:birth_year)
+            = current_year - @players.maximum(:birth_year).to_i
           %span
             = t('statistics.youngest')
       .col
@@ -85,7 +85,7 @@
       .col
         .statistic__stats__single.statistic__stats__single--last
           %strong
-            = current_year - @players.minimum(:birth_year)
+            = current_year - @players.minimum(:birth_year).to_i
           %span
             = t('statistics.oldest')
 
