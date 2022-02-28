@@ -94,7 +94,7 @@
     // https://stackoverflow.com/questions/7981100/how-do-i-dynamically-insert-an-svg-image-into-html
     if ($('.svgareamap').length > 0) {
       var xhr = new XMLHttpRequest;
-      xhr.open('get', "#{asset_path('bundeslaender.svg')}",true);
+      xhr.open('get', "#{asset_path('de_bundeslaender.svg')}",true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
         var svg = xhr.responseXML.documentElement;

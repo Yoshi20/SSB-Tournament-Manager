@@ -98,15 +98,18 @@
 :javascript
   document.addEventListener('turbolinks:load', function() {
     // show region anchor tag if provided
-    var anchor = document.location.toString().split("#")[1].toString();
-    if (anchor != undefined) {
-      if (anchor.startsWith('region')) {
-        $('#power_ranking-tab').removeClass('active');
-        $('#power_ranking').removeClass('show active');
-        $('#region-tab').addClass('active');
-        $('#region').addClass('show active');
-        var region = anchor.split("_")[1].toString();
-        $('#region_' + region + '-tab').addClass('show active');
+    var anchors = document.location.toString().split("#")
+    if (anchors.length >= 2) {
+      var anchor = anchors[1].toString();
+      if (anchor != undefined) {
+        if (anchor.startsWith('region')) {
+          $('#power_ranking-tab').removeClass('active');
+          $('#power_ranking').removeClass('show active');
+          $('#region-tab').addClass('active');
+          $('#region').addClass('show active');
+          var region = anchor.split("_")[1].toString();
+          $('#region_' + region + '-tab').addClass('show active');
+        }
       }
     }
   });
