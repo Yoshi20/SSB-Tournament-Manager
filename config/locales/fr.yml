@@ -351,6 +351,7 @@ fr:
     calendar: "Calendrier"
     log_in: "Se connecter"
     sign_up: "S'inscrire"
+    communities: "Communautés"
     no_donations_yet: "Pas encore de dons 😢"
     all_donations: "Tous les dons"
 
@@ -358,59 +359,155 @@ fr:
     title: "Mur des dons"
 
   information:
-    title: "Information"
-    title_short: "Infos"
-    general:
-      title: "Général"
-      swisssmash: |
-        Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
-        Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
-        En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
-    calendar:
-      title: "Calendrier"
-      tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
-      calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
-      calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur swisssmash.ch"
-      calendar_internal: "Interne -> Tournoi créé sur swisssmash.ch"
-      calendar_external: "Externe -> Tournoi créé sur un site externe"
-    power_ranking:
-      title: "Power Ranking"
-      power_ranking: "Power Ranking (PR)"
-      power_ranking_body: "Un tournoi sera considéré comme un tournoi officiel SwissSmash et comptera pour le PR quand les conditions suivantes seront remplies:"
-      power_ranking_li_1: "Annoncé au moins 2 semaines avant sa date de début sur swisssmash.ch ou sur le canal tournois du discord Swiss Smash"
-      power_ranking_li_2: "Un minimum de 16 participant(e)s"
-      power_ranking_li_3: "Un seeding raisonnable"
-      power_ranking_li_4: "Assez de setups sans lags avec des places assises décentes"
-      power_ranking_li_5: "Doit avoir lieu durant le weekend et doit avoir des heures raisonnables de début et de fin"
-      power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
-    tournament_manager:
-      title: "Gestionnaire de tournoi"
-      tournament_organiser: "Organisateur de tournoi"
-      tournament_organiser_body: "SwissSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
-      tournament_organiser_mail: "via email"
-      tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
-      tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
-      bracket_tool: "Outil de Bracket"
-      bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
-      bracket_seeding: "Bracket seeding"
-      bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
-      bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
-    results:
-      title: "Résultats"
-      results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
-      ranking_system: "Système de Classement"
-      ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
-      ranking_system_rank: "Rang"
-      ranking_system_points: "Points"
-    personal_data:
-      title: "Données personnelles"
-      personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
-    contact:
-      title: "Ecrivez-moi un message"
-      submit: "Soumettre"
-      name: "Ton nom ou gamertag"
-      email: "Ton e-mail"
-      body: "Ton message"
+    ch:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "Général"
+        swisssmash: |
+          Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
+          Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
+          En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
+      calendar:
+        title: "Calendrier"
+        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
+        calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
+        calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur swisssmash.ch"
+        calendar_internal: "Interne -> Tournoi créé sur swisssmash.ch"
+        calendar_external: "Externe -> Tournoi créé sur un site externe"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Un tournoi sera considéré comme un tournoi officiel SwissSmash et comptera pour le PR quand les conditions suivantes seront remplies:"
+        power_ranking_li_1: "Annoncé au moins 2 semaines avant sa date de début sur swisssmash.ch ou sur le canal tournois du discord Swiss Smash"
+        power_ranking_li_2: "Un minimum de 16 participant(e)s"
+        power_ranking_li_3: "Un seeding raisonnable"
+        power_ranking_li_4: "Assez de setups sans lags avec des places assises décentes"
+        power_ranking_li_5: "Doit avoir lieu durant le weekend et doit avoir des heures raisonnables de début et de fin"
+        power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
+      tournament_manager:
+        title: "Gestionnaire de tournoi"
+        tournament_organiser: "Organisateur de tournoi"
+        tournament_organiser_body: "SwissSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
+        tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
+        bracket_tool: "Outil de Bracket"
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
+        bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
+      results:
+        title: "Résultats"
+        results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
+        ranking_system: "Système de Classement"
+        ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Points"
+      personal_data:
+        title: "Données personnelles"
+        personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
+      contact:
+        title: "Ecrivez-moi un message"
+        submit: "Soumettre"
+        name: "Ton nom ou gamertag"
+        email: "Ton e-mail"
+        body: "Ton message"
+    de:
+      title: "About"
+      title_short: "About"
+      general:
+        title: "General"
+        germanysmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Germany and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (coordination with TOs).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in germany from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On germanysmash.de created weekly tournament"
+        calendar_internal: "Internal -> On germanysmash.de created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "A tournament will be considered an official GermanySmash tournament and will count to the PR when the following requirements will be met:"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on germanysmash.de"
+        power_ranking_li_2: "A minimum of 16 attendees"
+        power_ranking_li_3: "Reasonable seeding"
+        power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
+        power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
+        power_ranking_li_6: "Weeklies do not count to the PR"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just let me know %{link}."
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi GermanySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the GermanySmash tournament manager uses %{link} for now."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Ranking system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+    fr:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "Général"
+        francesmash: |
+          Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en France et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
+          Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
+      calendar:
+        title: "Calendrier"
+        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SmashUltimate.fr est capable de trouver et lister tous les tournois SSBU en France qui ont été ajoutés sur au moins l'un des sites suivants:"
+        calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en France pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
+        calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur SmashUltimate.fr"
+        calendar_internal: "Interne -> Tournoi créé sur SmashUltimate.fr"
+        calendar_external: "Externe -> Tournoi créé sur un site externe"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Le power ranking FR utilise une combinaison d'algorithme et de jury pour fournir un classement qui se rapproche le plus possible de la réalité. Pour en savoir plus vous pouvez vous rendre sur %{link} dans la section FAQ ou sur le serveur discord"
+      tournament_manager:
+        title: "Gestionnaire de tournoi"
+        tournament_organiser: "Organisateur de tournoi"
+        tournament_organiser_body: "SmashUltimate.fr contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SmashUltimate.fr? Faites-le moi savoir %{link}."
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
+        tournament_organiser_mail_body: "Bonjour SmashUltimate.fr\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
+        bracket_tool: "Outil de Bracket"
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SmashUltimate.fr utilise %{link} pour le moment."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SmashUltimate.fr.ch:"
+        bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
+      results:
+        title: "Résultats"
+        results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne, SmashUltimate.fr peut aussi obtenir les résultats de tous les autres tournois en France.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
+        ranking_system: "Système de Classement"
+        ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit. Ce classement est indépendant du power ranking."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Points"
+      contact:
+        title: "Ecrivez-moi un message"
+        submit: "Soumettre"
+        name: "Ton nom ou gamertag"
+        email: "Ton e-mail"
+        body: "Ton message"
 
   calendar:
     title: "Calendrier"
@@ -616,7 +713,7 @@ fr:
     character: "Combattant"
 
   rankings:
-    title: "Classements"
+    title: "Ranking"
     official_power_ranking: "Power Rankings officiels"
     tournament_specific: "Par tournoi spécifique"
     region_specific: "Spécifique à la région"
@@ -660,6 +757,9 @@ fr:
       title: "BaWü"
     region_bayern:
       title: "Bavaria"
+
+  guides:
+    title: "Guides"
 
   rules:
     title: "Règles"
@@ -838,7 +938,7 @@ fr:
     players_videos: "Vidéo%{s} de %{player}:"
 
   communities:
-    title: "Communities"
+    title: "Communautés"
     body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
     nds:
       title: "#NDS"
@@ -865,6 +965,22 @@ fr:
       title: "#Bavaria"
       text: "The Bavaria region consists of the following federal_states: Bavaria"
     ranking: "The best players from the region can be found here:"
+    body_fr: "La France comporte 13 régions. Cliquez sur une région pour en afficher les communautés."
+    new: "Nouvelle communauté"
+    prohibited: "interdit d'enregistrer cette communauté:"
+    name: "Nom"
+    city: "Ville"
+    department: "Département"
+    region: "Région"
+    regions: "Régions"
+    characters: "Personnages"
+    discord: "Discord keys"
+    multiple_discords: "(séparer les différentes clés avec une virgule)"
+    twitter: "Twitter"
+    instagram: "Instagram"
+    facebook: "Facebook"
+    youtube: "YouTube"
+    twitch: "Twitch"
 
   users:
     mailer:

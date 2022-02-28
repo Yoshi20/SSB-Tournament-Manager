@@ -35,6 +35,29 @@ Rails.application.routes.draw do
   get 'communities/osten' => 'communities#osten'
   get 'communities/bawu' => 'communities#bawu'
 
+  # FR routes:
+  get 'guides' => 'guides#index'
+  get "/communities/grand_est" => "communities#grand_est"
+  get "/communities/nouvelle_aquitaine" => "communities#nouvelle_aquitaine"
+  get "/communities/auvergne_rhone_alpes" => "communities#auvergne_rhone_alpes"
+  get "/communities/bourgogne_franche_comte" => "communities#bourgogne_franche_comte"
+  get "/communities/bretagne" => "communities#bretagne"
+  get "/communities/centre_val_de_loire" => "communities#centre_val_de_loire"
+  get "/communities/corsica" => "communities#corsica"
+  get "/communities/paris_region" => "communities#paris_region"
+  get "/communities/occitanie" => "communities#occitanie"
+  get "/communities/hauts_de_france" => "communities#hauts_de_france"
+  get "/communities/normandie" => "communities#normandie"
+  get "/communities/pays_de_la_loire" => "communities#pays_de_la_loire"
+  get "/communities/provence_alpes_cote_azur" => "communities#provence_alpes_cote_azur"
+  # get "/communities/reunion" => "communities#reunion"
+  # get "/communities/martinique" => "communities#martinique"
+  # get "/communities/french_guiana" => "communities#french_guiana"
+  # get "/communities/guadeloupe" => "communities#guadeloupe"
+  # get "/communities/mayotte" => "communities#mayotte"
+  get "/communities/character_discords" => "communities#character_discords"
+  resources :communities
+
   resources :news
   resources :feedbacks
   get 'administrators' => 'administrators#index'

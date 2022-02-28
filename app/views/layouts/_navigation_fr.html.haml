@@ -31,7 +31,7 @@
             %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
         .dropdown-menu{'aria-labelledby': 'navbarDropdown'}
           = link_to t('communities.regions'), communities_path, class: 'dropdown-item'
-          = link_to t('communities.characters'), communities_smashcords_path, class: 'dropdown-item'
+          = link_to t('communities.characters'), communities_character_discords_path, class: 'dropdown-item'
 
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

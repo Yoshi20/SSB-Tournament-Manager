@@ -1,13 +1,13 @@
 require 'nokogiri'
 require 'open-uri'
 
-namespace :tournaments_crawler do
+namespace :tournaments_crawler_fr do
   desc "Calls all the tournaments web crawler tasks"
   task all: :environment do
     tCtr = Tournament.all_from('fr').count
     puts "Running all tournaments web crawlers..."
-    Rake::Task["tournaments_crawler:braacket"].invoke
-    Rake::Task["tournaments_crawler:smash_gg"].invoke
+    Rake::Task["tournaments_crawler_fr:braacket"].invoke
+    Rake::Task["tournaments_crawler_fr:smash_gg"].invoke
     puts "\ndone -> #{Tournament.all_from('fr').count - tCtr} new tournament(s)\n"
   end
 

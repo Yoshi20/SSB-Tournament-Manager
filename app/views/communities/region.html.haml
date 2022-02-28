@@ -1,0 +1,24 @@
+- set_meta_tags description: "France Smash Community #{@region.gsub('_', ' ')}"
+
+.row
+  .col
+    %h1.page__title= t("defines.regions.#{@region}")
+
+.row
+  .col
+    - if @communities.any?
+      %table.table.table-hover.table-communities
+        %thead.table-header
+          = render "community_list_header"
+
+        %tbody.with-show.community-list-body
+          = render @communities
+
+    - else
+      %p{style: 'margin-top: 1rem; text-align: center;'}= t('communities.no_communities_yet')
+
+  - if current_user.present? and current_user.admin?
+    .admin-actions
+      .admin-actions__link
+        = link_to new_community_path(region: @region), class:'btn btn-default btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add'

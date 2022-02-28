@@ -464,6 +464,51 @@ de:
         name: "Dein Name oder Gamertag"
         email: "Deine E-Mail"
         body: "Deine Nachricht"
+    fr:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        francesmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in France and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (coordination with TOs).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in france from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
+        calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "The power ranking FR uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality. To find out more you can go to %{link} in the FAQ section or on the discord server"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just let me know %{link}."
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.fr tournament manager uses %{link} for now."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashUltimate.fr:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the SmashUltimate.fr Tournament Manager internal tournaments, SmashUltimate.fr is also able to get the results from all other tournaments in france. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Ranking system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
 
   calendar:
     title: "Kalender"
@@ -714,6 +759,9 @@ de:
     region_bayern:
       title: "Bayern"
 
+  guides:
+    title: "Guides"
+
   rules:
     title: "Regeln"
     ch:
@@ -935,6 +983,22 @@ de:
       title: "#Bayern"
       text: "Die Bayern-Region besteht aus den folgenden Bundesländer: Bayern"
     ranking: "Die besten Spieler aus der Region findest du hier:"
+    body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
+    new: "New community"
+    prohibited: "prohibited this community from being saved:"
+    name: "Name"
+    city: "City"
+    department: "Department"
+    region: "Region"
+    regions: "Regions"
+    characters: "Characters"
+    discord: "Discord keys"
+    multiple_discords: "(Seperate multiple keys with a comma)"
+    twitter: "Twitter"
+    instagram: "Instagram"
+    facebook: "Facebook"
+    youtube: "YouTube"
+    twitch: "Twitch"
 
   users:
     mailer:
