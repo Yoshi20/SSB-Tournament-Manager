@@ -500,10 +500,11 @@ fr:
     title: "Classements"
     official_power_ranking: "Power Rankings officiels"
     tournament_specific: "Par tournoi spécifique"
+    region_specific: "Spécifique à la région"
     filter:
       overall: "Global"
       seed_points: "Points de Seed"
-      note: "(Note: Seul les joueurs enregistré(e)s sur SwissSmash apparaîtront dans ces classements)"
+      note: "(Note: Seul les joueurs enregistré(e)s sur ce site apparaîtront dans ces classements)"
     no_players_found: "Aucun joueurs trouvé ici"
     s1_19:
       title: "Saison 1 2019"
@@ -516,14 +517,30 @@ fr:
       counted_tournaments: "Tournois comptés:"
       considered_tournaments: "Considérés mais jugés inéligibles:"
     s1_20:
-      title: "Saison 1&2 2020"
-      no_ranking: "En raison du COVID-19, il n'y a pas de classement 2020"
+      title: "2020"
+      no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2020"
     s1_21:
-      title: "Saison 1&2 2021"
-      no_ranking: "Le classement devrait apparaître en janvier 2022"
+      title: "2021"
+      no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2021"
     s1_22:
-      title: "Saison 1&2 2022"
-      no_ranking: "Le classement devrait apparaître en janvier 2023"
+      title: "2022"
+      no_ranking: "Le classement devrait être publié début 2023"
+    region_nrw:
+      title: "NRW"
+    region_hessen:
+      title: "Hessen"
+    region_berlin:
+      title: "Berlin"
+    region_nds:
+      title: "NDS"
+    region_norden:
+      title: "North"
+    region_osten:
+      title: "East"
+    region_bawu:
+      title: "BaWü"
+    region_bayern:
+      title: "Bavaria"
 
   rules:
     title: "Règles"

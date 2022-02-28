@@ -1,0 +1,112 @@
+- set_meta_tags description: 'Germany Smash Rankings'
+
+.row
+  .col
+    %h1.page__title= t('rankings.title')
+
+%ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#power_ranking-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking', role: 'tab', 'aria-controls'=>'all'}
+      = t('rankings.official_power_ranking')
+  %li.nav-item
+    %a#region-tab.nav-link{'data-toggle'=>'tab', href: '#region', role: 'tab', 'aria-controls'=>'all'}
+      = t('rankings.region_specific')
+
+.tab-content#rankings-tabs-content
+  -# Power Rankings ------------------------------------------------------------
+  .tab-pane.fade.show.active#power_ranking{role: 'tabpanel', 'aria-labelledby'=>'power_ranking-tab'}
+    %ul#power_rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#power_ranking_s1_19-tab.nav-link{'data-toggle'=>'tab', href: '#power_ranking_s1_19', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s1_19.title')
+      %li.nav-item
+        %a#power_ranking_s2_19-tab.nav-link{'data-toggle'=>'tab', href: '#power_ranking_s2_19', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s2_19.title')
+      %li.nav-item
+        %a#power_ranking_s1_20-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking_s1_20', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s1_20.title')
+      %li.nav-item
+        %a#power_ranking_s1_21-tab.nav-link{'data-toggle'=>'tab', href: '#power_ranking_s1_21', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s1_21.title')
+      -# %li.nav-item
+      -#   %a#s1_22-tab.nav-link{'data-toggle'=>'tab', href: '#s1_22', role: 'tab', 'aria-controls'=>'all'}
+      -#     = t('rankings.s1_22.title')
+
+    .tab-content#power_rankings-tabs-content
+      -# Power Ranking S1 2019 -------------------------------------------------
+      .tab-pane.fade#power_ranking_s1_19{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s1_19-tab'}
+        = render 's1_19_de'
+      -# Power Ranking S2 2019 -------------------------------------------------
+      .tab-pane.fade#power_ranking_s2_19{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s2_19-tab'}
+        = render 's2_19_de'
+      -# Power Ranking S2 2019 -------------------------------------------------
+      .tab-pane.fade.show.active#power_ranking_s1_20{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s1_20-tab'}
+        = render 's1_20_de'
+      -# Power Ranking S1 2021 -------------------------------------------------
+      .tab-pane.fade#power_ranking_s1_21{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s1_21-tab'}
+        = render 's1_21_de'
+      -# -# Power Ranking S1 2022 ----------------------------------------------
+      -# .tab-pane.fade#s1_22{role: 'tabpanel', 'aria-labelledby'=>'s1_22-tab'}
+      -#   = render 's1_22_de'
+
+  -# Regions -------------------------------------------------------------------
+  .tab-pane.fade#region{role: 'tabpanel', 'aria-labelledby'=>'region-tab'}
+    %ul#region-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#region_bawu-tab.nav-link{'data-toggle'=>'tab', href: '#region_bawu', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_bawu.title')
+      %li.nav-item
+        %a#region_bayern-tab.nav-link{'data-toggle'=>'tab', href: '#region_bayern', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_bayern.title')
+      %li.nav-item
+        %a#region_berlin-tab.nav-link{'data-toggle'=>'tab', href: '#region_berlin', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_berlin.title')
+      %li.nav-item
+        %a#region_hessen-tab.nav-link{'data-toggle'=>'tab', href: '#region_hessen', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_hessen.title')
+      %li.nav-item
+        %a#region_nds-tab.nav-link{'data-toggle'=>'tab', href: '#region_nds', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_nds.title')
+      %li.nav-item
+        %a#region_norden-tab.nav-link{'data-toggle'=>'tab', href: '#region_norden', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_norden.title')
+      %li.nav-item
+        %a#region_nrw-tab.nav-link{'data-toggle'=>'tab', href: '#region_nrw', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_nrw.title')
+      %li.nav-item
+        %a#region_osten-tab.nav-link{'data-toggle'=>'tab', href: '#region_osten', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_osten.title')
+
+    .tab-content#region-tabs-content
+      .tab-pane.fade#region_bawu{role: 'tabpanel', 'aria-labelledby'=>'region_bawu-tab'}
+        = render 'region_bawu'
+      .tab-pane.fade#region_bayern{role: 'tabpanel', 'aria-labelledby'=>'region_bayern-tab'}
+        = render 'region_bayern'
+      .tab-pane.fade#region_berlin{role: 'tabpanel', 'aria-labelledby'=>'region_berlin-tab'}
+        = render 'region_berlin'
+      .tab-pane.fade#region_hessen{role: 'tabpanel', 'aria-labelledby'=>'region_hessen-tab'}
+        = render 'region_hessen'
+      .tab-pane.fade#region_nds{role: 'tabpanel', 'aria-labelledby'=>'region_nds-tab'}
+        = render 'region_nds'
+      .tab-pane.fade#region_norden{role: 'tabpanel', 'aria-labelledby'=>'region_norden-tab'}
+        = render 'region_norden'
+      .tab-pane.fade#region_nrw{role: 'tabpanel', 'aria-labelledby'=>'region_nrw-tab'}
+        = render 'region_nrw'
+      .tab-pane.fade#region_osten{role: 'tabpanel', 'aria-labelledby'=>'region_osten-tab'}
+        = render 'region_osten'
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    // show region anchor tag if provided
+    var anchor = document.location.toString().split("#")[1].toString();
+    if (anchor != undefined) {
+      if (anchor.startsWith('region')) {
+        $('#power_ranking-tab').removeClass('active');
+        $('#power_ranking').removeClass('show active');
+        $('#region-tab').addClass('active');
+        $('#region').addClass('show active');
+        var region = anchor.split("_")[1].toString();
+        $('#region_' + region + '-tab').addClass('show active');
+      }
+    }
+  });

@@ -38,6 +38,7 @@ class RankingsController < ApplicationController
       #   p.results_sum(city) << -p.created_at.to_i
       # end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     end
+    render "index_#{session['country_code']}"
   end
 
 end
