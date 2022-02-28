@@ -22,7 +22,7 @@ class DonationsController < ApplicationController
       @donation.country_code = 'fr'
     end
     respond_to do |format|
-      if @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN']
+      if @donation.country_code.present? # to check verification
         if @donation.save
           format.json { head :ok }
         else

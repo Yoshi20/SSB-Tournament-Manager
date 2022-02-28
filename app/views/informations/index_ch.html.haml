@@ -164,6 +164,6 @@
           .form-group
             = text_area_tag :body, params[:body], class: 'form-control', placeholder: t('information.ch.contact.body')
           .form-group
-            = recaptcha_tags
+            = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
           .form-group
             = button_tag t('information.ch.contact.submit'), type: 'submit', class: 'btn btn-default'

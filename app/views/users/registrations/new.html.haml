@@ -143,6 +143,6 @@
           %input{type:"checkbox", onclick:"return false;", checked:'true', class:'form-check-input mr-2'}
           = label_tag :data_agreement, t('users.data_agreement'), class:'form-check-label'
       .form-group
-        = recaptcha_tags
+        = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
       .form-group
         = f.submit t('users.register'), class:'btn btn-default'

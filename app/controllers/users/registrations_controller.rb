@@ -15,8 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # if verify_recaptcha(action: 'registration', minimum_score: 0.3)
-    if verify_recaptcha
+    # if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'registration', minimum_score: 0.3)
+    if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
       user_params = Hash.new
       super do |current_user_params|
         user_params = current_user_params
