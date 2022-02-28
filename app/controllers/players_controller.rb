@@ -12,9 +12,9 @@ class PlayersController < ApplicationController
       if params[:filter] == 'canton'
         @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
       elsif params[:filter] == 'federal_state'
-        @players = Player.all_de.where(federal_state: params['filter-data'])
+        @players = Player.all_from(session['country_code']).where(federal_state: params['filter-data'])
       elsif params[:filter] == 'region'
-        @players = Player.all_fr.where(region: params['filter-data'])
+        @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
         @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
       end
