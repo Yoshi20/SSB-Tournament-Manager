@@ -1,4 +1,4 @@
-- set_meta_tags description: 'Swiss Smash News'
+- set_meta_tags description: meta_tag_description('News')
 .row
   .col
     %h1.page__title= t('news.title')
@@ -24,5 +24,5 @@
 - if current_user.present? and current_user.admin?
   .admin-actions
     .admin-actions__link
-      = link_to new_news_path, class:'btn btn-ghost btn-square' do
+      = link_to new_news_path, class:'btn btn-default btn-square' do
         %span.material-icons.admin-actions__link__icon= 'add'

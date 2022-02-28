@@ -9,7 +9,6 @@ module ApplicationHelper
     end
   end
 
-
   def unaccent(text)
     charactersProcessed = "" # To avoid doing a replace multiple times
     newText = text.downcase
@@ -82,6 +81,16 @@ module ApplicationHelper
         image: image_url('logo.png')
       }
     }
+  end
+
+  def meta_tag_description(str)
+    if session['country_code'] == 'ch'
+      "Swiss Smash #{str}"
+    elsif session['country_code'] == 'de'
+      "Germany Smash #{str}"
+    elsif session['country_code'] == 'fr'
+      "SmashUltimate.fr #{str}"
+    end
   end
 
 end
