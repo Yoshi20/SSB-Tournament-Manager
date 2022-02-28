@@ -31,9 +31,18 @@
         = f.label :location, t('tournaments.location')
         %em= t('tournaments.separate')
         = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
-    .form-group
-      = f.label :canton, t('players.canton')
-      = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
+    - if session['country_code'] == 'ch'
+      .form-group
+        = f.label :canton, t('players.canton')
+        = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'de'
+      .form-group
+        = f.label :federal_state, t('tournaments.federal_state')
+        = f.select :federal_state, options_for_select(federal_states_for_select, @tournament.federal_state), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'fr'
+      .form-group
+        = f.label :region, t('tournaments.region')
+        = f.select :region, options_for_select(regions_for_select, @tournament.region), {include_blank: true}, class: 'form-control'
     .form-group
       = f.label :registration_fee, t('tournaments.registration_fee')
       = f.number_field :registration_fee, class: 'form-control'

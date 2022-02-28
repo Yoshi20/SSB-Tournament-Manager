@@ -11,6 +11,10 @@ class PlayersController < ApplicationController
     if params[:filter].present? && params['filter-data'].present?
       if params[:filter] == 'canton'
         @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
+      elsif params[:filter] == 'federal_state'
+        @players = Player.all_de.where(federal_state: params['filter-data'])
+      elsif params[:filter] == 'region'
+        @players = Player.all_fr.where(region: params['filter-data'])
       elsif params[:filter] == 'character'
         @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
       end
@@ -156,10 +160,10 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
-        :losses, :main_characters, :created_at, :updated_at, :canton, :gender,
-        :birth_year, :prefix, :discord_username, :twitter_username,
-        :instagram_username, :youtube_video_ids, :warnings,
-        :main_character_skins)
+        :losses, :main_characters, :created_at, :updated_at, :canton,
+        :federal_state, :region, :gender, :birth_year, :prefix,
+        :discord_username, :twitter_username, :instagram_username,
+        :youtube_video_ids, :warnings, :main_character_skins)
     end
 
     def authenticate_player!

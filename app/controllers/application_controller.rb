@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :authenticate_user!, except: [
     :index, :show, :location, :unregistered, :contact, :donation,
-    :nrw, :hessen, :nds, :bayern, :berlin, :norden, :osten, :bawu
+    :nrw, :hessen, :nds, :bayern, :berlin, :norden, :osten, :bawu,
+    :grand_est, :nouvelle_aquitaine, :auvergne_rhone_alpes,
+    :bourgogne_franche_comte, :bretagne, :centre_val_de_loire, :corsica,
+    :paris_region, :occitanie, :hauts_de_france, :normandie, :pays_de_la_loire,
+    :provence_alpes_cote_azur, :character_discords
   ]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
@@ -25,9 +29,10 @@ class ApplicationController < ActionController::Base
     added_attrs = [:username, :email, :password, :password_confirmation,
       :remember_me, :challonge_username, :challonge_api_key, :full_name,
       :mobile_number, :area_of_responsibility, :is_club_member,
-      :wants_major_email, :wants_weekly_email, :canton, :gender, :birth_year,
-      :prefix, :discord_username, :twitter_username, :instagram_username,
-      :youtube_video_ids, :allows_emails_from_swisssmash,
+      :wants_major_email, :wants_weekly_email, :canton, :federal_state, :region,
+      :gender, :birth_year, :prefix, :discord_username, :twitter_username,
+      :instagram_username, :youtube_video_ids, :allows_emails_from_swisssmash,
+      :allows_emails_from_germanysmash, :allows_emails_from_francesmash,
       :allows_emails_from_partners, :country_code]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
@@ -75,6 +80,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_top_players
+    return unless session['country_code'] == 'ch'
     @topPlayers = Rails.cache.fetch("top_players_s12_21", expires_in: 1.day) do
       @topPlayers = []
       helpers.top_players_s12_21.each do |p|

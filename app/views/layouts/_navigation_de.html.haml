@@ -14,10 +14,6 @@
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.navbar-main.ml-auto
 
-      -# blup: not used atm.
-      -# %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
-      -#   = link_to t('news.title'), news_index_path, class: 'nav-link'
-
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
           = t('tournaments.title')

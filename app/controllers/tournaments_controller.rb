@@ -522,6 +522,7 @@ class TournamentsController < ApplicationController
                 match.tournament_id = @tournament.id
                 ctps.each do |ctp|
                   gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
+                  next if gamer_tag == 'bye0' || gamer_tag == 'bye1' || gamer_tag == 'bye2' || gamer_tag == 'bye3' || gamer_tag == 'bye4'
                   if ctp.id == ctm.player1_id
                     player = Player.find_by(gamer_tag: gamer_tag)
                     player = AlternativeGamerTag.find_by(gamer_tag: gamer_tag).try(:player) if player.nil?
@@ -543,6 +544,7 @@ class TournamentsController < ApplicationController
               # create results and update players
               ctps.each do |ctp|
                 gamer_tag = ctp.display_name.gsub("(invitation pending)", "").strip
+                next if gamer_tag == 'bye0' || gamer_tag == 'bye1' || gamer_tag == 'bye2' || gamer_tag == 'bye3' || gamer_tag == 'bye4'
                 player = Player.find_by(gamer_tag: gamer_tag)
                 player = AlternativeGamerTag.find_by(gamer_tag: gamer_tag).try(:player) if player.nil?
                 raise ("#{ctp.display_name} not found in this tournament!").inspect if player.nil?
@@ -674,7 +676,7 @@ class TournamentsController < ApplicationController
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools, :image_link, :image_height,
-        :image_width, :canton)
+        :image_width, :canton, :federal_state, :region)
     end
 
     def set_challonge_username_and_api_key

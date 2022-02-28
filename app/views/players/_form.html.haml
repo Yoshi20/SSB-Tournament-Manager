@@ -45,7 +45,6 @@
     .field.form-group
       = f.label :losses, t('players.losses')
       = f.number_field :losses, class: 'form-control'
-
   - if session['country_code'] == 'ch'
     .field.form-group
       = f.label :canton, t('players.canton')

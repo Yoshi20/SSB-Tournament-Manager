@@ -21,7 +21,7 @@
           = link_to t('navigation.footer.imprint'), :imprint
       .col
         %p.small
-          = link_to t('navigation.footer.privacy_policy'), :privacy_policy
+          = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
       .col
         %p#donate-btn
           = link_to("https://ko-fi.com/swisssmash", target: '_blank', class: "btn btn-sstm") do

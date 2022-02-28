@@ -3,10 +3,6 @@
     .row
       = link_to "https://smashcontest.de/", target: '_blank' do
         = image_tag('smash_contest.png', class: 'smash_contest_logo', width: '128.25px', height: '75px')
-      -# blup: not needed atm.
-      -# .col
-      -#   %p.small
-      -#     = link_to t('navigation.footer.administrators_short'), :administrators
       .col.d-none.d-sm-block
         %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
@@ -21,7 +17,7 @@
           = link_to t('navigation.footer.imprint'), :imprint
       .col
         %p.small
-          = link_to t('navigation.footer.privacy_policy'), :privacy_policy
+          = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
       .col
         %p#donate-btn
           = link_to("https://ko-fi.com/germanysmash", target: '_blank', class: "btn btn-default") do

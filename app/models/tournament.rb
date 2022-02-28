@@ -172,6 +172,7 @@ class Tournament < ApplicationRecord
   end
 
   def set_region
+    return unless self.country_code == 'fr'
     return if self.region.present?
     regions_raw = ApplicationController.helpers.regions_raw
     regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)

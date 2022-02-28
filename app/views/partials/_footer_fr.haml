@@ -1,10 +1,6 @@
 .row.footer-nav
   .col-5
     .row
-      -# blup: not needed atm.
-      -# .col
-      -#   %p.small
-      -#     = link_to t('navigation.footer.administrators_short'), :administrators
       .col
         %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
@@ -19,7 +15,7 @@
           = link_to t('navigation.footer.imprint'), :imprint
       .col
         %p.small
-          = link_to t('navigation.footer.privacy_policy'), :privacy_policy
+          = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
       .col
         %p#donate-btn
           = link_to("https://ko-fi.com/smashultimatefr", target: '_blank', class: "btn btn-default") do

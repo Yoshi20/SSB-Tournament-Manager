@@ -16,5 +16,5 @@
           .form-group
             = password_field_tag "user[password]", "", class: "form-control", placeholder: t('password')
         .modal-footer
-          = submit_tag t('log_in'), class: "btn btn-sstm"
-          = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-ghost", style: "position: absolute; right: 20px;"
+          = submit_tag t('log_in'), class: "btn btn-cyan"
+          = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-default", style: "position: absolute; right: 20px;"
