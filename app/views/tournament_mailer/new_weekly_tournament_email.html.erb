@@ -6,28 +6,28 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      <%= t('hi', locale: @user.country_code) %> <%= @user.username %>.
+      <%= t('hi', locale: @locale) %> <%= @user.username %>.
     </p>
     <p>
-      <%= t("tournaments.mailer.new_weekly_#{@tournament.country_code}", locale: @user.country_code) %>
+      <%= t("tournaments.mailer.new_weekly_#{@tournament.country_code}", locale: @locale) %>
     </p>
     <p>
-      <strong><%= t('tournaments.mailer.name', locale: @user.country_code) %></strong> <%= @tournament.name %><br>
-      <strong><%= t('tournaments.mailer.date', locale: @user.country_code) %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
-      <strong><%= t('tournaments.mailer.fee', locale: @user.country_code) %></strong> <%= @tournament.registration_fee %> CHF<br>
-      <strong><%= t('tournaments.mailer.location', locale: @user.country_code) %></strong><br>
+      <strong><%= t('tournaments.mailer.name', locale: @locale) %></strong> <%= @tournament.name %><br>
+      <strong><%= t('tournaments.mailer.date', locale: @locale) %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+      <strong><%= t('tournaments.mailer.fee', locale: @locale) %></strong> <%= @tournament.registration_fee %> CHF<br>
+      <strong><%= t('tournaments.mailer.location', locale: @locale) %></strong><br>
       <%- @tournament.location.split(',').each do |str| %>
         &emsp;<%= str.strip %><br>
       <%- end %>
     </p>
     <p>
-      <%= t('tournaments.mailer.to_join', link: link_to(t('tournaments.mailer.this_link', locale: @user.country_code), @url), locale: @user.country_code).html_safe %>
+      <%= t('tournaments.mailer.to_join', link: link_to(t('tournaments.mailer.this_link', locale: @locale), @url), locale: @locale).html_safe %>
     </p>
     <p>
-      <%= t('tournaments.mailer.we_wish_you_good_luck', locale: @user.country_code) %>
+      <%= t('tournaments.mailer.we_wish_you_good_luck', locale: @locale) %>
     </p>
     <p>
-      <%= t('tournaments.mailer.if_you_dont_want', locale: @user.country_code) %>
+      <%= t('tournaments.mailer.if_you_dont_want', locale: @locale) %>
     </p>
   </body>
 </html>

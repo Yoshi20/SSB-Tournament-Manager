@@ -4,7 +4,8 @@ class FeedbackMailer < ApplicationMailer
     feedback = params[:feedback]
     admin = params[:admin]
     @user = feedback.user
-    @url  = "https://www.swisssmash.ch/feedbacks/#{feedback.id}"
+    @locale = get_locale(@user.country_code)
+    @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
     mail(to: admin.email, from: from(@user.country_code), subject: "A new feedback or question was added")
   end
 
@@ -12,8 +13,24 @@ class FeedbackMailer < ApplicationMailer
     feedback = params[:feedback]
     @admin = params[:admin]
     @user = feedback.user
-    @url  = "https://www.swisssmash.ch/feedbacks/#{feedback.id}"
+    @locale = get_locale(@user.country_code)
+    @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
     mail(to: @user.email, from: from(@user.country_code), subject: "Your feedback or question was answered")
+  end
+
+  private
+
+
+  def feedbacks_url(country_code, path)
+    url = ''
+    if country_code == 'ch'
+      url = 'https://www.swisssmash.ch/feedbacks/'
+    elsif country_code == 'de'
+      url = 'https://www.germanysmash.de/feedbacks/'
+    elsif country_code == 'fr'
+      url = 'https://www.smashultimate.fr/feedbacks/'
+    end
+    url = url + path
   end
 
 end

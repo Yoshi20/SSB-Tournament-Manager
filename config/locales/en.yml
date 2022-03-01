@@ -1026,7 +1026,9 @@ en:
 
   users:
     mailer:
-      welcome: "Welcome to the SwissSmash Tournament Manager"
+      welcome_ch: "Welcome to the SwissSmash Tournament Manager"
+      welcome_de: "Welcome to the GermanySmash Tournament Manager"
+      welcome_fr: "Welcome to the SmashUltimate.fr Tournament Manager"
       signed_up: "You have successfully signed up. Your username is:"
       to_join: "To join some tournaments, just follow %{link}."
       to_join2: "To join some tournaments, just follow this link:"

@@ -6,17 +6,17 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      <%= t('hi', locale: @user.country_code) %> <%= @user.username %>.
+      <%= t('hi', locale: @locale) %> <%= @user.username %>.
     </p>
     <p>
-      <%= t('tournaments.mailer.too_few_registrations', tournament: @tournament.name.gsub('(cancelled) ', ''), locale: @user.country_code).html_safe %>
+      <%= t('tournaments.mailer.too_few_registrations', tournament: @tournament.name.gsub('(cancelled) ', ''), locale: @locale).html_safe %>
     </p>
     <p>
-      <strong><%= t('tournaments.mailer.date', locale: @user.country_code) %></strong> <del><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></del><br>
+      <strong><%= t('tournaments.mailer.date', locale: @locale) %></strong> <del><%= @tournament.date.to_s(:custom_datetime_with_weekday) %></del><br>
     </p>
     <p>
-      <%= t('tournaments.mailer.to_join_an_other', link: link_to(t('tournaments.mailer.this_link', locale: @user.country_code), @url), locale: @user.country_code).html_safe %>
+      <%= t('tournaments.mailer.to_join_an_other', link: link_to(t('tournaments.mailer.this_link', locale: @locale), @url), locale: @locale).html_safe %>
     </p>
-    <p><%= t('tournaments.mailer.we_hope_to_see_you', locale: @user.country_code) %></p>
+    <p><%= t('tournaments.mailer.we_hope_to_see_you', locale: @locale) %></p>
   </body>
 </html>

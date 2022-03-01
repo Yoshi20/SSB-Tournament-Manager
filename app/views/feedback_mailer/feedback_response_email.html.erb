@@ -4,13 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= t('hi') %> <%= @user.username %></h1>
-    <p><%= t('feedback.mailer.thanks') %></p>
+    <h1><%= t('hi', locale: @locale) %> <%= @user.username %></h1>
+    <p><%= t('feedback.mailer.thanks', locale: @locale) %></p>
     <p>
-      <%= t('feedback.mailer.response', link: link_to(t('feedback.mailer.this_link'), @url)).html_safe %>.
+      <%= t('feedback.mailer.response', link: link_to(t('feedback.mailer.this_link', locale: @locale), @url), locale: @locale).html_safe %>
     </p>
     <p>
-      <%= t('feedback.mailer.best_regards') %>
+      <%= t('feedback.mailer.best_regards', locale: @locale) %>
       <br>
       <%= @admin.username %>
     </p>

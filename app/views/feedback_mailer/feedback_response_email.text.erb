@@ -1,10 +1,10 @@
-<%= t('hi') %> <%= @user.username %>
+<%= t('hi', locale: @locale) %> <%= @user.username %>
 ===============================================
 
-<%= t('feedback.mailer.thanks') %>
+<%= t('feedback.mailer.thanks', locale: @locale) %>
 
-<%= t('feedback.mailer.response') %>
+<%= t('feedback.mailer.response', locale: @locale) %>
   <%= @url %>
 
-<%= t('feedback.mailer.best_regards') %>
+<%= t('feedback.mailer.best_regards', locale: @locale) %>
 <%= @admin.username %>
