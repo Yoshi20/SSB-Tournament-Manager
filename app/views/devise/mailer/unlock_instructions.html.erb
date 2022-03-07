@@ -1,7 +1,9 @@
-<p><%= t('devise.mailer.hello', locale: @resource.country_code)%> <%= @resource.username %></p>
+<%- locale = @resource.country_code == 'ch' ? 'en' : @resource.country_code %>
 
-<p><%= t('devise.mailer.account_locked', locale: @resource.country_code)%></p>
+<p><%= t('devise.mailer.hello', locale: locale)%> <%= @resource.username %></p>
 
-<p><%= t('devise.mailer.unlock_account', locale: @resource.country_code)%></p>
+<p><%= t('devise.mailer.account_locked', locale: locale)%></p>
 
-<p><%= link_to t('devise.mailer.unlock_my_account', locale: @resource.country_code), unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= t('devise.mailer.unlock_account', locale: locale)%></p>
+
+<p><%= link_to t('devise.mailer.unlock_my_account', locale: locale), unlock_url(@resource, unlock_token: @token) %></p>
