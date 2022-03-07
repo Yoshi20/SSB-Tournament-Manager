@@ -33,21 +33,19 @@ Stage commands:
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
 Prod commands:
-- git push prod_ch master
-- git push prod_de master
-- git push prod_fr master
-- heroku logs --tail --remote prod_ch
-- heroku run rake db:migrate --remote prod_ch
-- heroku run rails c --remote prod_ch
-- heroku restart --remote prod_ch
+- git push prod master
+- heroku logs --tail --remote prod
+- heroku run rake db:migrate --remote prod
+- heroku run rails c --remote prod
+- heroku restart --remote prod
 
-- heroku run rake tournaments_crawler_ch:all --remote prod_ch
-- heroku run rake tournaments_crawler_de:all --remote prod_ch
-- heroku run rake tournaments_crawler_fr:all --remote prod_ch
-- heroku run rake results_crawler_ch:all --remote prod_ch
-- heroku run rake results_crawler_de:all --remote prod_ch
-- heroku run rake results_crawler_fr:all --remote prod_ch
-- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod_ch
+- heroku run rake tournaments_crawler_ch:all --remote prod
+- heroku run rake tournaments_crawler_de:all --remote prod
+- heroku run rake tournaments_crawler_fr:all --remote prod
+- heroku run rake results_crawler_ch:all --remote prod
+- heroku run rake results_crawler_de:all --remote prod
+- heroku run rake results_crawler_fr:all --remote prod
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
 - https://swisssmash.herokuapp.com
