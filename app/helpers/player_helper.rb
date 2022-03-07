@@ -90,7 +90,7 @@ module PlayerHelper
   end
 
   def top_players_s12_21
-    ['Jaka', 'Destany', 'DeepFreeze', 'Deox6', 'Crash', 'Phonky', 'Karpador64', 'Kimbo', 'PATOO', 'colinmee', 'mistic', 'Rohan Doge', 'SickBoy', 'Fr0zen', 'Bigniouf', 'Clipho', 'Mirio', 'Tuzzi', 'ItseMePG', 'Jodel']
+    ['Destany', 'Jaka', 'DeepFreeze', 'Deox6', 'Crash', 'Phonky', 'Karpador64', 'Kimbo', 'PATOO', 'colinmee', 'mistic', 'Rohan Doge', 'SickBoy', 'Fr0zen', 'Bigniouf', 'Clipho', 'Mirio', 'Tuzzi', 'ItseMePG', 'Jodel']
   end
 
 end
