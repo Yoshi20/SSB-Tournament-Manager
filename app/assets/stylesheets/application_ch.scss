@@ -86,10 +86,12 @@ a.disabled {
   @media screen and (max-width: 1340px) {
     height: 150px;
     width: 150px;
+    font-size: 150px;
   }
   @media screen and (max-width: 600px) {
     height: 96px;
     width: 96px;
+    font-size: 96px;
   }
 }
 
@@ -101,7 +103,7 @@ a.disabled {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: $color-red;
+  background-color: $color-default;
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -122,7 +124,7 @@ a.disabled {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: $color-red transparent transparent transparent;
+  border-color: $color-default transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
