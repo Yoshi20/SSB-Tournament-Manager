@@ -7,7 +7,7 @@
 
 <%= t('tournaments.mailer.name', locale: @locale) %> <%= @tournament.name %>
 <%= t('tournaments.mailer.date', locale: @locale) %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
-<%= t('tournaments.mailer.fee', locale: @locale) %> <%= @tournament.registration_fee %> CHF
+<%= t('tournaments.mailer.fee', locale: @locale) %> <%= @tournament.registration_fee %> <%= @tournament.country_code == 'ch' ? 'CHF' : '€' %>
 <%= t('tournaments.mailer.location', locale: @locale) %>
 <%- @tournament.location.split(',').each do |str| %>
   <%= str.strip %>

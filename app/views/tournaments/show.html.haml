@@ -121,7 +121,7 @@
                     = @tournament.registration_fee
                   - else
                     = @tournament.registration_fee.to_i
-                  = 'CHF'
+                  = session['country_code'] == 'ch' ? 'CHF' : '€'
               %span= t('tournaments.registration_fee_short')
           .col
             .tournament__details__single
