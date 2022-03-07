@@ -1,0 +1,42 @@
+= form_for @community, role: 'form', class:'form' do |f|
+
+  - if @community.errors.any?
+    #error_explanation
+      %h2= pluralize(@community.errors.count, "error") + ' ' + t('communities.prohibited')
+      %ul
+        - @community.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :name, t('communities.name')
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
+    = f.label :city, t('communities.city')
+    = f.text_field :city, class: 'form-control'
+  .field.form-group
+    = f.label :department, t('communities.department')
+    = f.select :department, options_for_select(departments_for_select, @community.department), {include_blank: true}, class: 'form-control'
+  .field.form-group
+    = f.label :region, t('communities.region')
+    = f.select :region, options_for_select(regions_for_select, @community.region || params[:region]), {include_blank: true}, class: 'form-control'
+  .field.form-group
+    = f.label :discord, t('communities.discord')
+    %em= t('communities.multiple_discords')
+    = f.text_field :discord, class: 'form-control'
+  .field.form-group
+    = f.label :twitter, t('communities.twitter')
+    = f.text_field :twitter, class: 'form-control'
+  .field.form-group
+    = f.label :instagram, t('communities.instagram')
+    = f.text_field :instagram, class: 'form-control'
+  .field.form-group
+    = f.label :facebook, t('communities.facebook')
+    = f.text_field :facebook, class: 'form-control'
+  .field.form-group
+    = f.label :youtube, t('communities.youtube')
+    = f.text_field :youtube, class: 'form-control'
+  .field.form-group
+    = f.label :twitch, t('communities.twitch')
+    = f.text_field :twitch, class: 'form-control'
+  .actions.form-group
+    = f.submit class:'btn btn-block btn-cyan'

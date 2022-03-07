@@ -2,31 +2,31 @@
   .col
     %h1.page__title
       - if @feedback.user.present?
-        = "#{@feedback.user.present?}'s feedback or question"
+        = t('feedback.users_feedback', user: @feedback.user.username)
       - else
-        = "Someone's feedback or question"
+        = t('feedback.someones_feedback')
 
 .feedback
   %p= @feedback.text
   - if !@feedback.response.nil? and !@feedback.response.blank?
     %br
     %p
-      %strong= "Administrator \"#{@feedback.response_username}\" replied:"
+      %strong= t('feedback.admin_replied', user: @feedback.response_username).html_safe
       %br
-      = @feedback.response
+      = @feedback.response.html_safe
 
 .feedback__actions
   %strong
-    - if current_user.present? and (current_user.admin? or current_user == @feedback.user)
-      %p= link_to 'Edit', edit_feedback_path(@feedback)
-      %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: 'Are you sure?' }
+    - if current_user.present? and (current_user.super_admin? or current_user == @feedback.user)
+      %p= link_to t('edit'), edit_feedback_path(@feedback)
+      %p= link_to t('delete'), @feedback, method: :delete, data: { confirm: t('confirm') }
 
 .row.show-feedback
   .col-md-12
     %p
-      %strong Updated at:
+      %strong= t('feedback.updated_at')
       = @feedback.updated_at.to_s(:custom_datetime)
 
     %p
-      %strong Created at:
+      %strong= t('feedback.created_at')
       = @feedback.created_at.to_s(:custom_datetime)

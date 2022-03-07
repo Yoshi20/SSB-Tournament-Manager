@@ -1,0 +1,36 @@
+- set_meta_tags description: meta_tag_description('Videos')
+
+.row
+  .col
+    %h1.page__title= t('video.title2')
+
+.row
+  .col
+    - @players.each do |player|
+      - youtube_video_ids = player.sanitized_youtube_video_ids.split(',')
+      .player{style: ('border-top: 1px solid #E5E9EB; margin-top: 1rem; padding-top: 1rem;' if player != @players.first)}
+        %h2= t('video.players_videos', player: link_to(player.gamer_tag, player), s: youtube_video_ids.length > 1 ? 's' : '').html_safe
+        .player__videos
+          .newest_video
+
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{URI.escape(youtube_video_ids[0])}"}
+          - if youtube_video_ids.length > 1
+            .other_videos{style: 'margin-top: 1rem;'}
+              - require 'open-uri'
+              - require 'json'
+              - youtube_video_ids[1.. 3].each do |v_id|
+                - begin
+                  - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{URI.escape(v_id)}&format=json").read)
+                  .row{style: 'margin-bottom: 1rem;'}
+                    .col-4{style: 'text-align: center;'}
+                      = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                    .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
+                      = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
+                - rescue => ex
+                  %p.hidden
+                    %strong= "#{ex}:"
+                    = "https://youtu.be/#{v_id}"
+.row
+  .col
+    .videos__pagination
+      = render 'paginator'

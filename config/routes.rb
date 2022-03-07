@@ -9,9 +9,60 @@ Rails.application.routes.draw do
   get 'calendar' => 'calendar#index'
   get 'calendar_for_iframe' => 'calendar#show'
 
+  get 'character_skins' => 'character_skins#show'
+
+  post 'contact' => 'contact#contact'
+
+  get 'donations' => 'donations#index'
+  post 'donation' => 'donations#donation'
+
   get 'rankings' => 'rankings#index'
 
+  get 'streams' => 'streams#index'
+
+  get 'statistics' => 'statistics#index'
+
+  get 'videos' => 'videos#index'
+
+  # DE routes:
+  get 'communities' => 'communities#index'
+  get 'communities/nrw' => 'communities#nrw'
+  get 'communities/hessen' => 'communities#hessen'
+  get 'communities/nds' => 'communities#nds'
+  get 'communities/bayern' => 'communities#bayern'
+  get 'communities/berlin' => 'communities#berlin'
+  get 'communities/norden' => 'communities#norden'
+  get 'communities/osten' => 'communities#osten'
+  get 'communities/bawu' => 'communities#bawu'
+
+  # FR routes:
+  get 'guides' => 'guides#index'
+  get "/communities/grand_est" => "communities#grand_est"
+  get "/communities/nouvelle_aquitaine" => "communities#nouvelle_aquitaine"
+  get "/communities/auvergne_rhone_alpes" => "communities#auvergne_rhone_alpes"
+  get "/communities/bourgogne_franche_comte" => "communities#bourgogne_franche_comte"
+  get "/communities/bretagne" => "communities#bretagne"
+  get "/communities/centre_val_de_loire" => "communities#centre_val_de_loire"
+  get "/communities/corsica" => "communities#corsica"
+  get "/communities/paris_region" => "communities#paris_region"
+  get "/communities/occitanie" => "communities#occitanie"
+  get "/communities/hauts_de_france" => "communities#hauts_de_france"
+  get "/communities/normandie" => "communities#normandie"
+  get "/communities/pays_de_la_loire" => "communities#pays_de_la_loire"
+  get "/communities/provence_alpes_cote_azur" => "communities#provence_alpes_cote_azur"
+  # get "/communities/reunion" => "communities#reunion"
+  # get "/communities/martinique" => "communities#martinique"
+  # get "/communities/french_guiana" => "communities#french_guiana"
+  # get "/communities/guadeloupe" => "communities#guadeloupe"
+  # get "/communities/mayotte" => "communities#mayotte"
+  get "/communities/character_discords" => "communities#character_discords"
+  resources :communities
+
+  resources :news
   resources :feedbacks
+  get 'administrators' => 'administrators#index'
+  get 'imprint' => 'imprint#index'
+  get 'privacy_policy' => 'privacy_policy#index'
 
   resources :tournaments
   post 'tournaments/add_player/:id' => 'tournaments#add_player'
@@ -20,16 +71,19 @@ Rails.application.routes.draw do
   post 'tournaments/start/:id' => 'tournaments#start'
   post 'tournaments/finish/:id' => 'tournaments#finish'
   post 'tournaments/cancel/:id' => 'tournaments#cancel'
+  patch 'tournaments/sort_players/:id' => 'tournaments#sort_players'
+  patch 'tournaments/seed_players/:id' => 'tournaments#seed_players'
 
   get 'players/unregistered' => 'players#unregistered'
   resources :players, except: [:new]
 
   resources :registrations, only: [:update]
 
-  devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'users/passwords' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :users, only: [:index, :update, :destroy]
 
-  mount Thredded::Engine => '/forum'
+  mount Thredded::Engine => '/thredded'
+  get 'forum' => 'forum#index'
 
   root to: "welcome#index"
 

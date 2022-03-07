@@ -1,0 +1,37 @@
+.row
+  .col
+    %h1.page__title= t('communities.bawu.title')
+
+.row
+  .col{style: 'text-align: center;'}
+    %p= t('communities.bawu.text')
+
+.row
+  .col{style: 'text-align: center;'}
+    %h2= (@discord_invites_json.count > 1 ? "Discords" : "Discord")
+    .discord_invites{style: 'justify-content: center; display: grid;'}
+      - @discord_invites_json.each do |discord_invite|
+        .row{style: 'margin-bottom: 1rem;'}
+          .col
+            = render '/partials/discord_invite', discord_invite: discord_invite
+
+.row
+  .col{style: 'text-align: center;'}
+    %h2= t('rankings.title')
+    .row
+      .col
+        = t('communities.ranking')
+        = link_to 'rankings#region_bawu', '/rankings#region_bawu'
+%br
+
+- if @next_region_tournaments.any?
+  .row
+    .col{style: 'text-align: center;'}
+      = render '/partials/events', next_tournaments: @next_region_tournaments
+
+- if @region_administartors.any?
+  .row
+    .col{style: 'text-align: center;'}
+      %h2 TOs
+      .row{style: 'text-align: left;'}
+        = render '/partials/admins', administartors: @region_administartors

@@ -11,12 +11,15 @@
   font-size: $fontsize-input;
 
   &:focus, .focus {
-    border-color: $color-red;
+    border-color: $color-default;
     box-shadow: $shadow-input;
   }
 }
 
 .form-group {
+  em {
+    font-size: small;
+  }
   .form-group-inline {
     display: flex;
     justify-content: space-between;
@@ -46,4 +49,19 @@
 
 .field_with_errors label {
   color: $color-red;
+}
+
+.search-form {
+  .form-control {
+    width: 90%;
+    text-align: center;
+  }
+  .btn {
+    width: 10%;
+    border: none;
+    .material-icons {
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  }
 }

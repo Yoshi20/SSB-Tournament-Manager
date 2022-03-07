@@ -1,0 +1,134 @@
+.navbar.navbar-sstm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: $color-default;
+
+  .navbar-brand {
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    img {
+      margin-right: 1rem;
+      background-color: $color-white;
+      border: 1px solid $color-white;
+      border-radius: 50%;
+      @media screen and (max-width: 600px) {
+        margin-right: 0rem;
+      }
+    }
+  }
+  .navbar-toggler {
+    .navbar-toggler-icon {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .line {
+        height: 2px;
+        width: 1.5rem;
+        background-color: $color-white;
+        margin-bottom: 0.25rem;
+        display: block;
+        transition: all .3s ease;
+      }
+      .line--1 {
+        margin-left: -0.25rem;
+      }
+      .line--3 {
+        margin-left: -0.5rem;
+      }
+    }
+    &:not(.collapsed) {
+      .line {
+        margin: 0;
+        position: absolute;
+      }
+      .line--1 {
+        transform: rotate(45deg);
+      }
+      .line--2 {
+        transform: rotate(45deg);
+      }
+      .line--3 {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  .navbar-main {
+    .nav-item {
+      .nav-link, .locales {
+        color: $color-white;
+        font-weight: 500;
+      }
+      &:hover, &.active {
+        .nav-link {
+          text-decoration: underline;
+        }
+      }
+    }
+    .locales-list {
+      font-size: 24px;
+      color: $color-white;
+      margin-top: 2px;
+      margin-left: 20px;
+      @media screen and (max-width: 992px) {
+        margin-left: 0px;
+      }
+    }
+  }
+
+  .navbar-account {
+    .dropdown-menu {
+      left: -200%;
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: $border-radius-box;
+    a {
+      color: $color-default;
+    }
+    .dropdown-item.active, .dropdown-item:active {
+      background-color: $color-grey-light;
+    }
+  }
+  .dropdown-toggle, .nav-link {
+    display: flex;
+    align-content: center;
+    color: $color-white;
+    &:after {
+      display: none;
+    }
+  }
+
+  .navbar-icons {
+    flex-direction: row;
+    .nav-item {
+      @media screen and (max-width: 1200px) {
+        margin-left: -0.75rem !important;
+      }
+      @media screen and (max-width: 992px) {
+        margin-left: inherit !important;
+      }
+    }
+  }
+
+  .language_flag {
+    vertical-align: unset;
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+
+  #nav-char-image, img {
+    max-width: 100%;
+    vertical-align: unset;
+  }
+}

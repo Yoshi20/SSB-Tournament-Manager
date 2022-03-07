@@ -3,8 +3,7 @@ require 'icalendar/tzinfo'
 class Calendar
   class << self
 
-    def full_calendar_events(current_user)
-      tournaments = Tournament.for_calendar.includes(:players)
+    def full_calendar_events(current_user, tournaments)
       tournaments.map do |tournament|
         full_calendar_event(tournament, current_user)
       end.to_json
@@ -13,20 +12,24 @@ class Calendar
     def full_calendar_event(tournament, current_user)
       # TODO change date to from and to?
       isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      icon = tournament.canton || tournament.federal_state || tournament.region
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       isFullDayEvent ? nil : (tournament.date + 6.hours),
+        end:       isFullDayEvent ? nil : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours)),
         allDay:    isFullDayEvent,
         editable:  false,
-        className: 'calendar-tournament',
+        className: icon.present? ? "calendar-tournament calendar-has-icon-class #{icon}" : "calendar-tournament",
         color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}",
       }
     end
 
     def get_event_color(tournament, current_user)
-      if tournament.date + 6.hours < DateTime.now and tournament.subtype != 'external'
+      if tournament.started and tournament.finished
+        # past tournament
+        'lightgray'
+      elsif tournament.subtype != 'external' and tournament.date + 6.hours < DateTime.now
         # past tournament
         'lightgray'
       elsif tournament.subtype == 'external'
@@ -61,8 +64,8 @@ class Calendar
       end
     end
 
-    def ical_events
-      tournaments = Tournament.for_calendar
+    def ical_events(country_code)
+      tournaments = Tournament.all_from(country_code).for_calendar
       ical_events_internal(tournaments)
     end
 
@@ -86,13 +89,14 @@ class Calendar
     end
 
     def ical_event_internal(calendar, tournament, tzid)
+      isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      end_time = isFullDayEvent ? (tournament.date + 1.day) : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours))
       calendar.event do |event|
-        end_time = tournament.date + 6.hours
-        if false
+        if isFullDayEvent
           # whole-day tournament structure
           event.dtstart = ical_date(tournament.date.to_date)
-          event.dtend   = ical_date(end_time.to_date)
           event.dtstart.ical_param 'VALUE', 'DATE'
+          event.dtend   = ical_date(end_time.to_date)
           event.dtend.ical_param 'VALUE', 'DATE'
         else
           event.dtstart = ical_datetime(tournament.date, tzid)
@@ -101,6 +105,7 @@ class Calendar
         event.summary     = tournament.name.to_s.strip
         event.description = tournament.description.to_s.strip
         event.location    = tournament.location.to_s.strip
+        event.url         = tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}"
         if tournament.cancelled?
           event.status = 'CANCELLED'
         end

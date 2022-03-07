@@ -1,0 +1,25 @@
+- if users.any? && users.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', users.total_pages
+      %li.left-arrow
+        - if users.current_page.present? && users.current_page > 1
+          = link_to users_path(search: params[:search], order: params[:order], sort: params[:sort], page: users.current_page-1, anchor: anchor), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+
+      - (1..users.total_pages).each do |page|
+        %li{class: "#{"active" if page == users.current_page}"}= link_to page.to_s, users_path(search: params[:search], order: params[:order], sort: params[:sort], page: page, anchor: anchor), value: page
+      %li.right-arrow
+        - if users.try(:current_page).present? && users.current_page < users.total_pages
+          = link_to users_path(search: params[:search], order: params[:order], sort: params[:sort], page: users.current_page+1, anchor: anchor), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

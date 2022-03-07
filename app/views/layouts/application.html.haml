@@ -1,48 +1,73 @@
 !!!
 %html
+
   %head
-    - if @section.present?
-      %title= "SwissSmash.ch | #{@section.capitalize}"
-    - else
-      %title= "SwissSmash.ch"
+    - if session['country_code'] == 'ch'
+      %title= "SwissSmash.ch#{@section.present? ? " | #{@section.capitalize}" : ""}"
+    - elsif session['country_code'] == 'de'
+      %title= "GermanySmash.de#{@section.present? ? " | #{@section.capitalize}" : ""}"
+    - elsif session['country_code'] == 'fr'
+      %title= "SmashUltimate.fr#{@section.present? ? " | #{@section.capitalize}" : ""}"
+    = display_meta_tags(default_meta_tags)
     %meta{:charset => "utf-8"}
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
-    = favicon_link_tag 'logo.png'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    - if session['country_code'] == 'ch'
+      = favicon_link_tag 'ch_favicon.ico'
+      = stylesheet_link_tag 'application_ch', media: 'all', 'data-turbolinks-track' => true
+    - elsif session['country_code'] == 'de'
+      = favicon_link_tag 'de_logo.png'
+      = stylesheet_link_tag 'application_de', media: 'all', 'data-turbolinks-track' => true
+    - elsif session['country_code'] == 'fr'
+      = favicon_link_tag 'fr_favicon-32x32.png'
+      = stylesheet_link_tag 'application_fr', media: 'all', 'data-turbolinks-track' => true
     = render '/layouts/google_analytics'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-
 
   %body
     = render '/layouts/flashes'
     = render '/partials/login'
     %main
       .header.navbar.navbar-expand-lg.navbar-sstm
-        = render '/layouts/navigation'
+        = render "/layouts/navigation_#{session['country_code']}"
       .banner
         .banner__overlay
         = image_tag 'banner.jpg', class: 'banner__image'
       .container
         .row
-          - if request.original_fullpath == '/calendar'
+          - if request.original_fullpath.start_with?('/calendar')
             .col-12
               .content
                 = yield
           - else
             .d-none.d-lg-block.col-lg-3
               .sidebar
-                = render '/partials/players'
+                - if session['country_code'] == 'ch'
+                  = render '/partials/players'
+                - elsif session['country_code'] == 'de'
+                  %h2.sidebar__title
+                    = t('partials.streamers.title')
+                  = render '/partials/streamers'
+                - elsif session['country_code'] == 'fr'
+                  %h2.sidebar__title
+                    = t('partials.streamers.title')
+                  = render '/partials/streamers'
             .col-12.col-lg-6
               .content
                 = yield
+              - if request.path == '/' || request.path == '/welcome'
+                .content{style: 'margin-top: 10px;'}
+                  = render '/partials/top_donators'
             .d-none.d-lg-block.col-lg-3
               .sidebar
-                = render '/partials/events'
+                = render '/partials/events', next_tournaments: @nextTournaments
     .footer
-      = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
-        = image_tag('logo.png', height: '50px', width: '50px')
-      %p.small
-        = link_to 'Feedback & Questions', :feedbacks
-      %p.small
-        = mail_to 'admin@swisssmash.ch', 'Contact', subject: 'I faced a problem or have a question!', body: "Hi SwissSmash\n\nI'm ??? and I would like to ???"
+      .container
+        = render "/partials/footer_#{session['country_code']}"
+
+  - if session['country_code'] == 'de' || session['country_code'] == 'fr'
+    = render 'cookies_eu/consent_banner'
+
+:javascript
+  I18n.defaultLocale = "#{I18n.default_locale}";
+  I18n.locale = "#{I18n.locale}";

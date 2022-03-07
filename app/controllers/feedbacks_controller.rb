@@ -1,12 +1,12 @@
 class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_feedback_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'feedbacks' }
 
   # GET /feedbacks
   # GET /feedbacks.json
   def index
     @feedbacks = Feedback.all.order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
-    @admins = User.where(is_admin: true).order(:area_of_responsibility)
   end
 
   # GET /feedbacks/1
@@ -27,12 +27,13 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.country_code = session['country_code']
     respond_to do |format|
       if @feedback.save
-        User.where(is_admin:true).each do |admin|
+        User.all_from(session['country_code']).where(is_super_admin: true).each do |admin|
           FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
-        format.html { redirect_to feedbacks_path, notice: 'Feedback or Question was successfully created.' }
+        format.html { redirect_to feedbacks_path, notice: t('flash.notice.feedback_created') }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -47,7 +48,7 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       p = feedback_params
       p.delete('user_id') unless @feedback.new_record?
-      if current_user.admin?
+      if current_user.super_admin?
         if feedback_params[:response] != @feedback.response and feedback_params[:response] != ""
           FeedbackMailer.with(feedback: @feedback, admin: current_user).feedback_response_email.deliver_later
         else
@@ -55,7 +56,7 @@ class FeedbacksController < ApplicationController
         end
       end
       if @feedback.update(p)
-        format.html { redirect_to @feedback, notice: 'Feedback or Question was successfully updated.' }
+        format.html { redirect_to @feedback, notice: t('flash.notice.feedback_updated') }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -69,7 +70,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback or Question was successfully destroyed.' }
+      format.html { redirect_to feedbacks_url, notice: t('flash.notice.feedback_deleted') }
       format.json { head :no_content }
     end
   end
@@ -83,6 +84,15 @@ class FeedbacksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
       params.require(:feedback).permit(:user_id, :text, :response, :response_username, :created_at, :updated_at)
+    end
+
+    def authenticate_feedback_creator!
+      unless current_user.present? && (@feedback.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @feedback, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @feedback.errors, status: :unauthorized }
+        end
+      end
     end
 
 end

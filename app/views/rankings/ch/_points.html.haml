@@ -1,0 +1,91 @@
+.rankings__filter
+  .row.without_col
+    .rankings__filter__button= link_to t('rankings.filter.overall'), rankings_path(filter: 'all', anchor: 'points'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
+    .rankings__filter__button= link_to t('rankings.filter.seed_points'), rankings_path(filter: 'seed_points', anchor: 'points'), class: "btn #{(params[:filter] == 'seed_points') ? 'btn-sstm' : 'btn-ghost'}"
+    .rankings__filter__button= link_to t('players.participations'), rankings_path(filter: 'participations', anchor: 'points'), class: "btn #{(params[:filter] == 'participations') ? 'btn-sstm' : 'btn-ghost'}"
+  .row.without_col
+    - tournament_majors.each do |major|
+      .rankings__filter__button= link_to major, rankings_path(filter: 'major', anchor: 'points', major: major), class: "btn #{(params[:filter] == 'major' and params[:major] == major) ? 'btn-sstm' : 'btn-ghost'}"
+  .row.without_col
+    - tournament_cities_with_a_weekly.each do |city|
+      .rankings__filter__button= link_to "Weekly #{city}", rankings_path(filter: city.downcase, anchor: 'points'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+  .row
+    .col{style: 'font-size: 12px;'}
+      = t('rankings.filter.note')
+
+%table.table.table-hover.table-borderless
+  %thead.table-header
+    %tr
+      %th.text-center #
+      %th.text-center
+        - if params[:filter] == 'participations'
+          = t('players.participations')
+        - else
+          = t('players.points')
+      %th= t('players.gamer_tag')
+      %th.text-center= t('players.mains')
+      %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+        - if params[:filter] == 'participations'
+          = t('players.points')
+        - else
+          = t('players.participations')
+      %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
+
+  %tbody.table-content.with-show
+    - if players.any?
+      - last_player_points = nil
+      - page_multiplicator = Player::MAX_PLAYERS_PER_PAGE*params[:page].to_i
+      - page_multiplicator -= Player::MAX_PLAYERS_PER_PAGE if params[:page].to_i != 0
+      - players.each_with_index do |player, i|
+        - if (params[:filter].nil? or params[:filter] == 'all' or params[:filter] == 'participations' or params[:filter] == 'seed_points')
+          - if params[:filter] == 'participations'
+            - points = player.participations
+          - elsif params[:filter] == 'seed_points'
+            - points = player.seed_points.round(2)
+          - else
+            - points = (player.points.to_f/player.participations).round(2)
+          - if params[:filter] == 'participations'
+            - participations = player.points
+          - else
+            - participations = player.participations
+          - if player.wins == 0 and player.losses == 0
+            - win_loss_ratio = nil
+          - else
+            - win_loss_ratio = player.win_loss_ratio
+        - else
+          - results_sum = player.results_sum(params[:major] || params[:filter])
+          - points = results_sum[0]
+          - participations = -results_sum[1]
+          - win_loss_ratio = results_sum[2]
+        - if participations > 0 or params[:filter] == 'seed_points'
+          %tr{'data-id': player.id, 'data-component'=>'player'}
+            %td.text-center= (last_player_points == points) ? '' : (page_multiplicator+i+1).ordinalize
+            %td.text-center= points
+            - last_player_points = points
+            %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+            %td.text-center
+              - if player.main_characters.any?
+                %div
+                  - player.main_characters[0...3].each do |char|
+                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+            %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= participations
+            %td.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+              = win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
+
+            - if current_user.present? and current_user.super_admin?
+              %td.admin-list-actions
+                .admin-list-actions__link
+                  = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
+                    %span.material-icons.admin-actions__link__icon= 'edit'
+
+                .admin-list-actions__link
+                  = link_to player, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
+                    %span.material-icons.admin-actions__link__icon= 'delete'
+
+.ranking-list-footer
+  = render 'paginator', players: players, anchor: 'points'
+
+- if !players.any?
+  %p{style: 'text-align: center;'}
+    = t('rankings.no_players_found')

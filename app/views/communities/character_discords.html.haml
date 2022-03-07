@@ -1,0 +1,17 @@
+- set_meta_tags description: 'France Smash character discords'
+
+.row
+  .col
+    %h1.page__title
+      = image_tag "Discord-Logo-Color.svg", width: '30px'
+      = t('communities.characters')
+      = image_tag "Discord-Logo-Color.svg", width: '30px'
+
+.row
+  - @discords.each do |discord|
+    .col-md-4.col-sm-6
+      .toast.shadow-sm{style: "opacity: 1; margin-bottom: 1rem;"}
+        .toast-body
+          = render partial: 'players/character_image', locals: {character: discord[0], skin_nr: 0}
+          %span{style: 'margin-left: 1rem;'}= discord[0].split('_').map(&:capitalize).join(" ").gsub('And', 'and')
+        %a.stretched-link{:href => "https://discord.com/invite/#{discord[1]}", :target => '_blank', :title => ""}

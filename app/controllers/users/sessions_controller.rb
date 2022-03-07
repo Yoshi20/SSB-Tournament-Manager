@@ -1,3 +1,6 @@
+include Recaptcha::Adapters::ViewMethods
+include Recaptcha::Adapters::ControllerMethods
+
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
@@ -9,9 +12,14 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'login', minimum_score: 0.5)
+    if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
+      super
+    else
+      render 'new'
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy

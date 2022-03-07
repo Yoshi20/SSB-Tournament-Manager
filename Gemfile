@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.6.2"
+ruby "2.7.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -12,7 +12,7 @@ gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem "puma", ">= 4.3.8"
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,9 +34,12 @@ gem 'jbuilder', '~> 2.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# See https://github.com/icalendar/icalendar
 gem 'icalendar'
+
+# See https://github.com/bokmann/fullcalendar-rails
 gem 'fullcalendar-rails'
-gem 'momentjs-rails'
+gem 'momentjs-rails', '2.20.1' #blup: i18n (js) seems to not work with v2.29.1
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -83,6 +86,9 @@ gem 'figaro'
 # See https://github.com/rails/jquery-rails
 gem 'jquery-rails'
 
+# See https://github.com/jquery-ui-rails/jquery-ui-rails
+gem 'jquery-ui-rails'
+
 # See https://github.com/kossnocorp/jquery.turbolinks
 gem 'jquery-turbolinks'
 
@@ -105,6 +111,36 @@ gem 'challonge-api'
 
 # See https://github.com/mislav/will_paginate
 gem 'will_paginate', '~> 3.1.0'
+
+# See https://github.com/iain/http_accept_language
+gem 'http_accept_language'
+
+# See https://nokogiri.org/
+gem "nokogiri", ">= 1.11.0.rc4"
+
+# See https://github.com/ambethia/recaptcha
+gem 'recaptcha'
+
+# See https://github.com/smartinez87/exception_notification
+gem 'exception_notification'
+
+# See https://github.com/svenfuchs/rails-i18n
+gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+
+# See https://github.com/tigrish/devise-i18n
+gem 'devise-i18n'
+
+# See https://github.com/fnando/i18n-js
+gem 'i18n-js'
+
+# See https://github.com/brendon/acts_as_list
+gem 'acts_as_list'
+
+# See https://github.com/kpumuk/meta-tags
+gem 'meta-tags'
+
+# See https://github.com/infinum/cookies_eu
+gem 'cookies_eu'
 
 # See https://github.com/thredded/thredded
 gem 'thredded', '~> 0.16.12'

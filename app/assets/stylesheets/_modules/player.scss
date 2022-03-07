@@ -1,4 +1,10 @@
 .player {
+  margin-bottom: 1rem;
+  .admin-actions {
+    top: 1rem;
+    right: auto;
+    left: 3.2rem;
+  }
   .player__characters {
     width: 50%;
     display: flex;
@@ -36,6 +42,13 @@
     .table {
       margin-left: -0.75rem;
       margin-right: -0.75rem;
+    }
+  }
+  .player__videos {
+    iframe {
+      text-align: center;
+      height: 315px;
+      width: 100%;
     }
   }
 }

@@ -1,0 +1,23 @@
+- set_meta_tags description: meta_tag_description('TOs')
+
+%h1.page__title
+  = t('navigation.footer.administrators')
+
+.administrators
+  .row
+    - @admins.each do |admin|
+      .col-6
+        .administrators__single
+          %p
+            %strong
+              = admin.full_name || '?????? ??????'
+          %p
+            = link_to admin.player.gamer_tag, admin.player
+            %br
+            = mail_to admin.email, admin.email, body: "#{t('hi')} #{admin.username}\n\n..."
+            - if admin.mobile_number.present?
+              %br
+              = admin.mobile_number
+            - if admin.area_of_responsibility.present?
+              %br
+              = admin.area_of_responsibility

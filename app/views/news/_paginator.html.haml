@@ -1,0 +1,29 @@
+- if @news.any? && @news.try(:total_pages).present?
+  %nav
+    %ul.pagination
+      %li= hidden_field_tag 'total_pages', @news.total_pages
+      %li.left-arrow
+        -# table_params is a helper methode to whitelist the needed params to sort and order
+        - if @news.current_page.present? && @news.current_page > 1
+          -# = link_to news_index_path(table_params.merge(page: @news.current_page-1)), aria: {label: "Previous"} do
+          = link_to news_index_path(page: @news.current_page-1), aria: {label: "Previous"} do
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &laquo;
+
+      - (1..@news.total_pages).each do |page|
+        -# %li{class: "#{"active" if page == @news.current_page}"}= link_to page.to_s, news_index_path(table_params.merge(page: page)), value: page
+        %li{class: "#{"active" if page == @news.current_page}"}= link_to page.to_s, news_index_path(page: page), value: page
+      %li.right-arrow
+        - if @news.try(:current_page).present? && @news.current_page < @news.total_pages
+          -# = link_to news_index_path(table_params.merge(page: @news.current_page+1)), aria: {label: "Next"} do
+          = link_to news_index_path(page: @news.current_page+1), aria: {label: "Next"} do
+            %span{"aria-hidden"=> "true"}
+              &raquo;
+        - else
+          %a
+            %span{"aria-hidden"=> "true"}
+              &raquo;

@@ -1,0 +1,28 @@
+- if past_tournaments.any?
+  .player__tournaments
+    %table.table.table-hover.table-borderless
+      %thead.table-header
+        %tr
+          %th{colspan: '2'}
+            %h3= t('players.past_tournaments') + ' ' + year
+          %th.text-center #
+      %tbody.table-content.with-show
+        - past_tournaments.order(date: :desc).each do |tournament|
+          %tr{'data-id': tournament.id, 'data-component'=>'tournament'}
+            %td= tournament.name
+            %td
+              - if tournament.location.present?
+                = tournament.location.split(',')[0]
+              - else
+                = tournament.city || '-'
+            %td.text-center
+              - player_rank = '-'
+              - if tournament.ranking_string.to_s.include?(player.gamer_tag)
+                - tournament.ranking_string.split(';').sort.each do |r|
+                  - if r.split(',')[1] == player.gamer_tag
+                    - player_rank = r.split(',')[0]
+              - if player_rank == '-' or player_rank.nil? or player_rank.empty?
+                - player_rank = '-'
+              - else
+                - player_rank = player_rank.to_i.ordinalize
+              %strong= "#{player_rank}"

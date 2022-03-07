@@ -1,4 +1,4 @@
-# SSB-Tournament-Manager
+# SwissSmash
 Simple tournament manager for Super Smash Bros. matches (Ruby on Rails project)
 
 Local commands:
@@ -8,21 +8,29 @@ Local commands:
 - rails s
 - rails c
 
-- dropdb ssb-tournament-manager_development
-- heroku pg:pull \<postgresql-name\> ssb-tournament-manager_development --app ssb-tournament-manager
+- dropdb swisssmash_development
+- heroku pg:pull \<postgresql-name\> swisssmash_development --app swisssmash
 
-- heroku pg:reset --app ssb-tournament-manager-stage --confirm ssb-tournament-manager-stage
-- heroku pg:push ssb-tournament-manager_development \<postgresql-name\> --app ssb-tournament-manager-stage
+- heroku pg:reset --app swisssmash-stage --confirm swisssmash-stage
+- heroku pg:push swisssmash_development \<postgresql-name\> --app swisssmash-stage
 
 Stage commands:
-- git push stage master
-- heroku logs --tail --remote stage
-- heroku run rake db:migrate --remote stage
-- heroku run rails c --remote stage
-- heroku restart --remote stage
+- git push stage_ch master
+- git push stage_de master
+- git push stage_fr master
+- git push stage_ch <branch>:master
+- heroku logs --tail --remote stage_ch
+- heroku run rake db:migrate --remote stage_ch
+- heroku run rails c --remote stage_ch
+- heroku restart --remote stage_ch
 
-- heroku run rake tournaments_crawler:all --remote stage
-- heroku run rake results_crawler:all --remote stage
+- heroku run rake tournaments_crawler_ch:all --remote stage_ch
+- heroku run rake tournaments_crawler_de:all --remote stage_ch
+- heroku run rake tournaments_crawler_fr:all --remote stage_ch
+- heroku run rake results_crawler_ch:all --remote stage_ch
+- heroku run rake results_crawler_de:all --remote stage_ch
+- heroku run rake results_crawler_fr:all --remote stage_ch
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
 Prod commands:
 - git push prod master
@@ -31,16 +39,25 @@ Prod commands:
 - heroku run rails c --remote prod
 - heroku restart --remote prod
 
-- heroku run rake tournaments_crawler:all --remote prod
-- heroku run rake results_crawler:all --remote prod
+- heroku run rake tournaments_crawler_ch:all --remote prod
+- heroku run rake tournaments_crawler_de:all --remote prod
+- heroku run rake tournaments_crawler_fr:all --remote prod
+- heroku run rake results_crawler_ch:all --remote prod
+- heroku run rake results_crawler_de:all --remote prod
+- heroku run rake results_crawler_fr:all --remote prod
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
-- https://ssb-tournament-manager.herokuapp.com
-- https://ssb-club-bern.ch
-- https://swisssmash.ch
+- https://swisssmash.herokuapp.com
+- https://www.ssb-club-bern.ch
+- https://www.swisssmash.ch
+- https://germanysmash.herokuapp.com
+- https://www.germanysmash.de
+- https://francesmash.herokuapp.com
+- https://www.smashultimate.fr
 - https://challonge.com
-- http://sac-bern.ch
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
+- https://braacket.com/league/SSBUCHPRs/tournament?rows=200
 
 Tournaments crawler links:
 - https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}
@@ -49,6 +66,9 @@ Tournaments crawler links:
 
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
+
+Banner:
+- https://www.ssbwiki.com/Super_Smash_Bros._Ultimate
 
 Google Analytics:
 - https://analytics.google.com/analytics/web/#/report-home/a145089919w206718824p199562205

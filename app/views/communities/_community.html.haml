@@ -1,0 +1,17 @@
+-if community.present?
+  %tr{'data-id': community.id, 'data-component': 'communitie'}
+    %td
+      %span.material-icons.admin-actions__link__icon= 'play_arrow'
+    %td= community.department || '-'
+    %td= community.name
+    %td= community.city || '-'
+
+    - if current_user.present? and current_user.admin?
+      %td.admin-list-actions
+        .admin-list-actions__link
+          = link_to edit_community_path(community), class:'btn btn-default btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'edit'
+
+        .admin-list-actions__link
+          = link_to community, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'delete'

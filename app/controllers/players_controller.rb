@@ -2,12 +2,40 @@ class PlayersController < ApplicationController
   require 'will_paginate/array'
 
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_player!, only: [:edit, :update, :destroy]
   before_action { @section = 'players' }
 
   # GET /players
   # GET /players.json
   def index
-    @players = Player.all
+    if params[:filter].present? && params['filter-data'].present?
+      if params[:filter] == 'canton'
+        @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
+      elsif params[:filter] == 'federal_state'
+        @players = Player.all_from(session['country_code']).where(federal_state: params['filter-data'])
+      elsif params[:filter] == 'region'
+        @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
+      elsif params[:filter] == 'character'
+        @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
+      end
+    else
+      @players = Player.all_from(session['country_code'])
+    end
+
+    # handle search parameter
+    if params[:search].present?
+      begin
+        @players = @players.search(params[:search])
+        if @players.empty?
+          flash.now[:alert] = t('flash.alert.search_players')
+        end
+      rescue ActiveRecord::StatementInvalid
+        @players = Player.all_from(session['country_code']).iLikeSearch(params[:search])
+        if @players.empty?
+          flash.now[:alert] = t('flash.alert.search_players')
+        end
+      end
+    end
     # handle sort parameter
     sort = params[:sort]
     if sort.present?
@@ -72,29 +100,44 @@ class PlayersController < ApplicationController
       if @player.update(player_params)
         # update main_characters
         @player.main_characters.clear
-        player_params[:main_characters].split(',').each do |char|
-          @player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
+        main_characters = [
+          params[:main_char1].present? ? params[:main_char1][0] : nil,
+          params[:main_char2].present? ? params[:main_char2][0] : nil,
+          params[:main_char3].present? ? params[:main_char3][0] : nil
+        ]
+        main_characters.each do |char|
+          @player.main_characters << char
+        end
+        # update main_character_skins
+        @player.main_character_skins.clear
+        main_character_skins = [
+          params[:main_char_skin1].present? ? params[:main_char_skin1][0].to_i : nil,
+          params[:main_char_skin2].present? ? params[:main_char_skin2][0].to_i : nil,
+          params[:main_char_skin3].present? ? params[:main_char_skin3][0].to_i : nil
+        ]
+        main_character_skins.each do |skin_nr|
+          @player.main_character_skins << skin_nr
         end
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
-          Tournament.all.each do |t|
+          Tournament.all_from(session['country_code']).each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
           end
-          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag)
+          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag, country_code: @player.country_code)
         end
         # update alternative_gamer_tags if it was changed
         alts = ""
         @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
-        if params[:alternative_gamer_tags] != alts
+        if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
           params[:alternative_gamer_tags].split(',').each do |alt|
-            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip)
+            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
           end
         end
         # render
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to @player, notice: t('flash.notice.player_updated') }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }
@@ -117,8 +160,19 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
-        :losses, :main_characters, :created_at, :updated_at, :canton, :gender,
-        :birth_year, :prefix, :discord_username)
+        :losses, :main_characters, :created_at, :updated_at, :canton,
+        :federal_state, :region, :gender, :birth_year, :prefix,
+        :discord_username, :twitter_username, :instagram_username,
+        :youtube_video_ids, :warnings, :main_character_skins)
+    end
+
+    def authenticate_player!
+      unless current_user.present? && (@player.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @player, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @player.errors, status: :unauthorized }
+        end
+      end
     end
 
 end

@@ -1,3 +1,6 @@
+include Recaptcha::Adapters::ViewMethods
+include Recaptcha::Adapters::ControllerMethods
+
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
@@ -12,41 +15,67 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    user_params = Hash.new
-    super do |current_user_params|
-      user_params = current_user_params
-    end
-    user = User.last
-    if user.id == user_params[:id]
-      # User seems to be created successfully -> Create a new player and assign it to this user
-      player = Player.new
-      player.gamer_tag = params[:gamer_tag]
-      player.prefix = params[:prefix]
-      player.discord_username = params[:discord_username]
-      player.points = 0
-      player.participations = 0
-      player.canton = params[:canton]
-      player.gender = params[:gender]
-      player.birth_year = params[:birth_year]
-      player.self_assessment = params[:self_assessment] || 0
-      player.tournament_experience = params[:tournament_experience] || 0
-      params[:main_characters].split(',').each do |char|
-        player.main_characters << char.strip.downcase.gsub('.', '').gsub(' ', '_')
+    # if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'registration', minimum_score: 0.3)
+    if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
+      user_params = Hash.new
+      super do |current_user_params|
+        user_params = current_user_params
       end
-      player.comment = params[:comment]
-      player.best_rank = 0
-      player.wins = 0
-      player.losses = 0
-      player.user = user
-      if player.save
-        flash[:notice] = "Player was successfully created"
-        # Tell the UserMailer to send a welcome email after save
-        UserMailer.with(user: user).welcome_email.deliver_later
-      else
-        flash.delete(:notice)
-        flash[:alert] = "Creating player failed!"
-        user.delete
+      user = User.find_by(email: user_params[:email])
+      if user.present? && user.id == user_params[:id]
+        # User seems to be created successfully -> Create a new player and assign it to this user
+        player = Player.new
+        player.country_code = user.country_code
+        player.gamer_tag = params[:gamer_tag]
+        player.prefix = params[:prefix]
+        player.discord_username = params[:discord_username]
+        player.twitter_username = params[:twitter_username]
+        player.instagram_username = params[:instagram_username]
+        player.youtube_video_ids = params[:youtube_video_ids]
+        player.points = 0
+        player.participations = 0
+        player.canton = params[:canton]
+        player.federal_state = params[:federal_state]
+        player.region = params[:region]
+        player.gender = params[:gender]
+        player.birth_year = params[:birth_year]
+        player.self_assessment = params[:self_assessment] || 0
+        player.tournament_experience = params[:tournament_experience] || 0
+        main_characters = [
+          params[:main_char1].present? ? params[:main_char1][0] : nil,
+          params[:main_char2].present? ? params[:main_char2][0] : nil,
+          params[:main_char3].present? ? params[:main_char3][0] : nil
+        ]
+        main_characters.each do |char|
+          player.main_characters << char
+        end
+        main_character_skins = [
+          params[:main_char_skin1].present? ? params[:main_char_skin1][0].to_i : nil,
+          params[:main_char_skin2].present? ? params[:main_char_skin2][0].to_i : nil,
+          params[:main_char_skin3].present? ? params[:main_char_skin3][0].to_i : nil
+        ]
+        main_character_skins.each do |skin_nr|
+          player.main_character_skins << skin_nr
+        end
+        player.comment = params[:comment]
+        player.best_rank = 0
+        player.wins = 0
+        player.losses = 0
+        player.user = user
+        if player.save
+          flash[:notice] = t('flash.notice.creating_player')
+          # Tell the UserMailer to send a welcome email after save
+          UserMailer.with(user: user).welcome_email.deliver_later
+        else
+          flash.delete(:notice)
+          flash[:alert] = t('flash.alert.creating_player')
+          user.destroy
+        end
       end
+    else
+      self.resource = resource_class.new sign_up_params
+      resource.validate
+      respond_with_navigational(resource) { render :new }
     end
   end
 

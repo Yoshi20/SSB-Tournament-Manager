@@ -13,26 +13,16 @@
         %span.material-icons= 'radio_button_unchecked'
 
     %td
-      = tournament.date.to_s(:custom_datetime_date_and_no_time)
+      = l(tournament.date, format: :custom_datetime_date_and_no_time)
 
     %td
       = tournament.name
 
-    %td.d-none.d-md-table-cell
-      - if tournament.location.present?
-        = tournament.location.split(',')[0]
-      - else
-        = tournament.city || '-'
+    %td.text-center.d-sm-none
+      = tournament.city || '-'
 
-    %td.text-center.d-none.d-md-table-cell
-      - if tournament.registration_fee.present?
-        - if tournament.registration_fee%1 != 0  # check if it's a float
-          = tournament.registration_fee
-        - else
-          = tournament.registration_fee.to_i
-        = 'CHF'
-      - else
-        = '-'
+    %td.d-none.d-sm-table-cell
+      = tournament.location.gsub(', CH', '').gsub(', Schweiz', '').gsub(', Suisse', '').gsub(', Switzerland', '').gsub(', Deutschland', '').gsub(', Germany', '').gsub(', France', '') if tournament.location.present?
 
     %td.text-center.d-none.d-md-table-cell
       - if tournament.total_seats.nil?
@@ -55,5 +45,9 @@
             %span.material-icons.admin-actions__link__icon= 'edit'
 
         .admin-list-actions__link
-          = link_to tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
+          = link_to new_tournament_path(id: tournament.id), class:'btn btn-ghost btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'add_to_photos'
+
+        .admin-list-actions__link
+          = link_to tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
             %span.material-icons.admin-actions__link__icon= 'delete'

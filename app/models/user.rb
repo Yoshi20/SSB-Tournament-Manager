@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   validate :validate_username
 
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
+
+  MAX_USERS_PER_PAGE = 100
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -58,11 +62,21 @@ class User < ApplicationRecord
   end
 
   def admin?
-    self.is_admin == true
+    self.is_admin == true || self.is_super_admin == true
   end
 
   def super_admin?
     self.is_super_admin == true
+  end
+
+  def allows_emails
+    if self.country_code == 'ch'
+      self.allows_emails_from_swisssmash
+    elsif self.country_code == 'de'
+      self.allows_emails_from_germanysmash
+    elsif self.country_code == 'fr'
+      self.allows_emails_from_francesmash
+    end
   end
 
 end

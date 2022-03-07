@@ -6,11 +6,52 @@ class Player < ApplicationRecord
   has_many :tournaments, through: :registrations
 
   before_validation :strip_whitespace
+  after_save :delete_identical_alt
 
-  validates :gamer_tag, presence: true
-  validates :gamer_tag, uniqueness: true
+  validates :gamer_tag, uniqueness: true, presence: true
+  validate :validate_gamer_tag_is_truly_uniq
+  validates :prefix, length: { maximum: 12 }
+
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
+  scope :from_2019, -> { where('created_at >= ? AND created_at < ?', Time.local(2019,1,1), Time.local(2020,1,1)) }
+  scope :from_2020, -> { where('created_at >= ? AND created_at < ?', Time.local(2020,1,1), Time.local(2021,1,1)) }
+  scope :from_2021, -> { where('created_at >= ? AND created_at < ?', Time.local(2021,1,1), Time.local(2022,1,1)) }
+  scope :from_2022, -> { where('created_at >= ? AND created_at < ?', Time.local(2022,1,1), Time.local(2023,1,1)) }
 
   MAX_PLAYERS_PER_PAGE = 50
+  MAX_PLAYER_VIDEOS_PER_PAGE = 5
+
+  def delete_identical_alt
+    self.alternative_gamer_tags.each do |agt|
+      agt.delete if agt.gamer_tag == self.gamer_tag
+    end
+  end
+
+  def validate_gamer_tag_is_truly_uniq
+    if AlternativeGamerTag.all_from(self.country_code).exists?(gamer_tag: self.gamer_tag) && self.alternative_gamer_tags.find_by(gamer_tag: self.gamer_tag).nil?
+      errors.add(:gamer_tag, I18n.t('not_uniq'))
+    end
+  end
+
+  def self.search(search)
+    if search
+      sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
+      where("gamer_tag ~* '.*" + ApplicationController.helpers.unaccent(sanitizedSearch) + ".*'").or(where(  # ~* is the case-insensitive regexp operator
+        "prefix ~* '.*" + ApplicationController.helpers.unaccent(sanitizedSearch) + ".*'"
+      ))
+    else
+      :all
+    end
+  end
+
+  def self.iLikeSearch(search)
+    if search
+      sanitizedSearch = ActiveRecord::Base.sanitize_sql_like(search)
+      where("gamer_tag ILIKE ? or prefix ILIKE ?", "%#{sanitizedSearch}%", "%#{sanitizedSearch}%")
+    else
+      :all
+    end
+  end
 
   def win_loss_ratio
     if self.wins == 0 and self.losses == 0
@@ -70,5 +111,9 @@ class Player < ApplicationRecord
       self.tournament_experience = 4 if self.tournament_experience < 4 # Very much
     end
     self.save
+  end
+
+  def sanitized_youtube_video_ids
+    self.youtube_video_ids.gsub('https://youtu.be/', '').gsub('https://www.youtube.com/watch?v=', '').gsub('&t', '').gsub(' ', '')
   end
 end

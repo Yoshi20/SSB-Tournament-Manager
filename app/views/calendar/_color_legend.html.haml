@@ -1,29 +1,29 @@
-.calendar__footer__legend__item
-  %span.circle{style: "background: lightgray;"}
-  %span Past
-.calendar__footer__legend__item
-  %span.circle{style: "background: lightsalmon;"}
-  %span Cancelled
-.calendar__footer__legend__item
-  %span.circle{style: "background: darkorange;"}
-  %span Ongoing
-.calendar__footer__legend__item
-  %span.circle{style: "background: cornflowerblue;"}
-  %span External
-.calendar__footer__legend__item
-  %span.circle{style: "background: orchid;"}
-  %span Internal
-  
--if current_user.present?
-  .calendar__footer__legend__item
-    %span.circle{style: "background: mediumorchid;"}
-    %span Internal joined
-
-.calendar__footer__legend__item
-  %span.circle{style: "background: #61bf9b;"}
-  %span Weekly
-
--if current_user.present?
-  .calendar__footer__legend__item
-    %span.circle{style: "background: #07a468;"}
-    %span Weekly joined
+.row
+  .col
+    .calendar__footer__legend__item
+      %span.circle{style: "background: lightgray;"}
+      %span= t('calendar.color_legend.past')
+    .calendar__footer__legend__item
+      %span.circle{style: "background: lightsalmon;"}
+      %span= t('calendar.color_legend.cancelled')
+    .calendar__footer__legend__item
+      %span.circle{style: "background: darkorange;"}
+      %span= t('calendar.color_legend.ongoing')
+    .calendar__footer__legend__item
+      %span.circle{style: "background: cornflowerblue;"}
+      %span= t('external')
+  .col
+    .calendar__footer__legend__item
+      %span.circle{style: "background: orchid;"}
+      %span= t('internal')
+    -if current_user.present?
+      .calendar__footer__legend__item
+        %span.circle{style: "background: mediumorchid;"}
+        %span= t('calendar.color_legend.internal_joined')
+    .calendar__footer__legend__item
+      %span.circle{style: "background: #61bf9b;"}
+      %span= t('weekly')
+    -if current_user.present?
+      .calendar__footer__legend__item
+        %span.circle{style: "background: #07a468;"}
+        %span= t('calendar.color_legend.weekly_joined')

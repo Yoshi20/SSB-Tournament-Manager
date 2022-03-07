@@ -1,25 +1,36 @@
+- set_meta_tags description: meta_tag_description('Players')
+
 .row
   .col
-    %h1.page__title= "Players"
+    %h1.page__title= t('players.title')
 
 %ul#players-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
   %li.nav-item
     %a#stats-tab.nav-link.active{'data-toggle'=>'tab', href: '#stats', role: 'tab', 'aria-controls'=>'all'}
-      = 'Stats'
+      = t('players.stats')
   %li.nav-item
     %a#data-tab.nav-link{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
-      = 'Data'
+      = t('players.data')
+
+-# search form
+.row{style: 'margin-top: -15px;'}
+  .col
+    .search-form.form-group
+      = form_tag players_path, method: 'get', class: 'form-inline' do
+        = search_field_tag :search, params[:search], class: 'form-control', placeholder: t('players.search')
+        = button_tag type: 'submit', class: 'btn btn-default', name: nil do
+          %span.material-icons= 'search'
 
 .tab-content#players-tabs-content
   .tab-pane.fade.show.active#stats{role: 'tabpanel', 'aria-labelledby'=>'stats-tab'}
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to 'Mains', players_path(sort: 'main_characters', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Self assessment', players_path(sort: 'self_assessment', order: 'asc', anchor: 'stats')
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'XP', players_path(sort: 'tournament_experience', order: 'asc', anchor: 'stats')
-          %th.text-center= link_to 'W/L', players_path(sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('players.mains'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'main_characters', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.self_assessment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'self_assessment', order: 'asc', anchor: 'stats')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.xp'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'tournament_experience', order: 'asc', anchor: 'stats')
+          %th.text-center= link_to t('w_l'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'win_loss_ratio', order: 'asc', anchor: 'stats')
 
       %tbody.table-content.with-show.player-list-body
         - if @players.any?
@@ -30,11 +41,10 @@
               %td.text-center
                 - if player.main_characters.any?
                   %div
-                    - player.main_characters[0...3].each do |char|
-                      - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                        = image_tag "characters/#{char}.png", height: '25px', width: '25px'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : 'Undefined'
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : 'Undefined'
+                    - player.main_characters[0...3].each_with_index do |char, i|
+                      = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.self_assessment ? self_assessment_defines[player.self_assessment] : t('players.undefined')
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.tournament_experience ? tournament_experience_defines[player.tournament_experience] : t('players.undefined')
               %td.text-center
                 - if player.losses == 0 and player.wins == 0
                   = '-'
@@ -47,10 +57,6 @@
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'edit'
 
-                  .admin-list-actions__link
-                    = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon= 'delete'
-
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'stats'
 
@@ -58,11 +64,16 @@
     %table.table.table-hover.table-borderless
       %thead.table-header
         %tr
-          %th= link_to 'Gamer tag', players_path(sort: 'gamer_tag', order: 'asc', anchor: 'data')
-          %th.text-center= link_to 'Canton', players_path(sort: 'canton', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Age', players_path(sort: 'birth_year', order: 'asc', anchor: 'data')
-          %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to 'Gender', players_path(sort: 'gender', order: 'asc', anchor: 'data')
-          %th.text-center= link_to 'Comment', players_path(sort: 'comment', order: 'desc', anchor: 'data')
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'data')
+          - if session['country_code'] == 'ch'
+            %th.text-center= link_to t('players.canton'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'canton', order: 'asc', anchor: 'data')
+          - elsif session['country_code'] == 'de'
+            %th.text-center= link_to t('players.federal_state'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'federal_state', order: 'asc', anchor: 'data')
+          - elsif session['country_code'] == 'fr'
+            %th.text-center= link_to t('players.region'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'region', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'birth_year', order: 'asc', anchor: 'data')
+          %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gender', order: 'asc', anchor: 'data')
+          %th.text-center= link_to t('players.comment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'comment', order: 'desc', anchor: 'data')
 
       %tbody.table-content.with-show
         - if @players.any?
@@ -70,19 +81,24 @@
             %tr{'data-id': player.id, 'data-component'=>'player'}
               %td
                 - if player.main_characters.any?
-                  - player.main_characters[0...1].each do |char|
-                    - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-                      = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+                  - player.main_characters[0...1].each_with_index do |char, i|
+                    = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
                 - else
                   .div{style: 'display: inline;'}
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                 = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
               %td.text-center
                 - if player.canton.present?
-                  = image_tag "cantons/#{player.canton.downcase.gsub('.', '').gsub(' ', '_')}.svg", height: '20px', width: '20px'
-                  = player.canton
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
-              %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= player.gender
+                  = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
+                  = t("defines.cantons.#{player.canton}")
+                - elsif player.federal_state.present?
+                  = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
+                  = t("defines.federal_states.#{player.federal_state}")
+                - elsif player.region.present?
+                  = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
+                  = t("defines.regions.#{player.region}")
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
+              %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
               %td.text-center= truncate(player.comment, length: 60)
 
               - if current_user.present? and current_user.super_admin?
@@ -91,9 +107,9 @@
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
                       %span.material-icons.admin-actions__link__icon= 'edit'
 
-                  .admin-list-actions__link
-                    = link_to player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
-                      %span.material-icons.admin-actions__link__icon= 'delete'
-
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'data'
+
+  - if !@players.any?
+    %p{style: 'text-align: center;'}
+    = t('players.no_players_found')

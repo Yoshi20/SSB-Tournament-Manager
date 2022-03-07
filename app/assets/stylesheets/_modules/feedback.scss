@@ -1,2 +1,6 @@
 .feedbacks {
+  .feedback-list-body tr {
+    border-top: 1px solid $color-grey-light;
+    border-bottom: 1px solid $color-grey-light;
+  }
 }

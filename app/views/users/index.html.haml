@@ -1,16 +1,24 @@
+- set_meta_tags description: meta_tag_description('Users')
+
 .row
   .col
     %h1.page__title= "User list"
 
 .row
   .col
-    %p= "Total users count = #{User.all.count}"
+    %p= "Total users count = #{User.all_from(session['country_code']).count}"
     .d-flex
       %span.material-icons.admin-actions__link__icon= 'group_add'
       = '= Club Member'
     .d-flex
       %span.material-icons.admin-actions__link__icon= 'verified_user'
       = '= Admin'
+  - if current_user.present? and current_user.super_admin?
+    .col{style: 'text-align: right;'}
+      - mail_string = ''
+      - User.all_from(session['country_code']).where(is_admin: true).each do |u|
+        - mail_string = mail_string + u.email + '; '
+      = mail_to "", "Write all admins an email", bcc: mail_string, subject: "SwissSmash", body: "Hi SwissSmash admins\n\n", class: 'btn btn-ghost'
 
 .user-list
   %table.table.table-hover.table-borderless
@@ -23,11 +31,11 @@
         %th.text-center Admin
         %th.text-center Super Admin
 
-    %tbody.user-list-body
+    %tbody.user-list-body.with-show
       - @users.each do |user|
-        %tr{'data-id': user.id, 'data-component'=>'user'}
+        %tr{'data-id': (user.player.present? ? user.player.id : nil), 'data-component'=>'player'}
           %td= user.username
-          %td= user.current_sign_in_at.to_s(:custom_datetime)
+          %td= user.current_sign_in_at.present? ? user.current_sign_in_at.to_s(:custom_datetime) : ''
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= user.sign_in_count
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
             - if user.is_club_member
@@ -56,3 +64,7 @@
               .admin-list-actions__link
                 = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm btn-square' do
                   %span.material-icons.admin-actions__link__icon= 'delete'
+
+
+  .user-list-footer
+    = render 'paginator', users: @users, anchor: 'data'

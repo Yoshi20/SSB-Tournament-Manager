@@ -3,59 +3,83 @@
 
     - if @tournament.errors.any?
       #error_explanation
-        %h2= pluralize(@tournament.errors.count, "error") + " prohibited this tournament from being saved:"
+        %h2= pluralize(@tournament.errors.count, "error") + " " + t('tournaments.prohibited')
         %ul
           - @tournament.errors.full_messages.each do |message|
             %li= message
+    - elsif params[:errors].present? && params[:errors]['count'].to_i > 0
+      #error_explanation
+        %h2= pluralize(params[:errors]['count'].to_i, "error") + " " + t('tournaments.prohibited')
+        %ul
+          - params[:errors]['full_messages'].each do |message|
+            %li= message
+
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'external'
     .form-group
-      = f.label :date, 'Tournament start date'
+      = f.label :date, t('tournaments.start_date')
       .form-group-inline
         = f.datetime_select :date, { start_year: Time.now.year }, class: 'form-control'
     .form-group
-      = f.label :name
-      = f.text_field :name, class: 'form-control', value: (@tournament.new_record? ? 'SSBU Tournament ...' : @tournament.name)
+      = f.label :name, t('tournaments.name')
+      = f.text_field :name, class: 'form-control', placeholder: t('tournaments.name_placeholder')
+    - unless @tournament.new_record?
+      .form-group
+        = f.label :city, t('tournaments.city')
+        = f.text_field :city, class: 'form-control'
+      .form-group
+        = f.label :location, t('tournaments.location')
+        %em= t('tournaments.separate')
+        = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
+    - if session['country_code'] == 'ch'
+      .form-group
+        = f.label :canton, t('players.canton')
+        = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'de'
+      .form-group
+        = f.label :federal_state, t('tournaments.federal_state')
+        = f.select :federal_state, options_for_select(federal_states_for_select, @tournament.federal_state), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'fr'
+      .form-group
+        = f.label :region, t('tournaments.region')
+        = f.select :region, options_for_select(regions_for_select, @tournament.region), {include_blank: true}, class: 'form-control'
     .form-group
-      = f.label :city
-      = f.text_field :city, class: 'form-control', value: (@tournament.new_record? ? '' : @tournament.city)
+      = f.label :registration_fee, session['country_code'] == 'ch' ? t('tournaments.registration_fee_chf') : t('tournaments.registration_fee_euro')
+      = f.number_field :registration_fee, class: 'form-control'
     .form-group
-      = f.label :registration_fee, 'Registration fee [CHF]'
-      = f.number_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? nil : @tournament.registration_fee)
+      = f.label :total_seats, t('tournaments.total_seats')
+      = f.number_field :total_seats, class: 'form-control'
     .form-group
-      = f.label :total_seats
-      = f.number_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? nil : @tournament.total_seats)
-    .form-group
-      = f.label :external_registration_link
+      = f.label :external_registration_link, t('tournaments.external_registration_link')
       = f.text_field :external_registration_link, class: 'form-control'
     - if @tournament.new_record?
       .form-group.d-none
-        = f.label :active
+        = f.label :active, t('tournaments.active')
         = f.check_box :active, checked: true
       .form-group.d-none
-        = f.label :is_registration_allowed
+        = f.label :is_registration_allowed, t('tournaments.is_registration_allowed')
         = f.check_box :is_registration_allowed, checked: false
       -# .form-group
       -#   = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
-      -#   = label_tag :send_mails, 'Send all players an email'
+      -#   = label_tag :send_mails, t('tournaments.send_all_players_an_email')
     - else
       - if @tournament.finished?
         .form-group
-          = f.label :ranking_string
+          = f.label :ranking_string, t('tournaments.ranking_string')
           = f.text_area :ranking_string, class: 'form-control', rows: '2'
       .form-group
-        = f.label :setup
+        = f.label :setup, t('tournaments.setup')
         = f.check_box :setup, style: 'margin-left: 5px;'
       .form-group
-        = f.label :started
+        = f.label :started, t('tournaments.started')
         = f.check_box :started, style: 'margin-left: 5px;'
       .form-group
-        = f.label :finished
+        = f.label :finished, t('tournaments.finished')
         = f.check_box :finished, style: 'margin-left: 5px;'
       .form-group
-        = f.label :active
+        = f.label :active, t('tournaments.active')
         = f.check_box :active, style: 'margin-left: 5px;'
 
     .form-group
       = hidden_field_tag(:subtype, 'external')
-      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} External Tournament", class:'btn btn-ghost'
+      = f.submit "#{@tournament.new_record? ? t('create') : t('update')} #{t('tournaments.external_tournament')}", class:'btn btn-cyan'

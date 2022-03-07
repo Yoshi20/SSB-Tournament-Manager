@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_190109) do
+ActiveRecord::Schema.define(version: 2022_02_14_103138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,45 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.string "gamer_tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hidden", default: false
+    t.string "country_code"
     t.index ["player_id"], name: "index_alternative_gamer_tags_on_player_id"
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "department"
+    t.string "region"
+    t.string "country_code"
+    t.string "discord"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "youtube"
+    t.string "twitch"
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.string "message_id"
+    t.string "timestamp"
+    t.string "type"
+    t.boolean "is_public"
+    t.string "from_name"
+    t.string "message"
+    t.string "amount"
+    t.string "url"
+    t.string "email"
+    t.string "currency"
+    t.boolean "is_subscription_payment"
+    t.boolean "is_first_subscription_payment"
+    t.string "kofi_transaction_id"
+    t.string "verification_token"
+    t.string "shop_items"
+    t.string "tier_name"
+    t.string "country_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -58,6 +96,17 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
   end
 
+  create_table "news", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.string "teaser"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "country_code"
+    t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "gamer_tag"
     t.integer "points"
@@ -77,6 +126,14 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.integer "birth_year"
     t.string "prefix"
     t.string "discord_username"
+    t.string "twitter_username"
+    t.string "instagram_username"
+    t.string "youtube_video_ids"
+    t.integer "warnings"
+    t.string "federal_state"
+    t.string "country_code"
+    t.string "region"
+    t.integer "main_character_skins", default: [], array: true
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -86,6 +143,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.float "paid_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["player_id"], name: "index_registrations_on_player_id"
     t.index ["tournament_id"], name: "index_registrations_on_tournament_id"
   end
@@ -362,6 +420,13 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.integer "min_needed_registrations"
     t.boolean "is_registration_allowed", default: true
     t.integer "number_of_pools", default: 0
+    t.string "image_link"
+    t.string "image_height"
+    t.string "image_width"
+    t.string "canton"
+    t.string "federal_state"
+    t.string "country_code"
+    t.string "region"
   end
 
   create_table "users", force: :cascade do |t|
@@ -388,6 +453,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_190109) do
     t.boolean "is_club_member", default: false
     t.boolean "wants_major_email", default: true
     t.boolean "wants_weekly_email", default: true
+    t.boolean "allows_emails_from_swisssmash", default: true
+    t.boolean "allows_emails_from_partners", default: true
+    t.boolean "allows_emails_from_germanysmash", default: true
+    t.string "country_code"
+    t.boolean "allows_emails_from_francesmash", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

@@ -1,4 +1,4 @@
-%h1= "Editing feedback or question"
+%h1= t('feedback.title_edit')
 
 .row.form
   .col-md-8
@@ -6,7 +6,7 @@
 
   .col-md-4
     %strong
-      %p= link_to 'Show', feedback_path(@feedback)
-      - if current_user.admin? or current_user == @feedback.user
-        %p= link_to 'Delete', @feedback, method: :delete, data: { confirm: 'Are you sure?' }
-      %p= link_to 'Back', :back
+      %p= link_to t('show'), feedback_path(@feedback)
+      - if current_user.super_admin? or current_user == @feedback.user
+        %p= link_to t('delete'), @feedback, method: :delete, data: { confirm: t('confirm') }
+      %p= link_to t('back'), :back

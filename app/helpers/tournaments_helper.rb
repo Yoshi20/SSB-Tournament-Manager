@@ -1,40 +1,38 @@
 module TournamentsHelper
 
   def tournament_cities
-    ['Baden', 'Basel', 'Bern', 'Geneva', 'Solothurn', 'Trimbach', 'Zurich']
+    ['Basel', 'Bellinzona', 'Bern', 'Bioggio', 'Burgdorf', 'Ecuvillens',
+      'Fribourg', 'Genève', 'Horw', 'La Chaux-de-Fonds', 'Lausanne', 'Luzern',
+      'Neuchâtel', 'Solothurn', 'Trimbach', 'Viganello', 'Zurich']
+  end
+
+  def tournament_cities_with_a_weekly
+    ['Basel', 'Bern', 'Burgdorf', 'Fribourg', 'Lausanne', 'Solothurn',
+      'Trimbach', 'Vernier', 'Yverdon-les-Bains', 'Zurich']
   end
 
   def tournament_majors
-    ["Colosseum Basel", "Fantasy Basel", "Japan Impact", "PK Bern", "Polymanga",
-      "Saint Smash", "SwissGeek", "TheReset", "UltiBaits", "UltiMelt",
-      "UltiMon", "University of Smash"]
-    # Unspecific tournaments:
-    # Smash Temple
-    # Smash Ultimate Release Tournament Card Tower Solothurn
-    # Qwertz Ultimate Tournament #1
-    # Hardread 10.1.
-    # random
-    # seed
-    # Casino - Let&#039;s Play #1
-    # Smile & Wave(s) - A SILENTGAMING Smas
-    # Super Smash Bros Ultimate - Tournoi Mix-Image/jeuxvideo.ch du 23 mars 2019
-    # Carrefour Sud Monthly
-    # Smash at Frag #1
-    # Smash the Cake
-    # Smash at PolyLan
-    # Chablais LAN #2
-    # Super Smash Saga - Calm before the Storm
-  end
-
-  def min_needed_game_stations_per_tournament(seats)
-    if seats.nil? then return 0 end
-    min_needed_game_stations = seats/4
-    if min_needed_game_stations == 0 then min_needed_game_stations = 1 end
-    return min_needed_game_stations
+    ["Baksuz", "Casino", "Colosseum Basel", "Dodge This!", "Fantasy Basel",
+      "Frismash", "Full House", "HeroFest", "Japan Impact", "Orcus Smash",
+      "PK Bern", "Polymanga", "Qwertz", "Röstinament", "Saint Smash",
+      "Smash Castle", "Smash Club", "Smash Hammered", "SNWC", "SoluSmash",
+      "SwissGeek", "UltiBaits", "UltiMelt", "UltiMon", "University of Smash"]
   end
 
   def valid_challonge_url(str)
     str.downcase.gsub(/[^0-9A-Za-z\s]/, '').strip.gsub(' ', '_').gsub('__', '_').gsub('__', '_')
+  end
+
+  def valid_challonge_description(str)
+    strArray = str.split('<script>')
+    str = strArray[0]
+    if strArray.size >= 2
+      (strArray.size - 1).times do |n|
+        strArray2 = strArray[n+1].split('</script>')
+        str += strArray2[1] if strArray2.size >= 2
+      end
+    end
+    return str
   end
 
   def points_repartition_table(rank)

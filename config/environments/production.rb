@@ -59,19 +59,23 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "ssb-tournament-manager_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "swisssmash_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://ssb-tournament-manager.herokuapp.com'}
-
+  config.action_mailer.default_url_options = { :host => 'https://www.swisssmash.ch'}
+  # config.action_mailer.perform_deliveries = false
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_options = {from: 'SwissSmash <admin@swisssmash.ch>'}
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: 587, #or 25,
     domain: 'heroku.com',
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
     authentication: 'plain',
     enable_starttls_auto: true
   }

@@ -1,0 +1,63 @@
+.footer {
+  flex-shrink: 0;
+  background-color: $color-grey-dark;
+  color: $color-white;
+  text-align: center;
+
+  p {
+    padding-top: 2.1rem;
+  }
+
+  #donate-btn {
+    padding-top: 1.3rem;
+    a {
+      height: 46px;
+      align-items: center;
+      width: max-content;
+      padding: 7px 20px;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      -ms-border-radius: 100px;
+      -o-border-radius: 100px;
+      border-radius: 100px;
+      img {
+        width: 39px;
+      }
+      span {
+        margin-left: 8px;
+        color:#fff;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .swisssmash_logo {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    .small {
+      font-size: 48%;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    #donate-btn {
+      padding-top: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    #donate-btn {
+      a {
+        img {
+          width: 29px;
+        }
+        span {
+          margin-left: 1px;
+        }
+      }
+    }
+  }
+}

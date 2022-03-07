@@ -1,0 +1,20 @@
+.discord_invite
+  .row{style: 'max-height: 50px;'}
+    .col-2
+      .icon
+        = image_tag("https://cdn.discordapp.com/icons/#{discord_invite["guild"]["id"]}/#{discord_invite["guild"]["icon"]}.png?size=64", height: '50px', width: '50px')
+    .col-7
+      .info
+        .row
+          .col
+            = discord_invite["guild"]["name"]
+        .row
+          .col
+            .member_count
+              .dot{style: 'background-color: #43b581;'}
+              .count{style: 'display: inline-block; margin-right: 8px;'}= "#{discord_invite["approximate_presence_count"]} Online"
+              .dot{style: 'background-color: #747f8d;'}
+              .count{style: 'display: inline-block;'}= "#{discord_invite["approximate_member_count"]} Members"
+    .col-3
+      .join-btn{style: 'padding-top: 5px; text-align: right;'}
+        = link_to 'Join', "https://discord.com/invite/#{discord_invite["code"]}", target: "_blank", class:'btn'

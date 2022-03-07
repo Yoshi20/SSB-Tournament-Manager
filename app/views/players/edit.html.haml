@@ -1,12 +1,7 @@
 .row
   .col
-    %h1.page__title Edit Profile
+    %h1.page__title= t('players.edit')
 
 .row
   .col
     = render 'form', player: @player
-
-- if current_user.super_admin?
-  .row
-    .col
-      = link_to 'Delete', @player, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sstm'

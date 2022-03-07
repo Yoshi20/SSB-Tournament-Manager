@@ -9,7 +9,10 @@
       }
     }
     .calendar__footer__actions {
-      text-align: right;
+      text-align: left;
+      @media (min-width: 768px) {
+        text-align: right;
+      }
     }
   }
 }
@@ -89,12 +92,12 @@
 
     &.fc-state-default {
       background: transparent;
-      border: 1px solid $color-red;
-      color: $color-red;
+      border: 1px solid $color-default;
+      color: $color-default;
     }
     &.fc-state-active {
       box-shadow: none;
-      background: $color-red;
+      background: $color-default;
       color: $color-white;
     }
   }
@@ -111,5 +114,8 @@
         border-bottom-right-radius: $border-radius-input;
       }
     }
+  }
+  .fc-content {
+    min-height: 20px; // to make sure the icons will always fit
   }
 }

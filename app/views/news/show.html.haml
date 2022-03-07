@@ -1,0 +1,32 @@
+.row
+  .col
+    %h1.page__title= @news.title
+
+.show-news
+  .row
+    .col
+      %p{style: "margin-top: 1rem;"}
+        = @news.text.html_safe
+  .row
+    .col
+      %p{style: "margin-top: 1rem; font-size: 12px;"}
+        - if @news.updated_at != @news.created_at
+          %strong= t('news.updated_at')
+          = @news.updated_at.to_s(:custom_datetime)
+          %br
+        %strong= t('news.created_at')
+        = @news.created_at.to_s(:custom_datetime)
+        %br
+        %strong= t('news.created_by')
+        = @news.user.username
+
+
+  -# admin actions -------------------------------------------------------------
+  - if current_user.present? and (current_user.super_admin? or current_user == @news.user)
+    .admin-actions
+      .admin-actions__link
+        = link_to edit_news_path(@news), class:'btn btn-ghost btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'edit'
+      .admin-actions__link
+        = link_to @news, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-ghost btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'delete'

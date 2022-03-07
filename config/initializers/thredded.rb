@@ -24,7 +24,8 @@ Thredded.user_name_column = :username
 Thredded.user_path = ->(user) {
   # user_path = :"#{Thredded.user_class_name.demodulize.underscore}_path"
   # main_app.respond_to?(user_path) ? main_app.send(user_path, user) : "/users/#{user.to_param}"
-  "/players/#{user.player.id}"
+  # "/players/#{user.player.id}"
+  nil
 }
 
 # This method is used by Thredded controllers and views to fetch the currently signed-in user
@@ -34,9 +35,14 @@ Thredded.current_user_method = :"current_#{Thredded.user_class_name.demodulize.u
 Thredded.avatar_url = ->(user) {
   url = ""
   if user.player.main_characters.any?
-    user.player.main_characters[0...1].each do |char|
-      if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-        url = "characters/#{char}.png"
+    user.player.main_characters[0...1].each_with_index do |character, i|
+      if character.present? && File.file?("#{Rails.root}/app/assets/images/characters/#{character}.png")
+        skin_nr = user.player.main_character_skins[i]
+        if skin_nr.present?
+          url = "/character_skins/#{character}_#{skin_nr.to_s.rjust(2, '0')}.png"
+        else
+          url = "characters/#{character}.png"
+        end
       else
         url = Gravatar.src(user.email, 156, 'mm')
       end

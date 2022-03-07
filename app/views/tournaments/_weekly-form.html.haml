@@ -3,93 +3,122 @@
 
     - if @tournament.errors.any?
       #error_explanation
-        %h2= pluralize(@tournament.errors.count, "error") + " prohibited this tournament from being saved:"
+        %h2= pluralize(@tournament.errors.count, "error") + " " + t('tournaments.prohibited')
         %ul
           - @tournament.errors.full_messages.each do |message|
+            %li= message
+    - elsif params[:errors].present? && params[:errors]['count'].to_i > 0
+      #error_explanation
+        %h2= pluralize(params[:errors]['count'].to_i, "error") + " " + t('tournaments.prohibited')
+        %ul
+          - params[:errors]['full_messages'].each do |message|
             %li= message
 
     .form-group.d-none
       = f.text_field :subtype, class: 'form-control', value: 'weekly'
     .form-group
-      = f.label :registration_deadline, 'Online registration deadline'
+      = f.label :registration_deadline, t('tournaments.registration_deadline')
       .form-group-inline
         = f.datetime_select :registration_deadline, {start_year: Time.now.year}, class: 'form-control'
     .form-group
-      = f.label :date, 'Weekly start date'
+      = f.label :date, t('tournaments.weekly_start_date')
       .form-group-inline
         = f.datetime_select :date, {start_year: Time.now.year}, class: 'form-control'
     .form-group{class: (@tournament.new_record? ? '' : 'd-none')}
-      = f.label :end_date, 'Weekly end date (e.g. the end of the year)'
+      = f.label :end_date, t('tournaments.weekly_end_date')
       .form-group-inline
         = f.datetime_select :end_date,{ start_year: Time.now.year}, class: 'form-control'
     .form-group{class: (@tournament.new_record? ? 'd-none' : '')}
-      = f.label :name
-      %em= '(readonly)'
+      = f.label :name, t('tournaments.name')
+      %em= t('tournaments.readonly')
       = f.text_field :name, class: 'form-control', readonly: true, value: (@tournament.new_record? ? Time.now.to_s : @tournament.name) # hack to make a valid name
     .form-group
-      = f.label :city
-      = f.text_field :city, class: 'form-control', value: (@tournament.new_record? ? '' : @tournament.city)
+      = f.label :city, t('tournaments.city')
+      = f.text_field :city, class: 'form-control'
     .form-group
-      = f.label :location
-      %em= '(separate new lines with commas)'
-      = f.text_field :location, class: 'form-control', value: (@tournament.new_record? ? 'locality, address, postcode, floor' : @tournament.location)
+      = f.label :location, t('tournaments.location')
+      %em= t('tournaments.separate')
+      = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
+    - if session['country_code'] == 'ch'
+      .form-group
+        = f.label :canton, t('players.canton')
+        = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'de'
+      .form-group
+        = f.label :federal_state, t('tournaments.federal_state')
+        = f.select :federal_state, options_for_select(federal_states_for_select, @tournament.federal_state), {include_blank: true}, class: 'form-control'
+    - elsif session['country_code'] == 'fr'
+      .form-group
+        = f.label :region, t('tournaments.region')
+        = f.select :region, options_for_select(regions_for_select, @tournament.region), {include_blank: true}, class: 'form-control'
     .form-group
-      = f.label :registration_fee, 'Registration fee [CHF]'
-      = f.number_field :registration_fee, class: 'form-control', value: (@tournament.new_record? ? 5 : @tournament.registration_fee)
+      = f.label :registration_fee, session['country_code'] == 'ch' ? t('tournaments.registration_fee_chf') : t('tournaments.registration_fee_euro')
+      = f.number_field :registration_fee, class: 'form-control', value: (@tournament.registration_fee || 5)
     .form-group
-      = f.label :total_seats
-      = f.number_field :total_seats, class: 'form-control', value: (@tournament.new_record? ? 40 : @tournament.total_seats)
+      = f.label :total_seats, t('tournaments.total_seats')
+      = f.number_field :total_seats, class: 'form-control', value: (@tournament.total_seats || 40)
     .form-group
-      = f.label :min_needed_registrations, 'Minimal required registrations'
-      = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.new_record? ? 16 : @tournament.min_needed_registrations)
+      = f.label :min_needed_registrations, t('tournaments.min_needed_registrations')
+      = f.number_field :min_needed_registrations, class: 'form-control', value: (@tournament.min_needed_registrations || 16)
     .form-group
-      = f.label :total_needed_game_stations
-      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.new_record? ? 10 : @tournament.total_needed_game_stations)
+      = f.label :total_needed_game_stations, t('tournaments.total_needed_game_stations')
+      = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.total_needed_game_stations || 10)
     .form-group
-      = f.label :host_username, 'Hostname'
-      = f.text_field :host_username, class: 'form-control', value: (@tournament.new_record? ? current_user.username : @tournament.host_username)
+      = f.label :host_username, t('tournaments.hostname')
+      = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
     .form-group
-      = f.label :description, 'Description (HTML)'
-      = f.text_area :description, class: 'form-control', rows: '15'
+      = f.label :image_link, t('tournaments.image_link')
+      %em= t('tournaments.image_owner')
+      = f.text_field :image_link, placeholder: "https://www.my-image.com", class: 'form-control'
+    .row
+      .col.form-group
+        = f.label :image_height, t('tournaments.image_height')
+        = f.text_field :image_height, placeholder: t('tournaments.image_height_placeholder'), class: 'form-control'
+      .col.form-group
+        = f.label :image_width, t('tournaments.image_width')
+        = f.text_field :image_width, placeholder: t('tournaments.image_height_placeholder'), class: 'form-control'
+    .form-group
+      = f.label :description, t('tournaments.description_html')
+      = f.text_area :description, class: 'form-control', rows: '10'
     - if @tournament.new_record?
       .form-group.d-none
-        = f.label :active
+        = f.label :active, t('tournaments.active')
         = f.check_box :active, checked: true, style: 'margin-left: 5px;'
       .form-group
-        = f.check_box :is_registration_allowed, checked: true, style: 'margin-left: 5px; margin-right: 10px;'
-        = f.label :is_registration_allowed, 'Are registrations allowed?'
+        = f.check_box :is_registration_allowed, checked: (params[:tournament].present? ? (params[:tournament][:is_registration_allowed] == "1") : true), style: 'margin-left: 5px; margin-right: 10px;'
+        = f.label :is_registration_allowed, t('tournaments.is_registration_allowed')
       -# .form-group{style: 'margin-top: -10px;'}
       -#   = check_box_tag :send_mails, true, false, style: 'margin-left: 5px; margin-right: 10px;'
-      -#   = label_tag :send_mails, 'Send all players an email'
+      -#   = label_tag :send_mails, t('tournaments.send_all_players_an_email')
     - else
       - if !@tournament.is_registration_allowed
         .form-group
-          = f.label :external_registration_link
+          = f.label :external_registration_link, t('tournaments.external_registration_link')
           = f.text_field :external_registration_link, class: 'form-control'
       - if @tournament.finished?
         .form-group
-          = f.label :ranking_string
+          = f.label :ranking_string, t('tournaments.ranking_string')
           = f.text_area :ranking_string, class: 'form-control', rows: '2'
       .form-group
-        = f.label :setup
+        = f.label :setup, t('tournaments.setup')
         = f.check_box :setup, style: 'margin-left: 5px;'
       .form-group
-        = f.label :started
+        = f.label :started, t('tournaments.started')
         = f.check_box :started, style: 'margin-left: 5px;'
       .form-group
-        = f.label :finished
+        = f.label :finished, t('tournaments.finished')
         = f.check_box :finished, style: 'margin-left: 5px;'
       .form-group
-        = f.label :active
+        = f.label :active, t('tournaments.active')
         = f.check_box :active, style: 'margin-left: 5px;'
       .form-group
-        = f.label :is_registration_allowed, 'Registrations allowed?'
+        = f.label :is_registration_allowed, t('tournaments.is_registration_allowed')
         = f.check_box :is_registration_allowed, style: 'margin-left: 5px;'
 
     .form-group
       = hidden_field_tag(:subtype, 'weekly')
-      = f.submit "#{@tournament.new_record? ? 'Create' : 'Update'} Weekly Tournament", class:'btn btn-ghost'
+      = f.submit "#{@tournament.new_record? ? t('create') : t('update')} #{t('tournaments.this_weekly')}", class:'btn btn-cyan'
 
     - if !@tournament.new_record?
       .form-group
-        = f.submit "Update all upcoming weeklies of this kind", class:'btn btn-ghost'
+        = f.submit "#{t('update')} #{t('tournaments.all_upcoming_weeklies')}", class:'btn btn-cyan'

@@ -1,24 +1,35 @@
+- set_meta_tags description: meta_tag_description('Tournaments')
+
 .row
   .col
-    %h1.page__title
-      Tournaments
+    %h1.page__title= t('tournaments.title')
 
 %ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
   %li.nav-item
     %a#upcoming-tab.nav-link.active{'data-toggle'=>'tab', href: '#upcoming', role: 'tab', 'aria-controls'=>'all'}
-      = 'Upcoming'
+      = t('tournaments.upcoming')
   - if @ongoing_tournaments.any?
     %li.nav-item
       %a#ongoing-tab.nav-link{'data-toggle'=>'tab', href: '#ongoing', role: 'tab', 'aria-controls'=>'all'}
-        = 'Ongoing'
+        = t('tournaments.ongoing')
   %li.nav-item
     %a#past-tab.nav-link{'data-toggle'=>'tab', href: '#past', role: 'tab', 'aria-controls'=>'all'}
-      = 'Past'
+      = t('tournaments.past')
   - if @inactive_tournaments.present? and @inactive_tournaments.any?
     %li.nav-item
       %a#inactive-tab.nav-link{'data-toggle'=>'tab', href: '#inactive', role: 'tab', 'aria-controls'=>'all'}
         = 'Deleted'
         %i{style: 'font-size: 10px;'}= '(admin)'
+
+-# search form
+.row{style: 'margin-top: -15px;'}
+  .col
+    .search-form.form-group
+      = form_tag tournaments_path, method: 'get', class: 'form-inline' do
+        = hidden_field_tag :filter, params[:filter]
+        = search_field_tag :search, params[:search], class: 'form-control', placeholder: t('tournaments.search_placeholder')
+        = button_tag type: 'submit', class: 'btn btn-default', name: nil do
+          %span.material-icons= 'search'
 
 .tab-content#tournaments-tabs-content
   .tab-pane.fade#ongoing{role: 'tabpanel', 'aria-labelledby'=>'ongoing-tab'}
@@ -31,12 +42,22 @@
 
   .tab-pane.fade.show.active#upcoming{role: 'tabpanel', 'aria-labelledby'=>'upcoming-tab'}
     .tournaments__filter
-      .tournaments__filter__button= link_to 'All', tournaments_path(filter: 'all', anchor: 'upcoming'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'External', tournaments_path(filter: 'external', anchor: 'upcoming'), class: "btn #{params[:filter] == 'external' ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'Internal', tournaments_path(filter: 'internal', anchor: 'upcoming'), class: "btn #{params[:filter] == 'internal' ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'Weekly', tournaments_path(filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-sstm' : 'btn-ghost'}"
-      - tournament_cities.each do |city|
-        .tournaments__filter__button= link_to city, tournaments_path(filter: city.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+      .row.without_col
+        .tournaments__filter__button= link_to t('tournaments.all'), tournaments_path(search: params[:search], filter: 'all', anchor: 'upcoming'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s12_2022'), tournaments_path(search: params[:search], filter: 's12_2022', anchor: 'upcoming'), class: "btn #{params[:filter] == 's12_2022' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('external'), tournaments_path(search: params[:search], filter: 'external', anchor: 'upcoming'), class: "btn #{params[:filter] == 'external' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'upcoming'), class: "btn #{params[:filter] == 'internal' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
+      .row.without_col
+        - if session['country_code'] == 'ch'
+          - tournament_cities.each do |city|
+            .tournaments__filter__button= link_to city, tournaments_path(search: params[:search], filter: city.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == city.downcase ? 'btn-ghost' : 'btn-default'}"
+        - elsif session['country_code'] == 'de'
+          - federal_states_raw.each do |federal_state|
+            .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+        - elsif session['country_code'] == 'fr'
+          - regions_raw.each do |region|
+            .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'upcoming'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -46,20 +67,34 @@
         = render @tournaments
 
     - if !@tournaments.any?
-      %p{style: 'text-align: center;'}
-        No tournaments found
+      %p{style: 'text-align: center;'}= t('tournaments.no_upcoming')
 
     .tournament-list-footer
       = render 'paginator', tournaments: @tournaments, anchor: 'upcoming'
 
   .tab-pane.fade#past{role: 'tabpanel', 'aria-labelledby'=>'past-tab'}
     .tournaments__filter
-      .tournaments__filter__button= link_to 'All', tournaments_path(filter: 'all', anchor: 'past'), class: "btn #{(params[:filter].nil? or params[:filter] == 'all') ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'External', tournaments_path(filter: 'external', anchor: 'past'), class: "btn #{params[:filter] == 'external' ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'Internal', tournaments_path(filter: 'internal', anchor: 'past'), class: "btn #{params[:filter] == 'internal' ? 'btn-sstm' : 'btn-ghost'}"
-      .tournaments__filter__button= link_to 'Weekly', tournaments_path(filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-sstm' : 'btn-ghost'}"
-      - tournament_cities.each do |city|
-        .tournaments__filter__button= link_to city, tournaments_path(filter: city.downcase, anchor: 'past'), class: "btn #{params[:filter] == city.downcase ? 'btn-sstm' : 'btn-ghost'}"
+      .row.without_col
+        .tournaments__filter__button= link_to t('tournaments.all'), tournaments_path(search: params[:search], filter: 'all', anchor: 'past'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s12_2022'), tournaments_path(search: params[:search], filter: 's12_2022', anchor: 'past'), class: "btn #{params[:filter] == 's12_2022' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s12_2021'), tournaments_path(search: params[:search], filter: 's12_2021', anchor: 'past'), class: "btn #{params[:filter] == 's12_2021' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s12_2020'), tournaments_path(search: params[:search], filter: 's12_2020', anchor: 'past'), class: "btn #{params[:filter] == 's12_2020' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s2_2019'), tournaments_path(search: params[:search], filter: 's2_2019', anchor: 'past'), class: "btn #{params[:filter] == 's2_2019' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('s1_2019'), tournaments_path(search: params[:search], filter: 's1_2019', anchor: 'past'), class: "btn #{params[:filter] == 's1_2019' ? 'btn-ghost' : 'btn-default'}"
+      .row.without_col
+        .tournaments__filter__button= link_to t('external'), tournaments_path(search: params[:search], filter: 'external', anchor: 'past'), class: "btn #{params[:filter] == 'external' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'past'), class: "btn #{params[:filter] == 'internal' ? 'btn-ghost' : 'btn-default'}"
+        .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
+      .row.without_col
+        - if session['country_code'] == 'ch'
+          - tournament_cities.each do |city|
+            .tournaments__filter__button= link_to city, tournaments_path(search: params[:search], filter: city.downcase, anchor: 'past'), class: "btn #{params[:filter] == city.downcase ? 'btn-ghost' : 'btn-default'}"
+        - elsif session['country_code'] == 'de'
+          - federal_states_raw.each do |federal_state|
+            .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'past'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+        - elsif session['country_code'] == 'fr'
+          - regions_raw.each do |region|
+            .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'past'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -67,6 +102,9 @@
 
       %tbody.with-show.tournament-list-body
         = render @past_tournaments
+
+    - if !@past_tournaments.any?
+      %p{style: 'text-align: center;'}= t('tournaments.no_past')
 
     .tournament-list-footer
       = render 'paginator', tournaments: @past_tournaments, anchor: 'past'
@@ -86,5 +124,5 @@
 - if current_user.present? and current_user.admin?
   .admin-actions
     .admin-actions__link
-      = link_to new_tournament_path, class:'btn btn-ghost btn-square' do
+      = link_to new_tournament_path, class:'btn btn-default btn-square' do
         %span.material-icons.admin-actions__link__icon= 'add'

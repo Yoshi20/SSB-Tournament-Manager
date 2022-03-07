@@ -1,68 +1,148 @@
 .row
   .col
-    %h1.page__title Signing up
+    %h1.page__title= t('users.signing_up')
 .row
   .col
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
-      = devise_error_messages!
+      -# = recaptcha_v3(action: 'registration')
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.hidden
+        = f.label :country_code
+        = f.text_field :country_code, value: session['country_code'], class: 'form-control'
       .form-group
-        = f.label :username, 'Login username *'
+        = f.label :username, "#{t('users.login_username')} *"
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
-        = label_tag :gamer_tag, 'Gamer tag *'
-        = text_field_tag :gamer_tag, nil, class: 'form-control'
+        = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
+        = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
       .form-group
-        = label_tag :prefix, 'Sponsor prefix'
-        = text_field_tag :prefix, nil, class: 'form-control'
+        = label_tag :prefix, t('players.prefix')
+        %em= "(XYZ)"
+        = text_field_tag :prefix, params[:prefix], class: 'form-control'
       .form-group
-        = label_tag :discord_username
+        = label_tag :discord_username, t('players.discord_username')
         %em= "(User#1234)"
-        = text_field_tag :discord_username, nil, class: 'form-control'
+        = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
       .form-group
-        = f.label :email, 'Email *'
+        = label_tag :twitter_username, t('players.twitter_username')
+        = text_field_tag :twitter_username, params[:twitter_username], class: 'form-control'
+      .form-group
+        = label_tag :instagram_username, t('players.instagram_username')
+        = text_field_tag :instagram_username, params[:instagram_username], class: 'form-control'
+      .form-group
+        = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
       .form-group
-        = f.label :mobile_number
-        %em= "(079 / 123 45 67)"
+        = f.label :mobile_number, t('users.mobile_number')
+        - if session['country_code'] == 'ch'
+          %em= "(079 / 123 45 67)"
+        - elsif session['country_code'] == 'de'
+          %em= "(01522 1234567)"
+        - elsif session['country_code'] == 'fr'
+          %em= "(06 12 34 56 78)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
-        = f.label :password, 'Password *'
+        = f.label :password, "#{t('password')} *"
         - if @minimum_password_length
-          %em= "(#{@minimum_password_length} characters minimum)"
+          %em= t('users.chars_min', pw_length: @minimum_password_length)
         = f.password_field :password, autocomplete: "off", class: 'form-control'
       .form-group
-        = f.label :password_confirmation, 'Password confirmation *'
+        = f.label :password_confirmation, "#{t('users.password_confirmation')} *"
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      - if session['country_code'] == 'ch'
+        .form-group
+          = label_tag :canton, t('players.canton')
+          = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true, class: 'form-control'}
+      - elsif session['country_code'] == 'de'
+        .form-group
+          = label_tag :federal_state, t('players.federal_state')
+          = select_tag :federal_state, options_for_select(federal_states_for_select, params[:federal_state]), {include_blank: true, class: 'form-control'}
+      - elsif session['country_code'] == 'fr'
+        .form-group
+          = label_tag :region, t('players.region')
+          = select_tag :region, options_for_select(regions_for_select, params[:region]), {include_blank: true, class: 'form-control'}
       .form-group
-        = label_tag :canton
-        = select_tag :canton, options_for_select(cantons), {include_blank: true, class: 'form-control'}
+        = label_tag :gender, t('players.gender')
+        = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
       .form-group
-        = label_tag :gender
-        = select_tag :gender, options_for_select(genders), {include_blank: true, class: 'form-control'}
+        = label_tag :birth_year, t('players.birth_year')
+        = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
       .form-group
-        = label_tag :birth_year
-        = select_tag :birth_year, options_for_select(birth_years), {include_blank: true, class: 'form-control'}
+        = label_tag :self_assessment, t('players.self_assessment')
+        = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}, params[:self_assessment]), {class: 'form-control'}
       .form-group
-        = label_tag :self_assessment
-        = select_tag :self_assessment, options_for_select(self_assessment_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
+        = label_tag :tournament_experience, t('players.tournament_experience')
+        = select_tag :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}, params[:tournament_experience]), {class: 'form-control'}
       .form-group
-        = label_tag :tournament_experience
-        = select_tag :tournament_experience, options_for_select(tournament_experience_defines.map.with_index{|d, i|[d, i]}), {class: 'form-control'}
+        = label_tag :main_characters, t('players.main_characters')
+        %em= t('players.up_to_three')
+        .main_chars{style: 'display: inline-block;'}
+          - Dir.entries("#{Rails.root}/app/assets/images/characters").map{|f| f if !f.include?("200x200") and f[0] != '.'}.compact.sort.each_with_index do |file, i|
+            - character = file.sub('.png', '')
+            .main_char{style: 'float: left;'}
+              .tooltip.tooltip_character
+                = image_tag "characters/#{file}", height: '25px', width: '25px'
+                %span.tooltiptext
+                  = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
+                = radio_button('main_char1', nil, character, style: 'margin-left: -3px;', checked: ((params[:main_char1].present? and params[:main_char1][0] == character) ? 'checked' : ''))
+                = radio_button('main_char2', nil, character, style: 'margin-left: -2px;', checked: ((params[:main_char2].present? and params[:main_char2][0] == character) ? 'checked' : ''))
+                = radio_button('main_char3', nil, character, style: 'margin-left: -2px; margin-right: 8px;', checked: ((params[:main_char3].present? and params[:main_char3][0] == character) ? 'checked' : ''))
       .form-group
-        = label_tag :main_characters
-        %em= "(you can add up to three by separating them with a comma)"
-        = text_field_tag :main_characters, nil, class: 'form-control'
+        = f.label :main_character_skins, t('players.main_character_skins')
+        .main_char_skins
+          - current_character1 = (params[:main_char1].present? ? params[:main_char1][0] : nil)
+          - current_character_skin_nr1 = (params[:main_char_skin1].present? ? params[:main_char_skin1][0].to_i : nil)
+          .main_char_skin1{'data-value': current_character_skin_nr1}
+            = render partial: 'players/character_skins', locals: { character: current_character1, skin_nr: 1, current_character_skin_nr: current_character_skin_nr1 }
+          - current_character2 = (params[:main_char2].present? ? params[:main_char2][0] : nil)
+          - current_character_skin_nr2 = (params[:main_char_skin2].present? ? params[:main_char_skin2][0].to_i : nil)
+          .main_char_skin2{'data-value': current_character_skin_nr2}
+            = render partial: 'players/character_skins', locals: { character: current_character2, skin_nr: 2, current_character_skin_nr: current_character_skin_nr2 }
+          - current_character3 = (params[:main_char3].present? ? params[:main_char3][0] : nil)
+          - current_character_skin_nr3 = (params[:main_char_skin3].present? ? params[:main_char_skin3][0].to_i : nil)
+          .main_char_skin3{'data-value': current_character_skin_nr3}
+            = render partial: 'players/character_skins', locals: { character: current_character3, skin_nr: 3, current_character_skin_nr: current_character_skin_nr3 }
       .form-group
-        = label_tag :comment, "Comment"
-        %em= "(for what ever you want to tell the world)"
-        = text_area_tag :comment, nil, class: 'form-control'
-      .form-group.mb-0
+        = label_tag :comment, t('players.comment')
+        %em= t('players.for_what_ever')
+        = text_area_tag :comment, params[:comment], rows: '5', class: 'form-control'
+      .form-group
+        = label_tag :youtube_video_ids, t('players.youtube_video_ids')
+        %em= t('players.youtube_video_ids_examples').html_safe
+        = text_area_tag :youtube_video_ids, params[:youtube_video_ids], rows: '3', class: 'form-control'
+      -# .form-group.mb-0
+      -#   .form-check
+      -#     = f.check_box :wants_major_email, checked: (params[:user].present? ? (params[:user][:wants_major_email] == "1") : true), class:'form-check-input mr-2'
+      -#     = f.label :wants_major_email, t('users.wants_major_email'), class:'form-check-label'
+      -# .form-group
+      -#   .form-check
+      -#     = params[:wants_weekly_email]
+      -#     = f.check_box :wants_weekly_email, checked: (params[:user].present? ? (params[:user][:wants_weekly_email] == "1") : true), class:'form-check-input mr-2'
+      -#     = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
+      - if session['country_code'] == 'ch'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_swisssmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_swisssmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'de'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
+      - if session['country_code'] == 'fr'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
+      .form-group
         .form-check
-          = f.check_box :wants_major_email, checked: true, class:'form-check-input mr-2'
-          = f.label :wants_major_email, 'Inform me when a major tournament was added', class:'form-check-label'
+          = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
+          = f.label :allows_emails_from_partners, t("users.allows_emails_from_partners_#{session['country_code']}"), class:'form-check-label'
       .form-group
         .form-check
-          = f.check_box :wants_weekly_email, checked: true, class:'form-check-input mr-2'
-          = f.label :wants_weekly_email, 'Inform me when a weekly tournament was added', class:'form-check-label'
+          %input{type:"checkbox", onclick:"return false;", checked:'true', class:'form-check-input mr-2'}
+          = label_tag :data_agreement, t('users.data_agreement'), class:'form-check-label'
       .form-group
-        = f.submit "Register", class:'btn btn-ghost'
+        = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
+      .form-group
+        = f.submit t('users.register'), class:'btn btn-default'

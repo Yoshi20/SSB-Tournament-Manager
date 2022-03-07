@@ -1,11 +1,11 @@
 <%= @tournament.name %>
 ===============================================
 
-Hi <%= @user.username %>.
+<%= t('hi', locale: @locale) %> <%= @user.username %>.
 
-Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament.
+<%= t('tournaments.mailer.player_left_tournament', locale: @locale) %>
 
-To check out your registration, just follow the link:
+<%= t('tournaments.mailer.to_check_out_registration2', locale: @locale) %>
   <%= @url %>
 
-We wish you good luck during your matches!
+<%= t('tournaments.mailer.we_wish_you_good_luck', locale: @locale) %>
