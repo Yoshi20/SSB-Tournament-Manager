@@ -32,7 +32,7 @@ class CalendarController < ApplicationController
         end
       end
       format.ics do
-        send_data Calendar.ical_events, filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
+        send_data Calendar.ical_events(session['country_code']), filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
       end
     end
   end
