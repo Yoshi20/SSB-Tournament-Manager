@@ -6,9 +6,9 @@ class RankingsController < ApplicationController
   # GET /rankings
   # GET /rankings.json
   def index
-    @players = Player.all_ch.includes(:user)
-    # @players_2020 = Player.all_ch.includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2020,1,1)).references(:results)
-    # @players_2019 = Player.all_ch.includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2019,1,1)).references(:results)
+    @players = Player.all_from(session['country_code']).includes(:user)
+    # @players_2020 = Player.all_from(session['country_code']).includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2020,1,1)).references(:results)
+    # @players_2019 = Player.all_from(session['country_code']).includes(:user).includes(:results).where("results.created_at >= ?", Time.local(2019,1,1)).references(:results)
     if params[:filter].nil? or params[:filter] == 'all'
       @players = @players.where('participations >= 3').sort_by do |p|
         [p.points.to_f/p.participations, p.participations, -p.created_at.to_i]
@@ -38,6 +38,7 @@ class RankingsController < ApplicationController
       #   p.results_sum(city) << -p.created_at.to_i
       # end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
     end
+    render "index_#{session['country_code']}"
   end
 
 end

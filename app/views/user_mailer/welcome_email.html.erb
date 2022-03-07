@@ -4,13 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= t('users.mailer.welcome') %></h1>
+    <h1><%= t("users.mailer.welcome_#{@user.country_code}", locale: @locale) %></h1>
     <p>
-      <%= t('users.mailer.signed_up') %> <strong><%= @user.username %></strong>.<br>
+      <%= t('users.mailer.signed_up', locale: @locale) %> <strong><%= @user.username %></strong>.<br>
     </p>
     <p>
-      <%= t('users.mailer.to_join', link: link_to(t('users.mailer.this_link'), @url)).html_safe %>
+      <%= t('users.mailer.to_join', link: link_to(t('users.mailer.this_link', locale: @locale), @url), locale: @locale).html_safe %>
     </p>
-    <p><%= t('users.mailer.thanks') %></p>
+    <p><%= t('users.mailer.thanks', locale: @locale) %></p>
   </body>
 </html>

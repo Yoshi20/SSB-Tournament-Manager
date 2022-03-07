@@ -1,0 +1,55 @@
+- set_meta_tags description: 'Germany Super Smash Brothers E-Sports Community'
+
+%h1.page__title
+  = t('welcome.de.title')
+%p
+  .row{style: 'text-align: center;'}
+    .col
+      = link_to new_user_registration_path do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= t('sign_up')
+        %span.welcome_image.material-icons.admin-actions__link__icon= 'person_add'
+    .col
+      = link_to calendar_path do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= t('tournaments.calendar')
+        = image_tag "Calendar_Logo.svg", class: 'welcome_image'
+    .col
+      = link_to communities_path do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= t('communities.title')
+        -# = image_tag "Flag_map_of_Germany.svg", class: 'welcome_image'
+        = image_tag "de_Karte_Deutschland.svg", class: 'welcome_image'
+%p
+  = t('welcome.de.body0')
+
+%p
+  = t('welcome.de.body1',
+    tournaments_link: link_to(t('welcome.tournament_list'), tournaments_path, style: 'font-weight: 600;'),
+    calendar_link: link_to(t('welcome.calendar'), calendar_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body2',
+    communities: link_to(t('welcome.communities'), communities_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body3',
+    log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body4',
+    rankings_link: link_to(t('rankings.title'), rankings_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body5',
+    players_link: link_to(t('players.title'), players_path, style: 'font-weight: 600;'),
+    statistics_link: link_to(t('statistics.title2'), statistics_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body6',
+    informations_link: link_to(t('information.de.title_short'), informations_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.de.body7',
+    meele_link: link_to('German Melee', 'https://twitter.com/German_Melee', target: '_blank', style: 'font-weight: 600;')).html_safe

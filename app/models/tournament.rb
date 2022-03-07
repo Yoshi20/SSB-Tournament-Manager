@@ -6,7 +6,7 @@ class Tournament < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
 
-  scope :all_ch, -> { where(country_code: 'ch') }
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
   scope :active, -> { where(active: true) }
   scope :upcoming, -> { where('date > ?', Time.now) }
   scope :upcoming_with_today, -> { where('date >= ?', Time.now.beginning_of_day) }
@@ -16,7 +16,8 @@ class Tournament < ApplicationRecord
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
   before_create :set_canton
-  before_create :set_country_code
+  before_create :set_federal_state
+  before_create :set_region
 
   MAX_PAST_TOURNAMENTS_PER_PAGE = 20
 
@@ -59,6 +60,7 @@ class Tournament < ApplicationRecord
   end
 
   def set_canton
+    return unless self.country_code == 'ch'
     return if self.canton.present?
     cantons_raw = ApplicationController.helpers.cantons_raw
     cantons_de = I18n.t(cantons_raw, scope: 'defines.cantons', locale: :de).map(&:downcase)
@@ -101,6 +103,120 @@ class Tournament < ApplicationRecord
                   self.canton = cantons_raw[cantons_fr.index(ln)] if cantons_fr.index(ln).present?
                   self.canton = cantons_raw[cantons_en.index(ln)] if cantons_en.index(ln).present?
                   return # as soon as canton was found
+                end
+              end
+            end
+          end
+        end
+      rescue OpenURI::HTTPError => ex
+        puts ex
+      end
+    end
+  end
+
+  def set_federal_state
+    return unless self.country_code == 'de'
+    return if self.federal_state.present?
+    federal_states_raw = ApplicationController.helpers.federal_states_raw
+    federal_states_de = I18n.t(federal_states_raw, scope: 'defines.federal_states', locale: :de).map(&:downcase)
+    federal_states_en = I18n.t(federal_states_raw, scope: 'defines.federal_states', locale: :en).map(&:downcase)
+    # First: Try to determine federal_state from city
+    if self.city.present?
+      city = self.city.downcase
+      #city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+      if (federal_states_de.include?(city) || federal_states_en.include?(city))
+        self.federal_state = federal_states_raw[federal_states_de.index(city)] if federal_states_de.index(city).present?
+        self.federal_state = federal_states_raw[federal_states_en.index(city)] if federal_states_en.index(city).present?
+        return # as soon as federal_state was found
+      end
+    end
+    # Second: Try to determine federal_state from a word in location
+    if self.location.present?
+      self.location.downcase.split(' ').each do |l|
+        l = l.gsub(',', '')#.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+        if (federal_states_de.include?(l) || federal_states_en.include?(l))
+          self.federal_state = federal_states_raw[federal_states_de.index(l)] if federal_states_de.index(l).present?
+          self.federal_state = federal_states_raw[federal_states_en.index(l)] if federal_states_en.index(l).present?
+          return # as soon as federal_state was found
+        end
+      end
+      # Third: Try to find the federal_state with the help of Google Maps
+      require 'open-uri'
+      require 'json'
+      begin
+        json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:DE&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+        if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
+          json_data["results"][0]["address_components"].each do |res|
+            if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
+              if res["long_name"].present?
+                sn = res["short_name"]
+                if federal_states_raw.include?(sn)
+                  self.federal_state = sn
+                  return # as soon as federal_state was found
+                end
+                # long_name will most likely never be necessary
+                ln = res["long_name"].downcase
+                if (federal_states_de.include?(ln) || federal_states_en.include?(ln))
+                  self.federal_state = federal_states_raw[federal_states_de.index(ln)] if federal_states_de.index(ln).present?
+                  self.federal_state = federal_states_raw[federal_states_en.index(ln)] if federal_states_en.index(ln).present?
+                  return # as soon as federal_state was found
+                end
+              end
+            end
+          end
+        end
+      rescue OpenURI::HTTPError => ex
+        puts ex
+      end
+    end
+  end
+
+  def set_region
+    return unless self.country_code == 'fr'
+    return if self.region.present?
+    regions_raw = ApplicationController.helpers.regions_raw
+    regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)
+    regions_en = I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase)
+    # First: Try to determine region from city
+    if self.city.present?
+      city = self.city.downcase
+      #city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+      if (regions_fr.include?(city) || regions_en.include?(city))
+        self.region = regions_raw[regions_fr.index(city)] if regions_fr.index(city).present?
+        self.region = regions_raw[regions_en.index(city)] if regions_en.index(city).present?
+        return # as soon as region was found
+      end
+    end
+    # Second: Try to determine region from a word in location
+    if self.location.present?
+      self.location.downcase.split(' ').each do |l|
+        l = l.gsub(',', '')#.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
+        if (regions_fr.include?(l) || regions_en.include?(l))
+          self.region = regions_raw[regions_fr.index(l)] if regions_fr.index(l).present?
+          self.region = regions_raw[regions_en.index(l)] if regions_en.index(l).present?
+          return # as soon as region was found
+        end
+      end
+      # Third: Try to find the region with the help of Google Maps
+      require 'open-uri'
+      require 'json'
+      begin
+        json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:FR&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+        if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
+          json_data["results"][0]["address_components"].each do |res|
+            if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
+              if res["long_name"].present?
+                sn = res["short_name"]
+                if regions_raw.include?(sn)
+                  self.region = sn
+                  return # as soon as region was found
+                end
+                # long_name will most likely never be necessary
+                ln = res["long_name"].downcase
+                if (regions_fr.include?(ln) || regions_en.include?(ln))
+                  self.region = regions_raw[regions_fr.index(ln)] if regions_fr.index(ln).present?
+                  self.region = regions_raw[regions_en.index(ln)] if regions_en.index(ln).present?
+                  return # as soon as region was found
                 end
               end
             end

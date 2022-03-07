@@ -1,0 +1,161 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+ @import "./_includes/colors_de";
+ @import "./_includes/variables";
+
+@import "cookies_eu";
+@import "bootstrap";
+@import "material_icons";
+@import "fullcalendar";
+
+@import "./_includes/typography";
+
+@import "./_modules/administrator";
+@import "./_modules/banner";
+@import "./_modules/button";
+@import "./_modules/calendar";
+@import "./_modules/communities_de";
+@import "./_modules/content";
+@import "./_modules/form";
+@import "./_modules/footer_de";
+@import "./_modules/modal";
+@import "./_modules/navigation_de";
+@import "./_modules/news";
+@import "./_modules/player";
+@import "./_modules/ranking";
+@import "./_modules/sidebar";
+@import "./_modules/statistic";
+@import "./_modules/tab";
+@import "./_modules/table";
+@import "./_modules/toast";
+@import "./_modules/tournament";
+
+html, body {
+  height: 100%;
+  background: $color-grey-light;
+}
+
+main {
+  margin-bottom: 2rem;
+  flex: 1 0 auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+a {
+  color: $color-default;
+  &:hover {
+    color: $color-default;
+  }
+}
+
+a.disabled {
+  color: #b7b7b7 !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+.without_col {
+  padding-right: 0.3125rem;
+  padding-left: 0.3125rem;
+}
+
+.welcome_image {
+  height: 200px;
+  width: 200px;
+  font-size: 200px;
+
+  @media screen and (max-width: 1340px) {
+    height: 150px;
+    width: 150px;
+    font-size: 150px;
+  }
+  @media screen and (max-width: 600px) {
+    height: 96px;
+    width: 96px;
+    font-size: 96px;
+  }
+}
+
+.tooltip {
+  opacity: initial;
+  z-index: 0;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: $color-default;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -48px;
+  font-weight: bold;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: $color-default transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip_character {
+  position: relative;
+}
+
+.tooltip_character .tooltiptext {
+  margin-left: -86px;
+}
+
+.fc-time {
+  font-size: 12px;
+}
+
+.cookies-eu {
+  // top: 0;
+  // bottom: unset;
+  @media screen and (max-width: 767px) {
+    position: fixed;
+  }
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-block;
+}

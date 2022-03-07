@@ -1,11 +1,11 @@
 <%= @tournament.name %>
 ===============================================
 
-<%= t('hi') %> <%= @user.username %>.
+<%= t('hi', locale: @locale) %> <%= @user.username %>.
 
-<%= t('tournaments.mailer.player_left_tournament') %>
+<%= t('tournaments.mailer.player_left_tournament', locale: @locale) %>
 
-<%= t('tournaments.mailer.to_check_out_registration2') %>
+<%= t('tournaments.mailer.to_check_out_registration2', locale: @locale) %>
   <%= @url %>
 
-<%= t('tournaments.mailer.we_wish_you_good_luck') %>
+<%= t('tournaments.mailer.we_wish_you_good_luck', locale: @locale) %>

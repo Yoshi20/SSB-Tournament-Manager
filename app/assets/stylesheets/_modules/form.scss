@@ -11,7 +11,7 @@
   font-size: $fontsize-input;
 
   &:focus, .focus {
-    border-color: $color-red;
+    border-color: $color-default;
     box-shadow: $shadow-input;
   }
 }

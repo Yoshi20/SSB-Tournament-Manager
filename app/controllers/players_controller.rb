@@ -10,12 +10,16 @@ class PlayersController < ApplicationController
   def index
     if params[:filter].present? && params['filter-data'].present?
       if params[:filter] == 'canton'
-        @players = Player.all_ch.where(canton: params['filter-data'])
+        @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
+      elsif params[:filter] == 'federal_state'
+        @players = Player.all_from(session['country_code']).where(federal_state: params['filter-data'])
+      elsif params[:filter] == 'region'
+        @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
-        @players = Player.all_ch.where("? = ANY (main_characters)", params['filter-data'])
+        @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
       end
     else
-      @players = Player.all_ch
+      @players = Player.all_from(session['country_code'])
     end
 
     # handle search parameter
@@ -26,7 +30,7 @@ class PlayersController < ApplicationController
           flash.now[:alert] = t('flash.alert.search_players')
         end
       rescue ActiveRecord::StatementInvalid
-        @players = Player.all_ch.iLikeSearch(params[:search])
+        @players = Player.all_from(session['country_code']).iLikeSearch(params[:search])
         if @players.empty?
           flash.now[:alert] = t('flash.alert.search_players')
         end
@@ -117,19 +121,19 @@ class PlayersController < ApplicationController
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
-          Tournament.all_ch.each do |t|
+          Tournament.all_from(session['country_code']).each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
           end
-          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag)
+          AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag, country_code: @player.country_code)
         end
         # update alternative_gamer_tags if it was changed
         alts = ""
         @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
         if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
           params[:alternative_gamer_tags].split(',').each do |alt|
-            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip)
+            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
           end
         end
         # render
@@ -156,10 +160,10 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
-        :losses, :main_characters, :created_at, :updated_at, :canton, :gender,
-        :birth_year, :prefix, :discord_username, :twitter_username,
-        :instagram_username, :youtube_video_ids, :warnings,
-        :main_character_skins)
+        :losses, :main_characters, :created_at, :updated_at, :canton,
+        :federal_state, :region, :gender, :birth_year, :prefix,
+        :discord_username, :twitter_username, :instagram_username,
+        :youtube_video_ids, :warnings, :main_character_skins)
     end
 
     def authenticate_player!

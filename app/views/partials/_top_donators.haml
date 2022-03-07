@@ -1,0 +1,13 @@
+%h3 Top donators
+.row
+  - if @donations.any?
+    - @donations.each_with_index do |donation, i|
+      .col-6.col-lg-4
+        = render donation, index: i, truncate: true
+  - else
+    .col
+      %p= t('welcome.no_donations_yet')
+- if @donations.any? && Donation.count > 6
+  .row.text-center
+    .col
+      = link_to t('welcome.all_donations'), donations_path, class:'btn btn-sstm'

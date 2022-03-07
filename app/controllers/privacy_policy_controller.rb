@@ -4,6 +4,7 @@ class PrivacyPolicyController < ApplicationController
   # GET /privacy_policy
   # GET /privacy_policy.json
   def index
+    render "index_#{session['country_code']}"
   end
 
 end

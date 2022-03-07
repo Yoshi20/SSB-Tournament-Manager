@@ -1,4 +1,4 @@
-- set_meta_tags description: 'Swiss Smash Players'
+- set_meta_tags description: meta_tag_description('Players')
 
 .row
   .col
@@ -18,7 +18,7 @@
     .search-form.form-group
       = form_tag players_path, method: 'get', class: 'form-inline' do
         = search_field_tag :search, params[:search], class: 'form-control', placeholder: t('players.search')
-        = button_tag type: 'submit', class: 'btn btn-ghost', name: nil do
+        = button_tag type: 'submit', class: 'btn btn-default', name: nil do
           %span.material-icons= 'search'
 
 .tab-content#players-tabs-content
@@ -65,7 +65,12 @@
       %thead.table-header
         %tr
           %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'data')
-          %th.text-center= link_to t('players.canton'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'canton', order: 'asc', anchor: 'data')
+          - if session['country_code'] == 'ch'
+            %th.text-center= link_to t('players.canton'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'canton', order: 'asc', anchor: 'data')
+          - elsif session['country_code'] == 'de'
+            %th.text-center= link_to t('players.federal_state'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'federal_state', order: 'asc', anchor: 'data')
+          - elsif session['country_code'] == 'fr'
+            %th.text-center= link_to t('players.region'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'region', order: 'asc', anchor: 'data')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.age'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'birth_year', order: 'asc', anchor: 'data')
           %th.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= link_to t('players.gender'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gender', order: 'asc', anchor: 'data')
           %th.text-center= link_to t('players.comment'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'comment', order: 'desc', anchor: 'data')
@@ -86,6 +91,12 @@
                 - if player.canton.present?
                   = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
                   = t("defines.cantons.#{player.canton}")
+                - elsif player.federal_state.present?
+                  = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
+                  = t("defines.federal_states.#{player.federal_state}")
+                - elsif player.region.present?
+                  = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
+                  = t("defines.regions.#{player.region}")
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
               %td.text-center= truncate(player.comment, length: 60)

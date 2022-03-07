@@ -16,8 +16,12 @@
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .form-group
         = f.label :mobile_number, t('users.mobile_number')
-        %em
-          (079 / 123 45 67)
+        - if session['country_code'] == 'ch'
+          %em= "(079 / 123 45 67)"
+        - elsif session['country_code'] == 'de'
+          %em= "(01522 1234567)"
+        - elsif session['country_code'] == 'fr'
+          %em= "(06 12 34 56 78)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, t('users.new_password')
@@ -49,14 +53,25 @@
       -#   .form-check
       -#     = f.check_box :wants_weekly_email, class:'form-check-input mr-2'
       -#     = f.label :wants_weekly_email, t('users.wants_weekly_email'), class:'form-check-label'
+      - if session['country_code'] == 'ch'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_swisssmash, class:'form-check-input mr-2'
+            = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'de'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_germanysmash, class:'form-check-input mr-2'
+            = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
+      - if session['country_code'] == 'fr'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_francesmash, class:'form-check-input mr-2'
+            = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
       .form-group
         .form-check
-          = f.check_box :allows_emails_from_swisssmash, class:'form-check-input mr-2'
-          = f.label :allows_emails_from_swisssmash, t('users.allows_emails_from_swisssmash'), class:'form-check-label'
-      -# .form-group #blup: hide for now
-      -#   .form-check
-      -#     = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'
-      -#     = f.label :allows_emails_from_partners, t('users.allows_emails_from_partners'), class:'form-check-label'
+          = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'
+          = f.label :allows_emails_from_partners, t("users.allows_emails_from_partners_#{session['country_code']}"), class:'form-check-label'
       .form-group{style: 'margin-top: 2rem;'}
         = f.label :current_password, t('users.current_password')
         %i= t('users.enter_current_password')

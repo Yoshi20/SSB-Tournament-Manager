@@ -15,8 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # if verify_recaptcha(action: 'registration', minimum_score: 0.3)
-    if verify_recaptcha
+    # if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'registration', minimum_score: 0.3)
+    if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
       user_params = Hash.new
       super do |current_user_params|
         user_params = current_user_params
@@ -25,6 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if user.present? && user.id == user_params[:id]
         # User seems to be created successfully -> Create a new player and assign it to this user
         player = Player.new
+        player.country_code = user.country_code
         player.gamer_tag = params[:gamer_tag]
         player.prefix = params[:prefix]
         player.discord_username = params[:discord_username]
@@ -34,6 +35,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.points = 0
         player.participations = 0
         player.canton = params[:canton]
+        player.federal_state = params[:federal_state]
+        player.region = params[:region]
         player.gender = params[:gender]
         player.birth_year = params[:birth_year]
         player.self_assessment = params[:self_assessment] || 0

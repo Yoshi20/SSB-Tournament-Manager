@@ -9,7 +9,6 @@ module ApplicationHelper
     end
   end
 
-
   def unaccent(text)
     charactersProcessed = "" # To avoid doing a replace multiple times
     newText = text.downcase
@@ -62,26 +61,80 @@ module ApplicationHelper
   end
 
   def default_meta_tags
-    {
-      reverse: true,
-      separator: '|',
-      description: 'Swiss Super Smash Bros. Ultimate Community Hub',
-      keywords: 'super smash bros, nintendo, esports, ultimate',
-      canonical: request.original_url,
-      noindex: !Rails.env.production?,
-      icon: [
-        { href: image_url('favicon.ico') },
-        { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
-      ],
-      og: {
-        site_name: 'swisssmash.ch',
-        title: 'SwissSmash',
+    if session['country_code'] == 'ch'
+      {
+        reverse: true,
+        separator: '|',
         description: 'Swiss Super Smash Bros. Ultimate Community Hub',
-        type: 'website',
-        url: request.original_url,
-        image: image_url('logo.png')
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('ch_favicon.ico') },
+          { href: image_url('ch_icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+        ],
+        og: {
+          site_name: 'swisssmash.ch',
+          title: 'SwissSmash',
+          description: 'Swiss Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('ch_logo.png')
+        }
       }
-    }
+    elsif session['country_code'] == 'de'
+      {
+        reverse: true,
+        separator: '|',
+        description: 'German Super Smash Bros. Ultimate Community Hub',
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('de_logo.png') },
+          { href: image_url('de_logo.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+        ],
+        og: {
+          site_name: 'germanysmash.de',
+          title: 'GermanySmash',
+          description: 'German Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('de_logo.png')
+        }
+      }
+    elsif session['country_code'] == 'fr'
+      {
+        reverse: true,
+        separator: '|',
+        description: 'France Super Smash Bros. Ultimate Community Hub',
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('fr_logo.jpg') },
+          { href: image_url('fr_logo.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+        ],
+        og: {
+          site_name: 'SmashUltimate.fr',
+          title: 'SmashUltimate.fr',
+          description: 'France Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('fr_logo.jpg')
+        }
+      }
+    end
+  end
+
+  def meta_tag_description(str)
+    if session['country_code'] == 'ch'
+      "Swiss Smash #{str}"
+    elsif session['country_code'] == 'de'
+      "Germany Smash #{str}"
+    elsif session['country_code'] == 'fr'
+      "SmashUltimate.fr #{str}"
+    end
   end
 
 end

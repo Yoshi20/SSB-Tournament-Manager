@@ -27,9 +27,10 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.country_code = session['country_code']
     respond_to do |format|
       if @feedback.save
-        User.all_ch.where(is_super_admin: true).each do |admin|
+        User.all_from(session['country_code']).where(is_super_admin: true).each do |admin|
           FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
         format.html { redirect_to feedbacks_path, notice: t('flash.notice.feedback_created') }

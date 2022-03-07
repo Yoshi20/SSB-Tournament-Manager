@@ -18,9 +18,45 @@ Rails.application.routes.draw do
 
   get 'rankings' => 'rankings#index'
 
+  get 'streams' => 'streams#index'
+
   get 'statistics' => 'statistics#index'
 
   get 'videos' => 'videos#index'
+
+  # DE routes:
+  get 'communities' => 'communities#index'
+  get 'communities/nrw' => 'communities#nrw'
+  get 'communities/hessen' => 'communities#hessen'
+  get 'communities/nds' => 'communities#nds'
+  get 'communities/bayern' => 'communities#bayern'
+  get 'communities/berlin' => 'communities#berlin'
+  get 'communities/norden' => 'communities#norden'
+  get 'communities/osten' => 'communities#osten'
+  get 'communities/bawu' => 'communities#bawu'
+
+  # FR routes:
+  get 'guides' => 'guides#index'
+  get "/communities/grand_est" => "communities#grand_est"
+  get "/communities/nouvelle_aquitaine" => "communities#nouvelle_aquitaine"
+  get "/communities/auvergne_rhone_alpes" => "communities#auvergne_rhone_alpes"
+  get "/communities/bourgogne_franche_comte" => "communities#bourgogne_franche_comte"
+  get "/communities/bretagne" => "communities#bretagne"
+  get "/communities/centre_val_de_loire" => "communities#centre_val_de_loire"
+  get "/communities/corsica" => "communities#corsica"
+  get "/communities/paris_region" => "communities#paris_region"
+  get "/communities/occitanie" => "communities#occitanie"
+  get "/communities/hauts_de_france" => "communities#hauts_de_france"
+  get "/communities/normandie" => "communities#normandie"
+  get "/communities/pays_de_la_loire" => "communities#pays_de_la_loire"
+  get "/communities/provence_alpes_cote_azur" => "communities#provence_alpes_cote_azur"
+  # get "/communities/reunion" => "communities#reunion"
+  # get "/communities/martinique" => "communities#martinique"
+  # get "/communities/french_guiana" => "communities#french_guiana"
+  # get "/communities/guadeloupe" => "communities#guadeloupe"
+  # get "/communities/mayotte" => "communities#mayotte"
+  get "/communities/character_discords" => "communities#character_discords"
+  resources :communities
 
   resources :news
   resources :feedbacks

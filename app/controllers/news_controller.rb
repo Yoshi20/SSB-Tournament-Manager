@@ -7,7 +7,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.all_ch.order(created_at: :desc).paginate(page: params[:page], per_page: News::MAX_NEWS_PER_PAGE)
+    @news = News.all_from(session['country_code']).order(created_at: :desc).paginate(page: params[:page], per_page: News::MAX_NEWS_PER_PAGE)
   end
 
   # GET /news/1
@@ -28,6 +28,7 @@ class NewsController < ApplicationController
   # POST /news.json
   def create
     @news = News.new(news_params)
+    @news.country_code = session['country_code']
     respond_to do |format|
       if @news.save
         format.html { redirect_to news_index_path, notice: t('flash.notice.news_created') }

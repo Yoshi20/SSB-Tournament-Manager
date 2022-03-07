@@ -22,6 +22,7 @@
 #= require jquery_ujs
 #= require moment
 #= require fullcalendar
+#= require cookies_eu
 #= require_tree .
 
 document.addEventListener 'turbolinks:load', ->

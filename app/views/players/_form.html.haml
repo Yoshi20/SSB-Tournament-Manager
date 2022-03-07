@@ -45,9 +45,18 @@
     .field.form-group
       = f.label :losses, t('players.losses')
       = f.number_field :losses, class: 'form-control'
-  .field.form-group
-    = f.label :canton, t('players.canton')
-    = f.select :canton, options_for_select(cantons_for_select, @player.canton), {include_blank: true}, class: 'form-control'
+  - if session['country_code'] == 'ch'
+    .field.form-group
+      = f.label :canton, t('players.canton')
+      = f.select :canton, options_for_select(cantons_for_select, @player.canton), {include_blank: true}, class: 'form-control'
+  - elsif session['country_code'] == 'de'
+    .field.form-group
+      = f.label :federal_state, t('players.federal_state')
+      = f.select :federal_state, options_for_select(federal_states_for_select, @player.federal_state), {include_blank: true}, class: 'form-control'
+  - elsif session['country_code'] == 'fr'
+    .field.form-group
+      = f.label :region, t('players.region')
+      = f.select :region, options_for_select(regions_for_select, @player.region), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :gender, t('players.gender')
     = f.select :gender, options_for_select(genders_for_select, @player.gender), {include_blank: true}, class: 'form-control'

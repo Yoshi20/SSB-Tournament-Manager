@@ -7,7 +7,6 @@ class User < ApplicationRecord
   attr_accessor :login
 
   before_validation :strip_whitespace
-  before_create :set_country_code
 
   validates :username,
     :presence => true,
@@ -17,7 +16,7 @@ class User < ApplicationRecord
 
   validate :validate_username
 
-  scope :all_ch, -> { where(country_code: 'ch') }
+  scope :all_from, ->(country_code) { where(country_code: country_code) }
 
   MAX_USERS_PER_PAGE = 100
 
@@ -68,6 +67,16 @@ class User < ApplicationRecord
 
   def super_admin?
     self.is_super_admin == true
+  end
+
+  def allows_emails
+    if self.country_code == 'ch'
+      self.allows_emails_from_swisssmash
+    elsif self.country_code == 'de'
+      self.allows_emails_from_germanysmash
+    elsif self.country_code == 'fr'
+      self.allows_emails_from_francesmash
+    end
   end
 
 end

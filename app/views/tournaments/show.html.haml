@@ -6,6 +6,18 @@
         = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
         %span.tooltiptext
           = t("defines.cantons.#{canton}")
+    - federal_state = @tournament.federal_state
+    - if federal_state.present?
+      .tooltip
+        = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        %span.tooltiptext
+          = t("defines.federal_states.#{federal_state}")
+    - region = @tournament.region
+    - if region.present?
+      .tooltip
+        = image_tag "regions/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        %span.tooltiptext
+          = t("defines.regions.#{region}")
     %h1.page__title= @tournament.name
 
 .text-center
@@ -109,7 +121,7 @@
                     = @tournament.registration_fee
                   - else
                     = @tournament.registration_fee.to_i
-                  = 'CHF'
+                  = session['country_code'] == 'ch' ? 'CHF' : '€'
               %span= t('tournaments.registration_fee_short')
           .col
             .tournament__details__single
@@ -201,7 +213,7 @@
         .tournament__location
           - address_array = @tournament.location.split(',')
           - address = (address_array[1].to_s.strip + ',' + address_array[2].to_s).gsub(' ', '+')
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "600", :src => "https://www.google.com/maps/embed/v1/search?q=#{URI.escape(address)}&key=#{ENV['GOOGLE_MAPS_API_KEY']}", :style => "border:0", :width => "100%"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "600", :src => "https://www.google.com/maps/embed/v1/search?q=#{URI.escape(address)}&key=#{ENV["GOOGLE_MAPS_API_KEY_#{session['country_code'].upcase}"]}", :style => "border:0", :width => "100%"}
 
     - if @tournament.is_registration_allowed
       .tab-pane.fade#players{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
@@ -217,8 +229,15 @@
                     %h3= "Seed"
                   %th
                     %h3= t('tournaments.name')
-                  %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    %h3= t('tournaments.canton')
+                  - if session['country_code'] == 'ch'
+                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      %h3= t('tournaments.canton')
+                  - elsif session['country_code'] == 'de'
+                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      %h3= t('tournaments.federal_state')
+                  - elsif session['country_code'] == 'fr'
+                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      %h3= t('tournaments.region')
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('players.mains')
                   - if @tournament.is_registration_allowed
@@ -252,9 +271,18 @@
                         .div{style: 'display: inline;'}
                           %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                       = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
-                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                      - if player.canton.present?
-                        = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
+                    - if session['country_code'] == 'ch'
+                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                        - if player.canton.present?
+                          = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
+                    - elsif session['country_code'] == 'de'
+                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                        - if player.federal_state.present?
+                          = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
+                    - elsif session['country_code'] == 'fr'
+                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                        - if player.region.present?
+                          = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each_with_index do |char, i|
@@ -394,26 +422,27 @@
                   %h3= t('w_l')
             %tbody.table-contentt.with-show
               - @tournament.results.sort_by{|r| r.rank || 9999}.each do |r|
-                - player = @tournament.players.find(r.player_id)
-                %tr{'data-id': player.id, 'data-component'=>'player'}
-                  %td{style: 'text-align: center;'}
-                    %strong= r.rank.nil? ? "-" : r.rank.ordinalize
-                  %td
-                    - if player.main_characters.any?
-                      - player.main_characters[0...1].each_with_index do |char, i|
-                        = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
-                    - else
-                      .div{style: 'display: inline;'}
-                        %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
-                    = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
-                  %td{style: 'text-align: center;'}= r.points
-                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    = player.matches.where(tournament_id: @tournament.id).count
-                  %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                    - if r.wins == 0 and r.losses == 0
-                      = '-'
-                    - else
-                      = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
+                - player = @tournament.players.find_by_id(r.player_id) # find_by_id() returns nil instead of an exeption when using find()
+                - if player.present?
+                  %tr{'data-id': player.id, 'data-component'=>'player'}
+                    %td{style: 'text-align: center;'}
+                      %strong= r.rank.nil? ? "-" : r.rank.ordinalize
+                    %td
+                      - if player.main_characters.any?
+                        - player.main_characters[0...1].each_with_index do |char, i|
+                          = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
+                      - else
+                        .div{style: 'display: inline;'}
+                          %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                      = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                    %td{style: 'text-align: center;'}= r.points
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      = player.matches.where(tournament_id: @tournament.id).count
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      - if r.wins == 0 and r.losses == 0
+                        = '-'
+                      - else
+                        = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
 
   - if !@tournament.finished and current_user.present? and current_user.admin?
     .row

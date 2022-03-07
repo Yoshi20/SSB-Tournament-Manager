@@ -13,11 +13,11 @@
     text-transform: uppercase;
     border-radius: 0;
     &.active {
-      color: $color-red;
-      border-bottom: 2px solid $color-red;
+      color: $color-default;
+      border-bottom: 2px solid $color-default;
     }
     &:hover {
-      color: $color-red;
+      color: $color-default;
     }
   }
 }
