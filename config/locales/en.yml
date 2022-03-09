@@ -762,6 +762,9 @@ en:
   guides:
     title: "Guides"
 
+  forum:
+    title: "Forum"
+
   rules:
     title: "Rules"
     ch:
