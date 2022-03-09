@@ -14,6 +14,9 @@
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.navbar-main.ml-auto
 
+      %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
+        = link_to t('forum.title'), forum_path, class: 'nav-link'
+
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
           = t('tournaments.title')

@@ -60,7 +60,7 @@ Thredded.avatar_url = ->(user) {
 # The name of the moderator flag column on the users table.
 Thredded.moderator_column = :is_admin
 # The name of the admin flag column on the users table.
-Thredded.admin_column = :is_admin
+Thredded.admin_column = :is_super_admin
 
 # Whether posts and topics pending moderation are visible to regular users.
 Thredded.content_visible_while_pending_moderation = true
@@ -97,7 +97,7 @@ Thredded.layout = 'thredded/application'
 # ==> Email Configuration
 # Email "From:" field will use the following
 # (this is also used as the "To" address for both email notifcations, as all the recipients are on bcc)
-Thredded.email_from = 'admin@swisssmash.ch'
+Thredded.email_from = 'admin@germanysmash.de'
 
 # Emails going out will prefix the "Subject:" with the following string
 # Thredded.email_outgoing_prefix = '[My Forum] '
