@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_202709) do
+ActiveRecord::Schema.define(version: 2022_03_12_191818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,9 +178,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_202709) do
   create_table "thredded_messageboard_groups", force: :cascade do |t|
     t.string "name"
     t.integer "position", null: false
-    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country_code"
   end
 
   create_table "thredded_messageboard_notifications_for_followed_topics", force: :cascade do |t|
@@ -208,10 +208,10 @@ ActiveRecord::Schema.define(version: 2022_03_07_202709) do
     t.integer "position", null: false
     t.bigint "last_topic_id"
     t.bigint "messageboard_group_id"
-    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "locked", default: false, null: false
+    t.string "country_code"
     t.index ["messageboard_group_id"], name: "index_thredded_messageboards_on_messageboard_group_id"
     t.index ["slug"], name: "index_thredded_messageboards_on_slug", unique: true
   end
@@ -250,9 +250,9 @@ ActiveRecord::Schema.define(version: 2022_03_07_202709) do
     t.bigint "postable_id", null: false
     t.bigint "messageboard_id", null: false
     t.integer "moderation_state", null: false
-    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country_code"
     t.index "to_tsvector('english'::regconfig, content)", name: "thredded_posts_content_fts", using: :gist
     t.index ["messageboard_id"], name: "index_thredded_posts_on_messageboard_id"
     t.index ["moderation_state", "updated_at"], name: "index_thredded_posts_for_display"

@@ -47,7 +47,6 @@ class CreateThredded < Thredded::BaseMigration
       t.integer :position, null: false
       t.references :last_topic, index: false
       t.references :messageboard_group, index: false
-      t.string :country_code
       t.timestamps null: false
       t.boolean :locked, null: false, default: false
       t.index [:messageboard_group_id], name: :index_thredded_messageboards_on_messageboard_group_id
@@ -64,7 +63,6 @@ class CreateThredded < Thredded::BaseMigration
       t.references :postable, null: false, index: false
       t.references :messageboard, null: false, index: false
       t.integer :moderation_state, null: false
-      t.string :country_code
       t.timestamps null: false
       t.index %i[moderation_state updated_at],
               order: { updated_at: :asc },
@@ -211,7 +209,6 @@ class CreateThredded < Thredded::BaseMigration
     create_table :thredded_messageboard_groups do |t|
       t.string :name
       t.integer :position, null: false
-      t.string :country_code
       t.timestamps null: false
     end
 
