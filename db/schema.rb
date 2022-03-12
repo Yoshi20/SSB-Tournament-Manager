@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_103138) do
+ActiveRecord::Schema.define(version: 2022_03_07_202709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_103138) do
   create_table "thredded_messageboard_groups", force: :cascade do |t|
     t.string "name"
     t.integer "position", null: false
+    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -207,6 +208,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_103138) do
     t.integer "position", null: false
     t.bigint "last_topic_id"
     t.bigint "messageboard_group_id"
+    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "locked", default: false, null: false
@@ -248,6 +250,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_103138) do
     t.bigint "postable_id", null: false
     t.bigint "messageboard_id", null: false
     t.integer "moderation_state", null: false
+    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index "to_tsvector('english'::regconfig, content)", name: "thredded_posts_content_fts", using: :gist

@@ -79,4 +79,8 @@ class User < ApplicationRecord
     end
   end
 
+  def gamer_tag
+    self.player.gamer_tag
+  end
+
 end

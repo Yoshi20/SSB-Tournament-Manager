@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   get 'communities/bawu' => 'communities#bawu'
 
   # FR routes:
-  get 'guides' => 'guides#index'
   get "/communities/grand_est" => "communities#grand_est"
   get "/communities/nouvelle_aquitaine" => "communities#nouvelle_aquitaine"
   get "/communities/auvergne_rhone_alpes" => "communities#auvergne_rhone_alpes"

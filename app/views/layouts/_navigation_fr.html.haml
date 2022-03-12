@@ -47,9 +47,6 @@
           = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
           = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
 
-      -# %li.nav-item{role: "presentation", class: (@section == 'guides' ? 'active' : 'inactive')}
-      -#   = link_to t('guides.title'), guides_path, class: 'nav-link'
-
       %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
         = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
