@@ -738,6 +738,7 @@ en:
       no_ranking: "Due to COVID-19, there is no official 2020 ranking"
     s1_21:
       title: "2021"
+      no_ranking: "Due to COVID-19, there is no official 2021 ranking"
       top10: "Top 10:"
       details:
         title: "Details"
