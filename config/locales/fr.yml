@@ -723,12 +723,12 @@ fr:
       note: "(Note: Seul les joueurs enregistré(e)s sur ce site apparaîtront dans ces classements)"
     no_players_found: "Aucun joueurs trouvé ici"
     s1_19:
-      title: "Saison 1 2019"
+      title: "S1 2019"
       top10: "Top 10:"
       counted_tournaments: "Tournois comptés:"
       considered_tournaments: "Considérés mais jugés inéligibles:"
     s2_19:
-      title: "Saison 2 2019"
+      title: "S2 2019"
       top15: "Top 15:"
       counted_tournaments: "Tournois comptés:"
       considered_tournaments: "Considérés mais jugés inéligibles:"
@@ -737,7 +737,11 @@ fr:
       no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2020"
     s1_21:
       title: "2021"
-      no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2021"
+      top10: "Top 10:"
+      details:
+        title: "Détails"
+        text1: "Vous pouvez trouver plus d'informations sur les joueurs PR %{link}"
+        text2: "Vous pouvez trouver une explication détaillée de la façon dont le PR a été calculé %{link}."
     s1_22:
       title: "2022"
       no_ranking: "Le classement devrait être publié début 2023"

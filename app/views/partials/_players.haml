@@ -1,5 +1,5 @@
 %h2.sidebar__title
-  = t('partials.players.title') + '*' #blup
+  = t('partials.players.title')
 
 %table.table.table-hover.table-borderless
   %thead.table-header
@@ -20,5 +20,3 @@
                 %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
           %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
           %td{style: 'text-align: center;'}= "#{player.win_loss_ratio}%"
--# blup
-%p * not final yet
