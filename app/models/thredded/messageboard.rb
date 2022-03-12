@@ -23,9 +23,10 @@ module Thredded
                 )
 
     validates :name,
-              uniqueness: { case_sensitive: false },
+              # uniqueness: { case_sensitive: false },
               length: { within: Thredded.messageboard_name_length_range },
               presence: true
+    validates :name, uniqueness: { case_sensitive: false }, if: -> {exists_name_in_country?}
     validates :topics_count, numericality: true
     validates :position, presence: true, on: :update
     before_save :ensure_position
@@ -123,6 +124,11 @@ module Thredded
         :name,
         [:name, '-board']
       ]
+    end
+
+    def exists_name_in_country?
+      mb = Thredded::Messageboard.where(country_code: self.country_code).find_by(name: self.name)
+      mb.present? && mb.id != self.id
     end
 
     class << self
