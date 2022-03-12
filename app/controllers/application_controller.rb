@@ -81,6 +81,7 @@ class ApplicationController < ActionController::Base
 
   def set_top_players
     return unless session['country_code'] == 'ch'
+    Rails.cache.delete("top_players_s12_21")
     @topPlayers = Rails.cache.fetch("top_players_s12_21", expires_in: 1.day) do
       @topPlayers = []
       helpers.top_players_s12_21.each do |p|

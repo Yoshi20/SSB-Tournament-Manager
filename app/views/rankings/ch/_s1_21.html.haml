@@ -1,2 +1,173 @@
-%p{style: 'text-align: center;'}
-  = t('rankings.s1_21.no_ranking')
+= link_to asset_url('rankings/pr_21_ch.jpg') do
+  = image_tag "rankings/pr_21_ch.jpg", width: '100%'
+%br
+%br
+
+
+
+-# top10: "Top 10:"
+-# details:
+-#   title: "Détails"
+-#   text: "Vous pouvez trouver plus d'informations sur le PR %{link}"
+
+
+
+%h2= t('rankings.s1_21.top10')
+%table.table.table-hover.table-borderless
+  %thead.table-header
+    %tr
+      %th.text-center #
+      %th= t('players.gamer_tag')
+      %th.text-center= t('players.mains')
+      -# %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('players.participations')
+      -# %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
+
+  %tbody.table-content.with-show
+    %tr{'data-id': 88, 'data-component'=>'player'}
+      %td.text-center= 1.ordinalize
+      %td= 'SIR | Jaka'
+      %td.text-center
+        %div
+          - ['isabelle'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 240, 'data-component'=>'player'}
+      %td.text-center= 2.ordinalize
+      %td= 'mYi | Destany'
+      %td.text-center
+        %div
+          - ['terry'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 267, 'data-component'=>'player'}
+      %td.text-center= 3.ordinalize
+      %td= 'BG | Crash'
+      %td.text-center
+        %div
+          - ['wii_fit_trainer', 'bowser'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 253, 'data-component'=>'player'}
+      %td.text-center= 4.ordinalize
+      %td= 'LK | DeepFreeze'
+      %td.text-center
+        %div
+          - ['joker'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 152, 'data-component'=>'player'}
+      %td.text-center= 5.ordinalize
+      %td= 'Kimbo'
+      %td.text-center
+        %div
+          - ['palutena'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 85, 'data-component'=>'player'}
+      %td.text-center= 6.ordinalize
+      %td= 'SIR | Phonky'
+      %td.text-center
+        %div
+          - ['pac_man'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    -# %tr{'data-id': ???, 'data-component'=>'player'}
+    %tr
+      %td.text-center= 7.ordinalize
+      %td= 'NTC | Deox6'
+      %td.text-center
+        %div
+          - ['joker', 'sephiroth', 'byleth'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 143, 'data-component'=>'player'}
+      %td.text-center= 8.ordinalize
+      %td= 'eLS | Rohan Doge'
+      %td.text-center
+        %div
+          - ['meta_knight', 'sora'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 29, 'data-component'=>'player'}
+      %td.text-center= 9.ordinalize
+      %td= 'eLS | Karpador64'
+      %td.text-center
+        %div
+          - ['luigi', 'wario'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 262, 'data-component'=>'player'}
+      %td.text-center= 10.ordinalize
+      %td= 'mYi | Kepler'
+      %td.text-center
+        %div
+          - ['snake', 'chrom'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 639, 'data-component'=>'player'}
+      %td.text-center= '-'
+      %td= 'Jodel'
+      %td.text-center
+        %div
+          - ['toon_link'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 1215, 'data-component'=>'player'}
+      %td.text-center= '-'
+      %td= 'PATOO'
+      %td.text-center
+        %div
+          - ['lucas'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 149, 'data-component'=>'player'}
+      %td.text-center= '-'
+      %td= 'LK | SickBoy'
+      %td.text-center
+        %div
+          - ['pikachu'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+%h2= t('rankings.s1_21.details.title')
+%p
+  = t('rankings.s1_21.details.text1', link: link_to(t('flash.alert.here'), '/news/14')).html_safe
+  = t('rankings.s1_21.details.text2', link: link_to(t('flash.alert.here'), '/news/15')).html_safe
