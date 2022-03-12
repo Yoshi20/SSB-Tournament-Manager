@@ -19,8 +19,11 @@
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.navbar-main.ml-auto
 
-      %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
-        = link_to t('news.title'), news_index_path, class: 'nav-link'
+      %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
+        = link_to t('forum.title'), forum_path, class: 'nav-link'
+
+      -# %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
+      -#   = link_to t('news.title'), news_index_path, class: 'nav-link'
 
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'communities' or @section == 'regions') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
@@ -44,8 +47,8 @@
           = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
           = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
 
-      %li.nav-item{role: "presentation", class: (@section == 'guides' ? 'active' : 'inactive')}
-        = link_to t('guides.title'), guides_path, class: 'nav-link'
+      -# %li.nav-item{role: "presentation", class: (@section == 'guides' ? 'active' : 'inactive')}
+      -#   = link_to t('guides.title'), guides_path, class: 'nav-link'
 
       %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
         = link_to t('rankings.title'), rankings_path, class: 'nav-link'
