@@ -10,6 +10,8 @@ module Thredded
       include Pundit
     end
 
+    before_action :raise_unless_country_code
+
     helper Thredded::Engine.helpers
     helper_method \
       :active_users,
@@ -192,5 +194,10 @@ module Thredded
       return if thredded_moderator?
       fail Pundit::NotAuthorizedError, 'You are not authorized to perform this action.'
     end
+
+    def raise_unless_country_code
+      raise "No country_code!" unless session['country_code'].present?
+    end
+
   end
 end

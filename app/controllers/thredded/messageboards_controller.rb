@@ -12,7 +12,6 @@ module Thredded
         policy_scope(Thredded::Messageboard.where(country_code: session['country_code'])),
         user: thredded_current_user
       )
-      #blup raise @groups.inspect
     end
 
     def new
