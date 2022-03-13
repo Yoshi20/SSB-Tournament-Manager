@@ -36,16 +36,21 @@
             = ')'
         - logos_shown = 0;
         - if @player.discord_username.present?
-          .tooltip{style: 'position: absolute; top: 0px; right: 0px; z-index: 1;'}
+          .tooltip{style: "position: absolute; top: 0px; right: #{logos_shown*35}px; z-index: 1;"}
             = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
             %span.tooltiptext{style: 'margin-left: -78px;'}
               = @player.discord_username
           - logos_shown = logos_shown + 1;
         - if @player.twitter_username.present?
-          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), @player.twitter_username.include?('http') ? @player.twitter_username : "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
-        - if @player.instagram_username.present?
-          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+        .row.d-none.d-sm-block
+          - if @player.twitch_username.present?
+            = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px; padding: 3px 0px;"
+            - logos_shown = logos_shown + 1;
+          - if @player.instagram_username.present?
+            = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+            - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
     - if current_user.present?
@@ -61,7 +66,7 @@
               = mail_to @player.user.email, body: "#{t('hi')} #{@player.user.username}\n\n...", class:'btn btn-ghost btn-square' do
                 %span.material-icons.admin-actions__link__icon= 'email'
           - if current_user.admin? and @player.user.mobile_number.present?
-            .mobile_number= " (#{@player.user.mobile_number})"
+            .mobile_number.d-none.d-sm-block= " (#{@player.user.mobile_number})"
 
   - if @player.tournaments.any? or youtube_video_ids.any?
     %ul#player-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
@@ -76,10 +81,24 @@
         %li.nav-item
           %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
             = t('players.videos')
+  - else
+    %ul{style: "margin-bottom: 2rem;"}
 
   .tab-content#information-tabs-content
     -# data ----------------------------------------------------------------------
     .tab-pane.fade.show.active#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
+
+      .row.d-block.d-sm-none{style: "position: relative;"}
+        - if current_user.present? && @player.user != current_user && current_user.admin? && @player.user.mobile_number.present?
+          .mobile_number{style: "position: absolute; top: -2rem; margin-top: 10px;"}= " (#{@player.user.mobile_number})"
+        - logos_shown = 0;
+        - if @player.twitch_username.present?
+          = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: -2rem; right: #{logos_shown*35}px; margin-top: 5px; padding: 3px 0px;"
+          - logos_shown = logos_shown + 1;
+        - if @player.instagram_username.present?
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: -2rem; right: #{logos_shown*35}px; margin-top: 5px;"
+          - logos_shown = logos_shown + 1;
+
       .player__characters
         - if @player.main_characters.any?
           - @player.main_characters[0...3].each_with_index do |char, i|
@@ -168,6 +187,26 @@
                   = @player.warnings
                 %span
                   = t('players.warnings') + ' (TOs only)'
+
+      - if @player.nintendo_friend_code.present? || @player.smash_gg_id.present?
+        .player__stats
+          .row
+            - if @player.nintendo_friend_code.present?
+              .col
+                .player__stats__single{class: (@player.smash_gg_id.nil?) ? 'player__stats__single--last' : ''}
+                  %strong
+                    %span.material-icons{style: "display: inline; font-size: 30px; color: red;"}= 'videogame_asset'
+                    %span{style: "margin-top: -10px;"}= @player.nintendo_friend_code
+                  %span
+                    = t("players.nintendo_friend_code")
+            - if @player.smash_gg_id.present?
+              .col
+                .player__stats__single.player__stats__single--last
+                  - smash_gg_link = @player.smash_gg_id.include?('http') ? @player.smash_gg_id : "https://smash.gg/user/#{@player.smash_gg_id}"
+                  %strong
+                    = link_to(image_tag("smash_gg_logo_small.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
+                  %span
+                    = "Smash.gg User"
 
       - if not @player.comment.nil? and not @player.comment.empty?
         .player__comment

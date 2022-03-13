@@ -30,6 +30,17 @@
         = label_tag :instagram_username, t('players.instagram_username')
         = text_field_tag :instagram_username, params[:instagram_username], class: 'form-control'
       .form-group
+        = label_tag :twitch_username, t('players.twitch_username')
+        = text_field_tag :twitch_username, params[:twitch_username], class: 'form-control'
+      .form-group
+        = label_tag :nintendo_friend_code, t('players.nintendo_friend_code')
+        %em= "(SW-1234-1234-1234)"
+        = text_field_tag :nintendo_friend_code, params[:nintendo_friend_code], class: 'form-control'
+      .form-group
+        = label_tag :smash_gg_id, t('players.smash_gg_id')
+        %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
+        = text_field_tag :smash_gg_id, params[:smash_gg_id], class: 'form-control'
+      .form-group
         = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
       .form-group

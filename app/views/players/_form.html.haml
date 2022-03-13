@@ -24,6 +24,17 @@
   .field.form-group
     = f.label :instagram_username, t('players.instagram_username')
     = f.text_field :instagram_username, class: 'form-control'
+  .field.form-group
+    = f.label :twitch_username, t('players.twitch_username')
+    = f.text_field :twitch_username, class: 'form-control'
+  .field.form-group
+    = f.label :nintendo_friend_code, t('players.nintendo_friend_code')
+    %em= "(SW-1234-1234-1234)"
+    = f.text_field :nintendo_friend_code, class: 'form-control'
+  .field.form-group
+    = f.label :smash_gg_id, t('players.smash_gg_id')
+    %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
+    = f.text_field :smash_gg_id, class: 'form-control'
   - if current_user.super_admin?
     .field.form-group
       = label_tag :alternative_gamer_tags, t('players.alternative_gamer_tags')

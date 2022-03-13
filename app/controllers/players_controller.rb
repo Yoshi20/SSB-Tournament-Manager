@@ -163,7 +163,8 @@ class PlayersController < ApplicationController
         :losses, :main_characters, :created_at, :updated_at, :canton,
         :federal_state, :region, :gender, :birth_year, :prefix,
         :discord_username, :twitter_username, :instagram_username,
-        :youtube_video_ids, :warnings, :main_character_skins)
+        :youtube_video_ids, :warnings, :main_character_skins, :smash_gg_id,
+        :nintendo_friend_code, :twitch_username)
     end
 
     def authenticate_player!

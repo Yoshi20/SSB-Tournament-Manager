@@ -33,7 +33,8 @@ class ApplicationController < ActionController::Base
       :gender, :birth_year, :prefix, :discord_username, :twitter_username,
       :instagram_username, :youtube_video_ids, :allows_emails_from_swisssmash,
       :allows_emails_from_germanysmash, :allows_emails_from_francesmash,
-      :allows_emails_from_partners, :country_code]
+      :allows_emails_from_partners, :country_code, :smash_gg_id,
+      :nintendo_friend_code, :twitch_username]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
