@@ -102,7 +102,6 @@ class ApplicationController < ActionController::Base
   private
 
     def set_country_code
-      puts request.host
       if request.host.include?("swisssmash")
         session['country_code'] = 'ch'
       elsif request.host.include?("germanysmash")
@@ -110,7 +109,11 @@ class ApplicationController < ActionController::Base
       elsif request.host.include?("francesmash") || request.host.include?("smashultimate.fr")
         session['country_code'] = 'fr'
       elsif cookies['country_code'].present?
-        session['country_code'] = cookies['country_code']
+        if ['ch', 'de', 'fr'].include?(cookies['country_code'])
+          session['country_code'] = cookies['country_code']
+        else
+          raise "Invalid country_code!"
+        end
       else
         raise "Couldn't set country_code!"
       end
