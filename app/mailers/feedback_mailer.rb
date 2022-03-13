@@ -4,18 +4,20 @@ class FeedbackMailer < ApplicationMailer
     feedback = params[:feedback]
     admin = params[:admin]
     @user = feedback.user
-    @locale = get_locale(@user.country_code)
     @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
-    mail(to: admin.email, from: from(@user.country_code), subject: "A new feedback or question was added")
+    I18n.with_locale(get_locale(@user.country_code)) do
+      mail(to: admin.email, from: from(@user.country_code), subject: "A new feedback or question was added")
+    end
   end
 
   def feedback_response_email
     feedback = params[:feedback]
     @admin = params[:admin]
     @user = feedback.user
-    @locale = get_locale(@user.country_code)
     @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
-    mail(to: @user.email, from: from(@user.country_code), subject: "Your feedback or question was answered")
+    I18n.with_locale(get_locale(@user.country_code)) do
+      mail(to: @user.email, from: from(@user.country_code), subject: "Your feedback or question was answered")
+    end
   end
 
   private

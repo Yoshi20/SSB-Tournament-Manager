@@ -27,7 +27,6 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
-    @feedback.country_code = session['country_code']
     respond_to do |format|
       if @feedback.save
         User.all_from(session['country_code']).where(is_super_admin: true).each do |admin|

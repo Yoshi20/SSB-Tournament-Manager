@@ -6,14 +6,14 @@
   <body>
     <h1><%= @tournament.name %></h1>
     <p>
-      <%= t('hi', locale: @locale) %> <%= @user.username %>.
+      <%= t('hi') %> <%= @user.username %>.
     </p>
     <p>
-      <%= t('tournaments.mailer.player_left_tournament', locale: @locale) %>
+      <%= t('tournaments.mailer.player_left_tournament') %>
     </p>
     <p>
-      <%= t('tournaments.mailer.to_check_out_registration', link: link_to(t('tournaments.mailer.this_link', locale: @locale), @url), locale: @locale).html_safe %>
+      <%= t('tournaments.mailer.to_check_out_registration', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>
     </p>
-    <p><%= t('tournaments.mailer.we_wish_you_good_luck', locale: @locale) %></p>
+    <p><%= t('tournaments.mailer.we_wish_you_good_luck') %></p>
   </body>
 </html>

@@ -83,4 +83,9 @@ class User < ApplicationRecord
     self.player.gamer_tag
   end
 
+  def send_devise_notification(notification, *args)
+    locale = self.country_code == 'ch' ? 'en' : self.country_code
+    I18n.with_locale(locale) { super(notification, *args) }
+  end
+
 end

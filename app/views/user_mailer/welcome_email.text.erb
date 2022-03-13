@@ -1,9 +1,9 @@
-<%= t("users.mailer.welcome_#{@user.country_code}", locale: @locale) %>
+<%= t("users.mailer.welcome_#{@user.country_code}") %>
 ===============================================
 
-<%= t('users.mailer.signed_up', locale: @locale) %> <%= @user.username %>.
+<%= t('users.mailer.signed_up') %> <%= @user.username %>.
 
-<%= t('users.mailer.to_join2', locale: @locale) %>
+<%= t('users.mailer.to_join2') %>
   <%= @url %>.
 
-<%= t('users.mailer.thanks', locale: @locale) %>
+<%= t('users.mailer.thanks') %>
