@@ -1084,3 +1084,8 @@ fr:
       custom_datetime_date_and_no_time: "%d %B"
       custom_datetime_weekday_date_and_year: "%A, %d %B %Y"
       custom_datetime_with_weekday: "%A, %d %B à %H:%M"
+
+
+  thredded:
+    users:
+      currently_online: Actuellement connecté
