@@ -737,6 +737,7 @@ fr:
       no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2020"
     s1_21:
       title: "2021"
+      no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2021"
       top10: "Top 10:"
       details:
         title: "Détails"
@@ -762,8 +763,8 @@ fr:
     region_bayern:
       title: "Bavaria"
 
-  guides:
-    title: "Guides"
+  forum:
+    title: "Forum"
 
   rules:
     title: "Règles"

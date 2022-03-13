@@ -2,7 +2,7 @@
 .container
   %a.navbar-brand{href: '/'}
     = image_tag('de_logo.png', height: '50px', width: '50px')
-    %span.title{style: 'line-height: 0.8;'}
+    %span.d-none.d-block.d-sm-block.d-lg-none.d-xl-block.title{style: 'line-height: 0.8;'}
       = 'Smash Bros. Germany'
       %br
       %em{style: 'font-size: 12px;'}= 'powered by SmashContest'
@@ -13,6 +13,9 @@
       %span.line.line--3
   .collapse.navbar-collapse#navbarSupportedContent
     %ul.navbar-nav.navbar-main.ml-auto
+
+      %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
+        = link_to t('forum.title'), forum_path, class: 'nav-link'
 
       %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
         %a.nav-link.dropdown-toggle#navbarDropdown{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

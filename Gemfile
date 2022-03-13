@@ -141,3 +141,6 @@ gem 'meta-tags'
 
 # See https://github.com/infinum/cookies_eu
 gem 'cookies_eu'
+
+# See https://github.com/thredded/thredded
+gem 'thredded', '~> 0.16.12'

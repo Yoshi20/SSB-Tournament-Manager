@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   get 'communities/bawu' => 'communities#bawu'
 
   # FR routes:
-  get 'guides' => 'guides#index'
   get "/communities/grand_est" => "communities#grand_est"
   get "/communities/nouvelle_aquitaine" => "communities#nouvelle_aquitaine"
   get "/communities/auvergne_rhone_alpes" => "communities#auvergne_rhone_alpes"
@@ -81,6 +80,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions', passwords: 'users/passwords' }
   resources :users, only: [:index, :update, :destroy]
+
+  mount Thredded::Engine => '/thredded'
+  get 'forum' => 'forum#index'
 
   root to: "welcome#index"
 

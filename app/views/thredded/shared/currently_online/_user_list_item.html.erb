@@ -1,0 +1,6 @@
+<li class="thredded--currently-online--user">
+  <a class="thredded--link" href="<%= user_path(user) %>">
+    <img class="thredded--currently-online--avatar" src="<%= Thredded.avatar_url.call(user) %>" alt="" style="background-color: transparent;"/>
+    <%= link_to user.thredded_display_name, main_app.player_path(user.player), target: '_parent' %>
+  </a>
+</li>
