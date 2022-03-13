@@ -42,7 +42,7 @@ Thredded.avatar_url = ->(user) {
         if skin_nr.present?
           url = "/character_skins/#{character}_#{skin_nr.to_s.rjust(2, '0')}.png"
         else
-          url = "characters/#{character}.png"
+          url = "/character_skins/#{character}_00.png"
         end
       else
         url = Gravatar.src(user.email, 156, 'mm')
