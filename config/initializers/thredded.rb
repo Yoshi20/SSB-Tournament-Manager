@@ -201,7 +201,7 @@ Thredded.email_from = 'admin@germanysmash.de'
 # Thredded.notifiers = [Thredded::EmailNotifier.new]
 #
 # none:
-# Thredded.notifiers = []
+Thredded.notifiers = [] #blup: turned notifiers off for now
 #
 # add in (must install separate gem (under development) as well):
 # Thredded.notifiers = [Thredded::EmailNotifier.new, Thredded::PushoverNotifier.new(ENV['PUSHOVER_APP_ID'])]
