@@ -6,14 +6,14 @@
 
 %ul#rules-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
   %li.nav-item
+    %a#matches-tab.nav-link.active{'data-toggle'=>'tab', href: '#matches', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.ch.match_rules.title_short')
+  %li.nav-item
     %a#general-tab.nav-link{'data-toggle'=>'tab', href: '#general', role: 'tab', 'aria-controls'=>'all'}
       = t('rules.ch.general_rules.title_short')
   %li.nav-item
     %a#tournaments-tab.nav-link{'data-toggle'=>'tab', href: '#tournaments', role: 'tab', 'aria-controls'=>'all'}
       = t('rules.ch.tournament_rules.title_short')
-  %li.nav-item
-    %a#matches-tab.nav-link.active{'data-toggle'=>'tab', href: '#matches', role: 'tab', 'aria-controls'=>'all'}
-      = t('rules.ch.match_rules.title_short')
 
 .tab-content#information-tabs-content
   .tab-pane.fade#general{role: 'tabpanel', 'aria-labelledby'=>'general-tab'}
@@ -52,6 +52,15 @@
       .col
         %p
           = t('rules.ch.match_rules.body')
+
+    .row
+      .col
+        %p
+          %strong= t('rules.ch.match_rules.overview_dutch_by_tadavidid')
+    .row
+      = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_en.jpg') do
+        = image_tag 'dutch_ssbu_ruleset_by_tadavidid_en.jpg', height: '100%', width: '100%'
+
     .row
       .col
         %p

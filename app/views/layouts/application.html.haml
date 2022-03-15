@@ -61,6 +61,10 @@
             .d-none.d-lg-block.col-lg-3
               .sidebar
                 = render '/partials/events', next_tournaments: @nextTournaments
+              - if session['country_code'] == 'de'
+                .sidebar{style: 'margin-top: 10px; padding: 0;'}
+                  = link_to('https://smash.gg/tournament/smash-contest-dokomi-2022/', target: '_blank') do
+                    = image_tag 'smash_contest_banner.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
     .footer
       .container
         = render "/partials/footer_#{session['country_code']}"

@@ -797,6 +797,7 @@ en:
         title: "SSBU match rules (Rulesets)"
         body: "For now the Dutch or the Mirakuru ruleset is used in most of the official Swiss tournaments"
         overview_dutch: "Overview Dutch ruleset:"
+        overview_dutch_by_tadavidid: "Overview Dutch ruleset (by TaDavidID):"
         overview: "Overview Mirakuru ruleset:"
         li1: "1 vs. 1"
         li2: "Best of 3 (Final matches: Best of 5)"
