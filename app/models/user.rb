@@ -76,6 +76,8 @@ class User < ApplicationRecord
       self.allows_emails_from_germanysmash
     elsif self.country_code == 'fr'
       self.allows_emails_from_francesmash
+    elsif self.country_code == 'it'
+      self.allows_emails_from_italysmash
     end
   end
 

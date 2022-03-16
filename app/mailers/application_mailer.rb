@@ -8,6 +8,8 @@ class ApplicationMailer < ActionMailer::Base
       'GermanySmash <admin@germanysmash.de>'
     elsif country_code == 'fr'
       'SmashUltimate.fr <admin@francesmash.fr>'
+    elsif country_code == 'it'
+      'ItalySmash <admin@italysmash.it>'
     end
   end
 
@@ -18,6 +20,8 @@ class ApplicationMailer < ActionMailer::Base
       'de'
     elsif country_code == 'fr'
       'fr'
+    elsif country_code == 'it'
+      'it'
     end
   end
 
@@ -29,6 +33,8 @@ class ApplicationMailer < ActionMailer::Base
       url = 'https://www.germanysmash.de/tournaments/'
     elsif country_code == 'fr'
       url = 'https://www.smashultimate.fr/tournaments/'
+    elsif country_code == 'it'
+      url = 'https://www.italysmash.it/tournaments/'
     end
     url = url + path
   end

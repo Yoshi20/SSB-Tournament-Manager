@@ -3,17 +3,17 @@ require 'open-uri'
 require "#{Rails.root}/app/helpers/tournaments_helper"
 include TournamentsHelper
 
-namespace :results_crawler_fr do
+namespace :results_crawler_it do
   foundTournaments = []
   notFoundPlayers = []
   root = 'https://braacket.com'
 
   desc "braacket.com -> Find and create all tournaments, players, matches and results..."
   task all: :environment do
-    Rake::Task["results_crawler_fr:createTournaments"].invoke
-    Rake::Task["results_crawler_fr:findPlayers"].invoke
-    Rake::Task["results_crawler_fr:createMatches"].invoke
-    Rake::Task["results_crawler_fr:createResults"].invoke
+    Rake::Task["results_crawler_it:createTournaments"].invoke
+    Rake::Task["results_crawler_it:findPlayers"].invoke
+    Rake::Task["results_crawler_it:createMatches"].invoke
+    Rake::Task["results_crawler_it:createResults"].invoke
     puts "\ndone"
 
     puts "\nCouldn't finde the following #{notFoundPlayers.count} players:"
@@ -33,11 +33,11 @@ namespace :results_crawler_fr do
   desc "Find and create past external tournaments from braacket.com"
   task createTournaments: :environment do
     links = [
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=1',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=2',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=3',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=4',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=5',
+      'https://braacket.com/league/SSBUITPRs/tournament?rows=200&page=1',
+      'https://braacket.com/league/SSBUITPRs/tournament?rows=200&page=2',
+      'https://braacket.com/league/SSBUITPRs/tournament?rows=200&page=3',
+      'https://braacket.com/league/SSBUITPRs/tournament?rows=200&page=4',
+      'https://braacket.com/league/SSBUITPRs/tournament?rows=200&page=5',
     ]
     links.each do |link|
       puts "\nCrawling #{link}..."
@@ -59,7 +59,7 @@ namespace :results_crawler_fr do
           end
           externalTournament.started = true
           externalTournament.finished = true
-          externalTournament.country_code = 'fr'
+          externalTournament.country_code = 'it'
           if externalTournament.save
             puts "-> Found and updated: \"" + externalTournament.name + "\"\n\n"
             foundTournaments << externalTournament
@@ -108,7 +108,7 @@ namespace :results_crawler_fr do
           externalTournament.started = true
           externalTournament.finished = true
           externalTournament.active = true
-          externalTournament.country_code = 'fr'
+          externalTournament.country_code = 'it'
           if externalTournament.save
             puts "-> Created: \"" + externalTournament.name + "\"\n\n"
             foundTournaments << externalTournament
@@ -128,8 +128,8 @@ namespace :results_crawler_fr do
 
   desc "Find players from braacket.com and add them to it's external tournament"
   task findPlayers: :environment do
-    allGamerTags = Player.all_from('fr').map {|p| p.gamer_tag}
-    allGamerTags += AlternativeGamerTag.all_from('fr').map {|p| p.gamer_tag}
+    allGamerTags = Player.all_from('it').map {|p| p.gamer_tag}
+    allGamerTags += AlternativeGamerTag.all_from('it').map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       if t.subtype == 'internal'
         puts "\n#{t.name} is an internal tournament -> continue with the next tournament"
@@ -158,7 +158,7 @@ namespace :results_crawler_fr do
           if firstGamerTag != gamerTag
             # try to create an AlternativeGamerTag if the firstGamerTag doesn't match the second
             player = Player.find_by(gamer_tag: gamerTag)
-            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag, country_code: 'fr') unless player.nil?
+            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag, country_code: 'it') unless player.nil?
           end
         end
         if !players.include?(gamerTag)
@@ -272,8 +272,8 @@ namespace :results_crawler_fr do
 
   desc "Find and create results from braacket.com and add them to it's external tournament and player"
   task createResults: :environment do
-    allGamerTags = Player.all_from('fr').map {|p| p.gamer_tag}
-    allGamerTags += AlternativeGamerTag.all_from('fr').map {|p| p.gamer_tag}
+    allGamerTags = Player.all_from('it').map {|p| p.gamer_tag}
+    allGamerTags += AlternativeGamerTag.all_from('it').map {|p| p.gamer_tag}
     foundTournaments.each_with_index do |t, i|
       tournament = Tournament.find_by(name: t.name)
       puts "\nSearching for all results from #{t.name}..."
@@ -304,7 +304,7 @@ namespace :results_crawler_fr do
           if firstGamerTag != gamerTag
             # try to create an AlternativeGamerTag if the firstGamerTag doesn't match the second
             player = Player.find_by(gamer_tag: gamerTag)
-            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag, country_code: 'fr') unless player.nil?
+            AlternativeGamerTag.create(player_id: player.id, gamer_tag: firstGamerTag, country_code: 'it') unless player.nil?
           end
         end
         # check if this player doesn't exists in the db
@@ -360,7 +360,7 @@ namespace :results_crawler_fr do
           if result.rank.present? and (player.best_rank == 0 or result.rank < player.best_rank) then player.best_rank = result.rank end
           player.wins += result.wins
           player.losses += result.losses
-          player.country_code = 'fr'
+          player.country_code = 'it'
           player.save! # raise an exception when player.save failed
           player.update_tournament_experience
           # update the tournament ranking string

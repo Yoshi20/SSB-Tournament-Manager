@@ -23,6 +23,10 @@
           .calendar__footer__actions.mb-3
             %strong= t('calendar.france') + ': '
             %span{style: 'font-size: 12px;'}= link_to "www.smashultimate.fr/calendar", "https://www.smashultimate.fr/calendar", target: '_blank'
+        - unless session['country_code'] == 'it'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.italy') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.italysmash.it/calendar", "https://www.italysmash.it/calendar", target: '_blank'
         .calendar__footer__actions
           %strong= t('calendar.austria') + ': '
           %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'

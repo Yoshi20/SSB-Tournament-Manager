@@ -124,6 +124,27 @@ module ApplicationHelper
           image: image_url('fr_logo.jpg')
         }
       }
+    elsif session['country_code'] == 'it'
+      {
+        reverse: true,
+        separator: '|',
+        description: 'Italy Super Smash Bros. Ultimate Community Hub',
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('it_logo.svg') },
+          { href: image_url('it_logo.svg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/svg' },
+        ],
+        og: {
+          site_name: 'italysmash.it',
+          title: 'italysmash.it',
+          description: 'Italy Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('it_logo.svg')
+        }
+      }
     end
   end
 
@@ -134,6 +155,8 @@ module ApplicationHelper
       "Germany Smash #{str}"
     elsif session['country_code'] == 'fr'
       "SmashUltimate.fr #{str}"
+    elsif session['country_code'] == 'it'
+      "Italy Smash #{str}"
     end
   end
 

@@ -51,6 +51,8 @@
           %em= "(01522 1234567)"
         - elsif session['country_code'] == 'fr'
           %em= "(06 12 34 56 78)"
+        - elsif session['country_code'] == 'it'
+          %em= "(300 1234 567)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, "#{t('password')} *"
@@ -140,11 +142,16 @@
           .form-check
             = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : true), class:'form-check-input mr-2'
             = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
-      - if session['country_code'] == 'fr'
+      - elsif session['country_code'] == 'fr'
         .form-group
           .form-check
             = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
             = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'it'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_italysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_italysmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_italysmash, t('users.allows_emails_from_italysmash'), class:'form-check-label'
       .form-group
         .form-check
           = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'

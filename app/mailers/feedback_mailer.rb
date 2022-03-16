@@ -31,6 +31,8 @@ class FeedbackMailer < ApplicationMailer
       url = 'https://www.germanysmash.de/feedbacks/'
     elsif country_code == 'fr'
       url = 'https://www.smashultimate.fr/feedbacks/'
+    elsif country_code == 'it'
+      url = 'https://www.italysmash.it/feedbacks/'
     end
     url = url + path
   end

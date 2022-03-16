@@ -18,6 +18,7 @@ Stage commands:
 - git push stage_ch master
 - git push stage_de master
 - git push stage_fr master
+- git push stage_it master
 - git push stage_ch <branch>:master
 - heroku logs --tail --remote stage_ch
 - heroku run rake db:migrate --remote stage_ch
@@ -25,11 +26,13 @@ Stage commands:
 - heroku restart --remote stage_ch
 
 - heroku run rake tournaments_crawler_ch:all --remote stage_ch
-- heroku run rake tournaments_crawler_de:all --remote stage_ch
-- heroku run rake tournaments_crawler_fr:all --remote stage_ch
+- heroku run rake tournaments_crawler_de:all --remote stage_de
+- heroku run rake tournaments_crawler_fr:all --remote stage_fr
+- heroku run rake tournaments_crawler_it:all --remote stage_it
 - heroku run rake results_crawler_ch:all --remote stage_ch
-- heroku run rake results_crawler_de:all --remote stage_ch
-- heroku run rake results_crawler_fr:all --remote stage_ch
+- heroku run rake results_crawler_de:all --remote stage_de
+- heroku run rake results_crawler_fr:all --remote stage_fr
+- heroku run rake results_crawler_it:all --remote stage_it
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
 Prod commands:
@@ -42,26 +45,38 @@ Prod commands:
 - heroku run rake tournaments_crawler_ch:all --remote prod
 - heroku run rake tournaments_crawler_de:all --remote prod
 - heroku run rake tournaments_crawler_fr:all --remote prod
+- heroku run rake tournaments_crawler_it:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
+- heroku run rake results_crawler_it:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
 - https://swisssmash.herokuapp.com
-- https://www.ssb-club-bern.ch
 - https://www.swisssmash.ch
 - https://germanysmash.herokuapp.com
 - https://www.germanysmash.de
 - https://francesmash.herokuapp.com
 - https://www.smashultimate.fr
+- https://italysmash.herokuapp.com
+- https://www.italysmash.it
 - https://challonge.com
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200
+- https://braacket.com/league/SSBUDEPRs/tournament?rows=200
+- https://braacket.com/league/SSBUFRPRs/tournament?rows=200
+- https://braacket.com/league/SSBUITPRs/tournament?rows=200
 
 Tournaments crawler links:
 - https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}
+- https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22DE%22}
+- https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22FR%22}
+- https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22IT%22}
 - https://braacket.com/tournament/search?rows=100&country=ch&game=ssbu&status=1
+- https://braacket.com/tournament/search?rows=100&country=de&game=ssbu&status=1
+- https://braacket.com/tournament/search?rows=100&country=fr&game=ssbu&status=1
+- https://braacket.com/tournament/search?rows=100&country=it&game=ssbu&status=1
 - https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming
 
 Icons:
