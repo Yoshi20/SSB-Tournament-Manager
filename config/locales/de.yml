@@ -245,6 +245,9 @@ de:
       feedback_deleted: "Rückmeldung oder Frage wurde erfolgreich gelöscht"
       player_updated: "Spieler wurde erfolgreich aktualisiert"
       contact: "Vielen Dank. Deine Nachricht wurde gesendet"
+      community_created: "Community wurde erfolgreich erstellt"
+      community_updated: "Community wurde erfolgreich aktualisiert"
+      community_deleted: "Community wurde erfolgreich gelöscht"
     alert:
       creating_player: "Spieler konnte nicht erstellt werden! Möglicherweise hast du einen bereits verwendeten Gamer-Tag ausgewählt. Bitte versuche es erneut"
       updating_user: "Benutzer konnte nicht aktualisiert werden"

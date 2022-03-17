@@ -245,6 +245,9 @@ en:
       feedback_deleted: "Feedback or Question was successfully deleted"
       player_updated: "Player was successfully updated"
       contact: "Thank you. Your message was sent"
+      community_created: "Community was successfully created"
+      community_updated: "Community was successfully updated"
+      community_deleted: "Community was successfully deleted"
     alert:
       creating_player: "Creating player failed! You may have selected an already taken gamer tag. Please try again"
       updating_user: "User couldn't be updated"

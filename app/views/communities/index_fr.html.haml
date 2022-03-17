@@ -8,6 +8,12 @@
   .col
     %p= t('communities.body_fr')
 
+  - if current_user.present? and current_user.admin?
+    .admin-actions
+      .admin-actions__link
+        = link_to new_community_path(region: @region), class:'btn btn-default btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add'
+
 .region-map-wrapper{style: 'padding-top: 1rem; padding-bottom: 0rem; flex-direction: row-reverse; justify-content: center; display: flex;'}
   .metropole{style: 'width: 100%;'}
     %svg.france-map{:preserveaspectratio => "xMinYMin meet", :viewbox => "0 0 640 584"}

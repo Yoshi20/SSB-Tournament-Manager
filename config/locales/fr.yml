@@ -245,6 +245,9 @@ fr:
       feedback_deleted: "Feedback ou Question supprimé(e) avec succès"
       player_updated: "Joueur mis à jour avec succès"
       contact: "Merci. Votre message a été envoyé"
+      community_created: "Community créé(e) avec succès"
+      community_updated: "Community mis(e) à jour avec succès"
+      community_deleted: "Community supprimé(e) avec succès"
     alert:
       creating_player: "La création du joueur a échoué! Vous avez peut-être séléctionné un gamertag déjà utilisé. Réessayez s'il vous plaît"
       updating_user: "L'utilisateur n'a pas pu être mis à jour"
@@ -493,7 +496,7 @@ fr:
         bracket_tool: "Outil de Bracket"
         bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SmashUltimate.fr utilise %{link} pour le moment."
         bracket_seeding: "Bracket seeding"
-        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SmashUltimate.fr.ch:"
+        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SmashUltimate.fr:"
         bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
       results:
         title: "Résultats"
