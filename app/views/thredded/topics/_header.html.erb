@@ -1,6 +1,11 @@
 <header class="thredded--topic-header">
   <%= view_hooks.topic_page.title.render self, topic: topic do %>
-    <h1 class="thredded--topic-header--title"><%= topic.title %></h1>
+    <h1 class="thredded--topic-header--title">
+      <%= topic.title %>
+      <%= link_to '#', form_class: 'thredded--topic-delete-form', class: 'copy-share-link', onclick:"event.preventDefault();" do %>
+        <%= inline_svg_tag 'thredded/share.svg', class: 'thredded--topic-header--follow-icon', style: 'height: 17px;' %>
+      <% end %>
+    </h1>
   <% end %>
   <cite class="thredded--topic-header--started-by">
     <%= t 'thredded.topics.started_by_html',
@@ -34,3 +39,24 @@
   <% end %>
   <%= render partial: 'thredded/topics/followers', locals: {topic: topic} %>
 </header>
+
+<!-- For the self implemented "copy-share-link" functionalitly -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $('.copy-share-link').on('click', function(e) {
+    var dummyTextArea, shareLink;
+    event.preventDefault();
+    shareLink = window.location.href.replace('thredded/', 'forum?thredded=/');
+    dummyTextArea = document.createElement("textarea");
+    dummyTextArea.style.position = 'absolute';
+    document.body.appendChild(dummyTextArea);
+    dummyTextArea.value = shareLink;
+    dummyTextArea.select();
+    if (document.execCommand("copy")) {
+      alert('Copied share link to the clipboard.');
+    } else {
+      alert('Couldn\'t copy share link! ');
+    }
+    return document.body.removeChild(dummyTextArea);
+  });
+</script>

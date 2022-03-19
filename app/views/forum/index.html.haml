@@ -1,2 +1,3 @@
 - set_meta_tags description: meta_tag_description('Forum')
-%iframe{:allowfullscreen => "", :frameborder => "0", :height => "680", :src => "/thredded", :style => "border: 0; margin: -10px -20px; margin-bottom: -20px; width: calc(100% + 40px);", :width => "100%"}
+- src = "/thredded" + (params['thredded'].present? ? params['thredded'] : '')
+%iframe{:allowfullscreen => "", :frameborder => "0", :height => "680", :src => src, :style => "border: 0; margin: -10px -20px; margin-bottom: -20px; width: calc(100% + 40px);", :width => "100%"}
