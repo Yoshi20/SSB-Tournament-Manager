@@ -206,7 +206,7 @@
                   %strong
                     = link_to(image_tag("smash_gg_logo_small.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
                   %span
-                    = "Smash.gg User"
+                    = t("players.smash_gg_user")
 
       - if not @player.comment.nil? and not @player.comment.empty?
         .player__comment

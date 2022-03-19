@@ -660,6 +660,7 @@ en:
     twitch_username: "Twitch username"
     nintendo_friend_code: "Nintendo Friend Code"
     smash_gg_id: "Smash.gg discriminator"
+    smash_gg_user: "Smash.gg User"
     whats_smash_gg_id: "(What is my smash.gg discriminator?)"
     youtube_video_ids: "YouTube video IDs"
     youtube_video_ids_examples: "(e.g. <strong>dQw4w9WgXcQ</strong> or <strong>dQw4w9WgXcQ?start=42</strong> to start by 42 seconds. Seperate multiple IDs with a comma)"
