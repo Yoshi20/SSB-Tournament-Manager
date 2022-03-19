@@ -50,14 +50,17 @@
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
         - if session['country_code'] == 'ch'
-          - tournament_cities.each do |city|
-            .tournaments__filter__button= link_to city, tournaments_path(search: params[:search], filter: city.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == city.downcase ? 'btn-ghost' : 'btn-default'}"
+          - cantons_raw.each do |canton|
+            = link_to tournaments_path(search: params[:search], filter: canton, anchor: 'upcoming') do
+              = image_tag "cantons/#{canton}.svg", height: '30px', width: '30px', id: canton, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == canton ? 'solid 1px black' : ''};"
         - elsif session['country_code'] == 'de'
           - federal_states_raw.each do |federal_state|
-            .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'upcoming'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+            = link_to tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'upcoming') do
+              = image_tag "federal_states/#{federal_state}.svg", height: '30px', width: '30px', id: federal_state, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == federal_state.downcase ? 'solid 1px black' : ''};"
         - elsif session['country_code'] == 'fr'
           - regions_raw.each do |region|
-            .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'upcoming'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
+            = link_to tournaments_path(search: params[:search], filter: region, anchor: 'upcoming') do
+              = image_tag "regions/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -87,14 +90,17 @@
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-ghost' : 'btn-default'}"
       .row.without_col
         - if session['country_code'] == 'ch'
-          - tournament_cities.each do |city|
-            .tournaments__filter__button= link_to city, tournaments_path(search: params[:search], filter: city.downcase, anchor: 'past'), class: "btn #{params[:filter] == city.downcase ? 'btn-ghost' : 'btn-default'}"
+          - cantons_raw.each do |canton|
+            = link_to tournaments_path(search: params[:search], filter: canton, anchor: 'past') do
+              = image_tag "cantons/#{canton}.svg", height: '30px', width: '30px', id: canton, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == canton ? 'solid 1px black' : ''};"
         - elsif session['country_code'] == 'de'
           - federal_states_raw.each do |federal_state|
-            .tournaments__filter__button= link_to t(federal_state, scope: 'defines.federal_states'), tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'past'), class: "btn #{params[:filter] == federal_state.downcase ? 'btn-ghost' : 'btn-default'}"
+            = link_to tournaments_path(search: params[:search], filter: federal_state.downcase, anchor: 'past') do
+              = image_tag "federal_states/#{federal_state}.svg", height: '30px', width: '30px', id: federal_state, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == federal_state.downcase ? 'solid 1px black' : ''};"
         - elsif session['country_code'] == 'fr'
           - regions_raw.each do |region|
-            .tournaments__filter__button= link_to t(region, scope: 'defines.regions'), tournaments_path(search: params[:search], filter: region, anchor: 'past'), class: "btn #{params[:filter] == region ? 'btn-ghost' : 'btn-default'}"
+            = link_to tournaments_path(search: params[:search], filter: region, anchor: 'past') do
+              = image_tag "regions/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header

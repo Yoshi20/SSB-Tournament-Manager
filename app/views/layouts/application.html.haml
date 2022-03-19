@@ -1,28 +1,7 @@
 !!!
 %html
-
   %head
-    - if session['country_code'] == 'ch'
-      %title= "SwissSmash.ch#{@section.present? ? " | #{@section.capitalize}" : ""}"
-    - elsif session['country_code'] == 'de'
-      %title= "GermanySmash.de#{@section.present? ? " | #{@section.capitalize}" : ""}"
-    - elsif session['country_code'] == 'fr'
-      %title= "SmashUltimate.fr#{@section.present? ? " | #{@section.capitalize}" : ""}"
-    = display_meta_tags(default_meta_tags)
-    %meta{:charset => "utf-8"}
-    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
-    - if session['country_code'] == 'ch'
-      = favicon_link_tag 'ch_favicon.ico'
-      = stylesheet_link_tag 'application_ch', media: 'all', 'data-turbolinks-track' => true
-    - elsif session['country_code'] == 'de'
-      = favicon_link_tag 'de_logo.png'
-      = stylesheet_link_tag 'application_de', media: 'all', 'data-turbolinks-track' => true
-    - elsif session['country_code'] == 'fr'
-      = favicon_link_tag 'fr_favicon-32x32.png'
-      = stylesheet_link_tag 'application_fr', media: 'all', 'data-turbolinks-track' => true
-    = render '/layouts/google_analytics'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+    = render '/layouts/head'
 
   %body
     = render '/layouts/flashes'
