@@ -6,7 +6,7 @@
 
 .row
   .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
-    .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-ghost' : 'btn-default'}"
+    .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
     - if session['country_code'] == 'ch'
       - cantons_raw.each do |canton|
         = link_to calendar_path(filter: canton) do
