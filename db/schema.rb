@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_083500) do
+ActiveRecord::Schema.define(version: 2022_04_02_211354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.integer "wins"
     t.integer "losses"
     t.string "main_characters", default: [], array: true
-    t.string "canton"
     t.string "gender"
     t.integer "birth_year"
     t.string "prefix"
@@ -130,7 +129,6 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.string "instagram_username"
     t.string "youtube_video_ids"
     t.integer "warnings"
-    t.string "federal_state"
     t.string "country_code"
     t.string "region"
     t.integer "main_character_skins", default: [], array: true
@@ -429,8 +427,6 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.string "image_link"
     t.string "image_height"
     t.string "image_width"
-    t.string "canton"
-    t.string "federal_state"
     t.string "country_code"
     t.string "region"
   end

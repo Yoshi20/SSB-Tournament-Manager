@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     added_attrs = [:username, :email, :password, :password_confirmation,
       :remember_me, :challonge_username, :challonge_api_key, :full_name,
       :mobile_number, :area_of_responsibility, :is_club_member,
-      :wants_major_email, :wants_weekly_email, :canton, :federal_state, :region,
+      :wants_major_email, :wants_weekly_email, :region,
       :gender, :birth_year, :prefix, :discord_username, :twitter_username,
       :instagram_username, :youtube_video_ids, :allows_emails_from_swisssmash,
       :allows_emails_from_germanysmash, :allows_emails_from_francesmash,

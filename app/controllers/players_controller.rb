@@ -156,8 +156,8 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
-        :losses, :main_characters, :created_at, :updated_at, :canton,
-        :federal_state, :region, :gender, :birth_year, :prefix,
+        :losses, :main_characters, :created_at, :updated_at,
+        :region, :gender, :birth_year, :prefix,
         :discord_username, :twitter_username, :instagram_username,
         :youtube_video_ids, :warnings, :main_character_skins, :smash_gg_id,
         :nintendo_friend_code, :twitch_username)

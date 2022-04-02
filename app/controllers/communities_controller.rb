@@ -84,10 +84,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/
   def nrw
-    community_federal_states = ['NW']
+    community_regions = ['NW']
     discord_keys = ['Aba35kP', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -97,10 +97,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/hessen
   def hessen
-    community_federal_states = ['HE', 'RP', 'SL']
+    community_regions = ['HE', 'RP', 'SL']
     discord_keys = ['gdhCQpzKb2', 'Q49Dbky', 'phzRTMw', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -110,10 +110,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/nds
   def nds
-    community_federal_states = ['NI', 'HB']
+    community_regions = ['NI', 'HB']
     discord_keys = ['0X3myOFZHGCpW1G0', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -123,10 +123,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/bayern
   def bayern
-    community_federal_states = ['BY']
+    community_regions = ['BY']
     discord_keys = ['tm2azmK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -136,10 +136,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/berlin
   def berlin
-    community_federal_states = ['BE', 'BB']
+    community_regions = ['BE', 'BB']
     discord_keys = ['6r76SkA', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -149,10 +149,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/norden
   def norden
-    community_federal_states = ['SH', 'HH', 'MV']
+    community_regions = ['SH', 'HH', 'MV']
     discord_keys = ['GHS8Q5Y', 'udNKmTK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -162,10 +162,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/osten
   def osten
-    community_federal_states = ['SN', 'ST', 'TH']
+    community_regions = ['SN', 'ST', 'TH']
     discord_keys = ['rBzNfVD', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
@@ -175,10 +175,10 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/bawu
   def bawu
-    community_federal_states = ['BW']
+    community_regions = ['BW']
     discord_keys = ['ur4JzUT', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
       @discord_invites_json << request_discord_invite(key)
