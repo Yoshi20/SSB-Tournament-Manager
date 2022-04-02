@@ -1,0 +1,147 @@
+- set_meta_tags description: meta_tag_description('About')
+
+.row
+  .col
+    %h1.page__title= t('information.lu.title')
+
+-# %ul#information-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+-#   %li.nav-item
+-#     %a#general-tab.nav-link.active{'data-toggle'=>'tab', href: '#general', role: 'tab', 'aria-controls'=>'all'}
+-#       = t('information.de.general.title')
+-#   %li.nav-item
+-#     %a#calendar-tab.nav-link{'data-toggle'=>'tab', href: '#calendar', role: 'tab', 'aria-controls'=>'all'}
+-#       = t('information.de.calendar.title')
+-#   -# %li.nav-item
+-#   -#   %a#power-ranking-tab.nav-link{'data-toggle'=>'tab', href: '#power-ranking', role: 'tab', 'aria-controls'=>'all'}
+-#   -#     = t('information.de.power_ranking.title')
+-#   %li.nav-item
+-#     %a#tournament-manager-tab.nav-link{'data-toggle'=>'tab', href: '#tournament-manager', role: 'tab', 'aria-controls'=>'all'}
+-#       = t('information.de.tournament_manager.title')
+-#   %li.nav-item
+-#     %a#results-tab.nav-link{'data-toggle'=>'tab', href: '#results', role: 'tab', 'aria-controls'=>'all'}
+-#       = t('information.de.results.title')
+-#   %li.nav-item
+-#     %a#contact-tab.nav-link{'data-toggle'=>'tab', href: '#contact', role: 'tab', 'aria-controls'=>'all'}
+-#       = t('navigation.footer.contact')
+-#
+-# .tab-content#information-tabs-content
+-#   -# general
+-#   .tab-pane.fade.show.active#general{role: 'tabpanel', 'aria-labelledby'=>'general-tab'}
+-#     .row
+-#       .col
+-#         %h2 GermanySmash.de
+-#         %p
+-#           = t('information.de.general.germanysmash', swisssmash_link: link_to('www.swisssmash.ch', 'https://www.swisssmash.ch/', target: '_blank'), Yomi: link_to('Yomi', '/players/1'), TaDavidID: link_to('TaDavidID', '/players/156')).html_safe
+-#   -# calendar
+-#   .tab-pane.fade.show#calendar{role: 'tabpanel', 'aria-labelledby'=>'calendar-tab'}
+-#     .row
+-#       .col
+-#         %h2= t('information.de.calendar.title')
+-#         %p
+-#           = t('information.de.calendar.tournaments_body', link: link_to('web crawler', 'https://wikipedia.org/wiki/Web_crawler', target: '_blank')).html_safe
+-#         %ul
+-#           %li= link_to 'smash.gg', 'https://smash.gg/tournaments?per_page=100&filter=%7B%22upcoming%22%3Atrue%2C%22videogameIds%22%3A1386%2C%22countryCode%22%3A%22DE%22%7D', target: '_blank'
+-#           %li= link_to 'braacket.com', 'https://braacket.com/tournament/search?rows=100&country=de&game=ssbu&status=1', target: '_blank'
+-#     .row
+-#       .col
+-#         %p
+-#           = t('information.de.calendar.calendar_body')
+-#         %ul
+-#           %span.circle{style: "background: #61bf9b;"}
+-#           %span= t('information.de.calendar.calendar_weekly')
+-#           %br
+-#           %span.circle{style: "background: orchid;"}
+-#           %span= t('information.de.calendar.calendar_internal')
+-#           %br
+-#           %span.circle{style: "background: cornflowerblue;"}
+-#           %span= t('information.de.calendar.calendar_external')
+-#   -# tournament-manager
+-#   .tab-pane.fade.show#tournament-manager{role: 'tabpanel', 'aria-labelledby'=>'tournament-manager-tab'}
+-#     .row.mt-3
+-#       .col
+-#         %h2= t('information.de.tournament_manager.tournament_organiser')
+-#         %p= t('information.de.tournament_manager.tournament_organiser_body', link: mail_to('admin@germanysmash.de', t('information.de.tournament_manager.tournament_organiser_mail'), subject: t('information.de.tournament_manager.tournament_organiser_mail_subject'), body: t('information.de.tournament_manager.tournament_organiser_mail_body'))).html_safe
+-#     .row
+-#       .col
+-#         %h2= t('information.de.tournament_manager.bracket_tool')
+-#         %p
+-#           = t('information.de.tournament_manager.bracket_tool_body', link: link_to('Challonge', 'https://challonge.com/', target: '_blank')).html_safe
+-#     .row
+-#       .col
+-#         %h2= t('information.de.tournament_manager.bracket_seeding')
+-#         %p
+-#           = t('information.de.tournament_manager.bracket_seeding_body1')
+-#           %br
+-#           %div{style: 'margin-left: 20px;'}
+-#             %i player_skill = points/participations + wins/(wins+losses)*100 + participations + self_assessment/5 + tournament_experience/10
+-#           %br
+-#           = t('information.de.tournament_manager.bracket_seeding_body2')
+-#
+-#   -# results
+-#   .tab-pane.fade.show#results{role: 'tabpanel', 'aria-labelledby'=>'results-tab'}
+-#     .row
+-#       .col
+-#         %h2= t('information.de.results.title')
+-#         %p
+-#           = t('information.de.results.results_body', link: link_to('SSBU DE PRs', 'https://braacket.com/league/SSBUDEPRs/tournament?rows=200', target: '_blank')).html_safe
+-#     .row
+-#       .col
+-#         %h2= t('information.de.results.ranking_system')
+-#         %p= t('information.de.results.ranking_system_body')
+-#     .row
+-#       .col
+-#         %table.table.table-hover.table-borderless
+-#           %thead.ranking-system-header
+-#             %tr
+-#               %th.text-center= t('information.de.results.ranking_system_rank')
+-#               %th.text-center= t('information.de.results.ranking_system_points')
+-#           %tbody.ranking-system-body
+-#             %tr
+-#               %td.text-center= 1.ordinalize
+-#               %td.text-center 300
+-#             %tr
+-#               %td.text-center= 2.ordinalize
+-#               %td.text-center 250
+-#             %tr
+-#               %td.text-center= 3.ordinalize
+-#               %td.text-center 200
+-#             %tr
+-#               %td.text-center= 4.ordinalize
+-#               %td.text-center 150
+-#             %tr
+-#               %td.text-center= 5.ordinalize+'-'+6.ordinalize
+-#               %td.text-center 100
+-#             %tr
+-#               %td.text-center= 7.ordinalize+'-'+8.ordinalize
+-#               %td.text-center 75
+-#             %tr
+-#               %td.text-center= 9.ordinalize+'-'+12.ordinalize
+-#               %td.text-center 50
+-#             %tr
+-#               %td.text-center= 13.ordinalize+'-'+16.ordinalize
+-#               %td.text-center 25
+-#             %tr
+-#               %td.text-center= 17.ordinalize+'-'+24.ordinalize
+-#               %td.text-center 15
+-#             %tr
+-#               %td.text-center= 25.ordinalize+'-'+32.ordinalize
+-#               %td.text-center 10
+-#             %tr
+-#               %td.text-center= '>'+32.ordinalize
+-#               %td.text-center 5
+-#   -# contact
+-#   .tab-pane.fade.show#contact{role: 'tabpanel', 'aria-labelledby'=>'contact-tab'}
+-#     .row
+-#       .col
+-#         %h2= t('information.de.contact.title')
+-#         = form_tag contact_path, method: 'post', class: 'form' do
+-#           .form-group
+-#             = text_field_tag :name, params[:name], class: 'form-control', placeholder: t('information.de.contact.name')
+-#           .form-group
+-#             = email_field_tag :email, params[:email], class: 'form-control', placeholder: t('information.de.contact.email')
+-#           .form-group
+-#             = text_area_tag :body, params[:body], class: 'form-control', placeholder: t('information.de.contact.body')
+-#           .form-group
+-#             = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
+-#           .form-group
+-#             = button_tag t('information.de.contact.submit'), type: 'submit', class: 'btn btn-default'

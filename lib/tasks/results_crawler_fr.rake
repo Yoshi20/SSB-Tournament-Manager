@@ -3,17 +3,17 @@ require 'open-uri'
 require "#{Rails.root}/app/helpers/tournaments_helper"
 include TournamentsHelper
 
-namespace :results_crawler do
+namespace :results_crawler_fr do
   foundTournaments = []
   notFoundPlayers = []
   root = 'https://braacket.com'
 
   desc "braacket.com -> Find and create all tournaments, players, matches and results..."
   task all: :environment do
-    Rake::Task["results_crawler:createTournaments"].invoke
-    Rake::Task["results_crawler:findPlayers"].invoke
-    Rake::Task["results_crawler:createMatches"].invoke
-    Rake::Task["results_crawler:createResults"].invoke
+    Rake::Task["results_crawler_fr:createTournaments"].invoke
+    Rake::Task["results_crawler_fr:findPlayers"].invoke
+    Rake::Task["results_crawler_fr:createMatches"].invoke
+    Rake::Task["results_crawler_fr:createResults"].invoke
     puts "\ndone"
 
     puts "\nCouldn't finde the following #{notFoundPlayers.count} players:"
@@ -33,11 +33,7 @@ namespace :results_crawler do
   desc "Find and create past external tournaments from braacket.com"
   task createTournaments: :environment do
     links = [
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=1',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=2',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=3',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=4',
-      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200&page=5',
+      'https://braacket.com/league/SSBUFRPRs/tournament?rows=200',
     ]
     links.each do |link|
       puts "\nCrawling #{link}..."

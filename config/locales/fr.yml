@@ -332,7 +332,7 @@ fr:
       body5: "Voici tous les %{players_link} inscrits sur SwissSmash et voici l'%{statistics_link}."
       body6: "Vous pouvez trouver de plus amples informations sur SwissSmash sous %{informations_link}."
     de:
-      title: "GermanySmash"
+      title: "Smash Bros. Germany"
       body0: "Welcome to Smash Bros. Germany, your entry point into the German Super Smash Bros. Ultimate tournament scene."
       body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
       body2: "Your regional community should be able to be found under %{communities}. There you will also meet contacts from your region."
@@ -346,6 +346,14 @@ fr:
       body0: "Bienvenu sur SmashUltimate.fr, le portail de la communauté compétitive française de Super Smash Bros. Ultimate."
       body1: "Les prochains tournois dans la %{tournaments_link} ou sur le %{calendar_link}."
       body2: "Trouvez les communautés de votre région ou votre personnage dans %{communities}."
+      body3: "%{log_in_link} or %{sign_up_link} permet de créer son profil et d'utiliser toutes les fonctions du site."
+      body4: "Le power ranking officiel est disponible dans l'onglet %{rankings_link}."
+      body5: "Trouvez tous les %{players_link} enregistrés sur le site et les %{videos_link} qu'ils ont postés."
+      body6: "Si vous voulez en savoir plus sur le site rendez vous dans %{informations_link}."
+    lu:
+      title: "LuxSmash"
+      body0: "Bienvenu sur LuxSmash, le portail de la communauté compétitive Luxembourg de Super Smash Bros. Ultimate."
+      body1: "Les prochains tournois dans la %{tournaments_link} ou sur le %{calendar_link}."
       body3: "%{log_in_link} or %{sign_up_link} permet de créer son profil et d'utiliser toutes les fonctions du site."
       body4: "Le power ranking officiel est disponible dans l'onglet %{rankings_link}."
       body5: "Trouvez tous les %{players_link} enregistrés sur le site et les %{videos_link} qu'ils ont postés."
@@ -505,6 +513,60 @@ fr:
         ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit. Ce classement est indépendant du power ranking."
         ranking_system_rank: "Rang"
         ranking_system_points: "Points"
+      contact:
+        title: "Ecrivez-moi un message"
+        submit: "Soumettre"
+        name: "Ton nom ou gamertag"
+        email: "Ton e-mail"
+        body: "Ton message"
+    lu:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "Général"
+        swisssmash: |
+          Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
+          Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
+          En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
+      calendar:
+        title: "Calendrier"
+        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
+        calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
+        calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur swisssmash.ch"
+        calendar_internal: "Interne -> Tournoi créé sur swisssmash.ch"
+        calendar_external: "Externe -> Tournoi créé sur un site externe"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Un tournoi sera considéré comme un tournoi officiel SwissSmash et comptera pour le PR quand les conditions suivantes seront remplies:"
+        power_ranking_li_1: "Annoncé au moins 2 semaines avant sa date de début sur swisssmash.ch ou sur le canal tournois du discord Swiss Smash"
+        power_ranking_li_2: "Un minimum de 16 participant(e)s"
+        power_ranking_li_3: "Un seeding raisonnable"
+        power_ranking_li_4: "Assez de setups sans lags avec des places assises décentes"
+        power_ranking_li_5: "Doit avoir lieu durant le weekend et doit avoir des heures raisonnables de début et de fin"
+        power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
+      tournament_manager:
+        title: "Gestionnaire de tournoi"
+        tournament_organiser: "Organisateur de tournoi"
+        tournament_organiser_body: "SwissSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
+        tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
+        bracket_tool: "Outil de Bracket"
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
+        bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
+      results:
+        title: "Résultats"
+        results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
+        ranking_system: "Système de Classement"
+        ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Points"
+      personal_data:
+        title: "Données personnelles"
+        personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
       contact:
         title: "Ecrivez-moi un message"
         submit: "Soumettre"
@@ -848,6 +910,24 @@ fr:
         body: "Le règlement utilisé par la plupart des tournois SSBU en France. Des variations peuvent exister donc pensez à vous renseigner avant de vous inscrire à un tournoi."
         complete: "Vous pouvez trouver le règlement complet %{link}"
         here: "ici"
+    lu:
+      general_rules:
+        title_short: "Général"
+        body: "Afin qu'on puisse continuer à faire des tournois dans les lieux dédiés, on se doit de suivre quelques règles de bon sens. Si l'une de ces règles n'est pas respectée l'hébergeur a le droit de virer et bannir n'importe quel joueur sans avoir à s'expliquer plus que ça."
+        ul: "Voici une liste non exhaustive des règles de bienséance:"
+        li1: "La plupart des organisateurs dépendent des joueurs pour fournir les consoles et fournissent des compensations aux volontaires. Si vous voulez participer au bon déroulement du tournoi et que vous pouvez ramener votre console (switch + dock + adaptateur secteur + cable HDMI + jeu avec toutes les mises à jours et DLC) contactez l'organisateur"
+        li2: "Prenez soin de tous les matériels et logiciels utilisés, ainsi que de l'ameublement et autre. Si vous cassez quelque chose, reportez-le à l'organisateur"
+        li3: "Soyez amicaux et bienveillants envers tous les participants"
+        li4: "N'oubliez pas de lire le smash gg quand vous vous inscrivez à un tournoi, il contient des informations importantes"
+        li5: "Pensez à ramener votre propre manette et les câbles de connexion nécessaires, y compris l'adaptateur GC"
+        li6: "Quand les organisateurs demandent de stop le freeplay il faut arrêter immédiatement. Pas de 'encore une stock' ni de 'c'est presque fini', la ponctualité du tournoi dépend de vous"
+        li7: "En cas de non respect des règles l'organisateur se réserve le droit de bannir les joueurs du tournoi"
+        li8: "Le COVID peut engendrer des règles particulières dépendantes de l'évènement et des changements de la réglementation en vigueur, merci de vous renseigner et de les respecter"
+      match_rules:
+        title_short: "Règlements"
+        body: "Le règlement utilisé par la plupart des tournois SSBU en France. Des variations peuvent exister donc pensez à vous renseigner avant de vous inscrire à un tournoi."
+        complete: "Vous pouvez trouver le règlement complet %{link}"
+        here: "ici"
 
   tournaments:
     title: "Tournois"
@@ -861,6 +941,9 @@ fr:
       new_external_fr: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi SmashUltimate.fr."
       new_tournament_fr: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi SmashUltimate.fr."
       new_weekly_fr: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi SmashUltimate.fr. Voici les données du premier:"
+      new_external_lu: "Un nouveau tournoi externe a été ajouté au Gestionnaire de Tournoi LuxSmash."
+      new_tournament_lu: "Un nouveau tournoi a été ajouté au Gestionnaire de Tournoi LuxSmash."
+      new_weekly_lu: "Un ou plusieurs hebdomadaires ont été ajouté au Gestionnaire de Tournoi LuxSmash. Voici les données du premier:"
       too_few_registrations: "Dû au trop peu d'inscriptions ou pour d'autres raisons, un administrateur a annulé le tournoi \"<strong>%{tournament}</strong>\"."
       player_left_tournament: "Puisqu'un joueur vient de quitter le tournoi et que vous étiez premier dans la liste d'attente, vous êtes maintenant inscrit dans ce tournoi."
       name: "Nom:"
@@ -1045,6 +1128,7 @@ fr:
       welcome_ch: "Bienvenue sur le Gestionnaire de Tournoi SwissSmash"
       welcome_de: "Bienvenue sur le Gestionnaire de Tournoi GermanySmash"
       welcome_fr: "Bienvenue sur le Gestionnaire de Tournoi SmashUltimate.fr"
+      welcome_lu: "Bienvenue sur le Gestionnaire de Tournoi LuxSmash"
       signed_up: "Vous vous êtes inscrits avec succès. Votre nom d'utilisateur est:"
       to_join: "Pour rejoindre des tournois, suivez juste %{link}."
       to_join2: "Pour rejoindre des tournois, suivez juste le lien:"
@@ -1070,6 +1154,8 @@ fr:
     allows_emails_from_partners_de: "Je suis d'accord pour que les partenaires de GermanySmash m'envoient des e-mails de temps en temps"
     allows_emails_from_francesmash: "J'accepte que SmashUltimate.fr m'envoie de temps en temps des e-mails sur des sujets importants pour la communauté & sur les grandes annonces de tournois"
     allows_emails_from_partners_fr: "Je suis d'accord pour que les partenaires de SmashUltimate.fr m'envoient des e-mails de temps en temps"
+    allows_emails_from_luxsmash: "J'accepte que LuxSmash m'envoie de temps en temps des e-mails sur des sujets importants pour la communauté & sur les grandes annonces de tournois"
+    allows_emails_from_partners_lu: "Je suis d'accord pour que les partenaires de LuxSmash m'envoient des e-mails de temps en temps"
     data_agreement: "(Champ obligatoire) J'accepte que mes données soient visibles publiquement via mon profil de joueur et soient utilisées pour les statistiques du joueur. Les données fournies peuvent être modifiées ou supprimées à tout moment via \"Modifier le profil\" ou \"Compte\""
     current_password: "Mot de passe actuel"
     enter_current_password: "(entrer votre mot de passe actuel pour confirmer les modifications)"

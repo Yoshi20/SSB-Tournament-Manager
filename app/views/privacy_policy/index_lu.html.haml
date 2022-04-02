@@ -1,0 +1,25 @@
+- set_meta_tags description: meta_tag_description('Privacy Policy')
+
+%h1.page__title
+  = t('navigation.footer.privacy_policy').html_safe
+
+- if cookies[:cookie_eu_consented] == "true"
+  %h2 Cookies Einwilligung widerrufen
+  %p
+    %button.btn.btn-default{onclick:"delete_cookie('cookie_eu_consented'); location.reload();"}Click me
+
+:javascript
+  function get_cookie(name){
+    return document.cookie.split(';').some(c => {
+      return c.trim().startsWith(name + '=');
+    });
+  }
+
+  function delete_cookie( name, path, domain ) {
+    if( get_cookie( name ) ) {
+      document.cookie = name + "=" +
+        ((path) ? ";path="+path:"")+
+        ((domain)?";domain="+domain:"") +
+        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    }
+  }

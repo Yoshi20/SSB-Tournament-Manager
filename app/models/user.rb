@@ -76,6 +76,8 @@ class User < ApplicationRecord
       self.allows_emails_from_germanysmash
     elsif self.country_code == 'fr'
       self.allows_emails_from_francesmash
+    elsif self.country_code == 'lu'
+      self.allows_emails_from_luxsmash
     end
   end
 
@@ -84,7 +86,7 @@ class User < ApplicationRecord
   end
 
   def send_devise_notification(notification, *args)
-    locale = self.country_code == 'ch' ? 'en' : self.country_code
+    locale = (self.country_code == 'ch' || self.country_code == 'lu') ? 'en' : self.country_code
     I18n.with_locale(locale) { super(notification, *args) }
   end
 

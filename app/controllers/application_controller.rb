@@ -58,9 +58,11 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
+    return unless session['country_code'] == 'de' || session['country_code'] == 'fr' || session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
-    @streamers_json = Rails.cache.fetch("streamers", expires_in: 1.minute) do
-      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=#{session['country_code']}"
+    @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
+      language = session['country_code'] == 'lu' ? 'lb' : session['country_code'] #blup
+      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=#{language}"
       puts "Requesting: GET #{url}"
       begin
         json_data = JSON.parse(URI.open(url,
@@ -108,8 +110,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'de'
       elsif request.host.include?("francesmash") || request.host.include?("smashultimate.fr")
         session['country_code'] = 'fr'
+      elsif request.host.include?("luxsmash")
+        session['country_code'] = 'lu'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"

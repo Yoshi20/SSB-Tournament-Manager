@@ -22,6 +22,8 @@
           %em= "(01522 1234567)"
         - elsif session['country_code'] == 'fr'
           %em= "(06 12 34 56 78)"
+        - elsif session['country_code'] == 'lu'
+          %em= "(621 123 456)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, t('users.new_password')
@@ -68,6 +70,11 @@
           .form-check
             = f.check_box :allows_emails_from_francesmash, class:'form-check-input mr-2'
             = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
+      - if session['country_code'] == 'lu'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_luxsmash, class:'form-check-input mr-2'
+            = f.label :allows_emails_from_luxsmash, t('users.allows_emails_from_luxsmash'), class:'form-check-label'
       .form-group
         .form-check
           = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'

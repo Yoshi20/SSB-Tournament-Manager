@@ -1,7 +1,7 @@
-- set_meta_tags description: 'Swiss Super Smash Brothers E-Sports Community'
+- set_meta_tags description: 'Luxembourg Super Smash Brothers E-Sports Community'
 
 %h1.page__title
-  = t('welcome.ch.title')
+  = t('welcome.lu.title')
 %p
   .row{style: 'text-align: center;'}
     .col
@@ -10,7 +10,7 @@
           %strong= t('sign_up')
         %span.welcome_image.material-icons.admin-actions__link__icon= 'person_add'
     -# .col
-    -#   = link_to 'https://twitter.com/swiss_smash', target: '_blank' do
+    -#   = link_to 'https://twitter.com/LetzSmash_SSB', target: '_blank' do
     -#     %p{style: 'margin-bottom: 0;'}
     -#       %strong= "Follow"
     -#     = image_tag "Twitter_Logo.svg", class: 'welcome_image'
@@ -20,38 +20,32 @@
           %strong= t('tournaments.calendar')
         = image_tag "Calendar_Logo.svg", class: 'welcome_image'
     .col
-      = link_to 'https://discord.gg/wA89CyA', target: '_blank' do
+      = link_to 'https://discord.gg/RcAwZNYh', target: '_blank' do
         %p{style: 'margin-bottom: 0;'}
           %strong= "Discord"
         = image_tag "Discord-Logo-Color.svg", class: 'welcome_image'
 %p
-  = t('welcome.ch.body0')
+  = t('welcome.lu.body0')
 
 %p
-  = t('welcome.ch.body1',
-    discord_link: link_to('Discord', 'https://discord.gg/wA89CyA', target: '_blank', style: 'font-weight: 600;'),
-    twitter_link: link_to('Twitter', 'https://twitter.com/swiss_smash', target: '_blank', style: 'font-weight: 600;')).html_safe
-
-%p
-  = t('welcome.ch.body2',
+  = t('welcome.lu.body1',
     tournaments_link: link_to(t('welcome.tournament_list'), tournaments_path, style: 'font-weight: 600;'),
     calendar_link: link_to(t('welcome.calendar'), calendar_path, style: 'font-weight: 600;')).html_safe
 
 %p
-  = t('welcome.ch.body3',
+  = t('welcome.lu.body3',
     log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
-    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;'),
-    feedbacks_link: link_to(t('feedback.feedback_or_question'), feedbacks_path, style: 'font-weight: 600;')).html_safe
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe
 
 %p
-  = t('welcome.ch.body4',
+  = t('welcome.lu.body4',
     rankings_link: link_to(t('rankings.title'), rankings_path, style: 'font-weight: 600;')).html_safe
 
 %p
-  = t('welcome.ch.body5',
+  = t('welcome.lu.body5',
     players_link: link_to(t('players.title'), players_path, style: 'font-weight: 600;'),
     statistics_link: link_to(t('statistics.title2'), statistics_path, style: 'font-weight: 600;')).html_safe
 
 %p
-  = t('welcome.ch.body6',
-    informations_link: link_to(t('information.ch.title_short'), informations_path, style: 'font-weight: 600;')).html_safe
+  = t('welcome.lu.body6',
+    informations_link: link_to(t('information.lu.title_short'), informations_path, style: 'font-weight: 600;')).html_safe

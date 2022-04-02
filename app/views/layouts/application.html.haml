@@ -31,6 +31,10 @@
                   %h2.sidebar__title
                     = t('partials.streamers.title')
                   = render '/partials/streamers'
+                - elsif session['country_code'] == 'lu'
+                  %h2.sidebar__title
+                    = t('partials.streamers.title')
+                  = render '/partials/streamers'
             .col-12.col-lg-6
               .content
                 = yield
@@ -48,7 +52,7 @@
       .container
         = render "/partials/footer_#{session['country_code']}"
 
-  - if session['country_code'] == 'de' || session['country_code'] == 'fr'
+  - if session['country_code'] == 'de' || session['country_code'] == 'fr' || session['country_code'] == 'lu'
     = render 'cookies_eu/consent_banner'
 
 :javascript

@@ -350,6 +350,14 @@ de:
       body4: "You can find the official Power Ranking with the best players in France under %{rankings_link}."
       body5: "Here you can find all %{players_link} registered on SmashUltimate.fr and the %{videos_link} they posted."
       body6: "Information about SmashUltimate.fr can be found under %{informations_link}."
+    lu:
+      title: "LuxSmash"
+      body0: "Willkommen bei LuxSmash, deinem Einstiegspunkt in die Super Smash Bros. Ultimate Turnier Szene von Luxemburg."
+      body1: "Du findest die bevorstehenden Events in der %{tournaments_link} oder im %{calendar_link}."
+      body3: "%{log_in_link} oder %{sign_up_link}, um alle funktionen nutzen zu können."
+      body4: "Das offizielle Power Ranking mit den besten Spielern Luxenburgs findest du unter %{rankings_link}."
+      body5: "Hier gehts zu allen auf LuxSmash registrierten %{players_link} und hier zu der %{statistics_link}."
+      body6: "Informationen zu LuxSmash findest du unter %{informations_link}."
     tournament_list: "Turnierliste"
     calendar: "Kalender"
     log_in: "Logge dich ein"
@@ -512,6 +520,60 @@ de:
         name: "Your name or gamer tag"
         email: "Your email"
         body: "Your message"
+    lu:
+      title: "Informationen"
+      title_short: "Infos"
+      general:
+        title: "Allgemein"
+        swisssmash: |
+          Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in Luxemburg zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
+          Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
+          Mittlerweile gibt es auch eine fast komplette Liste von LuxSmash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
+      calendar:
+        title: "Kalender"
+        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
+        calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
+        calendar_internal: "Intern -> Auf swisssmash.ch erstelltes Turnier"
+        calendar_external: "Extern -> Auf einer externen Website erstelltes Turnier"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "Ein Turnier wird als offizielles LuxSmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
+        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf swisssmash.ch oder im LuxSmash Discord-Turnierkanal angekündigt"
+        power_ranking_li_2: "Mindestens 16 Teilnehmer"
+        power_ranking_li_3: "Vernünftiges Seeding"
+        power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
+        power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
+        power_ranking_li_6: "Weeklies zählen nicht zum PR"
+      tournament_manager:
+        title: "Turniermanager"
+        tournament_organiser: "Turnierveranstalter"
+        tournament_organiser_body: "LuxSmash.ch beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den LuxSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
+        tournament_organiser_mail: "Email"
+        tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
+        tournament_organiser_mail_body: "Hi LuxSmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der LuxSmash-Turniermanager vorerst %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
+        bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
+      results:
+        title: "Resultate"
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des LuxSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        ranking_system: "Ranglisten System"
+        ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
+        ranking_system_rank: "Rang"
+        ranking_system_points: "Punkte"
+      personal_data:
+        title: "Persönliche Daten"
+        personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>LuxSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
+      contact:
+        title: "Schreib mir eine Nachricht"
+        submit: "Absenden"
+        name: "Dein Name oder Gamertag"
+        email: "Deine E-Mail"
+        body: "Deine Nachricht"
 
   calendar:
     title: "Kalender"
@@ -849,6 +911,22 @@ de:
         body: "The following Ruleset is used at most tournaments in France. Please find out which rules are being used before each event."
         complete: "You can find the complete ruleset %{link}"
         here: "here"
+    lu:
+      general_rules:
+        title_short: "Verhalten"
+        body: "Jedes Turnier hat eigene Haus- und Verhaltensregeln. Im Zweifel frage immer den Turnier Organisator oder Host des Events."
+        ul: "Einige (hoffentlich selbstverständliche) Regeln sind wie folgt:"
+        li1: "Haltet euch an Regeln des gesunden Menschenverstands und in Deutschland geltendes Recht."
+        li2: "Gehe Respektvoll mit allen Teilnehmern um. Sexismus, Rassismus, Homo- oder Transphobie, Behindertenfeindlichkeit oder Religiöse Diskriminierung werden nicht toleriert."
+        li3: "Jeder Spieler soll sich auf Turnieren sicher fühlen. Sexuelle Belästigung oder physische Gewalt führen zu sofortigen Banns."
+        li4: "Die meisten Turniere sind auch für Jugendliche freigegeben. Alkohol und Zigaretten dürfen nicht für Minderjährige zugänglich gemacht werden. Der Konsum von illegalen Substanzen ist komplett zu unterlassen."
+        li5: "Absichtliche Beschädigung oder Diebstahl von fremdem Eigentum wird nicht geduldet. Solltest du ausversehen etwas beschädigen oder wenn dir etwas suspektes auffällt, melde es bitte dem Host."
+        li6: "Cheaten oder andere Manipulationen des Turniers schaden dem Wettbewerb und führen strenge konsequenzen mit sich."
+        li7: "Wenn Regeln verletzt werden, hat der Gastgeber immer das Recht, jeden Spieler ohne weitere Diskussion vom Event auszuschließen."
+        li8: "Je nach Covid-19 Situation und Schutzkonzept des Events gibt es unterschiedliche Corona Regeln. Halte dich jederzeit an die Vorgaben."
+      match_rules:
+        title_short: "Ruleset"
+        body: "Auf den meisten Turnieren in Deutschland wird das GSC Ruleset bzw. das Niederländische Ruleset verwendet. Informiere dich bitte vor jedem Event welches Regelwerk konkret verwendet wird."
 
   tournaments:
     title: "Turniere"
@@ -862,6 +940,9 @@ de:
       new_external_fr: "Ein neues externes Turnier wurde dem SmashUltimate.fr Turniermanager hinzugefügt."
       new_tournament_fr: "Ein neues Turnier wurde dem SmashUltimate.fr Turniermanager hinzugefügt."
       new_weekly_fr: "Ein oder mehr Weeklies wurden dem SmashUltimate.fr Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
+      new_external_lu: "Ein neues externes Turnier wurde dem LuxSmash.lu Turniermanager hinzugefügt."
+      new_tournament_lu: "Ein neues Turnier wurde dem LuxSmash.lu Turniermanager hinzugefügt."
+      new_weekly_lu: "Ein oder mehr Weeklies wurden dem LuxSmash.lu Turniermanager hinzugefügt. Hier sind die Daten des ersten:"
       too_few_registrations: "Aufgrund von zu wenig Anmeldungen oder anderen Gründen hat ein Administrator das Turnier \"<strong>%{tournament}</strong>\" storniert."
       player_left_tournament: "Da ein Spieler gerade das Turnier verlassen hat und du an der ersten Stelle auf der Warteliste standest, bist du nun für dieses Turnier registriert."
       name: "Name:"
@@ -1046,6 +1127,7 @@ de:
       welcome_ch: "Willkommen beim SwissSmash Turniermanager"
       welcome_de: "Willkommen beim GermanySmash Turniermanager"
       welcome_fr: "Willkommen beim SmashUltimate.fr Turniermanager"
+      welcome_lu: "Willkommen beim LuxSmash Turniermanager"
       signed_up: "Du hast dich erfolgreich Angemeldet. Dein Benutzername ist:"
       to_join: "Um einem Turnier beizutreten, folge %{link}."
       to_join2: "Um einem Turnier beizutreten, folge diesem Link:"
@@ -1071,6 +1153,8 @@ de:
     allows_emails_from_partners_de: "Ich bin damit einverstanden, dass Partner von GermanySmash mir ab und zu Emails schicken"
     allows_emails_from_francesmash: "Ich bin damit einverstanden, dass SmashUltimate.fr mir ab und zu Emails zu wichtigen Themen der Community & grossen Turnierankündigungen schickt"
     allows_emails_from_partners_fr: "Ich bin damit einverstanden, dass Partner von SmashUltimate.fr mir ab und zu Emails schicken"
+    allows_emails_from_francesmash: "Ich bin damit einverstanden, dass LuxSmash mir ab und zu Emails zu wichtigen Themen der Community & grossen Turnierankündigungen schickt"
+    allows_emails_from_partners_lu: "Ich bin damit einverstanden, dass Partner von LuxSmash mir ab und zu Emails schicken"
     data_agreement: "(Pflichtfeld) Ich willige ein, dass meine Daten öffentlich über mein Spielerprofil einsehbar sein werden und für die Spieler-Statistik genutzt werden. Die bereitgestellten Daten lassen sich jederzeit über \"Bearbeite Profil\" bzw. \"Account\" bearbeiten oder löschen"
     current_password: "Aktuelles Passwort"
     enter_current_password: "(gib dein aktuelles Passwort ein um die Änderungen zu bestätigen)"

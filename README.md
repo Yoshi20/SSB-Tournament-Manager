@@ -18,6 +18,7 @@ Stage commands:
 - git push stage_ch master
 - git push stage_de master
 - git push stage_fr master
+- git push stage_lu master
 - git push stage_ch <branch>:master
 - heroku logs --tail --remote stage_ch
 - heroku run rake db:migrate --remote stage_ch
@@ -25,11 +26,13 @@ Stage commands:
 - heroku restart --remote stage_ch
 
 - heroku run rake tournaments_crawler_ch:all --remote stage_ch
-- heroku run rake tournaments_crawler_de:all --remote stage_ch
-- heroku run rake tournaments_crawler_fr:all --remote stage_ch
+- heroku run rake tournaments_crawler_de:all --remote stage_de
+- heroku run rake tournaments_crawler_fr:all --remote stage_fr
+- heroku run rake tournaments_crawler_lu:all --remote stage_lu
 - heroku run rake results_crawler_ch:all --remote stage_ch
-- heroku run rake results_crawler_de:all --remote stage_ch
-- heroku run rake results_crawler_fr:all --remote stage_ch
+- heroku run rake results_crawler_de:all --remote stage_de
+- heroku run rake results_crawler_fr:all --remote stage_fr
+- heroku run rake results_crawler_lu:all --remote stage_lu
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
 Prod commands:
@@ -42,9 +45,11 @@ Prod commands:
 - heroku run rake tournaments_crawler_ch:all --remote prod
 - heroku run rake tournaments_crawler_de:all --remote prod
 - heroku run rake tournaments_crawler_fr:all --remote prod
+- heroku run rake tournaments_crawler_lu:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
+- heroku run rake results_crawler_lu:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 General links:
@@ -55,6 +60,8 @@ General links:
 - https://www.germanysmash.de
 - https://francesmash.herokuapp.com
 - https://www.smashultimate.fr
+- https://luxsmash.herokuapp.com
+- https://www.luxsmash.lu
 - https://challonge.com
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200
