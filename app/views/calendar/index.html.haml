@@ -7,18 +7,9 @@
 .row
   .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
     .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
-    - if session['country_code'] == 'ch'
-      - cantons_raw.each do |canton|
-        = link_to calendar_path(filter: canton) do
-          = image_tag "cantons/#{canton}.svg", height: '30px', width: '30px', id: canton, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == canton ? 'solid 1px black' : ''};"
-    - elsif session['country_code'] == 'de'
-      - federal_states_raw.each do |federal_state|
-        = link_to calendar_path(filter: federal_state.downcase) do
-          = image_tag "federal_states/#{federal_state}.svg", height: '30px', width: '30px', id: federal_state, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == federal_state.downcase ? 'solid 1px black' : ''};"
-    - elsif session['country_code'] == 'fr'
-      - regions_raw.each do |region|
-        = link_to calendar_path(filter: region) do
-          = image_tag "regions/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+    - regions_raw_from(session['country_code']).each do |region|
+      = link_to calendar_path(filter: region) do
+        = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
 = render 'calendar'
 

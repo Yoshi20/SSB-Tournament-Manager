@@ -3,7 +3,7 @@
     .col
       - if @community.region.present?
         .tooltip
-          = image_tag "regions/#{@community.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          = image_tag "regions/#{@community.country_code}/#{@community.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
           %span.tooltiptext
             = t("defines.regions.#{@community.region}")
       .page__title

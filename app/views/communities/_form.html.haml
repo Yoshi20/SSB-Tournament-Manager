@@ -18,7 +18,7 @@
     = f.select :department, options_for_select(departments_for_select, @community.department), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :region, t('communities.region')
-    = f.select :region, options_for_select(regions_for_select, @community.region || params[:region]), {include_blank: true}, class: 'form-control'
+    = f.select :region, options_for_select(regions_for_select_from(@community.country_code), @community.region || params[:region]), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :discord, t('communities.discord')
     %em= t('communities.multiple_discords')

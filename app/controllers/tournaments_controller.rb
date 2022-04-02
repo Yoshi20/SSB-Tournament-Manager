@@ -22,19 +22,7 @@ class TournamentsController < ApplicationController
       @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
     if params[:filter].present? and params[:filter] != 'all'
-      if helpers.tournament_cities.include?(params[:filter].capitalize)
-        city = params[:filter].capitalize
-        @tournaments = @tournaments.where(city: city).or(
-          @tournaments.from_city(city)
-        )
-        @past_tournaments = @past_tournaments.where(city: city).or(
-          @past_tournaments.from_city(city)
-        )
-      elsif helpers.federal_states_raw.include?(params[:filter].upcase)
-        federal_state = params[:filter].upcase
-        @tournaments = @tournaments.where(federal_state: federal_state)
-        @past_tournaments = @past_tournaments.where(federal_state: federal_state)
-      elsif helpers.regions_raw.include?(params[:filter])
+      if helpers.regions_raw_from(session['country_code']).include?(params[:filter])
         region = params[:filter]
         @tournaments = @tournaments.where(region: region)
         @past_tournaments = @past_tournaments.where(region: region)
@@ -83,6 +71,7 @@ class TournamentsController < ApplicationController
       @tournament.external_registration_link = nil
     else
       @tournament = Tournament.new(params[:tournament].present? ? tournament_params : nil)
+      @tournament.country_code = session['country_code']
     end
   end
 

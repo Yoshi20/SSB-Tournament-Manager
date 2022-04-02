@@ -90,138 +90,50 @@
             = t('statistics.oldest')
 
   .statistic__stats
-    - if session['country_code'] == 'ch'
-      .row
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.canton')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - cantons_raw[0... cantons_raw.length/2].each do |canton|
-                - canton_players = @players.where(canton: canton)
-                %tr{'data-internal_url': players_path(filter: 'canton', 'filter-data': canton)}
-                  %td.text-center
-                    .tooltip.tooltip_canton
-                      = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.cantons.#{canton}")
-                  %td.text-center
-                    = canton_players.count
-                  %td.text-center
-                    - wl_array = canton_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.canton')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - cantons_raw[cantons_raw.length/2.. -1].each do |canton|
-                - canton_players = @players.where(canton: canton)
-                %tr{'data-internal_url': players_path(filter: 'canton', 'filter-data': canton)}
-                  %td.text-center
-                    .tooltip.tooltip_canton
-                      = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.cantons.#{canton}")
-                  %td.text-center
-                    = canton_players.count
-                  %td.text-center
-                    - wl_array = canton_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-    - elsif session['country_code'] == 'de'
-      .row
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.federal_state')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - federal_states_raw[0... federal_states_raw.length/2].each do |federal_state|
-                - federal_state_players = @players.where(federal_state: federal_state)
-                %tr{'data-internal_url': players_path(filter: 'federal_state', 'filter-data': federal_state)}
-                  %td.text-center
-                    .tooltip.tooltip_federal_state
-                      = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.federal_states.#{federal_state}")
-                  %td.text-center
-                    = federal_state_players.count
-                  %td.text-center
-                    - wl_array = federal_state_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.federal_state')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - federal_states_raw[federal_states_raw.length/2.. -1].each do |federal_state|
-                - federal_state_players = @players.where(federal_state: federal_state)
-                %tr{'data-internal_url': players_path(filter: 'federal_state', 'filter-data': federal_state)}
-                  %td.text-center
-                    .tooltip.tooltip_federal_state
-                      = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.federal_states.#{federal_state}")
-                  %td.text-center
-                    = federal_state_players.count
-                  %td.text-center
-                    - wl_array = federal_state_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-    - elsif session['country_code'] == 'fr'
-      .row
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.region')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - regions_raw[0... regions_raw.length/2].each do |region|
-                - region_players = @players.where(region: region)
-                %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
-                  %td.text-center
-                    .tooltip.tooltip_region
-                      = image_tag "regions/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.regions.#{region}")
-                  %td.text-center
-                    = region_players.count
-                  %td.text-center
-                    - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-        .col
-          %table.table.table-hover.table-borderless
-            %thead.table-header
-              %tr
-                %th.text-center= t('statistics.region')
-                %th.text-center= t('statistics.number_of_players')
-                %th.text-center= "Ø-#{t('w_l')}"
-            %tbody.table-content.with-show
-              - regions_raw[regions_raw.length/2.. -1].each do |region|
-                - region_players = @players.where(region: region)
-                %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
-                  %td.text-center
-                    .tooltip.tooltip_region
-                      = image_tag "regions/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-                      %span.tooltiptext
-                        = t("defines.regions.#{region}")
-                  %td.text-center
-                    = region_players.count
-                  %td.text-center
-                    - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
-                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
+    .row
+      - regions_raw = regions_raw_from(session['country_code'])
+      .col
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("statistics.region_#{session['country_code']}")
+              %th.text-center= t('statistics.number_of_players')
+              %th.text-center= "Ø-#{t('w_l')}"
+          %tbody.table-content.with-show
+            - regions_raw[0... regions_raw.length/2].each do |region|
+              - region_players = @players.where(region: region)
+              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
+                %td.text-center
+                  .tooltip.tooltip_region
+                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+                    %span.tooltiptext
+                      = t("defines.regions.#{region}")
+                %td.text-center
+                  = region_players.count
+                %td.text-center
+                  - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
+                  = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
+      .col
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("statistics.region_#{session['country_code']}")
+              %th.text-center= t('statistics.number_of_players')
+              %th.text-center= "Ø-#{t('w_l')}"
+          %tbody.table-content.with-show
+            - regions_raw[regions_raw.length/2.. -1].each do |region|
+              - region_players = @players.where(region: region)
+              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
+                %td.text-center
+                  .tooltip.tooltip_region
+                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+                    %span.tooltiptext
+                      = t("defines.regions.#{region}")
+                %td.text-center
+                  = region_players.count
+                %td.text-center
+                  - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
+                  = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
 
   .statistic__stats{style: "margin-top: 0;"}
     .row

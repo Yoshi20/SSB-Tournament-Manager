@@ -9,11 +9,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     if params[:filter].present? && params['filter-data'].present?
-      if params[:filter] == 'canton'
-        @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
-      elsif params[:filter] == 'federal_state'
-        @players = Player.all_from(session['country_code']).where(federal_state: params['filter-data'])
-      elsif params[:filter] == 'region'
+      if params[:filter] == 'region'
         @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
         @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
