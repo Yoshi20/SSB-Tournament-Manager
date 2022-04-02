@@ -2,4 +2,4 @@
 
 <p><%= t('devise.mailer.confirm') %></p>
 
-<p><%= link_to t('devise.mailer.confirm_account'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to t('devise.mailer.confirm_account'), confirmation_url(@resource, confirmation_token: @token).gsub('swisssmash.ch', Domain.domain_from(@resource.country_code)) %></p>

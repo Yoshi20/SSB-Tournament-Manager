@@ -15,6 +15,7 @@ td.admin-list-actions {
   justify-content: space-between;
   padding: 0.3rem;
   .admin-list-actions__link {
+    margin-top: 4px;
     margin-right: 0.5rem;
   }
 }
@@ -22,7 +23,7 @@ td.admin-list-actions {
 .admin-actions {
   display: flex;
   position: absolute;
-  top: 1rem;
+  top: 10px;
   right: 0rem;
   .admin-actions__link {
     margin-right: 0.5rem;

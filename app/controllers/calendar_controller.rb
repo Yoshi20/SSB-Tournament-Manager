@@ -6,8 +6,7 @@ class CalendarController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
-        @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
+        @full_calendar_events = Calendar.full_calendar_events(current_user, calendar_tournaments.includes(:players))
         if session['country_code'] == 'ch'
           @cantons = []
           JSON.parse(@full_calendar_events).each do |t|
@@ -32,7 +31,7 @@ class CalendarController < ApplicationController
         end
       end
       format.ics do
-        send_data Calendar.ical_events(session['country_code']), filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
+        send_data Calendar.ical_events(calendar_tournaments), filename: 'tournaments.ics', disposition: 'inline', type: 'text/Calendar'
       end
     end
   end
@@ -42,8 +41,7 @@ class CalendarController < ApplicationController
   def show
     respond_to do |format|
       format.html do
-        tournaments = Tournament.all_from(session['country_code']).for_calendar.includes(:players)
-        @full_calendar_events = Calendar.full_calendar_events(current_user, tournaments)
+        @full_calendar_events = Calendar.full_calendar_events(current_user, calendar_tournaments.includes(:players))
         if session['country_code'] == 'ch'
           @cantons = []
           JSON.parse(@full_calendar_events).each do |t|
@@ -69,6 +67,22 @@ class CalendarController < ApplicationController
         render "show", layout: "for_iframe"
       end
     end
+  end
+
+  private
+
+  def calendar_tournaments
+    tournaments = Tournament.all_from(session['country_code']).for_calendar
+    if params[:filter].present? and params[:filter] != 'all'
+      if helpers.cantons_raw.include?(params[:filter])
+        tournaments = tournaments.where(canton: params[:filter])
+      elsif helpers.federal_states_raw.include?(params[:filter].upcase)
+        tournaments = tournaments.where(federal_state: params[:filter].upcase)
+      elsif helpers.regions_raw.include?(params[:filter])
+        tournaments = tournaments.where(region: params[:filter])
+      end
+    end
+    return tournaments
   end
 
 end

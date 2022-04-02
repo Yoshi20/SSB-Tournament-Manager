@@ -64,8 +64,7 @@ class Calendar
       end
     end
 
-    def ical_events(country_code)
-      tournaments = Tournament.all_from(country_code).for_calendar
+    def ical_events(tournaments)
       ical_events_internal(tournaments)
     end
 

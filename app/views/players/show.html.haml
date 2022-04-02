@@ -38,7 +38,7 @@
         - if @player.discord_username.present?
           .tooltip{style: "position: absolute; top: 0px; right: #{logos_shown*35}px; z-index: 1;"}
             = link_to image_tag('Discord-Logo-Black.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
-            %span.tooltiptext{style: 'margin-left: -78px;'}
+            %span.tooltiptext.d-none.d-md-block{style: 'margin-left: -78px;'}
               = @player.discord_username
           - logos_shown = logos_shown + 1;
         - if @player.twitter_username.present?
@@ -146,7 +146,7 @@
               %strong
                 = @player.losses
               %span
-                = t('players.losses')
+                = t('players.losses_shy').html_safe
           .col
             .player__stats__single.player__stats__single--last
               %strong
@@ -161,7 +161,7 @@
               %strong
                 = self_assessment_defines[@player.self_assessment]
               %span
-                = t('players.self_assessment')
+                = t('players.self_assessment_shy').html_safe
           .col
             .player__stats__single
               %strong
@@ -206,7 +206,7 @@
                   %strong
                     = link_to(image_tag("smash_gg_logo_small.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
                   %span
-                    = "Smash.gg User"
+                    = t("players.smash_gg_user")
 
       - if not @player.comment.nil? and not @player.comment.empty?
         .player__comment

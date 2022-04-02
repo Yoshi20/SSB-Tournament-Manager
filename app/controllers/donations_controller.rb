@@ -12,7 +12,8 @@ class DonationsController < ApplicationController
 
   # POST /donation.json
   def donation
-    @donation = Donation.new(donation_params)
+    @donation = Donation.new(donation_params.except(:type))
+    @donation.subtype = donation_params[:type] # the column 'type' is reserved for storing the class in case of inheritance
     @donation.shop_items = donation_params[:shop_items].to_s if donation_params[:shop_items].present?
     if @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_CH']
       @donation.country_code = 'ch'

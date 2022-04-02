@@ -5,8 +5,8 @@ class FeedbackMailer < ApplicationMailer
     admin = params[:admin]
     @user = feedback.user
     @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
-    I18n.with_locale(get_locale(@user.country_code)) do
-      mail(to: admin.email, from: from(@user.country_code), subject: "A new feedback or question was added")
+    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+      mail(to: admin.email, from: Domain.email_from(@user.country_code), subject: "A new feedback or question was added")
     end
   end
 
@@ -15,26 +15,15 @@ class FeedbackMailer < ApplicationMailer
     @admin = params[:admin]
     @user = feedback.user
     @url  = feedbacks_url(@user.country_code, feedback.id.to_s)
-    I18n.with_locale(get_locale(@user.country_code)) do
-      mail(to: @user.email, from: from(@user.country_code), subject: "Your feedback or question was answered")
+    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+      mail(to: @user.email, from: Domain.email_from(@user.country_code), subject: "Your feedback or question was answered")
     end
   end
 
   private
 
-
   def feedbacks_url(country_code, path)
-    url = ''
-    if country_code == 'ch'
-      url = 'https://www.swisssmash.ch/feedbacks/'
-    elsif country_code == 'de'
-      url = 'https://www.germanysmash.de/feedbacks/'
-    elsif country_code == 'fr'
-      url = 'https://www.smashultimate.fr/feedbacks/'
-    elsif country_code == 'it'
-      url = 'https://www.italysmash.it/feedbacks/'
-    end
-    url = url + path
+    "https://www.#{Domain.domain_from(country_code)}/feedbacks/" + path
   end
 
 end

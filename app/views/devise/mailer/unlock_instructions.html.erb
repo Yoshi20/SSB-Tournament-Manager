@@ -4,4 +4,4 @@
 
 <p><%= t('devise.mailer.unlock_account')%></p>
 
-<p><%= link_to t('devise.mailer.unlock_my_account'), unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to t('devise.mailer.unlock_my_account'), unlock_url(@resource, unlock_token: @token).gsub('swisssmash.ch', Domain.domain_from(@resource.country_code)) %></p>

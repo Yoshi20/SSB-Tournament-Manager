@@ -4,16 +4,56 @@
   .col
     %h1.page__title= t('calendar.title')
 
--# hidden images to get the asset_urls via js
-.hidden
-  - if session['country_code'] == 'ch'
-    - @cantons.each do |canton|
-      = image_tag "cantons/#{canton}.svg", height: '1px', width: '1px', id: canton
-  - elsif session['country_code'] == 'de'
-    - @federal_states.each do |federal_state|
-      = image_tag "federal_states/#{federal_state}.svg", height: '1px', width: '1px', id: federal_state
-  - elsif session['country_code'] == 'fr'
-    - @regions.each do |region|
-      = image_tag "regions/#{region}.svg", height: '1px', width: '1px', id: region
+.row
+  .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
+    .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
+    - if session['country_code'] == 'ch'
+      - cantons_raw.each do |canton|
+        = link_to calendar_path(filter: canton) do
+          = image_tag "cantons/#{canton}.svg", height: '30px', width: '30px', id: canton, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == canton ? 'solid 1px black' : ''};"
+    - elsif session['country_code'] == 'de'
+      - federal_states_raw.each do |federal_state|
+        = link_to calendar_path(filter: federal_state.downcase) do
+          = image_tag "federal_states/#{federal_state}.svg", height: '30px', width: '30px', id: federal_state, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == federal_state.downcase ? 'solid 1px black' : ''};"
+    - elsif session['country_code'] == 'fr'
+      - regions_raw.each do |region|
+        = link_to calendar_path(filter: region) do
+          = image_tag "regions/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+    -# blup: TODO
 
 = render 'calendar'
+
+.calendar
+  .calendar__footer
+    .row
+      .col
+        .calendar__footer__legend
+          = render 'color_legend'
+      .col
+        .calendar__footer__actions.mb-3
+          %strong= 'ICS-Link: '
+          - ics_link_path = (request.base_url + calendar_path + '.ics' + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
+          %span.copy-gamer-tag{style: 'font-size: 12px;', 'data-value': ics_link_path}= link_to ics_link_path.gsub('http://', '').gsub('https://', ''), ics_link_path, onclick:"event.preventDefault();"
+        .calendar__footer__actions.mb-3
+          %strong= 'iframe: '
+          - iframe_link_path = (request.base_url + calendar_for_iframe_path + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
+          %span{style: 'font-size: 12px;'}= link_to iframe_link_path.gsub('http://', '').gsub('https://', ''), iframe_link_path
+        - unless session['country_code'] == 'ch'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.switzerland') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.swisssmash.ch/calendar", "https://www.swisssmash.ch/calendar", target: '_blank'
+        - unless session['country_code'] == 'de'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.germany') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.germanysmash.de/calendar", "https://www.germanysmash.de/calendar", target: '_blank'
+        - unless session['country_code'] == 'fr'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.france') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.smashultimate.fr/calendar", "https://www.smashultimate.fr/calendar", target: '_blank'
+        - unless session['country_code'] == 'it'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.italy') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.italysmash.it/calendar", "https://www.italysmash.it/calendar", target: '_blank'
+        .calendar__footer__actions
+          %strong= t('calendar.austria') + ': '
+          %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'

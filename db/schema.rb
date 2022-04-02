@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_154531) do
+ActiveRecord::Schema.define(version: 2022_03_23_083500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2022_03_13_154531) do
   create_table "donations", force: :cascade do |t|
     t.string "message_id"
     t.string "timestamp"
-    t.string "type"
+    t.string "subtype"
     t.boolean "is_public"
     t.string "from_name"
     t.string "message"
