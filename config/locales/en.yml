@@ -535,22 +535,22 @@ en:
       title_short: "Infos"
       general:
         title: "General"
-        swisssmash: |
-          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in switzerland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
+        luxsmash: |
+          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in luxembourg and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
           It shall also present an entry point for new players to find their respective local smash community.<br><br>
           In the meantime it now also provides an almost complete list of swiss smashers with relevant stats, player data and rankings.
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of a self written %{link} program, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in switzerland that were added to either one of the following sites:"
-        calendar_body: "The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
-        calendar_weekly: "Weekly -> On swisssmash.ch created weekly tournament"
-        calendar_internal: "Internal -> On swisssmash.ch created tournament"
+        tournaments_body: "With the help of a self written %{link} program, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in luxembourg that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in luxembourg from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On luxsmash.lu created weekly tournament"
+        calendar_internal: "Internal -> On luxsmash.lu created tournament"
         calendar_external: "External -> On an external site created tournament"
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
         power_ranking_body: "A tournament will be considered an official SwissSmash tournament and will count to the PR when the following requirements will be met:"
-        power_ranking_li_1: "Announced at least 2 weeks before its start date on swisssmash.ch or on the Swiss Smash Discord tournaments channel"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on luxsmash.lu or on the Swiss Smash Discord tournaments channel"
         power_ranking_li_2: "A minimum of 16 attendees"
         power_ranking_li_3: "Reasonable seeding"
         power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
@@ -570,7 +570,7 @@ en:
         bracket_seeding_body2: "The final seeding is done manually by a TO."
       results:
         title: "Results"
-        results_body: "Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, swisssmash.ch is also able to get the results from all other tournaments in switzerland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        results_body: "Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, luxsmash.lu is also able to get the results from all other tournaments in luxembourg.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Ranking system"
         ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
         ranking_system_rank: "Rank"

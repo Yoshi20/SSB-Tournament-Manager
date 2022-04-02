@@ -535,7 +535,7 @@ de:
       title_short: "Infos"
       general:
         title: "Allgemein"
-        swisssmash: |
+        luxsmash: |
           Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in Luxemburg zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
           Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
           Mittlerweile gibt es auch eine fast komplette Liste von LuxSmash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
@@ -543,14 +543,14 @@ de:
         title: "Kalender"
         tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
-        calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
-        calendar_internal: "Intern -> Auf swisssmash.ch erstelltes Turnier"
+        calendar_weekly: "Weekly -> Auf luxsmash.lu erstelltes Weekly Turnier"
+        calendar_internal: "Intern -> Auf luxsmash.lu erstelltes Turnier"
         calendar_external: "Extern -> Auf einer externen Website erstelltes Turnier"
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
         power_ranking_body: "Ein Turnier wird als offizielles LuxSmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
-        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf swisssmash.ch oder im LuxSmash Discord-Turnierkanal angekündigt"
+        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf luxsmash.lu oder im LuxSmash Discord-Turnierkanal angekündigt"
         power_ranking_li_2: "Mindestens 16 Teilnehmer"
         power_ranking_li_3: "Vernünftiges Seeding"
         power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
@@ -570,7 +570,7 @@ de:
         bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
       results:
         title: "Resultate"
-        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des LuxSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des LuxSmash-Turnier-Managers kann luxsmash.lu auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
         ranking_system: "Ranglisten System"
         ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
         ranking_system_rank: "Rang"
