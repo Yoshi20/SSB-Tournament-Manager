@@ -49,6 +49,17 @@
 
   .tab-content#tournaments-tabs-content
     .tab-pane.fade.show.active#details{role: 'tabpanel', 'aria-labelledby'=>'details-tab'}
+      -# Twitter share button
+      - if current_user.present? && current_user.player.twitter_username.present? && @tournament.players.include?(current_user.player) && (!@tournament.setup || !@tournament.started || !@tournament.finished)
+        .tournament__details
+          .row
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+                - twitter_text = "I just registered for #{@tournament.name}"
+                %a.twitter-share-button{"data-size": "large", href: "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(twitter_text)}", target: '_blank'} Tweet
+                %span= t('tournaments.please_share')
+
       .tournament__details
         .row
           - if @tournament.registration_deadline.nil?
