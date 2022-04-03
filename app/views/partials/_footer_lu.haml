@@ -1,13 +1,15 @@
 .row.footer-nav
   .col-5
     .row
-      .col
+      = link_to "https://www.letz-smash.lu", target: '_blank' do
+        = image_tag('letz_smash.webp', class: 'letz_smash_logo', width: '75px', height: '75px')
+      .col.d-none.d-sm-block
         %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
 
   .col-2
     = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
-      = image_tag('lu_logo.webp', class: 'luxsmash_logo', height: '50px', width: '50px')
+      = image_tag('lu_logo.png', class: 'luxsmash_logo', height: '50px', width: '50px')
   .col-5
     .row
       .col

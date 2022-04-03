@@ -133,8 +133,8 @@ module ApplicationHelper
         canonical: request.original_url,
         noindex: !Rails.env.production?,
         icon: [
-          { href: image_url('lu_logo.webp') },
-          { href: image_url('lu_logo.webp'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+          { href: image_url('lu_logo.png') },
+          { href: image_url('lu_logo.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
         ],
         og: {
           site_name: 'luxsmash.lu',
@@ -142,7 +142,7 @@ module ApplicationHelper
           description: 'Luxembourg Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
-          image: image_url('lu_logo.webp')
+          image: image_url('lu_logo.png')
         }
       }
     end
