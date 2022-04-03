@@ -366,7 +366,7 @@ fr:
       body1: "Les prochains tournois dans la %{tournaments_link} ou sur le %{calendar_link}."
       body3: "%{log_in_link} or %{sign_up_link} permet de créer son profil et d'utiliser toutes les fonctions du site."
       body4: "Le power ranking officiel est disponible dans l'onglet %{rankings_link}."
-      body5: "Trouvez tous les %{players_link} enregistrés sur le site et les %{videos_link} qu'ils ont postés."
+      body5: "Here you can find all %{players_link} registered on GermanySmash and here you can find the %{statistics_link}." #blup
       body6: "Si vous voulez en savoir plus sur le site rendez vous dans %{informations_link}."
     tournament_list: "Liste des tournois"
     calendar: "Calendrier"

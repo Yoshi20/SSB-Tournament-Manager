@@ -3,7 +3,17 @@
     .row
       = link_to "https://www.letz-smash.lu", target: '_blank' do
         = image_tag('letz_smash.webp', class: 'letz_smash_logo', width: '75px', height: '75px')
-      .col.d-none.d-sm-block
+
+        -# %ul.navbar-nav.navbar-icons
+          -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+            -# = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/jMef7A7CnQ', target: '_blank', class: 'nav-link'
+          -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+            -# = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/LetzSmash_SSB', target: '_blank', class: 'nav-link'
+          -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+            -# = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/letzsmash_ssb', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+          -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+            -# = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/LetzSmash', target: '_blank', class: 'nav-link'
+      .col
         %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
 
@@ -23,3 +33,17 @@
           = link_to("https://ko-fi.com/letzsmash", target: '_blank', class: "btn btn-default") do
             = image_tag("https://storage.ko-fi.com/cdn/cup-border.png")
             %span= t('please_donate')
+
+.row.footer-nav
+  .col-sm-1.col-md-3.col-lg-4
+  .col-sm-10.col-md-6.col-lg-4
+    .row
+      .col
+        = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/jMef7A7CnQ', target: '_blank', class: 'nav-link'
+      .col
+        = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/LetzSmash_SSB', target: '_blank', class: 'nav-link'
+      .col
+        = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/letzsmash_ssb', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+      .col
+        = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/LetzSmash', target: '_blank', class: 'nav-link'
+  .col-sm-1.col-md-3.col-lg-4

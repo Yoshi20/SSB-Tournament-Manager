@@ -2,19 +2,10 @@
 .container
   %a.navbar-brand{href: '/'}
     = image_tag('lu_logo.png', height: '50px', width: '50px')
-    %span.d-none.d-sm-block.d-lg-none.d-xl-block.title{style: 'line-height: 0.8;'}
+    %span.title{style: 'line-height: 0.8;'}
       = 'LuxSmash'
       %br
       %em{style: 'font-size: 12px;'}= 'powered by Lëtz Smash'
-  %ul.navbar-nav.navbar-icons
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/RcAwZNYh', target: '_blank', class: 'nav-link'
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/LetzSmash_SSB', target: '_blank', class: 'nav-link'
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/letzsmash_ssb', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/LetzSmash', target: '_blank', class: 'nav-link'
   %button.navbar-toggler.collapsed{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
     %span.navbar-toggler-icon
       %span.line.line--1
