@@ -938,7 +938,7 @@ de:
         li8: "Je nach Covid-19 Situation und Schutzkonzept des Events gibt es unterschiedliche Corona Regeln. Halte dich jederzeit an die Vorgaben."
       match_rules:
         title_short: "Ruleset"
-        body: "Auf den meisten Turnieren in Deutschland wird das GSC Ruleset bzw. das Niederländische Ruleset verwendet. Informiere dich bitte vor jedem Event welches Regelwerk konkret verwendet wird."
+        body: "Auf den meisten Turnieren in Luxemburg wird das Luxembourgish SSBU Ruleset verwendet. Informiere dich bitte vor jedem Event welches Regelwerk konkret verwendet wird."
 
   tournaments:
     title: "Turniere"

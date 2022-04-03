@@ -33,14 +33,9 @@
       .col
         %p
           = t('rules.lu.match_rules.body')
+        %p
+          = link_to 'Print version', 'http://ruleset.luxsmash.lu', target: '_blank' #blup
+
     .row
-      - if cookies[:locale] == 'en'
-        = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_en.jpg') do
-          = image_tag 'dutch_ssbu_ruleset_by_tadavidid_en.jpg', height: '100%', width: '100%'
-      - else
-        = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_de.jpg') do
-          = image_tag 'dutch_ssbu_ruleset_by_tadavidid_de.jpg', height: '100%', width: '100%'
-      -# = link_to asset_url('gsc_ruleset.png') do
-      -#   = image_tag 'gsc_ruleset.png', height: '100%', width: '100%'
-      -# = link_to asset_url('dutch_ssbu_ruleset.png') do
-      -#   = image_tag 'dutch_ssbu_ruleset.png', height: '100%', width: '100%'
+      = link_to asset_url('lu_ssbu_ruleset.jpg') do
+        = image_tag 'lu_ssbu_ruleset.jpg', height: '100%', width: '100%'

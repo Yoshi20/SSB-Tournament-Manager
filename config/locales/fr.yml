@@ -937,9 +937,7 @@ fr:
         li8: "Le COVID peut engendrer des règles particulières dépendantes de l'évènement et des changements de la réglementation en vigueur, merci de vous renseigner et de les respecter"
       match_rules:
         title_short: "Règlements"
-        body: "Le règlement utilisé par la plupart des tournois SSBU en France. Des variations peuvent exister donc pensez à vous renseigner avant de vous inscrire à un tournoi."
-        complete: "Vous pouvez trouver le règlement complet %{link}"
-        here: "ici"
+        body: "Le règlement utilisé par la plupart des tournois SSBU en Luxembourg. Des variations peuvent exister donc pensez à vous renseigner avant de vous inscrire à un tournoi."
 
   tournaments:
     title: "Tournois"
