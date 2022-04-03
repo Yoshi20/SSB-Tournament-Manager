@@ -144,3 +144,4 @@ gem 'cookies_eu'
 
 # See https://github.com/thredded/thredded
 gem 'thredded', '~> 0.16.12'
+gem 'html-pipeline', '2.14.0' #blup: error when calling rails s with v2.14.1
