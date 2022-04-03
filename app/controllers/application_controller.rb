@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   rescue_from ActionController::InvalidAuthenticityToken, with: :rescue_invalid_auth_token
 
-  before_action :set_country_code, except: :donation
-  before_action :set_locale
-  before_action :authenticate_user!, except: [
+  no_user_exceptions = [
     :index, :show, :location, :unregistered, :contact, :donation,
     :nrw, :hessen, :nds, :bayern, :berlin, :norden, :osten, :bawu,
     :grand_est, :nouvelle_aquitaine, :auvergne_rhone_alpes,
@@ -14,11 +12,16 @@ class ApplicationController < ActionController::Base
     :paris_region, :occitanie, :hauts_de_france, :normandie, :pays_de_la_loire,
     :provence_alpes_cote_azur, :character_discords
   ]
+
+  before_action :set_country_code, except: :donation
+  before_action :set_locale
+  before_action :authenticate_user!, except: no_user_exceptions
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_streamers
   before_action :set_top_players
   before_action :get_next_tournaments
+  before_action :set_forum_unread_count, only: no_user_exceptions
   before_action :prepare_exception_notifier
   after_action :set_response_language_header
 
@@ -100,6 +103,11 @@ class ApplicationController < ActionController::Base
 
   def get_next_tournaments
     @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
+  end
+
+  def set_forum_unread_count
+    return unless current_user.present? && (session['country_code'] == 'de' || session['country_code'] == 'fr')
+    @forum_unread_count = Thredded::Topic.all.joins(:messageboard).merge(Thredded::Messageboard.where(country_code: session['country_code'])).unread(current_user).count
   end
 
   private
