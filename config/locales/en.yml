@@ -1095,28 +1095,28 @@ en:
     body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
     nds:
       title: "#NDS"
-      text: "The NDS region consists of the following federal_states: Lower Saxony & Bremen"
+      text: "The NDS region consists of the following federal states: Lower Saxony & Bremen"
     nrw:
       title: "#NRW"
-      text: "The NRW region consists of the following federal_states: Northrhine-Westphalia"
+      text: "The NRW region consists of the following federal states: Northrhine-Westphalia"
     hessen:
       title: "#Hesse"
-      text: "The Hesse region consists of the following federal_states: Hesse, Rhineland Palatinate & Saarland"
+      text: "The Hesse region consists of the following federal states: Hesse, Rhineland Palatinate & Saarland"
     bawu:
       title: "#BaWü"
-      text: "The BaWü region consists of the following federal_states: Baden-Württemberg"
+      text: "The BaWü region consists of the following federal states: Baden-Württemberg"
     norden:
       title: "#North"
-      text: "The North region consists of the following federal_states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
+      text: "The North region consists of the following federal states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
     berlin:
       title: "#Berlin"
-      text: "The Berlin region consists of the following federal_states: Brandenburg & Berlin"
+      text: "The Berlin region consists of the following federal states: Brandenburg & Berlin"
     osten:
       title: "#East"
-      text: "The East region consists of the following federal_states: Saxony, Saxony-Anhalt & Thuringia"
+      text: "The East region consists of the following federal states: Saxony, Saxony-Anhalt & Thuringia"
     bayern:
       title: "#Bavaria"
-      text: "The Bavaria region consists of the following federal_states: Bavaria"
+      text: "The Bavaria region consists of the following federal states: Bavaria"
     ranking: "The best players from the region can be found here:"
     body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
     new: "New community"
