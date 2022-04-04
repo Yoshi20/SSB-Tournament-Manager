@@ -363,7 +363,8 @@ en:
     lu:
       title: "LuxSmash"
       body0: "Welcome to LuxSmash, your entry point into the Luxembourg Super Smash Bros. Ultimate tournament scene."
-      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body1: "If you want to stay up-to-date with the Luxembourg Super Smash Bros Community, join us on %{discord_link} and follow our %{twitter_link} Account."
+      body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
       body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
       body4: "You can find the official Power Ranking with the best players in Luxemburg under %{rankings_link}."
       body5: "Here you can find all %{players_link} registered on LuxSmash and here you can find the %{statistics_link}."

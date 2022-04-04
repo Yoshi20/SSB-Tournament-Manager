@@ -29,6 +29,11 @@
 
 %p
   = t('welcome.lu.body1',
+    discord_link: link_to('Discord', 'https://discord.gg/jMef7A7CnQ', target: '_blank', style: 'font-weight: 600;'),
+    twitter_link: link_to('Twitter', 'https://twitter.com/LetzSmash_SSB', target: '_blank', style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.lu.body2',
     tournaments_link: link_to(t('welcome.tournament_list'), tournaments_path, style: 'font-weight: 600;'),
     calendar_link: link_to(t('welcome.calendar'), calendar_path, style: 'font-weight: 600;')).html_safe
 

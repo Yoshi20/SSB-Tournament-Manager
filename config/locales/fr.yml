@@ -363,10 +363,11 @@ fr:
     lu:
       title: "LuxSmash"
       body0: "Bienvenu sur LuxSmash, le portail de la communauté compétitive Luxembourg de Super Smash Bros. Ultimate."
-      body1: "Les prochains tournois dans la %{tournaments_link} ou sur le %{calendar_link}."
+      body1: "Si vous voulez rester à jour avec la Communauté Luxembourg Smash Bros, rejoignez-nous sur %{discord_link} et suivez le compte nos %{twitter_link}."
+      body2: "Les prochains tournois dans la %{tournaments_link} ou sur le %{calendar_link}."
       body3: "%{log_in_link} or %{sign_up_link} permet de créer son profil et d'utiliser toutes les fonctions du site."
       body4: "Le power ranking officiel est disponible dans l'onglet %{rankings_link}."
-      body5: "Here you can find all %{players_link} registered on GermanySmash and here you can find the %{statistics_link}." #blup
+      body5: "Voici tous les %{players_link} inscrits sur LuxSmash et voici l'%{statistics_link}."
       body6: "Si vous voulez en savoir plus sur le site rendez vous dans %{informations_link}."
     tournament_list: "Liste des tournois"
     calendar: "Calendrier"
