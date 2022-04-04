@@ -1130,7 +1130,7 @@ fr:
       welcome_de: "Bienvenue sur le Gestionnaire de Tournoi GermanySmash"
       welcome_fr: "Bienvenue sur le Gestionnaire de Tournoi SmashUltimate.fr"
       welcome_lu: "Bienvenue sur le Gestionnaire de Tournoi LuxSmash"
-      signed_up: "Vous vous êtes inscrits avec succès. Votre nom d'utilisateur est:"
+      signed_up: "Vous vous etes inscrits avec succes. Votre nom d'utilisateur est:" # êtes .. succès not handled correctly sometimes
       to_join: "Pour rejoindre des tournois, suivez juste %{link}."
       to_join2: "Pour rejoindre des tournois, suivez juste le lien:"
       this_link: "ce lien"
