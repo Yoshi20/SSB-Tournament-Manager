@@ -1014,7 +1014,8 @@ de:
     fee: "Gebühr"
     seats: "Plätze"
     weekly_start_date: "Startdatum des ersten Weekly"
-    weekly_end_date: "Startdatum des letzten Weekly (z.B. ein Tag im Dezember)"
+    weekly_end_date: "Startdatum des letzten Weekly"
+    weekly_end_date_example: "(z.B. ein Tag im Dezember)"
     readonly: "(schreibgeschützt)"
     edit: "Turnier bearbeiten"
     this_weekly: "dieses Weekly"
@@ -1028,9 +1029,9 @@ de:
     no_past: "Keine vergangenen Turniere gefunden"
     new:
       title: "Neues Turnier"
-      body: "Du kannst entweder ein internes, externes oder ein oder mehr Weekly Turniere erstellen."
-      li1: "Interne Turniere unterstützen alle Funktionen des SwissSmash Turniermanagers"
-      li2: "Externe Turniere werden verwendet, um eine andere Registrierungs-Website mit dem SwissSmash Turniermanager zu verknüpfen"
+      body: "Du kannst entweder ein internes, externes oder ein Weekly Turniere erstellen."
+      li1: "Interne Turniere unterstützen alle Funktionen des Turniermanagers"
+      li2: "Externe Turniere werden verwendet, um eine andere Registrierungs-Website mit dem Turniermanager zu verknüpfen"
       li3: "Weekly Turniere sind gleich wie interne Turniere. Jedoch kannst du mehrere Turniere auf ein Mal erstellen, indem du ein Enddatum setzt.
         Der Name der Weeklies wird aus der definierten Stadt und dem Datum generiert. Zum Beispiel: 'SSBU Weekly Bern KW20 2020'"
     details: "Details"

@@ -1014,7 +1014,8 @@ en:
     fee: "Fee"
     seats: "Seats"
     weekly_start_date: "Firts weekly start date"
-    weekly_end_date: "Last weekly start date (e.g. a day in december)"
+    weekly_end_date: "Last weekly start date"
+    weekly_end_date_example: "(e.g. a day in december)"
     readonly: "(readonly)"
     edit: "Editing tournament"
     this_weekly: "this weekly"
@@ -1028,9 +1029,9 @@ en:
     no_past: "No past tournaments found"
     new:
       title: "New tournament"
-      body: "You can create either an internal, an external or one or more weekly tournaments."
-      li1: "Internal tournaments are supporting all the SwissSmash Tournament Manager functionalitly"
-      li2: "External tournaments are used to link a different registration website with the SwissSmash Tournament Manager"
+      body: "You can create either an internal, an external or a weekly tournament."
+      li1: "Internal tournaments are supporting all the Tournament Manager functionalitly"
+      li2: "External tournaments are used to link a different registration website with the Tournament Manager"
       li3: "Weeklies are the same as internal tournaments. But you can create multiple tournaments at once by setting an end date.
         The weeklies name will be generated from the defined city and date to e.g: 'SSBU Weekly Bern KW20 2020'"
     details: "Details"

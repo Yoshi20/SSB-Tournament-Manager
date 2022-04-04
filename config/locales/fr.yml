@@ -1013,7 +1013,8 @@ fr:
     fee: "Frais"
     seats: "Places"
     weekly_start_date: Date de début de la première hebdomadaire"
-    weekly_end_date: "Date de début de la dernière hebdomadaire (par ex. un jour de décembre)"
+    weekly_end_date: "Date de début de la dernière hebdomadaire"
+    weekly_end_date_example: "(par ex. un jour de décembre)"
     readonly: "(readonly)"
     edit: "Édition du tournoi"
     this_weekly: "cet hebdomadaire"
@@ -1027,9 +1028,9 @@ fr:
     no_past: "Aucun tournois passés trouvés"
     new:
       title: "Nouveau tournoi"
-      body: "Vous pouvez créer un tournoi soit interne, soit externe soit un ou plusieurs hebdomadaires."
-      li1: "Les tournois internes supportent toutes les fonctionnalités du Gestionnaire de Tournoi SwissSmash"
-      li2: "Les tournois externes sont utilisés pour lier un autre site web d'inscription avec le Gestionnaire de Tournoi SwissSmash"
+      body: "Vous pouvez créer un tournoi soit interne, soit externe ou soit hebdomadaires."
+      li1: "Les tournois internes supportent toutes les fonctionnalités du Gestionnaire de Tournoi"
+      li2: "Les tournois externes sont utilisés pour lier un autre site web d'inscription avec le Gestionnaire de Tournoi"
       li3: "Les hebdomadaires fonctionnent comme des tournois internes. Mais vous pouvez créer plusieurs tournois d'un coup en choisissant une date de fin.
         Le nom des hebdomadaires sera généré par la ville définie et la date par ex: 'SSBU Weekly Bern KW20 2020'"
     details: "Détails"

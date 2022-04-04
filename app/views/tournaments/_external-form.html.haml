@@ -18,6 +18,7 @@
       = f.text_field :subtype, class: 'form-control', value: 'external'
     .form-group
       = f.label :date, t('tournaments.start_date')
+      %em= '(dd.mm.yyyy - hh:mm)'
       .form-group-inline
         = f.datetime_select :date, { start_year: Time.now.year }, class: 'form-control'
     .form-group

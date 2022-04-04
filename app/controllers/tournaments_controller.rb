@@ -89,7 +89,7 @@ class TournamentsController < ApplicationController
     # handle the different subtypes
     if @tournament.subtype.nil? or @tournament.subtype == 'internal'
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
               if p.user.allows_emails
@@ -124,7 +124,7 @@ class TournamentsController < ApplicationController
     elsif @tournament.weekly?
       @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
               if p.user.wants_weekly_email
@@ -171,7 +171,7 @@ class TournamentsController < ApplicationController
         oldName = @tournament.name
         oldDate = @tournament.date
         oldcity = @tournament.city
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.update(tournament_params)
           # also update weekly name if city was edited
           if @tournament.weekly? && @tournament.city != oldcity
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
@@ -217,7 +217,7 @@ class TournamentsController < ApplicationController
       end
     elsif @tournament.subtype == 'external'
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.update(tournament_params)
           format.html { redirect_to tournaments_path, notice: t('flash.notice.update_external_tournament') }
           format.json { render :show, status: :ok, location: @tournament }
         else
@@ -641,11 +641,11 @@ class TournamentsController < ApplicationController
       end
     end
 
-    def check_registration_deadline_is_less_than_date(tp)
+    def check_registration_deadline_is_less_or_equal_than_date(tp)
       return true if tp['subtype'] == 'external'
       date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
       registration_deadline = Time.new(tp['registration_deadline(1i)'], tp['registration_deadline(2i)'], tp['registration_deadline(3i)'],  tp['registration_deadline(4i)'],  tp['registration_deadline(5i)'])
-      if registration_deadline >= date
+      if registration_deadline > date
         @tournament.errors.add(:registration_deadline, t('tournaments.errors.registration_deadline'))
         return false
       else

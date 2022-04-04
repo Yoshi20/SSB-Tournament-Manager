@@ -47,3 +47,9 @@
         .calendar__footer__actions
           %strong= t('calendar.austria') + ': '
           %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'
+
+- if current_user.present? and current_user.admin?
+  .admin-actions
+    .admin-actions__link
+      = link_to new_tournament_path, class:'btn btn-default btn-square' do
+        %span.material-icons.admin-actions__link__icon= 'add'
