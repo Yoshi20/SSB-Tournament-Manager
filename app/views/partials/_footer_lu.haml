@@ -5,6 +5,9 @@
         = image_tag('letz_smash.webp', class: 'letz_smash_logo', width: '75px', height: '75px')
       .col
         %p.small
+          = link_to t('feedback_and_questions'), :feedbacks
+      .col.d-none.d-sm-block
+        %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
 
   .col-2
@@ -27,7 +30,7 @@
 .row.footer-nav
   .col-sm-1.col-md-3.col-lg-4
   .col-sm-10.col-md-6.col-lg-4
-    .row
+    .row{style: "margin-top: -20px;"}
       .col
         = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/jMef7A7CnQ', target: '_blank', class: 'nav-link'
       .col
