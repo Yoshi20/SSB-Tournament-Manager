@@ -23,6 +23,6 @@
   - if current_user.present?
     %p= link_to t('feedback.creat_new'), new_feedback_path, class: "btn btn-ghost"
   - else
-    %p= button_to t('feedback.log_in_to_create'), nil, class:'btn btn-ghost', disabled:true
+    %p= button_tag t('feedback.creat_new'), class:'btn btn-ghost', 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'
 
 %hr

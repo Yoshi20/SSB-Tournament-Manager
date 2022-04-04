@@ -701,7 +701,6 @@ en:
     title_edit: "Editing feedback or question"
     let_us_know: "Let us know what you think of our tournaments or homepage and tell us if you're missing something, found a problem or have a question."
     creat_new: "Create a new feedback or question"
-    log_in_to_create: "Log in to create a new feedback or question"
     admins: "Administrators"
     new: "New feedback or question"
     users_feedback: "%{user}'s feedback or question"

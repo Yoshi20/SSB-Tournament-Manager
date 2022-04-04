@@ -680,7 +680,7 @@ de:
     update: "Aktualisieren"
     prohibited: "hat das Speichern dieses News-Posts verhindert:"
     title_edit: "Bearbeite News-Post"
-    creat_new: "Erstelle News-Post"
+    creat_new: "Erstelle neuer News-Post"
     new: "Neuer News-Post"
     updated_at: "Aktualisiert am:"
     created_at: "Erstellt am:"
@@ -689,7 +689,7 @@ de:
 
   feedback:
     mailer:
-      thanks: "Vielen Dank für dein Feedback oder deine Frage."
+      thanks: "Vielen Dank für dein Rückmeldung oder deine Frage."
       response: "Du kannst meine Antwort anschauen, indem du auf %{link} klickst."
       this_link: "diesen Link"
       best_regards: "Freundliche Grüsse"
@@ -698,14 +698,13 @@ de:
     prohibited: "hat das Speichern dieses Feedbacks verhindert:"
     admin_response: "Administrator Antwort"
     feedback_or_question: "Rückmeldung oder Frage"
-    title_edit: "Bearbeite Feedback oder Frage"
+    title_edit: "Bearbeite Rückmeldung oder Frage"
     let_us_know: "Teile deine Meinung zu unseren Turnieren oder unserer Homepage mit und sag uns, wenn du etwas vermisst, ein Problem gefunden oder eine Frage hast."
-    creat_new: "Erstelle Feedback oder Frage"
-    log_in_to_create: "Logge ein um ein Feedback oder eine Frage zu erstellen"
+    creat_new: "Erstelle neue Rückmeldung oder Frage"
     admins: "Administratoren"
-    new: "Neues Feedback oder Frage"
-    users_feedback: "%{user}s Feedback oder Frage"
-    someones_feedback: "Jemandes Feedback oder Frage"
+    new: "Neue Rückmeldung oder Frage"
+    users_feedback: "%{user}s Rückmeldung oder Frage"
+    someones_feedback: "Jemandes Rückmeldung oder Frage"
     updated_at: "Aktualisiert am:"
     created_at: "Erstellt am:"
 
