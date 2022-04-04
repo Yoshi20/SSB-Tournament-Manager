@@ -550,7 +550,7 @@ en:
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "LuxSmash.ch contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the LuxSmash Tournament Manager? Just let me know %{link}."
+        tournament_organiser_body: "LuxSmash.lu contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the LuxSmash Tournament Manager? Just let me know %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi LuxSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
