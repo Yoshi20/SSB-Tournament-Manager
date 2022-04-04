@@ -11,9 +11,6 @@
   %li.nav-item
     %a#calendar-tab.nav-link{'data-toggle'=>'tab', href: '#calendar', role: 'tab', 'aria-controls'=>'all'}
       = t('information.lu.calendar.title')
-  -# %li.nav-item
-  -#   %a#power-ranking-tab.nav-link{'data-toggle'=>'tab', href: '#power-ranking', role: 'tab', 'aria-controls'=>'all'}
-  -#     = t('information.lu.power_ranking.title')
   %li.nav-item
     %a#tournament-manager-tab.nav-link{'data-toggle'=>'tab', href: '#tournament-manager', role: 'tab', 'aria-controls'=>'all'}
       = t('information.lu.tournament_manager.title')
@@ -31,7 +28,7 @@
       .col
         %h2 LuxSmash
         %p
-          = t('information.lu.general.luxsmash', swisssmash_link: link_to('www.swisssmash.ch', 'https://www.swisssmash.ch/', target: '_blank'), Yomi: link_to('Yomi', '/players/1'), TaDavidID: link_to('TaDavidID', '/players/156')).html_safe
+          = t('information.lu.general.luxsmash', swisssmash_link: link_to('www.swisssmash.ch', 'https://www.swisssmash.ch/', target: '_blank'), Yomi: link_to('Yomi', '/players/1')).html_safe
   -# calendar
   .tab-pane.fade.show#calendar{role: 'tabpanel', 'aria-labelledby'=>'calendar-tab'}
     .row

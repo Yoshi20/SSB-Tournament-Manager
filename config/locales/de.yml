@@ -391,7 +391,7 @@ de:
           Mittlerweile gibt es auch eine fast komplette Liste von Swiss Smash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        tournaments_body: "Mit der Hilfe der smash.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf swisssmash.ch erstelltes Turnier"
@@ -420,7 +420,7 @@ de:
         bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
       results:
         title: "Resultate"
-        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turnier-Managers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des SwissSmash-Turniermanagers kann swisssmash.ch auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
         ranking_system: "Ranglisten System"
         ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
         ranking_system_rank: "Rang"
@@ -445,7 +445,7 @@ de:
           Die Seite entstand aus der Vorlage von %{swisssmash_link} und wird primär betreut von: %{Yomi} (Entwickler) und %{TaDavidID} (Koordination mit TOs).
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann GermanySmash alle SSBU-Turniere in Deutschland finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        tournaments_body: "Mit der Hilfe der smash.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann GermanySmash alle SSBU-Turniere in Deutschland finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in Deutschland bis vor zwei Wochen und vier Monaten in der Zukunft. Es werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf germanysmash.de erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf germanysmash.de erstelltes Turnier"
@@ -474,7 +474,7 @@ de:
         bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
       results:
         title: "Resultate"
-        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des GermanySmash-Turnier-Managers kann germanysmash.de auch die Resultate aller anderen Turniere in Deutschland abrufen. Die einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des GermanySmash-Turniermanagers kann germanysmash.de auch die Resultate aller anderen Turniere in Deutschland abrufen. Die einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
         ranking_system: "Ranglisten System"
         ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
         ranking_system_rank: "Rang"
@@ -496,7 +496,7 @@ de:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (coordination with TOs).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
+        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in france from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
         calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
@@ -508,7 +508,7 @@ de:
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just let me know %{link}."
+        tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just let me know %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to be an administrator because:\n???"
@@ -538,46 +538,33 @@ de:
         luxsmash: |
           Diese Webanwendung/Website wurde in erster Linie erstellt, um einen Überblick über die Super Smash Bros. Ultimate Szene in Luxemburg zu geben und einem Turnierorganisator (TO) ein einfaches Tool zum Verwalten seiner Turniere bereitzustellen.<br><br>
           Es soll auch einen Einstiegspunkt für neue Spieler bieten, um ihre jeweilige lokale Smash-Community zu finden.<br><br>
-          Mittlerweile gibt es auch eine fast komplette Liste von LuxSmash Spielern mit relevanten Statistiken, Spielerdaten und Ranglisten.
+          Die Seite entstand aus der Vorlage von %{swisssmash_link} und wird primär betreut von: %{Yomi} (Entwickler).
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
-        calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
+        tournaments_body: "Mit der Hilfe der smash.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in Luxemburg finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in Luxemburg bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf luxsmash.lu erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf luxsmash.lu erstelltes Turnier"
         calendar_external: "Extern -> Auf einer externen Website erstelltes Turnier"
-      power_ranking:
-        title: "Power Ranking"
-        power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "Ein Turnier wird als offizielles LuxSmash-Turnier gewertet und zählt zum PR, wenn folgende Voraussetzungen erfüllt sind:"
-        power_ranking_li_1: "Mindestens 2 Wochen vor dem Start auf luxsmash.lu oder im LuxSmash Discord-Turnierkanal angekündigt"
-        power_ranking_li_2: "Mindestens 16 Teilnehmer"
-        power_ranking_li_3: "Vernünftiges Seeding"
-        power_ranking_li_4: "Genug einwandfrei funktionierende Setups mit angemessenen Sitzgelegenheiten"
-        power_ranking_li_5: "Muss an einem Wochenende mit angemessenen Start- und Endzeiten stattfinden"
-        power_ranking_li_6: "Weeklies zählen nicht zum PR"
       tournament_manager:
         title: "Turniermanager"
         tournament_organiser: "Turnierveranstalter"
-        tournament_organiser_body: "LuxSmash.ch beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den LuxSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
+        tournament_organiser_body: "LuxSmash.lu beinhaltet eine Webanwendung zum einfachen Erstellen und Verwalten von Smash Turnieren.<br><br>Sie ist insbesondere für Weeklies geeignet, da sie das Generieren von mehreren Turniere in einem definierten Zeitraum erlaubt.<br><br>Organisierst du selbst Turniere und möchtest den LuxSmash-Turniermanager nutzen? Schreib mir einfach eine %{link}."
         tournament_organiser_mail: "Email"
         tournament_organiser_mail_subject: "Ich möchte Administrator werden!"
         tournament_organiser_mail_body: "Hi LuxSmash\n\nIch bin ??? und ich möchte ein Administrator sein weil:\n???"
         bracket_tool: "Bracket tool"
         bracket_tool_body: "Aufgrund seinen kostenlosen, verzögerungsfreien und benutzerfreundlichen Turnierbäumen und API verwendet der LuxSmash-Turniermanager vorerst %{link}."
         bracket_seeding: "Bracket seeding"
-        bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf germanysmash.de generiert wird:"
+        bracket_seeding_body1: "Das anfängliche Seeding erfolgt, indem eine nach Fähigkeiten sortierte Spielerliste aus allen Daten auf luxsmash.lu generiert wird:"
         bracket_seeding_body2: "Das endgültige Seeding erfolgt manuell durch einen TO."
       results:
         title: "Resultate"
-        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des LuxSmash-Turnier-Managers kann luxsmash.lu auch die Resultate aller anderen Turniere in der Schweiz abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
+        results_body: "Nebst den Resultaten (Match Scores und Ranglistens) der internen Turniere des LuxSmash-Turniermanagers kann luxsmash.lu auch die Resultate aller anderen Turniere in Luxemburg abrufen.\nDie einzige Bedingung ist, dass das Turnier auf braacket.com in der %{link} Liga importiert wurde."
         ranking_system: "Ranglisten System"
         ranking_system_body: "Unabhängig von der Anzahl Teilnehmer pro Turnier entscheidet der Rang des Spielers am Ende eines Turniers über die Punkte, die der Spieler erhält."
         ranking_system_rank: "Rang"
         ranking_system_points: "Punkte"
-      personal_data:
-        title: "Persönliche Daten"
-        personal_data_body: "Gemäss Artikel 13 der Bundesverfassung und den Datenschutzbestimmungen des Bundes (DSG) hat jede Person das Recht auf Schutz ihrer Privatsphäre und auf Schutz vor dem Missbrauch ihrer persönlichen Daten.<br><br>LuxSmash hält diese Bestimmungen ein. Nicht-Spieler-Daten (wie E-Mails und Handynummern) werden daher streng vertraulich behandelt und nicht an Dritte verkauft."
       contact:
         title: "Schreib mir eine Nachricht"
         submit: "Absenden"
@@ -928,7 +915,7 @@ de:
         title_short: "Verhalten"
         body: "Jedes Turnier hat eigene Haus- und Verhaltensregeln. Im Zweifel frage immer den Turnier Organisator oder Host des Events."
         ul: "Einige (hoffentlich selbstverständliche) Regeln sind wie folgt:"
-        li1: "Haltet euch an Regeln des gesunden Menschenverstands und in Deutschland geltendes Recht."
+        li1: "Haltet euch an Regeln des gesunden Menschenverstands und in Luxenburg geltendes Recht."
         li2: "Gehe Respektvoll mit allen Teilnehmern um. Sexismus, Rassismus, Homo- oder Transphobie, Behindertenfeindlichkeit oder Religiöse Diskriminierung werden nicht toleriert."
         li3: "Jeder Spieler soll sich auf Turnieren sicher fühlen. Sexuelle Belästigung oder physische Gewalt führen zu sofortigen Banns."
         li4: "Die meisten Turniere sind auch für Jugendliche freigegeben. Alkohol und Zigaretten dürfen nicht für Minderjährige zugänglich gemacht werden. Der Konsum von illegalen Substanzen ist komplett zu unterlassen."

@@ -391,7 +391,7 @@ fr:
           En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
       calendar:
         title: "Calendrier"
-        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
+        tournaments_body: "Avec l'aide de smash.gg API et d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
         calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
         calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur swisssmash.ch"
         calendar_internal: "Interne -> Tournoi créé sur swisssmash.ch"
@@ -409,7 +409,7 @@ fr:
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "SwissSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "SwissSmash.ch contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
@@ -445,7 +445,7 @@ fr:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (coordination with TOs).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
+        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in germany from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On germanysmash.de created weekly tournament"
         calendar_internal: "Internal -> On germanysmash.de created tournament"
@@ -463,7 +463,7 @@ fr:
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weekklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just let me know %{link}."
+        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just let me know %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi GermanySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
@@ -492,10 +492,10 @@ fr:
         title: "Général"
         francesmash: |
           Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en France et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
-          Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
+          Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.
       calendar:
         title: "Calendrier"
-        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SmashUltimate.fr est capable de trouver et lister tous les tournois SSBU en France qui ont été ajoutés sur au moins l'un des sites suivants:"
+        tournaments_body: "Avec l'aide de smash.gg API et d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SmashUltimate.fr est capable de trouver et lister tous les tournois SSBU en France qui ont été ajoutés sur au moins l'un des sites suivants:"
         calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en France pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
         calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur SmashUltimate.fr"
         calendar_internal: "Interne -> Tournoi créé sur SmashUltimate.fr"
@@ -507,7 +507,7 @@ fr:
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "SmashUltimate.fr contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SmashUltimate.fr? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "SmashUltimate.fr contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SmashUltimate.fr? Faites-le moi savoir %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour SmashUltimate.fr\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
@@ -537,35 +537,25 @@ fr:
         luxsmash: |
           Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Luxembourg et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
           Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
-          En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
+          La page a été créée à partir du modèle par %{swisssmash_link} et est principalement maintenue par %{Yomi} (développeur).
       calendar:
         title: "Calendrier"
-        tournaments_body: "Avec l'aide d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, LuxSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
-        calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en suisse pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
+        tournaments_body: "Avec l'aide de smash.gg API et d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, LuxSmash est capable de trouver et lister tous les tournois SSBU en Luxembourg qui ont été ajoutés sur au moins l'un des sites suivants:"
+        calendar_body: "Le calendrier montre tous les tournois SSBU trouvés en Luxembourg pour les deux semaines précédentes et les quatre prochains mois.\nIl distingue les différents types de tournois comme ceci:"
         calendar_weekly: "Hebdomadaire -> Tournoi hebdomadaire créé sur luxsmash.lu"
         calendar_internal: "Interne -> Tournoi créé sur luxsmash.lu"
         calendar_external: "Externe -> Tournoi créé sur un site externe"
-      power_ranking:
-        title: "Power Ranking"
-        power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "Un tournoi sera considéré comme un tournoi officiel LuxSmash et comptera pour le PR quand les conditions suivantes seront remplies:"
-        power_ranking_li_1: "Annoncé au moins 2 semaines avant sa date de début sur luxsmash.lu ou sur le canal tournois du discord Swiss Smash"
-        power_ranking_li_2: "Un minimum de 16 participant(e)s"
-        power_ranking_li_3: "Un seeding raisonnable"
-        power_ranking_li_4: "Assez de setups sans lags avec des places assises décentes"
-        power_ranking_li_5: "Doit avoir lieu durant le weekend et doit avoir des heures raisonnables de début et de fin"
-        power_ranking_li_6: "Les tournois hebdomadaires ne comptent pas pour le PR"
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "LuxSmash.ce contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weekklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi LuxSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "LuxSmash.lu contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi LuxSmash? Faites-le moi savoir %{link}."
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour LuxSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
         bracket_tool: "Outil de Bracket"
         bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi LuxSmash utilise %{link} pour le moment."
         bracket_seeding: "Bracket seeding"
-        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur LuxSmash.ch:"
+        bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur LuxSmash.lu:"
         bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
       results:
         title: "Résultats"
@@ -574,9 +564,6 @@ fr:
         ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
         ranking_system_rank: "Rang"
         ranking_system_points: "Points"
-      personal_data:
-        title: "Données personnelles"
-        personal_data_body: "Selon l'Article 13 de la Constitution fédérale suisse et les dispositions générales de protections des données de la Confédération (Loi fédérale sur la protection des données, LPD), chaque personne a le droit à la protection de sa sphère privée et à la protection contre l'abus de ses données personnelles.<br><br>SwissSmash se conforme à ces dispositions. Dès lors les données non-joueurs (tel que emails & numéro de mobile) resteront strictement confidentielles et ne seront pas vendues à un tiers."
       contact:
         title: "Ecrivez-moi un message"
         submit: "Soumettre"
@@ -890,20 +877,20 @@ fr:
         here: "ici"
     de:
       general_rules:
-      title_short: "Conduct"
-      body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-      ul: "Some (hopefully self-evident) rules are as follows:"
-      li1: "Adhere to the rules of common sense and the law in Germany."
-      li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-      li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-      li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-      li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-      li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-      li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-      li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in Germany."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
       match_rules:
-      title_short: "Ruleset"
-      body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Germany. Please find out which rules are being used before each event."
+        title_short: "Ruleset"
+        body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Germany. Please find out which rules are being used before each event."
     fr:
       general_rules:
         title_short: "Général"
