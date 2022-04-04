@@ -7,18 +7,23 @@
 .row
   .col
     %p= "Total users count = #{User.all_from(session['country_code']).count}"
-    .d-flex
-      %span.material-icons.admin-actions__link__icon= 'group_add'
-      = '= Club Member'
-    .d-flex
-      %span.material-icons.admin-actions__link__icon= 'verified_user'
-      = '= Admin'
-  - if current_user.present? and current_user.super_admin?
+    - if current_user.super_admin?
+      .d-flex
+        %span.material-icons.admin-actions__link__icon= 'language'
+        = '= Country Code'
+      -# .d-flex
+      -#   %span.material-icons.admin-actions__link__icon= 'group_add'
+      -#   = '= Club Member'
+      .d-flex
+        %span.material-icons.admin-actions__link__icon= 'verified_user'
+        = '= Admin'
+  - if current_user.super_admin?
     .col{style: 'text-align: right;'}
       - mail_string = ''
       - User.all_from(session['country_code']).where(is_admin: true).each do |u|
         - mail_string = mail_string + u.email + '; '
-      = mail_to "", "Write all admins an email", bcc: mail_string, subject: "SwissSmash", body: "Hi SwissSmash admins\n\n", class: 'btn btn-ghost'
+      - site_name = t("welcome.#{session['country_code']}.title")
+      = mail_to "", "Write all admins an email", bcc: mail_string, subject: site_name, body: "Hi #{site_name} admins\n\n", class: 'btn btn-ghost'
 
 .user-list
   %table.table.table-hover.table-borderless
@@ -27,19 +32,22 @@
         %th Username
         %th Last Log in at
         %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Log in counter
-        %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Club member
+        -# %th.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell Club member
         %th.text-center Admin
         %th.text-center Super Admin
 
-    %tbody.user-list-body.with-show
+    %tbody.user-list-body
       - @users.each do |user|
-        %tr{'data-id': (user.player.present? ? user.player.id : nil), 'data-component'=>'player'}
-          %td= user.username
+        %tr
+          - if user.player.present?
+            %td= link_to user.username, player_path(user.player)
+          - else
+            %td= user.username
           %td= user.current_sign_in_at.present? ? user.current_sign_in_at.to_s(:custom_datetime) : ''
           %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= user.sign_in_count
-          %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
-            - if user.is_club_member
-              .material-icons= 'done'
+          -# %td.text-center.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
+          -#   - if user.is_club_member
+          -#     .material-icons= 'done'
           %td.text-center
             - if user.admin?
               .material-icons= 'done'
@@ -47,24 +55,26 @@
             - if user.super_admin?
               .material-icons= 'done'
 
-          - if current_user.present? and current_user.super_admin?
+          - if current_user.super_admin?
             %td.admin-list-actions
               .admin-list-actions__link
                 = form_for user, url: "/users/#{user.id}", html: { method: :patch }, role: 'form' do |f|
-                  = f.check_box :is_club_member, checked: !user.is_club_member, class: 'd-none'
-                  = f.button type: 'submit', data: { confirm: 'Are you sure? (:is_club_member)' }, class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon= 'group_add'
-
+                  = f.select :country_code, options_for_select(['ch', 'de', 'fr', 'it', 'lu'], user.country_code), {}, class: 'form-control', style: 'width: 40px; display: inline;'
+                  = f.button type: 'submit', data: { confirm: 'Are you sure? (:country_code)' }, class:'btn btn-ghost btn-square' do
+                    %span.material-icons.admin-actions__link__icon= 'language'
+              -# .admin-list-actions__link
+              -#   = form_for user, url: "/users/#{user.id}", html: { method: :patch }, role: 'form' do |f|
+              -#     = f.check_box :is_club_member, checked: !user.is_club_member, class: 'd-none'
+              -#     = f.button type: 'submit', data: { confirm: 'Are you sure? (:is_club_member)' }, class:'btn btn-ghost btn-square' do
+              -#       %span.material-icons.admin-actions__link__icon= 'group_add'
               .admin-list-actions__link
                 = form_for user, url: "/users/#{user.id}", html: { method: :patch }, role: 'form' do |f|
                   = f.check_box :is_admin, checked: !user.is_admin, class: 'd-none'
                   = f.button type: 'submit', data: { confirm: 'Are you sure? (:is_admin)' }, class:'btn btn-ghost btn-square' do
                     %span.material-icons.admin-actions__link__icon= 'verified_user'
-
               .admin-list-actions__link
                 = link_to "/users/#{user.id}", method: :delete, data: { confirm: 'Are you sure? (:delete)' }, class: 'btn btn-sstm btn-square' do
                   %span.material-icons.admin-actions__link__icon= 'delete'
-
 
   .user-list-footer
     = render 'paginator', users: @users, anchor: 'data'
