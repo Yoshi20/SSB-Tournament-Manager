@@ -1,0 +1,95 @@
+.container
+  %a.navbar-brand{href: '/'}
+    = image_tag('lu_logo.png', height: '50px', width: '50px')
+    %span.title{style: 'line-height: 0.8;'}
+      = 'LuxSmash'
+      %br
+      %em{style: 'font-size: 12px;'}= 'powered by Lëtz Smash'
+  %button.navbar-toggler.collapsed{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
+    %span.navbar-toggler-icon
+      %span.line.line--1
+      %span.line.line--2
+      %span.line.line--3
+  .collapse.navbar-collapse#navbarSupportedContent
+    .row
+      .col-6
+        %ul.navbar-nav.navbar-main.ml-auto
+          %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
+            %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+              = t('tournaments.title')
+              .h-24
+                %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+            .dropdown-menu{'aria-labelledby': 'navbarDropdown1'}
+              = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
+              = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
+
+          %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
+            = link_to t('rankings.title'), rankings_path, class: 'nav-link'
+
+          %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics' or @section == 'videos') ? 'active' : 'inactive')}
+            %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+              = t('players.title')
+              .h-24
+                %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+            .dropdown-menu{'aria-labelledby': 'navbarDropdown2'}
+              = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
+              = link_to t('players.individuals'), players_path, class: 'dropdown-item'
+              = link_to t('video.title'), videos_path, class: 'dropdown-item'
+
+      .col-6
+        %ul.navbar-nav.navbar-main.ml-auto
+          %li.nav-item{role: "presentation", class: (@section == 'streams' ? 'active' : 'inactive')}
+            = link_to 'Streams', streams_path, class: 'nav-link'
+
+          %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
+            = link_to t('rules.title'), rules_path, class: 'nav-link'
+
+          %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
+            = link_to t('information.lu.title_short'), informations_path, class: 'nav-link'
+
+    .row
+      .col-6
+        %ul.navbar-nav.navbar-account
+          - if user_signed_in?
+            %li.nav-item.dropdown
+              %a.nav-link.dropdown-toggle#navbarDropdown3{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+                %span
+                  - if user_signed_in?
+                    = t('navigation.account.account')
+                  - else
+                    = t('login')
+                .h-24
+                  %span.material-icons{style: "margin-left: 5px;"}= 'keyboard_arrow_down'
+              .dropdown-menu{'aria-labelledby': 'navbarDropdown3'}
+                .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
+                  = current_user.username
+                  - if current_user.admin?
+                    = t('navigation.account.admin')
+                - if current_user.player.present?
+                  = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
+                  = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
+                = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
+                - if current_user.admin?
+                  .dropdown-divider
+                  = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
+                  = link_to t('navigation.account.add_tournament'), new_tournament_path, class: 'dropdown-item'
+                -#
+                .divider
+                = link_to t('navigation.account.log_out'), destroy_user_session_path, method: :delete, confirm: t('navigation.account.log_out_confirm'), class: 'dropdown-item'
+          - else
+            %li.nav-item.dropdown
+              %a.nav-link{href:"#", role:"button", 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+                %span
+                  - if user_signed_in?
+                    = t('navigation.account.account')
+                  - else
+                    = t('login')
+      .col-6
+        %ul.navbar-nav.navbar-account
+          %li.nav-item.locales-list{style: 'margin-top: 8px;'}
+            = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
+            = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de')
+            = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr')
+
+.collapse#navbarSupportedContent
+  .btn{onclick: "$('.navbar-toggler').click()", style: 'position: absolute; left: 0; width: 100%; height: 1000%; margin-top: 8px; background-color: transparent;'}
