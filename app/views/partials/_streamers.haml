@@ -6,13 +6,25 @@
   -#     %th{style: 'text-align: center;'}= t('partials.streamers.view_count')
 
   %tbody.table-content.with-show
-    - if !@streamers_json.nil? and @streamers_json.any?
+    - any_streamers = !@streamers_json.nil? && @streamers_json.any?
+    - if any_streamers
       - @streamers_json.each do |streamer|
         %tr{'data-external_url': "https://www.twitch.tv/#{streamer['user_login']}"}
-          -# %td= streamer['title']
           %td
             .dot{style: "background-color: #{streamer['type'] == 'live' ? 'lawngreen' : 'red'}"}
+          -# %td= streamer['title'].truncate(20)
           %td= streamer['user_name']
           %td{style: 'text-align: center;'}= streamer['viewer_count']
-    - else
+          -# %td.d-block.d-lg-none.d-xl-block= image_tag streamer['thumbnail_url'].gsub('{width}','50').gsub('{height}','50')
+
+    - any_inactive_streamers = !@inactive_streamers.nil? && @inactive_streamers.any?
+    - if any_inactive_streamers
+      - @inactive_streamers.each do |inactive_streamer|
+        %tr{'data-external_url': "https://www.twitch.tv/#{inactive_streamer}"}
+          %td
+            .dot{style: "background-color: gainsboro"}
+          %td= inactive_streamer
+          %td{style: 'text-align: center;'}= 0
+
+    - unless any_streamers || any_inactive_streamers
       .no_streamers{style: 'margin-top: 1rem; text-align: center;'}= t('partials.streamers.not_found')

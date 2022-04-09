@@ -63,10 +63,17 @@ class ApplicationController < ActionController::Base
   require 'json'
   def set_streamers
     return unless session['country_code'] == 'de' || session['country_code'] == 'fr' || session['country_code'] == 'lu'
+    lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
-      language = session['country_code'] == 'lu' ? 'lb' : session['country_code'] #blup
-      url = "https://api.twitch.tv/helix/streams?game_id=504461&language=#{language}"
+      url = "https://api.twitch.tv/helix/streams?game_id=504461"
+      if session['country_code'] == 'lu'
+        lu_streamers.each do |twitch_username|
+          url = url + "&user_login=#{twitch_username}"
+        end
+      else
+        url = url + "&language=#{session['country_code']}"
+      end
       puts "Requesting: GET #{url}"
       begin
         json_data = JSON.parse(URI.open(url,
@@ -83,6 +90,11 @@ class ApplicationController < ActionController::Base
         Rails.cache.delete("twitch_token")
         break # do not cache if theres no valid data
       end
+    end
+
+    if session['country_code'] == 'lu'
+      all_streamer_logins = @streamers_json.map { |s| s['user_login']}
+      @inactive_streamers = lu_streamers.reject{ |s| all_streamer_logins.include?(s) }
     end
   end
 
