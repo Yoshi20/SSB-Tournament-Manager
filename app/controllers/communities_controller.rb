@@ -36,6 +36,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/new
   def new
     @community = Community.new
+    @community.country_code = session['country_code']
   end
 
   # GET /communities/1/edit
@@ -290,25 +291,45 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # def reunion
-  #   @communities = Community.all_fr.where(region:'reunion').order(name: :desc)
-  # end
-  #
-  # def martinique
-  #   @communities = Community.all_fr.where(region:'martinique').order(name: :desc)
-  # end
-  #
-  # def french_guiana
-  #   @communities = Community.all_fr.where(region:'french_guiana').order(name: :desc)
-  # end
-  #
-  # def guadeloupe
-  #   @communities = Community.all_fr.where(region:'guadeloupe').order(name: :desc)
-  # end
-  #
-  # def mayotte
-  #   @communities = Community.all_fr.where(region:'mayotte').order(name: :desc)
-  # end
+  def reunion
+    @region = 'Reunion'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def martinique
+    @region = 'Martinique'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def french_guiana
+    @region = 'Guyane'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def guadeloupe
+    @region = 'Guadeloupe'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def mayotte
+    @region = 'Mayotte'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
 
   def character_discords
     @discords = [

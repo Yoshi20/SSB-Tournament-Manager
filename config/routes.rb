@@ -49,11 +49,11 @@ Rails.application.routes.draw do
   get "/communities/normandie" => "communities#normandie"
   get "/communities/pays_de_la_loire" => "communities#pays_de_la_loire"
   get "/communities/provence_alpes_cote_azur" => "communities#provence_alpes_cote_azur"
-  # get "/communities/reunion" => "communities#reunion"
-  # get "/communities/martinique" => "communities#martinique"
-  # get "/communities/french_guiana" => "communities#french_guiana"
-  # get "/communities/guadeloupe" => "communities#guadeloupe"
-  # get "/communities/mayotte" => "communities#mayotte"
+  get "/communities/reunion" => "communities#reunion"
+  get "/communities/martinique" => "communities#martinique"
+  get "/communities/french_guiana" => "communities#french_guiana"
+  get "/communities/guadeloupe" => "communities#guadeloupe"
+  get "/communities/mayotte" => "communities#mayotte"
   get "/communities/character_discords" => "communities#character_discords"
   resources :communities
 

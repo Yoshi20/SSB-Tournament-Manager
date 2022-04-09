@@ -17,6 +17,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+    @feedback.country_code = session['country_code']
   end
 
   # GET /feedbacks/1/edit

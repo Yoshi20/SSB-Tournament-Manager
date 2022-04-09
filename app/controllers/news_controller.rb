@@ -18,6 +18,7 @@ class NewsController < ApplicationController
   # GET /news/new
   def new
     @news = News.new
+    @news.country_code = session['country_code']
   end
 
   # GET /news/1/edit
