@@ -1179,3 +1179,12 @@ en:
       custom_datetime_date_and_no_time: "%d %B"
       custom_datetime_weekday_date_and_year: "%A, %d %B %Y"
       custom_datetime_with_weekday: "%A, %d %B at %H:%M"
+
+  imprint:
+    title1: "Disclaimer"
+    text1: "The author assumes no liability for the correctness, accuracy, timeliness, reliability and completeness of the information."
+    text2: "Liability claims against the author for material or immaterial damage resulting from access to, use or non-use of the published information, misuse of the connection or technical faults are excluded."
+    text3: "All offers are non-binding. The author expressly reserves the right to change, supplement or delete parts of the pages or the entire offer without prior notice or to discontinue publication temporarily or permanently."
+    title2: "Disclaimer for Links"
+    text4: "References and links to third-party websites are outside our area of responsibility. It rejected any responsibility for such websites. Access to and use of such websites is at the user's own risk."
+    source: "Source:"

@@ -1179,6 +1179,16 @@ fr:
       custom_datetime_weekday_date_and_year: "%A, %d %B %Y"
       custom_datetime_with_weekday: "%A, %d %B à %H:%M"
 
+  imprint:
+    title1: "Avertissement"
+    text1: "L'auteur décline toute responsabilité quant à l'exactitude, la précision, l'actualité, la fiabilité et l'exhaustivité des informations."
+    text2: "Les prétentions en responsabilité à l'encontre de l'auteur pour des dommages matériels ou immatériels résultant de l'accès, de l'utilisation ou de la non-utilisation des informations publiées, d'une mauvaise utilisation de la connexion ou de défauts techniques sont exclues."
+    text3: "Toutes les offres sont sans engagement. L'auteur se réserve expressément le droit de modifier, de compléter ou de supprimer des parties de pages ou l'ensemble de l'offre sans préavis ou d'interrompre temporairement ou définitivement la publication."
+    title2: "Avis de non-responsabilité pour les liens"
+    text4: "Les références et les liens vers des sites Web tiers ne relèvent pas de notre domaine de responsabilité. Il a rejeté toute responsabilité pour ces sites Web. L'accès et l'utilisation de ces sites Web se font aux risques et périls de l'utilisateur."
+    source: "La source:"
+
+
 
   thredded:
     users:
