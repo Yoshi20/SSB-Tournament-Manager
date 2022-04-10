@@ -1,0 +1,20 @@
+- set_meta_tags description: meta_tag_description('Teams')
+
+.row
+  .col
+    %h1.page__title= t('teams.title')
+
+.row
+  - if @teams.any?
+    - @teams.each_with_index do |team, i|
+      .col-6
+        = render team, index: i, truncate: false
+  - else
+    .col.text-center
+      %p= t('teams.no_teams_yet')
+
+- if current_user.present? && current_user.admin?
+  .admin-actions
+    .admin-actions__link
+      = link_to new_team_path , class:'btn btn-default btn-square' do
+        %span.material-icons.admin-actions__link__icon= 'add'

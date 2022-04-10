@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   get "/communities/character_discords" => "communities#character_discords"
   resources :communities
 
+  resources :teams
+
   resources :news
   resources :feedbacks
   get 'administrators' => 'administrators#index'

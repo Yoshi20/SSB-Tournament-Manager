@@ -36,8 +36,12 @@
               = link_to t('players.individuals'), players_path, class: 'dropdown-item'
               = link_to t('video.title'), videos_path, class: 'dropdown-item'
 
+          %li.nav-item{role: "presentation", class: (@section == 'teams' ? 'active' : 'inactive')}
+            = link_to t('teams.title'), teams_path, class: 'nav-link'
+
       .col-6
         %ul.navbar-nav.navbar-main.ml-auto
+
           %li.nav-item{role: "presentation", class: (@section == 'streams' ? 'active' : 'inactive')}
             = link_to 'Streams', streams_path, class: 'nav-link'
 

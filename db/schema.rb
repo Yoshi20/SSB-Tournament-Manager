@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_162718) do
+ActiveRecord::Schema.define(version: 2022_04_10_101716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,11 @@ ActiveRecord::Schema.define(version: 2022_04_04_162718) do
     t.string "twitch_username"
   end
 
+  create_table "players_teams", id: false, force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "team_id", null: false
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.bigint "player_id"
     t.bigint "tournament_id"
@@ -163,6 +168,29 @@ ActiveRecord::Schema.define(version: 2022_04_04_162718) do
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name_long"
+    t.string "name_short"
+    t.string "description"
+    t.string "website"
+    t.string "discord"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "youtube"
+    t.string "twitch"
+    t.string "image_link"
+    t.string "image_height"
+    t.string "image_width"
+    t.string "region"
+    t.string "country_code"
+    t.boolean "is_sponsoring_players"
+    t.boolean "is_recruiting"
+    t.string "recruiting_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "thredded_categories", force: :cascade do |t|

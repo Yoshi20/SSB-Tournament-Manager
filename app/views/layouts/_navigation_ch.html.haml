@@ -11,7 +11,7 @@
       = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
       = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+    %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
       = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
@@ -39,6 +39,9 @@
         = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
         = link_to t('players.individuals'), players_path, class: 'dropdown-item'
         = link_to t('video.title'), videos_path, class: 'dropdown-item'
+
+    %li.nav-item{role: "presentation", class: (@section == 'teams' ? 'active' : 'inactive')}
+      = link_to t('teams.title'), teams_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
       = link_to t('rules.title'), rules_path, class: 'nav-link'

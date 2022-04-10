@@ -1193,6 +1193,10 @@ fr:
     text4: "Les références et les liens vers des sites Web tiers ne relèvent pas de notre domaine de responsabilité. Il a rejeté toute responsabilité pour ces sites Web. L'accès et l'utilisation de ces sites Web se font aux risques et périls de l'utilisateur."
     source: "La source:"
 
+  teams:
+     title: "Équipes"
+     no_teams_yet: "Pas encore d'équipes"
+
 
 
   thredded:

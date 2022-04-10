@@ -1,0 +1,64 @@
+= form_for @team do |f|
+  - if @team.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+      %ul
+        - @team.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name_long
+    = f.text_field :name_long
+  .field
+    = f.label :name_short
+    = f.text_field :name_short
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :website
+    = f.text_field :website
+  .field
+    = f.label :discord
+    = f.text_field :discord
+  .field
+    = f.label :twitter
+    = f.text_field :twitter
+  .field
+    = f.label :instagram
+    = f.text_field :instagram
+  .field
+    = f.label :facebook
+    = f.text_field :facebook
+  .field
+    = f.label :youtube
+    = f.text_field :youtube
+  .field
+    = f.label :twitch
+    = f.text_field :twitch
+  .field
+    = f.label :image_link
+    = f.text_field :image_link
+  .field
+    = f.label :image_height
+    = f.text_field :image_height
+  .field
+    = f.label :image_width
+    = f.text_field :image_width
+  .field
+    = f.label :region
+    = f.text_field :region
+  .field
+    = f.label :country_code
+    = f.text_field :country_code
+  .field
+    = f.label :is_sponsoring_players
+    = f.check_box :is_sponsoring_players
+  .field
+    = f.label :is_recruiting
+    = f.check_box :is_recruiting
+  .field
+    = f.label :recruiting_description
+    = f.text_field :recruiting_description
+  .actions
+    = f.submit 'Save'

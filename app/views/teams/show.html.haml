@@ -1,0 +1,60 @@
+%p#notice= notice
+
+%p
+  %b Name long:
+  = @team.name_long
+%p
+  %b Name short:
+  = @team.name_short
+%p
+  %b Description:
+  = @team.description
+%p
+  %b Website:
+  = @team.website
+%p
+  %b Discord:
+  = @team.discord
+%p
+  %b Twitter:
+  = @team.twitter
+%p
+  %b Instagram:
+  = @team.instagram
+%p
+  %b Facebook:
+  = @team.facebook
+%p
+  %b Youtube:
+  = @team.youtube
+%p
+  %b Twitch:
+  = @team.twitch
+%p
+  %b Image link:
+  = @team.image_link
+%p
+  %b Image height:
+  = @team.image_height
+%p
+  %b Image width:
+  = @team.image_width
+%p
+  %b Region:
+  = @team.region
+%p
+  %b Country code:
+  = @team.country_code
+%p
+  %b Is sponsoring players:
+  = @team.is_sponsoring_players
+%p
+  %b Is recruiting:
+  = @team.is_recruiting
+%p
+  %b Recruiting description:
+  = @team.recruiting_description
+
+= link_to 'Edit', edit_team_path(@team)
+\|
+= link_to 'Back', teams_path

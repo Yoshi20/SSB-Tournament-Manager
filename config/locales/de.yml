@@ -1193,3 +1193,7 @@ de:
     title2: "Haftungsausschluss für Links"
     text4: "Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des jeweiligen Nutzers."
     source: "Quelle:"
+
+  teams:
+     title: "Teams"
+     no_teams_yet: "Noch keine Teams vorhanden"

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_long: MyString
+  name_short: MyString
+  description: MyString
+  website: MyString
+  discord: MyString
+  twitter: MyString
+  instagram: MyString
+  facebook: MyString
+  youtube: MyString
+  twitch: MyString
+  image_link: MyString
+  image_height: MyString
+  image_width: MyString
+  region: MyString
+  country_code: MyString
+  is_sponsoring_players: false
+  is_recruiting: false
+  recruiting_description: MyString
+
+two:
+  name_long: MyString
+  name_short: MyString
+  description: MyString
+  website: MyString
+  discord: MyString
+  twitter: MyString
+  instagram: MyString
+  facebook: MyString
+  youtube: MyString
+  twitch: MyString
+  image_link: MyString
+  image_height: MyString
+  image_width: MyString
+  region: MyString
+  country_code: MyString
+  is_sponsoring_players: false
+  is_recruiting: false
+  recruiting_description: MyString
