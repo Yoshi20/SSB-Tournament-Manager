@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action { @section = 'teams' }
   before_action :set_team, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /teams or /teams.json
   def index
@@ -14,6 +15,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @team.country_code = session['country_code']
   end
 
   # GET /teams/1/edit
@@ -23,13 +25,13 @@ class TeamsController < ApplicationController
   # POST /teams or /teams.json
   def create
     @team = Team.new(team_params)
-
+    @team.country_code = session['country_code']
     respond_to do |format|
       if @team.save
-        format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
+        format.html { redirect_to @team, notice: t('flash.notice.team_created') }
         format.json { render :show, status: :created, location: @team }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
@@ -39,10 +41,10 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to team_url(@team), notice: "Team was successfully updated." }
+        format.html { redirect_to @team, notice: t('flash.notice.team_updated') }
         format.json { render :show, status: :ok, location: @team }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
@@ -51,9 +53,8 @@ class TeamsController < ApplicationController
   # DELETE /teams/1 or /teams/1.json
   def destroy
     @team.destroy
-
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: "Team was successfully destroyed." }
+      format.html { redirect_to communities_path, notice: t('flash.notice.team_deleted') }
       format.json { head :no_content }
     end
   end
@@ -66,6 +67,18 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.require(:team).permit(:name_long, :name_short, :description, :website, :discord, :twitter, :instagram, :facebook, :youtube, :twitch, :image_link, :image_height, :image_width, :region, :country_code, :is_sponsoring_players, :is_recruiting, :recruiting_description)
+      params.require(:team).permit(:name_long, :name_short, :description,
+        :website, :discord, :twitter, :instagram, :facebook, :youtube, :twitch,
+        :image_link, :image_height, :image_width, :region,
+        :is_sponsoring_players, :is_recruiting, :recruiting_description)
+    end
+
+    def authenticate_admin!
+      unless current_user.present? && current_user.admin?
+        respond_to do |format|
+          format.html { redirect_to teams_path, alert: t('flash.alert.unauthorized') }
+          format.json { render json: {}, status: :unauthorized }
+        end
+      end
     end
 end
