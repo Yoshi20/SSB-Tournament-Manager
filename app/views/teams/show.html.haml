@@ -151,3 +151,22 @@
         .col
           %h3= t('teams.recruiting_description')
           = @team.recruiting_description || '-'
+
+  -if current_user.present? && current_user.super_admin?
+    .team__stats
+      .row
+        .col
+          %h3 (Super Admin info)
+      .row
+        .col
+          .team__stats__single
+            %strong= @team.updated_at.to_s(:custom_datetime)
+            %span= 'updated_at'
+        .col
+          .team__stats__single
+            %strong= link_to @team.user.player.gamer_tag, @team.user.player
+            %span= 'Creator'
+        .col
+          .team__stats__single.team__stats__single--last
+            %strong= @team.created_at.to_s(:custom_datetime)
+            %span= 'created_at'
