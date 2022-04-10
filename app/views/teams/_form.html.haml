@@ -53,11 +53,11 @@
     = f.text_area :description, class: 'form-control', rows: '10'
   .field.form-group
     .form-check
-      = f.check_box :is_sponsoring_players, checked: (params[:team].present? ? (params[:team][:is_sponsoring_players] == "1") : true), class:'form-check-input mr-2'
+      = f.check_box :is_sponsoring_players, checked: (params[:team].present? ? (params[:team][:is_sponsoring_players] == "1") : false), class:'form-check-input mr-2'
       = f.label :is_sponsoring_players, t('teams.is_sponsoring_players'), class:'form-check-label'
   .field.form-group
     .form-check
-      = f.check_box :is_recruiting, checked: (params[:team].present? ? (params[:team][:is_recruiting] == "1") : true), class:'form-check-input mr-2'
+      = f.check_box :is_recruiting, checked: (params[:team].present? ? (params[:team][:is_recruiting] == "1") : false), class:'form-check-input mr-2'
       = f.label :is_recruiting, t('teams.is_recruiting'), class:'form-check-label'
   .field.form-group
     = f.label :recruiting_description, t('teams.recruiting_description')

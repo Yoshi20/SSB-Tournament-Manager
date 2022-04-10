@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all_from(session['country_code']).includes(:players)
+    @teams = Team.all_from(session['country_code']).order(members_counter: :desc)
   end
 
   # GET /teams/1 or /teams/1.json
@@ -79,6 +79,7 @@ class TeamsController < ApplicationController
       return;
     end
     @team.players << player_to_add
+    @team.update(members_counter: @team.members_counter + 1)
     redirect_to @team, notice: t('flash.notice.add_player_to_team')
   end
 
@@ -95,6 +96,7 @@ class TeamsController < ApplicationController
       return;
     end
     @team.players.delete(player_to_remove)
+    @team.update(members_counter: @team.members_counter - 1) if @team.members_counter - 1 > 0
     redirect_to @team, notice: t('flash.notice.remove_player_from_team')
   end
 

@@ -13,5 +13,5 @@
     .row{style: 'text-align: right; margin-bottom: -10px; margin-right: -10px;'}
       .col
         %span.material-icons{style: 'font-size: 20px; position: relative; top: 4px;'}= 'people'
-        %span{style: 'font-size: 16px;'}= team.players.count
+        %span{style: 'font-size: 16px;'}= team.members_counter
   %a.stretched-link{:href => team_path(team)}
