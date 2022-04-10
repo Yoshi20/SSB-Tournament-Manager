@@ -28,7 +28,7 @@ class CommunitiesController < ApplicationController
     discord_keys = @community.discord.split(',').map(&:strip)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -91,7 +91,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -104,7 +104,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -117,7 +117,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -130,7 +130,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -143,7 +143,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -156,7 +156,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -169,7 +169,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -182,7 +182,7 @@ class CommunitiesController < ApplicationController
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -381,26 +381,6 @@ class CommunitiesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to communities_path, alert: t('flash.alert.unauthorized') }
         format.json { render json: {}, status: :unauthorized }
-      end
-    end
-  end
-
-  require 'open-uri'
-  require 'json'
-  def request_discord_invite(key)
-    Rails.cache.fetch("discord_invite_#{key}", expires_in: 1.day) do
-      url = "https://discord.com/api/v9/invites/#{key}?with_counts=true"
-      puts "Requesting: GET #{url}"
-      begin
-        json_data = JSON.parse(URI.open(url).read)
-      rescue OpenURI::HTTPError => ex
-        puts ex
-      end
-      if json_data.present? && !json_data["guild"].nil?
-        json_data
-      else
-        puts "=> No guild parameter found! json_data = #{json_data.to_s}"
-        break # do not cache if theres no valid data
       end
     end
   end

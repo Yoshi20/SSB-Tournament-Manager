@@ -344,12 +344,12 @@ class TournamentsController < ApplicationController
     end
 
     if player_to_remove.nil?
-      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.player_not_found')}"
+      redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.player_not_found')}"
       return;
     end
 
     if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
+      redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end
 

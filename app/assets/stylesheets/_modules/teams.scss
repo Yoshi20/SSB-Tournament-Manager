@@ -1,16 +1,16 @@
-.community {
+.team {
   margin-bottom: 1rem;
   .admin-actions {
     top: 1rem;
     right: auto;
     left: 3.2rem;
   }
-  .community__stats {
+  .team__stats {
     margin-top: 2rem;
-    .community__stats__single {
+    .team__stats__single {
       text-align: center;
       border-right: 1px solid $color-grey-light;
-      &.community__stats__single--last {
+      &.team__stats__single--last {
         border-right: none;
       }
       strong, span {
@@ -21,24 +21,7 @@
       }
     }
   }
-  .community__media_channels {
+  .team__media_channels {
     margin-top: 2rem;
-  }
-}
-
-.dom-tom-map {
-  fill: #E9EFF9;
-  stroke: #A1A1A1;
-  stroke-width: 10;
-  path:hover {
-    cursor: pointer; fill: #B1D6FF;
-  }
-}
-
-.france-map {
-  fill: #E9EFF9;
-  stroke: #A1A1A1;
-  path:hover {
-    cursor: pointer; fill: #B1D6FF;
   }
 }

@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   resources :communities
 
   resources :teams
+  post 'teams/add_player/:id' => 'teams#add_player'
+  post 'teams/remove_player/:id' => 'teams#remove_player'
 
   resources :news
   resources :feedbacks

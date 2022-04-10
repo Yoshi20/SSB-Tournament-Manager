@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_10_101716) do
+ActiveRecord::Schema.define(version: 2022_04_10_172600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_101716) do
     t.string "recruiting_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
   end
 
   create_table "thredded_categories", force: :cascade do |t|
@@ -496,6 +497,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_101716) do
   end
 
   add_foreign_key "players", "users"
+  add_foreign_key "teams", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade
