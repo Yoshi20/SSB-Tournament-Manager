@@ -773,6 +773,8 @@ de:
     past_tournaments: "Vergangene Turniere"
     videos: "Videos"
     individuals: "Liste"
+    teams: "Teams"
+    joined_teams: "Teams beigetreten"
 
   statistics:
     title: "Übersicht"

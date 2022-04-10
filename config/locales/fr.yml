@@ -772,6 +772,8 @@ fr:
     past_tournaments: "Tournois passés"
     videos: "Vidéos"
     individuals: "Liste"
+    teams: "Équipes"
+    joined_teams: "Équipes jointes"
 
   statistics:
     title: "Aperçu"

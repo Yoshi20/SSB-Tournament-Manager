@@ -71,6 +71,10 @@
         %li.nav-item
           %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
             = t('players.videos')
+      - if @player.teams.any?
+        %li.nav-item
+          %a#teams-tab.nav-link{'data-toggle'=>'tab', href: '#teams', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.teams')
   - else
     %ul{style: "margin-bottom: 2rem;"}
 
@@ -260,3 +264,19 @@
                 %p
                   %strong= "#{ex}:"
                   = "https://youtu.be/#{v_id}"
+
+    -# teams ---------------------------------------------------------------
+    - if @player.teams.any?
+      .tab-pane.fade.show#teams{role: 'tabpanel', 'aria-labelledby'=>'teams-tab'}
+        .player__teams
+          %table.table.table-hover.table-borderless
+            %thead.table-header
+              %tr
+                %th
+                  %h3= t('players.joined_teams')
+                %th
+            %tbody.table-content.with-show
+              - @player.teams.each_with_index do |team, i|
+                %tr{'data-id': team.id, 'data-component'=>'team'}
+                  %td= team.name_long
+                  %td.text-center= team.name_short
