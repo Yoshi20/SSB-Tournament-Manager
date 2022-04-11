@@ -29,6 +29,16 @@ class UsersController < ApplicationController
             f.update(country_code: user_params['country_code'])
           end
         end
+        # update admin tag on player
+        if @user.is_admin && !@user.player.role_list.include?("admin")
+          user_player = @user.player
+          user_player.role_list.add("admin")
+          user_player.save
+        elsif !@user.is_admin && @user.player.role_list.include?("admin")
+          user_player = @user.player
+          user_player.role_list.remove("admin")
+          user_player.save
+        end
         format.html { redirect_to users_path, notice: t('flash.notice.updating_user') }
         format.json { render :show, status: :ok, location: @user }
       else
