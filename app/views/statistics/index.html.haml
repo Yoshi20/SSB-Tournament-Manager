@@ -91,31 +91,31 @@
 
   .statistic__stats
     .row
-      - roles_raw = roles_raw_from(session['country_code'])
+      - roles_raw = roles_raw_from(session['country_code']).prepend('admin')
       .col
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
-              %th.text-center= t("users.roles")
+              %th.text-center= t("players.role")
               %th.text-center= t('statistics.number_of_players')
           %tbody.table-content.with-show
-            - roles_raw[0... roles_raw.length/2].each do |role|
-              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role)}
+            - roles_raw[0... (roles_raw.length.to_f/2).ceil].each do |role|
+              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role, anchor: 'roles')}
                 %td.text-center
                   %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
-                %td.text-center= @users.tagged_with(role).count
+                %td.text-center= @players.tagged_with(role).count
       .col
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
-              %th.text-center= t("users.roles")
+              %th.text-center= t("players.role")
               %th.text-center= t('statistics.number_of_players')
           %tbody.table-content.with-show
-            - roles_raw[roles_raw.length/2.. -1].each do |role|
-              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role)}
+            - roles_raw[(roles_raw.length.to_f/2).ceil.. -1].each do |role|
+              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role, anchor: 'roles')}
                 %td.text-center
                   %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
-                %td.text-center= @users.tagged_with(role).count
+                %td.text-center= @players.tagged_with(role).count
 
   .statistic__stats
     .row
@@ -128,9 +128,9 @@
               %th.text-center= t('statistics.number_of_players')
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
-            - regions_raw[0... regions_raw.length/2].each do |region|
+            - regions_raw[0... (regions_raw.length.to_f/2).ceil].each do |region|
               - region_players = @players.where(region: region)
-              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
+              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region, anchor: 'data')}
                 %td.text-center
                   .tooltip.tooltip_region
                     = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
@@ -149,9 +149,9 @@
               %th.text-center= t('statistics.number_of_players')
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
-            - regions_raw[regions_raw.length/2.. -1].each do |region|
+            - regions_raw[(regions_raw.length.to_f/2).ceil.. -1].each do |region|
               - region_players = @players.where(region: region)
-              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region)}
+              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region, anchor: 'data')}
                 %td.text-center
                   .tooltip.tooltip_region
                     = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
@@ -175,7 +175,7 @@
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
             .main_chars
-              - all_char_files[0... all_char_files.length/2].each do |file|
+              - all_char_files[0... (all_char_files.length.to_f/2).ceil].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
                 %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}
@@ -199,7 +199,7 @@
               %th.text-center= "Ø-#{t('w_l')}"
           %tbody.table-content.with-show
             .main_chars
-              - all_char_files[all_char_files.length/2.. -1].each do |file|
+              - all_char_files[(all_char_files.length.to_f/2).ceil.. -1].each do |file|
                 - character = file.sub('.png', '')
                 - character_players = @players.where("? = ANY (main_characters)", character)
                 %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}

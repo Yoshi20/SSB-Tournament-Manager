@@ -789,6 +789,8 @@ de:
     individuals: "Liste"
     teams: "Teams"
     joined_teams: "Teams beigetreten"
+    role: "Rolle"
+    roles: "Rollen"
 
   statistics:
     title: "Übersicht"
@@ -1195,7 +1197,6 @@ de:
     chars_min: "(%{pw_length} Zeichen mindestens)"
     password_confirmation: "Passwort bestätigen"
     register: "Registrieren"
-    roles: "Rollen"
 
   recaptcha:
     errors:

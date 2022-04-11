@@ -10,14 +10,14 @@ class PlayersController < ApplicationController
   def index
     if params[:filter].present? && params['filter-data'].present?
       if params[:filter] == 'region'
-        @players = Player.all_from(session['country_code']).includes(user: :taggings).where(region: params['filter-data'])
+        @players = Player.all_from(session['country_code']).includes(:taggings).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
-        @players = Player.all_from(session['country_code']).includes(user: :taggings).where("? = ANY (main_characters)", params['filter-data'])
+        @players = Player.all_from(session['country_code']).includes(:taggings).where("? = ANY (main_characters)", params['filter-data'])
       elsif params[:filter] == 'role'
-        @players = Player.all_from(session['country_code']).includes(user: :taggings).tagged_with(role)
+        @players = Player.all_from(session['country_code']).includes(:taggings).tagged_with(params['filter-data'])
       end
     else
-      @players = Player.all_from(session['country_code']).includes(user: :taggings)
+      @players = Player.all_from(session['country_code']).includes(:taggings)
     end
 
     # handle search parameter
@@ -28,7 +28,7 @@ class PlayersController < ApplicationController
           flash.now[:alert] = t('flash.alert.search_players')
         end
       rescue ActiveRecord::StatementInvalid
-        @players = Player.all_from(session['country_code']).includes(user: :taggings).iLikeSearch(params[:search])
+        @players = Player.all_from(session['country_code']).includes(:taggings).iLikeSearch(params[:search])
         if @players.empty?
           flash.now[:alert] = t('flash.alert.search_players')
         end
@@ -49,15 +49,15 @@ class PlayersController < ApplicationController
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       when 'roles'
-        # @players = @players.order("count(players.user.taggings)").paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        # @players = @players.order("players.role_list").paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         #blup: working but way too slow
         if params[:order] == "desc"
           @players = @players.sort_by do |p|
-            p.user.role_list
+            p.role_list
           end.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         else
           @players = @players.sort_by do |p|
-            p.user.role_list
+            p.role_list
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       else
@@ -128,6 +128,8 @@ class PlayersController < ApplicationController
         main_character_skins.each do |skin_nr|
           @player.main_character_skins << skin_nr
         end
+        new_role_list = params[:player][:role_list].compact.reject { |c| c.empty? }
+        @player.role_list = new_role_list if @player.role_list != new_role_list
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag

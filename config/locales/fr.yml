@@ -788,6 +788,8 @@ fr:
     individuals: "Liste"
     teams: "Équipes"
     joined_teams: "Équipes jointes"
+    role: "Rôle"
+    roles: "Rôles"
 
   statistics:
     title: "Aperçu"
@@ -1194,7 +1196,6 @@ fr:
     chars_min: "(%{pw_length} caractères minimum)"
     password_confirmation: "Confirmation du mot de passe"
     register: "Enregistrer"
-    roles: "Rôles"
 
   recaptcha:
     errors:

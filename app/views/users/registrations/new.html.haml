@@ -20,6 +20,9 @@
         %em= "(XYZ)"
         = text_field_tag :prefix, params[:prefix], class: 'form-control'
       .form-group
+        = label_tag :role_list, t('players.roles')
+        = select_tag :role_list, options_for_select(roles_for_select_from(session['country_code']), (params[:role_list].present? ? params[:role_list] : ["player"])), multiple: true, class: 'form-control', id: 'select2'
+      .form-group
         = label_tag :discord_username, t('players.discord_username')
         %em= "(User#1234)"
         = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
@@ -54,9 +57,6 @@
         - elsif session['country_code'] == 'lu'
           %em= "(621 123 456)"
         = f.text_field :mobile_number, class: 'form-control'
-      .form-group
-        = f.label :role_list, t('users.roles')
-        = f.select :role_list, options_for_select(roles_for_select_from(session['country_code']), params[:user].present? ? params[:user][:role_list] : []), {}, multiple: "multiple", class: 'form-control', id: 'select2'
       .form-group
         = f.label :password, "#{t('password')} *"
         - if @minimum_password_length
