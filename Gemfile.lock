@@ -52,6 +52,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (8.1.0)
+      activerecord (>= 5.0, < 6.2)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
     addressable (2.7.0)
@@ -301,6 +303,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -372,6 +375,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   acts_as_list
   bcrypt
   better_errors
@@ -411,6 +415,7 @@ DEPENDENCIES
   rails_12factor
   recaptcha
   sassc-rails
+  select2-rails
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)

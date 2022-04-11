@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   scope :all_from, ->(country_code) { where(country_code: country_code) }
 
+  acts_as_taggable_on :roles
+
   MAX_USERS_PER_PAGE = 100
 
   # Include default devise modules. Others available are:

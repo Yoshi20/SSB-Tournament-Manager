@@ -221,6 +221,18 @@ fr:
       male: "Homme"
       female: "Femme"
       other: "Autre"
+    roles:
+      tournament_organizer: "TO"
+      forum_moderator: "Forum moderator"
+      news_editor: "News editor"
+      community_editor: "Community editor"
+      team_captain: "Team captain"
+      streamer: "Streamer"
+      photographer: "Photographer"
+      caster: "Caster"
+      designer: "Designer"
+      content_creator: "Content creator"
+      coach: "Coach"
 
   coffee:
     copied: "Copié \"%{item}\" dans le presse-papier"
@@ -1180,6 +1192,7 @@ fr:
     chars_min: "(%{pw_length} caractères minimum)"
     password_confirmation: "Confirmation du mot de passe"
     register: "Enregistrer"
+    roles: "Rôles"
 
   recaptcha:
     errors:

@@ -55,6 +55,9 @@
           %em= "(621 123 456)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
+        = f.label :role_list, t('users.roles')
+        = f.select :role_list, options_for_select(roles_for_select_from(session['country_code']), params[:user].present? ? params[:user][:role_list] : []), {}, multiple: "multiple", class: 'form-control', id: 'select2'
+      .form-group
         = f.label :password, "#{t('password')} *"
         - if @minimum_password_length
           %em= t('users.chars_min', pw_length: @minimum_password_length)
@@ -155,3 +158,17 @@
         = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
       .form-group
         = f.submit t('users.register'), class:'btn btn-default'
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    $('#select2').select2({
+      theme: "bootstrap",
+      // theme: "classic",
+      language: I18n.locale
+    });
+  });
+
+:css
+  .select2-selection__rendered {
+    background: #E5E9EB;
+  }

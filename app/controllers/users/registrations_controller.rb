@@ -23,6 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       user = User.find_by(email: user_params[:email])
       if user.present? && user.id == user_params[:id]
+        # Add the roles to user
+        user.role_list = params[:user][:role_list].compact.reject { |c| c.empty? }
+        user.save
         # User seems to be created successfully -> Create a new player and assign it to this user
         player = Player.new
         player.country_code = user.country_code
@@ -72,6 +75,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
           flash[:alert] = t('flash.alert.creating_player')
           user.destroy
         end
+      else
+        raise "(user.present? && user.id == user_params[:id]) is false!"
       end
     else
       self.resource = resource_class.new sign_up_params
@@ -91,9 +96,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    user_params = Hash.new
+    super do |current_user_params|
+      user_params = current_user_params
+    end
+    new_role_list = params[:user][:role_list].compact.reject { |c| c.empty? }
+    if user_params[:role_list] != new_role_list
+      user = User.find(user_params[:id])
+      user.role_list = new_role_list
+      user.save
+    end
+  end
 
   # DELETE /resource
   # def destroy

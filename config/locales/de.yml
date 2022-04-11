@@ -221,6 +221,18 @@ de:
       male: "Männlich"
       female: "Weiblich"
       other: "Sonstiges"
+    roles:
+      tournament_organizer: "TO"
+      forum_moderator: "Forum moderator"
+      news_editor: "News editor"
+      community_editor: "Community editor"
+      team_captain: "Team captain"
+      streamer: "Streamer"
+      photographer: "Photographer"
+      caster: "Caster"
+      designer: "Designer"
+      content_creator: "Content creator"
+      coach: "Coach"
 
   coffee:
     copied: "\"%{item}\" in die Zwischenablage kopiert"
@@ -1181,6 +1193,7 @@ de:
     chars_min: "(%{pw_length} Zeichen mindestens)"
     password_confirmation: "Passwort bestätigen"
     register: "Registrieren"
+    roles: "Rollen"
 
   recaptcha:
     errors:

@@ -54,6 +54,30 @@ module PlayerHelper
     genders.zip(genders_raw)
   end
 
+  def all_roles_raw
+    ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "news_editor", "photographer", "streamer", "team_captain", "tournament_organizer"]
+  end
+
+  def roles_raw_from(country_code)
+    if country_code == 'ch'
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "streamer", "team_captain", "tournament_organizer"]
+    elsif country_code == 'de'
+      ["caster", "coach", "content_creator", "designer", "forum_moderator", "photographer", "streamer", "team_captain", "tournament_organizer"]
+    elsif country_code == 'fr'
+      ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "photographer", "streamer", "team_captain", "tournament_organizer"]
+    elsif country_code == 'lu'
+      ["caster", "coach", "content_creator", "designer", "photographer", "streamer", "team_captain", "tournament_organizer"]
+    end
+  end
+
+  def roles_from(country_code)
+    t(roles_raw_from(country_code), scope: 'defines.roles')
+  end
+
+  def roles_for_select_from(country_code)
+    roles_from(country_code).zip(roles_raw_from(country_code))
+  end
+
   def birth_years
     year = Date.today.year
     ((year-100)..year).to_a.sort().reverse()

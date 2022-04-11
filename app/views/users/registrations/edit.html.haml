@@ -26,6 +26,9 @@
           %em= "(621 123 456)"
         = f.text_field :mobile_number, class: 'form-control'
       .form-group
+        = f.label :role_list, t('users.roles')
+        = f.select :role_list, options_for_select(roles_for_select_from(session['country_code']), resource.role_list), {}, multiple: "multiple", class: 'form-control', id: 'select2'
+      .form-group
         = f.label :password, t('users.new_password')
         %i= t('users.leave_blank')
         = f.password_field :password, autocomplete: "off", class: 'form-control'
@@ -92,3 +95,17 @@
     %p
       = t('users.unhappy')
       = button_to t('users.delete_account'), user_registration_path, data: { confirm: t('confirm') }, method: :delete, class: 'btn btn-block btn-sstm'
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    $('#select2').select2({
+      theme: "bootstrap",
+      // theme: "classic",
+      language: I18n.locale
+    });
+  });
+
+:css
+  .select2-selection__rendered {
+    background: #E5E9EB;
+  }
