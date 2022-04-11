@@ -77,7 +77,7 @@ class NewsController < ApplicationController
     end
 
     def authenticate_admin!
-      unless current_user.present? && current_user.admin?
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("news_editor"))
         respond_to do |format|
           format.html { redirect_to news_index_path, alert: t('flash.alert.unauthorized') }
           format.json { render json: {}, status: :unauthorized }
