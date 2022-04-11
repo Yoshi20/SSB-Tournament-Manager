@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           user.destroy
         end
       else
-        raise "(user.present? && user.id == user_params[:id]) is false!"
+        # nothing to do here (Render or redirect was already called in super)
       end
     else
       self.resource = resource_class.new sign_up_params
