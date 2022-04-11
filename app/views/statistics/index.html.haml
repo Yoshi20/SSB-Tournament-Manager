@@ -91,6 +91,34 @@
 
   .statistic__stats
     .row
+      - roles_raw = roles_raw_from(session['country_code'])
+      .col
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("users.roles")
+              %th.text-center= t('statistics.number_of_players')
+          %tbody.table-content.with-show
+            - roles_raw[0... roles_raw.length/2].each do |role|
+              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role)}
+                %td.text-center
+                  %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
+                %td.text-center= @users.tagged_with(role).count
+      .col
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("users.roles")
+              %th.text-center= t('statistics.number_of_players')
+          %tbody.table-content.with-show
+            - roles_raw[roles_raw.length/2.. -1].each do |role|
+              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role)}
+                %td.text-center
+                  %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
+                %td.text-center= @users.tagged_with(role).count
+
+  .statistic__stats
+    .row
       - regions_raw = regions_raw_from(session['country_code'])
       .col
         %table.table.table-hover.table-borderless
