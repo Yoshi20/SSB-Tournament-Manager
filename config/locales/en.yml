@@ -337,8 +337,8 @@ en:
       log_out: "Log out"
       log_out_confirm: "Are you sure you want to log out?"
     footer:
-      administrators_short: "TOs"
-      administrators: "Tournament Organisers"
+      administrators_short: "Admins"
+      administrators: "Administrators"
       imprint: "Imprint"
       privacy_policy: "Privacy&nbsp;Notice"
       contact: "Contact"

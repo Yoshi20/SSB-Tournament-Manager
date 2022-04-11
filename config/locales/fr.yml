@@ -337,8 +337,8 @@ fr:
       log_out: "Se déconnecter"
       log_out_confirm: "Êtes-vous sur de vouloir vous déconnecter?"
     footer:
-      administrators_short: "TOs"
-      administrators: "Tournament Organisers"
+      administrators_short: "Admins"
+      administrators: "Administrateurs"
       imprint: "Informations Légales"
       privacy_policy: "Politique&nbsp;de confidentialité"
       contact: "Contact"
