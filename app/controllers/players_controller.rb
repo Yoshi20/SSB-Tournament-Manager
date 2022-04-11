@@ -128,7 +128,9 @@ class PlayersController < ApplicationController
         main_character_skins.each do |skin_nr|
           @player.main_character_skins << skin_nr
         end
+        # update roles
         new_role_list = params[:player][:role_list].compact.reject { |c| c.empty? }
+        new_role_list.prepend('admin') if @player.user.admin?
         @player.role_list = new_role_list if @player.role_list != new_role_list
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
