@@ -233,6 +233,7 @@ de:
       designer: "Designer"
       content_creator: "Content creator"
       coach: "Coach"
+      admin: "Admin"
 
   coffee:
     copied: "\"%{item}\" in die Zwischenablage kopiert"

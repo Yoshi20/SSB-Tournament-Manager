@@ -233,6 +233,7 @@ en:
       designer: "Designer"
       content_creator: "Content creator"
       coach: "Coach"
+      admin: "Admin"
 
   coffee:
     copied: "Copied \"%{item}\" to the clipboard"

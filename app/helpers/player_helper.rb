@@ -58,6 +58,27 @@ module PlayerHelper
     ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "news_editor", "photographer", "streamer", "team_captain", "tournament_organizer"]
   end
 
+  def all_role_colors
+    {
+      "caster": "#C93C20",
+      "coach": "#3F888F",
+      "community_editor": "#05D2F3",
+      "content_creator": "#826C34",
+      "designer": "#308446",
+      "forum_moderator": "#0A0A0A",
+      "news_editor": "#F22303",
+      "photographer": "#AB3F5D",
+      "streamer": "#79D220",
+      "team_captain": "#F4A900",
+      "tournament_organizer": "#5071B6",
+      "admin": "#FAD201",
+    }
+  end
+
+  def role_color(role)
+    all_role_colors[role.to_sym]
+  end
+
   def roles_raw_from(country_code)
     if country_code == 'ch'
       ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "streamer", "team_captain", "tournament_organizer"]
