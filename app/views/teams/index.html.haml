@@ -13,7 +13,7 @@
     .col.text-center
       %p= t('teams.no_teams_yet')
 
-- if current_user.present? && current_user.admin?
+- if current_user.present? && (current_user.admin? || current_user.has_role?('team_captain'))
   .admin-actions
     .admin-actions__link
       = link_to new_team_path , class:'btn btn-default btn-square' do

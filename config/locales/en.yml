@@ -307,6 +307,7 @@ en:
       remove_player_from_waiting_list: "Player couldn't be removed from the waiting list"
       remove_player_failed: "Player couldn't be removed"
       player_not_in_tournament: "Player is not in the tournament"
+      player_not_in_team: "Player is not in the team"
       first_waiting_player: "but the first player in the waiting list couldn't take the seat"
       tournament_status_error: "Tournament is already set up, started or finished"
       tournament_set_up: "Tournament couldn't be set up"

@@ -30,11 +30,11 @@ class UsersController < ApplicationController
           end
         end
         # update admin tag on player
-        if @user.is_admin && !@user.player.role_list.include?("admin")
+        if @user.is_admin && !@user.has_role?("admin")
           user_player = @user.player
           user_player.role_list.add("admin")
           user_player.save
-        elsif !@user.is_admin && @user.player.role_list.include?("admin")
+        elsif !@user.is_admin && @user.has_role?("admin")
           user_player = @user.player
           user_player.role_list.remove("admin")
           user_player.save

@@ -1,7 +1,8 @@
 class TeamsController < ApplicationController
   before_action { @section = 'teams' }
   before_action :set_team, only: %i[ show edit update destroy add_player remove_player ]
-  before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy, :add_player, :remove_player]
+  before_action :authenticate_team_creator!, only: [:edit, :update, :destroy, :add_player, :remove_player]
 
   # GET /teams or /teams.json
   def index
@@ -92,11 +93,11 @@ class TeamsController < ApplicationController
       return;
     end
     if !@team.players.include?(player_to_remove)
-      redirect_to @team, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.player_not_in_tournament')}"
+      redirect_to @team, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.player_not_in_team')}"
       return;
     end
     @team.players.delete(player_to_remove)
-    @team.update(members_counter: @team.members_counter - 1) if @team.members_counter - 1 > 0
+    @team.update(members_counter: @team.members_counter - 1) if @team.members_counter > 0
     redirect_to @team, notice: t('flash.notice.remove_player_from_team')
   end
 
@@ -115,11 +116,21 @@ class TeamsController < ApplicationController
     end
 
     def authenticate_admin!
-      unless current_user.present? && current_user.admin?
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("team_captain"))
         respond_to do |format|
           format.html { redirect_to teams_path, alert: t('flash.alert.unauthorized') }
           format.json { render json: {}, status: :unauthorized }
         end
       end
     end
+
+    def authenticate_team_creator!
+      unless current_user.present? && (@team.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @team, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @team.errors, status: :unauthorized }
+        end
+      end
+    end
+
 end

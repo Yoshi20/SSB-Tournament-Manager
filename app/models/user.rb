@@ -92,4 +92,8 @@ class User < ApplicationRecord
     I18n.with_locale(locale) { super(notification, *args) }
   end
 
+  def has_role?(role)
+    self.player.role_list.include?(role)
+  end
+
 end
