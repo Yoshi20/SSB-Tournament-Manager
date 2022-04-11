@@ -8,7 +8,7 @@
   .col
     %p= t('communities.body_fr')
 
-  - if current_user.present? and current_user.admin?
+  - if current_user.present? and (current_user.admin? || current_user.has_role?("community_editor"))
     .admin-actions
       .admin-actions__link
         = link_to new_community_path(region: @region), class:'btn btn-default btn-square' do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_082315) do
+ActiveRecord::Schema.define(version: 2022_04_11_193700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2022_04_11_082315) do
     t.string "facebook"
     t.string "youtube"
     t.string "twitch"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -526,6 +529,7 @@ ActiveRecord::Schema.define(version: 2022_04_11_082315) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"

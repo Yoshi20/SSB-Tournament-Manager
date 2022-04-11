@@ -1,6 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_community_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'communities' }
 
   # GET /communities
@@ -48,6 +49,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.country_code = session['country_code']
+    @community.user_id = current_user.id
     respond_to do |format|
       if @community.save
         format.html { redirect_to @community, notice: t('flash.notice.community_created') }
@@ -377,10 +379,19 @@ class CommunitiesController < ApplicationController
   end
 
   def authenticate_admin!
-    unless current_user.present? && current_user.admin?
+    unless current_user.present? && (current_user.admin? || current_user.has_role?("community_editor"))
       respond_to do |format|
         format.html { redirect_to communities_path, alert: t('flash.alert.unauthorized') }
         format.json { render json: {}, status: :unauthorized }
+      end
+    end
+  end
+
+  def authenticate_community_creator!
+    unless current_user.present? && (@community.user_id == current_user.id || current_user.super_admin?)
+      respond_to do |format|
+        format.html { redirect_to @community, alert: t('flash.alert.unauthorized') }
+        format.json { render json: @community.errors, status: :unauthorized }
       end
     end
   end
