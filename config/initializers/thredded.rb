@@ -59,7 +59,7 @@ Thredded.avatar_url = ->(user) {
 # and admins and moderators are determined by a flag on the users table.
 
 # The name of the moderator flag column on the users table.
-Thredded.moderator_column = :is_admin
+Thredded.moderator_column = :is_moderator?
 # The name of the admin flag column on the users table.
 Thredded.admin_column = :is_super_admin
 

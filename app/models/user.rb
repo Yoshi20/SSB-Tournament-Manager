@@ -96,4 +96,8 @@ class User < ApplicationRecord
     self.player.role_list.include?(role)
   end
 
+  def is_moderator?
+    self.admin? || self.has_role?("forum_moderator")
+  end
+
 end

@@ -84,9 +84,9 @@ module PlayerHelper
     if country_code == 'ch'
       ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'de'
-      ["caster", "coach", "content_creator", "designer", "forum_moderator", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator", 
     elsif country_code == 'fr'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator", 
     elsif country_code == 'lu'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     end
