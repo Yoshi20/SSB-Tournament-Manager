@@ -11,6 +11,9 @@
   %li.nav-item
     %a#data-tab.nav-link{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
       = t('players.data')
+  %li.nav-item
+    %a#roles-tab.nav-link{'data-toggle'=>'tab', href: '#roles', role: 'tab', 'aria-controls'=>'all'}
+      = t('users.roles')
 
 -# search form
 .row{style: 'margin-top: -15px;'}
@@ -22,6 +25,7 @@
           %span.material-icons= 'search'
 
 .tab-content#players-tabs-content
+  -# stats ---------------------------------------------------------------------
   .tab-pane.fade.show.active#stats{role: 'tabpanel', 'aria-labelledby'=>'stats-tab'}
     %table.table.table-hover.table-borderless
       %thead.table-header
@@ -60,6 +64,7 @@
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'stats'
 
+  -# data ----------------------------------------------------------------------
   .tab-pane.fade#data{role: 'tabpanel', 'aria-labelledby'=>'data-tab'}
     %table.table.table-hover.table-borderless
       %thead.table-header
@@ -98,6 +103,40 @@
 
     .player-list-footer
       = render 'paginator', players: @players, anchor: 'data'
+
+  -# roles ---------------------------------------------------------------------
+  .tab-pane.fade#roles{role: 'tabpanel', 'aria-labelledby'=>'roles-tab'}
+    %table.table.table-hover.table-borderless
+      %thead.table-header
+        %tr
+          %th= link_to t('players.gamer_tag'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'gamer_tag', order: 'asc', anchor: 'roles')
+          -# %th.text-center= link_to t('users.roles'), players_path(search: params[:search], filter: params[:filter], 'filter-data': params['filter-data'], sort: 'roles', order: 'asc', anchor: 'roles')
+          %th.text-center= t('users.roles')
+
+      %tbody.table-content.with-show
+        - if @players.any?
+          - @players.each_with_index do |player, i|
+            %tr{'data-id': player.id, 'data-component'=>'player'}
+              %td
+                - if player.main_characters.any?
+                  - player.main_characters[0...1].each_with_index do |char, i|
+                    = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
+                - else
+                  .div{style: 'display: inline;'}
+                    %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
+                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+              %td.text-center
+                - player.user.role_list.sort.each do |role|
+                  %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
+
+              - if current_user.present? and current_user.super_admin?
+                %td.admin-list-actions
+                  .admin-list-actions__link
+                    = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
+                      %span.material-icons.admin-actions__link__icon= 'edit'
+
+    .player-list-footer
+      = render 'paginator', players: @players, anchor: 'roles'
 
   - if !@players.any?
     %p{style: 'text-align: center;'}

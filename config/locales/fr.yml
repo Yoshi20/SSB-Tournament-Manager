@@ -234,6 +234,7 @@ fr:
       content_creator: "Content creator"
       coach: "Coach"
       admin: "Admin"
+      player: "Player"
 
   coffee:
     copied: "Copié \"%{item}\" dans le presse-papier"

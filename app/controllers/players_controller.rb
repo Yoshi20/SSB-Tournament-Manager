@@ -10,12 +10,14 @@ class PlayersController < ApplicationController
   def index
     if params[:filter].present? && params['filter-data'].present?
       if params[:filter] == 'region'
-        @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
+        @players = Player.all_from(session['country_code']).includes(user: :taggings).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
-        @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
+        @players = Player.all_from(session['country_code']).includes(user: :taggings).where("? = ANY (main_characters)", params['filter-data'])
+      elsif params[:filter] == 'role'
+        @players = Player.all_from(session['country_code']).includes(user: :taggings).tagged_with(role)
       end
     else
-      @players = Player.all_from(session['country_code'])
+      @players = Player.all_from(session['country_code']).includes(user: :taggings)
     end
 
     # handle search parameter
@@ -26,7 +28,7 @@ class PlayersController < ApplicationController
           flash.now[:alert] = t('flash.alert.search_players')
         end
       rescue ActiveRecord::StatementInvalid
-        @players = Player.all_from(session['country_code']).iLikeSearch(params[:search])
+        @players = Player.all_from(session['country_code']).includes(user: :taggings).iLikeSearch(params[:search])
         if @players.empty?
           flash.now[:alert] = t('flash.alert.search_players')
         end
@@ -44,6 +46,18 @@ class PlayersController < ApplicationController
         else
           @players = @players.sort_by do |p|
             [p.win_loss_ratio, -p.created_at.to_i]
+          end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        end
+      when 'roles'
+        # @players = @players.order("count(players.user.taggings)").paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        #blup: working but way too slow
+        if params[:order] == "desc"
+          @players = @players.sort_by do |p|
+            p.user.role_list
+          end.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        else
+          @players = @players.sort_by do |p|
+            p.user.role_list
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       else

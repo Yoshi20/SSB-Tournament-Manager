@@ -234,6 +234,7 @@ de:
       content_creator: "Content creator"
       coach: "Coach"
       admin: "Admin"
+      player: "Player"
 
   coffee:
     copied: "\"%{item}\" in die Zwischenablage kopiert"
