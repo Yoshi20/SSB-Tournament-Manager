@@ -213,7 +213,7 @@ GEM
     multi_json (1.15.0)
     mustache (1.1.1)
     nio4r (2.5.8)
-    nokogiri (1.13.3)
+    nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     onebox (1.9.30)
