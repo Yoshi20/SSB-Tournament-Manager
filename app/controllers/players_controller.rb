@@ -15,6 +15,8 @@ class PlayersController < ApplicationController
         @players = Player.all_from(session['country_code']).includes(:taggings).where("? = ANY (main_characters)", params['filter-data'])
       elsif params[:filter] == 'role'
         @players = Player.all_from(session['country_code']).includes(:taggings).tagged_with(params['filter-data'])
+      elsif params[:filter] == 'activity'
+        @players = Player.all_from(session['country_code']).includes(:taggings, :tournaments).where(tournaments: {date: params['filter-data'].to_i.days.ago.. Date.today})
       end
     else
       @players = Player.all_from(session['country_code']).includes(:taggings)

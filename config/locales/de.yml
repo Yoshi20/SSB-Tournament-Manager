@@ -814,6 +814,11 @@ de:
     region_lu: "Kanton"
     number_of_players: "Anzahl Spieler"
     character: "Charakter"
+    player_activity: "Spieler Aktivität"
+    active : "Aktiv"
+    inactive: "Inaktiv"
+    days: "Tage"
+    when_active: "(Aktiv wenn mindestens einem Turnier beigetreten wurde)"
 
   rankings:
     title: "Ranglisten"

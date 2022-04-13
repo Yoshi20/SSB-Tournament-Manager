@@ -214,3 +214,34 @@
                   %td.text-center
                     - wl_array = character_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                     = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
+
+  .statistic__stats
+    .row
+      .col
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("statistics.player_activity")
+              %th.text-center= t("statistics.active")
+              %th.text-center= t('statistics.inactive')
+          %tbody.table-content.with-show
+            %tr{'data-internal_url': players_path(filter: 'activity', 'filter-data': 365)}
+              %td.text-center= "365 #{t('statistics.days')}"
+              %td.text-center= @player_count_active_365
+              %td.text-center= @player_count_total - @player_count_active_365
+            %tr{'data-internal_url': players_path(filter: 'activity', 'filter-data': 90)}
+              %td.text-center= "90 #{t('statistics.days')}"
+              %td.text-center= @player_count_active_90
+              %td.text-center= @player_count_total - @player_count_active_90
+            %tr{'data-internal_url': players_path(filter: 'activity', 'filter-data': 30)}
+              %td.text-center= "30 #{t('statistics.days')}"
+              %td.text-center= @player_count_active_30
+              %td.text-center= @player_count_total - @player_count_active_30
+            %tr{'data-internal_url': players_path(filter: 'activity', 'filter-data': 7)}
+              %td.text-center= "7 #{t('statistics.days')}"
+              %td.text-center= @player_count_active_7
+              %td.text-center= @player_count_total - @player_count_active_7
+
+    .row.text-center{style: 'font-size: .75rem;'}
+      .col
+        %p= t("statistics.when_active")
