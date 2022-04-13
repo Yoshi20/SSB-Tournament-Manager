@@ -712,6 +712,7 @@ de:
     created_at: "Erstellt am:"
     created_by: "Erstellt von:"
     no_news_found: "Keine News gefunden"
+    info_body: "Um News erstellen zu können, wird die News-Editor-Rolle vorausgesetzt."
 
   feedback:
     mailer:

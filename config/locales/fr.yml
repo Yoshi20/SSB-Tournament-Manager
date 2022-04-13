@@ -711,6 +711,7 @@ fr:
     created_at: "Créé à:"
     created_by: "Créé par:"
     no_news_found: "Aucun news trouvés"
+    info_body: "Pour pouvoir créer des news, le rôle d'éditeur de news est requis."
 
   feedback:
     mailer:

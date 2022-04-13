@@ -712,6 +712,7 @@ en:
     created_at: "Created at:"
     created_by: "Created by:"
     no_news_found: "No news found yet"
+    info_body: "To be able to create news, the news editor role is required."
 
   feedback:
     mailer:
