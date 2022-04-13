@@ -3,6 +3,12 @@ class Community < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
 
+  before_save :sanitize_discord_key
+
   scope :all_fr, -> { where(country_code: 'fr') }
+
+  def sanitize_discord_key
+    self.discord = self.discord.gsub("https://discord.gg/", "")
+  end
 
 end

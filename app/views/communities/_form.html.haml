@@ -21,7 +21,7 @@
     = f.select :region, options_for_select(regions_for_select_from(@community.country_code), @community.region || params[:region]), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :discord, t('communities.discord')
-    %em= t('communities.multiple_discords')
+    %em= t('communities.discord_comment')
     = f.text_field :discord, class: 'form-control'
   .field.form-group
     = f.label :twitter, t('communities.twitter')
