@@ -101,7 +101,7 @@
       .col
         .team__stats__single.team__stats__single--last
           - win_loss_ratios = @team.players.map{ |p| p.win_loss_ratio }.compact.reject{ |v| v == 0 }
-          %strong= win_loss_ratios.count > 0 ? win_loss_ratios.sum/win_loss_ratios.count : 0
+          %strong= "#{win_loss_ratios.count > 0 ? (win_loss_ratios.sum.to_f/win_loss_ratios.count).round(2) : 0} %"
           %span= 'Ø-' + t('w_l')
 
   - if @team.players.any?
@@ -118,7 +118,7 @@
                 %th.text-center= t('w_l')
 
             %tbody.table-content.with-show.player-list-body
-              - @team.players.each_with_index do |player, i|
+              - @team.players.order(points: :desc).each_with_index do |player, i|
                 %tr{'data-id': player.id, 'data-component'=>'player'}
                   %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                   %td.text-center
