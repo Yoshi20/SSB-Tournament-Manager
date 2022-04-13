@@ -712,7 +712,7 @@ de:
     created_at: "Erstellt am:"
     created_by: "Erstellt von:"
     no_news_found: "Keine News gefunden"
-    info_body: "Um News erstellen zu können, wird die News-Editor-Rolle vorausgesetzt."
+    info_body: "Um News erstellen zu können, füge die News-Editor-Rolle deinem Profil hinzu."
 
   feedback:
     mailer:
@@ -1155,7 +1155,7 @@ de:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
-    info_body: "Um eine Community erstellen zu können, wird die Community-Editor-Rolle vorausgesetzt."
+    info_body: "Um eine Community erstellen zu können, füge die Community-Editor-Rolle deinem Profil hinzu."
 
   users:
     mailer:
@@ -1190,7 +1190,7 @@ de:
     allows_emails_from_partners_fr: "Ich bin damit einverstanden, dass Partner von SmashUltimate.fr mir ab und zu Emails schicken"
     allows_emails_from_luxsmash: "Ich bin damit einverstanden, dass LuxSmash mir ab und zu Emails zu wichtigen Themen der Community & grossen Turnierankündigungen schickt"
     allows_emails_from_partners_lu: "Ich bin damit einverstanden, dass Partner von LuxSmash mir ab und zu Emails schicken"
-    data_agreement: "(Pflichtfeld) Ich willige ein, dass meine Daten öffentlich über mein Spielerprofil einsehbar sein werden und für die Spieler-Statistik genutzt werden. Die bereitgestellten Daten lassen sich jederzeit über \"Bearbeite Profil\" bzw. \"Account\" bearbeiten oder löschen"
+    data_agreement: "(Pflichtfeld) Ich willige ein, dass meine Daten öffentlich über mein Profil einsehbar sein werden und für die Spieler-Statistik genutzt werden. Die bereitgestellten Daten lassen sich jederzeit über \"Bearbeite Profil\" bzw. \"Account\" bearbeiten oder löschen"
     current_password: "Aktuelles Passwort"
     enter_current_password: "(gib dein aktuelles Passwort ein um die Änderungen zu bestätigen)"
     delete_my_account: "Mein Account löschen"
@@ -1249,4 +1249,4 @@ de:
     recruiting_description: "Rekrutierungsbeschreibung"
     members: "Mitglieder"
     total_points: "Total Punkte"
-    info_body: "Um ein Team erstellen zu können, wird die Team-Manager-Rolle vorausgesetzt."
+    info_body: "Um ein Team erstellen zu können, füge die Team-Manager-Rolle deinem Profil hinzu."

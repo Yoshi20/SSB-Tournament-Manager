@@ -711,7 +711,7 @@ fr:
     created_at: "Créé à:"
     created_by: "Créé par:"
     no_news_found: "Aucun news trouvés"
-    info_body: "Pour pouvoir créer des news, le rôle d'éditeur de news est requis."
+    info_body: "Pour pouvoir créer des news, ajoutes le rôle d'éditeur de news dans ton profil."
 
   feedback:
     mailer:
@@ -1154,7 +1154,7 @@ fr:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
-    info_body: "Pour pouvoir créer une communauté, le rôle d'éditeur communautaire est requis."
+    info_body: "Pour pouvoir créer une communauté, ajoutes le rôle d'éditeur communautaire dans ton profil."
 
   users:
     mailer:
@@ -1189,7 +1189,7 @@ fr:
     allows_emails_from_partners_fr: "Je suis d'accord pour que les partenaires de SmashUltimate.fr m'envoient des e-mails de temps en temps"
     allows_emails_from_luxsmash: "J'accepte que LuxSmash m'envoie de temps en temps des e-mails sur des sujets importants pour la communauté & sur les grandes annonces de tournois"
     allows_emails_from_partners_lu: "Je suis d'accord pour que les partenaires de LuxSmash m'envoient des e-mails de temps en temps"
-    data_agreement: "(Champ obligatoire) J'accepte que mes données soient visibles publiquement via mon profil de joueur et soient utilisées pour les statistiques du joueur. Les données fournies peuvent être modifiées ou supprimées à tout moment via \"Modifier le profil\" ou \"Compte\""
+    data_agreement: "(Champ obligatoire) J'accepte que mes données soient visibles publiquement via mon profil et soient utilisées pour les statistiques du joueur. Les données fournies peuvent être modifiées ou supprimées à tout moment via \"Modifier le profil\" ou \"Compte\""
     current_password: "Mot de passe actuel"
     enter_current_password: "(entrer votre mot de passe actuel pour confirmer les modifications)"
     delete_my_account: "Supprimer mon compte"
@@ -1248,7 +1248,7 @@ fr:
     recruiting_description: "Description du recrutement"
     members: "Membres"
     total_points: "Total points"
-    info_body: "Pour pouvoir créer une équipe, le rôle de responsable d'équipe est requis."
+    info_body: "Pour pouvoir créer une équipe, ajoutes le rôle de responsable d'équipe dans ton profil."
 
 
 
