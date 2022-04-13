@@ -1155,6 +1155,7 @@ de:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    info_body: "Um eine Community erstellen zu können, wird die Community-Editor-Rolle vorausgesetzt."
 
   users:
     mailer:

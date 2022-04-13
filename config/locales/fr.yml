@@ -1154,6 +1154,7 @@ fr:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    info_body: "Pour pouvoir créer une communauté, le rôle d'éditeur communautaire est requis."
 
   users:
     mailer:

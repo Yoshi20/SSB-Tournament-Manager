@@ -1155,6 +1155,7 @@ en:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    info_body: "To be able to create a community, the community editor role is required."
 
   users:
     mailer:
