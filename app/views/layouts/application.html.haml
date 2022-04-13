@@ -5,7 +5,7 @@
 
   %body
     = render '/layouts/flashes'
-    = render '/partials/login'
+    = render '/partials/login' #loginModal
     %main
       .header.navbar.navbar-expand-lg.navbar-sstm.d-none.d-lg-block
         = render "/layouts/navigation_#{session['country_code']}"

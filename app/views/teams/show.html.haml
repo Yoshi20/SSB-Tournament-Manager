@@ -104,6 +104,13 @@
           %strong= "#{win_loss_ratios.count > 0 ? (win_loss_ratios.sum.to_f/win_loss_ratios.count).round(2) : 0} %"
           %span= 'Ø-' + t('w_l')
 
+  .team__stats
+    .row
+      .col
+        .team__stats__single.team__stats__single--last
+          %strong= link_to @team.user.player.gamer_tag, @team.user.player
+          %span= t('defines.roles.team_captain')
+
   - if @team.players.any?
     .team__stats
       .row#players

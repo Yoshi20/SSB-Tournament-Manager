@@ -1246,6 +1246,7 @@ fr:
     recruiting_description: "Description du recrutement"
     members: "Membres"
     total_points: "Total points"
+    info_body: "Pour pouvoir créer une équipe, le rôle de responsable d'équipe est requis."
 
 
 
