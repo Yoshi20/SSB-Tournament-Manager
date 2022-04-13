@@ -6,7 +6,7 @@
   .row
     .col
       %p{style: "margin-top: 1rem;"}
-        = @news.text.html_safe
+        = sanitize(@news.text)
   .row
     .col
       %p{style: "margin-top: 1rem; font-size: 12px;"}

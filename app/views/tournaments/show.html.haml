@@ -205,7 +205,7 @@
     - if @tournament.description.present?
       .tab-pane.fade#description{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
         .tournament__description
-          = @tournament.description.html_safe
+          = sanitize(@tournament.description)
 
     - if @tournament.location.present?
       .tab-pane.fade#location{role: 'tabpanel', 'aria-labelledby'=>'location-tab'}
