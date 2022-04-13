@@ -20,7 +20,7 @@
       = f.label :date, t('tournaments.start_date')
       %em= '(dd.mm.yyyy - hh:mm)'
       .form-group-inline
-        = f.datetime_select :date, { start_year: Time.now.year }, class: 'form-control'
+        = f.datetime_select :date, { start_year: Time.now.year, end_year: Date.today.year + 3 }, class: 'form-control'
     .form-group
       = f.label :name, t('tournaments.name')
       = f.text_field :name, class: 'form-control', placeholder: t('tournaments.name_placeholder')

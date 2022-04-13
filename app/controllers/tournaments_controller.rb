@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, except: [:index, :new, :create]
   before_action :authenticate_admin!, except: [:index, :show, :add_player, :remove_player]
+  before_action :authenticate_tournament_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -269,7 +270,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments/add_player/1
   def add_player
     if current_user.present?
-      if params[:gamer_tag].present? && current_user.admin?
+      if params[:gamer_tag].present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host))
         player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
         player_to_add = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_add.nil?
       else
@@ -334,7 +335,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments/remove_player/1
   def remove_player
     if current_user.present?
-      if params[:gamer_tag].present? && current_user.admin?
+      if params[:gamer_tag].present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host))
         player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
         player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
         player_to_remove.update(warnings: player_to_remove.warnings.to_i + 1) if params[:warn].present?
@@ -628,7 +629,7 @@ class TournamentsController < ApplicationController
     end
 
     def authenticate_admin!
-      unless current_user.present? && current_user.admin?
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("tournament_organizer"))
         respond_to do |format|
           if @tournament.present?
             format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
@@ -637,6 +638,16 @@ class TournamentsController < ApplicationController
             format.html { redirect_to tournaments_path, alert: t('flash.alert.unauthorized') }
             format.json { render json: {}, status: :unauthorized }
           end
+        end
+      end
+    end
+
+    def authenticate_tournament_creator!
+      current_user_is_host = @tournament.host.present? && @tournament.host.id == current_user.id
+      unless current_user.present? && (current_user_is_host || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @tournament.errors, status: :unauthorized }
         end
       end
     end

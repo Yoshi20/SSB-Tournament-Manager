@@ -48,8 +48,20 @@
           %strong= t('calendar.austria') + ': '
           %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'
 
-- if current_user.present? and current_user.admin?
+- if current_user.present?
   .admin-actions
-    .admin-actions__link
-      = link_to new_tournament_path, class:'btn btn-default btn-square' do
-        %span.material-icons.admin-actions__link__icon= 'add'
+    - if current_user.admin? || current_user.has_role?('tournament_organizer')
+      - if current_user.challonge_username.present? && current_user.challonge_api_key.present?
+        .admin-actions__link
+          = link_to new_tournament_path, class:'btn btn-default btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'add'
+      - else
+        .admin-actions__link
+          = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+            %span.material-icons.admin-actions__link__icon= 'info'
+        = render '/partials/info', info_body: t('tournaments.info_body_challonge') #infoModal
+    - else
+      .admin-actions__link
+        = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+          %span.material-icons.admin-actions__link__icon= 'info'
+      = render '/partials/info', info_body: t('tournaments.info_body') #infoModal

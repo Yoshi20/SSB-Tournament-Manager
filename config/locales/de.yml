@@ -1052,7 +1052,7 @@ de:
     no_past: "Keine vergangenen Turniere gefunden"
     new:
       title: "Neues Turnier"
-      body: "Du kannst entweder ein internes, externes oder ein Weekly Turniere erstellen."
+      body: "Du kannst entweder ein internes oder ein weekly Turniere erstellen."
       li1: "Interne Turniere unterstützen alle Funktionen des Turniermanagers"
       li2: "Externe Turniere werden verwendet, um eine andere Registrierungs-Website mit dem Turniermanager zu verknüpfen"
       li3: "Weekly Turniere sind gleich wie interne Turniere. Jedoch kannst du mehrere Turniere auf ein Mal erstellen, indem du ein Enddatum setzt.
@@ -1108,7 +1108,10 @@ de:
     seed_players: "Spieler Seeden"
     seed_players_randomly: "Spieler zufällig Seeden"
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
+    drag_and_drop: "(oder Drag & Drop)"
     calendar: "Turnierkalender"
+    info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
+    info_body_challonge: "Um ein internes oder weekly Turnier erstellen zu können, füge deinem Account ein Challonge Benutzername und API Schlüssel hinzu."
 
   video:
     title: "Videos"

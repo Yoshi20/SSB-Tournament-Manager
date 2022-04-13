@@ -136,12 +136,12 @@
           .form-check
             = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : true), class:'form-check-input mr-2'
             = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
-      - if session['country_code'] == 'fr'
+      - elsif session['country_code'] == 'fr'
         .form-group
           .form-check
             = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
             = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
-      - if session['country_code'] == 'lu'
+      - elsif session['country_code'] == 'lu'
         .form-group
           .form-check
             = f.check_box :allows_emails_from_luxsmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_luxsmash] == "1") : true), class:'form-check-input mr-2'

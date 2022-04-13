@@ -7,16 +7,19 @@
     = t('tournaments.new.body')
     %ul
       %li= t('tournaments.new.li1')
-      %li= t('tournaments.new.li2')
+      - if current_user.admin?
+        %li= t('tournaments.new.li2')
       %li= t('tournaments.new.li3')
 
   %ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
     %li.nav-item
       %a#internal-tab.nav-link.active{'data-toggle'=>'tab', href: '#internal', role: 'tab', 'aria-controls'=>'all'}
         = t('internal')
-    %li.nav-item
-      %a#external-tab.nav-link{'data-toggle'=>'tab', href: '#external', role: 'tab', 'aria-controls'=>'all'}
-        = t('external')
+    - if current_user.admin?
+      %li.nav-item
+        %a#external-tab.nav-link{'data-toggle'=>'tab', href: '#external', role: 'tab', 'aria-controls'=>'all'}
+          = t('external')
+          %em{style: 'font-weight: initial; font-size: 12px;'}= '(Admins only)'
     %li.nav-item
       %a#weekly-tab.nav-link{'data-toggle'=>'tab', href: '#weekly', role: 'tab', 'aria-controls'=>'all'}
         = t('weekly')
