@@ -73,16 +73,6 @@
             %td.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell
               = win_loss_ratio.nil? ? '-' : "#{win_loss_ratio} %"
 
-            - if current_user.present? and current_user.super_admin?
-              %td.admin-list-actions
-                .admin-list-actions__link
-                  = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
-                    %span.material-icons.admin-actions__link__icon= 'edit'
-
-                .admin-list-actions__link
-                  = link_to player, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
-                    %span.material-icons.admin-actions__link__icon= 'delete'
-
 .ranking-list-footer
   = render 'paginator', players: players, anchor: 'points'
 

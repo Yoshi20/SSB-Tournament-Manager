@@ -137,7 +137,7 @@ class PlayersController < ApplicationController
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
-          Tournament.all_from(session['country_code']).each do |t|
+          @player.tournaments.each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
@@ -145,11 +145,13 @@ class PlayersController < ApplicationController
           AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag, country_code: @player.country_code)
         end
         # update alternative_gamer_tags if it was changed
-        alts = ""
-        @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
-        if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
-          params[:alternative_gamer_tags].split(',').each do |alt|
-            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
+        if current_user.present? && current_user.super_admin?
+          alts = ""
+          @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
+          if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
+            params[:alternative_gamer_tags].split(',').each do |alt|
+              AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
+            end
           end
         end
         # render
@@ -184,7 +186,7 @@ class PlayersController < ApplicationController
     end
 
     def authenticate_player!
-      unless current_user.present? && (@player.user_id == current_user.id || current_user.super_admin?)
+      unless current_user.present? && (@player.user_id == current_user.id || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @player, alert: t('flash.alert.unauthorized') }
           format.json { render json: @player.errors, status: :unauthorized }

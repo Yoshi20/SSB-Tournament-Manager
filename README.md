@@ -81,3 +81,13 @@ Banner:
 
 Google Analytics:
 - https://analytics.google.com/analytics/web/#/report-home/a145089919w206718824p199562205
+
+Roles overview:
+|                       | news | communities | tournaments | teams | players | users | feedback | inactive tournaments | alts |
+|-----------------------------------------------------------------------------------------------|----------------------|------|
+| super_admin           | x    | x           | x           | x     | x       | x     | x        | x                    | x    |
+| admin                 | x    | x           | x           | x     | x       |       |          |                      |      |
+| news_editor           | x    |             |             |       |         |       |          |                      |      |
+| community_editor      |      | x           |             |       |         |       |          |                      |      |
+| tournament_organizer  |      |             | x           |       |         |       |          |                      |      |
+| team_captain          |      |             |             | x     |         |       |          |                      |      |

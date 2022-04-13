@@ -125,7 +125,7 @@ class TeamsController < ApplicationController
     end
 
     def authenticate_team_creator!
-      unless current_user.present? && (@team.user_id == current_user.id || current_user.super_admin?)
+      unless current_user.present? && (@team.user_id == current_user.id || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @team, alert: t('flash.alert.unauthorized') }
           format.json { render json: @team.errors, status: :unauthorized }

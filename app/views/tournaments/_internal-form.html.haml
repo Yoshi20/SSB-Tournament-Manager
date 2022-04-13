@@ -51,7 +51,7 @@
       = f.label :number_of_pools, t('tournaments.number_of_pools')
       %em= t('tournaments.two_stage_tournament')
       = f.number_field :number_of_pools, class: 'form-control', min: 0, value: (@tournament.number_of_pools || 0)
-    .form-group{class: current_user.super_admin? ? '' : 'hidden'}
+    .form-group{class: current_user.admin? ? '' : 'hidden'}
       = f.label :host_username, t('tournaments.hostname')
       = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
     .form-group

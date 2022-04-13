@@ -644,7 +644,7 @@ class TournamentsController < ApplicationController
 
     def authenticate_tournament_creator!
       current_user_is_host = @tournament.host.present? && @tournament.host.id == current_user.id
-      unless current_user.present? && (current_user_is_host || current_user.super_admin?)
+      unless current_user.present? && (current_user_is_host || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
           format.json { render json: @tournament.errors, status: :unauthorized }

@@ -22,7 +22,7 @@
 
 
   -# admin actions -------------------------------------------------------------
-  - if current_user.present? and (current_user.super_admin? or current_user == @news.user)
+  - if current_user.present? and (current_user.admin? or current_user == @news.user)
     .admin-actions
       .admin-actions__link
         = link_to edit_news_path(@news), class:'btn btn-ghost btn-square' do

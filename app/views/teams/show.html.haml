@@ -23,7 +23,7 @@
           - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
-    -if current_user.present? && (current_user.super_admin? || @team.user == current_user)
+    -if current_user.present? && (current_user.admin? || @team.user == current_user)
       .admin-actions
         .admin-actions__link
           = link_to edit_team_path(@team), class:'btn btn-default btn-square' do
@@ -140,7 +140,7 @@
                     - else
                       = "#{player.win_loss_ratio} %"
 
-  -if current_user.present? && (current_user.super_admin? || @team.user == current_user)
+  -if current_user.present? && (current_user.admin? || @team.user == current_user)
     .team__stats
       .row.text-center
         .col
@@ -159,11 +159,11 @@
           %h3= t('teams.recruiting_description')
           = @team.recruiting_description || '-'
 
-  -if current_user.present? && current_user.super_admin?
+  -if current_user.present? && current_user.admin?
     .team__stats
       .row
         .col
-          %h3 (Super Admin info)
+          %h3 Admin only:
       .row
         .col
           .team__stats__single

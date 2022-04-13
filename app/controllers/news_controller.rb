@@ -86,7 +86,7 @@ class NewsController < ApplicationController
     end
 
     def authenticate_news_creator!
-      unless current_user.present? && (@news.user_id == current_user.id || current_user.super_admin?)
+      unless current_user.present? && (@news.user_id == current_user.id || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @news, alert: t('flash.alert.unauthorized') }
           format.json { render json: @news.errors, status: :unauthorized }

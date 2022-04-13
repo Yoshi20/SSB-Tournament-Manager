@@ -21,7 +21,7 @@
           - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
-    - if current_user.present? && (current_user.super_admin? || @community.user == current_user)
+    - if current_user.present? && (current_user.admin? || @community.user == current_user)
       .admin-actions
         .admin-actions__link
           = link_to edit_community_path(@community), class:'btn btn-default btn-square' do
@@ -67,11 +67,11 @@
           .col{style: 'text-align: center;'}
             = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
 
-  -if current_user.present? && current_user.super_admin?
+  -if current_user.present? && current_user.admin?
     .community__stats
       .row
         .col
-          %h3 (Super Admin info)
+          %h3 Admin only:
       .row
         .col
           .community__stats__single

@@ -388,7 +388,7 @@ class CommunitiesController < ApplicationController
   end
 
   def authenticate_community_creator!
-    unless current_user.present? && (@community.user_id == current_user.id || current_user.super_admin?)
+    unless current_user.present? && (@community.user_id == current_user.id || current_user.admin?)
       respond_to do |format|
         format.html { redirect_to @community, alert: t('flash.alert.unauthorized') }
         format.json { render json: @community.errors, status: :unauthorized }

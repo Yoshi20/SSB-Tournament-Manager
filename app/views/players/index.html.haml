@@ -55,7 +55,7 @@
                 - else
                   = "#{player.win_loss_ratio} %"
 
-              - if current_user.present? and current_user.super_admin?
+              - if current_user.present? and current_user.admin?
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
@@ -95,7 +95,7 @@
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")
               %td.text-center= truncate(player.comment, length: 60)
 
-              - if current_user.present? and current_user.super_admin?
+              - if current_user.present? and current_user.admin?
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do
@@ -128,7 +128,7 @@
                 - player.role_list.sort.each do |role|
                   %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
 
-              - if current_user.present? and current_user.super_admin?
+              - if current_user.present? and current_user.admin?
                 %td.admin-list-actions
                   .admin-list-actions__link
                     = link_to edit_player_path(player), class:'btn btn-ghost btn-square' do

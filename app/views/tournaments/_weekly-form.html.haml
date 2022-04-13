@@ -56,7 +56,7 @@
     .form-group
       = f.label :total_needed_game_stations, t('tournaments.total_needed_game_stations')
       = f.number_field :total_needed_game_stations, class: 'form-control', value: (@tournament.total_needed_game_stations || 10)
-    .form-group{class: current_user.super_admin? ? '' : 'hidden'}
+    .form-group{class: current_user.admin? ? '' : 'hidden'}
       = f.label :host_username, t('tournaments.hostname')
       = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
     .form-group
