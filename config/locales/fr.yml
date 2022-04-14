@@ -471,7 +471,7 @@ fr:
         germanysmash: |
           This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Germany and to provide an entry point for new players to find their way into their local smash community.<br><br>
           In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (coordination with TOs).
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (local coordination).
       calendar:
         title: "Calendar"
         tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"

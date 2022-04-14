@@ -19,6 +19,8 @@ module PlayerHelper
       ["Auvergne", "Bourgogne", "Bretagne", "Centre", "Corsica", "Grand_Est", "Hauts-de-France", "Ile_de_France", "Normandie", "Nouvelle_Aquitaine", "Occitanie", "Pays_de_la_Loire", "Provence-Alpes-Cote_dAzur", "Reunion", "Martinique", "Guyane", "Guadeloupe", "Mayotte"]
     elsif country_code == 'lu'
       ['capellen', 'clervaux', 'diekirch', 'echternach', 'esch', 'grevenmacher', 'luxembourg', 'mersch', 'redange', 'remich', 'vianden', 'wiltz']
+    elsif country_code == 'it'
+      ['blup']
     end
   end
 
@@ -84,11 +86,13 @@ module PlayerHelper
     if country_code == 'ch'
       ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'de'
-      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator", 
+      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'fr'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator", 
+      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'lu'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+    elsif country_code == 'it'
+      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     end
   end
 

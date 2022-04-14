@@ -23,6 +23,8 @@ class DonationsController < ApplicationController
       @donation.country_code = 'fr'
     elsif @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_LU']
       @donation.country_code = 'lu'
+    elsif @donation.verification_token == ENV['KO_FI_VERIFICATION_TOKEN_IT']
+      @donation.country_code = 'it'
     end
     respond_to do |format|
       if @donation.country_code.present? # to check verification

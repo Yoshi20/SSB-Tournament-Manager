@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
-    return unless session['country_code'] == 'de' || session['country_code'] == 'fr' || session['country_code'] == 'lu'
+    return unless ['de', 'fr', 'lu', 'it'].include?(session['country_code'])
     lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
