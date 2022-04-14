@@ -414,7 +414,7 @@ fr:
         swisssmash: |
           Ce site/cette application web a été premièrement créé pour donner une vue d'ensemble sur la scène Super Smash Bros. Ultimate en Suisse et pour fournir aux organisateurs de tournoi (TO) un outil simple pour gérer leurs tournois.<br><br>
           Il peut aussi servir de point d'entrée aux nouveaux joueurs pour trouver leur communauté smash locale respective.<br><br>
-          En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs et des classements pertinents.
+          En même temps il fournit maintenant une liste plutôt grande des smasheurs/smasheuses suisses avec des stats, des données sur les joueurs,des classements pertinents et des rôles.
       calendar:
         title: "Calendrier"
         tournaments_body: "Avec l'aide de smash.gg API et d'un robot d'indexation auto-géré (%{link}), qui se lance une fois par nuit, SwissSmash est capable de trouver et lister tous les tournois SSBU en suisse qui ont été ajoutés sur au moins l'un des sites suivants:"
@@ -435,19 +435,19 @@ fr:
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "SwissSmash.ch contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "SwissSmash.ch contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SwissSmash? Ajoutes simplement le rôle TO à ton profil!"
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour SwissSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
         bracket_tool: "Outil de Bracket"
-        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link} pour le moment."
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SwissSmash utilise %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SwissSmash.ch:"
         bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
       results:
         title: "Résultats"
         results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de SwissSmash, swisssmash.ch peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
-        ranking_system: "Système de Classement"
+        ranking_system: "Système de points"
         ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
         ranking_system_rank: "Rang"
         ranking_system_points: "Points"
@@ -460,6 +460,9 @@ fr:
         name: "Ton nom ou gamertag"
         email: "Ton e-mail"
         body: "Ton message"
+      partners:
+        title: "Partenaires"
+        sites: "Sites partenaires"
     de:
       title: "About"
       title_short: "About"
@@ -489,19 +492,19 @@ fr:
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just let me know %{link}."
+        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just add the TO role to your profile!"
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi GermanySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
         bracket_tool: "Bracket tool"
-        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the GermanySmash tournament manager uses %{link} for now."
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the GermanySmash tournament manager uses %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
         bracket_seeding_body2: "The final seeding is done manually by a TO."
       results:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-        ranking_system: "Ranking system"
+        ranking_system: "Scoring system"
         ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
@@ -511,6 +514,9 @@ fr:
         name: "Your name or gamer tag"
         email: "Your email"
         body: "Your message"
+      partners:
+        title: "Partenaires"
+        sites: "Sites partenaires"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -533,19 +539,19 @@ fr:
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "SmashUltimate.fr contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SmashUltimate.fr? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "SmashUltimate.fr contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi SmashUltimate.fr? Ajoutes simplement le rôle TO à ton profil!"
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour SmashUltimate.fr\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
         bracket_tool: "Outil de Bracket"
-        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SmashUltimate.fr utilise %{link} pour le moment."
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi SmashUltimate.fr utilise %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur SmashUltimate.fr:"
         bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
       results:
         title: "Résultats"
         results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne, SmashUltimate.fr peut aussi obtenir les résultats de tous les autres tournois en France.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
-        ranking_system: "Système de Classement"
+        ranking_system: "Système de points"
         ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit. Ce classement est indépendant du power ranking."
         ranking_system_rank: "Rang"
         ranking_system_points: "Points"
@@ -555,6 +561,9 @@ fr:
         name: "Ton nom ou gamertag"
         email: "Ton e-mail"
         body: "Ton message"
+      partners:
+        title: "Partenaires"
+        sites: "Sites partenaires"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -574,19 +583,19 @@ fr:
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"
-        tournament_organiser_body: "LuxSmash.lu contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi LuxSmash? Faites-le moi savoir %{link}."
+        tournament_organiser_body: "LuxSmash.lu contient une application Web pour la création et l'administration simple de tournois smash.<br><br>Il est particulièrement adapté aux weeklies, car il permet la génération de plusieurs tournois dans une période de temps définie.<br><br>Organisez-vous des tournois vous-même et vous souhaiteriez utiliser le Gestionnaire de Tournoi LuxSmash? Ajoutes simplement le rôle TO à ton profil!"
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "Je souhaiterais être administrateur!"
         tournament_organiser_mail_body: "Bonjour LuxSmash\n\nJe suis ??? et je souhaiterais devenir un administrateur car:\n???"
         bracket_tool: "Outil de Bracket"
-        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi LuxSmash utilise %{link} pour le moment."
+        bracket_tool_body: "En raison de ses brackets et API gratuits, sans lag et facile à utiliser, le gestionnaire de tournoi LuxSmash utilise %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "Le seeding initial est fait en générant une liste de joueurs triés par compétence depuis toutes les données sur LuxSmash.lu:"
         bracket_seeding_body2: "Le seeding final est fait manuellement par un TO."
       results:
         title: "Résultats"
         results_body: "Outre les résultats (scores de match et classements) du Gestionnaire de Tournoi Interne de LuxSmash, luxsmash.lu peut aussi obtenir les résultats de tous les autres tournois en suisse.\nLa seule condition requise, c'est que le tournoi ait été importé sur braacket.com dans la ligue %{link}."
-        ranking_system: "Système de Classement"
+        ranking_system: "Système de points"
         ranking_system_body: "Indépendamment du nombre de participants par tournoi, le rang des joueurs à la fin d'un tournoi définit le nombre de points qu'il/elle reçoit."
         ranking_system_rank: "Rang"
         ranking_system_points: "Points"
@@ -596,6 +605,9 @@ fr:
         name: "Ton nom ou gamertag"
         email: "Ton e-mail"
         body: "Ton message"
+      partners:
+        title: "Partenaires"
+        sites: "Sites partenaires"
 
   calendar:
     title: "Calendrier"
