@@ -20,7 +20,7 @@ module PlayerHelper
     elsif country_code == 'lu'
       ['capellen', 'clervaux', 'diekirch', 'echternach', 'esch', 'grevenmacher', 'luxembourg', 'mersch', 'redange', 'remich', 'vianden', 'wiltz']
     elsif country_code == 'it'
-      ['blup']
+      ['abruzzo', 'aosta_valley', 'apulia', 'basilicata', 'calabria', 'campania', 'emilia-romagna', 'friuli_venezia_giulia', 'lazio', 'liguria', 'lombardy', 'marche', 'molise', 'piemont', 'sardinia', 'sicily', 'trentino-south_tyrol', 'tuscany', 'umbria', 'veneto']
     end
   end
 

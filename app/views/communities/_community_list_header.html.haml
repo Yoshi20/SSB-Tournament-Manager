@@ -1,5 +1,6 @@
 %tr
   %th
-  %th= t('communities.department')
+  - if session['country_code'] == 'fr'
+    %th= t('communities.department')
   %th= t('communities.name')
   %th= t('communities.city')

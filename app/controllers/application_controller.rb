@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     :bourgogne_franche_comte, :bretagne, :centre_val_de_loire, :corsica,
     :paris_region, :occitanie, :hauts_de_france, :normandie, :pays_de_la_loire,
     :provence_alpes_cote_azur, :reunion, :martinique, :french_guiana,
-    :guadeloupe, :mayotte, :character_discords
+    :guadeloupe, :mayotte, :character_discords, :regions
   ]
 
   before_action :set_country_code, except: :donation

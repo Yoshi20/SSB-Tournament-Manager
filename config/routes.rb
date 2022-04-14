@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get "/communities/french_guiana" => "communities#french_guiana"
   get "/communities/guadeloupe" => "communities#guadeloupe"
   get "/communities/mayotte" => "communities#mayotte"
+  get "/communities/regions/:name" => "communities#regions"
   get "/communities/character_discords" => "communities#character_discords"
   resources :communities
 

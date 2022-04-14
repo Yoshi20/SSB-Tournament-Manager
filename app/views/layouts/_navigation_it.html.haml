@@ -18,14 +18,8 @@
         - if @forum_unread_count.present? && @forum_unread_count > 0
           %span{class: "forum-unread-counter"}= "(#{@forum_unread_count})"
 
-    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'communities' or @section == 'regions') ? 'active' : 'inactive')}
-      %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
-        = t('communities.title')
-        .h-24
-          %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
-      .dropdown-menu{'aria-labelledby': 'navbarDropdown1'}
-        = link_to t('communities.regions'), communities_path, class: 'dropdown-item'
-        = link_to t('communities.characters'), communities_character_discords_path, class: 'dropdown-item'
+    %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
+      = link_to t('communities.title'), communities_path, class: 'nav-link'
 
     %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments' or @section == 'rules') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

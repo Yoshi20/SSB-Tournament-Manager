@@ -13,9 +13,10 @@
   .field.form-group
     = f.label :city, t('communities.city')
     = f.text_field :city, class: 'form-control'
-  .field.form-group
-    = f.label :department, t('communities.department')
-    = f.select :department, options_for_select(departments_for_select, @community.department), {include_blank: true}, class: 'form-control'
+  - if session['country_code'] == 'fr'
+    .field.form-group
+      = f.label :department, t('communities.department')
+      = f.select :department, options_for_select(departments_for_select, @community.department), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :region, t('communities.region')
     = f.select :region, options_for_select(regions_for_select_from(@community.country_code), @community.region || params[:region]), {include_blank: true}, class: 'form-control'

@@ -3,3 +3,101 @@
 .row
   .col
     %h1.page__title= t('communities.title')
+
+.row
+  .col
+    %p= t('communities.body_it')
+
+  - if current_user.present?
+    .admin-actions
+      - if current_user.admin? || current_user.has_role?('community_editor')
+        .admin-actions__link
+          = link_to new_community_path(region: @region), class:'btn btn-default btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'add'
+      - else
+        .admin-actions__link
+          = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+            %span.material-icons.admin-actions__link__icon= 'info'
+        = render '/partials/info', info_body: t('communities.info_body') #infoModal
+
+
+.row
+  .col.text-center
+    .lq
+      #us
+        %img{:alt => "", :height => "310", :src => asset_path('italy_map/pxt.gif'), :usemap => "#zg", :width => "260"}/
+
+    %map#zg{:name => "zg"}
+      %area{:alt => "", :coords => "161,160,151,158,140,149,147,147,142,136,149,134,146,129,159,125,167,139,178,149,172,158,167,153", :href => "/communities/regions/abruzzo/", :onmouseout => "mt('r13');", :onmouseover => "nl('r13');", :shape => "poly"}/
+      %area{:alt => "", :coords => "200,212,197,208,200,201,195,197,191,185,194,184,195,178,202,177,206,181,214,189,218,188,220,190,223,199,219,207,213,206,213,212,205,212,202,209", :href => "/communities/regions/basilicata/", :onmouseout => "mt('r17');", :onmouseover => "nl('r17');", :shape => "poly"}/
+      %area{:alt => "", :coords => "197,270,197,261,200,261,203,253,201,249,209,247,210,243,206,237,200,212,205,210,207,213,214,212,213,207,218,207,218,213,215,219,217,221,230,227,230,242,220,242,216,247,217,257,210,261,206,272", :href => "/communities/regions/calabria/", :onmouseout => "mt('r18');", :onmouseover => "nl('r18');", :shape => "poly"}/
+      %area{:alt => "", :coords => "157,174,162,167,174,170,184,168,189,175,187,177,195,179,195,184,191,185,195,198,200,201,197,209,189,210,186,205,181,203,183,198,177,190,167,194,171,189,167,185,159,190,162,184", :href => "/communities/regions/campania/", :onmouseout => "mt('r15');", :onmouseover => "nl('r15');", :shape => "poly"}/
+      %area{:alt => "", :coords => "55,73,59,71,59,66,61,60,67,61,73,59,84,66,124,65,123,77,127,88,134,95,132,98,127,94,125,100,118,100,110,96,110,90,104,86,100,89,92,90,85,88,71,79,67,82,61,80,62,75", :href => "/communities/regions/emilia-romagna/", :onmouseout => "mt('r08');", :onmouseover => "nl('r08');", :shape => "poly"}/
+      %area{:alt => "", :coords => "140,42,137,38,131,39,127,32,129,30,125,26,134,16,136,15,155,18,148,25,153,29,149,33,152,35,153,40,159,44,157,45,151,40,149,43", :href => "/communities/regions/friuli-venezia-giulia/", :onmouseout => "mt('r06');", :onmouseover => "nl('r06');", :shape => "poly"}/
+      %area{:alt => "", :coords => "106,140,109,139,108,135,116,127,117,133,122,133,128,141,144,130,148,134,142,136,147,146,139,148,151,158,162,160,162,167,157,174,139,173,123,159,121,154,111,147,111,143", :href => "/communities/regions/lazio/", :onmouseout => "mt('r12');", :onmouseover => "nl('r12');", :shape => "poly"}/
+      %area{:alt => "", :coords => "18,98,24,89,33,88,32,83,36,76,40,78,46,75,48,78,51,72,63,76,61,80,67,81,74,90,69,91,54,82,46,80,36,88,32,95", :href => "/communities/regions/liguria/", :onmouseout => "mt('r07');", :onmouseover => "nl('r07');", :shape => "poly"}/
+      %area{:alt => "", :coords => "56,72,49,61,44,63,40,53,45,54,48,51,42,37,45,34,47,30,48,35,52,34,58,25,58,19,62,19,63,24,73,23,75,27,77,27,74,20,78,16,87,21,84,35,85,40,92,39,87,47,90,54,104,65,83,65,72,59,67,61,61,60,58,66,59,71", :href => "/communities/regions/lombardia/", :onmouseout => "mt('r03');", :onmouseover => "nl('r03');", :shape => "poly"}/
+      %area{:alt => "", :coords => "125,100,127,94,132,98,135,94,148,104,152,104,159,125,147,131,143,130,145,127,138,125,134,110,122,104", :href => "/communities/regions/marche/", :onmouseout => "mt('r11');", :onmouseover => "nl('r11');", :shape => "poly"}/
+      %area{:alt => "", :coords => "162,160,167,155,172,158,178,150,186,154,185,162,181,162,184,167,174,170,162,166", :href => "/communities/regions/molise/", :onmouseout => "mt('r14');", :onmouseover => "nl('r14');", :shape => "poly"}/
+      %area{:alt => "", :coords => "10,49,27,46,27,35,34,29,32,26,39,20,40,27,45,31,45,34,42,38,48,50,46,55,40,53,44,63,49,61,55,69,56,75,49,73,48,78,43,74,42,78,35,78,31,87,29,90,17,89,5,82,8,68,2,66,1,60,11,56", :href => "/communities/regions/piemonte/", :onmouseout => "mt('r01');", :onmouseover => "nl('r01');", :shape => "poly"}/
+      %area{:alt => "", :coords => "188,176,181,165,185,160,185,154,207,154,210,158,202,163,204,168,248,192,259,205,256,217,248,211,248,206,243,201,236,201,228,194,223,199,220,195,220,188,214,189,202,177,194,178", :href => "/communities/regions/puglia/", :onmouseout => "mt('r16');", :onmouseover => "nl('r16');", :shape => "poly"}/
+      %area{:alt => "", :coords => "44,242,37,232,41,201,34,191,35,178,37,185,48,183,56,173,62,175,70,196,65,204,67,210,65,235,61,236,54,232,52,240,48,243", :href => "/communities/regions/sardegna/", :onmouseout => "mt('r20');", :onmouseover => "nl('r20');", :shape => "poly"}/
+      %area{:alt => "", :coords => "127,274,134,262,139,269,145,262,155,270,161,267,175,267,180,262,185,265,196,260,184,287,189,297,184,309,172,305,166,295,157,295,139,281,131,281", :href => "/communities/regions/sicilia/", :onmouseout => "mt('r19');", :onmouseover => "nl('r19');", :shape => "poly"}/
+      %area{:alt => "", :coords => "83,129,75,130,85,123,85,114,80,106,80,96,67,82,71,78,87,89,100,91,105,86,109,89,111,96,117,100,124,101,117,110,121,114,115,118,116,127,111,128,113,133,108,135,109,139,105,140,98,140,99,135,94,129,90,129,89,123,86,124", :href => "/communities/regions/toscana/", :onmouseout => "mt('r09');", :onmouseover => "nl('r09');", :shape => "poly"}/
+      %area{:alt => "", :coords => "92,39,86,40,84,34,87,20,83,17,83,10,89,8,91,12,96,12,99,6,121,2,127,14,122,16,118,14,113,24,116,29,110,30,110,35,107,33,99,43,93,43", :href => "/communities/regions/trentino-alto-adige/", :onmouseout => "mt('r04');", :onmouseover => "nl('r04');", :shape => "poly"}/
+      %area{:alt => "", :coords => "115,127,116,118,122,114,118,109,122,103,133,110,139,126,146,126,141,134,136,133,129,141,122,132,117,132", :href => "/communities/regions/umbria/", :onmouseout => "mt('r10');", :onmouseover => "nl('r10');", :shape => "poly"}/
+      %area{:alt => "", :coords => "4,39,23,34,26,36,28,47,9,49,8,44,4,43", :href => "/communities/regions/valle-d-aosta/", :onmouseout => "mt('r02');", :onmouseover => "nl('r02');", :shape => "poly"}/
+      %area{:alt => "", :coords => "104,65,90,54,87,46,92,40,98,44,106,33,116,30,112,22,118,16,132,15,134,18,123,25,128,30,126,34,131,39,137,39,142,44,130,49,123,52,124,60,129,65,126,70,123,68,122,65,112,64", :href => "/communities/regions/veneto/", :onmouseout => "mt('r05');", :onmouseover => "nl('r05');", :shape => "poly"}/
+
+.row
+  - @communities_regions_array.each do |communities_region|
+    .col-6
+      - prevRegion = ''
+      - communities_region.each do |c|
+        - if c.region != prevRegion
+          %p{style: 'margin-top: 1rem; margin-bottom: 0; font-weight: 600;'}= t("defines.regions.#{c.region}")
+        %li{style: 'margin-left: 1.5rem;'}
+          = link_to c.name, c
+        - prevRegion = c.region
+
+:javascript
+  function nl(a){
+    var uc = document.getElementById("us");
+    var url = "";
+    if      (a === 'r01') { url = "#{asset_path('italy_map/r01.gif')}"; }
+    else if (a === 'r02') { url = "#{asset_path('italy_map/r02.gif')}"; }
+    else if (a === 'r03') { url = "#{asset_path('italy_map/r03.gif')}"; }
+    else if (a === 'r04') { url = "#{asset_path('italy_map/r04.gif')}"; }
+    else if (a === 'r05') { url = "#{asset_path('italy_map/r05.gif')}"; }
+    else if (a === 'r06') { url = "#{asset_path('italy_map/r06.gif')}"; }
+    else if (a === 'r07') { url = "#{asset_path('italy_map/r07.gif')}"; }
+    else if (a === 'r08') { url = "#{asset_path('italy_map/r08.gif')}"; }
+    else if (a === 'r09') { url = "#{asset_path('italy_map/r09.gif')}"; }
+    else if (a === 'r10') { url = "#{asset_path('italy_map/r10.gif')}"; }
+    else if (a === 'r11') { url = "#{asset_path('italy_map/r11.gif')}"; }
+    else if (a === 'r12') { url = "#{asset_path('italy_map/r12.gif')}"; }
+    else if (a === 'r13') { url = "#{asset_path('italy_map/r13.gif')}"; }
+    else if (a === 'r14') { url = "#{asset_path('italy_map/r14.gif')}"; }
+    else if (a === 'r15') { url = "#{asset_path('italy_map/r15.gif')}"; }
+    else if (a === 'r16') { url = "#{asset_path('italy_map/r16.gif')}"; }
+    else if (a === 'r17') { url = "#{asset_path('italy_map/r17.gif')}"; }
+    else if (a === 'r18') { url = "#{asset_path('italy_map/r18.gif')}"; }
+    else if (a === 'r19') { url = "#{asset_path('italy_map/r19.gif')}"; }
+    else if (a === 'r20') { url = "#{asset_path('italy_map/r20.gif')}"; }
+    uc.style.backgroundImage = 'url(' + url + ')';
+    return true;
+  }
+  function mt(a){
+  	var uc = document.getElementById("us");
+  	uc.style.backgroundImage ="url(#{asset_path('italy_map/pxt.gif')})";
+  	return true;
+  }
+
+:css
+  .lq {
+    display: inline-flex;
+    background:url("#{asset_path('italy_map/italy.gif')}") no-repeat;
+  }
+  #us {
+  	background:url() no-repeat;
+  }

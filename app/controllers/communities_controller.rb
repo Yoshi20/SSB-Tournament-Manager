@@ -20,6 +20,22 @@ class CommunitiesController < ApplicationController
         prevRegion = c.region
       end
     end
+    #blup
+    if session['country_code'] == 'it'
+      @communities = Community.all_from('it').order(region: :desc)
+      i = -1
+      prevRegion = ''
+      @communities_regions_array = []
+      @communities.each do |c|
+        if c.region != prevRegion
+          i = i + 1
+          @communities_regions_array[i] = []
+        end
+        @communities_regions_array[i] << c
+        prevRegion = c.region
+      end
+    end
+
     render "index_#{session['country_code']}"
   end
 
@@ -188,6 +204,18 @@ class CommunitiesController < ApplicationController
     end
     @discord_invites_json.compact
   end
+
+
+
+  # GET /communities/regions/:name
+  def regions
+    @region = params['name']
+    @communities = Community.all_from(session['country_code']).where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
 
   def grand_est
     @region = 'Grand_Est'

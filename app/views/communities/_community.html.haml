@@ -2,7 +2,8 @@
   %tr{'data-id': community.id, 'data-component': 'communitie'}
     %td
       %span.material-icons.admin-actions__link__icon= 'play_arrow'
-    %td= community.department || '-'
+    -if session['country_code'] == 'fr'
+      %td= community.department || '-'
     %td= community.name
     %td= community.city || '-'
 
