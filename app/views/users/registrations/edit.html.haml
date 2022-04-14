@@ -64,18 +64,18 @@
         .form-check
           = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'
           = f.label :allows_emails_from_partners, t("users.allows_emails_from_partners_#{session['country_code']}"), class:'form-check-label'
-      - if current_user.admin?
-        %hr
-        %p
-          %strong Admins only:
-        .form-group
-          = f.label :full_name, t('users.full_name')
-          %i= t('users.first_and_last_name')
-          = f.text_field :full_name, class: 'form-control'
-        .form-group
-          = f.label :area_of_responsibility, t('users.area_of_responsibility')
-          %i (Bern, Zurich, Geneva, ...?)
-          = f.text_field :area_of_responsibility, class: 'form-control'
+      -# - if current_user.admin?
+      -#   %hr
+      -#   %p
+      -#     %strong Admins only:
+      -#   .form-group
+      -#     = f.label :full_name, t('users.full_name')
+      -#     %i= t('users.first_and_last_name')
+      -#     = f.text_field :full_name, class: 'form-control'
+      -#   .form-group
+      -#     = f.label :area_of_responsibility, t('users.area_of_responsibility')
+      -#     %i (Bern, Zurich, Geneva, ...?)
+      -#     = f.text_field :area_of_responsibility, class: 'form-control'
       - if current_user.admin? || current_user.has_role?('tournament_organizer')
         %hr
         %p

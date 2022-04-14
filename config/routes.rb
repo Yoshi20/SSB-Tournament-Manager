@@ -63,7 +63,7 @@ Rails.application.routes.draw do
 
   resources :news
   resources :feedbacks
-  get 'administrators' => 'administrators#index'
+  # get 'administrators' => 'administrators#index'
   get 'imprint' => 'imprint#index'
   get 'privacy_policy' => 'privacy_policy#index'
 
