@@ -404,7 +404,7 @@ DEPENDENCIES
   material_icons
   meta-tags
   momentjs-rails
-  nokogiri (>= 1.11.0.rc4)
+  nokogiri (>= 1.13.4)
   paper_trail
   pg (~> 1.1.3)
   popper_js (~> 1.14.5)
