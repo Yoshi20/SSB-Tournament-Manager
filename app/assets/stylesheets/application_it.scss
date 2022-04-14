@@ -172,3 +172,12 @@ a.disabled {
   padding: 6px 6px;
   padding-right: 0px;
 }
+
+.wip {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  background-color: blue;
+}

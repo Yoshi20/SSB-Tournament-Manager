@@ -14,6 +14,9 @@
       .banner
         .banner__overlay
         = image_tag 'banner.jpg', class: 'banner__image'
+        - if session['country_code'] == 'it'
+          .wip
+            = "This site is a \"Work In Progress\""
       .container
         .row
           - if request.original_fullpath.start_with?('/calendar')
