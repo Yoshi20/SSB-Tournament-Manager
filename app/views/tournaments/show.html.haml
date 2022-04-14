@@ -1,21 +1,9 @@
 .row
   .col
-    - canton = @tournament.canton
-    - if canton.present?
-      .tooltip
-        = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-        %span.tooltiptext
-          = t("defines.cantons.#{canton}")
-    - federal_state = @tournament.federal_state
-    - if federal_state.present?
-      .tooltip
-        = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-        %span.tooltiptext
-          = t("defines.federal_states.#{federal_state}")
     - region = @tournament.region
-    - if region.present?
+    - if region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{@tournament.country_code}/#{region}.svg")
       .tooltip
-        = image_tag "regions/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        = image_tag "regions/#{@tournament.country_code}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
         %span.tooltiptext
           = t("defines.regions.#{region}")
     %h1.page__title= @tournament.name
@@ -34,6 +22,7 @@
     = image_tag @tournament.image_link, height: @tournament.image_height.present? ? @tournament.image_height : '100%', width: @tournament.image_width.present? ? @tournament.image_width : '100%'
 
 .tournament
+  - has_current_user_admin_rights = (current_user.present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host)))
   %ul#tournament-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
     %li.nav-item
       %a#details-tab.nav-link.active{'data-toggle'=>'tab', href: '#details', role: 'tab', 'aria-controls'=>'all'}
@@ -61,6 +50,17 @@
 
   .tab-content#tournaments-tabs-content
     .tab-pane.fade.show.active#details{role: 'tabpanel', 'aria-labelledby'=>'details-tab'}
+      -# Twitter share button
+      - if current_user.present? && current_user.player.twitter_username.present? && @tournament.players.include?(current_user.player) && (!@tournament.setup || !@tournament.started || !@tournament.finished)
+        .tournament__details
+          .row
+            .col
+              .tournament__details__single.tournament__details__single--last
+                %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+                - twitter_text = "I just registered for #{@tournament.name}"
+                %a.twitter-share-button{"data-size": "large", href: "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(twitter_text)}", target: '_blank'} Tweet
+                %span= t('tournaments.please_share')
+
       .tournament__details
         .row
           - if @tournament.registration_deadline.nil?
@@ -189,7 +189,7 @@
                   = link_to 'Challonge', "https://challonge.com/de/#{valid_challonge_url(@tournament.name)}", target: '_blank', class:'btn btn-sstm'
                 %span= t('tournaments.bracket')
 
-      - if current_user.present? and current_user.super_admin?
+      - if current_user.present? and current_user.admin?
         .tournament__details
           .row
             .col
@@ -206,7 +206,7 @@
     - if @tournament.description.present?
       .tab-pane.fade#description{role: 'tabpanel', 'aria-labelledby'=>'description-tab'}
         .tournament__description
-          = @tournament.description.html_safe
+          = sanitize(@tournament.description)
 
     - if @tournament.location.present?
       .tab-pane.fade#location{role: 'tabpanel', 'aria-labelledby'=>'location-tab'}
@@ -229,15 +229,8 @@
                     %h3= "Seed"
                   %th
                     %h3= t('tournaments.name')
-                  - if session['country_code'] == 'ch'
-                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                      %h3= t('tournaments.canton')
-                  - elsif session['country_code'] == 'de'
-                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                      %h3= t('tournaments.federal_state')
-                  - elsif session['country_code'] == 'fr'
-                    %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                      %h3= t('tournaments.region')
+                  %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                    %h3= t("tournaments.region_#{@tournament.country_code}")
                   %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                     %h3= t('players.mains')
                   - if @tournament.is_registration_allowed
@@ -246,7 +239,7 @@
                   - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                     %th.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       %h3= t('tournaments.fee_paid')
-              %tbody.table-content{class: ((current_user.present? and current_user.admin?) ? "sortable" : "with-show"), 'data-url': "/tournaments/sort_players/#{@tournament.id}"}
+              %tbody.table-content{class: (has_current_user_admin_rights ? "sortable" : "with-show"), 'data-url': "/tournaments/sort_players/#{@tournament.id}"}
                 - @tournament.players.includes(:user).order('registrations.position', 'registrations.created_at').each_with_index do |player, i|
                   - mail_string = mail_string + player.user.email + '; '
                   %tr{'data-id': player.id, 'data-component'=>'player', id: dom_id(player)}
@@ -254,7 +247,7 @@
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
                       %span.material-icons.copy-gamer-tag{style: 'vertical-align: middle; margin-left: 6px; font-size: 16px; cursor: pointer;', 'data-value': player.gamer_tag}= 'content_copy'
                       - name = (player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag)
-                      - if current_user.present? and current_user.admin?
+                      - if has_current_user_admin_rights
                         = link_to name, player
                         - if player.warnings.present? && player.warnings > 0
                           .tooltip{style: 'display: inline; font-size: .5rem; padding-left: 4px; padding-top: 3px;'}
@@ -271,18 +264,9 @@
                         .div{style: 'display: inline;'}
                           %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
                       = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
-                    - if session['country_code'] == 'ch'
-                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                        - if player.canton.present?
-                          = image_tag "cantons/#{player.canton}.svg", height: '20px', width: '20px'
-                    - elsif session['country_code'] == 'de'
-                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                        - if player.federal_state.present?
-                          = image_tag "federal_states/#{player.federal_state}.svg", height: '20px', width: '20px'
-                    - elsif session['country_code'] == 'fr'
-                      %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                        - if player.region.present?
-                          = image_tag "regions/#{player.region}.svg", height: '20px', width: '20px'
+                    %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
+                      - if player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{player.country_code}/#{player.region}.svg")
+                        = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px'
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each_with_index do |char, i|
@@ -291,7 +275,7 @@
                       %td
                         - player_registration = player.registrations.where(tournament_id: @tournament.id).first
                         - gs = player_registration.game_stations
-                        - if current_user.present? and current_user.admin? and !@tournament.started
+                        - if has_current_user_admin_rights and !@tournament.started
                           = form_for player_registration, role: 'form', method: :patch do |f|
                             .admin-actions__link__icon
                               = f.number_field :game_stations, class: 'game-stations-number-field', style: 'width: 82px;', value: player_registration.game_stations, min: 0
@@ -301,7 +285,7 @@
                             = "#{!@tournament.finished ? t('tournaments.brings') : t('tournaments.brought')} #{gs} #{gs > 1 ? 'setups' : 'setup'}"
                     - if @tournament.is_registration_allowed and !@tournament.registration_fee.nil? and @tournament.registration_fee > 0
                       %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
-                        - if current_user.present? and current_user.admin? and !@tournament.started and @tournament.registration_fee.to_i > 0
+                        - if has_current_user_admin_rights and !@tournament.started and @tournament.registration_fee.to_i > 0
                           .inline-div{style:'display:inline-block'}
                             = form_for player_registration, role: 'form', method: :patch do |f|
                               .admin-actions__link__icon
@@ -331,19 +315,20 @@
                     = gt
                     %br
 
-          - if current_user.present? and current_user.admin?
+          - if has_current_user_admin_rights
             .tournament__players
               - if !@tournament.setup and !@tournament.started and !@tournament.finished
                 .row{style: 'margin-bottom: 2rem;'}
                   .col
                     = button_to t('tournaments.seed_players'), "/tournaments/seed_players/#{@tournament.id}", method: 'patch', class:'btn btn-ghost', id:'seed_players-tournament-button', :data => {:confirm => t('tournaments.seed_players_tournament_confirm')}
+                    .div{style: 'font-size: 14px;'}= t('tournaments.drag_and_drop')
                   .col
                     = button_to t('tournaments.seed_players_randomly'), "/tournaments/seed_players/#{@tournament.id}", method: 'patch', class:'btn btn-ghost', id:'seed_players-tournament-button', params: {randomly: true}, :data => {:confirm => t('tournaments.seed_players_tournament_confirm')}
               .row
                 .col
                   = mail_to "", t('tournaments.mail_all_players'), bcc: mail_string, subject: "#{t('tournaments.mail_all_players_subject')} #{@tournament.name}", class: 'btn btn-ghost'
 
-        - if current_user.present? and current_user.admin? and !@tournament.setup and !@tournament.started and !@tournament.finished
+        - if has_current_user_admin_rights and !@tournament.setup and !@tournament.started and !@tournament.finished
           .tournament__players
             .row
               .col
@@ -444,7 +429,7 @@
                       - else
                         = "#{(r.wins.to_f/(r.wins+r.losses)*100).round(2)} %"
 
-  - if !@tournament.finished and current_user.present? and current_user.admin?
+  - if !@tournament.finished and has_current_user_admin_rights
     .row
       .col{style: 'text-align: left;'}
         - if @tournament.is_registration_allowed and !@tournament.setup and !@tournament.started
@@ -461,7 +446,7 @@
             = f.check_box :finished, checked: true, style: 'display: none;'
             = f.submit t('tournaments.cancel_tournament'), class:'btn btn-sstm', id:'cancel-tournament-button', data: { confirm: t('confirm') }
 
-  - if current_user.present? and current_user.admin?
+  - if has_current_user_admin_rights
     .admin-actions
       .admin-actions__link
         = link_to edit_tournament_path(@tournament), class:'btn btn-ghost btn-square' do

@@ -10,15 +10,6 @@
           %td.text-center= l(tournament.date, format: :custom_datetime_date_and_no_time)
           %td= tournament.name
           %td.text-center
-            - if session['country_code'] == 'ch'
-              - canton = tournament.canton
-              - if canton.present?
-                = image_tag "cantons/#{canton}.svg", height: '25px', width: '25px'
-            - elsif session['country_code'] == 'de'
-              - federal_state = tournament.federal_state
-              - if federal_state.present?
-                = image_tag "federal_states/#{federal_state}.svg", height: '25px', width: '25px'
-            - elsif session['country_code'] == 'fr'
-              - region = tournament.region
-              - if region.present?
-                = image_tag "regions/#{region}.svg", height: '25px', width: '25px'
+            - region = tournament.region
+            - if region.present?
+              = image_tag "regions/#{tournament.country_code}/#{region}.svg", height: '25px', width: '25px'

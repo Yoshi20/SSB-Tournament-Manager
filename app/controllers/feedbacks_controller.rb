@@ -6,7 +6,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all.order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
+    @feedbacks = Feedback.all_from(session['country_code']).order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
   end
 
   # GET /feedbacks/1
@@ -17,6 +17,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+    @feedback.country_code = session['country_code']
   end
 
   # GET /feedbacks/1/edit
@@ -27,9 +28,11 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.country_code = session['country_code']
     respond_to do |format|
       if @feedback.save
-        User.all_from(session['country_code']).where(is_super_admin: true).each do |admin|
+        #User.all_from(session['country_code']).where(is_admin: true).each do |admin|
+        User.where(is_super_admin: true).each do |admin|
           FeedbackMailer.with(feedback: @feedback, admin: admin).new_feedback_email.deliver_later
         end
         format.html { redirect_to feedbacks_path, notice: t('flash.notice.feedback_created') }

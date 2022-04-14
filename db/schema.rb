@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_083500) do
+ActiveRecord::Schema.define(version: 2022_04_11_193700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.string "facebook"
     t.string "youtube"
     t.string "twitch"
+    t.bigint "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "donations", force: :cascade do |t|
@@ -68,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "response_username"
+    t.string "country_code"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
@@ -121,7 +125,6 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.integer "wins"
     t.integer "losses"
     t.string "main_characters", default: [], array: true
-    t.string "canton"
     t.string "gender"
     t.integer "birth_year"
     t.string "prefix"
@@ -130,13 +133,17 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.string "instagram_username"
     t.string "youtube_video_ids"
     t.integer "warnings"
-    t.string "federal_state"
     t.string "country_code"
     t.string "region"
     t.integer "main_character_skins", default: [], array: true
     t.string "smash_gg_id"
     t.string "nintendo_friend_code"
     t.string "twitch_username"
+  end
+
+  create_table "players_teams", id: false, force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "team_id", null: false
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -164,6 +171,60 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.string "tenant", limit: 128
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    t.index ["tenant"], name: "index_taggings_on_tenant"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name_long"
+    t.string "name_short"
+    t.string "description"
+    t.string "website"
+    t.string "discord"
+    t.string "twitter"
+    t.string "instagram"
+    t.string "facebook"
+    t.string "youtube"
+    t.string "twitch"
+    t.string "image_link"
+    t.string "image_height"
+    t.string "image_width"
+    t.string "region"
+    t.string "country_code"
+    t.boolean "is_sponsoring_players"
+    t.boolean "is_recruiting"
+    t.string "recruiting_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.integer "members_counter", default: 0
   end
 
   create_table "thredded_categories", force: :cascade do |t|
@@ -429,8 +490,6 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.string "image_link"
     t.string "image_height"
     t.string "image_width"
-    t.string "canton"
-    t.string "federal_state"
     t.string "country_code"
     t.string "region"
   end
@@ -464,12 +523,16 @@ ActiveRecord::Schema.define(version: 2022_03_23_083500) do
     t.boolean "allows_emails_from_germanysmash", default: true
     t.string "country_code"
     t.boolean "allows_emails_from_francesmash", default: true
+    t.boolean "allows_emails_from_luxsmash", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "teams", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade
   add_foreign_key "thredded_messageboard_users", "thredded_user_details", on_delete: :cascade
   add_foreign_key "thredded_user_post_notifications", "thredded_posts", column: "post_id", on_delete: :cascade

@@ -1,0 +1,26 @@
+- set_meta_tags description: meta_tag_description('Teams')
+
+.row
+  .col
+    %h1.page__title= t('teams.title')
+
+.row
+  - if @teams.any?
+    - @teams.each_with_index do |team, i|
+      .col-6
+        = render team, index: i, truncate: false
+  - else
+    .col.text-center
+      %p= t('teams.no_teams_yet')
+
+- if current_user.present?
+  .admin-actions
+    - if current_user.admin? || current_user.has_role?('team_captain')
+      .admin-actions__link
+        = link_to new_team_path, class:'btn btn-default btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add'
+    - else
+      .admin-actions__link
+        = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+          %span.material-icons.admin-actions__link__icon= 'info'
+      = render '/partials/info', info_body: t('teams.info_body') #infoModal

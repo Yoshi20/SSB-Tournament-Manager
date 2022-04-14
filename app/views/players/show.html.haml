@@ -4,19 +4,9 @@
 .player
   .row
     .col
-      - if @player.canton.present?
+      - if @player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{@player.country_code}/#{@player.region}.svg")
         .tooltip
-          = image_tag "cantons/#{@player.canton}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-          %span.tooltiptext
-            = t("defines.cantons.#{@player.canton}")
-      - elsif @player.federal_state.present?
-        .tooltip
-          = image_tag "federal_states/#{@player.federal_state}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
-          %span.tooltiptext
-            = t("defines.federal_states.#{@player.federal_state}")
-      - elsif @player.region.present?
-        .tooltip
-          = image_tag "regions/#{@player.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          = image_tag "regions/#{@player.country_code}/#{@player.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
           %span.tooltiptext
             = t("defines.regions.#{@player.region}")
       .page__title
@@ -55,7 +45,7 @@
     -# admin actions -------------------------------------------------------------
     - if current_user.present?
       .admin-actions
-        -if current_user.super_admin? or @player.user == current_user
+        -if current_user.admin? or @player.user == current_user
           .admin-actions__link
             = link_to edit_player_path(@player), class:'btn btn-ghost btn-square' do
               %span.material-icons.admin-actions__link__icon= 'edit'
@@ -81,6 +71,10 @@
         %li.nav-item
           %a#videos-tab.nav-link{'data-toggle'=>'tab', href: '#videos', role: 'tab', 'aria-controls'=>'all'}
             = t('players.videos')
+      - if @player.teams.any?
+        %li.nav-item
+          %a#teams-tab.nav-link{'data-toggle'=>'tab', href: '#teams', role: 'tab', 'aria-controls'=>'all'}
+            = t('players.teams')
   - else
     %ul{style: "margin-bottom: 2rem;"}
 
@@ -178,6 +172,16 @@
               %span
                 = t('players.experience')
 
+      - if @player.role_list.any?
+        .player__stats
+          .row.text-center
+            .col
+              - @player.role_list.sort.each do |role|
+                %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= link_to t(role, scope: 'defines.roles'), players_path(filter: 'role', 'filter-data': role, anchor: 'roles'), style: 'color: #FFF;'
+              .player__stats__single.player__stats__single--last
+                %span
+                  = t('players.roles')
+
       - if current_user.present? and current_user.admin? and not @player.warnings.nil? and @player.warnings > 0
         .player__stats
           .row
@@ -270,3 +274,19 @@
                 %p
                   %strong= "#{ex}:"
                   = "https://youtu.be/#{v_id}"
+
+    -# teams ---------------------------------------------------------------
+    - if @player.teams.any?
+      .tab-pane.fade.show#teams{role: 'tabpanel', 'aria-labelledby'=>'teams-tab'}
+        .player__teams
+          %table.table.table-hover.table-borderless
+            %thead.table-header
+              %tr
+                %th
+                  %h3= t('players.joined_teams')
+                %th
+            %tbody.table-content.with-show
+              - @player.teams.each_with_index do |team, i|
+                %tr{'data-id': team.id, 'data-component'=>'team'}
+                  %td= team.name_long
+                  %td.text-center= team.name_short

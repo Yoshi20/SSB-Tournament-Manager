@@ -38,6 +38,7 @@ namespace :results_crawler_de do
       'https://braacket.com/league/SSBUDEPRs/tournament?rows=200&page=3',
       'https://braacket.com/league/SSBUDEPRs/tournament?rows=200&page=4',
       'https://braacket.com/league/SSBUDEPRs/tournament?rows=200&page=5',
+      'https://braacket.com/league/SSBUDEPRs/tournament?rows=200&page=6',
     ]
     links.each do |link|
       puts "\nCrawling #{link}..."

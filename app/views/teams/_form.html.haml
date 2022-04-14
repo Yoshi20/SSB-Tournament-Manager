@@ -1,0 +1,67 @@
+= form_for @team, role: 'form', class:'form' do |f|
+
+  - if @team.errors.any?
+    #error_explanation
+      %h2= pluralize(@team.errors.count, "error") + ' ' + t('teams.prohibited')
+      %ul
+        - @team.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :name_long, t('teams.name_long')
+    = f.text_field :name_long, class: 'form-control'
+  .field.form-group
+    = f.label :name_short, t('teams.name_short')
+    = f.text_field :name_short, class: 'form-control'
+  .field.form-group
+    = f.label :website, t('teams.website')
+    = f.text_field :website, class: 'form-control'
+  .field.form-group
+    = f.label :region, t('teams.region')
+    = f.select :region, options_for_select(regions_for_select_from(@team.country_code), @team.region || params[:region]), {include_blank: true}, class: 'form-control'
+  .field.form-group
+    = f.label :discord, t('teams.discord')
+    %em= t('teams.discord_comment')
+    = f.text_field :discord, class: 'form-control'
+  .field.form-group
+    = f.label :twitter, t('teams.twitter')
+    = f.text_field :twitter, class: 'form-control'
+  .field.form-group
+    = f.label :instagram, t('teams.instagram')
+    = f.text_field :instagram, class: 'form-control'
+  .field.form-group
+    = f.label :facebook, t('teams.facebook')
+    = f.text_field :facebook, class: 'form-control'
+  .field.form-group
+    = f.label :youtube, t('teams.youtube')
+    = f.text_field :youtube, class: 'form-control'
+  .field.form-group
+    = f.label :twitch, t('teams.twitch')
+    = f.text_field :twitch, class: 'form-control'
+  .field.form-group
+    = f.label :image_link, t('teams.image_link')
+    %em= t('teams.image_owner')
+    = f.text_field :image_link, placeholder: "https://www.<my-image>.com", class: 'form-control'
+  .row
+    .col.field.form-group
+      = f.label :image_height, t('teams.image_height')
+      = f.text_field :image_height, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+    .col.field.form-group
+      = f.label :image_width, t('teams.image_width')
+      = f.text_field :image_width, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+  .field.form-group
+    = f.label :description, t('teams.description')
+    = f.text_area :description, class: 'form-control', rows: '10'
+  .field.form-group
+    .form-check
+      = f.check_box :is_sponsoring_players, checked: (params[:team].present? ? (params[:team][:is_sponsoring_players] == "1") : false), class:'form-check-input mr-2'
+      = f.label :is_sponsoring_players, t('teams.is_sponsoring_players'), class:'form-check-label'
+  .field.form-group
+    .form-check
+      = f.check_box :is_recruiting, checked: (params[:team].present? ? (params[:team][:is_recruiting] == "1") : false), class:'form-check-input mr-2'
+      = f.label :is_recruiting, t('teams.is_recruiting'), class:'form-check-label'
+  .field.form-group
+    = f.label :recruiting_description, t('teams.recruiting_description')
+    = f.text_area :recruiting_description, class: 'form-control', rows: '5'
+  .actions.form-group
+    = f.submit class:'btn btn-block btn-cyan'

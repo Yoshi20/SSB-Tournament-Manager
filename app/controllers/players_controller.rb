@@ -9,17 +9,17 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     if params[:filter].present? && params['filter-data'].present?
-      if params[:filter] == 'canton'
-        @players = Player.all_from(session['country_code']).where(canton: params['filter-data'])
-      elsif params[:filter] == 'federal_state'
-        @players = Player.all_from(session['country_code']).where(federal_state: params['filter-data'])
-      elsif params[:filter] == 'region'
-        @players = Player.all_from(session['country_code']).where(region: params['filter-data'])
+      if params[:filter] == 'region'
+        @players = Player.all_from(session['country_code']).includes(:taggings).where(region: params['filter-data'])
       elsif params[:filter] == 'character'
-        @players = Player.all_from(session['country_code']).where("? = ANY (main_characters)", params['filter-data'])
+        @players = Player.all_from(session['country_code']).includes(:taggings).where("? = ANY (main_characters)", params['filter-data'])
+      elsif params[:filter] == 'role'
+        @players = Player.all_from(session['country_code']).includes(:taggings).tagged_with(params['filter-data'])
+      elsif params[:filter] == 'activity'
+        @players = Player.all_from(session['country_code']).includes(:taggings, :tournaments).where(tournaments: {date: params['filter-data'].to_i.days.ago.. Date.today})
       end
     else
-      @players = Player.all_from(session['country_code'])
+      @players = Player.all_from(session['country_code']).includes(:taggings)
     end
 
     # handle search parameter
@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
           flash.now[:alert] = t('flash.alert.search_players')
         end
       rescue ActiveRecord::StatementInvalid
-        @players = Player.all_from(session['country_code']).iLikeSearch(params[:search])
+        @players = Player.all_from(session['country_code']).includes(:taggings).iLikeSearch(params[:search])
         if @players.empty?
           flash.now[:alert] = t('flash.alert.search_players')
         end
@@ -48,6 +48,18 @@ class PlayersController < ApplicationController
         else
           @players = @players.sort_by do |p|
             [p.win_loss_ratio, -p.created_at.to_i]
+          end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        end
+      when 'roles'
+        # @players = @players.order("players.role_list").paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        #blup: working but way too slow
+        if params[:order] == "desc"
+          @players = @players.sort_by do |p|
+            p.role_list
+          end.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        else
+          @players = @players.sort_by do |p|
+            p.role_list
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       else
@@ -118,10 +130,14 @@ class PlayersController < ApplicationController
         main_character_skins.each do |skin_nr|
           @player.main_character_skins << skin_nr
         end
+        # update roles
+        new_role_list = params[:player][:role_list].compact.reject { |c| c.empty? }
+        new_role_list.prepend('admin') if @player.user.admin?
+        @player.role_list = new_role_list if @player.role_list != new_role_list
         @player.save
         # update all tournament ranking_strings if the gamer_tag was changed and create an AlternativeGamerTag
         if @player.gamer_tag != old_gamer_tag
-          Tournament.all_from(session['country_code']).each do |t|
+          @player.tournaments.each do |t|
             if t.ranking_string.to_s.include?(old_gamer_tag)
               t.update(ranking_string: t.ranking_string.gsub(old_gamer_tag, @player.gamer_tag))
             end
@@ -129,11 +145,13 @@ class PlayersController < ApplicationController
           AlternativeGamerTag.create(player_id: @player.id, gamer_tag: old_gamer_tag, country_code: @player.country_code)
         end
         # update alternative_gamer_tags if it was changed
-        alts = ""
-        @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
-        if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
-          params[:alternative_gamer_tags].split(',').each do |alt|
-            AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
+        if current_user.present? && current_user.super_admin?
+          alts = ""
+          @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
+          if params[:alternative_gamer_tags].present? and params[:alternative_gamer_tags] != alts
+            params[:alternative_gamer_tags].split(',').each do |alt|
+              AlternativeGamerTag.create(player_id: @player.id, gamer_tag: alt.strip, country_code: @player.country_code)
+            end
           end
         end
         # render
@@ -160,15 +178,15 @@ class PlayersController < ApplicationController
     def player_params
       params.require(:player).permit(:gamer_tag, :points, :participations,
         :self_assessment, :tournament_experience, :comment, :best_rank, :wins,
-        :losses, :main_characters, :created_at, :updated_at, :canton,
-        :federal_state, :region, :gender, :birth_year, :prefix,
+        :losses, :main_characters, :created_at, :updated_at,
+        :region, :gender, :birth_year, :prefix,
         :discord_username, :twitter_username, :instagram_username,
         :youtube_video_ids, :warnings, :main_character_skins, :smash_gg_id,
         :nintendo_friend_code, :twitch_username)
     end
 
     def authenticate_player!
-      unless current_user.present? && (@player.user_id == current_user.id || current_user.super_admin?)
+      unless current_user.present? && (@player.user_id == current_user.id || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @player, alert: t('flash.alert.unauthorized') }
           format.json { render json: @player.errors, status: :unauthorized }

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:index]
   before_action :set_user, only: [:update, :destroy]
   before_action { @section = 'users' }
 
@@ -13,7 +14,31 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      prev_country_code = @user.country_code
       if current_user.super_admin? and @user.update(user_params)
+        # country_code update handling
+        if user_params['country_code'].present? && user_params['country_code'] != prev_country_code
+          @user.player.update(country_code: user_params['country_code'])
+          @user.player.alternative_gamer_tags.each do |agt|
+            agt..update(country_code: user_params['country_code'])
+          end
+          @user.news.each do |n|
+            n.update(country_code: user_params['country_code'])
+          end
+          @user.feedbacks.each do |f|
+            f.update(country_code: user_params['country_code'])
+          end
+        end
+        # update admin tag on player
+        if @user.is_admin && !@user.has_role?("admin")
+          user_player = @user.player
+          user_player.role_list.add("admin")
+          user_player.save
+        elsif !@user.is_admin && @user.has_role?("admin")
+          user_player = @user.player
+          user_player.role_list.remove("admin")
+          user_player.save
+        end
         format.html { redirect_to users_path, notice: t('flash.notice.updating_user') }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -38,6 +63,20 @@ class UsersController < ApplicationController
 
   private
 
+  def authenticate_admin!
+    unless current_user.present? && current_user.admin?
+      respond_to do |format|
+        if current_user.present?
+          format.html { redirect_to edit_user_registration_path }
+          format.json { render json: edit_user_registration_path.errors, status: :unauthorized }
+        else
+          format.html { redirect_to root_path, alert: t('flash.alert.unauthorized') }
+          format.json { render json: {}, status: :unauthorized }
+        end
+      end
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
@@ -45,7 +84,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:is_admin, :is_club_member, :updated_at)
+    params.require(:user).permit(:is_admin, :is_club_member, :updated_at, :country_code)
   end
 
 end

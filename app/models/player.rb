@@ -4,6 +4,9 @@ class Player < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :results, dependent: :destroy
   has_many :tournaments, through: :registrations
+  has_and_belongs_to_many :teams
+
+  acts_as_taggable_on :roles
 
   before_validation :strip_whitespace
   after_save :delete_identical_alt

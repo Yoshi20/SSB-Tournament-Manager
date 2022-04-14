@@ -19,6 +19,8 @@
 @import "bootstrap";
 @import "material_icons";
 @import "fullcalendar";
+@import "select2";
+@import "select2-bootstrap";
 
 @import "./_includes/typography";
 
@@ -28,6 +30,7 @@
 @import "./_modules/calendar";
 @import "./_modules/communities_fr";
 @import "./_modules/content";
+@import "./_modules/discord_invite";
 @import "./_modules/form";
 @import "./_modules/footer_fr";
 @import "./_modules/modal";
@@ -39,6 +42,7 @@
 @import "./_modules/statistic";
 @import "./_modules/tab";
 @import "./_modules/table";
+@import "./_modules/teams";
 @import "./_modules/toast";
 @import "./_modules/tournament";
 
@@ -158,4 +162,13 @@ a.disabled {
   background-color: #000;
   border-radius: 50%;
   display: inline-block;
+}
+
+.forum-unread-counter {
+  color: #fff;
+  font-size: 0.5rem;
+  line-height: 1;
+  margin-left: -0.3rem;
+  padding: 6px 6px;
+  padding-right: 0px;
 }

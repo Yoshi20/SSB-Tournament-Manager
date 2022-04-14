@@ -23,6 +23,9 @@
   %li.nav-item
     %a#contact-tab.nav-link{'data-toggle'=>'tab', href: '#contact', role: 'tab', 'aria-controls'=>'all'}
       = t('navigation.footer.contact')
+  %li.nav-item
+    %a#partners-tab.nav-link{'data-toggle'=>'tab', href: '#partners', role: 'tab', 'aria-controls'=>'all'}
+      = t('information.de.partners.title')
 
 .tab-content#information-tabs-content
   -# general
@@ -60,7 +63,8 @@
     .row.mt-3
       .col
         %h2= t('information.de.tournament_manager.tournament_organiser')
-        %p= t('information.de.tournament_manager.tournament_organiser_body', link: mail_to('admin@germanysmash.de', t('information.de.tournament_manager.tournament_organiser_mail'), subject: t('information.de.tournament_manager.tournament_organiser_mail_subject'), body: t('information.de.tournament_manager.tournament_organiser_mail_body'))).html_safe
+        %p= t('information.de.tournament_manager.tournament_organiser_body').html_safe
+        -# %p= t('information.de.tournament_manager.tournament_organiser_body', link: mail_to('admin@germanysmash.de', t('information.de.tournament_manager.tournament_organiser_mail'), subject: t('information.de.tournament_manager.tournament_organiser_mail_subject'), body: t('information.de.tournament_manager.tournament_organiser_mail_body'))).html_safe
     .row
       .col
         %h2= t('information.de.tournament_manager.bracket_tool')
@@ -145,3 +149,15 @@
             = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
           .form-group
             = button_tag t('information.de.contact.submit'), type: 'submit', class: 'btn btn-default'
+  -# partners
+  .tab-pane.fade.show#partners{role: 'tabpanel', 'aria-labelledby'=>'partners-tab'}
+    .row
+      .col
+        %h2= t('information.de.partners.sites')
+        %ul
+          %li= link_to 'SwissSmash.ch', 'https://www.swisssmash.ch', target: '_blank'
+          -# %li= link_to 'GermanySmash.de', 'https://www.germanysmash.de', target: '_blank'
+          %li= link_to 'SmashUltimate.fr', 'https://www.smashultimate.fr', target: '_blank'
+          %li= link_to 'LuxSmash.lu', 'https://www.luxsmash.lu', target: '_blank'
+          %li= link_to 'ItalySmash.it', 'https://www.italysmash.it', target: '_blank'
+          %li= link_to 'SmashBrothers.at', 'https://smashbrothers.at', target: '_blank'

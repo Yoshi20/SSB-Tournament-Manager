@@ -21,8 +21,15 @@
   .text-center
     = t('news.no_news_found')
 
-- if current_user.present? and current_user.admin?
+
+- if current_user.present?
   .admin-actions
-    .admin-actions__link
-      = link_to new_news_path, class:'btn btn-default btn-square' do
-        %span.material-icons.admin-actions__link__icon= 'add'
+    - if current_user.admin? || current_user.has_role?('news_editor')
+      .admin-actions__link
+        = link_to new_news_path, class:'btn btn-default btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add'
+    - else
+      .admin-actions__link
+        = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+          %span.material-icons.admin-actions__link__icon= 'info'
+      = render '/partials/info', info_body: t('news.info_body') #infoModal

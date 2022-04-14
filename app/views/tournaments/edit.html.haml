@@ -11,7 +11,7 @@
     = render 'weekly-form', tournament: @tournament
 
   .tournament-edit__actions
-    - if current_user.admin?
+    - if current_user.admin? || (@tournament.host.present? && current_user == @tournament.host)
       - if @tournament.weekly?
         %p= link_to "#{t('delete')} #{t('tournaments.this_weekly')}", @tournament, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'
         %p= link_to "#{t('delete')} #{t('tournaments.all_upcoming_weeklies')}", tournament_path(id: @tournament.id, all: true), method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm'

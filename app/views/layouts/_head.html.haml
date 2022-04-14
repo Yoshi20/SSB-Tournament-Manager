@@ -4,6 +4,8 @@
   %title= "GermanySmash.de#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'fr'
   %title= "SmashUltimate.fr#{@section.present? ? " | #{@section.capitalize}" : ""}"
+- elsif session['country_code'] == 'lu'
+  %title= "LuxSmash.lu#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'it'
   %title= "ItalySmash.it#{@section.present? ? " | #{@section.capitalize}" : ""}"
 = display_meta_tags(default_meta_tags)
@@ -18,6 +20,9 @@
 - elsif session['country_code'] == 'fr'
   = favicon_link_tag 'fr_favicon-32x32.png'
   = stylesheet_link_tag 'application_fr', media: 'all', 'data-turbolinks-track' => true
+- elsif session['country_code'] == 'lu'
+  = favicon_link_tag 'lu_logo.png'
+  = stylesheet_link_tag 'application_lu', media: 'all', 'data-turbolinks-track' => true
 - elsif session['country_code'] == 'it'
   = favicon_link_tag 'it_logo.svg'
   = stylesheet_link_tag 'application_it', media: 'all', 'data-turbolinks-track' => true

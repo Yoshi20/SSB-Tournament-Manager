@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_one :player, dependent: :destroy
-  #has_many :feedbacks, dependent: :destroy
+  has_many :communities
+  has_many :feedbacks
+  has_many :news
+  has_many :teams
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
@@ -76,6 +79,8 @@ class User < ApplicationRecord
       self.allows_emails_from_germanysmash
     elsif self.country_code == 'fr'
       self.allows_emails_from_francesmash
+    elsif self.country_code == 'lu'
+      self.allows_emails_from_luxsmash
     elsif self.country_code == 'it'
       self.allows_emails_from_italysmash
     end
@@ -86,8 +91,16 @@ class User < ApplicationRecord
   end
 
   def send_devise_notification(notification, *args)
-    locale = self.country_code == 'ch' ? 'en' : self.country_code
+    locale = (self.country_code == 'ch' || self.country_code == 'lu') ? 'en' : self.country_code
     I18n.with_locale(locale) { super(notification, *args) }
+  end
+
+  def has_role?(role)
+    self.player.role_list.include?(role)
+  end
+
+  def is_moderator?
+    self.admin? || self.has_role?("forum_moderator")
   end
 
 end

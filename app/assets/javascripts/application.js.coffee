@@ -23,6 +23,7 @@
 #= require moment
 #= require fullcalendar
 #= require cookies_eu
+#= require select2
 #= require_tree .
 
 document.addEventListener 'turbolinks:load', ->

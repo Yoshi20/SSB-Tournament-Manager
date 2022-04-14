@@ -13,12 +13,13 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    # if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'login', minimum_score: 0.5)
-    if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
-      super
-    else
-      render 'new'
-    end
+    super
+    # # if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], action: 'login', minimum_score: 0.5)
+    # if params['noReCaptcha'] == 'true' || verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"])
+    #   super
+    # else
+    #   render 'new'
+    # end
   end
 
   # DELETE /resource/sign_out

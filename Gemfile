@@ -39,7 +39,7 @@ gem 'icalendar'
 
 # See https://github.com/bokmann/fullcalendar-rails
 gem 'fullcalendar-rails'
-gem 'momentjs-rails', '2.20.1' #blup: i18n (js) seems to not work with v2.29.1
+gem 'momentjs-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -144,3 +144,10 @@ gem 'cookies_eu'
 
 # See https://github.com/thredded/thredded
 gem 'thredded', '~> 0.16.12'
+gem 'html-pipeline', '2.14.0' #blup: error when calling rails s with v2.14.1
+
+# See https://github.com/mbleigh/acts-as-taggable-on
+gem 'acts-as-taggable-on'
+
+# See https://github.com/argerim/select2-rails
+gem "select2-rails"

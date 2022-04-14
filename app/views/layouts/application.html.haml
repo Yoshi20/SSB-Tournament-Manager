@@ -5,10 +5,12 @@
 
   %body
     = render '/layouts/flashes'
-    = render '/partials/login'
+    = render '/partials/login' #loginModal
     %main
-      .header.navbar.navbar-expand-lg.navbar-sstm
+      .header.navbar.navbar-expand-lg.navbar-sstm.d-none.d-lg-block
         = render "/layouts/navigation_#{session['country_code']}"
+      .header.navbar.navbar-sstm.d-block.d-lg-none
+        = render "/layouts/navigation_mobile_#{session['country_code']}"
       .banner
         .banner__overlay
         = image_tag 'banner.jpg', class: 'banner__image'
@@ -28,6 +30,10 @@
                     = t('partials.streamers.title')
                   = render '/partials/streamers'
                 - elsif session['country_code'] == 'fr'
+                  %h2.sidebar__title
+                    = t('partials.streamers.title')
+                  = render '/partials/streamers'
+                - elsif session['country_code'] == 'lu'
                   %h2.sidebar__title
                     = t('partials.streamers.title')
                   = render '/partials/streamers'
@@ -52,7 +58,7 @@
       .container
         = render "/partials/footer_#{session['country_code']}"
 
-  - if session['country_code'] == 'de' || session['country_code'] == 'fr'
+  - if session['country_code'] == 'de' || session['country_code'] == 'fr' || session['country_code'] == 'lu'
     = render 'cookies_eu/consent_banner'
 
 :javascript

@@ -1,0 +1,179 @@
+.team
+  .row
+    .col
+      - if @team.region.present?
+        .tooltip
+          = image_tag "regions/#{@team.country_code}/#{@team.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          %span.tooltiptext
+            = t("defines.regions.#{@team.region}")
+      .page__title
+        %h1
+          = @team.name_long
+          %h3{style: 'margin-top: -15px; padding-top: 0px;'}
+            = "[#{@team.name_short}]"
+        - logos_shown = 0
+        - if @team.twitter.present?
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), @team.twitter.include?('http') ? @team.twitter : "https://twitter.com/#{@team.twitter}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          - logos_shown = logos_shown + 1;
+        - if @team.instagram.present?
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @team.instagram.include?('http') ? @team.instagram : "https://www.instagram.com/#{@team.instagram}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          - logos_shown = logos_shown + 1;
+        - if @team.facebook.present?
+          = link_to image_tag('Facebook_Logo.svg', height: '35px', width: '30px'), @team.facebook.include?('http') ? @team.facebook : "https://www.facebook.com/#{@team.facebook}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          - logos_shown = logos_shown + 1;
+
+    -# admin actions -------------------------------------------------------------
+    -if current_user.present? && (current_user.admin? || @team.user == current_user)
+      .admin-actions
+        .admin-actions__link
+          = link_to edit_team_path(@team), class:'btn btn-default btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'edit'
+
+  .text-center
+    - if @team.image_link.present?
+      = image_tag @team.image_link, height: @team.image_height.present? ? @team.image_height : '100%', width: @team.image_width.present? ? @team.image_width : '100%'
+
+  - if not @team.description.nil? and not @team.description.empty?
+    .team__stats
+      .row
+        .col
+          %h3= t('teams.description')
+          = @team.description || '-'
+
+  - if @discord_invites_json.any?
+    .team__stats
+      .row
+        .col
+          .team__stats__single.team__stats__single--last
+            .discord_invites{style: 'justify-content: center; display: grid;'}
+              - @discord_invites_json.each do |discord_invite|
+                .row{style: 'margin-bottom: 1rem;'}
+                  .col
+                    = render '/partials/discord_invite', discord_invite: discord_invite
+            %span{style: 'margin-top: -10px;'}
+              = (@discord_invites_json.count > 1 ? "Discords" : "Discord")
+
+  - if @team.twitch.present? || @team.youtube.present?
+    .team__media_channels
+      .row
+        - if @team.twitch.present?
+          .col{style: 'text-align: center;'}
+            = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), @team.twitch.include?('http') ? @team.twitch : "https://www.twitch.tv/#{@team.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+        - if @team.youtube.present?
+          .col{style: 'text-align: center;'}
+            = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+
+  - if @team.website.present?
+    .team__stats
+      .row
+        .col
+          .team__stats__single.team__stats__single--last
+            %strong= link_to @team.website, @team.website, target: '_blank'
+            %span= t('teams.website')
+
+  .team__stats
+    .row
+      .col
+        .team__stats__single
+          - if @team.is_sponsoring_players
+            %span.material-icons{style: 'display: initial; font-size: 24px; font-weight: 600;'}= 'done'
+          - else
+            %span.material-icons{style: 'display: initial; font-size: 24px; font-weight: 600;'}= 'clear'
+          %span= t('teams.is_sponsoring_players')
+      .col
+        .team__stats__single.team__stats__single--last
+          - if @team.is_recruiting
+            %span.material-icons{style: 'display: initial; font-size: 24px; font-weight: 600;'}= 'done'
+          - else
+            %span.material-icons{style: 'display: initial; font-size: 24px; font-weight: 600;'}= 'clear'
+          %span= t('teams.is_recruiting')
+
+  .team__stats
+    .row
+      .col
+        .team__stats__single
+          %strong= @team.members_counter
+          %span= t('teams.members')
+      .col
+        .team__stats__single
+          %strong= @team.players.map{ |p| p.points}.sum
+          %span= t('teams.total_points')
+      .col
+        .team__stats__single.team__stats__single--last
+          - win_loss_ratios = @team.players.map{ |p| p.win_loss_ratio }.compact.reject{ |v| v == 0 }
+          %strong= "#{win_loss_ratios.count > 0 ? (win_loss_ratios.sum.to_f/win_loss_ratios.count).round(2) : 0} %"
+          %span= 'Ø-' + t('w_l')
+
+  .team__stats
+    .row
+      .col
+        .team__stats__single.team__stats__single--last
+          %strong= link_to @team.user.player.gamer_tag, @team.user.player
+          %span= t('defines.roles.team_captain')
+
+  - if @team.players.any?
+    .team__stats
+      .row#players
+        .col
+          %h3= t('teams.members')
+          %table.table.table-hover.table-borderless
+            %thead.table-header
+              %tr
+                %th= t('players.gamer_tag')
+                %th.text-center= t('players.mains')
+                %th.text-center= t('players.points')
+                %th.text-center= t('w_l')
+
+            %tbody.table-content.with-show.player-list-body
+              - @team.players.order(points: :desc).each_with_index do |player, i|
+                %tr{'data-id': player.id, 'data-component'=>'player'}
+                  %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                  %td.text-center
+                    - if player.main_characters.any?
+                      %div
+                        - player.main_characters[0...3].each_with_index do |char, i|
+                          = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
+                  %td.text-center= player.points
+                  %td.text-center
+                    - if player.losses == 0 and player.wins == 0
+                      = '-'
+                    - else
+                      = "#{player.win_loss_ratio} %"
+
+  -if current_user.present? && (current_user.admin? || @team.user == current_user)
+    .team__stats
+      .row.text-center
+        .col
+          = form_tag "/teams/add_player/#{@team.id}#players", method:'post', class: 'form-group' do
+            = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+            = submit_tag t('tournaments.add_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+        .col
+          = form_tag "/teams/remove_player/#{@team.id}#players", method:'post', class: 'form-group' do
+            = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+            = submit_tag t('tournaments.remove_player'), name:nil, class: 'btn btn-ghost', style: 'margin-top: 0.4rem;'
+
+  - if @team.is_recruiting and not @team.recruiting_description.nil? and not @team.recruiting_description.empty?
+    .team__stats
+      .row
+        .col
+          %h3= t('teams.recruiting_description')
+          = @team.recruiting_description || '-'
+
+  -if current_user.present? && current_user.admin?
+    .team__stats
+      .row
+        .col
+          %h3 Admins only:
+      .row
+        .col
+          .team__stats__single
+            %strong= @team.updated_at.to_s(:custom_datetime)
+            %span= 'updated_at'
+        .col
+          .team__stats__single
+            %strong= link_to @team.user.player.gamer_tag, @team.user.player
+            %span= 'Creator'
+        .col
+          .team__stats__single.team__stats__single--last
+            %strong= @team.created_at.to_s(:custom_datetime)
+            %span= 'created_at'

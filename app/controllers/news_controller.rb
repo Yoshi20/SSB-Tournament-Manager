@@ -18,6 +18,7 @@ class NewsController < ApplicationController
   # GET /news/new
   def new
     @news = News.new
+    @news.country_code = session['country_code']
   end
 
   # GET /news/1/edit
@@ -76,7 +77,7 @@ class NewsController < ApplicationController
     end
 
     def authenticate_admin!
-      unless current_user.present? && current_user.admin?
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("news_editor"))
         respond_to do |format|
           format.html { redirect_to news_index_path, alert: t('flash.alert.unauthorized') }
           format.json { render json: {}, status: :unauthorized }
@@ -85,7 +86,7 @@ class NewsController < ApplicationController
     end
 
     def authenticate_news_creator!
-      unless current_user.present? && (@news.user_id == current_user.id || current_user.super_admin?)
+      unless current_user.present? && (@news.user_id == current_user.id || current_user.admin?)
         respond_to do |format|
           format.html { redirect_to @news, alert: t('flash.alert.unauthorized') }
           format.json { render json: @news.errors, status: :unauthorized }

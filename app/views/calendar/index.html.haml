@@ -7,19 +7,9 @@
 .row
   .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
     .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
-    - if session['country_code'] == 'ch'
-      - cantons_raw.each do |canton|
-        = link_to calendar_path(filter: canton) do
-          = image_tag "cantons/#{canton}.svg", height: '30px', width: '30px', id: canton, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == canton ? 'solid 1px black' : ''};"
-    - elsif session['country_code'] == 'de'
-      - federal_states_raw.each do |federal_state|
-        = link_to calendar_path(filter: federal_state.downcase) do
-          = image_tag "federal_states/#{federal_state}.svg", height: '30px', width: '30px', id: federal_state, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == federal_state.downcase ? 'solid 1px black' : ''};"
-    - elsif session['country_code'] == 'fr'
-      - regions_raw.each do |region|
-        = link_to calendar_path(filter: region) do
-          = image_tag "regions/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
-    -# blup: TODO
+    - regions_raw_from(session['country_code']).each do |region|
+      = link_to calendar_path(filter: region) do
+        = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
 = render 'calendar'
 
@@ -50,6 +40,10 @@
           .calendar__footer__actions.mb-3
             %strong= t('calendar.france') + ': '
             %span{style: 'font-size: 12px;'}= link_to "www.smashultimate.fr/calendar", "https://www.smashultimate.fr/calendar", target: '_blank'
+        - unless session['country_code'] == 'lu'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.luxembourg') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.luxsmash.lu/calendar", "https://www.luxsmash.lu/calendar", target: '_blank'
         - unless session['country_code'] == 'it'
           .calendar__footer__actions.mb-3
             %strong= t('calendar.italy') + ': '
@@ -57,3 +51,21 @@
         .calendar__footer__actions
           %strong= t('calendar.austria') + ': '
           %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'
+
+- if current_user.present?
+  .admin-actions
+    - if current_user.admin? || current_user.has_role?('tournament_organizer')
+      - if current_user.challonge_username.present? && current_user.challonge_api_key.present?
+        .admin-actions__link
+          = link_to new_tournament_path, class:'btn btn-default btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'add'
+      - else
+        .admin-actions__link
+          = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+            %span.material-icons.admin-actions__link__icon= 'info'
+        = render '/partials/info', info_body: t('tournaments.info_body_challonge') #infoModal
+    - else
+      .admin-actions__link
+        = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+          %span.material-icons.admin-actions__link__icon= 'info'
+      = render '/partials/info', info_body: t('tournaments.info_body') #infoModal

@@ -8,6 +8,7 @@
 
 
   .navbar-brand {
+    margin-right: 0;
     color: $color-white;
     display: flex;
     align-items: center;
@@ -133,5 +134,9 @@
   #nav-char-image, img {
     max-width: 100%;
     vertical-align: unset;
+  }
+
+  .h-24 {
+    height: 24px;
   }
 }

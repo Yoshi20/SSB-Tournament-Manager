@@ -18,12 +18,13 @@
       = f.text_field :subtype, class: 'form-control', value: 'internal'
     .form-group
       = f.label :registration_deadline, t('tournaments.registration_deadline')
+      %em= '(dd.mm.yyyy - hh:mm)'
       .form-group-inline
-        = f.datetime_select :registration_deadline, { start_year: Time.now.year }, class: 'form-control'
+        = f.datetime_select :registration_deadline, { start_year: Time.now.year, end_year: Date.today.year + 3 }, class: 'form-control'
     .form-group
       = f.label :date, t('tournaments.start_date')
       .form-group-inline
-        = f.datetime_select :date, { start_year: Time.now.year }, class: 'form-control'
+        = f.datetime_select :date, { start_year: Time.now.year, end_year: Date.today.year + 3 }, class: 'form-control'
     .form-group
       = f.label :name, t('tournaments.name')
       = f.text_field :name, class: 'form-control', placeholder: t('tournaments.name_placeholder')
@@ -31,20 +32,11 @@
       = f.label :location, t('tournaments.location')
       %em= t('tournaments.separate')
       = f.text_field :location, class: 'form-control', placeholder: t('tournaments.location_placeholder')
-    - if session['country_code'] == 'ch'
-      .form-group
-        = f.label :canton, t('players.canton')
-        = f.select :canton, options_for_select(cantons_for_select, @tournament.canton), {include_blank: true}, class: 'form-control'
-    - elsif session['country_code'] == 'de'
-      .form-group
-        = f.label :federal_state, t('tournaments.federal_state')
-        = f.select :federal_state, options_for_select(federal_states_for_select, @tournament.federal_state), {include_blank: true}, class: 'form-control'
-    - elsif session['country_code'] == 'fr'
-      .form-group
-        = f.label :region, t('tournaments.region')
-        = f.select :region, options_for_select(regions_for_select, @tournament.region), {include_blank: true}, class: 'form-control'
     .form-group
-      = f.label :registration_fee, session['country_code'] == 'ch' ? t('tournaments.registration_fee_chf') : t('tournaments.registration_fee_euro')
+      = f.label :region, t("tournaments.region_#{@tournament.country_code}")
+      = f.select :region, options_for_select(regions_for_select_from(@tournament.country_code), @tournament.region), {include_blank: true}, class: 'form-control'
+    .form-group
+      = f.label :registration_fee, @tournament.country_code == 'ch' ? t('tournaments.registration_fee_chf') : t('tournaments.registration_fee_euro')
       = f.number_field :registration_fee, class: 'form-control', value: (@tournament.registration_fee || 5)
     .form-group
       = f.label :total_seats, t('tournaments.total_seats')
@@ -59,13 +51,13 @@
       = f.label :number_of_pools, t('tournaments.number_of_pools')
       %em= t('tournaments.two_stage_tournament')
       = f.number_field :number_of_pools, class: 'form-control', min: 0, value: (@tournament.number_of_pools || 0)
-    .form-group
+    .form-group{class: current_user.admin? ? '' : 'hidden'}
       = f.label :host_username, t('tournaments.hostname')
       = f.text_field :host_username, class: 'form-control', value: (@tournament.host_username || current_user.username)
     .form-group
       = f.label :image_link, t('tournaments.image_link')
       %em= t('tournaments.image_owner')
-      = f.text_field :image_link, placeholder: "https://www.<my-image>.ch", class: 'form-control'
+      = f.text_field :image_link, placeholder: "https://www.<my-image>.com", class: 'form-control'
     .row
       .col.form-group
         = f.label :image_height, t('tournaments.image_height')

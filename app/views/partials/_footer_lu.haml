@@ -1,0 +1,42 @@
+.row.footer-nav
+  .col-5
+    .row
+      = link_to "https://www.letz-smash.lu", target: '_blank' do
+        = image_tag('letz_smash.webp', class: 'letz_smash_logo', width: '75px', height: '75px')
+      .col
+        %p.small
+          = link_to t('feedback_and_questions'), :feedbacks
+      .col.d-none.d-sm-block
+        %p.small
+          = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
+
+  .col-2
+    = button_tag '', title: 'Go to top', style: 'background-color: #222; border: none;', class: 'scroll-top' do
+      = image_tag('lu_logo.png', class: 'luxsmash_logo', height: '50px', width: '50px')
+  .col-5
+    .row
+      .col
+        %p.small
+          = link_to t('navigation.footer.imprint'), :imprint
+      .col
+        %p.small
+          = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
+      .col
+        %p#donate-btn
+          = link_to("https://ko-fi.com/letzsmash", target: '_blank', class: "btn btn-default") do
+            = image_tag('ko-fi-cup.webp')
+            %span= t('please_donate')
+
+.row.footer-nav
+  .col-sm-1.col-md-3.col-lg-4
+  .col-sm-10.col-md-6.col-lg-4
+    .row{style: "margin-top: -20px;"}
+      .col
+        = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/jMef7A7CnQ', target: '_blank', class: 'nav-link'
+      .col
+        = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/LetzSmash_SSB', target: '_blank', class: 'nav-link'
+      .col
+        = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/letzsmash_ssb', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+      .col
+        = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/LetzSmash', target: '_blank', class: 'nav-link'
+  .col-sm-1.col-md-3.col-lg-4

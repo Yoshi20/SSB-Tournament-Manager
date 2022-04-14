@@ -18,6 +18,7 @@ Stage commands:
 - git push stage_ch master
 - git push stage_de master
 - git push stage_fr master
+- git push stage_lu master
 - git push stage_it master
 - git push stage_ch <branch>:master
 - heroku logs --tail --remote stage_ch
@@ -28,10 +29,11 @@ Stage commands:
 - heroku run rake tournaments_crawler_ch:all --remote stage_ch
 - heroku run rake tournaments_crawler_de:all --remote stage_de
 - heroku run rake tournaments_crawler_fr:all --remote stage_fr
-- heroku run rake tournaments_crawler_it:all --remote stage_it
+- heroku run rake tournaments_crawler_lu:all --remote stage_lu
 - heroku run rake results_crawler_ch:all --remote stage_ch
 - heroku run rake results_crawler_de:all --remote stage_de
 - heroku run rake results_crawler_fr:all --remote stage_fr
+- heroku run rake results_crawler_lu:all --remote stage_lu
 - heroku run rake results_crawler_it:all --remote stage_it
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
 
@@ -45,10 +47,11 @@ Prod commands:
 - heroku run rake tournaments_crawler_ch:all --remote prod
 - heroku run rake tournaments_crawler_de:all --remote prod
 - heroku run rake tournaments_crawler_fr:all --remote prod
-- heroku run rake tournaments_crawler_it:all --remote prod
+- heroku run rake tournaments_crawler_lu:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
+- heroku run rake results_crawler_lu:all --remote prod
 - heroku run rake results_crawler_it:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
@@ -59,6 +62,8 @@ General links:
 - https://www.germanysmash.de
 - https://francesmash.herokuapp.com
 - https://www.smashultimate.fr
+- https://luxsmash.herokuapp.com
+- https://www.luxsmash.lu
 - https://italysmash.herokuapp.com
 - https://www.italysmash.it
 - https://challonge.com
@@ -79,6 +84,9 @@ Tournaments crawler links:
 - https://braacket.com/tournament/search?rows=100&country=it&game=ssbu&status=1
 - https://www.toornament.com/tournaments/?q[discipline]=supersmashbros_ultimate&q[platform]=nintendo_switch&q[type]=upcoming
 
+Twitch API:
+- https://dev.twitch.tv/docs/api/reference#get-stream-key
+
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
 
@@ -87,3 +95,14 @@ Banner:
 
 Google Analytics:
 - https://analytics.google.com/analytics/web/#/report-home/a145089919w206718824p199562205
+
+Roles overview:
+
+|                       | news | communities | tournaments | teams | players | users | feedback | inactive tournaments | alts |
+|-----------------------|------|-------------|-------------|-------|---------|-------|----------|----------------------|------|
+| super_admin           | x    | x           | x           | x     | x       | x     | x        | x                    | x    |
+| admin                 | x    | x           | x           | x     | x       |       |          |                      |      |
+| news_editor           | x    |             |             |       |         |       |          |                      |      |
+| community_editor      |      | x           |             |       |         |       |          |                      |      |
+| tournament_organizer  |      |             | x           |       |         |       |          |                      |      |
+| team_captain          |      |             |             | x     |         |       |          |                      |      |

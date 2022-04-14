@@ -37,8 +37,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.smash_gg_id = params[:smash_gg_id]
         player.points = 0
         player.participations = 0
-        player.canton = params[:canton]
-        player.federal_state = params[:federal_state]
         player.region = params[:region]
         player.gender = params[:gender]
         player.birth_year = params[:birth_year]
@@ -65,6 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.wins = 0
         player.losses = 0
         player.user = user
+        player.role_list = params[:role_list].compact.reject { |c| c.empty? }
         if player.save
           flash[:notice] = t('flash.notice.creating_player')
           # Tell the UserMailer to send a welcome email after save
@@ -74,6 +73,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
           flash[:alert] = t('flash.alert.creating_player')
           user.destroy
         end
+      else
+        # nothing to do here (Render or redirect was already called in super)
       end
     else
       self.resource = resource_class.new sign_up_params
@@ -94,7 +95,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   super
+  #   user_params = Hash.new
+  #   super do |current_user_params|
+  #     user_params = current_user_params
+  #   end
   # end
 
   # DELETE /resource
@@ -125,11 +129,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    players_path()
+    players_path
   end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_update_path_for(resource)
+    player_path(resource.player)
+  end
+
 end

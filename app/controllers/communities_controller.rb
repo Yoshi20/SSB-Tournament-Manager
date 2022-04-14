@@ -1,6 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_community_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'communities' }
 
   # GET /communities
@@ -28,7 +29,7 @@ class CommunitiesController < ApplicationController
     discord_keys = @community.discord.split(',').map(&:strip)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -36,6 +37,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/new
   def new
     @community = Community.new
+    @community.country_code = session['country_code']
   end
 
   # GET /communities/1/edit
@@ -47,6 +49,7 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.country_code = session['country_code']
+    @community.user_id = current_user.id
     respond_to do |format|
       if @community.save
         format.html { redirect_to @community, notice: t('flash.notice.community_created') }
@@ -84,104 +87,104 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/
   def nrw
-    community_federal_states = ['NW']
+    community_regions = ['NW']
     discord_keys = ['Aba35kP', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/hessen
   def hessen
-    community_federal_states = ['HE', 'RP', 'SL']
+    community_regions = ['HE', 'RP', 'SL']
     discord_keys = ['gdhCQpzKb2', 'Q49Dbky', 'phzRTMw', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/nds
   def nds
-    community_federal_states = ['NI', 'HB']
+    community_regions = ['NI', 'HB']
     discord_keys = ['0X3myOFZHGCpW1G0', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/bayern
   def bayern
-    community_federal_states = ['BY']
+    community_regions = ['BY']
     discord_keys = ['tm2azmK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/berlin
   def berlin
-    community_federal_states = ['BE', 'BB']
+    community_regions = ['BE', 'BB']
     discord_keys = ['6r76SkA', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/norden
   def norden
-    community_federal_states = ['SH', 'HH', 'MV']
+    community_regions = ['SH', 'HH', 'MV']
     discord_keys = ['GHS8Q5Y', 'udNKmTK', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/osten
   def osten
-    community_federal_states = ['SN', 'ST', 'TH']
+    community_regions = ['SN', 'ST', 'TH']
     discord_keys = ['rBzNfVD', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
 
   # GET /communities/bawu
   def bawu
-    community_federal_states = ['BW']
+    community_regions = ['BW']
     discord_keys = ['ur4JzUT', 'XpjNsRp']
-    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(federal_state: community_federal_states).order(date: :asc).limit(10)
-    @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.federal_state IN (?)", community_federal_states)
+    @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
+    # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
     discord_keys.each do |key|
-      @discord_invites_json << request_discord_invite(key)
+      @discord_invites_json << Request.discord_invite(key)
     end
     @discord_invites_json.compact
   end
@@ -290,25 +293,45 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  # def reunion
-  #   @communities = Community.all_fr.where(region:'reunion').order(name: :desc)
-  # end
-  #
-  # def martinique
-  #   @communities = Community.all_fr.where(region:'martinique').order(name: :desc)
-  # end
-  #
-  # def french_guiana
-  #   @communities = Community.all_fr.where(region:'french_guiana').order(name: :desc)
-  # end
-  #
-  # def guadeloupe
-  #   @communities = Community.all_fr.where(region:'guadeloupe').order(name: :desc)
-  # end
-  #
-  # def mayotte
-  #   @communities = Community.all_fr.where(region:'mayotte').order(name: :desc)
-  # end
+  def reunion
+    @region = 'Reunion'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def martinique
+    @region = 'Martinique'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def french_guiana
+    @region = 'Guyane'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def guadeloupe
+    @region = 'Guadeloupe'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
+
+  def mayotte
+    @region = 'Mayotte'
+    @communities = Community.all_fr.where(region: @region).order(name: :desc)
+    respond_to do |format|
+      format.html { render "region" }
+    end
+  end
 
   def character_discords
     @discords = [
@@ -356,7 +379,7 @@ class CommunitiesController < ApplicationController
   end
 
   def authenticate_admin!
-    unless current_user.present? && current_user.admin?
+    unless current_user.present? && (current_user.admin? || current_user.has_role?("community_editor"))
       respond_to do |format|
         format.html { redirect_to communities_path, alert: t('flash.alert.unauthorized') }
         format.json { render json: {}, status: :unauthorized }
@@ -364,22 +387,11 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  require 'open-uri'
-  require 'json'
-  def request_discord_invite(key)
-    Rails.cache.fetch("discord_invite_#{key}", expires_in: 1.day) do
-      url = "https://discord.com/api/v9/invites/#{key}?with_counts=true"
-      puts "Requesting: GET #{url}"
-      begin
-        json_data = JSON.parse(URI.open(url).read)
-      rescue OpenURI::HTTPError => ex
-        puts ex
-      end
-      if json_data.present? && !json_data["guild"].nil?
-        json_data
-      else
-        puts "=> No guild parameter found! json_data = #{json_data.to_s}"
-        break # do not cache if theres no valid data
+  def authenticate_community_creator!
+    unless current_user.present? && (@community.user_id == current_user.id || current_user.admin?)
+      respond_to do |format|
+        format.html { redirect_to @community, alert: t('flash.alert.unauthorized') }
+        format.json { render json: @community.errors, status: :unauthorized }
       end
     end
   end

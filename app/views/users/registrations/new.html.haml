@@ -20,6 +20,9 @@
         %em= "(XYZ)"
         = text_field_tag :prefix, params[:prefix], class: 'form-control'
       .form-group
+        = label_tag :role_list, t('players.roles')
+        = select_tag :role_list, options_for_select(roles_for_select_from(session['country_code']), (params[:role_list].present? ? params[:role_list] : ["player"])), multiple: true, class: 'form-control', id: 'select2'
+      .form-group
         = label_tag :discord_username, t('players.discord_username')
         %em= "(User#1234)"
         = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
@@ -51,6 +54,8 @@
           %em= "(01522 1234567)"
         - elsif session['country_code'] == 'fr'
           %em= "(06 12 34 56 78)"
+        - elsif session['country_code'] == 'lu'
+          %em= "(621 123 456)"
         - elsif session['country_code'] == 'it'
           %em= "(300 1234 567)"
         = f.text_field :mobile_number, class: 'form-control'
@@ -62,18 +67,9 @@
       .form-group
         = f.label :password_confirmation, "#{t('users.password_confirmation')} *"
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-      - if session['country_code'] == 'ch'
-        .form-group
-          = label_tag :canton, t('players.canton')
-          = select_tag :canton, options_for_select(cantons_for_select, params[:canton]), {include_blank: true, class: 'form-control'}
-      - elsif session['country_code'] == 'de'
-        .form-group
-          = label_tag :federal_state, t('players.federal_state')
-          = select_tag :federal_state, options_for_select(federal_states_for_select, params[:federal_state]), {include_blank: true, class: 'form-control'}
-      - elsif session['country_code'] == 'fr'
-        .form-group
-          = label_tag :region, t('players.region')
-          = select_tag :region, options_for_select(regions_for_select, params[:region]), {include_blank: true, class: 'form-control'}
+      .form-group
+        = label_tag :region, t("players.region_#{session['country_code']}")
+        = select_tag :region, options_for_select(regions_for_select_from(session['country_code']), params[:region]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :gender, t('players.gender')
         = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
@@ -147,6 +143,11 @@
           .form-check
             = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
             = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'lu'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_luxsmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_luxsmash] == "1") : true), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_luxsmash, t('users.allows_emails_from_luxsmash'), class:'form-check-label'
       - elsif session['country_code'] == 'it'
         .form-group
           .form-check
@@ -164,3 +165,17 @@
         = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
       .form-group
         = f.submit t('users.register'), class:'btn btn-default'
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    $('#select2').select2({
+      theme: "bootstrap",
+      // theme: "classic",
+      language: I18n.locale
+    });
+  });
+
+:css
+  .select2-selection__rendered {
+    background: #E5E9EB;
+  }

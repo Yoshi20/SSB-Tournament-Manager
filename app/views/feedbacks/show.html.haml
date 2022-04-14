@@ -21,12 +21,12 @@
       %p= link_to t('edit'), edit_feedback_path(@feedback)
       %p= link_to t('delete'), @feedback, method: :delete, data: { confirm: t('confirm') }
 
-.row.show-feedback
-  .col-md-12
-    %p
-      %strong= t('feedback.updated_at')
-      = @feedback.updated_at.to_s(:custom_datetime)
-
-    %p
-      %strong= t('feedback.created_at')
-      = @feedback.created_at.to_s(:custom_datetime)
+-# .row.show-feedback
+-#   .col-md-12
+-#     %p
+-#       %strong= t('feedback.updated_at')
+-#       = @feedback.updated_at.to_s(:custom_datetime)
+-#
+-#     %p
+-#       %strong= t('feedback.created_at')
+-#       = @feedback.created_at.to_s(:custom_datetime)

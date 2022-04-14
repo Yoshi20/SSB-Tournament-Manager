@@ -1,6 +1,7 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, except: [:index, :new, :create]
   before_action :authenticate_admin!, except: [:index, :show, :add_player, :remove_player]
+  before_action :authenticate_tournament_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'tournaments' }
 
   # GET /tournaments
@@ -22,19 +23,7 @@ class TournamentsController < ApplicationController
       @inactive_tournaments = @inactive_tournaments.search(params[:search]) if @inactive_tournaments.present?
     end
     if params[:filter].present? and params[:filter] != 'all'
-      if helpers.tournament_cities.include?(params[:filter].capitalize)
-        city = params[:filter].capitalize
-        @tournaments = @tournaments.where(city: city).or(
-          @tournaments.from_city(city)
-        )
-        @past_tournaments = @past_tournaments.where(city: city).or(
-          @past_tournaments.from_city(city)
-        )
-      elsif helpers.federal_states_raw.include?(params[:filter].upcase)
-        federal_state = params[:filter].upcase
-        @tournaments = @tournaments.where(federal_state: federal_state)
-        @past_tournaments = @past_tournaments.where(federal_state: federal_state)
-      elsif helpers.regions_raw.include?(params[:filter])
+      if helpers.regions_raw_from(session['country_code']).include?(params[:filter])
         region = params[:filter]
         @tournaments = @tournaments.where(region: region)
         @past_tournaments = @past_tournaments.where(region: region)
@@ -83,6 +72,7 @@ class TournamentsController < ApplicationController
       @tournament.external_registration_link = nil
     else
       @tournament = Tournament.new(params[:tournament].present? ? tournament_params : nil)
+      @tournament.country_code = session['country_code']
     end
   end
 
@@ -100,7 +90,7 @@ class TournamentsController < ApplicationController
     # handle the different subtypes
     if @tournament.subtype.nil? or @tournament.subtype == 'internal'
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
               if p.user.allows_emails
@@ -135,7 +125,7 @@ class TournamentsController < ApplicationController
     elsif @tournament.weekly?
       @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.save
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.save
           if params[:send_mails]
             Player.all_from(session['country_code']).each do |p|
               if p.user.wants_weekly_email
@@ -182,7 +172,7 @@ class TournamentsController < ApplicationController
         oldName = @tournament.name
         oldDate = @tournament.date
         oldcity = @tournament.city
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.update(tournament_params)
           # also update weekly name if city was edited
           if @tournament.weekly? && @tournament.city != oldcity
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
@@ -228,7 +218,7 @@ class TournamentsController < ApplicationController
       end
     elsif @tournament.subtype == 'external'
       respond_to do |format|
-        if check_registration_deadline_is_less_than_date(tournament_params) && @tournament.update(tournament_params)
+        if check_registration_deadline_is_less_or_equal_than_date(tournament_params) && @tournament.update(tournament_params)
           format.html { redirect_to tournaments_path, notice: t('flash.notice.update_external_tournament') }
           format.json { render :show, status: :ok, location: @tournament }
         else
@@ -280,7 +270,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments/add_player/1
   def add_player
     if current_user.present?
-      if params[:gamer_tag].present? && current_user.admin?
+      if params[:gamer_tag].present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host))
         player_to_add = Player.find_by(gamer_tag: params[:gamer_tag])
         player_to_add = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_add.nil?
       else
@@ -345,7 +335,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments/remove_player/1
   def remove_player
     if current_user.present?
-      if params[:gamer_tag].present? && current_user.admin?
+      if params[:gamer_tag].present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host))
         player_to_remove = Player.find_by(gamer_tag: params[:gamer_tag])
         player_to_remove = AlternativeGamerTag.find_by(gamer_tag: params[:gamer_tag]).try(:player) if player_to_remove.nil?
         player_to_remove.update(warnings: player_to_remove.warnings.to_i + 1) if params[:warn].present?
@@ -355,12 +345,12 @@ class TournamentsController < ApplicationController
     end
 
     if player_to_remove.nil?
-      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.player_not_found')}"
+      redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.player_not_found')}"
       return;
     end
 
     if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
-      redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
+      redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end
 
@@ -639,7 +629,7 @@ class TournamentsController < ApplicationController
     end
 
     def authenticate_admin!
-      unless current_user.present? && current_user.admin?
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("tournament_organizer"))
         respond_to do |format|
           if @tournament.present?
             format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
@@ -652,11 +642,21 @@ class TournamentsController < ApplicationController
       end
     end
 
-    def check_registration_deadline_is_less_than_date(tp)
+    def authenticate_tournament_creator!
+      current_user_is_host = @tournament.host.present? && @tournament.host.id == current_user.id
+      unless current_user.present? && (current_user_is_host || current_user.admin?)
+        respond_to do |format|
+          format.html { redirect_to @tournament, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @tournament.errors, status: :unauthorized }
+        end
+      end
+    end
+
+    def check_registration_deadline_is_less_or_equal_than_date(tp)
       return true if tp['subtype'] == 'external'
       date = Time.new(tp['date(1i)'], tp['date(2i)'], tp['date(3i)'],  tp['date(4i)'],  tp['date(5i)'])
       registration_deadline = Time.new(tp['registration_deadline(1i)'], tp['registration_deadline(2i)'], tp['registration_deadline(3i)'],  tp['registration_deadline(4i)'],  tp['registration_deadline(5i)'])
-      if registration_deadline >= date
+      if registration_deadline > date
         @tournament.errors.add(:registration_deadline, t('tournaments.errors.registration_deadline'))
         return false
       else
@@ -676,7 +676,7 @@ class TournamentsController < ApplicationController
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools, :image_link, :image_height,
-        :image_width, :canton, :federal_state, :region)
+        :image_width, :region)
     end
 
     def set_challonge_username_and_api_key

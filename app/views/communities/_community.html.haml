@@ -6,7 +6,7 @@
     %td= community.name
     %td= community.city || '-'
 
-    - if current_user.present? and current_user.admin?
+    - if current_user.present? and (current_user.admin? || community.user == current_user)
       %td.admin-list-actions
         .admin-list-actions__link
           = link_to edit_community_path(community), class:'btn btn-default btn-square' do

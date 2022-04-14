@@ -3,7 +3,7 @@
     .col
       - if @community.region.present?
         .tooltip
-          = image_tag "regions/#{@community.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          = image_tag "regions/#{@community.country_code}/#{@community.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
           %span.tooltiptext
             = t("defines.regions.#{@community.region}")
       .page__title
@@ -21,7 +21,7 @@
           - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
-    - if current_user.present? && current_user.admin?
+    - if current_user.present? && (current_user.admin? || @community.user == current_user)
       .admin-actions
         .admin-actions__link
           = link_to edit_community_path(@community), class:'btn btn-default btn-square' do
@@ -66,3 +66,22 @@
         - if @community.youtube.present?
           .col{style: 'text-align: center;'}
             = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+
+  -if current_user.present? && current_user.admin?
+    .community__stats
+      .row
+        .col
+          %h3 Admins only:
+      .row
+        .col
+          .community__stats__single
+            %strong= @community.updated_at.to_s(:custom_datetime)
+            %span= 'updated_at'
+        .col
+          .community__stats__single
+            %strong= link_to @community.user.player.gamer_tag, @community.user.player
+            %span= 'Creator'
+        .col
+          .community__stats__single.community__stats__single--last
+            %strong= @community.created_at.to_s(:custom_datetime)
+            %span= 'created_at'

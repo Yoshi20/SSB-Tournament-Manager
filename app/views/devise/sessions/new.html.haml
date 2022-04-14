@@ -11,8 +11,8 @@
       = text_field_tag "user[login]", "", class: "form-control form-control-sm", placeholder: t('username'), autofocus: 'true'
     .form-group
       = password_field_tag "user[password]", "", class: "form-control form-control-sm", placeholder: t('password')
-    .form-group
-      = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
+    -# .form-group
+    -#   = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
     .form-group
       = submit_tag t('log_in'), class: "btn btn-cyan"
       = link_to t('sign_up'), new_user_registration_path,  class: "btn btn-default", style: "position: absolute; right: 20px;"
