@@ -617,6 +617,7 @@ de:
     france: "Frankreich"
     luxembourg: "Luxemburg"
     austria: "Österreich"
+    italy: "Italien"
     color_legend:
       past: "Vergangen"
       cancelled: "Storniert"

@@ -666,7 +666,7 @@ it:
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi ItalySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
         bracket_tool: "Bracket tool"
-        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the ItalySmash tournament manager uses %{link}."
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the ItalySmash Tournament Manager uses %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on ItalySmash:"
         bracket_seeding_body2: "The final seeding is done manually by a TO."
@@ -694,6 +694,7 @@ it:
     france: "France"
     luxembourg: "Luxembourg"
     austria: "Austria"
+    italy: "Italy"
     color_legend:
       past: "Past"
       cancelled: "Cancelled"
