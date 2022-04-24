@@ -251,6 +251,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.4-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.4-x86_64-linux)
+      racc (~> 1.4)
     onebox (2.2.19)
       addressable (~> 2.8.0)
       htmlentities (~> 4.3)
@@ -409,6 +411,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   acts-as-taggable-on
