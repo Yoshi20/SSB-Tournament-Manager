@@ -25,6 +25,9 @@ it:
   confirm: "Are you sure?"
   not_uniq: "has already been taken"
 
+  sidebar:
+    your_tournament_promotion: "Here could be your tournament promotion (%{link})"
+
   defines:
     self_assessments:
       beginner: "Beginner"

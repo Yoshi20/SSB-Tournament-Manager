@@ -25,6 +25,9 @@ fr:
   confirm: "Êtes-vous certain?"
   not_uniq: "n'est pas disponible"
 
+  sidebar:
+    your_tournament_promotion: "Ton promotion de tournoi pourrait être ici (%{link})"
+
   defines:
     self_assessments:
       beginner: "Débutant"

@@ -25,6 +25,9 @@ de:
   confirm: "Bist du sicher?"
   not_uniq: "ist bereits vergeben"
 
+  sidebar:
+    your_tournament_promotion: "Hier könnte deine Turnier-Promotion stehen (%{link})"
+
   defines:
     self_assessments:
       beginner: "Anfänger"

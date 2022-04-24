@@ -57,6 +57,10 @@
                 .sidebar{style: 'margin-top: 10px; padding: 0;'}
                   = link_to('https://smash.gg/tournament/smash-contest-dokomi-2022/', target: '_blank') do
                     = image_tag 'smash_contest_banner.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
+              - else
+                .sidebar{style: 'margin-top: 10px; height: 200px; display: flex; text-align: center; align-items: center;'}
+                  %p
+                    %em= t('sidebar.your_tournament_promotion', link: link_to(t('navigation.footer.contact'), informations_path(anchor: 'contact'))).html_safe
     .footer
       .container
         = render "/partials/footer_#{session['country_code']}"
