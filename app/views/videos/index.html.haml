@@ -13,14 +13,14 @@
         .player__videos
           .newest_video
 
-            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{URI.escape(youtube_video_ids[0])}"}
+            %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/#{CGI.escape(youtube_video_ids[0])}"}
           - if youtube_video_ids.length > 1
             .other_videos{style: 'margin-top: 1rem;'}
               - require 'open-uri'
               - require 'json'
               - youtube_video_ids[1.. 3].each do |v_id|
                 - begin
-                  - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{URI.escape(v_id)}&format=json").read)
+                  - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{CGI.escape(v_id)}&format=json").read)
                   .row{style: 'margin-bottom: 1rem;'}
                     .col-4{style: 'text-align: center;'}
                       = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'

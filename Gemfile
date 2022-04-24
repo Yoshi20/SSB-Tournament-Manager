@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.7.2"
+ruby "3.1.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,11 +8,11 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 7.0.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.3'
 # Use Puma as the app server
-gem "puma", ">= 4.3.8"
+gem "puma", ">= 5.6.4"
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -55,8 +55,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring', '~> 3.0.0'
   gem 'better_errors'
   gem 'brakeman' # https://github.com/presidentbeef/brakeman
 end
@@ -66,15 +65,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added gems:
 
-gem 'popper_js', '~> 1.14.5'
+# See https://github.com/glebm/popper_js-rubygem
+gem 'popper_js', '~> 1.14.5' # tooltips
 
-#See https://github.com/twbs/bootstrap-rubygem
+# See https://github.com/twbs/bootstrap-rubygem
 gem 'bootstrap', '~> 4.3.1'
 
-#See https://github.com/Angelmmiguel/material_icons
+# See https://github.com/Angelmmiguel/material_icons
 gem 'material_icons'
 
-#
+# See https://github.com/bcrypt-ruby/bcrypt-ruby
 gem 'bcrypt'
 
 # See https://github.com/plataformatec/devise
@@ -92,8 +92,8 @@ gem 'jquery-ui-rails'
 # See https://github.com/kossnocorp/jquery.turbolinks
 gem 'jquery-turbolinks'
 
-# See http://haml.info
-gem 'haml-rails'
+# See https://github.com/haml/haml-rails
+gem 'haml-rails', '~> 2.0'
 
 # See https://devcenter.heroku.com/articles/getting-started-with-rails4#visit-your-application
 group :staging, :production do
@@ -110,7 +110,7 @@ gem 'paper_trail'
 gem 'challonge-api'
 
 # See https://github.com/mislav/will_paginate
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate'
 
 # See https://github.com/iain/http_accept_language
 gem 'http_accept_language'
@@ -125,7 +125,7 @@ gem 'recaptcha'
 gem 'exception_notification'
 
 # See https://github.com/svenfuchs/rails-i18n
-gem 'rails-i18n', '~> 5.1' # For 5.0.x, 5.1.x and 5.2.x
+gem 'rails-i18n', '~> 7.0.0'
 
 # See https://github.com/tigrish/devise-i18n
 gem 'devise-i18n'
@@ -143,7 +143,7 @@ gem 'meta-tags'
 gem 'cookies_eu'
 
 # See https://github.com/thredded/thredded
-gem 'thredded', '~> 0.16.12'
+gem 'thredded', '~> 1.0'
 gem 'html-pipeline', '2.14.0' #blup: error when calling rails s with v2.14.1
 
 # See https://github.com/mbleigh/acts-as-taggable-on
