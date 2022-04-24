@@ -63,14 +63,16 @@ class Tournament < ApplicationRecord
     regions_de = I18n.t(regions_raw, scope: 'defines.regions', locale: :de).map(&:downcase)
     regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)
     regions_en = I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase)
+    regions_it = I18n.t(regions_raw, scope: 'defines.regions', locale: :it).map(&:downcase)
     # First: Try to determine region from city
     if self.city.present?
       city = self.city.downcase
       #city = city.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-      if (regions_de.include?(city) || regions_fr.include?(city) || regions_en.include?(city))
+      if (regions_de.include?(city) || regions_fr.include?(city) || regions_en.include?(city) || regions_it.include?(city))
         self.region = regions_raw[regions_de.index(city)] if regions_de.index(city).present?
         self.region = regions_raw[regions_fr.index(city)] if regions_fr.index(city).present?
         self.region = regions_raw[regions_en.index(city)] if regions_en.index(city).present?
+        self.region = regions_raw[regions_it.index(city)] if regions_it.index(city).present?
         return # as soon as region was found
       end
     end
@@ -78,10 +80,11 @@ class Tournament < ApplicationRecord
     if self.location.present?
       self.location.downcase.split(' ').each do |l|
         l = l.gsub(',', '')#.gsub('basel', 'basel-stadt').gsub('bâle', 'bâle-ville').gsub('gallen', 'st. gallen')
-        if (regions_de.include?(l) || regions_fr.include?(l) || regions_en.include?(l))
+        if (regions_de.include?(l) || regions_fr.include?(l) || regions_en.include?(l) || regions_it.include?(l))
           self.region = regions_raw[regions_de.index(l)] if regions_de.index(l).present?
           self.region = regions_raw[regions_fr.index(l)] if regions_fr.index(l).present?
           self.region = regions_raw[regions_en.index(l)] if regions_en.index(l).present?
+          self.region = regions_raw[regions_it.index(l)] if regions_it.index(l).present?
           return # as soon as region was found
         end
       end
@@ -101,10 +104,11 @@ class Tournament < ApplicationRecord
                 end
                 # long_name will most likely never be necessary
                 ln = res["long_name"].downcase
-                if (regions_de.include?(ln) || regions_fr.include?(ln) || regions_en.include?(ln))
+                if (regions_de.include?(ln) || regions_fr.include?(ln) || regions_en.include?(ln) || regions_it.include?(ln))
                   self.region = regions_raw[regions_de.index(ln)] if regions_de.index(ln).present?
                   self.region = regions_raw[regions_fr.index(ln)] if regions_fr.index(ln).present?
                   self.region = regions_raw[regions_en.index(ln)] if regions_en.index(ln).present?
+                  self.region = regions_raw[regions_it.index(ln)] if regions_it.index(ln).present?
                   return # as soon as region was found
                 end
               end
