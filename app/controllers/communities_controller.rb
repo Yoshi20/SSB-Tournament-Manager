@@ -6,22 +6,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities
   def index
-    if session['country_code'] == 'fr'
-      @communities = Community.all_fr.order(region: :desc)
-      i = -1
-      prevRegion = ''
-      @communities_regions_array = []
-      @communities.each do |c|
-        if c.region != prevRegion
-          i = i + 1
-          @communities_regions_array[i] = []
-        end
-        @communities_regions_array[i] << c
-        prevRegion = c.region
-      end
-    end
-    #blup
-    if session['country_code'] == 'it'
+    if session['country_code'] == 'fr' || session['country_code'] == 'it'
       @communities = Community.all_from('it').order(region: :desc)
       i = -1
       prevRegion = ''
@@ -35,7 +20,6 @@ class CommunitiesController < ApplicationController
         prevRegion = c.region
       end
     end
-
     render "index_#{session['country_code']}"
   end
 

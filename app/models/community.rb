@@ -6,7 +6,6 @@ class Community < ApplicationRecord
   before_save :sanitize_discord_key
 
   scope :all_from, ->(country_code) { where(country_code: country_code) }
-  scope :all_fr, -> { where(country_code: 'fr') }
 
   def sanitize_discord_key
     self.discord = self.discord.gsub("https://discord.gg/", "")
