@@ -4,11 +4,18 @@
   = t('welcome.it.title')
 %p
   .row{style: 'text-align: center;'}
-    .col
-      = link_to new_user_registration_path do
-        %p{style: 'margin-bottom: 0;'}
-          %strong= t('sign_up')
-        %span.welcome_image.material-icons.admin-actions__link__icon= 'person_add'
+    - if current_user.present?
+      .col
+        = link_to statistics_path do
+          %p{style: 'margin-bottom: 0;'}
+            %strong= t('players.title')
+          %span.welcome_image.material-icons.admin-actions__link__icon= 'person'
+    - else
+      .col
+        = link_to new_user_registration_path do
+          %p{style: 'margin-bottom: 0;'}
+            %strong= t('sign_up')
+          %span.welcome_image.material-icons.admin-actions__link__icon= 'person_add'
     .col
       = link_to calendar_path do
         %p{style: 'margin-bottom: 0;'}
