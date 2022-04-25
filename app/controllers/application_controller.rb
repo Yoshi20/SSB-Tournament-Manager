@@ -65,12 +65,13 @@ class ApplicationController < ActionController::Base
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
       url = "https://api.twitch.tv/helix/streams?game_id=504461"
+      #blup: uk
       if session['country_code'] == 'lu'
         lu_streamers.each do |twitch_username|
           url = url + "&user_login=#{twitch_username}"
         end
       else
-        url = url + "&language=#{session['country_code']}"
+        url = url + "&language=#{Domain.locale_from(session['country_code'])}"
       end
       puts "Requesting: GET #{url}"
       begin

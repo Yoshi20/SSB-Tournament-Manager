@@ -17,7 +17,7 @@ module SSBTournamentManager
 
     config.time_zone = 'Bern'
 
-    config.i18n.available_locales = %w(en de fr lu it)
+    config.i18n.available_locales = %w(en de fr it)
 
     config.domains = {
       ch: "swisssmash.ch",
@@ -25,6 +25,7 @@ module SSBTournamentManager
       fr: "smashultimate.fr",
       lu: "luxsmash.lu",
       it: "italysmash.it",
+      uk: "smashultimate.uk",
     }
 
     config.country_locales = {
@@ -33,6 +34,7 @@ module SSBTournamentManager
       fr: "fr",
       lu: "en",
       it: "it",
+      uk: "en",
     }
 
     config.emails = {
@@ -41,6 +43,7 @@ module SSBTournamentManager
       fr: "SmashUltimate.fr <#{ENV['INFOMANIAK_EMAIL_USERNAME_FR']}>",
       lu: "LuxSmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_LU']}>",
       it: "ItalySmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_IT']}>",
+      uk: "SmashUltimate.uk <#{ENV['INFOMANIAK_EMAIL_USERNAME_UK']}>",
     }
 
   end

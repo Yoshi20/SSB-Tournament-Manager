@@ -14,7 +14,7 @@
       .banner
         .banner__overlay
         = image_tag 'banner.jpg', class: 'banner__image'
-        - if session['country_code'] == 'it'
+        - if session['country_code'] == 'it' || session['country_code'] == 'uk'
           .wip
             = "This site is a \"Work In Progress\""
       .container
