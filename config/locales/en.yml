@@ -1042,6 +1042,28 @@ en:
       title: "BaWü"
     region_bayern:
       title: "Bavaria"
+    region_east_of_england:
+      title: "East of England"
+    region_london:
+      title: "London"
+    region_midlands:
+      title: "Midlands"
+    region_north_east:
+      title: "North East"
+    region_north_west:
+      title: "North West"
+    region_northern_ireland:
+      title: "Northern Ireland"
+    region_scotland:
+      title: "Scotland"
+    region_south_east:
+      title: "South East"
+    region_south_west:
+      title: "South West"
+    region_wales:
+      title: "Wales"
+    region_yorkshire_and_the_humber:
+      title: "Yorkshire and the Humber"
 
   forum:
     title: "Forum"
