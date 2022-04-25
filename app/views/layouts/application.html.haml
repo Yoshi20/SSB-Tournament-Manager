@@ -28,19 +28,7 @@
               .sidebar
                 - if session['country_code'] == 'ch'
                   = render '/partials/players'
-                - elsif session['country_code'] == 'de'
-                  %h2.sidebar__title
-                    = t('partials.streamers.title')
-                  = render '/partials/streamers'
-                - elsif session['country_code'] == 'fr'
-                  %h2.sidebar__title
-                    = t('partials.streamers.title')
-                  = render '/partials/streamers'
-                - elsif session['country_code'] == 'lu'
-                  %h2.sidebar__title
-                    = t('partials.streamers.title')
-                  = render '/partials/streamers'
-                - elsif session['country_code'] == 'it'
+                - elsif ['de', 'fr', 'lu', 'it', 'uk'].include?(session['country_code'])
                   %h2.sidebar__title
                     = t('partials.streamers.title')
                   = render '/partials/streamers'
@@ -65,7 +53,7 @@
       .container
         = render "/partials/footer_#{session['country_code']}"
 
-  - if ['de', 'fr', 'lu', 'it'].include?(session['country_code'])
+  - if ['de', 'fr', 'lu', 'it', 'uk'].include?(session['country_code'])
     = render 'cookies_eu/consent_banner'
 
 :javascript

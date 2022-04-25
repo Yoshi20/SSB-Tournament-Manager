@@ -11,6 +11,8 @@
       <%= stylesheet_link_tag 'thredded_fr', 'data-turbolinks-track': 'reload' %>
     <%- elsif session['country_code'] == 'it' %>
       <%= stylesheet_link_tag 'thredded_it', 'data-turbolinks-track': 'reload' %>
+    <%- elsif session['country_code'] == 'uk' %>
+      <%= stylesheet_link_tag 'thredded_uk', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= csrf_meta_tag %>
     <%= csp_meta_tag %>

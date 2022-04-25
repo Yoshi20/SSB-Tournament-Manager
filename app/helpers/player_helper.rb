@@ -21,6 +21,8 @@ module PlayerHelper
       ['capellen', 'clervaux', 'diekirch', 'echternach', 'esch', 'grevenmacher', 'luxembourg', 'mersch', 'redange', 'remich', 'vianden', 'wiltz']
     elsif country_code == 'it'
       ['abruzzo', 'aosta_valley', 'apulia', 'basilicata', 'calabria', 'campania', 'emilia-romagna', 'friuli_venezia_giulia', 'lazio', 'liguria', 'lombardy', 'marche', 'molise', 'piemont', 'sardinia', 'sicily', 'trentino-south_tyrol', 'tuscany', 'umbria', 'veneto']
+    elsif country_code == 'uk'
+      ['south_east', 'london', 'north_west', 'east_of_england', 'west_midlands', 'south_west', 'yorkshire_and_the_humber', 'east_midlands', 'north_east']
     end
   end
 
@@ -92,6 +94,8 @@ module PlayerHelper
     elsif country_code == 'lu'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'it'
+      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
+    elsif country_code == 'uk'
       ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     end
   end

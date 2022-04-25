@@ -3,17 +3,11 @@
     .row
       .col
         %p.small
-          = link_to t('feedback_and_questions'), :feedbacks
-      -# .col
-      -#   %p.small
-      -#     = link_to t('navigation.footer.administrators_short'), :administrators
-      .col
-        %p.small
-          -# = mail_to 'admin@swisssmash.ch', t('navigation.footer.contact'), subject: t('navigation.footer.mail_subject'), body: t('navigation.footer.mail_body')
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
+
   .col-2
     = button_tag '', title: 'Go to top', style: 'background-color: transparent; border: none;', class: 'scroll-top' do
-      = image_tag('ch_logo.png', class: 'swisssmash_logo', height: '50px', width: '50px')
+      = image_tag('uk_logo.jpg', class: 'uksmash_logo', height: '50px', width: '64px')
   .col-5
     .row
       .col
@@ -24,6 +18,6 @@
           = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
       .col
         %p#donate-btn
-          = link_to("https://ko-fi.com/swisssmash", target: '_blank', class: "btn btn-sstm") do
+          = link_to("https://ko-fi.com/smashultimateuk", target: '_blank', class: "btn btn-default") do
             = image_tag('ko-fi-cup.webp')
             %span= t('please_donate')

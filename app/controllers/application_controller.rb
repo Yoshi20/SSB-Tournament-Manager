@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
-    return unless ['de', 'fr', 'lu', 'it'].include?(session['country_code'])
+    return unless ['de', 'fr', 'lu', 'it', 'uk'].include?(session['country_code'])
     lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_forum_unread_count
-    return unless current_user.present? && (session['country_code'] == 'de' || session['country_code'] == 'fr')
+    return unless current_user.present? && ['de', 'fr' 'it', 'uk'].include?(session['country_code'])
     @forum_unread_count = Thredded::Topic.all.joins(:messageboard).merge(Thredded::Messageboard.where(country_code: session['country_code'])).unread(current_user).count
   end
 
@@ -133,8 +133,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'lu'
       elsif request.host.include?("italysmash")
         session['country_code'] = 'it'
+      elsif request.host.include?("smashultimate.co.uk") || request.host.include?("smashultimate.uk")
+        session['country_code'] = 'uk'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr', 'lu', 'it'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu', 'it', 'uk'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"

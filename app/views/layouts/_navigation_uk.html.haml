@@ -1,14 +1,14 @@
 .container
   %a.navbar-brand{href: '/'}
-    = image_tag('it_logo.svg', height: '50px', width: '50px')
+    = image_tag('uk_logo.jpg', height: '50px', width: '64px')
     %span.d-none.d-sm-block.d-lg-none.d-xl-block
-      = t('welcome.it.title')
+      = t('welcome.uk.title')
 
   %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.com/invite/FtbWnf6', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Discord-Logo-Color.svg', height: '40', width: '32'), 'https://discord.com/invite/gWxdYyV', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/SmashBrosItalia', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Twitter_Logo.svg', height: '40', width: '32'), 'https://twitter.com/SmashUltimateUK', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
     %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
@@ -48,11 +48,10 @@
       = link_to t('teams.title'), teams_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-      = link_to t('information.it.title_short'), informations_path, class: 'nav-link'
+      = link_to t('information.uk.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item.locales-list
       = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
-      = link_to image_tag("flags/italy.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'it' ? '1px solid white' : ''};"), url_for(locale: 'it')
 
   %ul.navbar-nav.navbar-account
     - if user_signed_in?
