@@ -134,7 +134,7 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'lu'
       elsif request.host.include?("italysmash")
         session['country_code'] = 'it'
-      elsif request.host.include?("smashultimate.co.uk") || request.host.include?("smashultimate.uk")
+      elsif request.host.include?("uksmash") || request.host.include?("smashultimate.co.uk") || request.host.include?("smashultimate.uk")
         session['country_code'] = 'uk'
       elsif cookies['country_code'].present?
         if ['ch', 'de', 'fr', 'lu', 'it', 'uk'].include?(cookies['country_code'])
