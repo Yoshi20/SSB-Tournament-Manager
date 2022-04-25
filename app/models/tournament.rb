@@ -60,10 +60,10 @@ class Tournament < ApplicationRecord
   def set_region
     return if self.region.present?
     regions_raw = ApplicationController.helpers.regions_raw_from(self.country_code)
-    regions_de = I18n.t(regions_raw, scope: 'defines.regions', locale: :de).map(&:downcase)
-    regions_fr = I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase)
-    regions_en = I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase)
-    regions_it = I18n.t(regions_raw, scope: 'defines.regions', locale: :it).map(&:downcase)
+    regions_de = ['ch', 'de'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :de).map(&:downcase) : []
+    regions_fr = ['ch', 'fr'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase) : []
+    regions_en = ['ch', 'de', 'fr', 'lu', 'it', 'uk'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase) : []
+    regions_it = ['ch', 'it'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :it).map(&:downcase) : []
     # First: Try to determine region from city
     if self.city.present?
       city = self.city.downcase
@@ -93,6 +93,8 @@ class Tournament < ApplicationRecord
       require 'json'
       begin
         json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:#{self.country_code.upcase}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+        puts 'blup'
+        puts json_data.inspect #blup
         if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
           json_data["results"][0]["address_components"].each do |res|
             if (res["types"].present? && res["types"].include?('administrative_area_level_1'))

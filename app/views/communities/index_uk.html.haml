@@ -20,7 +20,65 @@
             %span.material-icons.admin-actions__link__icon= 'info'
         = render '/partials/info', info_body: t('communities.info_body') #infoModal
 
+.row.text-center
+  .col
+    .floatright.noresize{:role => "img", style: "width: 370px; font-size: 85%; line-height: 1; text-align: center; background-color: #ffffff; position: relative; margin-left: auto; margin-right: auto;"}
+      %img{:alt => "", "data-file-height" => "1345", "data-file-width" => "1108", :decoding => "async", :height => "449", :src => "//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/English_regions_2009.svg/370px-English_regions_2009.svg.png", :srcset => "//upload.wikimedia.org/wikipedia/commons/thumb/b/b4/English_regions_2009.svg/555px-English_regions_2009.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/b/b4/English_regions_2009.svg/740px-English_regions_2009.svg.png 2x", :width => "370"}/
+      %div{style: "position:absolute; left:282.6px; top:261.5px"}
+        %a{style: "color: black;", href: "/communities/regions/east_of_england", title: "East of England"}
+          East of
+          %br>/
+          England
+      %div{style: "position:absolute; left:255.1px; top:317.6px"}
+        %a{style: "color: black;", href: "/communities/regions/london", title: "London"} London
+      %div{style: "position:absolute; left:227.1px; top:350.9px"}
+        %a{style: "color: black;", href: "/communities/regions/south_east", title: "South East England"} South East
+      %div{style: "position:absolute; left:101.3px; top:362px"}
+        %a{style: "color: black;", href: "/communities/regions/south_west", title: "South West England"} South West
+      %div{style: "position:absolute; left:193.1px; top:230px"}
+        %a{style: "color: black;", href: "/communities/regions/midlands", title: "Midlands"} Midlands
+      -# %div{style: "position:absolute; left:227.1px; top:208px"}
+      -#   %a{style: "color: black;", href: "/communities/regions/east_midlands", title: "East Midlands"}
+      -#     East
+      -#     %br>/
+      -#     Midlands
+      -# %div{style: "position:absolute; left:164.6px; top:239.9px"}
+      -#   %a{style: "color: black;", href: "/communities/regions/west_midlands_(region)", title: "West Midlands (region)"}
+      -#     West
+      -#     %br>/
+      -#     Midlands
+      %div{style: "position:absolute; left:201.2px; top:132.6px"}
+        %a{style: "color: black;", href: "/communities/regions/yorkshire_and_the_humber", title: "Yorkshire and the Humber"}
+          Yorkshire and
+          %br>/
+          the Humber
+      %div{style: "position:absolute; left:186.4px; top:58.6px"}
+        %a{style: "color: black;", href: "/communities/regions/north_east", title: "North East England"}
+          North
+          %br>/
+          East
+      %div{style: "position:absolute; left:138.3px; top:133.15px"}
+        %a{style: "color: black;", href: "/communities/regions/north_west", title: "North West England"}
+          North
+          %br>/
+          West
+      %div{style: "position:absolute; left:87px; top:248px"}
+        %a{style: "color: black;", href: "/communities/regions/wales", title: "Wales"} Wales
+      %div{style: "position:absolute; left:104.3px; top:31.15px"}
+        %a{style: "color: black;", href: "/communities/regions/scotland", title: "Scotland"} Scotland
+      %div{style: "position:absolute; left:5.3px; top:96.15px"}
+        %a{style: "color: black;", href: "/communities/regions/northern_ireland", title: "Northern Ireland"}
+          Northern
+          %br>/
+          Ireland
 
 .row
-  .col
-    = "..."
+  - @communities_regions_array.each do |communities_region|
+    .col-6
+      - prevRegion = ''
+      - communities_region.each do |c|
+        - if c.region != prevRegion
+          %p{style: 'margin-top: 1rem; margin-bottom: 0; font-weight: 600;'}= t("defines.regions.#{c.region}")
+        %li{style: 'margin-left: 1.5rem;'}
+          = link_to c.name, c
+        - prevRegion = c.region

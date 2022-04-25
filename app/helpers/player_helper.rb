@@ -22,7 +22,8 @@ module PlayerHelper
     elsif country_code == 'it'
       ['abruzzo', 'aosta_valley', 'apulia', 'basilicata', 'calabria', 'campania', 'emilia-romagna', 'friuli_venezia_giulia', 'lazio', 'liguria', 'lombardy', 'marche', 'molise', 'piemont', 'sardinia', 'sicily', 'trentino-south_tyrol', 'tuscany', 'umbria', 'veneto']
     elsif country_code == 'uk'
-      ['south_east', 'london', 'north_west', 'east_of_england', 'west_midlands', 'south_west', 'yorkshire_and_the_humber', 'east_midlands', 'north_east']
+      #blup ['south_east', 'london', 'north_west', 'east_of_england', 'west_midlands', 'south_west', 'yorkshire_and_the_humber', 'east_midlands', 'north_east']
+      ['england', 'northern_ireland', 'scotland', 'wales']
     end
   end
 
