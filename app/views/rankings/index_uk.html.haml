@@ -61,24 +61,24 @@
       %li.nav-item
         %a#region_north_west-tab.nav-link{'data-toggle'=>'tab', href: '#region_north_west', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_north_west.title')
-      %li.nav-item
-        %a#region_northern_ireland-tab.nav-link{'data-toggle'=>'tab', href: '#region_northern_ireland', role: 'tab', 'aria-controls'=>'all'}
-          = t('rankings.region_northern_ireland.title')
+      -# %li.nav-item
+      -#   %a#region_northern_ireland-tab.nav-link{'data-toggle'=>'tab', href: '#region_northern_ireland', role: 'tab', 'aria-controls'=>'all'}
+      -#     = t('rankings.region_northern_ireland.title')
       %li.nav-item
         %a#region_scotland-tab.nav-link{'data-toggle'=>'tab', href: '#region_scotland', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_scotland.title')
-      %li.nav-item
-        %a#region_south_east-tab.nav-link{'data-toggle'=>'tab', href: '#region_south_east', role: 'tab', 'aria-controls'=>'all'}
-          = t('rankings.region_south_east.title')
+      -# %li.nav-item
+      -#   %a#region_south_east-tab.nav-link{'data-toggle'=>'tab', href: '#region_south_east', role: 'tab', 'aria-controls'=>'all'}
+      -#     = t('rankings.region_south_east.title')
       %li.nav-item
         %a#region_south_west-tab.nav-link{'data-toggle'=>'tab', href: '#region_south_west', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_south_west.title')
       %li.nav-item
         %a#region_wales-tab.nav-link{'data-toggle'=>'tab', href: '#region_wales', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_wales.title')
-      %li.nav-item
-        %a#region_yorkshire_and_the_humber-tab.nav-link{'data-toggle'=>'tab', href: '#region_yorkshire_and_the_humber', role: 'tab', 'aria-controls'=>'all'}
-          = t('rankings.region_yorkshire_and_the_humber.title')
+      -# %li.nav-item
+      -#   %a#region_yorkshire_and_the_humber-tab.nav-link{'data-toggle'=>'tab', href: '#region_yorkshire_and_the_humber', role: 'tab', 'aria-controls'=>'all'}
+      -#     = t('rankings.region_yorkshire_and_the_humber.title')
 
     .tab-content#region-tabs-content
       .tab-pane.fade#region_east_of_england{role: 'tabpanel', 'aria-labelledby'=>'region_east_of_england-tab'}
@@ -91,18 +91,18 @@
         = render 'rankings/uk/region_north_east'
       .tab-pane.fade#region_north_west{role: 'tabpanel', 'aria-labelledby'=>'region_north_west-tab'}
         = render 'rankings/uk/region_north_west'
-      .tab-pane.fade#region_northern_ireland{role: 'tabpanel', 'aria-labelledby'=>'region_northern_ireland-tab'}
-        = render 'rankings/uk/region_northern_ireland'
+      -# .tab-pane.fade#region_northern_ireland{role: 'tabpanel', 'aria-labelledby'=>'region_northern_ireland-tab'}
+      -#   = render 'rankings/uk/region_northern_ireland'
       .tab-pane.fade#region_scotland{role: 'tabpanel', 'aria-labelledby'=>'region_scotland-tab'}
         = render 'rankings/uk/region_scotland'
-      .tab-pane.fade#region_south_east{role: 'tabpanel', 'aria-labelledby'=>'region_south_east-tab'}
-        = render 'rankings/uk/region_south_east'
+      -# .tab-pane.fade#region_south_east{role: 'tabpanel', 'aria-labelledby'=>'region_south_east-tab'}
+      -#   = render 'rankings/uk/region_south_east'
       .tab-pane.fade#region_south_west{role: 'tabpanel', 'aria-labelledby'=>'region_south_west-tab'}
         = render 'rankings/uk/region_south_west'
       .tab-pane.fade#region_wales{role: 'tabpanel', 'aria-labelledby'=>'region_wales-tab'}
         = render 'rankings/uk/region_wales'
-      .tab-pane.fade#region_yorkshire_and_the_humber{role: 'tabpanel', 'aria-labelledby'=>'region_yorkshire_and_the_humber-tab'}
-        = render 'rankings/uk/region_yorkshire_and_the_humber'
+      -# .tab-pane.fade#region_yorkshire_and_the_humber{role: 'tabpanel', 'aria-labelledby'=>'region_yorkshire_and_the_humber-tab'}
+      -#   = render 'rankings/uk/region_yorkshire_and_the_humber'
 
 :javascript
   document.addEventListener('turbolinks:load', function() {
