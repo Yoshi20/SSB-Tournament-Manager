@@ -46,21 +46,22 @@
       .form-group
         = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
-      .form-group
-        = f.label :mobile_number, t('users.mobile_number')
-        - if session['country_code'] == 'ch'
-          %em= "(079 / 123 45 67)"
-        - elsif session['country_code'] == 'de'
-          %em= "(01522 1234567)"
-        - elsif session['country_code'] == 'fr'
-          %em= "(06 12 34 56 78)"
-        - elsif session['country_code'] == 'lu'
-          %em= "(621 123 456)"
-        - elsif session['country_code'] == 'it'
-          %em= "(300 1234 567)"
-        - elsif session['country_code'] == 'uk'
-          %em= "(07123 456 789)"
-        = f.text_field :mobile_number, class: 'form-control'
+      - unless session['country_code'] == 'uk'
+        .form-group
+          = f.label :mobile_number, t('users.mobile_number')
+          - if session['country_code'] == 'ch'
+            %em= "(079 / 123 45 67)"
+          - elsif session['country_code'] == 'de'
+            %em= "(01522 1234567)"
+          - elsif session['country_code'] == 'fr'
+            %em= "(06 12 34 56 78)"
+          - elsif session['country_code'] == 'lu'
+            %em= "(621 123 456)"
+          - elsif session['country_code'] == 'it'
+            %em= "(300 1234 567)"
+          -# - elsif session['country_code'] == 'uk'
+          -#   %em= "(07123 456 789)"
+          = f.text_field :mobile_number, class: 'form-control'
       .form-group
         = f.label :password, "#{t('password')} *"
         - if @minimum_password_length
