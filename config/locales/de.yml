@@ -1141,10 +1141,10 @@ de:
     cancel_tournament: "Turnier stornieren"
     errors:
       registration_deadline: "muss kleiner als das Turnier Startdatum sein"
-    seed_players: "Spieler Seeden"
+    seed_players: "Spieler Pre-Seeden"
     seed_players_randomly: "Spieler zufällig Seeden"
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
-    drag_and_drop: "(oder Drag & Drop)"
+    drag_and_drop: "(mit Drag & Drop finalisieren)"
     calendar: "Turnierkalender"
     info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
     info_body_challonge: "Um ein internes oder weekly Turnier erstellen zu können, füge deinem Account ein Challonge Benutzername und API Schlüssel hinzu."

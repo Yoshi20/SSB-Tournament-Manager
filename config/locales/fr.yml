@@ -1140,10 +1140,10 @@ fr:
     cancel_tournament: "Annuler le tournoi"
     errors:
       registration_deadline: "doit être antérieur à la date de début du tournoi"
-    seed_players: "Seeder les joueurs"
+    seed_players: "Pre-seeder les joueurs"
     seed_players_randomly: "Seeder les joueurs aléatoirement"
     seed_players_tournament_confirm: "Êtes-vous sûr(e)? Le seeding actuel sera écrasé."
-    drag_and_drop: "(ou glisser-déposer)"
+    drag_and_drop: "(glisser-déposer pour finaliser)"
     calendar: "Calendrier"
     info_body: "Pour pouvoir créer un tournoi interne ou hebdomadaire, ajoutes d'abord le rôle TO dans ton profil. Ensuite, tu devais ajouter un nom d'utilisateur Challonge et une clé API à ton compte."
     info_body_challonge: "Pour pouvoir créer un tournoi interne ou hebdomadaire, ajoutes un nom d'utilisateur Challonge et une clé API à ton compte."
