@@ -97,7 +97,7 @@ module PlayerHelper
     elsif country_code == 'it'
       ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'uk'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
+      ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     end
   end
 
