@@ -5,7 +5,7 @@
         %span.material-icons= 'check_circle'
       - elsif tournament.external_registration_link.present?
         %span.material-icons= 'open_in_new'
-      - elsif tournament.registration_deadline.nil? || tournament.registration_deadline < Time.now
+      - elsif tournament.registration_deadline.nil? || tournament.registration_deadline < Time.zone.now
         %span.material-icons= 'lock'
       - elsif !tournament.is_registration_allowed
         %span.material-icons= 'info'

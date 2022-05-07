@@ -283,7 +283,7 @@ class TournamentsController < ApplicationController
       return;
     end
 
-    if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+    if @tournament.registration_deadline and Time.zone.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "#{t('flash.alert.add_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end
@@ -349,7 +349,7 @@ class TournamentsController < ApplicationController
       return;
     end
 
-    if @tournament.registration_deadline and Time.now > @tournament.registration_deadline and !params[:gamer_tag].present?
+    if @tournament.registration_deadline and Time.zone.now > @tournament.registration_deadline and !params[:gamer_tag].present?
       redirect_to @tournament, alert: "#{t('flash.alert.remove_player_failed')} -> #{t('flash.alert.deadline_exceeded')}"
       return;
     end

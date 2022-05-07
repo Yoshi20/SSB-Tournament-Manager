@@ -8,10 +8,10 @@ class Tournament < ApplicationRecord
 
   scope :all_from, ->(country_code) { where(country_code: country_code) }
   scope :active, -> { where(active: true) }
-  scope :upcoming, -> { where('date > ?', Time.now) }
-  scope :upcoming_with_today, -> { where('date >= ?', Time.now.beginning_of_day) }
-  scope :ongoing, -> { where('(finished IS FALSE OR finished IS NULL) AND date <= ? AND date >= ?', Time.now, Time.now - 6.hours) }
-  scope :past, -> { where('started AND finished OR date < ?', Time.now - 6.hours) }
+  scope :upcoming, -> { where('date > ?', Time.zone.now) }
+  scope :upcoming_with_today, -> { where('date >= ?', Time.zone.now.beginning_of_day) }
+  scope :ongoing, -> { where('(finished IS FALSE OR finished IS NULL) AND date <= ? AND date >= ?', Time.zone.now, Time.zone.now - 6.hours) }
+  scope :past, -> { where('started AND finished OR date < ?', Time.zone.now - 6.hours) }
   scope :for_calendar, -> { where(active: true).where('date > ? AND date < ?', 2.weeks.ago, Date.today + 4.months) }
   scope :from_city, -> (city) { where("name ILIKE ? OR name ILIKE ? OR location ILIKE ? OR location ILIKE ?", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city)}%", "%#{ActiveRecord::Base.sanitize_sql_like(city.downcase)}%") }
 
@@ -34,7 +34,7 @@ class Tournament < ApplicationRecord
   end
 
   def is_past?
-    self.date < Time.now
+    self.date < Time.zone.now
   end
 
   def has_pools?

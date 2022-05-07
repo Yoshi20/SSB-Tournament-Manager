@@ -33,7 +33,7 @@
     .form-group{class: (@tournament.new_record? ? 'd-none' : '')}
       = f.label :name, t('tournaments.name')
       %em= t('tournaments.readonly')
-      = f.text_field :name, class: 'form-control', readonly: true, value: (@tournament.new_record? ? Time.now.to_s : @tournament.name) # hack to make a valid name
+      = f.text_field :name, class: 'form-control', readonly: true, value: (@tournament.new_record? ? Time.zone.now.to_s : @tournament.name) # hack to make a valid name
     .form-group
       = f.label :city, t('tournaments.city')
       = f.text_field :city, class: 'form-control'

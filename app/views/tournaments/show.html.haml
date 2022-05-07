@@ -164,7 +164,7 @@
             .row
               .col
                 .tournament__details__single.tournament__details__single--last
-                  - if @tournament.registration_deadline.present? and Time.now > @tournament.registration_deadline
+                  - if @tournament.registration_deadline.present? and Time.zone.now > @tournament.registration_deadline
                     = button_to t('tournaments.deadline_exceeded'), nil, class:'btn btn-primary', style:'background-color: #007bff;', disabled:true
                   -else
                     - if current_user.present?

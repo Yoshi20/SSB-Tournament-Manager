@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_country_code, except: :donation
   before_action :set_locale
+  around_action :set_time_zone
   before_action :authenticate_user!, except: no_user_exceptions
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
@@ -173,6 +174,14 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = http_accept_language.compatible_language_from(available_locales)
         cookies.permanent[:locale] = I18n.locale.to_s
+      end
+    end
+
+    def set_time_zone
+      if session['country_code'] == 'uk'
+        Time.use_zone("London") { yield }
+      else
+        yield
       end
     end
 

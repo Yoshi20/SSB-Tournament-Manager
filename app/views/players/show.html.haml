@@ -220,7 +220,7 @@
     -# tournaments ---------------------------------------------------------------
     - if @player.tournaments.any?
       .tab-pane.fade.show#tournaments{role: 'tabpanel', 'aria-labelledby'=>'tournaments-tab'}
-        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.now).order(:date)
+        - joined_tournaments = @player.tournaments.where('active = ? AND date >= ?', true, Time.zone.now).order(:date)
         -if joined_tournaments.any?
           .player__tournaments
             %table.table.table-hover.table-borderless
@@ -242,7 +242,7 @@
                       %strong
                         = l(tournament.date, format: :custom_datetime_date_and_no_time)
 
-        - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.now)
+        - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.zone.now)
         - if past_tournaments.any?
           - past_tournaments_2022 = past_tournaments.where('date >= ? AND date < ?', Time.local(2022,1,1), Time.local(2023,1,1))
           = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2022, year: '2022'

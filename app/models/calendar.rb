@@ -29,11 +29,11 @@ class Calendar
       if tournament.started and tournament.finished
         # past tournament
         'lightgray'
-      elsif tournament.subtype != 'external' and tournament.date + 6.hours < DateTime.now
+      elsif tournament.subtype != 'external' and tournament.date + 6.hours < Time.zone.now
         # past tournament
         'lightgray'
       elsif tournament.subtype == 'external'
-        if tournament.date + 24.hours < DateTime.now
+        if tournament.date + 24.hours < Time.zone.now
           'lightgray' # past
         else
           # external tournament
@@ -42,7 +42,7 @@ class Calendar
       elsif tournament.cancelled?
         # cancelled
         'lightsalmon'
-      elsif tournament.registration_deadline.present? and tournament.registration_deadline < DateTime.now
+      elsif tournament.registration_deadline.present? and tournament.registration_deadline < Time.zone.now
         # registration deadline exceeded? -> ongoing
         'darkorange'
       elsif tournament.subtype == 'internal'

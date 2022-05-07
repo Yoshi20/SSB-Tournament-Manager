@@ -57,10 +57,11 @@ namespace :tournaments_crawler_ch do
     root = 'https://smash.gg/'
 
     # URL to get the data as JSON
-    doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true'))
+    # doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true'))
+    doc = URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={"upcoming"%3Atrue%2C"videogameIds"%3A"1386"%2C"countryCode"%3A"CH"}&page=1&per_page=100&returnMeta=true').read
     jsonHash = JSON.parse doc
     jsonHash['total_count'].times do |i|
-      tournamentHash = jsonHash['items']['entities']['tournament'][i]
+      tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]
       externalTournament = Tournament.new
       externalTournament.subtype = 'external'
       externalTournament.date = Time.at(tournamentHash['startAt']).to_date rescue nil
