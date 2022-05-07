@@ -55,5 +55,41 @@ module SSBTournamentManager
       uk: "SmashUltimate.uk <#{ENV['INFOMANIAK_EMAIL_USERNAME_UK']}>",
     }
 
+    config.smtp_hosts = {
+      ch: "mail.infomaniak.com",
+      de: "mail.infomaniak.com",
+      fr: "mail.infomaniak.com",
+      lu: "mail.infomaniak.com",#blup
+      it: "mail.infomaniak.com",
+      uk: "mail.infomaniak.com",
+    }
+
+    config.smtp_domains = {
+      ch: "swisssmash.ch",
+      de: "germanysmash.de",
+      fr: "francesmash.fr",
+      lu: "letz-smash.lu",
+      it: "italysmash.it",
+      uk: "smashultimate.uk",
+    }
+
+    config.smtp_user_names = {
+      ch: ENV['INFOMANIAK_EMAIL_USERNAME_CH'],
+      de: ENV['INFOMANIAK_EMAIL_USERNAME_DE'],
+      fr: ENV['INFOMANIAK_EMAIL_USERNAME_FR'],
+      lu: ENV['INFOMANIAK_EMAIL_USERNAME_LU'],#blup
+      it: ENV['INFOMANIAK_EMAIL_USERNAME_IT'],
+      uk: ENV['INFOMANIAK_EMAIL_USERNAME_UK'],
+    }
+
+    config.smtp_passwords = {
+      ch: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      de: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      fr: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      lu: ENV['INFOMANIAK_EMAIL_PASSWORD'],#blup
+      it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+    }
+
   end
 end

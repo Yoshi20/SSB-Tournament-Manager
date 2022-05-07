@@ -70,10 +70,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'SwissSmash <admin@swisssmash.ch>'}
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
+  ActionMailer::Base.smtp_settings = { # This is only a fallback. The smtp_settings are overwritten in the delivery_options of each mail
     address: 'smtp.sendgrid.net',
     port: 587, #or 25,
-    domain: 'heroku.com',
+    domain: 'heroku.com', # must be the same as domain from sender
     user_name: 'apikey',
     password: ENV['SENDGRID_API_KEY'],
     authentication: 'plain',

@@ -38,6 +38,7 @@ if defined?(ActionMailer)
       {
         from: email,
         reply_to: email,
+        delivery_method_options: Domain.delivery_options_from(@resource.country_code)
       }
     end
 
