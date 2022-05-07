@@ -4,7 +4,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = tournaments_url(@tournament.country_code, @tournament.id.to_s)
-    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+    I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(to: @user.email, from: Domain.email_from(@tournament.country_code), subject: "A new tournament was added: #{@tournament.name}")
     end
   end
@@ -13,7 +13,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = @tournament.external_registration_link || ''
-    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+    I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(to: @user.email, from: Domain.email_from(@tournament.country_code), subject: "A new external tournament was added: #{@tournament.name}")
     end
   end
@@ -22,7 +22,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = tournaments_url(@tournament.country_code, @tournament.id.to_s)
-    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+    I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(to: @user.email, from: Domain.email_from(@tournament.country_code), subject: "One or more weeklies were added: #{@tournament.name}")
     end
   end
@@ -31,7 +31,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = tournaments_url(@tournament.country_code, '')
-    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+    I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(to: @user.email, from: Domain.email_from(@tournament.country_code), subject: "Tournament was cancelled: #{@tournament.name.gsub('(cancelled) ', '')}")
     end
   end
@@ -40,7 +40,7 @@ class TournamentMailer < ApplicationMailer
     @tournament = params[:tournament]
     @user = params[:user]
     @url = tournaments_url(@tournament.country_code, @tournament.id.to_s)
-    I18n.with_locale(Domain.locale_from(@user.country_code)) do
+    I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(to: @user.email, from: Domain.email_from(@tournament.country_code), subject: "You was upgraded from the waiting list")
     end
   end

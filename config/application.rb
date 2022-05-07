@@ -28,13 +28,22 @@ module SSBTournamentManager
       uk: "smashultimate.uk",
     }
 
-    config.country_locales = {
+    config.default_locales = {
       ch: "en",
       de: "de",
       fr: "fr",
       lu: "en",
       it: "it",
       uk: "en",
+    }
+
+    config.available_locales = {
+      ch: ["en", "de", "fr"],
+      de: ["en", "de"],
+      fr: ["en", "fr"],
+      lu: ["en", "de", "fr"],
+      it: ["en", "it"],
+      uk: ["en"],
     }
 
     config.emails = {

@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
           url = url + "&user_login=#{twitch_username}"
         end
       else
-        url = url + "&language=#{Domain.locale_from(session['country_code'])}"
+        url = url + "&language=#{Domain.default_locale_from(session['country_code'])}"
       end
       puts "Requesting: GET #{url}"
       begin
@@ -148,14 +148,15 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
+      available_locales = Domain.available_locales_from(session['country_code'])
       if params[:locale].present?
         cookies.permanent[:locale] = params[:locale]
       end
       localeCookie = cookies[:locale]
-      if localeCookie.present?
+      if localeCookie.present? && available_locales.include?(localeCookie)
         I18n.locale = localeCookie
       else
-        I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+        I18n.locale = http_accept_language.compatible_language_from(available_locales)
         cookies.permanent[:locale] = I18n.locale.to_s
       end
     end
