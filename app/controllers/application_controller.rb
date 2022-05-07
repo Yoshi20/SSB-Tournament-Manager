@@ -113,7 +113,22 @@ class ApplicationController < ActionController::Base
   end
 
   def get_next_tournaments
-    @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
+    if session['country_code'] == 'uk'
+      # The UK only wants to display tournaments on the weekends
+      sa1 = Time.zone.now.end_of_week.midnight - 1.day # 00:00 at Saturday
+      su1 = Time.zone.now.end_of_week                  # 3:59 at Sunday
+      sa2 = sa1 + 7.days
+      su2 = su1 + 7.days
+      sa3 = sa2 + 7.days
+      su3 = su2 + 7.days
+      sa4 = sa3 + 7.days
+      su4 = su3 + 7.days
+      @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today
+      @nextTournaments = @nextTournaments.where("(date >= ? AND date <= ?) OR (date >= ? AND date <= ?) OR (date >= ? AND date <= ?) OR (date >= ? AND date <= ?)", sa1, su1, sa2, su2, sa3, su3, sa4, su4)
+      @nextTournaments = @nextTournaments.order(date: :asc).includes(:players).limit(10)
+    else
+      @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
+    end
   end
 
   def set_forum_unread_count
