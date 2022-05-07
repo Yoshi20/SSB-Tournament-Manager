@@ -13,6 +13,17 @@
         = f.label :username, "#{t('users.login_username')} *"
         = f.text_field :username, autofocus: true, class: 'form-control'
       .form-group
+        = f.label :email, "#{t('users.email')} *"
+        = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :password, "#{t('password')} *"
+        - if @minimum_password_length
+          %em= t('users.chars_min', pw_length: @minimum_password_length)
+        = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, "#{t('users.password_confirmation')} *"
+        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+      .form-group
         = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
         = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
       .form-group
@@ -43,9 +54,6 @@
         = label_tag :smash_gg_id, t('players.smash_gg_id')
         %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
         = text_field_tag :smash_gg_id, params[:smash_gg_id], class: 'form-control'
-      .form-group
-        = f.label :email, "#{t('users.email')} *"
-        = f.email_field :email, class: 'form-control'
       - unless session['country_code'] == 'uk'
         .form-group
           = f.label :mobile_number, t('users.mobile_number')
@@ -62,14 +70,6 @@
           -# - elsif session['country_code'] == 'uk'
           -#   %em= "(07123 456 789)"
           = f.text_field :mobile_number, class: 'form-control'
-      .form-group
-        = f.label :password, "#{t('password')} *"
-        - if @minimum_password_length
-          %em= t('users.chars_min', pw_length: @minimum_password_length)
-        = f.password_field :password, autocomplete: "off", class: 'form-control'
-      .form-group
-        = f.label :password_confirmation, "#{t('users.password_confirmation')} *"
-        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       .form-group
         = label_tag :region, t("players.region_#{session['country_code']}")
         = select_tag :region, options_for_select(regions_for_select_from(session['country_code']), params[:region]), {include_blank: true, class: 'form-control'}
