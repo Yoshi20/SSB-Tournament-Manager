@@ -39,6 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.participations = 0
         player.region = params[:region]
         player.gender = params[:gender]
+        player.gender_pronouns = params[:gender_pronouns]
         player.birth_year = params[:birth_year]
         player.self_assessment = params[:self_assessment] || 0
         player.tournament_experience = params[:tournament_experience] || 0

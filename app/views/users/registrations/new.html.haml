@@ -77,6 +77,9 @@
         = label_tag :gender, t('players.gender')
         = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
       .form-group
+        = label_tag :gender_pronouns, t('players.gender_pronouns')
+        = text_field_tag :gender_pronouns, params[:gender_pronouns], class: 'form-control'
+      .form-group
         = label_tag :birth_year, t('players.birth_year')
         = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
       .form-group

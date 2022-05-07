@@ -933,6 +933,7 @@ en:
     region_it: "Region"
     region_uk: "Region"
     gender: "Gender"
+    gender_pronouns: "Gender pronouns"
     birth_year: "Birth year"
     self_assessment: "Self assessment"
     self_assessment_shy: "Self assessment"

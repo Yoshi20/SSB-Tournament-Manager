@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_25_110334) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_07_210452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_25_110334) do
     t.string "smash_gg_id"
     t.string "nintendo_friend_code"
     t.string "twitch_username"
+    t.string "gender_pronouns"
   end
 
   create_table "players_teams", id: false, force: :cascade do |t|

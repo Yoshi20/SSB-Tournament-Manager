@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
       :allows_emails_from_germanysmash, :allows_emails_from_francesmash,
       :allows_emails_from_luxsmash, :allows_emails_from_italysmash,
       :allows_emails_from_partners, :country_code, :smash_gg_id,
-      :nintendo_friend_code, :twitch_username, :role_list]
+      :nintendo_friend_code, :twitch_username, :role_list, :gender_pronouns]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end

@@ -799,6 +799,7 @@ de:
     region_fr: "Region"
     region_lu: "Kanton"
     gender: "Geschlecht"
+    gender_pronouns: "Gender-Pronomen"
     birth_year: "Geburtsjahr"
     self_assessment: "Selbsteinschätzung"
     self_assessment_shy: "Selbst&shy;einschätzung"

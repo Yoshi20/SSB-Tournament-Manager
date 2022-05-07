@@ -857,6 +857,7 @@ it:
     region_lu: "Canton"
     region_it: "Region"
     gender: "Gender"
+    gender_pronouns: "Gender pronouns"
     birth_year: "Birth year"
     self_assessment: "Self assessment"
     self_assessment_shy: "Self assessment"

@@ -66,6 +66,9 @@
     = f.label :gender, t('players.gender')
     = f.select :gender, options_for_select(genders_for_select, @player.gender), {include_blank: true}, class: 'form-control'
   .field.form-group
+    = f.label :gender_pronouns, t('players.gender_pronouns')
+    = f.text_field :gender_pronouns, class: 'form-control'
+  .field.form-group
     = f.label :birth_year, t('players.birth_year')
     = f.select :birth_year, options_for_select(birth_years, @player.birth_year), {include_blank: true}, class: 'form-control'
   .field.form-group
