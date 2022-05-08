@@ -4,7 +4,7 @@
   .col
     %h1.page__title= t('tournaments.title')
 
-%ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+%ul#tournaments-tabs.nav.nav-pills.nav-fill{role: 'tablist', style: 'margin-bottom: 2rem;'}
   %li.nav-item
     %a#upcoming-tab.nav-link.active{'data-toggle'=>'tab', href: '#upcoming', role: 'tab', 'aria-controls'=>'all'}
       = t('tournaments.upcoming')

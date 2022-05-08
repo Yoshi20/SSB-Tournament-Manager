@@ -21,12 +21,12 @@
     }
   }
   &.btn-default {
-    background: $color-default;
-    border: 1px solid $color-default;
+    background: $color-default2;
+    border: 1px solid $color-default2;
     color: $color-white;
     &:hover {
-      background: transparent;
-      color: $color-default;
+      background: $color-white;
+      color: $color-default2;
     }
     &:focus, .focus {
       box-shadow: $shadow-input;
@@ -34,10 +34,10 @@
   }
   &.btn-ghost {
     background: transparent;
-    border: 1px solid $color-default;
-    color: $color-default;
+    border: 1px solid $color-default2;
+    color: $color-default2;
     &:hover {
-      background: $color-default;
+      background: $color-default2;
       color: $color-white;
     }
     &:focus, .focus {

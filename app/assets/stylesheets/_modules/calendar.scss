@@ -50,7 +50,6 @@
     }
     h2 {
       font-size: 1rem;
-      color: $color-grey;
       padding: .625rem 0;
       margin-bottom: .3125rem;
       font-weight: 600;
@@ -92,12 +91,12 @@
 
     &.fc-state-default {
       background: transparent;
-      border: 1px solid $color-default;
-      color: $color-default;
+      border: 1px solid $color-default2;
+      color: $color-default2;
     }
     &.fc-state-active {
       box-shadow: none;
-      background: $color-default;
+      background: $color-default2;
       color: $color-white;
     }
   }

@@ -1,0 +1,88 @@
+/* change background color if the OS is on Dark Mode */
+@mixin dark {
+  main {
+    background: $color-grey;
+  }
+
+  .content {
+    color: $color-white;
+    background-color: $color-grey-dark;
+  }
+
+  .sidebar {
+    color: $color-white;
+    background-color: $color-grey-dark;
+  }
+
+  .nav.nav-fill {
+    .nav-link {
+      color: $color-grey-light;
+      &.active {
+        color: $color-default2;
+      }
+      &:hover {
+        color: $color-default2;
+      }
+    }
+  }
+
+  td.admin-list-actions {
+    background-color: $color-grey;
+  }
+
+  .table {
+    color: $color-white;
+    .table-header {
+      th {
+        color: $color-white;
+      }
+    }
+    tbody {
+      tr:hover {
+        background-color: $color-grey;
+        color: $color-white;
+      }
+    }
+  }
+
+  .toast {
+    background-color: $color-grey;
+    color: $color-white;
+    .toast-header {
+      background-color: $color-grey;
+      color: $color-white;
+      border-bottom: 1px solid $color-white;
+    }
+    .toast-body {
+      color: $color-white;
+    }
+  }
+
+  .news {
+    .thumbnail {
+      &:first-child {
+        background-color: darkslategrey;
+      }
+    }
+  }
+
+  #fullcalendar .fc-view-container .fc-bg .fc-today {
+    background-color: darkslategrey;
+  }
+
+}
+
+/* force the dark mode when OS interface is light */
+@media (prefers-color-scheme: light) {
+  [data-color-theme="dark"] {
+    @include dark;
+  }
+}
+
+/* follow the OS interface colors or force the dark theme */
+@media (prefers-color-scheme: dark) {
+  // [data-color-theme="auto"], [data-color-theme="dark"] {
+  [data-color-theme="dark"] {
+    @include dark;
+  }
+}

@@ -45,13 +45,15 @@
 @import "./_modules/toast";
 @import "./_modules/tournament";
 
+@import "./_modules/darkmode";
+
 html, body {
   height: 100%;
   background: $color-grey-light;
 }
 
 main {
-  margin-bottom: 2rem;
+  padding-bottom: 1rem;
   flex: 1 0 auto;
 }
 

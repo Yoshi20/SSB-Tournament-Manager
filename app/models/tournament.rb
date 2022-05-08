@@ -94,7 +94,7 @@ class Tournament < ApplicationRecord
       begin
         json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:#{self.country_code.upcase}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
         puts 'blup'
-        puts json_data.inspect #blup
+        puts json_data.inspect #blup: eventuell nicht UK sonern GB oder England requesten?
         if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
           json_data["results"][0]["address_components"].each do |res|
             if (res["types"].present? && res["types"].include?('administrative_area_level_1'))

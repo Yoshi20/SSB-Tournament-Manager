@@ -9,7 +9,7 @@
       = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
       = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
-    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+    %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
       = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
     %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
       = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
@@ -53,6 +53,7 @@
       = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
       = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de')
       = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr')
+      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
   %ul.navbar-nav.navbar-account
     - if user_signed_in?

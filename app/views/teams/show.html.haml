@@ -61,7 +61,10 @@
             = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), @team.twitch.include?('http') ? @team.twitch : "https://www.twitch.tv/#{@team.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
         - if @team.youtube.present?
           .col{style: 'text-align: center;'}
-            = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            - if cookies[:color_theme] == 'dark'
+              = link_to image_tag('Youtube_Logo_Light.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            - else
+              = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
 
   - if @team.website.present?
     .team__stats

@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_country_code, except: :donation
   before_action :set_locale
+  before_action :set_color_theme
   around_action :set_time_zone
   before_action :authenticate_user!, except: no_user_exceptions
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -66,7 +67,6 @@ class ApplicationController < ActionController::Base
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
       url = "https://api.twitch.tv/helix/streams?game_id=504461"
-      #blup: uk
       if session['country_code'] == 'lu'
         lu_streamers.each do |twitch_username|
           url = url + "&user_login=#{twitch_username}"
@@ -174,6 +174,13 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = http_accept_language.compatible_language_from(available_locales)
         cookies.permanent[:locale] = I18n.locale.to_s
+      end
+    end
+
+    def set_color_theme
+      return unless request.get?
+      if params[:color_theme].present?
+        cookies.permanent[:color_theme] = params[:color_theme]
       end
     end
 

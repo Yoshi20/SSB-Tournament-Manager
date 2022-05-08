@@ -14,7 +14,6 @@ body {
 
 h1 {
   font-size: $fontsize-title;
-  color: $color-grey;
   padding: .625rem 0;
   margin-bottom: .625rem;
   font-weight: 600;
@@ -22,7 +21,6 @@ h1 {
 
 h2 {
   font-size: $fontsize-sidebar;
-  color: $color-grey;
   padding: .625rem 0;
   margin-bottom: .3125rem;
   font-weight: 600;
@@ -30,7 +28,6 @@ h2 {
 
 h3 {
   font-size: 1rem;
-  color: $color-grey;
   padding: .625rem 0;
   margin-bottom: .3125rem;
   font-weight: 600;
@@ -39,12 +36,4 @@ h3 {
 
 b, strong {
   font-weight: 600;
-}
-
-.color-grey {
-  color: $color-grey;
-}
-
-.color-red {
-  color: $color-red;
 }

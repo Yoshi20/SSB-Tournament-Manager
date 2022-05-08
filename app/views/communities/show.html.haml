@@ -65,7 +65,10 @@
             = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), @community.twitch.include?('http') ? @community.twitch : "https://www.twitch.tv/#{@community.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
         - if @community.youtube.present?
           .col{style: 'text-align: center;'}
-            = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            - if cookies[:color_theme] == 'dark'
+              = link_to image_tag('Youtube_Logo_Light.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            - else
+              = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @community.youtube.include?('http') ? @community.youtube : "https://www.youtube.tv/#{@community.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
 
   -if current_user.present? && current_user.admin?
     .community__stats
