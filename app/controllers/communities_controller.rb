@@ -222,7 +222,7 @@ class CommunitiesController < ApplicationController
       ["samus", "e9vyVF2"], ["sephiroth", "APW2QScwW7"], ["sheik", "edvYN57"], ["shulk", "GneEZAC"],
       ["simon", "ZDvJWdz"], ["snake", "WgWhze4"], ["sonic", "NVWzs5M"], ["sora", "AaZjVBnANh"],
       ["steve", "7nK7ADz"], ["terry", "WXW26zN"], ["toon_link", "mSU95AB"], ["villager", "9N6Rr3B"],
-      ["wario", "jTDGUC2"], ["wii_fit_trainer", "NcGbfek"], ["wolf", "esk7R3H"],
+      ["wario", "jTDGUC2"], ["wii_fit_trainer", "NcGbfek"], ["wolf", "RYC3cVDuuq"],
       ["yoshi", "A88DP87"], ["young_link", "zcZFt7x"], ["zelda", "ke3SBMC"], ["zero_suit_samus", "vHTu5sQ"],
     ]
   end
