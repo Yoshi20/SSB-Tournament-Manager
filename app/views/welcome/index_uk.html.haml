@@ -40,19 +40,9 @@
 
 %p
   = t('welcome.uk.body3',
-    log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
-    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe
-
-%p
-  = t('welcome.uk.body4',
     rankings_link: link_to(t('rankings.title'), rankings_path, style: 'font-weight: 600;')).html_safe
 
 %p
-  = t('welcome.uk.body5',
+  = t('welcome.uk.body4',
     players_link: link_to(t('players.title'), players_path, style: 'font-weight: 600;'),
-    videos_link: link_to(t('players.videos'), videos_path, style: 'font-weight: 600;')).html_safe
-
-
-%p
-  = t('welcome.uk.body6',
-    informations_link: link_to(t('information.uk.title_short'), informations_path, style: 'font-weight: 600;')).html_safe
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;')).html_safe
