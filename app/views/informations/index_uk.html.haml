@@ -63,7 +63,8 @@
     .row
       .col
         %h2= t('information.uk.power_ranking.power_ranking')
-        %p= t('information.uk.power_ranking.power_ranking_body')
+        %p= t('information.uk.power_ranking.power_ranking_body', link: link_to(t('information.uk.power_ranking.link_title'), t('information.uk.power_ranking.link'), target: '_blank')).html_safe
+
   -# tournament-manager
   .tab-pane.fade.show#tournament-manager{role: 'tabpanel', 'aria-labelledby'=>'tournament-manager-tab'}
     .row.mt-3

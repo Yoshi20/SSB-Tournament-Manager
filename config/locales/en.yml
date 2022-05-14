@@ -733,7 +733,9 @@ en:
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "The power ranking UK uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality."
+        power_ranking_body: "The England PR is published biannually with each season generally lasting 6 months.<br>As a basis for the rankings, there is a live ranking spreadsheet known as the Boma Rankings (%{link}). The PR Panel, which is formed of experienced TOs and players as representatives of each region, determine the PR at the end of each season."
+        link_title: "BomasUKRankings"
+        link: "https://bit.ly/BomasUKRankings"
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
