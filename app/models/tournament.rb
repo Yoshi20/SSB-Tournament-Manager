@@ -93,19 +93,30 @@ class Tournament < ApplicationRecord
       require 'json'
       begin
         json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:#{self.country_code.upcase}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
-        puts 'blup'
-        puts json_data.inspect #blup: eventuell nicht UK sonern GB oder England requesten?
         if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
           json_data["results"][0]["address_components"].each do |res|
             if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
               if res["long_name"].present?
                 sn = res["short_name"]
+                # handle special case: "England"
+                if sn == "England"
+                  json_data["results"][0]["address_components"].each do |res|
+                    if (res["types"].present? && res["types"].include?('administrative_area_level_2'))
+                      sn2 = res["short_name"]
+                      uk_region = ApplicationController.helpers.counties_of_england[sn2.to_sym] if sn2.present?
+                      if regions_raw.include?(uk_region)
+                        self.region = uk_region
+                        return # as soon as region was found
+                      end
+                    end
+                  end
+                end
+                # handle normal case
                 if regions_raw.include?(sn)
                   self.region = sn
                   return # as soon as region was found
                 end
-                # long_name will most likely never be necessary
-                ln = res["long_name"].downcase
+                ln = res["long_name"].downcase  # long_name will most likely never be necessary
                 if (regions_de.include?(ln) || regions_fr.include?(ln) || regions_en.include?(ln) || regions_it.include?(ln))
                   self.region = regions_raw[regions_de.index(ln)] if regions_de.index(ln).present?
                   self.region = regions_raw[regions_fr.index(ln)] if regions_fr.index(ln).present?
@@ -116,6 +127,10 @@ class Tournament < ApplicationRecord
               end
             end
           end
+        end
+        # send email if region still empty
+        unless self.region.present?
+          #blup: TODO -> send email if region still empty
         end
       rescue OpenURI::HTTPError => ex
         puts ex
