@@ -13,8 +13,11 @@
         = render "/layouts/navigation_mobile_#{session['country_code']}"
       .banner
         .banner__overlay
-        = image_tag 'banner.jpg', class: 'banner__image'
-        - if session['country_code'] == 'it' || session['country_code'] == 'uk'
+        - if session['country_code'] == 'uk'
+          = image_tag 'uk_banner.jpg', class: 'banner__image'
+        - else
+          = image_tag 'banner.jpg', class: 'banner__image'
+        - if session['country_code'] == 'it'
           .wip
             = "This site is a \"Work In Progress\""
       .container
