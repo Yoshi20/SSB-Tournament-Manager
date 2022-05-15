@@ -26,6 +26,28 @@
     }
   }
 
+  .dropdown-menu {
+    background-color: $color-grey-dark;
+    .dropdown-title {
+      color: $color-white;
+    }
+    .dropdown-item {
+      &:hover {
+        background-color: $color-grey;
+      }
+    }
+  }
+
+  .modal-content {
+    background-color: $color-grey-dark;
+    color: $color-white;
+    .modal-header {
+      .close {
+        color: $color-white;
+      }
+    }
+  }
+
   td.admin-list-actions {
     background-color: $color-grey;
   }

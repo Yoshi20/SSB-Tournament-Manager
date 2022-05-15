@@ -92,6 +92,7 @@
 
   .dropdown-menu {
     border-radius: $border-radius-box;
+    border: 1px solid $color-default2;
     a {
       color: $color-default;
     }
