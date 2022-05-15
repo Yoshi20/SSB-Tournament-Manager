@@ -10,4 +10,10 @@
     text-align: center;
     border-bottom: 1px solid $color-grey-light;
   }
+
+  .center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
