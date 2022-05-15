@@ -1,4 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30">
-  <rect width="30" height="30" style="fill:#3bb80b;" />
-  <text x="7" y="18" fill="white" font-size="10px">IRE</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="480" viewBox="0 0 480 480">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <image id="Layer_0" data-name="Layer 0" width="480" height="480" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAHgAQMAAABHGizWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABlBMVEU7uAsAAAA8bIp1AAAAAWJLR0QB/wIt3gAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+YFCw8BItQPbdYAAAAzSURBVHja7cExAQAAAMKg9U9tDB+gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgacmAAAW/4IIgAAAAASUVORK5CYII="/>
+  <path id="IRE" class="cls-1" d="M90.9,308.8h29.6V171.4H90.9V308.8Zm173.2,0-33.8-48c18.8-6.6,31.2-22.6,31.2-43,0-27.2-22-46.4-51.8-46.4H147.9V308.8h29.4V264.2h21.8l31.4,44.6h33.6ZM177.3,198.4h29.2c14.6,0,24.6,7.6,24.6,19.4s-10,19.4-24.6,19.4H177.3V198.4Zm212-.4V171.4H283.5V308.8H389.3V282.2H313.1V252h69V225.4h-69V198h76.2Z"/>
 </svg>
