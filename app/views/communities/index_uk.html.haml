@@ -72,6 +72,20 @@
           %br>/
           Ireland
 
+  -# .uk-map
+  -#   = link_to image_tag("uk_map/East_of_England.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   -#link_to  = image_tag("uk_map/Ireland.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/London.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/Midlands.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/North_East.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/North_West.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/Northern_Ireland.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/Scotland.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/South_East.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/South_West.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/Wales.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+  -#   = link_to image_tag("uk_map/Yorkshire.png", width: '300px', class: 'uk-map-region'), 'communities/...'
+
 .row
   - @communities_regions_array.each do |communities_region|
     .col-6
@@ -82,3 +96,7 @@
         %li{style: 'margin-left: 1.5rem;'}
           = link_to c.name, c
         - prevRegion = c.region
+
+-# :css
+-#   .uk-map { position: relative; height: 400px; }
+-#   .uk-map-region { position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0; }
