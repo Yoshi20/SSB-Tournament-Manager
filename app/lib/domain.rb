@@ -9,10 +9,12 @@ module Domain
   end
 
   def self.default_locale_from(country_code)
+    return "en" if country_code.nil?
     Rails.application.config.default_locales[country_code.to_sym]
   end
 
   def self.available_locales_from(country_code)
+    return ["en"] if country_code.nil?
     Rails.application.config.available_locales[country_code.to_sym]
   end
 
