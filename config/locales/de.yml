@@ -440,7 +440,7 @@ de:
           Mittlerweile gibt es auch eine fast komplette Liste von Swiss Smash Spielern mit relevanten Statistiken, Spielerdaten, Ranglisten und Rollen.
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe der smash.gg-API und selbst geschriebenen %{link}-Programmen, die einmal pro Nacht ausgeführt werden, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        tournaments_body: "Mit der Hilfe der start.gg-API und selbst geschriebenen %{link}-Programmen, die einmal pro Nacht ausgeführt werden, kann SwissSmash alle SSBU-Turniere in der Schweiz finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in der Schweiz bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf swisssmash.ch erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf swisssmash.ch erstelltes Turnier"
@@ -497,7 +497,7 @@ de:
           Die Seite entstand aus der Vorlage von %{swisssmash_link} und wird primär betreut von: %{Yomi} (Entwickler) und %{TaDavidID} (Koordination mit TOs).
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe der smash.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann GermanySmash alle SSBU-Turniere in Deutschland finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        tournaments_body: "Mit der Hilfe der start.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann GermanySmash alle SSBU-Turniere in Deutschland finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in Deutschland bis vor zwei Wochen und vier Monaten in der Zukunft. Es werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf germanysmash.de erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf germanysmash.de erstelltes Turnier"
@@ -551,7 +551,7 @@ de:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (local coordination).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in france that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in france from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
         calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
@@ -599,7 +599,7 @@ de:
           Die Seite entstand aus der Vorlage von %{swisssmash_link} und wird primär betreut von: %{Yomi} (Entwickler).
       calendar:
         title: "Kalender"
-        tournaments_body: "Mit der Hilfe der smash.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in Luxemburg finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
+        tournaments_body: "Mit der Hilfe der start.gg-API und eines selbst geschriebenen %{link}-Programms, das einmal pro Nacht ausgeführt wird, kann LuxSmash alle SSBU-Turniere in Luxemburg finden und auflisten, die zu einer der folgenden Webseiten hinzugefügt wurden:"
         calendar_body: "Der Kalender zeigt alle gefundenen SSBU-Turniere in Luxemburg bis vor zwei Wochen und vier Monaten in der Zukunft.\nEs werden die folgenden Turniertypen unterschieden:"
         calendar_weekly: "Weekly -> Auf luxsmash.lu erstelltes Weekly Turnier"
         calendar_internal: "Intern -> Auf luxsmash.lu erstelltes Turnier"
@@ -781,9 +781,9 @@ de:
     instagram_username: "Instagram Benutzername"
     twitch_username: "Twitch Benutzername"
     nintendo_friend_code: "Nintendo Freundescode"
-    smash_gg_id: "Smash.gg Discriminator"
-    smash_gg_user: "Smash.gg Benutzer"
-    whats_smash_gg_id: "(Was ist mein smash.gg Discriminator?)"
+    smash_gg_id: "Start.gg Discriminator"
+    smash_gg_user: "Start.gg Benutzer"
+    whats_smash_gg_id: "(Was ist mein start.gg Discriminator?)"
     youtube_video_ids: "YouTube Video IDs"
     youtube_video_ids_examples: "(z.B. <strong>dQw4w9WgXcQ</strong> oder <strong>dQw4w9WgXcQ?start=42</strong> um bei 42 Sekunden zu starten. Trenne weitere IDs mit Kommas)"
     warnings: "Anzahl Verwarnungen"

@@ -468,7 +468,7 @@ en:
           In the meantime it now also provides an almost complete list of swiss smashers with relevant stats, player data, rankings and roles.
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and with self written %{link} programs, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On swisssmash.ch created weekly tournament"
         calendar_internal: "Internal -> On swisssmash.ch created tournament"
@@ -525,7 +525,7 @@ en:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (local coordination).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in Germany from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On germanysmash.de created weekly tournament"
         calendar_internal: "Internal -> On germanysmash.de created tournament"
@@ -579,7 +579,7 @@ en:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (local coordination).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in France that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in France that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in France from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
         calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
@@ -627,7 +627,7 @@ en:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, LuxSmash is able to find and list all the SSBU tournaments in Luxembourg that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, LuxSmash is able to find and list all the SSBU tournaments in Luxembourg that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in Luxembourg from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On luxsmash.lu created weekly tournament"
         calendar_internal: "Internal -> On luxsmash.lu created tournament"
@@ -671,7 +671,7 @@ en:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, ItalySmash is able to find and list all the SSBU tournaments in Italy that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, ItalySmash is able to find and list all the SSBU tournaments in Italy that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in Italy from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On ItalySmash created weekly tournament"
         calendar_internal: "Internal -> On ItalySmash created tournament"
@@ -719,7 +719,7 @@ en:
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the smash.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in the UK from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On SmashUltimate.uk created weekly tournament"
         calendar_internal: "Internal -> On SmashUltimate.uk created tournament"
@@ -908,9 +908,9 @@ en:
     instagram_username: "Instagram username"
     twitch_username: "Twitch username"
     nintendo_friend_code: "Nintendo Friend Code"
-    smash_gg_id: "Smash.gg discriminator"
-    smash_gg_user: "Smash.gg User"
-    whats_smash_gg_id: "(What is my smash.gg discriminator?)"
+    smash_gg_id: "Start.gg discriminator"
+    smash_gg_user: "Start.gg User"
+    whats_smash_gg_id: "(What is my start.gg discriminator?)"
     youtube_video_ids: "YouTube video IDs"
     youtube_video_ids_examples: "(e.g. <strong>dQw4w9WgXcQ</strong> or <strong>dQw4w9WgXcQ?start=42</strong> to start by 42 seconds. Separate multiple IDs with a comma)"
     warnings: "Number of warnings"

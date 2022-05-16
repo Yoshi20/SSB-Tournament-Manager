@@ -215,7 +215,7 @@
                 .player__stats__single.player__stats__single--last
                   - smash_gg_link = @player.smash_gg_id.include?('http') ? @player.smash_gg_id : "https://smash.gg/user/#{@player.smash_gg_id}"
                   %strong
-                    = link_to(image_tag("smash_gg_logo_small.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
+                    = link_to(image_tag("start_gg_logo_#{cookies[:color_theme] == 'dark' ? 'white' : 'black'}.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
                   %span
                     = t("players.smash_gg_user")
 
