@@ -99,8 +99,7 @@
       .col-6
         %ul.navbar-nav.navbar-account
           %li.nav-item.locales-list{style: 'margin-top: 8px;'}
-            = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
-            = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+            = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag'), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
 .collapse#navbarSupportedContent
   .btn{onclick: "$('.navbar-toggler').click()", style: 'position: absolute; left: 0; width: 100%; height: 1000%; margin-top: 8px; background-color: transparent;'}
