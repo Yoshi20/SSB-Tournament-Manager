@@ -93,7 +93,7 @@ class User < ApplicationRecord
   end
 
   def send_devise_notification(notification, *args)
-    locale = (self.country_code == 'ch' || self.country_code == 'lu') ? 'en' : self.country_code
+    locale = Domain.default_locale_from(self.country_code)
     I18n.with_locale(locale) { super(notification, *args) }
   end
 
