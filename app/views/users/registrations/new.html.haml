@@ -142,42 +142,51 @@
       - elsif session['country_code'] == 'de'
         .form-group
           .form-check
-            = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : true), class:'form-check-input mr-2'
+            = f.check_box :allows_emails_from_germanysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_germanysmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_germanysmash, t('users.allows_emails_from_germanysmash'), class:'form-check-label'
       - elsif session['country_code'] == 'fr'
         .form-group
           .form-check
-            = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : true), class:'form-check-input mr-2'
+            = f.check_box :allows_emails_from_francesmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_francesmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_francesmash, t('users.allows_emails_from_francesmash'), class:'form-check-label'
       - elsif session['country_code'] == 'lu'
         .form-group
           .form-check
-            = f.check_box :allows_emails_from_luxsmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_luxsmash] == "1") : true), class:'form-check-input mr-2'
+            = f.check_box :allows_emails_from_luxsmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_luxsmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_luxsmash, t('users.allows_emails_from_luxsmash'), class:'form-check-label'
       - elsif session['country_code'] == 'it'
         .form-group
           .form-check
-            = f.check_box :allows_emails_from_italysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_italysmash] == "1") : true), class:'form-check-input mr-2'
+            = f.check_box :allows_emails_from_italysmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_italysmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_italysmash, t('users.allows_emails_from_italysmash'), class:'form-check-label'
       - elsif session['country_code'] == 'uk'
         .form-group
           .form-check
-            = f.check_box :allows_emails_from_uksmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_uksmash] == "1") : true), class:'form-check-input mr-2'
+            = f.check_box :allows_emails_from_uksmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_uksmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_uksmash, t('users.allows_emails_from_uksmash'), class:'form-check-label'
       .form-group
         .form-check
-          = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : true), class:'form-check-input mr-2'
+          = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : false), class:'form-check-input mr-2'
           = f.label :allows_emails_from_partners, t("users.allows_emails_from_partners_#{session['country_code']}"), class:'form-check-label'
       .form-group
         .form-check
-          %input{type:"checkbox", onclick:"return false;", checked:'true', class:'form-check-input mr-2'}
-          = label_tag :data_agreement, t('users.data_agreement'), class:'form-check-label'
+          = check_box_tag(:data_agreement, "1", false, {class:'form-check-input mr-2', id: 'data_agreement', style: 'margin-left: -20px; margin-right: 8px;', 'data-text': t('users.data_agreement_text')})
+          = label_tag :data_agreement, t('users.data_agreement').html_safe, class:'form-check-label'
       .form-group
         = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
       .form-group
-        = f.submit t('users.register'), class:'btn btn-default'
+        = f.submit t('users.register'), class:'btn btn-default', onclick: "check_data_agreement();"
 
 :javascript
+  function check_data_agreement() {
+    event.preventDefault();
+    if (document.getElementById('data_agreement').checked) {
+       document.getElementById("new_user").submit();
+    } else {
+      alert(document.getElementById('data_agreement').dataset.text);
+    }
+  }
+
   document.addEventListener('turbolinks:load', function() {
     $('#select2').select2({
       theme: "bootstrap",
