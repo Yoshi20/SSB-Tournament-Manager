@@ -64,7 +64,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         player.wins = 0
         player.losses = 0
         player.user = user
-        player.role_list = params[:role_list].compact.reject { |c| c.empty? }
+        player.role_list = params[:role_list].compact.reject { |c| c.empty? } if params[:role_list].present?
         if player.save
           flash[:notice] = t('flash.notice.creating_player')
           # Tell the UserMailer to send a welcome email after save
