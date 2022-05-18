@@ -7,7 +7,7 @@
       = render "devise/shared/error_messages", resource: resource
       .form-group
         = f.label :username, t('users.login_username')
-        = f.text_field :username, autofocus: true, class: 'form-control'
+        = f.text_field :username, autofocus: true, class: 'form-control', maxlength: '50'
       .form-group
         = f.label :email, t('users.email')
         = f.email_field :email, class: 'form-control'
@@ -29,7 +29,7 @@
             %em= "(300 1234 567)"
           -# - elsif session['country_code'] == 'uk'
           -#   %em= "(07123 456 789)"
-          = f.text_field :mobile_number, class: 'form-control'
+          = f.text_field :mobile_number, class: 'form-control', maxlength: '50'
       .form-group
         = f.label :password, t('users.new_password')
         %i= t('users.leave_blank')
@@ -86,11 +86,11 @@
       -#   .form-group
       -#     = f.label :full_name, t('users.full_name')
       -#     %i= t('users.first_and_last_name')
-      -#     = f.text_field :full_name, class: 'form-control'
+      -#     = f.text_field :full_name, class: 'form-control', maxlength: '50'
       -#   .form-group
       -#     = f.label :area_of_responsibility, t('users.area_of_responsibility')
       -#     %i (Bern, Zurich, Geneva, ...?)
-      -#     = f.text_field :area_of_responsibility, class: 'form-control'
+      -#     = f.text_field :area_of_responsibility, class: 'form-control', maxlength: '50'
       - if current_user.admin? || current_user.has_role?('tournament_organizer')
         %hr
         %p

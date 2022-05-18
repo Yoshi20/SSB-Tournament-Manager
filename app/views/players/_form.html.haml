@@ -9,41 +9,41 @@
 
   .field.form-group
     = f.label :gamer_tag, t('players.gamer_tag')
-    = f.text_field :gamer_tag, class: 'form-control'
+    = f.text_field :gamer_tag, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :prefix, t('players.prefix')
     %em= "(XYZ)"
-    = f.text_field :prefix, class: 'form-control'
+    = f.text_field :prefix, class: 'form-control', maxlength: '12'
   .field.form-group
     = f.label :role_list, t('players.roles')
     = f.select :role_list, options_for_select(roles_for_select_from(session['country_code']), @player.role_list), {}, multiple: "multiple", class: 'form-control', id: 'select2'
   .field.form-group
     = f.label :discord_username, t('players.discord_username')
     %em= "(User#1234)"
-    = f.text_field :discord_username, class: 'form-control'
+    = f.text_field :discord_username, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :twitter_username, t('players.twitter_username')
-    = f.text_field :twitter_username, class: 'form-control'
+    = f.text_field :twitter_username, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :instagram_username, t('players.instagram_username')
-    = f.text_field :instagram_username, class: 'form-control'
+    = f.text_field :instagram_username, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :twitch_username, t('players.twitch_username')
-    = f.text_field :twitch_username, class: 'form-control'
+    = f.text_field :twitch_username, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :nintendo_friend_code, t('players.nintendo_friend_code')
     %em= "(SW-1234-1234-1234)"
-    = f.text_field :nintendo_friend_code, class: 'form-control'
+    = f.text_field :nintendo_friend_code, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :smash_gg_id, t('players.smash_gg_id')
     %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
-    = f.text_field :smash_gg_id, class: 'form-control'
+    = f.text_field :smash_gg_id, class: 'form-control', maxlength: '50'
   - if current_user.super_admin?
     .field.form-group
       = label_tag :alternative_gamer_tags, t('players.alternative_gamer_tags')
       - alts = ""
       - @player.alternative_gamer_tags.each { |alt| alts += "#{alt.gamer_tag}, " }
-      = text_field_tag :alternative_gamer_tags, alts, class: 'form-control'
+      = text_field_tag :alternative_gamer_tags, alts, class: 'form-control', maxlength: '50'
     .field.form-group
       = f.label :points, t('players.points')
       = f.number_field :points, class: 'form-control'
@@ -67,7 +67,7 @@
     = f.select :gender, options_for_select(genders_for_select, @player.gender), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :gender_pronouns, t('players.gender_pronouns')
-    = f.text_field :gender_pronouns, class: 'form-control'
+    = f.text_field :gender_pronouns, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :birth_year, t('players.birth_year')
     = f.select :birth_year, options_for_select(birth_years, @player.birth_year), {include_blank: true}, class: 'form-control'
@@ -103,13 +103,12 @@
   .field.form-group
     = f.label :comment, t('players.comment')
     %em= t('players.for_what_ever')
-    = f.text_area :comment, class: 'form-control', rows: '5'
+    = f.text_area :comment, class: 'form-control', rows: '5', maxlength: '500'
   %br
   .field.form-group
     = f.label :youtube_video_ids, t('players.youtube_video_ids')
     %em= t('players.youtube_video_ids_examples').html_safe
-    = f.text_area :youtube_video_ids, class: 'form-control', rows: '3'
-
+    = f.text_area :youtube_video_ids, class: 'form-control', rows: '3', maxlength: '300'
   - if current_user.admin? || current_user.has_role?('tournament_organizer')
     .field.form-group
       = f.label :warnings, t('players.warnings') + ' (TOs only)'

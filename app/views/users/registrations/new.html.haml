@@ -11,7 +11,7 @@
         = f.text_field :country_code, value: session['country_code'], class: 'form-control'
       .form-group
         = f.label :username, "#{t('users.login_username')} *"
-        = f.text_field :username, autofocus: true, class: 'form-control'
+        = f.text_field :username, autofocus: true, class: 'form-control', maxlength: '50'
       .form-group
         = f.label :email, "#{t('users.email')} *"
         = f.email_field :email, class: 'form-control'
@@ -25,35 +25,35 @@
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       .form-group
         = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
-        = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control'
+        = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :prefix, t('players.prefix')
         %em= "(XYZ)"
-        = text_field_tag :prefix, params[:prefix], class: 'form-control'
+        = text_field_tag :prefix, params[:prefix], class: 'form-control', maxlength: '12'
       .form-group
         = label_tag :role_list, t('players.roles')
         = select_tag :role_list, options_for_select(roles_for_select_from(session['country_code']), (params[:role_list].present? ? params[:role_list] : ["player"])), multiple: true, class: 'form-control', id: 'select2'
       .form-group
         = label_tag :discord_username, t('players.discord_username')
         %em= "(User#1234)"
-        = text_field_tag :discord_username, params[:discord_username], class: 'form-control'
+        = text_field_tag :discord_username, params[:discord_username], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :twitter_username, t('players.twitter_username')
-        = text_field_tag :twitter_username, params[:twitter_username], class: 'form-control'
+        = text_field_tag :twitter_username, params[:twitter_username], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :instagram_username, t('players.instagram_username')
-        = text_field_tag :instagram_username, params[:instagram_username], class: 'form-control'
+        = text_field_tag :instagram_username, params[:instagram_username], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :twitch_username, t('players.twitch_username')
-        = text_field_tag :twitch_username, params[:twitch_username], class: 'form-control'
+        = text_field_tag :twitch_username, params[:twitch_username], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :nintendo_friend_code, t('players.nintendo_friend_code')
         %em= "(SW-1234-1234-1234)"
-        = text_field_tag :nintendo_friend_code, params[:nintendo_friend_code], class: 'form-control'
+        = text_field_tag :nintendo_friend_code, params[:nintendo_friend_code], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :smash_gg_id, t('players.smash_gg_id')
         %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
-        = text_field_tag :smash_gg_id, params[:smash_gg_id], class: 'form-control'
+        = text_field_tag :smash_gg_id, params[:smash_gg_id], class: 'form-control', maxlength: '50'
       - unless session['country_code'] == 'uk'
         .form-group
           = f.label :mobile_number, t('users.mobile_number')
@@ -69,7 +69,7 @@
             %em= "(300 1234 567)"
           -# - elsif session['country_code'] == 'uk'
           -#   %em= "(07123 456 789)"
-          = f.text_field :mobile_number, class: 'form-control'
+          = f.text_field :mobile_number, class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :region, t("players.region_#{session['country_code']}")
         = select_tag :region, options_for_select(regions_for_select_from(session['country_code']), params[:region]), {include_blank: true, class: 'form-control'}
@@ -78,7 +78,7 @@
         = select_tag :gender, options_for_select(genders_for_select, params[:gender]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :gender_pronouns, t('players.gender_pronouns')
-        = text_field_tag :gender_pronouns, params[:gender_pronouns], class: 'form-control'
+        = text_field_tag :gender_pronouns, params[:gender_pronouns], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :birth_year, t('players.birth_year')
         = select_tag :birth_year, options_for_select(birth_years, params[:birth_year]), {include_blank: true, class: 'form-control'}
@@ -120,11 +120,11 @@
       .form-group
         = label_tag :comment, t('players.comment')
         %em= t('players.for_what_ever')
-        = text_area_tag :comment, params[:comment], rows: '5', class: 'form-control'
+        = text_area_tag :comment, params[:comment], rows: '5', class: 'form-control', maxlength: '500'
       .form-group
         = label_tag :youtube_video_ids, t('players.youtube_video_ids')
         %em= t('players.youtube_video_ids_examples').html_safe
-        = text_area_tag :youtube_video_ids, params[:youtube_video_ids], rows: '3', class: 'form-control'
+        = text_area_tag :youtube_video_ids, params[:youtube_video_ids], rows: '3', class: 'form-control', maxlength: '300'
       -# .form-group.mb-0
       -#   .form-check
       -#     = f.check_box :wants_major_email, checked: (params[:user].present? ? (params[:user][:wants_major_email] == "1") : true), class:'form-check-input mr-2'
