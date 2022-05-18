@@ -61,9 +61,9 @@
       %li.nav-item
         %a#region_north_west-tab.nav-link{'data-toggle'=>'tab', href: '#region_north_west', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_north_west.title')
-      -# %li.nav-item
-      -#   %a#region_northern_ireland-tab.nav-link{'data-toggle'=>'tab', href: '#region_northern_ireland', role: 'tab', 'aria-controls'=>'all'}
-      -#     = t('rankings.region_northern_ireland.title')
+      %li.nav-item
+        %a#region_northern_ireland-tab.nav-link{'data-toggle'=>'tab', href: '#region_northern_ireland', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_northern_ireland.title')
       %li.nav-item
         %a#region_scotland-tab.nav-link{'data-toggle'=>'tab', href: '#region_scotland', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_scotland.title')
@@ -91,8 +91,8 @@
         = render 'rankings/uk/region_north_east'
       .tab-pane.fade#region_north_west{role: 'tabpanel', 'aria-labelledby'=>'region_north_west-tab'}
         = render 'rankings/uk/region_north_west'
-      -# .tab-pane.fade#region_northern_ireland{role: 'tabpanel', 'aria-labelledby'=>'region_northern_ireland-tab'}
-      -#   = render 'rankings/uk/region_northern_ireland'
+      .tab-pane.fade#region_northern_ireland{role: 'tabpanel', 'aria-labelledby'=>'region_northern_ireland-tab'}
+        = render 'rankings/uk/region_northern_ireland'
       .tab-pane.fade#region_scotland{role: 'tabpanel', 'aria-labelledby'=>'region_scotland-tab'}
         = render 'rankings/uk/region_scotland'
       -# .tab-pane.fade#region_south_east{role: 'tabpanel', 'aria-labelledby'=>'region_south_east-tab'}
