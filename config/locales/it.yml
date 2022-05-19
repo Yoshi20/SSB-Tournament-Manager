@@ -1151,7 +1151,7 @@ it:
     date: "Date"
     fee: "Fee"
     seats: "Seats"
-    weekly_start_date: "Firts weekly start date"
+    weekly_start_date: "First weekly start date"
     weekly_end_date: "Last weekly start date"
     weekly_end_date_example: "(e.g. a day in december)"
     readonly: "(readonly)"
