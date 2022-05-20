@@ -28,6 +28,9 @@
         .admin-actions__link
           = link_to edit_team_path(@team), class:'btn btn-default btn-square' do
             %span.material-icons.admin-actions__link__icon= 'edit'
+        .admin-actions__link
+          = link_to @team, method: :delete, data: { confirm: t('confirm') }, class: 'btn btn-sstm btn-square' do
+            %span.material-icons.admin-actions__link__icon= 'delete'
 
   .text-center
     - if @team.image_link.present?
