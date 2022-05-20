@@ -18,6 +18,11 @@ module Domain
     Rails.application.config.available_locales[country_code.to_sym]
   end
 
+  def self.currency_from(country_code)
+    return '$' if country_code.nil?
+    Rails.application.config.currencies[country_code.to_sym]
+  end
+
   def self.delivery_options_from(country_code)
     {
       address: Rails.application.config.smtp_hosts[country_code.to_sym],

@@ -36,7 +36,7 @@
       = f.label :region, t("tournaments.region_#{@tournament.country_code}")
       = f.select :region, options_for_select(regions_for_select_from(@tournament.country_code), @tournament.region), {include_blank: true}, class: 'form-control'
     .form-group
-      = f.label :registration_fee, @tournament.country_code == 'ch' ? t('tournaments.registration_fee_chf') : t('tournaments.registration_fee_euro')
+      = f.label :registration_fee, t('tournaments.registration_fee_with_currency', currency: Domain.currency_from(@tournament.country_code))
       = f.number_field :registration_fee, class: 'form-control'
     .form-group
       = f.label :total_seats, t('tournaments.total_seats')
