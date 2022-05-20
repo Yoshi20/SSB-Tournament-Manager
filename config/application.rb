@@ -59,7 +59,7 @@ module SSBTournamentManager
       ch: "mail.infomaniak.com",
       de: "mail.infomaniak.com",
       fr: "mail.infomaniak.com",
-      lu: "mail.infomaniak.com",#blup
+      lu: "ssl0.ovh.net",
       it: "mail.infomaniak.com",
       uk: "mail.infomaniak.com",
     }
@@ -77,7 +77,7 @@ module SSBTournamentManager
       ch: ENV['INFOMANIAK_EMAIL_USERNAME_CH'],
       de: ENV['INFOMANIAK_EMAIL_USERNAME_DE'],
       fr: ENV['INFOMANIAK_EMAIL_USERNAME_FR'],
-      lu: ENV['INFOMANIAK_EMAIL_USERNAME_LU'],#blup
+      lu: ENV['INFOMANIAK_EMAIL_USERNAME_LU'],
       it: ENV['INFOMANIAK_EMAIL_USERNAME_IT'],
       uk: ENV['INFOMANIAK_EMAIL_USERNAME_UK'],
     }
@@ -86,7 +86,7 @@ module SSBTournamentManager
       ch: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       de: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       fr: ENV['INFOMANIAK_EMAIL_PASSWORD'],
-      lu: ENV['INFOMANIAK_EMAIL_PASSWORD'],#blup
+      lu: ENV['INFOMANIAK_EMAIL_PASSWORD_LU'],
       it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
     }
