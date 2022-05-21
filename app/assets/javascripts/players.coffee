@@ -36,7 +36,12 @@ document.addEventListener 'turbolinks:load', ->
           console.log("error: get character_skins ajax request")
           $main_char_skin_class.find('.row').remove()
         success: (response) ->
-          $main_char_skin_class.find('.row').remove()
-          $main_char_skin_class.append(response);
+          if response.startsWith("<div class='row char_skins'") || response == ""
+            $main_char_skin_class.find('.row').remove()
+            $main_char_skin_class.append(response);
+          else
+            console.log("error: response is not as expected")
+            console.log(response)
+            $main_char_skin_class.find('.row').remove()
     else
       $main_char_skin_class.find('.row').remove()

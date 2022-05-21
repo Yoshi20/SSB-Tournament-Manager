@@ -1,5 +1,5 @@
 - if character.present? && skin_nr.present? && character != 'random'
-  .row{style: 'margin-bottom: 1rem;'}
+  .row.char_skins{style: 'margin-bottom: 1rem;'}
     .col
       - files = Dir.entries("#{Rails.root}/public/character_skins").map{|f| f if f[0] != '.' && f[0..-8] == character}.compact.sort
       - files.each_with_index do |file, i|
