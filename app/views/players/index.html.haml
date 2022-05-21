@@ -41,7 +41,7 @@
           - last_player_points = nil
           - @players.each_with_index do |player, i|
             %tr{'data-id': player.id, 'data-component'=>'player'}
-              %td= player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+              %td= player.prefix.present? ? "#{player.prefix} | #{truncate(player.gamer_tag, length: 20)}" : truncate(player.gamer_tag, length: 20)
               %td.text-center
                 - if player.main_characters.any?
                   %div
@@ -86,7 +86,7 @@
                 - else
                   .div{style: 'display: inline;'}
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
-                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                = player.prefix.present? ? "#{player.prefix} | #{truncate(player.gamer_tag, length: 20)}" : truncate(player.gamer_tag, length: 20)
               %td.text-center
                 - if player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{player.country_code}/#{player.region}.svg")
                   = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px'
@@ -123,7 +123,7 @@
                 - else
                   .div{style: 'display: inline;'}
                     %span.material-icons{style: 'vertical-align: middle; height: 25px; width: 25px;'}= 'help'
-                = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
+                = player.prefix.present? ? "#{player.prefix} | #{truncate(player.gamer_tag, length: 20)}" : truncate(player.gamer_tag, length: 20)
               %td.text-center
                 - player.role_list.sort.each do |role|
                   %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')

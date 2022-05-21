@@ -170,7 +170,7 @@ module ApplicationHelper
       {
         reverse: true,
         separator: '|',
-        description: 'UK Super Smash Bros. Ultimate Community Hub',
+        description: 'UK & Ireland Super Smash Bros. Ultimate Community Hub',
         keywords: 'super smash bros, nintendo, esports, ultimate',
         canonical: request.original_url,
         noindex: !Rails.env.production?,
@@ -181,7 +181,7 @@ module ApplicationHelper
         og: {
           site_name: 'SmashUltimate.uk',
           title: 'SmashUltimate.uk',
-          description: 'UK Super Smash Bros. Ultimate Community Hub',
+          description: 'UK & Ireland Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
           image: image_url('uk_logo.jpg')

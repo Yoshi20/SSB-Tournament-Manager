@@ -148,6 +148,7 @@ en:
       wales: "Wales"
       scotland: "Scotland"
       northern_ireland: "Northern Ireland"
+      ireland: "Ireland"
 
     departments:
       Ain: "Ain"
@@ -440,11 +441,11 @@ en:
       body6: "Information about ItalySmash can be found under %{informations_link}."
     uk:
       title: "SmashUltimate.uk"
-      body0: "Welcome to SmashUltimate.uk, your entry point into the UK Super Smash Bros. Ultimate tournament scene!"
+      body0: "Welcome to SmashUltimate.uk, your entry point into the UK & Ireland Super Smash Bros. Ultimate tournament scene!"
       body1: "Information on upcoming events can be found under %{tournaments_link} or in the %{calendar_link}."
       body2: "Find out about your local community on the %{communities} page."
-      body3: "Want to know who the best players in the UK are? Look at the %{rankings_link} page for the latest regional and national Power Rankings."
-      body4: "The %{players_link} page lists many UK players and community members - you can %{sign_up_link} to be able to use all of this site's features!"
+      body3: "Want to know who the best players in the UK & Ireland are? Look at the %{rankings_link} page for the latest regional and national Power Rankings."
+      body4: "The %{players_link} page lists many UK & Ireland players and community members - you can %{sign_up_link} to be able to use all of this site's features!"
     tournament_list: "Tournaments"
     calendar: "Calendar"
     log_in: "Log in"
@@ -714,20 +715,20 @@ en:
       general:
         title: "General"
         uksmash: |
-          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in the UK and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in the UK & Ireland and to provide an entry point for new players to find their way into their local smash community.<br><br>
           In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK that were added to either one of the following sites:"
-        calendar_body: "The calendar shows all found SSBU tournaments in the UK from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK & Ireland that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in the UK & Ireland from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On SmashUltimate.uk created weekly tournament"
         calendar_internal: "Internal -> On SmashUltimate.uk created tournament"
         calendar_external: "External -> On an external site created tournament"
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "The England PR is published biannually with each season generally lasting 6 months.<br>As a basis for the rankings, there is a live ranking spreadsheet known as the Boma Rankings (%{link}). The PR Panel, which is formed of experienced TOs and players as representatives of each region, determine the PR at the end of each season."
+        power_ranking_body: "The UK & Ireland PR is published biannually with each season generally lasting 6 months.<br>As a basis for the rankings, there is a live ranking spreadsheet known as the Boma Rankings (%{link}). The PR Panel, which is formed of experienced TOs and players as representatives of each region, determine the PR at the end of each season."
         link_title: "BomasUKRankings"
         link: "https://bit.ly/BomasUKRankings"
       tournament_manager:
@@ -744,7 +745,7 @@ en:
         bracket_seeding_body2: "The final seeding is done manually by a TO."
       results:
         title: "Results"
-        results_body: "Besides the results (match scores and rankings) of the SmashUltimate.uk Tournament Manager internal tournaments, SmashUltimate.uk is also able to get the results from all other tournaments in the UK. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        results_body: "Besides the results (match scores and rankings) of the SmashUltimate.uk Tournament Manager internal tournaments, SmashUltimate.uk is also able to get the results from all other tournaments in the UK & Ireland. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
         ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
         ranking_system_rank: "Rank"
@@ -1040,6 +1041,8 @@ en:
       title: "Bavaria"
     region_east_of_england:
       title: "East of England"
+    region_ireland:
+      title: "Ireland"
     region_london:
       title: "London"
     region_midlands:
@@ -1173,7 +1176,7 @@ en:
         title_short: "Conduct"
         body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
         ul: "Some (hopefully self-evident) rules are as follows:"
-        li1: "Adhere to the rules of common sense and the law in the UK."
+        li1: "Adhere to the rules of common sense and the law in the UK & Ireland."
         li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
         li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
         li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
@@ -1183,7 +1186,7 @@ en:
         li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
       match_rules:
         title_short: "Ruleset"
-        body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK. Please find out which rules are being used before each event."
+        body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
 
   tournaments:
     title: "Tournaments"
@@ -1377,7 +1380,7 @@ en:
     ranking: "The best players from the region can be found here:"
     body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
     body_it: "The Italy SSBU Community can be divided into 20 regions. Click on a region to find out more about the associated communities."
-    body_uk: "The UK SSBU Community can be divided into 11 regions. Click on a region to find out more about the associated communities."
+    body_uk: "The UK & Ireland SSBU Community can be divided into 12 regions. Click on a region to find out more about the associated communities."
     new: "New community"
     edit: "Edit community"
     prohibited: "prohibited this community from being saved:"

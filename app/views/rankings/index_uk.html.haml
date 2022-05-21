@@ -50,6 +50,9 @@
         %a#region_east_of_england-tab.nav-link{'data-toggle'=>'tab', href: '#region_east_of_england', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_east_of_england.title')
       %li.nav-item
+        %a#region_ireland-tab.nav-link{'data-toggle'=>'tab', href: '#region_ireland', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_ireland.title')
+      %li.nav-item
         %a#region_london-tab.nav-link{'data-toggle'=>'tab', href: '#region_london', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_london.title')
       %li.nav-item
@@ -83,6 +86,8 @@
     .tab-content#region-tabs-content
       .tab-pane.fade#region_east_of_england{role: 'tabpanel', 'aria-labelledby'=>'region_east_of_england-tab'}
         = render 'rankings/uk/region_east_of_england'
+      .tab-pane.fade#region_ireland{role: 'tabpanel', 'aria-labelledby'=>'region_ireland-tab'}
+        = render 'rankings/uk/region_ireland'
       .tab-pane.fade#region_london{role: 'tabpanel', 'aria-labelledby'=>'region_london-tab'}
         = render 'rankings/uk/region_london'
       .tab-pane.fade#region_midlands{role: 'tabpanel', 'aria-labelledby'=>'region_midlands-tab'}
