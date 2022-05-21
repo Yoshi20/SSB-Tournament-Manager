@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   patch 'tournaments/seed_players/:id' => 'tournaments#seed_players'
 
   get 'players/unregistered' => 'players#unregistered'
+  post 'players/export/:id' => 'players#export'
   resources :players, except: [:new]
 
   resources :registrations, only: [:update]

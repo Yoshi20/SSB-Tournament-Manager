@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   require 'will_paginate/array'
 
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show, :edit, :update, :destroy, :export]
   before_action :authenticate_player!, only: [:edit, :update, :destroy]
   before_action { @section = 'players' }
 
@@ -166,6 +166,23 @@ class PlayersController < ApplicationController
 
   # GET /players/unregistered
   def unregistered
+  end
+
+  # POST /players/export/1
+  require 'csv'
+  def export
+    player_hash = @player.attributes.slice(
+      'id', 'gamer_tag', 'points', 'participations', 'self_assessment',
+      'tournament_experience', 'comment', 'best_rank', 'wins', 'losses',
+      'main_characters', 'gender', 'birth_year', 'prefix', 'discord_username',
+      'twitter_username', 'instagram_username', 'region', 'smash_gg_id',
+      'nintendo_friend_code', 'twitch_username', 'gender_pronouns'
+    )
+    csv_data = CSV.generate do |csv|
+      csv << player_hash.keys
+      csv << player_hash.values
+    end
+    send_data(csv_data.gsub('""', ''), type: 'text/csv', filename: "player_#{@player.gamer_tag}.csv")
   end
 
   private
