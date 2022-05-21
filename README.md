@@ -33,6 +33,7 @@ Stage commands:
 - heroku run rake tournaments_crawler_lu:all --remote stage_lu
 - heroku run rake tournaments_crawler_it:all --remote stage_it
 - heroku run rake tournaments_crawler_uk:all --remote stage_uk
+- heroku run rake tournaments_crawler_ie:all --remote stage_uk
 - heroku run rake results_crawler_ch:all --remote stage_ch
 - heroku run rake results_crawler_de:all --remote stage_de
 - heroku run rake results_crawler_fr:all --remote stage_fr
@@ -54,6 +55,7 @@ Prod commands:
 - heroku run rake tournaments_crawler_lu:all --remote prod
 - heroku run rake tournaments_crawler_it:all --remote prod
 - heroku run rake tournaments_crawler_uk:all --remote prod
+- heroku run rake tournaments_crawler_ie:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
