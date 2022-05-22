@@ -39,6 +39,7 @@ class PlayersController < ApplicationController
     # handle sort parameter
     sort = params[:sort]
     if sort.present?
+      sort = 'region' if sort == 'canton' || sort == 'federal_state'
       case sort
       when 'win_loss_ratio'
         if params[:order] == "desc"
@@ -51,7 +52,7 @@ class PlayersController < ApplicationController
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       when 'roles'
-        # @players = @players.order("players.role_list").paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        # @players = @players.order('players.role_list').paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         #blup: working but way too slow
         if params[:order] == "desc"
           @players = @players.sort_by do |p|
@@ -63,7 +64,8 @@ class PlayersController < ApplicationController
           end.reverse.paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
         end
       else
-        @players = @players.order("players.?".gsub('?', params[:sort])).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        sanitizedOrder = ActiveRecord::Base.sanitize_sql_for_order("players.?".gsub('?', sort))
+        @players = @players.order(sanitizedOrder).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
       end
     else
       @players = @players.order(created_at: :desc).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
