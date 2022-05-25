@@ -45,11 +45,11 @@ Thredded.avatar_url = ->(user) {
           url = "/character_skins/#{character}_00.png"
         end
       else
-        url = Gravatar.src(user.email, 156, 'mm')
+        #Gravatar.src(user.email, 156, 'mm')
       end
     end
   else
-    url = Gravatar.src(user.email, 156, 'mm')
+    #Gravatar.src(user.email, 156, 'mm')
   end
   return url
 }
