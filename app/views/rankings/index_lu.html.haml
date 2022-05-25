@@ -4,9 +4,12 @@
   .col
     %h1.page__title= t('rankings.title')
 
-.row
-  .col.text-center
-    %p Coming Soon
+.row.center
+  .col
+    %h2 2022
+.row.center
+  = link_to asset_url('rankings/lu/pr_s2_22.jpg') do
+    = image_tag 'rankings/lu/pr_s2_22.jpg', height: '100%', width: '100%'
 
 -# %ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
 -#   %li.nav-item
