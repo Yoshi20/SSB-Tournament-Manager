@@ -65,7 +65,7 @@ class PlayersController < ApplicationController
         end
       else
         sanitizedOrder = ActiveRecord::Base.sanitize_sql_for_order("players.?".gsub('?', sort))
-        @players = @players.order(sanitizedOrder).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
+        @players = @players.order(Arel.sql(sanitizedOrder)).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
       end
     else
       @players = @players.order(created_at: :desc).paginate(page: params[:page], per_page: Player::MAX_PLAYERS_PER_PAGE)
