@@ -44,14 +44,10 @@
             .d-none.d-lg-block.col-lg-3
               .sidebar
                 = render '/partials/events', next_tournaments: @nextTournaments
-              - if session['country_code'] == 'de'
-                .sidebar{style: 'margin-top: 10px; padding: 0;'}
-                  = link_to('https://smash.gg/tournament/smash-contest-dokomi-2022/', target: '_blank') do
-                    = image_tag 'smash_contest_banner.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
-              - elsif session['country_code'] == 'uk'
-                .sidebar{style: 'margin-top: 10px; padding: 0;'}
-                  = link_to('https://smash.gg/tournament/regen-2022/', target: '_blank') do
-                    = image_tag 'uk_regen_2022.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
+              - if false #session['country_code'] == 'de'
+                -# .sidebar{style: 'margin-top: 10px; padding: 0;'}
+                -#   = link_to('https://smash.gg/tournament/smash-contest-dokomi-2022/', target: '_blank') do
+                -#     = image_tag 'smash_contest_banner.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
               - else
                 .sidebar{style: 'margin-top: 10px; height: 200px; display: flex; text-align: center; align-items: center;'}
                   %p
