@@ -28,6 +28,11 @@
         color:#fff;
         font-weight: 700;
       }
+      &:hover {
+        span {
+          color: $color-default2;
+        }
+      }
     }
   }
 

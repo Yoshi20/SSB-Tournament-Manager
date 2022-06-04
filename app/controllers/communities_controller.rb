@@ -6,7 +6,7 @@ class CommunitiesController < ApplicationController
 
   # GET /communities
   def index
-    if ['fr', 'it', 'uk'].include?(session['country_code'])
+    if ['fr', 'it', 'uk', 'pt'].include?(session['country_code'])
       @communities = Community.all_from(session['country_code']).order(region: :desc)
       i = -1
       prevRegion = ''

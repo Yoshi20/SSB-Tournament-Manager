@@ -149,7 +149,26 @@ en:
       scotland: "Scotland"
       northern_ireland: "Northern Ireland"
       ireland: "Ireland"
-
+      aveiro: "Aveiro"
+      azores: "Azores"
+      beja: "Beja"
+      braga: "Braga"
+      braganca: "Braganca"
+      castelo_branco: "Castelo Branco"
+      coimbra: "Coimbra"
+      evora: "Evora"
+      faro: "Faro"
+      guarda: "Guarda"
+      leiria: "Leiria"
+      lisbon: "Lisbon"
+      madeira: "Madeira"
+      portalegre: "Portalegre"
+      porto: "Porto"
+      santarem: "Santarem"
+      setubal: "Setubal"
+      viana_do_castelo: "Viana do Castelo"
+      vila_real: "Vila Real"
+      viseu: "Viseu"
     departments:
       Ain: "Ain"
       Aisne: "Aisne"
@@ -446,6 +465,15 @@ en:
       body2: "Find out about your local community on the %{communities} page."
       body3: "Want to know who the best players in the UK & Ireland are? Look at the %{rankings_link} page for the latest regional and national Power Rankings."
       body4: "The %{players_link} page lists many UK & Ireland players and community members - you can %{sign_up_link} to be able to use all of this site's features!"
+    pt:
+      title: "Smash Bros. Portugal"
+      body0: "Welcome to Smash Bros. Portugal, your entry point into the Portugal Super Smash Bros. Ultimate tournament scene!"
+      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body2: "Your regional community should be able to be found under %{communities}."
+      body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in Portugal under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on Smash Bros. Portugal and the %{videos_link} they posted."
+      body6: "Information about Smash Bros. Portugal can be found under %{informations_link}."
     tournament_list: "Tournaments"
     calendar: "Calendar"
     log_in: "Log in"
@@ -760,6 +788,54 @@ en:
         title: "Partners"
         sites: "Partners sites"
         media: "Media"
+    pt:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        ptsmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Portugal and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, Smash Bros. Portugal is able to find and list all the SSBU tournaments in Portugal that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in Portugal from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On Smash Bros. Portugal created weekly tournament"
+        calendar_internal: "Internal -> On Smash Bros. Portugal created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "The power ranking PT uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality."
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "Smash Bros. Portugal contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the Smash Bros. Portugal Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi Smash Bros. Portugal\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the Smash Bros. Portugal Tournament Manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on Smash Bros. Portugal:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the Smash Bros. Portugal Tournament Manager internal tournaments, Smash Bros. Portugal is also able to get the results from all other tournaments in Portugal. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
 
   calendar:
     title: "Calendar"
@@ -928,6 +1004,7 @@ en:
     region_lu: "Canton"
     region_it: "Region"
     region_uk: "Region"
+    region_pt: "District"
     gender: "Gender"
     gender_pronouns: "Gender pronouns"
     birth_year: "Birth year"
@@ -981,6 +1058,7 @@ en:
     region_lu: "Canton"
     region_it: "Region"
     region_uk: "Region"
+    region_pt: "District"
     number_of_players: "Number of players"
     character: "Character"
     player_activity: "Player activity"
@@ -1187,6 +1265,22 @@ en:
       match_rules:
         title_short: "Ruleset"
         body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
+    pt:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in the Portugal."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The blup is used at most tournaments in the Portugal. Please find out which rules are being used before each event."
 
   tournaments:
     title: "Tournaments"
@@ -1209,6 +1303,9 @@ en:
       new_external_uk: "A new external tournament was added to the SmashUltimate.uk Tournament Manager."
       new_tournament_uk: "A new tournament was added to the SmashUltimate.uk Tournament Manager."
       new_weekly_uk: "One or more weeklies were added to the SmashUltimate.uk Tournament Manager. Here are the data of the first:"
+      new_external_pt: "A new external tournament was added to the Smash Bros. Portugal Tournament Manager."
+      new_tournament_pt: "A new tournament was added to the Smash Bros. Portugal Tournament Manager."
+      new_weekly_pt: "One or more weeklies were added to the Smash Bros. Portugal Tournament Manager. Here are the data of the first:"
       too_few_registrations: "Because of too few registrations or other reasons, an administrator has cancelled the tournament \"<strong>%{tournament}</strong>\"."
       player_left_tournament: "Since a player just left the tournament and you were first in line in the waiting list, you are now registered in this tournament."
       name: "Name:"
@@ -1308,6 +1405,7 @@ en:
     region_lu: "Canton"
     region_it: "Region"
     region_uk: "Region"
+    region_pt: "District"
     fee_paid: "Fee paid?"
     brings: "Brings"
     brought: "Brought"
@@ -1352,6 +1450,7 @@ en:
 
   communities:
     title: "Communities"
+    title_pt: "Districs"
     body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
     nds:
       title: "#NDS"
@@ -1381,6 +1480,7 @@ en:
     body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
     body_it: "The Italy SSBU Community can be divided into 20 regions. Click on a region to find out more about the associated communities."
     body_uk: "The UK & Ireland SSBU Community can be divided into 12 regions. Click on a region to find out more about the associated communities."
+    body_pt: "The Portugal SSBU Community can be divided into 20 districs. Click on a district to find out more about the associated communities."
     new: "New community"
     edit: "Edit community"
     prohibited: "prohibited this community from being saved:"
@@ -1407,6 +1507,7 @@ en:
       welcome_lu: "Welcome to the LuxSmash Tournament Manager"
       welcome_it: "Welcome to the ItalySmash Tournament Manager"
       welcome_uk: "Welcome to the SmashUltimate.uk Tournament Manager"
+      welcome_pt: "Welcome to the Smash Bros. Portugal Tournament Manager"
       signed_up: "You have successfully signed up. Your username is:"
       to_join: "To join some tournaments, just follow %{link}."
       to_join2: "To join some tournaments, just follow this link:"
@@ -1438,6 +1539,8 @@ en:
     allows_emails_from_partners_it: "I agree that partners of ItalySmash send me emails from time to time"
     allows_emails_from_uksmash: "I agree that SmashUltimate.uk sends me emails about important community topics & big tournament announcements from time to time"
     allows_emails_from_partners_uk: "I agree that partners of SmashUltimate.uk send me emails from time to time"
+    allows_emails_from_portugalsmash: "I agree that Smash Bros. Portugal sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_pt: "I agree that partners of Smash Bros. Portugal send me emails from time to time"
     data_agreement: "<strong>(Mandatory field)</strong> I agree that my data will be publicly viewable via my profile and will be used for player statistics. The data provided can be edited or deleted at any time via \"Edit profile\" or \"Account\""
     data_agreement_text: "Mandatory field must be checked!"
     current_password: "Current password"

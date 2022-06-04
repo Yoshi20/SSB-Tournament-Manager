@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_07_210452) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_04_231434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -526,6 +526,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_210452) do
     t.boolean "allows_emails_from_luxsmash", default: true
     t.boolean "allows_emails_from_italysmash", default: true
     t.boolean "allows_emails_from_uksmash", default: true
+    t.boolean "allows_emails_from_portugalsmash", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

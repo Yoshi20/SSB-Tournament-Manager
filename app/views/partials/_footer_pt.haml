@@ -1,0 +1,23 @@
+.row.footer-nav
+  .col-5
+    .row
+      .col
+        %p.small
+          = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
+
+  .col-2
+    = button_tag '', title: 'Go to top', style: 'background-color: transparent; border: none;', class: 'scroll-top' do
+      = image_tag('pt_logo.jpg', class: 'ptsmash_logo', height: '50px', width: '50px')
+  .col-5
+    .row
+      .col
+        %p.small
+          = link_to t('navigation.footer.imprint'), :imprint
+      .col
+        %p.small
+          = link_to t('navigation.footer.privacy_policy').html_safe, :privacy_policy
+      .col
+        %p#donate-btn
+          = link_to("https://ko-fi.com/portugalsmash", target: '_blank', class: "btn btn-default") do
+            = image_tag('ko-fi-cup.webp')
+            %span= t('please_donate')

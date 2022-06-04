@@ -17,7 +17,7 @@ module SSBTournamentManager
 
     config.time_zone = 'Bern'
 
-    config.i18n.available_locales = %w(en de fr it)
+    config.i18n.available_locales = %w(en de fr it pt)
 
     config.domains = {
       ch: "swisssmash.ch",
@@ -26,6 +26,7 @@ module SSBTournamentManager
       lu: "luxsmash.lu",
       it: "italysmash.it",
       uk: "smashultimate.uk",
+      pt: "smashbrosportugal.pt",
     }
 
     config.default_locales = {
@@ -35,6 +36,7 @@ module SSBTournamentManager
       lu: "en",
       it: "it",
       uk: "en",
+      pt: "pt",
     }
 
     config.available_locales = {
@@ -44,6 +46,7 @@ module SSBTournamentManager
       lu: ["en", "de", "fr"],
       it: ["en", "it"],
       uk: ["en"],
+      pt: ["en", "pt"],
     }
 
     config.currencies = {
@@ -53,6 +56,7 @@ module SSBTournamentManager
       lu: "€",
       it: "€",
       uk: "£",
+      pt: "€",
     }
 
     config.emails = {
@@ -62,6 +66,7 @@ module SSBTournamentManager
       lu: "LuxSmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_LU']}>",
       it: "ItalySmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_IT']}>",
       uk: "SmashUltimate.uk <#{ENV['INFOMANIAK_EMAIL_USERNAME_UK']}>",
+      pt: "SmashBrosPortugal <#{ENV['INFOMANIAK_EMAIL_USERNAME_PT']}>",
     }
 
     config.smtp_hosts = {
@@ -71,6 +76,7 @@ module SSBTournamentManager
       lu: "ssl0.ovh.net",
       it: "mail.infomaniak.com",
       uk: "mail.infomaniak.com",
+      pt: "mail.infomaniak.com",#blup
     }
 
     config.smtp_domains = {
@@ -80,6 +86,7 @@ module SSBTournamentManager
       lu: "letz-smash.lu",
       it: "italysmash.it",
       uk: "smashultimate.uk",
+      pt: "smashbrosportugal.pt",
     }
 
     config.smtp_user_names = {
@@ -89,6 +96,7 @@ module SSBTournamentManager
       lu: ENV['INFOMANIAK_EMAIL_USERNAME_LU'],
       it: ENV['INFOMANIAK_EMAIL_USERNAME_IT'],
       uk: ENV['INFOMANIAK_EMAIL_USERNAME_UK'],
+      pt: ENV['INFOMANIAK_EMAIL_USERNAME_PT'],
     }
 
     config.smtp_passwords = {
@@ -98,6 +106,7 @@ module SSBTournamentManager
       lu: ENV['INFOMANIAK_EMAIL_PASSWORD_LU'],
       it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      pt: ENV['INFOMANIAK_EMAIL_PASSWORD_PT'],
     }
 
   end

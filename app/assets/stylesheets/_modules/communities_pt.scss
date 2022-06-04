@@ -1,0 +1,35 @@
+.community {
+  margin-bottom: 1rem;
+  .admin-actions {
+    top: 1rem;
+    right: auto;
+    left: 3.2rem;
+  }
+  .community__stats {
+    margin-top: 2rem;
+    .community__stats__single {
+      text-align: center;
+      border-right: 1px solid $color-grey-light;
+      &.community__stats__single--last {
+        border-right: none;
+      }
+      strong, span {
+        display: block;
+      }
+      span {
+        font-size: $font-size-small;
+      }
+    }
+  }
+  .community__media_channels {
+    margin-top: 2rem;
+  }
+}
+
+.pt-map {
+  fill: #E9EFF9;
+  stroke: #A1A1A1;
+  path:hover {
+    cursor: pointer; fill: #B1D6FF;
+  }
+}

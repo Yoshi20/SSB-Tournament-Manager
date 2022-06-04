@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
-    return unless ['de', 'fr', 'lu', 'it', 'uk'].include?(session['country_code'])
+    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
     lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
@@ -133,7 +133,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_forum_unread_count
-    return unless current_user.present? && ['de', 'fr' 'it', 'uk'].include?(session['country_code'])
+    return unless current_user.present? && ['de', 'fr' 'it', 'pt'].include?(session['country_code'])
     @forum_unread_count = Thredded::Topic.all.joins(:messageboard).merge(Thredded::Messageboard.where(country_code: session['country_code'])).unread(current_user).count
   end
 
@@ -152,8 +152,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'it'
       elsif request.host.include?("uksmash") || request.host.include?("smashultimate.co.uk") || request.host.include?("smashultimate.uk")
         session['country_code'] = 'uk'
+      elsif request.host.include?("smashbrosportugal")
+        session['country_code'] = 'pt'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr', 'lu', 'it', 'uk'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"
@@ -185,7 +187,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_time_zone
-      if session['country_code'] == 'uk'
+      if session['country_code'] == 'uk' || session['country_code'] == 'pt'
         Time.use_zone("London") { yield }
       else
         yield
