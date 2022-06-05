@@ -82,7 +82,7 @@ General links:
 - https://uksmash.herokuapp.com
 - https://www.smashultimate.uk
 - https://www.smashultimate.co.uk
-- https://www.smashbrosportugal.pt
+- https://www.smashbrosportugal.com
 - https://challonge.com
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200

@@ -200,8 +200,8 @@ module ApplicationHelper
           { href: image_url('pt_logo.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
         ],
         og: {
-          site_name: 'SmashBrosPortugal.pt',
-          title: 'SmashBrosPortugal.pt',
+          site_name: 'SmashBrosPortugal.com',
+          title: 'SmashBrosPortugal.com',
           description: 'PT Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,

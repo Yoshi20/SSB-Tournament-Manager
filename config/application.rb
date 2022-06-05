@@ -26,7 +26,7 @@ module SSBTournamentManager
       lu: "luxsmash.lu",
       it: "italysmash.it",
       uk: "smashultimate.uk",
-      pt: "smashbrosportugal.pt",
+      pt: "smashbrosportugal.com",
     }
 
     config.default_locales = {
@@ -76,7 +76,7 @@ module SSBTournamentManager
       lu: "ssl0.ovh.net",
       it: "mail.infomaniak.com",
       uk: "mail.infomaniak.com",
-      pt: "mail.infomaniak.com",#blup
+      pt: "mail.infomaniak.com",
     }
 
     config.smtp_domains = {
@@ -86,7 +86,7 @@ module SSBTournamentManager
       lu: "letz-smash.lu",
       it: "italysmash.it",
       uk: "smashultimate.uk",
-      pt: "smashbrosportugal.pt",
+      pt: "smashbrosportugal.com",
     }
 
     config.smtp_user_names = {
@@ -106,7 +106,7 @@ module SSBTournamentManager
       lu: ENV['INFOMANIAK_EMAIL_PASSWORD_LU'],
       it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
-      pt: ENV['INFOMANIAK_EMAIL_PASSWORD_PT'],
+      pt: ENV['INFOMANIAK_EMAIL_PASSWORD'],
     }
 
   end
