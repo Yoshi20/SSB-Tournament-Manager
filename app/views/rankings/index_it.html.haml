@@ -4,6 +4,13 @@
   .col
     %h1.page__title= t('rankings.title')
 
+.row.center
+  .col
+    %h2 2019
+.row.center
+  = link_to asset_url('rankings/it/pr_s2_19.jpg') do
+    = image_tag 'rankings/it/pr_s2_19.jpg', height: '100%', width: '100%'
+
 -# %ul#rankings-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
 -#   %li.nav-item
 -#     %a#power_ranking-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking', role: 'tab', 'aria-controls'=>'all'}
