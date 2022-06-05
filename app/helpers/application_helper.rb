@@ -154,8 +154,8 @@ module ApplicationHelper
         canonical: request.original_url,
         noindex: !Rails.env.production?,
         icon: [
-          { href: image_url('it_logo.svg') },
-          { href: image_url('it_logo.svg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/svg' },
+          { href: image_url('it_logo.jpg') },
+          { href: image_url('it_logo.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/svg' },
         ],
         og: {
           site_name: 'italysmash.it',
@@ -163,7 +163,7 @@ module ApplicationHelper
           description: 'Italy Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
-          image: image_url('it_logo.svg')
+          image: image_url('it_logo.jpg')
         }
       }
     elsif session['country_code'] == 'uk'
