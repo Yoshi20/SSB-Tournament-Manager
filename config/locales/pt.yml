@@ -845,6 +845,8 @@ pt:
     luxembourg: "Luxembourg"
     austria: "Austria"
     italy: "Italy"
+    uk: "UK"
+    portugal: "Portugal"
     color_legend:
       past: "Past"
       cancelled: "Cancelled"

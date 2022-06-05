@@ -640,6 +640,8 @@ fr:
     luxembourg: "Luxembourg"
     austria: "Autriche"
     italy: "Italie"
+    uk: "UK"
+    portugal: "Portugal"
     color_legend:
       past: "Passé"
       cancelled: "Annulé"
