@@ -150,22 +150,22 @@ pt:
       northern_ireland: "Northern Ireland"
       ireland: "Ireland"
       aveiro: "Aveiro"
-      azores: "Azores"
+      azores: "Açores"
       beja: "Beja"
       braga: "Braga"
-      braganca: "Braganca"
+      braganca: "Bragança"
       castelo_branco: "Castelo Branco"
       coimbra: "Coimbra"
-      evora: "Evora"
+      evora: "Évora"
       faro: "Faro"
       guarda: "Guarda"
       leiria: "Leiria"
-      lisbon: "Lisbon"
+      lisbon: "Lisboa"
       madeira: "Madeira"
       portalegre: "Portalegre"
       porto: "Porto"
       santarem: "Santarem"
-      setubal: "Setubal"
+      setubal: "Setúbal"
       viana_do_castelo: "Viana do Castelo"
       vila_real: "Vila Real"
       viseu: "Viseu"
@@ -793,7 +793,7 @@ pt:
       title_short: "Infos"
       general:
         title: "General"
-        italysmash: |
+        ptsmash: |
           This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Portugal and to provide an entry point for new players to find their way into their local smash community.<br><br>
           In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
           The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).

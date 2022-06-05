@@ -25,7 +25,7 @@
       = link_to communities_path do
         %p{style: 'margin-bottom: 0;'}
           %strong= t('communities.title_pt')
-        -#blup = image_tag "italy_map/italy.gif", class: 'welcome_image'
+        = image_tag "portuguese_map.png", class: 'welcome_image'
 %p
   = t('welcome.pt.body0')
 
@@ -36,7 +36,7 @@
 
 %p
   = t('welcome.pt.body2',
-    communities: link_to(t('welcome.communities'), communities_path, style: 'font-weight: 600;')).html_safe
+    communities: link_to(t('communities.title_pt'), communities_path, style: 'font-weight: 600;')).html_safe
 
 %p
   = t('welcome.pt.body3',
