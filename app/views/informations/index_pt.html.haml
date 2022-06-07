@@ -152,6 +152,8 @@
             = email_field_tag :email, params[:email], class: 'form-control', placeholder: t('information.pt.contact.email')
           .form-group
             = text_area_tag :body, params[:body], class: 'form-control', placeholder: t('information.pt.contact.body')
+          .form-group.hidden
+            = text_field_tag :url, params[:url], class: 'form-control' # hidden field_tag to trick spam bots
           .form-group
             = recaptcha_tags(site_key: ENV["RECAPTCHA_SITE_KEY_#{session['country_code'].upcase}"])
           .form-group
