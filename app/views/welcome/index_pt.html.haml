@@ -22,10 +22,10 @@
           %strong= t('tournaments.calendar')
         = image_tag "Calendar_Logo.svg", class: 'welcome_image'
     .col
-      = link_to communities_path do
+      = link_to 'https://discord.gg/zKkNJgB', target: '_blank' do
         %p{style: 'margin-bottom: 0;'}
-          %strong= t('communities.title_pt')
-        = image_tag "portuguese_map.png", class: 'welcome_image'
+          %strong= "Discord"
+        = image_tag "Discord-Logo-Color.svg", class: 'welcome_image'
 %p
   = t('welcome.pt.body0')
 
