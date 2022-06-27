@@ -528,7 +528,7 @@ fr:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:

@@ -528,7 +528,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, swisssmash.ch is also able to get the results from all other tournaments in switzerland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       personal_data:
@@ -585,7 +585,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in Germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
@@ -633,7 +633,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the SmashUltimate.fr Tournament Manager internal tournaments, SmashUltimate.fr is also able to get the results from all other tournaments in France. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
@@ -677,7 +677,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the LuxSmash Tournament Manager internal tournaments, luxsmash.lu is also able to get the results from all other tournaments in Luxembourg.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
@@ -725,7 +725,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the ItalySmash Tournament Manager internal tournaments, ItalySmash is also able to get the results from all other tournaments in Italy. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
@@ -775,7 +775,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the SmashUltimate.uk Tournament Manager internal tournaments, SmashUltimate.uk is also able to get the results from all other tournaments in the UK & Ireland. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
@@ -824,7 +824,7 @@ pt:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the Smash Bros. Portugal Tournament Manager internal tournaments, Smash Bros. Portugal is also able to get the results from all other tournaments in Portugal. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the amount of points he or she receives."
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
         ranking_system_points: "Points"
       contact:
