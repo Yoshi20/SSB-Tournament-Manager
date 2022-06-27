@@ -10,19 +10,40 @@ class Calendar
     end
 
     def full_calendar_event(tournament, current_user)
-      # TODO change date to from and to?
-      isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      isFullDayEvent = (tournament.external? || (tournament.internal? && tournament.date.hour == 0 && tournament.date.min == 0))
       icon = tournament.region
       {
         title:     tournament.name.to_s,
         start:     tournament.date.try(:iso8601),
-        end:       isFullDayEvent ? nil : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours)),
+        end:       get_end_date(tournament, isFullDayEvent),
         allDay:    isFullDayEvent,
         editable:  false,
         className: icon.present? ? "calendar-tournament calendar-has-icon-class #{icon}" : "calendar-tournament",
         color:     get_event_color(tournament, current_user),
         url:       tournament.external_registration_link.present? ? tournament.external_registration_link : "/tournaments/#{tournament.id}",
       }
+    end
+
+    def get_end_date(tournament, isFullDayEvent)
+      end_date = nil
+      if isFullDayEvent
+        if tournament.external?
+          if tournament.end_date.present? && (tournament.end_date-1.second).day != tournament.date.day # -1.second in case someone picked midnight as the end date
+            end_date = (tournament.end_date.beginning_of_day + 1.day).try(:iso8601)
+          else
+            end_date = nil
+          end
+        else
+          end_date = nil
+        end
+      else
+        if tournament.weekly?
+          end_date = tournament.date + 3.hours
+        elsif
+          end_date = tournament.date + 6.hours
+        end
+      end
+      return end_date
     end
 
     def get_event_color(tournament, current_user)
@@ -88,7 +109,7 @@ class Calendar
     end
 
     def ical_event_internal(calendar, tournament, tzid)
-      isFullDayEvent = (tournament.date.hour == 0 and tournament.date.min == 0)
+      isFullDayEvent = (tournament.external? || (tournament.internal? && tournament.date.hour == 0 && tournament.date.min == 0))
       end_time = isFullDayEvent ? (tournament.date + 1.day) : (tournament.weekly? ? (tournament.date + 3.hours) : (tournament.date + 6.hours))
       calendar.event do |event|
         if isFullDayEvent

@@ -69,12 +69,13 @@ namespace :tournaments_crawler_uk do
         externalTournament = Tournament.new if externalTournament.nil?
         externalTournament.smash_gg_id = tournamentHash['id']
         externalTournament.subtype = 'external'
-        externalTournament.date = Time.at(tournamentHash['startAt']).to_date rescue nil
+        externalTournament.date = Time.at(tournamentHash['startAt']) rescue nil
         isDateError = false
         if externalTournament.date.nil? || externalTournament.date < Date.yesterday
           externalTournament.date = Date.today
           isDateError = true
         end
+        externalTournament.end_date = Time.at(tournamentHash['endAt']) rescue nil
         externalTournament.name = tournamentHash['name']
         externalTournament.external_registration_link = root + tournamentHash['slug']
         externalTournament.city = tournamentHash['city']

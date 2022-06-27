@@ -45,6 +45,14 @@ class Tournament < ApplicationRecord
     self.subtype == 'weekly'
   end
 
+  def internal?
+    self.subtype == 'internal'
+  end
+
+  def external?
+    self.subtype == 'external'
+  end
+
   def game_stations_count
     gs_count = 0
     self.registrations.where('game_stations is not NULL').each do |r|
