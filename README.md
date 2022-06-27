@@ -90,7 +90,7 @@ General links:
 - https://braacket.com/league/SSBUFRPRs/tournament?rows=200
 - https://braacket.com/league/SSBUITPRs/tournament?rows=200
 - https://braacket.com/league/SSBUUKPRs/tournament?rows=200
-- https://braacket.com/league/SSBUPTPRs/tournament?rows=200
+- https://braacket.com/league/Portugal/tournament?rows=200
 
 Tournaments crawler links:
 - https://smash.gg/tournaments?per_page=100&filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A0%2C%22countryCode%22%3A%22CH%22}

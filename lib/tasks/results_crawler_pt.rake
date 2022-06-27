@@ -34,7 +34,7 @@ namespace :results_crawler_pt do
   task createTournaments: :environment do
     Time.use_zone("London") {
       links = [
-        'https://braacket.com/league/SSBUPTPRs/tournament?rows=200',
+        'https://braacket.com/league/Portugal/tournament?rows=200',
       ]
       links.each do |link|
         puts "\nCrawling #{link}..."
