@@ -3,7 +3,7 @@
     <h1 class="thredded--topic-header--title">
       <%= topic.title %>
       <%= link_to '#', form_class: 'thredded--topic-delete-form', class: 'copy-share-link', onclick:"event.preventDefault();" do %>
-        <%= inline_svg_tag 'thredded/share.svg', class: 'thredded--topic-header--follow-icon', style: 'height: 17px;' %>
+        <%= inline_svg_tag 'thredded/share.svg', class: 'thredded--topic-header--follow-icon', style: 'height: 17px; background: white;' %>
       <% end %>
     </h1>
   <% end %>
