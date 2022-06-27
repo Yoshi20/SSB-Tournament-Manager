@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_04_231434) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_104832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -492,6 +492,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_04_231434) do
     t.string "image_width"
     t.string "country_code"
     t.string "region"
+    t.bigint "smash_gg_id"
   end
 
   create_table "users", force: :cascade do |t|

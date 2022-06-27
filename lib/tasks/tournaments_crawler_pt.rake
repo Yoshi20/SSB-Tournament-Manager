@@ -64,7 +64,10 @@ namespace :tournaments_crawler_pt do
       jsonHash = JSON.parse doc
       jsonHash['total_count'].times do |i|
         tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]
-        externalTournament = Tournament.new
+        externalTournament = Tournament.find_by(smash_gg_id: tournamentHash['id'])
+        externalTournament = Tournament.find_by(name: tournamentHash['name']) if externalTournament.nil?
+        externalTournament = Tournament.new if externalTournament.nil?
+        externalTournament.smash_gg_id = tournamentHash['id']
         externalTournament.subtype = 'external'
         externalTournament.date = Time.at(tournamentHash['startAt']).to_date rescue nil
         isDateError = false
@@ -79,8 +82,9 @@ namespace :tournaments_crawler_pt do
         externalTournament.is_registration_allowed = false
         externalTournament.active = true
         externalTournament.country_code = 'pt'
+        new_record = externalTournament.new_record?
         if externalTournament.save
-          puts "-> Created: \"" + externalTournament.name + "\""
+          puts "-> #{new_record ? "Created" : "Updated"}: \"#{externalTournament.name}\""
           if isDateError
             puts '==> Invalid date! You have to edit the date manually!'
             TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later

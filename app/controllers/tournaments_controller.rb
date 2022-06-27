@@ -676,7 +676,7 @@ class TournamentsController < ApplicationController
         :updated_at, :subtype, :city, :end_date, :external_registration_link,
         :total_needed_game_stations, :min_needed_registrations, :ranking_string,
         :is_registration_allowed, :number_of_pools, :image_link, :image_height,
-        :image_width, :region)
+        :image_width, :region, :smash_gg_id)
     end
 
     def set_challonge_username_and_api_key
