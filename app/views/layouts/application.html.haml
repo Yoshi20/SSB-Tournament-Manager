@@ -17,7 +17,7 @@
           = image_tag 'uk_banner.jpg', class: 'banner__image'
         - else
           = image_tag 'banner.jpg', class: 'banner__image'
-        - if session['country_code'] == 'it' || session['country_code'] == 'pt' #blup
+        - if session['country_code'] == 'it'
           .wip
             = "This site is a \"Work In Progress\""
       .container
