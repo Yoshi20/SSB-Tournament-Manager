@@ -1101,7 +1101,15 @@ en:
         text1: "You can find more information about the PR players %{link}."
         text2: "You can find a detailed explanation of how the PR was calculated %{link}."
     s1_22:
-      title: "2022"
+      title: "S1 2022"
+      no_ranking: "The ranking is expected to appear at the beginning of 2023"
+      top15: "Top 15:"
+      details:
+        title: "Details"
+        text1: "You can find more information about the PR players %{link}."
+        text2: "Some words to the PR Level competition in 2022 and the runner ups can be found %{link}."
+    s2_22:
+      title: "S2 2022"
       no_ranking: "The ranking is expected to appear at the beginning of 2023"
     region_nrw:
       title: "NRW"

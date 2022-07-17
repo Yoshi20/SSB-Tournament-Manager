@@ -26,11 +26,14 @@
         %a#s1_20-tab.nav-link{'data-toggle'=>'tab', href: '#s1_20', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s1_20.title')
       %li.nav-item
-        %a#s1_21-tab.nav-link.active{'data-toggle'=>'tab', href: '#s1_21', role: 'tab', 'aria-controls'=>'all'}
+        %a#s1_21-tab.nav-link{'data-toggle'=>'tab', href: '#s1_21', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s1_21.title')
       %li.nav-item
-        %a#s1_22-tab.nav-link{'data-toggle'=>'tab', href: '#s1_22', role: 'tab', 'aria-controls'=>'all'}
+        %a#s1_22-tab.nav-link.active{'data-toggle'=>'tab', href: '#s1_22', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s1_22.title')
+      %li.nav-item
+        %a#s2_22-tab.nav-link{'data-toggle'=>'tab', href: '#s2_22', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s2_22.title')
 
     .tab-content#power_rankings-tabs-content
       -# Power Ranking S1 2019 -------------------------------------------------
@@ -46,12 +49,16 @@
         = render 'rankings/ch/s1_20'
 
       -# Power Ranking S1 2021 -------------------------------------------------
-      .tab-pane.fade.show.active#s1_21{role: 'tabpanel', 'aria-labelledby'=>'s1_21-tab'}
+      .tab-pane.fade#s1_21{role: 'tabpanel', 'aria-labelledby'=>'s1_21-tab'}
         = render 'rankings/ch/s1_21'
 
       -# Power Ranking S1 2022 -------------------------------------------------
-      .tab-pane.fade#s1_22{role: 'tabpanel', 'aria-labelledby'=>'s1_22-tab'}
+      .tab-pane.fade.show.active#s1_22{role: 'tabpanel', 'aria-labelledby'=>'s1_22-tab'}
         = render 'rankings/ch/s1_22'
+
+      -# Power Ranking S2 2022 -------------------------------------------------
+      .tab-pane.fade#s2_22{role: 'tabpanel', 'aria-labelledby'=>'s2_22-tab'}
+        = render 'rankings/ch/s2_22'
 
   -# Points --------------------------------------------------------------------
   .tab-pane.fade#points{role: 'tabpanel', 'aria-labelledby'=>'points-tab'}

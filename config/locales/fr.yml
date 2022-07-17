@@ -890,7 +890,15 @@ fr:
         text1: "Vous pouvez trouver plus d'informations sur les joueurs PR %{link}"
         text2: "Vous pouvez trouver une explication détaillée de la façon dont le PR a été calculé %{link}."
     s1_22:
-      title: "2022"
+      title: "S1 2022"
+      no_ranking: "Le classement devrait être publié début 2023"
+      top15: "Top 15:"
+      details:
+        title: "Détails"
+        text1: "Vous pouvez trouver plus d'informations sur les joueurs PR %{link}"
+        text2: "Vous pouvez trouver une explication détaillée de la façon dont le PR a été calculé %{link}."
+    s2_22:
+      title: "S2 2022"
       no_ranking: "Le classement devrait être publié début 2023"
     region_nrw:
       title: "NRW"
