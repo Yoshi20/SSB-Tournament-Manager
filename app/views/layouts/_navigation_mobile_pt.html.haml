@@ -25,8 +25,8 @@
               - if @forum_unread_count.present? && @forum_unread_count > 0
                 %span{class: "forum-unread-counter"}= "(#{@forum_unread_count})"
 
-          %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
-            = link_to t('communities.title_pt'), communities_path, class: 'nav-link'
+          -# %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
+          -#   = link_to t('communities.title_pt'), communities_path, class: 'nav-link'
 
           %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments' or @section == 'rules') ? 'active' : 'inactive')}
             %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
@@ -41,8 +41,6 @@
           %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
             = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
-      .col-6
-        %ul.navbar-nav.navbar-main.ml-auto
           %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics' or @section == 'videos') ? 'active' : 'inactive')}
             %a.nav-link.dropdown-toggle#navbarDropdown3{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
               = t('players.title')
@@ -53,6 +51,8 @@
               = link_to t('players.individuals'), players_path, class: 'dropdown-item'
               = link_to t('video.title'), videos_path, class: 'dropdown-item'
 
+      .col-6
+        %ul.navbar-nav.navbar-main.ml-auto
           %li.nav-item{role: "presentation", class: (@section == 'teams' ? 'active' : 'inactive')}
             = link_to t('teams.title'), teams_path, class: 'nav-link'
 
