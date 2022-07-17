@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get 'welcome' => 'welcome#index'
 
+  Rails.application.config.i18n.available_locales.each do |locale|
+    get "index_#{locale}" => redirect("/welcome?locale=#{locale}")
+  end
+
   get 'rules' => 'rules#index'
 
   get 'informations' => 'informations#index'
