@@ -1,6 +1,8 @@
 .row.footer-nav
   .col-5
     .row
+      = link_to "https://linktr.ee/locuscrew", target: '_blank' do
+        = image_tag('pt_locus_crew.png', class: 'pt_locus_crew_logo', width: '75px', height: '75px')
       .col
         %p.small
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')

@@ -40,6 +40,15 @@
     }
   }
 
+  .pt_locus_crew_logo {
+    margin-top: 5px;
+    margin-left: 1rem;
+
+    @media screen and (max-width: 992px) {
+      margin-left: 15px;
+    }
+  }
+
   .ptsmash_logo {
     margin-top: 1rem;
     margin-bottom: 1rem;
