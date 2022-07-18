@@ -1,0 +1,281 @@
+pt:
+  thredded:
+    content_moderation_states:
+      content_blocked_notice: Bloqueado
+      content_blocked_notice_with_record_html: Bloqueado por %{moderator} %{time_ago}
+    email_notifier:
+      by_email: de e-mail
+    emails:
+      message_notification:
+        html:
+          email_sent_reason_html: >-
+            Este e-mail foi enviado para você porque %{user} incluiu você em um tópico privado, "<a href="%{post_url}">%{topic_title}</a>".
+          post_lead_html: 'Uma nova mensagem de %{user} em <a href="%{post_url}">"%{topic_title}"</a>:'
+          unsubscribe_instructions_html: :thredded.emails.post_notification.html.unsubscribe_instructions_html
+        subject: Uma nova mensagem de %{user} em "%{topic_title}"
+        text:
+          email_sent_reason: |-
+            Este e-mail foi enviado para você porque %{user} incluiu você em
+            um tópico privado "%{topic_title}".
+
+            Clique aqui para ver a conversa:
+            %{post_url}
+          post_lead: 'Uma nova mensagem de %{user} em "%{topic_title}":'
+          unsubscribe_instructions: :thredded.emails.post_notification.text.unsubscribe_instructions
+      post_notification:
+        html:
+          email_sent_reason_html: >-
+            Este e-mail foi enviado para você porque você está seguindo este tópico: "<a href="%{post_url}">%{topic_title}</a>".
+          post_lead_html: '%{user} <a href="%{post_url}">disse em "%{topic_title}"</a>:'
+          unsubscribe_instructions_html: Para cancelar a inscrição desses e-mails, atualize suas <a href="%{preferences_url}">preferências</a>.
+        subject: Uma nova postagem em "%{topic_title}"
+        text:
+          email_sent_reason: |-
+            Este e-mail foi enviado para você porque você está seguindo
+            o tópico "%{topic_title}".
+
+            Vá aqui para ver a conversa:
+            %{post_url}
+          post_lead: '%{user} disse em "%{topic_title}":'
+          unsubscribe_instructions: |-
+            Para cancelar a inscrição desses e-mails, atualize suas preferências aqui:
+            %{unsubscribe_url}
+    errors:
+      login_required: Por favor, autentique-se primeiro.
+      not_authorized: Você não está autorizado a acessar esta página.
+      post_not_found: Este post não existe.
+      private_post_not_found: Esta mensagem privada não existe.
+      private_topic_create_denied: Você não está autorizado a criar tópicos privados.
+      private_topic_not_found: Este tópico privado não existe.
+      topic_not_found: Este tópico não existe.
+    form:
+      create_btn_submitting: Criando...
+      preview: Pré-visualização
+      update: Atualizar
+      update_btn_submitting: Atualizando...
+    messageboard:
+      create: Criar um novo Fórum de Mensagem
+      deleted_notice: Messageboard excluído
+      form:
+        create_btn_submitting: :thredded.form.create_btn_submitting
+        delete: Excluir Messageboard
+        delete_confirm: >-
+          Isto irá remover o messageboard %{messageboard_name} e todos os seus posts. Você não poderá recuperá-lo.
+          Você tem certeza de que quer fazer isso?
+        description_label: Descrição
+        locked_label: Bloqueado
+        locked_notice: Este quadro de mensagens está bloqueado. Somente os moderadores podem criar novos tópicos
+          aqui.
+        messageboard_group_id_label: grupo messageboard
+        no_group: Sem Grupo
+        title_label: Nome
+        update_btn_submitting: :thredded.form.update_btn_submitting
+      index:
+        page_title: Fóruns de Mensagens
+      last_updated_by_html: Atualizado %{time_ago} <cite>por %{user}</cite>
+      topics_and_posts_counts: "%{topics_count} tópicos / %{posts_count} posts"
+      topics_and_unread_topics_counts: "%{unread_topics_count} não lida de %{topics_count} topics"
+      update: :thredded.form.update
+      updated_notice: Fórum de mensagem foi atualizado
+    messageboard_first_topic:
+      content: |-
+        There's not a whole lot here for now.
+
+        These forums are powered by [Thredded](https://github.com/thredded/thredded) v%{thredded_version}.
+        You can contact the Thredded team via the [Thredded chat room](https://gitter.im/thredded/thredded).
+        Please let us know that you are using Thredded by tweeting [@thredded](https://twitter.com/thredded)!
+      title: Welcome to your messageboard's very first thread
+    messageboard_group:
+      create: Criar um novo grupo de mensagens
+      form:
+        create_btn_submitting: :thredded.form.create_btn_submitting
+      saved: Grupo de mensagens %{name} criado
+      show:
+        page_title: 'Grupo de Messageboard: %{name}'
+    moderation:
+      approve_btn: Aprovar
+      block_btn: Bloquear
+      moderation_state:
+        name: Estado de moderação
+      pending:
+        empty:
+          content: Todas as mensagens foram moderadas.
+          title: Bom trabalho!
+      post_approved_html: Post aprovado por %{moderator} %{time_ago}.
+      post_blocked_html: Post bloqueado por %{moderator} %{time_ago}.
+      post_deleted_notice: Este post foi apagado.
+      posts_content_changed_since_moderation_html: >-
+        O conteúdo do <a href="%{post_url}">post</a> foi alterado após a moderação. Abaixo está o conteúdo no momento
+        em que foi moderado.
+      search_users:
+        form_label: Buscar usuários
+        form_placeholder: :thredded.moderation.search_users.form_label
+        no_results_message: Nenhum usuário com o nome começando com %{query}
+        results_message: Os usuários com nomes começando com %{query}
+      user:
+        name: Usuário
+    nav:
+      all_messageboards: Todos os Fóruns de Mensagens
+      edit_messageboard: Editar Fórum de Mensagem
+      edit_post: Editar Post
+      edit_private_topic: :thredded.nav.edit_topic
+      edit_topic: Editar
+      mark_all_read: Marcar Como Lido
+      moderation: Moderação
+      moderation_activity: Atividade
+      moderation_history: Histórico
+      moderation_pending: Pendente
+      moderation_users: Usuários
+      private_topics: Mensagens Privadas
+      settings: Configurações de Notificação
+      sign_in: Entrar / Cadastrar
+      sign_out: Sair
+      unread_topics: Não lida
+    null_user_name: Usuário deletado
+    posts:
+      delete: Remover Post
+      delete_confirm: Você tem certeza que deseja remover este post?
+      deleted_notice: Seu post foi removido.
+      edit: :thredded.nav.edit_post
+      form:
+        content_label: Conteúdo
+        create_btn: Enviar Resposta
+        create_btn_submitting: Postando...
+        title_label: Adicionar um post
+        update_btn: Atualizar Post
+        update_btn_submitting: :thredded.form.update_btn_submitting
+      pending_moderation_notice: O seu post será publicado quando for revisado por um moderador.
+      quote_btn: Citar
+      spoiler_summary: Spoiler - clique para mostrar.
+      spoiler_summary_for_email: 'Spoiler - selecione o conteúdo abaixo para ver:'
+    preferences:
+      edit:
+        page_title: :thredded.nav.settings
+      form:
+        auto_follow_topics:
+          hint: siga automaticamente todos os novos temas. Alterar essa configuração vai mudá-lo para todos os messageboards.
+          label: Siga todos os novos temas
+        follow_topics_on_mention:
+          hint: >-
+            Quando alguém mencionar você através do seu usuário (ex.: @sam) você irá receber um e-mail com o conteúdo
+            deste post.
+          label: Siga os tópicos que são mencionados na
+        messageboard_auto_follow_topics:
+          hint: siga automaticamente todos os novos tópicos neste messageboard. Isso substitui a respectiva definição
+            acima.
+          label: Siga todos os novos temas
+        messageboard_follow_topics_on_mention:
+          hint: >-
+            Quando alguém mencionar você através do seu usuário (ex.: @sam) neste fórum de mensagens, você irá receber
+            um e-mail com o conteúdo deste post.
+          label: :thredded.preferences.form.follow_topics_on_mention.label
+        messageboard_notifications_for_followed_topics:
+          label: :thredded.preferences.form.notifications_for_followed_topics.label
+        notifications_for_followed_topics:
+          label: Notificações para tópicos seguidos
+        notifications_for_private_topics:
+          label: Notificações de mensagens privadas
+        submit_btn: Atualizar Configurações
+        update_btn_submitting: :thredded.form.update_btn_submitting
+      global_preferences_title: Configurações Globais
+      messageboard_preferences_nav_title: Configurações por Fórum de Mensagem
+      messageboard_preferences_title_html: Configurações de Notificação para <em>%{messageboard}</em>
+      updated_notice: Suas configurações foram atualizadas.
+    private_posts:
+      form:
+        content_label: Mensagem
+        create_btn: Enviar Mensagem
+        create_btn_submitting: Enviando...
+        update_btn_submitting: :thredded.form.update_btn_submitting
+    private_topics:
+      create: :thredded.private_topics.form.create_btn
+      edit: Editar
+      errors:
+        user_ids_length: Por favor, especifique pelo menos mais um usuário.
+      form:
+        content_label: :thredded.private_posts.form.content_label
+        create_btn: :thredded.private_posts.form.create_btn
+        create_btn_submitting: :thredded.private_posts.form.create_btn_submitting
+        title_label: :thredded.topics.form.title_label
+        title_placeholder_new: Escreva o assunto desta conversa
+        title_placeholder_start: Iniciar uma nova conversa
+        update_btn: Atualizar
+        update_btn_submitting: :thredded.private_posts.form.update_btn_submitting
+        users_label: Participantes
+        users_placeholder: Selecione usuários para participar desta conversa
+      no_private_topics:
+        create_btn: Inicie sua primeira conversa privada
+        title: Você não possui mensagens privadas.
+      updated_notice: Título atualizado
+    recent_activity: Atividade recente
+    search:
+      form:
+        btn_submit: :thredded.search.form.label
+        label: Buscar
+        placeholder: Buscar Tópicos e Posts
+    time_ago: há %{time}
+    topics:
+      create: :thredded.topics.form.create_btn
+      delete_confirm: Você tem certeza que deseja remover este tópico? Isto não pode ser desfeito.
+      delete_topic: Remover Tópico
+      deleted_notice: Tópico removido
+      edit: Editar Tópico
+      follow: Siga este tópico
+      followed_by: 'Seguido por:'
+      followed_by_noone: Ninguém está seguindo este tópico
+      followed_notice: Você agora está seguindo este tópico
+      following:
+        auto: Você está seguindo este tópico porque o auto-follow está ativado.
+        manual: Você está seguindo este tópico.
+        mentioned: Você está seguindo este tópico porque você foi mencionado nele.
+        posted: Você está seguindo este tópico porque foi você que o publicou.
+      form:
+        categories_placeholder: Categorias
+        content_label: :thredded.posts.form.content_label
+        create_btn: Criar Novo Tópico
+        messageboard_label: Fórum
+        title_label: Título
+        title_placeholder: :thredded.topics.form.title_label
+        title_placeholder_start: Iniciar um novo tópico
+        update_btn: Atualizar Tópico
+      in_messageboard_html: em %{messageboard_link}
+      locked:
+        label: Bloqueado
+        message: Este tópico foi bloqueado por um moderador.
+      mark_as_unread: Marcar como não lida a partir daqui
+      not_following: Você não está seguindo este tema.
+      search:
+        no_results_in_messageboard_message_html: Não há resultados para sua busca <q>%{query}</q> em %{messageboard}
+        no_results_message_html: Nenhum resultado encontrado para sua busca <q>%{query}</q>
+        page_title: Tópicos dos Resultados da Busca
+        results_in_messageboard_message_html: Resultados da busca para <q>%{query}</q> em %{messageboard}
+        results_message_html: Resultados da busca para <q>%{query}</q>
+        search_in_all_messageboards_btn: Buscar em todos os lugares
+      started_by_html: Iniciado %{time_ago} por %{user}
+      sticky:
+        label: Fixo
+      unfollow: Pare de seguir
+      unfollowed_notice: Você não está mais seguindo este tópico
+      updated_notice: Tópico atualizado
+    unread_topics:
+      empty:
+        content: Você leu tudo o que existe. Volte mais tarde para mais!
+        title: Tudo lido!
+      page_title: Tópicos não lidos
+      page_title_in_messageboard: "%{messageboard}: Tópicos não lidos"
+    users:
+      currently_online: Atualmente Online
+      last_active_html: Última atividade %{time_ago}
+      posted_in_topic_html: Postou em %{topic_link}
+      posts_count:
+        one: Postado %{count} vez
+        other: Postado %{count} vezes
+      recent_activity: :thredded.recent_activity
+      send_private_message: Enviar mensagem privada
+      started_topic_html: Começou %{topic_link}
+      started_topics_count:
+        one: Começou %{count} tópico
+        other: Começou %{count} tópicos
+      user_posted_in_topic_html: "%{user_link} postou em %{topic_link}"
+      user_since_html: Usuário desde %{time_ago}
+      user_started_topic_html: "%{user_link} começou %{topic_link}"
