@@ -33,6 +33,8 @@
       .col
         %p
           = t('rules.it.match_rules.body')
+        %p
+          = t('rules.it.match_rules.complete', link: link_to(t('rules.it.match_rules.here'), 'http://bit.ly/RulesetUltimateIta', target: '_blank')).html_safe
     .row
-      = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_en.jpg') do
-        = image_tag 'dutch_ssbu_ruleset_by_tadavidid_en.jpg', height: '100%', width: '100%'
+      = link_to asset_url('it_ruleset_nazionale.jpg') do
+        = image_tag 'it_ruleset_nazionale.jpg', height: '100%', width: '100%'
