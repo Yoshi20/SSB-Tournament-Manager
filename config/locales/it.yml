@@ -338,78 +338,78 @@ it:
       team_updated: "Il team è stato aggiornato con successo"
       team_deleted: "Il team è stato eliminato con successo"
     alert:
-      creating_player: "Creating player failed! You may have selected an already taken gamer tag. Please try again"
-      updating_user: "User couldn't be updated"
-      search_players: "There were no players found with this search query"
-      search_tournaments: "There were no tournaments found with this search query"
-      updating_registration: "Registration couldn't be updated"
-      create_internal_tournament: "Internal tournament couldn't be created"
-      update_internal_tournament: "Internal tournament couldn't be updated"
-      create_external_tournament: "External tournament couldn't be created"
-      update_external_tournament: "External tournament couldn't be updated"
-      create_weekly_tournament: "One or more weeklies couldn't be created"
-      update_weekly_tournament: "One or more weeklies couldn't be updated"
-      delete_tournament: "Tournament couldn't be deleted!"
-      deactivate_tournament: "Tournament couldn't be deactivated!"
-      add_player_failed: "Player couldn't be added"
-      player_not_found: "Player not found"
-      deadline_exceeded: "Online registration deadline exceeded"
-      player_already_added: "Player was already added"
-      not_removed_from_wating_list: "but couldn't be removed from the waiting list"
-      add_player_to_waiting_list: "Player couldn't be added to the waiting list"
-      tournament_full: "The tournament is full"
-      player_not_found: "Player not found"
-      remove_player_from_waiting_list: "Player couldn't be removed from the waiting list"
-      remove_player_failed: "Player couldn't be removed"
-      player_not_in_tournament: "Player is not in the tournament"
-      player_not_in_team: "Player is not in the team"
-      first_waiting_player: "but the first player in the waiting list couldn't take the seat"
-      tournament_status_error: "Tournament is already set up, started or finished"
-      tournament_set_up: "Tournament couldn't be set up"
-      challonge_data_missing: "Challonge data are missing. Add them %{link}"
-      here: "here"
-      not_set_up_yet: "Tournament wasn't set up yet"
-      already_started: "Tournament is already started or finished"
-      tournament_started: "Tournament couldn't be started"
-      not_set_up_or_started_yet: "Tournament wasn't set up or started yet"
-      tournament_finished: "Tournament is already finished"
-      tournament_not_finished: "Tournament was not fineshed yet. You have to finish it first on: %{link}"
-      tournament_cannot_finish: "Tournament cannot be finished"
-      unauthorized: "Unauthorized! You must be an administrator to make this action"
-      login_failed: "Login failed! Please try again"
-      contact: "reCAPTCHA thinks that you're not a human. Please try again"
-      contact_invalid: "Your email or message is missing. Please try again"
+      creating_player: "Creazione del giocatore fallita! Potresti aver selezionato un tag giocatore già preso. Riprovare".
+      updating_user: "Non è stato possibile aggiornare l'utente".
+      search_players: "Non sono stati trovati giocatori con questa query di ricerca".
+      search_tournaments: "Non sono stati trovati tornei con questa query di ricerca".
+      updating_registration: "Non è stato possibile aggiornare la registrazione".
+      create_internal_tournament: "Non è stato possibile creare un torneo interno".
+      update_internal_tournament: "Non è stato possibile aggiornare il torneo interno".
+      create_external_tournament: "Non è stato possibile creare un torneo esterno".
+      update_external_tournament: "Non è stato possibile aggiornare il torneo esterno".
+      create_weekly_tournament: "Non è stato possibile creare uno o più settimanali".
+      update_weekly_tournament: "Non è stato possibile aggiornare uno o più settimanali".
+      delete_tournament: "Non è stato possibile cancellare un torneo!".
+      deactivate_tournament: "Non è stato possibile disattivare il torneo!".
+      add_player_failed: "Non è stato possibile aggiungere un giocatore".
+      player_not_found: "Giocatore non trovato".
+      deadline_exceeded: "Superata la scadenza per la registrazione online".
+      player_already_added: "Giocatore già aggiunto".
+      not_removed_from_wating_list: "ma non è stato possibile rimuoverlo dalla lista d'attesa".
+      add_player_to_waiting_list: "Il giocatore non può essere aggiunto alla lista d'attesa".
+      tournament_full: "Il torneo è pieno"
+      player_not_found: "Giocatore non trovato".
+      remove_player_from_waiting_list: "Il giocatore non può essere rimosso dalla lista d'attesa".
+      remove_player_failed: "Il giocatore non può essere rimosso".
+      player_not_in_tournament: "Il giocatore non è nel torneo".
+      player_not_in_team: "Il giocatore non è in squadra".
+      first_waiting_player: "ma il primo giocatore in lista d'attesa non ha potuto prendere posto".
+      tournament_status_error: "Il torneo è già impostato, iniziato o terminato".
+      tournament_set_up: "Non è stato possibile organizzare il torneo".
+      challonge_data_missing: "Mancano i dati del torneo. Aggiungili %{link}"
+      here: "qui"
+      not_set_up_yet: "Il torneo non è stato ancora organizzato".
+      already_started: "Il torneo è già iniziato o finito"
+      tournament_started: "Non è stato possibile avviare il torneo".
+      not_set_up_or_started_yet: "Il torneo non è stato ancora impostato o avviato".
+      tournament_finished: "Il torneo è già finito".
+      tournament_not_finished: "Il torneo non è stato ancora concluso. Devi prima finirlo su: %{link}".
+      tournament_cannot_finish: "Il torneo non può essere finito".
+      unauthorized: "Non autorizzato! Devi essere un amministratore per effettuare questa azione".
+      login_failed: "Login fallito! Si prega di riprovare".
+      contact: "reCAPTCHA pensa che tu non sia un umano. Si prega di riprovare".
+      contact_invalid: "La tua e-mail o il tuo messaggio sono mancanti. Riprovare".
 
   navigation:
-    list: "List"
+    list: "Elenco"
     account:
       account: "Account"
-      admin: "(Administrator)"
-      show_profile: "Show Profile"
-      edit_profile: "Edit Profile"
-      show_all_users: "Show all users"
-      add_tournament: "Add Tournament"
-      log_out: "Log out"
-      log_out_confirm: "Are you sure you want to log out?"
+      admin: "(Amministratore)"
+      show_profile: "Mostra il profilo".
+      edit_profile: "Modifica profilo".
+      show_all_users: "Mostra tutti gli utenti".
+      add_tournament: "Aggiungi torneo".
+      log_out: "Esci".
+      log_out_confirm: "Sei sicuro di voler effettuare il logout?".
     footer:
-      administrators_short: "Admins"
-      administrators: "Administrators"
+      administrators_short: "Amministratori"
+      administrators: "Amministratori"
       imprint: "Imprint"
-      privacy_policy: "Privacy&nbsp;Notice"
-      contact: "Contact"
-      mail_subject: "I faced a problem or have a question!"
-      mail_body: "Hi\n\nI'm ??? and I would like to ???"
+      privacy_policy: "Privacy&nbsp;Avviso"
+      contact: "Contatto"
+      mail_subject: "Ho affrontato un problema o ho una domanda!".
+      mail_body: "Salve, sono ???? e vorrei chiedere un'informazione...".
 
   partials:
-    events: "Next Tournaments"
+    events: "Prossimi tornei"
     players:
-      title: "Top Players (2021)"
-      player: "Player"
+      title: "Migliori giocatori (2021)"
+      player: "Giocatore"
     streamers:
-      title: "Current Streams"
+      title: "Streaming attuali"
       streamer: "Streamer"
       view_count: "#"
-      not_found: "No streams found"
+      not_found: "Nessun flusso trovato"
 
   welcome:
     # ch:
