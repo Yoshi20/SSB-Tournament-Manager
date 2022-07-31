@@ -451,13 +451,13 @@ it:
     #   body6: "Information about LuxSmash can be found under %{informations_link}."
     it:
       title: "ItalySmash"
-      body0: "Welcome to ItalySmash, your entry point into the Italian Super Smash Bros. Ultimate tournament scene."
-      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-      body2: "Your regional community should be able to be found under %{communities}."
-      body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
-      body4: "You can find the official Power Ranking with the best players in Italy under %{rankings_link}."
-      body5: "Here you can find all %{players_link} registered on ItalySmash and the %{videos_link} they posted."
-      body6: "Information about ItalySmash can be found under %{informations_link}."
+      body0: "Benvenuti su ItalySmash, il vostro punto di ingresso nella scena italiana dei tornei di Super Smash Bros. Ultimate".
+      body1: "Puoi trovare i prossimi eventi nel %{tournaments_link} o nel %{calendar_link}".
+      body2: "La tua comunità regionale dovrebbe poter essere trovata sotto la voce %{comunità}".
+      body3: "%{log_in_link} o %{signup_link}, per creare il vostro profilo e poter utilizzare tutte le funzioni".
+      body4: "La Power Ranking ufficiale con i migliori giocatori d'Italia è disponibile al link %{rankings_link}".
+      body5: "Qui puoi trovare tutti i %{giocatori_link} registrati su ItalySmash e i %{video_link} che hanno pubblicato."
+      body6: "Le informazioni su ItalySmash si trovano sotto %{informazioni_link}."
     # uk:
     #   title: "SmashUltimate.uk"
     #   body0: "Welcome to SmashUltimate.uk, your entry point into the UK & Ireland Super Smash Bros. Ultimate tournament scene!"
@@ -474,16 +474,16 @@ it:
     #   body4: "You can find the official Power Ranking with the best players in Portugal under %{rankings_link}."
     #   body5: "Here you can find all %{players_link} registered on Smash Bros. Portugal and the %{videos_link} they posted."
     #   body6: "Information about Smash Bros. Portugal can be found under %{informations_link}."
-    tournament_list: "Tournaments"
-    calendar: "Calendar"
-    log_in: "Log in"
-    sign_up: "register here"
-    communities: "Communities"
-    no_donations_yet: "No donations yet 😢"
-    all_donations: "All donations"
+    tournament_list: "Tornei"
+    calendar: "Calendario"
+    log_in: "Accedi"
+    sign_up: "registrati qui"
+    communities: "Comunità".
+    no_donations_yet: "Nessuna donazione ancora 😢"
+    all_donations: "Tutte le donazioni"
 
   donations:
-    title: "Donation wall"
+    title: "Muro delle donazioni"
 
   information:
     # ch:
@@ -690,53 +690,53 @@ it:
     #     title: "Partners"
     #     sites: "Partners sites"
     it:
-      title: "Information"
+      title: "Informazioni"
       title_short: "Infos"
       general:
-        title: "General"
+        title: "Generale"
         italysmash: |
-          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Italy and to provide an entry point for new players to find their way into their local smash community.<br><br>
-          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
+          Questo sito è stato creato per fornire una panoramica della scena di Super Smash Bros. Ultimate in Italia e per fornire un punto di ingresso ai nuovi giocatori per trovare la loro strada nella loro comunità locale di Smash.<br><br>
+          Inoltre, il sito offre un gestore di tornei che fornisce agli organizzatori di tornei (TO) uno strumento semplice per la gestione dei tornei.<br><br>
+          La pagina è stata creata dal template di %{swisssmash_link} ed è gestita principalmente da: %{Yomi} (developer).
       calendar:
-        title: "Calendar"
-        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, ItalySmash is able to find and list all the SSBU tournaments in Italy that were added to either one of the following sites:"
-        calendar_body: "The calendar shows all found SSBU tournaments in Italy from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
-        calendar_weekly: "Weekly -> On ItalySmash created weekly tournament"
-        calendar_internal: "Internal -> On ItalySmash created tournament"
-        calendar_external: "External -> On an external site created tournament"
+        title: "Calendario"
+        tournaments_body: "Con l'aiuto delle API di start.gg e di un programma %{link} scritto da sé, che viene eseguito una volta ogni notte, ItalySmash è in grado di trovare ed elencare tutti i tornei SSBU in Italia che sono stati aggiunti a uno dei seguenti siti:"
+        calendar_body: "Il calendario mostra tutti i tornei SSBU trovati in Italia da due settimane a quattro mesi fa. Si distingue tra i seguenti tipi di tornei:"
+        calendar_weekly: "Weekly -> Su ItalySmash creato torneo settimanale"
+        calendar_internal: "Internal -> Il torneo creato da ItalySmash"
+        calendar_external: "External -> Su un sito esterno creato torneo"
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "The power ranking IT uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality."
+        power_ranking_body: "Il power ranking IT utilizza una combinazione di algoritmo e giuria per fornire una classifica il più possibile simile alla realtà."
       tournament_manager:
-        title: "Tournament manager"
-        tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "ItalySmash contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the ItalySmash Tournament Manager? Just add the TO role to your profile!"
-        tournament_organiser_mail: "via email"
-        tournament_organiser_mail_subject: "I would like to be an administrator!"
-        tournament_organiser_mail_body: "Hi ItalySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
-        bracket_tool: "Bracket tool"
-        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the ItalySmash Tournament Manager uses %{link}."
+        title: "Responsabile del torneo"
+        tournament_organiser: "Organizzatore del torneo"
+        tournament_organiser_body: "ItalySmash contiene un'applicazione web per la semplice creazione e amministrazione di tornei di smash.<br><br>È particolarmente adatto ai settimanali, in quanto consente di generare diversi tornei in un periodo di tempo definito.<br><br>Organizzi tu stesso dei tornei e vorresti utilizzare il Tournament Manager di ItalySmash? Basta aggiungere il ruolo di TO al vostro profilo!"
+        tournament_organiser_mail: "via e-mail"
+        tournament_organiser_mail_subject: "Vorrei diventare amministratore!".
+        tournament_organiser_mail_body: "Ciao ItalySmash sono ??? e vorrei diventare amministratore perché:\n????"
+        bracket_tool: "Strumento parentesi"
+        bracket_tool_body: "Per i suoi bracket e le sue API gratuite, senza lag e facili da usare, il Tournament Manager di ItalySmash usa %{link}."
         bracket_seeding: "Bracket seeding"
-        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on ItalySmash:"
-        bracket_seeding_body2: "The final seeding is done manually by a TO."
+        bracket_seeding_body1: "Il seeding iniziale viene effettuato generando un elenco di giocatori ordinati per abilità da tutti i dati presenti su ItalySmash:"
+        bracket_seeding_body2: "Il seeding finale è fatto manualmente da un TO".
       results:
-        title: "Results"
-        results_body: "Besides the results (match scores and rankings) of the ItalySmash Tournament Manager internal tournaments, ItalySmash is also able to get the results from all other tournaments in Italy. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-        ranking_system: "Scoring system"
-        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-        ranking_system_rank: "Rank"
-        ranking_system_points: "Points"
+        title: "Risultati"
+        results_body: "Oltre ai risultati (punteggi delle partite e classifiche) dei tornei interni a ItalySmash Tournament Manager, ItalySmash è in grado di ottenere anche i risultati di tutti gli altri tornei in Italia. L'unica condizione è che il torneo sia stato importato su braacket.com nella lega %{link}".
+        ranking_system: "Sistema di punteggio"
+        ranking_system_body: "Indipendentemente dal numero di partecipanti per torneo, la classifica dei giocatori alla fine del torneo decide l'ammontare dei punti ricevuti."
+        ranking_system_rank: "Classifica".
+        ranking_system_points: "Punti"
       contact:
-        title: "Write me a message"
-        submit: "Submit"
-        name: "Your name or gamer tag"
-        email: "Your email"
-        body: "Your message"
+        title: "Scrivimi un messaggio"
+        submit: "Invia"
+        name: "Il tuo nome o la tua etichetta giocatore".
+        email: "Il tuo indirizzo e-mail".
+        body: "Il tuo messaggio".
       partners:
-        title: "Partners"
-        sites: "Partners sites"
+        title: "Partner"
+        sites: "Siti dei partner"
     # uk:
     #   title: "Information"
     #   title_short: "Infos"
@@ -838,106 +838,106 @@ it:
     #     sites: "Partners sites"
 
   calendar:
-    title: "Calendar"
-    switzerland: "Switzerland"
-    germany: "Germany"
-    france: "France"
-    luxembourg: "Luxembourg"
+    title: "Calendario"
+    switzerland: "Svizzera"
+    germany: "Germania"
+    france: "Francia"
+    luxembourg: "Lussemburgo"
     austria: "Austria"
-    italy: "Italy"
-    uk: "UK"
-    portugal: "Portugal"
+    italy: "Italia"
+    uk: "Regno Unito"
+    portugal: "Portogallo"
     color_legend:
-      past: "Past"
-      cancelled: "Cancelled"
-      ongoing: "Ongoing"
-      internal_joined: "Internal joined"
-      weekly_joined: "Weekly joined"
+      past: "Passato"
+      cancelled: "Annullato"
+      ongoing: "In corso"
+      internal_joined: "Interno unito"
+      weekly_joined: "Weekly unito"
     allDayText: "all-day"
     buttonText:
-      today: "Today"
-      month: "Month"
-      agendaWeek: 'Week'
-      agendaDay: 'Day'
+      today: "Oggi"
+      month: "Mese"
+      agendaWeek: 'Settimana'
+      agendaDay: 'Giorno'
     monthNames:
-      - "January"
-      - "February"
-      - "March"
-      - "April"
-      - "May"
-      - "June"
-      - "July"
-      - "August"
-      - "September"
-      - "October"
-      - "November"
-      - "December"
+      - "Gennaio"
+      - "Febbraio"
+      - "Marzo"
+      - "Aprile"
+      - "Maggio"
+      - "Giugno"
+      - "Luglio"
+      - "Agosto"
+      - "Settembre"
+      - "Ottobre"
+      - "Novembre"
+      - "Dicembre"
     monthNamesShort:
-      - "Jan"
+      - "Gennaio"
       - "Feb"
       - "Mar"
-      - "Apr"
-      - "May"
-      - "June"
-      - "July"
-      - "Aug"
-      - "Sept"
-      - "Oct"
+      - "Aprile"
+      - "Maggio"
+      - "Giugno"
+      - "Luglio"
+      - "agosto"
+      - "Settembre"
+      - "Ottobre"
       - "Nov"
-      - "Dec"
+      - "Dicembre"
     dayNames:
-      - "Sunday"
-      - "Monday"
-      - "Tuesday"
-      - "Wednesday"
-      - "Thursday"
-      - "Friday"
-      - "Saturday"
+      - "Domenica"
+      - "Lunedì"
+      - "Martedì"
+      - "Mercoledì"
+      - "Giovedì"
+      - "Venerdì"
+      - "Sabato"
     dayNamesShort:
-      - "Sun"
-      - "Mon"
-      - "Tue"
-      - "Wed"
-      - "Thu"
-      - "Fri"
-      - "Sat"
+      - "Sole"
+      - "Lun"
+      - "Mar"
+      - "Mer"
+      - "Gio"
+      - "Ven"
+      - "Sab"
 
   devise:
     confirmations:
-      title: "Resend confirmation instructions"
-      resend: "Resend confirmation instructions"
+      title: "Reinvio istruzioni di conferma"
+      resend: "Reinvio istruzioni di conferma"
     mailer:
-      welcome: "Welcome"
-      confirm: "You can confirm your account email through the link below:"
-      confirm_account: "Confirm my account"
-      hello: "Hello"
-      change_pw_request: "Someone has requested a link to change your password. You can do this through the link below"
-      change_my_pw: "Change my password"
-      change_pw_ignore: "If you didn't request this, please ignore this email."
-      pw_wont_change: "Your password won't change until you access the link above and create a new one."
-      account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
-      unlock_account: "Click the link below to unlock your account:"
-      unlock_my_account: "Unlock my account"
-    passwords:
-      title: "Change your password"
-      new_pw: "New password"
-      chars_min: "characters minimum"
-      confirm: "Confirm new password"
-      change_my_pw: "Change my password"
-      title_forgot: "Forgot your password?"
-      reset_pw: "Please send me reset password instructions"
+      welcome: "Benvenuto"
+      confirm: "Puoi confermare l'email del tuo account attraverso il link sottostante:"
+      confirm_account: "Conferma il mio account"
+      hello: "Ciao"
+      change_pw_request: "Qualcuno ha richiesto un link per cambiare la password. È possibile farlo attraverso il link sottostante".
+      change_my_pw: "Cambia la mia password".
+      change_pw_ignore: "Se non l'avete richiesto, ignorate questa e-mail".
+      pw_wont_change: "La tua password non cambierà finché non accederai al link qui sopra e ne creerai una nuova".
+      account_locked: "Il vostro account è stato bloccato a causa di un numero eccessivo di tentativi di accesso non riusciti".
+      unlock_account: "Cliccate sul link qui sotto per sbloccare il vostro account:"
+      unlock_my_account: "Sblocca il mio account"
+    password:
+      title: "Cambia la tua password"
+      new_pw: "Nuova password"
+      chars_min: "Caratteri minimi".
+      confirm: "Conferma la nuova password"
+      change_my_pw: "Cambia la mia password".
+      title_forgot: "Hai dimenticato la password?".
+      reset_pw: "Inviatemi le istruzioni per reimpostare la password"
     sessions:
-      forgot_pw: "Forgot your password?"
+      forgot_pw: "Hai dimenticato la password?"
     share:
-      log_in: "Log in"
-      sign_up: "Register"
-      forgot_pw: "Forgot your password?"
-      no_conf_inst: "Didn't receive confirmation instructions?"
-      no_unlock_inst: "Didn't receive unlock instructions?"
-      log_in_with: "Log in with"
+      log_in: "Accedi"
+      sign_up: "Registrati"
+      forgot_pw: "Hai dimenticato la password?".
+      no_conf_inst: "Non hai ricevuto le istruzioni di conferma?".
+      no_unlock_inst: "Non hai ricevuto le istruzioni per lo sblocco?".
+      log_in_with: "Accedi con"
     unlocks:
-      title: "Resend unlock instructions"
-      resend_unlock_inst: "Resend unlock instructions"
+      title: "Invia nuovamente le istruzioni di sblocco"
+      resend_unlock_inst: "Invia nuovamente le istruzioni di sblocco"
 
   # news:
   #   title: "News"
