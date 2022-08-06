@@ -853,7 +853,7 @@ fr:
     number_of_players: "Nombre de joueurs"
     character: "Combattant"
     player_activity: "Activité du joueur"
-    active : "Actif"
+    active: "Actif"
     inactive: "Inactif"
     days: "jours"
     when_active: "(Actif lorsqu'au moins un tournoi a été rejoint)"

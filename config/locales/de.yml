@@ -854,7 +854,7 @@ de:
     number_of_players: "Anzahl Spieler"
     character: "Charakter"
     player_activity: "Spieler Aktivität"
-    active : "Aktiv"
+    active: "Aktiv"
     inactive: "Inaktiv"
     days: "Tage"
     when_active: "(Aktiv wenn mindestens einem Turnier beigetreten wurde)"

@@ -45,78 +45,78 @@ it:
       a_lot: "Molto"
       very_much: "Una grande quantità"
     regions:
-      # aargau: "Aargau"
-      # appenzell_ausserrhoden: "Appenzell Outer Rhodes"
-      # appenzell_innerrhoden: "Appenzell Inner Rhodes"
-      # basel-land: "Basel-Land"
-      # basel-stadt: "Basel-City"
-      # bern: "Bern"
-      # freiburg: "Friborg"
-      # genf: "Geneva"
-      # glarus: "Glarus"
-      # graubünden: "Graubünden"
-      # jura: "Jura"
-      # luzern: "Lucerne"
-      # neuenburg: "Neuchâtel"
-      # nidwalden: "Nidwalden"
-      # obwalden: "Obwalden"
-      # schaffhausen: "Schaffhausen"
-      # schwyz: "Schwyz"
-      # solothurn: "Solothurn"
-      # st_gallen: "St. Gallen"
-      # tessin: "Ticino"
-      # thurgau: "Thurgau"
-      # uri: "Uri"
-      # waadt: "Vaud"
-      # wallis: "Valais"
-      # zug: "Zug"
-      # zürich: "Zurich"
-      # BB: "Brandenburg"
-      # BE: "Berlin"
-      # BW: "Baden-Württemberg"
-      # BY: "Bavaria"
-      # HB: "Bremen"
-      # HE: "Hesse"
-      # HH: "Hamburg"
-      # MV: "Mecklenburg Western Pomerania"
-      # NI: "Lower Saxony"
-      # NW: "Northrhine-Westphalia"
-      # RP: "Rhineland Palatinate"
-      # SH: "Schleswig Holstein"
-      # SL: "Saarland"
-      # SN: "Saxony"
-      # ST: "Saxony-Anhalt"
-      # TH: "Thuringia"
-      # Auvergne: "Auvergne-Rhône-Alps"
-      # Bourgogne: "Burgundy-Free County"
-      # Bretagne: "Brittany"
-      # Centre: "Centre-Loire Valley"
-      # Corsica: "Corsica"
-      # Grand_Est: "Great East"
-      # Hauts-de-France: "Upper France"
-      # Ile_de_France: "Island of France"
-      # Normandie: "Normandy"
-      # Nouvelle_Aquitaine: "New Aquitaine"
-      # Occitanie: "Occitania"
-      # Pays_de_la_Loire: "Loire Countries"
-      # Provence-Alpes-Cote_dAzur: "Provence-Alps-Azure Coast"
-      # Reunion: "La Réunion"
-      # Martinique: "Martinique"
-      # Guyane: "French Guiana"
-      # Guadeloupe: "Guadeloupe"
-      # Mayotte: "Mayotte"
-      # capellen: "Capellen"
-      # clervaux: "Clerveaux"
-      # diekirch: "Diekirch"
-      # echternach: "Echternach"
-      # esch: "Esch"
-      # grevenmacher: "Grevenmacher"
-      # luxembourg: "Luxembourg"
-      # mersch: "Mersch"
-      # redange: "Redange"
-      # remich: "Remich"
-      # vianden: "Vianden"
-      # wiltz: "Wiltz"
+      aargau: "Aargau"
+      appenzell_ausserrhoden: "Appenzell Outer Rhodes"
+      appenzell_innerrhoden: "Appenzell Inner Rhodes"
+      basel-land: "Basel-Land"
+      basel-stadt: "Basel-City"
+      bern: "Bern"
+      freiburg: "Friborg"
+      genf: "Geneva"
+      glarus: "Glarus"
+      graubünden: "Graubünden"
+      jura: "Jura"
+      luzern: "Lucerne"
+      neuenburg: "Neuchâtel"
+      nidwalden: "Nidwalden"
+      obwalden: "Obwalden"
+      schaffhausen: "Schaffhausen"
+      schwyz: "Schwyz"
+      solothurn: "Solothurn"
+      st_gallen: "St. Gallen"
+      tessin: "Ticino"
+      thurgau: "Thurgau"
+      uri: "Uri"
+      waadt: "Vaud"
+      wallis: "Valais"
+      zug: "Zug"
+      zürich: "Zurich"
+      BB: "Brandenburg"
+      BE: "Berlin"
+      BW: "Baden-Württemberg"
+      BY: "Bavaria"
+      HB: "Bremen"
+      HE: "Hesse"
+      HH: "Hamburg"
+      MV: "Mecklenburg Western Pomerania"
+      NI: "Lower Saxony"
+      NW: "Northrhine-Westphalia"
+      RP: "Rhineland Palatinate"
+      SH: "Schleswig Holstein"
+      SL: "Saarland"
+      SN: "Saxony"
+      ST: "Saxony-Anhalt"
+      TH: "Thuringia"
+      Auvergne: "Auvergne-Rhône-Alps"
+      Bourgogne: "Burgundy-Free County"
+      Bretagne: "Brittany"
+      Centre: "Centre-Loire Valley"
+      Corsica: "Corsica"
+      Grand_Est: "Great East"
+      Hauts-de-France: "Upper France"
+      Ile_de_France: "Island of France"
+      Normandie: "Normandy"
+      Nouvelle_Aquitaine: "New Aquitaine"
+      Occitanie: "Occitania"
+      Pays_de_la_Loire: "Loire Countries"
+      Provence-Alpes-Cote_dAzur: "Provence-Alps-Azure Coast"
+      Reunion: "La Réunion"
+      Martinique: "Martinique"
+      Guyane: "French Guiana"
+      Guadeloupe: "Guadeloupe"
+      Mayotte: "Mayotte"
+      capellen: "Capellen"
+      clervaux: "Clerveaux"
+      diekirch: "Diekirch"
+      echternach: "Echternach"
+      esch: "Esch"
+      grevenmacher: "Grevenmacher"
+      luxembourg: "Luxembourg"
+      mersch: "Mersch"
+      redange: "Redange"
+      remich: "Remich"
+      vianden: "Vianden"
+      wiltz: "Wiltz"
       abruzzo: "Abruzzo"
       aosta_valley: "Valle d'Aosta"
       apulia: "Puglia"
@@ -137,141 +137,141 @@ it:
       tuscany: "Toscana"
       umbria: "Umbria"
       veneto: "Veneto"
-      # south_east: "South East"
-      # london: "London"
-      # north_west: "North West"
-      # east_of_england: "East of England"
-      # midlands: "Midlands"
-      # south_west: "South West"
-      # yorkshire_and_the_humber: "Yorkshire and the Humber"
-      # north_east: "North East"
-      # wales: "Wales"
-      # scotland: "Scotland"
-      # northern_ireland: "Northern Ireland"
-      # ireland: "Ireland"
-      # aveiro: "Aveiro"
-      # azores: "Azores"
-      # beja: "Beja"
-      # braga: "Braga"
-      # braganca: "Braganca"
-      # castelo_branco: "Castelo Branco"
-      # coimbra: "Coimbra"
-      # evora: "Evora"
-      # faro: "Faro"
-      # guarda: "Guarda"
-      # leiria: "Leiria"
-      # lisbon: "Lisbon"
-      # madeira: "Madeira"
-      # portalegre: "Portalegre"
-      # porto: "Porto"
-      # santarem: "Santarem"
-      # setubal: "Setubal"
-      # viana_do_castelo: "Viana do Castelo"
-      # vila_real: "Vila Real"
-      # viseu: "Viseu"
-    # departments:
-    #   Ain: "Ain"
-    #   Aisne: "Aisne"
-    #   Allier: "Allier"
-    #   Alpes-de-Haute-Provence: "Alpes-de-Haute-Provence"
-    #   Hautes-Alpes: "Hautes-Alpes"
-    #   Alpes-Maritimes: "Alpes-Maritimes"
-    #   Ardèche: "Ardèche"
-    #   Ardennes: "Ardennes"
-    #   Ariège: "Ariège"
-    #   Aube: "Aube"
-    #   Aude: "Aude"
-    #   Aveyron: "Aveyron"
-    #   Bouches-du-Rhône: "Bouches-du-Rhône"
-    #   Calvados: "Calvados"
-    #   Cantal: "Cantal"
-    #   Charente: "Charente"
-    #   Charente-Maritime: "Charente-Maritime"
-    #   Cher: "Cher"
-    #   Corrèze: "Corrèze"
-    #   Corse-du-Sud: "Corse-du-Sud"
-    #   Haute-Corse: "Haute-Corse"
-    #   Côte-d'Or: "Côte-d'Or"
-    #   Côtes-d'Armor: "Côtes-d'Armor"
-    #   Creuse: "Creuse"
-    #   Dordogne: "Dordogne"
-    #   Doubs: "Doubs"
-    #   Drôme: "Drôme"
-    #   Eure: "Eure"
-    #   Eure-et-Loir: "Eure-et-Loir"
-    #   Finistère: "Finistère"
-    #   Gard: "Gard"
-    #   Haute-Garonne: "Haute-Garonne"
-    #   Gers: "Gers"
-    #   Gironde: "Gironde"
-    #   Hérault: "Hérault"
-    #   Ille-et-Vilaine: "Ille-et-Vilaine"
-    #   Indre: "Indre"
-    #   Indre-et-Loire: "Indre-et-Loire"
-    #   Isère: "Isère"
-    #   Jura: "Jura"
-    #   Landes: "Landes"
-    #   Loir-et-Cher: "Loir-et-Cher"
-    #   Loire: "Loire"
-    #   Haute-Loire: "Haute-Loire"
-    #   Loire-Atlantique: "Loire-Atlantique"
-    #   Loiret: "Loiret"
-    #   Lot: "Lot"
-    #   Lot-et-Garonne: "Lot-et-Garonne"
-    #   Lozère: "Lozère"
-    #   Maine-et-Loire: "Maine-et-Loire"
-    #   Manche: "Manche"
-    #   Marne: "Marne"
-    #   Haute-Marne: "Haute-Marne"
-    #   Mayenne: "Mayenne"
-    #   Meurthe-et-Moselle: "Meurthe-et-Moselle"
-    #   Meuse: "Meuse"
-    #   Morbihan: "Morbihan"
-    #   Moselle: "Moselle"
-    #   Nièvre: "Nièvre"
-    #   Nord: "Nord"
-    #   Oise: "Oise"
-    #   Orne: "Orne"
-    #   Pas-de-Calais: "Pas-de-Calais"
-    #   Puy-de-Dôme: "Puy-de-Dôme"
-    #   Pyrénées-Atlantiques: "Pyrénées-Atlantiques"
-    #   Hautes-Pyrénées: "Hautes-Pyrénées"
-    #   Pyrénées-Orientales: "Pyrénées-Orientales"
-    #   Bas-Rhin: "Bas-Rhin"
-    #   Haut-Rhin: "Haut-Rhin"
-    #   Rhône: "Rhône"
-    #   Lyon_Metropolis: "Lyon Metropolis"
-    #   Haute-Saône: "Haute-Saône"
-    #   Saône-et-Loire: "Saône-et-Loire"
-    #   Sarthe: "Sarthe"
-    #   Savoie: "Savoie"
-    #   Haute-Savoie: "Haute-Savoie"
-    #   Paris: "Paris"
-    #   Seine-Maritime: "Seine-Maritime"
-    #   Seine-et-Marne: "Seine-et-Marne"
-    #   Yvelines: "Yvelines"
-    #   Deux-Sèvres: "Deux-Sèvres"
-    #   Somme: "Somme"
-    #   Tarn: "Tarn"
-    #   Tarn-et-Garonne: "Tarn-et-Garonne"
-    #   Var: "Var"
-    #   Vaucluse: "Vaucluse"
-    #   Vendée: "Vendée"
-    #   Vienne: "Vienne"
-    #   Haute-Vienne: "Haute-Vienne"
-    #   Vosges: "Vosges"
-    #   Yonne: "Yonne"
-    #   Territoire_deBelfort: "Territoire de Belfort"
-    #   Essonne: "Essonne"
-    #   Hauts-de-Seine: "Hauts-de-Seine"
-    #   Seine-Saint-Denis: "Seine-Saint-Denis"
-    #   Val-de-Marne: "Val-de-Marne"
-    #   Val-d'Oise: "Val-d'Oise"
-    #   Guadeloupe: "Guadeloupe"
-    #   Martinique: "Martinique"
-    #   Guyane: "Guyane"
-    #   La_Réunion: "La Réunion"
-    #   Mayotte: "Mayotte"
+      south_east: "South East"
+      london: "London"
+      north_west: "North West"
+      east_of_england: "East of England"
+      midlands: "Midlands"
+      south_west: "South West"
+      yorkshire_and_the_humber: "Yorkshire and the Humber"
+      north_east: "North East"
+      wales: "Wales"
+      scotland: "Scotland"
+      northern_ireland: "Northern Ireland"
+      ireland: "Ireland"
+      aveiro: "Aveiro"
+      azores: "Azores"
+      beja: "Beja"
+      braga: "Braga"
+      braganca: "Braganca"
+      castelo_branco: "Castelo Branco"
+      coimbra: "Coimbra"
+      evora: "Evora"
+      faro: "Faro"
+      guarda: "Guarda"
+      leiria: "Leiria"
+      lisbon: "Lisbon"
+      madeira: "Madeira"
+      portalegre: "Portalegre"
+      porto: "Porto"
+      santarem: "Santarem"
+      setubal: "Setubal"
+      viana_do_castelo: "Viana do Castelo"
+      vila_real: "Vila Real"
+      viseu: "Viseu"
+    departments:
+      Ain: "Ain"
+      Aisne: "Aisne"
+      Allier: "Allier"
+      Alpes-de-Haute-Provence: "Alpes-de-Haute-Provence"
+      Hautes-Alpes: "Hautes-Alpes"
+      Alpes-Maritimes: "Alpes-Maritimes"
+      Ardèche: "Ardèche"
+      Ardennes: "Ardennes"
+      Ariège: "Ariège"
+      Aube: "Aube"
+      Aude: "Aude"
+      Aveyron: "Aveyron"
+      Bouches-du-Rhône: "Bouches-du-Rhône"
+      Calvados: "Calvados"
+      Cantal: "Cantal"
+      Charente: "Charente"
+      Charente-Maritime: "Charente-Maritime"
+      Cher: "Cher"
+      Corrèze: "Corrèze"
+      Corse-du-Sud: "Corse-du-Sud"
+      Haute-Corse: "Haute-Corse"
+      Côte-d'Or: "Côte-d'Or"
+      Côtes-d'Armor: "Côtes-d'Armor"
+      Creuse: "Creuse"
+      Dordogne: "Dordogne"
+      Doubs: "Doubs"
+      Drôme: "Drôme"
+      Eure: "Eure"
+      Eure-et-Loir: "Eure-et-Loir"
+      Finistère: "Finistère"
+      Gard: "Gard"
+      Haute-Garonne: "Haute-Garonne"
+      Gers: "Gers"
+      Gironde: "Gironde"
+      Hérault: "Hérault"
+      Ille-et-Vilaine: "Ille-et-Vilaine"
+      Indre: "Indre"
+      Indre-et-Loire: "Indre-et-Loire"
+      Isère: "Isère"
+      Jura: "Jura"
+      Landes: "Landes"
+      Loir-et-Cher: "Loir-et-Cher"
+      Loire: "Loire"
+      Haute-Loire: "Haute-Loire"
+      Loire-Atlantique: "Loire-Atlantique"
+      Loiret: "Loiret"
+      Lot: "Lot"
+      Lot-et-Garonne: "Lot-et-Garonne"
+      Lozère: "Lozère"
+      Maine-et-Loire: "Maine-et-Loire"
+      Manche: "Manche"
+      Marne: "Marne"
+      Haute-Marne: "Haute-Marne"
+      Mayenne: "Mayenne"
+      Meurthe-et-Moselle: "Meurthe-et-Moselle"
+      Meuse: "Meuse"
+      Morbihan: "Morbihan"
+      Moselle: "Moselle"
+      Nièvre: "Nièvre"
+      Nord: "Nord"
+      Oise: "Oise"
+      Orne: "Orne"
+      Pas-de-Calais: "Pas-de-Calais"
+      Puy-de-Dôme: "Puy-de-Dôme"
+      Pyrénées-Atlantiques: "Pyrénées-Atlantiques"
+      Hautes-Pyrénées: "Hautes-Pyrénées"
+      Pyrénées-Orientales: "Pyrénées-Orientales"
+      Bas-Rhin: "Bas-Rhin"
+      Haut-Rhin: "Haut-Rhin"
+      Rhône: "Rhône"
+      Lyon_Metropolis: "Lyon Metropolis"
+      Haute-Saône: "Haute-Saône"
+      Saône-et-Loire: "Saône-et-Loire"
+      Sarthe: "Sarthe"
+      Savoie: "Savoie"
+      Haute-Savoie: "Haute-Savoie"
+      Paris: "Paris"
+      Seine-Maritime: "Seine-Maritime"
+      Seine-et-Marne: "Seine-et-Marne"
+      Yvelines: "Yvelines"
+      Deux-Sèvres: "Deux-Sèvres"
+      Somme: "Somme"
+      Tarn: "Tarn"
+      Tarn-et-Garonne: "Tarn-et-Garonne"
+      Var: "Var"
+      Vaucluse: "Vaucluse"
+      Vendée: "Vendée"
+      Vienne: "Vienne"
+      Haute-Vienne: "Haute-Vienne"
+      Vosges: "Vosges"
+      Yonne: "Yonne"
+      Territoire_deBelfort: "Territoire de Belfort"
+      Essonne: "Essonne"
+      Hauts-de-Seine: "Hauts-de-Seine"
+      Seine-Saint-Denis: "Seine-Saint-Denis"
+      Val-de-Marne: "Val-de-Marne"
+      Val-d'Oise: "Val-d'Oise"
+      Guadeloupe: "Guadeloupe"
+      Martinique: "Martinique"
+      Guyane: "Guyane"
+      La_Réunion: "La Réunion"
+      Mayotte: "Mayotte"
     genders:
       male: "Maschio"
       female: "Femmina"
@@ -319,7 +319,7 @@ it:
       first_waiting_player: "e il primo giocatore in lista d'attesa ha preso il posto"
       tournament_set_up: "Il torneo è stato impostato con successo"
       two_stage_tournament: "Si tratta di un torneo a due fasi -> Controllare le preferenze su challonge.com per configurare i gironi."
-      check_out_challonge: "Controllate il sito challonge.com e cliccate su "Inizia il torneo" se siete pronti."
+      check_out_challonge: "Controllate il sito challonge.com e cliccate su 'Inizia il torneo' se siete pronti."
       tournament_started: "Il torneo è stato avviato con successo"
       tournament_finished: "Il torneo si è concluso con successo e i giocatori partecipanti sono stati aggiornati."
       tournament_cancelled: "Il torneo è stato annullato con successo"
@@ -338,67 +338,67 @@ it:
       team_updated: "Il team è stato aggiornato con successo"
       team_deleted: "Il team è stato eliminato con successo"
     alert:
-      creating_player: "Creazione del giocatore fallita! Potresti aver selezionato un tag giocatore già preso. Riprovare".
-      updating_user: "Non è stato possibile aggiornare l'utente".
-      search_players: "Non sono stati trovati giocatori con questa query di ricerca".
-      search_tournaments: "Non sono stati trovati tornei con questa query di ricerca".
-      updating_registration: "Non è stato possibile aggiornare la registrazione".
-      create_internal_tournament: "Non è stato possibile creare un torneo interno".
-      update_internal_tournament: "Non è stato possibile aggiornare il torneo interno".
-      create_external_tournament: "Non è stato possibile creare un torneo esterno".
-      update_external_tournament: "Non è stato possibile aggiornare il torneo esterno".
-      create_weekly_tournament: "Non è stato possibile creare uno o più settimanali".
-      update_weekly_tournament: "Non è stato possibile aggiornare uno o più settimanali".
-      delete_tournament: "Non è stato possibile cancellare un torneo!".
-      deactivate_tournament: "Non è stato possibile disattivare il torneo!".
-      add_player_failed: "Non è stato possibile aggiungere un giocatore".
-      player_not_found: "Giocatore non trovato".
-      deadline_exceeded: "Superata la scadenza per la registrazione online".
-      player_already_added: "Giocatore già aggiunto".
-      not_removed_from_wating_list: "ma non è stato possibile rimuoverlo dalla lista d'attesa".
-      add_player_to_waiting_list: "Il giocatore non può essere aggiunto alla lista d'attesa".
+      creating_player: "Creazione del giocatore fallita! Potresti aver selezionato un tag giocatore già preso. Riprovare"
+      updating_user: "Non è stato possibile aggiornare l'utente"
+      search_players: "Non sono stati trovati giocatori con questa query di ricerca"
+      search_tournaments: "Non sono stati trovati tornei con questa query di ricerca"
+      updating_registration: "Non è stato possibile aggiornare la registrazione"
+      create_internal_tournament: "Non è stato possibile creare un torneo interno"
+      update_internal_tournament: "Non è stato possibile aggiornare il torneo interno"
+      create_external_tournament: "Non è stato possibile creare un torneo esterno"
+      update_external_tournament: "Non è stato possibile aggiornare il torneo esterno"
+      create_weekly_tournament: "Non è stato possibile creare uno o più settimanali"
+      update_weekly_tournament: "Non è stato possibile aggiornare uno o più settimanali"
+      delete_tournament: "Non è stato possibile cancellare un torneo!"
+      deactivate_tournament: "Non è stato possibile disattivare il torneo!"
+      add_player_failed: "Non è stato possibile aggiungere un giocatore"
+      player_not_found: "Giocatore non trovato"
+      deadline_exceeded: "Superata la scadenza per la registrazione online"
+      player_already_added: "Giocatore già aggiunto"
+      not_removed_from_wating_list: "ma non è stato possibile rimuoverlo dalla lista d'attesa"
+      add_player_to_waiting_list: "Il giocatore non può essere aggiunto alla lista d'attesa"
       tournament_full: "Il torneo è pieno"
-      player_not_found: "Giocatore non trovato".
-      remove_player_from_waiting_list: "Il giocatore non può essere rimosso dalla lista d'attesa".
-      remove_player_failed: "Il giocatore non può essere rimosso".
-      player_not_in_tournament: "Il giocatore non è nel torneo".
-      player_not_in_team: "Il giocatore non è in squadra".
-      first_waiting_player: "ma il primo giocatore in lista d'attesa non ha potuto prendere posto".
-      tournament_status_error: "Il torneo è già impostato, iniziato o terminato".
-      tournament_set_up: "Non è stato possibile organizzare il torneo".
+      player_not_found: "Giocatore non trovato"
+      remove_player_from_waiting_list: "Il giocatore non può essere rimosso dalla lista d'attesa"
+      remove_player_failed: "Il giocatore non può essere rimosso"
+      player_not_in_tournament: "Il giocatore non è nel torneo"
+      player_not_in_team: "Il giocatore non è in squadra"
+      first_waiting_player: "ma il primo giocatore in lista d'attesa non ha potuto prendere posto"
+      tournament_status_error: "Il torneo è già impostato, iniziato o terminato"
+      tournament_set_up: "Non è stato possibile organizzare il torneo"
       challonge_data_missing: "Mancano i dati del torneo. Aggiungili %{link}"
       here: "qui"
-      not_set_up_yet: "Il torneo non è stato ancora organizzato".
+      not_set_up_yet: "Il torneo non è stato ancora organizzato"
       already_started: "Il torneo è già iniziato o finito"
-      tournament_started: "Non è stato possibile avviare il torneo".
-      not_set_up_or_started_yet: "Il torneo non è stato ancora impostato o avviato".
-      tournament_finished: "Il torneo è già finito".
-      tournament_not_finished: "Il torneo non è stato ancora concluso. Devi prima finirlo su: %{link}".
-      tournament_cannot_finish: "Il torneo non può essere finito".
-      unauthorized: "Non autorizzato! Devi essere un amministratore per effettuare questa azione".
-      login_failed: "Login fallito! Si prega di riprovare".
-      contact: "reCAPTCHA pensa che tu non sia un umano. Si prega di riprovare".
-      contact_invalid: "La tua e-mail o il tuo messaggio sono mancanti. Riprovare".
+      tournament_started: "Non è stato possibile avviare il torneo"
+      not_set_up_or_started_yet: "Il torneo non è stato ancora impostato o avviato"
+      tournament_finished: "Il torneo è già finito"
+      tournament_not_finished: "Il torneo non è stato ancora concluso. Devi prima finirlo su: %{link}"
+      tournament_cannot_finish: "Il torneo non può essere finito"
+      unauthorized: "Non autorizzato! Devi essere un amministratore per effettuare questa azione"
+      login_failed: "Login fallito! Si prega di riprovare"
+      contact: "reCAPTCHA pensa che tu non sia un umano. Si prega di riprovare"
+      contact_invalid: "La tua e-mail o il tuo messaggio sono mancanti. Riprovare"
 
   navigation:
     list: "Elenco"
     account:
       account: "Account"
       admin: "(Amministratore)"
-      show_profile: "Mostra il profilo".
-      edit_profile: "Modifica profilo".
-      show_all_users: "Mostra tutti gli utenti".
-      add_tournament: "Aggiungi torneo".
-      log_out: "Esci".
-      log_out_confirm: "Sei sicuro di voler effettuare il logout?".
+      show_profile: "Mostra il profilo"
+      edit_profile: "Modifica profilo"
+      show_all_users: "Mostra tutti gli utenti"
+      add_tournament: "Aggiungi torneo"
+      log_out: "Esci"
+      log_out_confirm: "Sei sicuro di voler effettuare il logout?"
     footer:
       administrators_short: "Amministratori"
       administrators: "Amministratori"
       imprint: "Imprint"
       privacy_policy: "Privacy&nbsp;Avviso"
       contact: "Contatto"
-      mail_subject: "Ho affrontato un problema o ho una domanda!".
-      mail_body: "Salve, sono ???? e vorrei chiedere un'informazione...".
+      mail_subject: "Ho affrontato un problema o ho una domanda!"
+      mail_body: "Salve, sono ???? e vorrei chiedere un'informazione..."
 
   partials:
     events: "Prossimi tornei"
@@ -412,73 +412,73 @@ it:
       not_found: "Nessun flusso trovato"
 
   welcome:
-    # ch:
-    #   title: "SwissSmash"
-    #   body0: "Welcome to SwissSmash, your entry point into the Swiss Super Smash Bros. Ultimate scene."
-    #   body1: "If you want to stay up-to-date with the Swiss Smash Community, join us on %{discord_link} and follow the Swiss Smash %{twitter_link} Account."
-    #   body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    #   body3: "%{log_in_link} or %{sign_up_link} if you haven't yet, to be able to join a tournament and write a %{feedbacks_link}."
-    #   body4: "You can find the official Power Ranking of Switzerland under %{rankings_link}."
-    #   body5: "Here you can find all %{players_link} registered on SwissSmash and here you can find the %{statistics_link}."
-    #   body6: "More information about SwissSmash can be found under %{informations_link}."
-    # de:
-    #   title: "Smash Bros. Germany"
-    #   body0: "Welcome to Smash Bros. Germany, your entry point into the German Super Smash Bros. Ultimate tournament scene."
-    #   body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    #   body2: "Your regional community should be able to be found under %{communities}. There you will also meet contacts from your region."
-    #   body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
-    #   body4: "You can find the official Power Ranking with the best players in Germany under %{rankings_link}."
-    #   body5: "Here you can find all %{players_link} registered on GermanySmash and here you can find the %{statistics_link}."
-    #   body6: "Information about GermanySmash can be found under %{informations_link}."
-    #   body7: "If you want to connect to the german Melee community, visit %{meele_link}."
-    # fr:
-    #   title: "SmashUltimate.fr"
-    #   body0: "Welcome to SmashUltimate.fr, your entry point into the France Super Smash Bros. Ultimate tournament scene."
-    #   body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    #   body2: "Your regional community should be able to be found under %{communities}."
-    #   body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
-    #   body4: "You can find the official Power Ranking with the best players in France under %{rankings_link}."
-    #   body5: "Here you can find all %{players_link} registered on SmashUltimate.fr and the %{videos_link} they posted."
-    #   body6: "Information about SmashUltimate.fr can be found under %{informations_link}."
-    # lu:
-    #   title: "LuxSmash"
-    #   body0: "Welcome to LuxSmash, your entry point into the Luxembourg Super Smash Bros. Ultimate tournament scene."
-    #   body1: "If you want to stay up-to-date with the Luxembourg Super Smash Bros Community, join us on %{discord_link} and follow our %{twitter_link} Account."
-    #   body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    #   body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
-    #   body4: "You can find the official Power Ranking with the best players in Luxemburg under %{rankings_link}."
-    #   body5: "Here you can find all %{players_link} registered on LuxSmash and here you can find the %{statistics_link}."
-    #   body6: "Information about LuxSmash can be found under %{informations_link}."
+    ch:
+      title: "SwissSmash"
+      body0: "Welcome to SwissSmash, your entry point into the Swiss Super Smash Bros. Ultimate scene."
+      body1: "If you want to stay up-to-date with the Swiss Smash Community, join us on %{discord_link} and follow the Swiss Smash %{twitter_link} Account."
+      body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body3: "%{log_in_link} or %{sign_up_link} if you haven't yet, to be able to join a tournament and write a %{feedbacks_link}."
+      body4: "You can find the official Power Ranking of Switzerland under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on SwissSmash and here you can find the %{statistics_link}."
+      body6: "More information about SwissSmash can be found under %{informations_link}."
+    de:
+      title: "Smash Bros. Germany"
+      body0: "Welcome to Smash Bros. Germany, your entry point into the German Super Smash Bros. Ultimate tournament scene."
+      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body2: "Your regional community should be able to be found under %{communities}. There you will also meet contacts from your region."
+      body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in Germany under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on GermanySmash and here you can find the %{statistics_link}."
+      body6: "Information about GermanySmash can be found under %{informations_link}."
+      body7: "If you want to connect to the german Melee community, visit %{meele_link}."
+    fr:
+      title: "SmashUltimate.fr"
+      body0: "Welcome to SmashUltimate.fr, your entry point into the France Super Smash Bros. Ultimate tournament scene."
+      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body2: "Your regional community should be able to be found under %{communities}."
+      body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in France under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on SmashUltimate.fr and the %{videos_link} they posted."
+      body6: "Information about SmashUltimate.fr can be found under %{informations_link}."
+    lu:
+      title: "LuxSmash"
+      body0: "Welcome to LuxSmash, your entry point into the Luxembourg Super Smash Bros. Ultimate tournament scene."
+      body1: "If you want to stay up-to-date with the Luxembourg Super Smash Bros Community, join us on %{discord_link} and follow our %{twitter_link} Account."
+      body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body3: "%{log_in_link} or %{sign_up_link}, to be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in Luxemburg under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on LuxSmash and here you can find the %{statistics_link}."
+      body6: "Information about LuxSmash can be found under %{informations_link}."
     it:
       title: "ItalySmash"
-      body0: "Benvenuti su ItalySmash, il vostro punto di ingresso nella scena italiana dei tornei di Super Smash Bros. Ultimate".
-      body1: "Puoi trovare i prossimi eventi nel %{tournaments_link} o nel %{calendar_link}".
-      body2: "La tua comunità regionale dovrebbe poter essere trovata sotto la voce %{comunità}".
-      body3: "%{log_in_link} o %{signup_link}, per creare il vostro profilo e poter utilizzare tutte le funzioni".
-      body4: "La Power Ranking ufficiale con i migliori giocatori d'Italia è disponibile al link %{rankings_link}".
+      body0: "Benvenuti su ItalySmash, il vostro punto di ingresso nella scena italiana dei tornei di Super Smash Bros. Ultimate"
+      body1: "Puoi trovare i prossimi eventi nel %{tournaments_link} o nel %{calendar_link}"
+      body2: "La tua comunità regionale dovrebbe poter essere trovata sotto la voce %{comunità}"
+      body3: "%{log_in_link} o %{signup_link}, per creare il vostro profilo e poter utilizzare tutte le funzioni"
+      body4: "La Power Ranking ufficiale con i migliori giocatori d'Italia è disponibile al link %{rankings_link}"
       body5: "Qui puoi trovare tutti i %{giocatori_link} registrati su ItalySmash e i %{video_link} che hanno pubblicato."
       body6: "Le informazioni su ItalySmash si trovano sotto %{informazioni_link}."
-    # uk:
-    #   title: "SmashUltimate.uk"
-    #   body0: "Welcome to SmashUltimate.uk, your entry point into the UK & Ireland Super Smash Bros. Ultimate tournament scene!"
-    #   body1: "Information on upcoming events can be found under %{tournaments_link} or in the %{calendar_link}."
-    #   body2: "Find out about your local community on the %{communities} page."
-    #   body3: "Want to know who the best players in the UK & Ireland are? Look at the %{rankings_link} page for the latest regional and national Power Rankings."
-    #   body4: "The %{players_link} page lists many UK & Ireland players and community members - you can %{sign_up_link} to be able to use all of this site's features!"
-    # pt:
-    #   title: "Smash Bros. Portugal"
-    #   body0: "Welcome to Smash Bros. Portugal, your entry point into the Portugal Super Smash Bros. Ultimate tournament scene!"
-    #   body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
-    #   body2: "Your regional community should be able to be found under %{communities}."
-    #   body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
-    #   body4: "You can find the official Power Ranking with the best players in Portugal under %{rankings_link}."
-    #   body5: "Here you can find all %{players_link} registered on Smash Bros. Portugal and the %{videos_link} they posted."
-    #   body6: "Information about Smash Bros. Portugal can be found under %{informations_link}."
+    uk:
+      title: "SmashUltimate.uk"
+      body0: "Welcome to SmashUltimate.uk, your entry point into the UK & Ireland Super Smash Bros. Ultimate tournament scene!"
+      body1: "Information on upcoming events can be found under %{tournaments_link} or in the %{calendar_link}."
+      body2: "Find out about your local community on the %{communities} page."
+      body3: "Want to know who the best players in the UK & Ireland are? Look at the %{rankings_link} page for the latest regional and national Power Rankings."
+      body4: "The %{players_link} page lists many UK & Ireland players and community members - you can %{sign_up_link} to be able to use all of this site's features!"
+    pt:
+      title: "Smash Bros. Portugal"
+      body0: "Welcome to Smash Bros. Portugal, your entry point into the Portugal Super Smash Bros. Ultimate tournament scene!"
+      body1: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body2: "Your regional community should be able to be found under %{communities}."
+      body3: "%{log_in_link} or %{sign_up_link}, to create your profile and be able to use all functions."
+      body4: "You can find the official Power Ranking with the best players in Portugal under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on Smash Bros. Portugal and the %{videos_link} they posted."
+      body6: "Information about Smash Bros. Portugal can be found under %{informations_link}."
     tournament_list: "Tornei"
     calendar: "Calendario"
     log_in: "Accedi"
     sign_up: "registrati qui"
-    communities: "Comunità".
+    communities: "Comunità"
     no_donations_yet: "Nessuna donazione ancora 😢"
     all_donations: "Tutte le donazioni"
 
@@ -486,209 +486,209 @@ it:
     title: "Muro delle donazioni"
 
   information:
-    # ch:
-    #   title: "Information"
-    #   title_short: "Infos"
-    #   general:
-    #     title: "General"
-    #     swisssmash: |
-    #       This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in switzerland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
-    #       It shall also present an entry point for new players to find their respective local smash community.<br><br>
-    #       In the meantime it now also provides an almost complete list of swiss smashers with relevant stats, player data, rankings and roles.
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On swisssmash.ch created weekly tournament"
-    #     calendar_internal: "Internal -> On swisssmash.ch created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   power_ranking:
-    #     title: "Power Ranking"
-    #     power_ranking: "Power Ranking (PR)"
-    #     power_ranking_body: "A tournament will be considered an official SwissSmash tournament and will count to the PR when the following requirements are met:"
-    #     power_ranking_li_1: "Announced at least 2 weeks before its start date on swisssmash.ch or on the Swiss Smash Discord tournaments channel"
-    #     power_ranking_li_2: "A minimum of 16 attendees"
-    #     power_ranking_li_3: "Reasonable seeding"
-    #     power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
-    #     power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
-    #     power_ranking_li_6: "Weeklies do not count to the PR"
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "SwissSmash.ch contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SwissSmash Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SwissSmash tournament manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, swisssmash.ch is also able to get the results from all other tournaments in switzerland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   personal_data:
-    #     title: "Personal data"
-    #     personal_data_body: "Based on Article 13 of the Swiss Federal Constitution and the data protection provisions of the Confederation (Data Protection Act, DSG), every person has the right to the protection of his or her privacy and to protection against the misuse of his or her personal data.<br><br>SwissSmash complies with these provisions. Therefore non-player data (such as emails & mobile numer) will be kept strictly confidential and will not be sold to third parties."
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
-    # de:
-    #   title: "About"
-    #   title_short: "About"
-    #   general:
-    #     title: "General"
-    #     germanysmash: |
-    #       This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Germany and to provide an entry point for new players to find their way into their local smash community.<br><br>
-    #       In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-    #       The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (local coordination).
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in Germany from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On germanysmash.de created weekly tournament"
-    #     calendar_internal: "Internal -> On germanysmash.de created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   power_ranking:
-    #     title: "Power Ranking"
-    #     power_ranking: "Power Ranking (PR)"
-    #     power_ranking_body: "A tournament will be considered an official GermanySmash tournament and will count to the PR when the following requirements will be met:"
-    #     power_ranking_li_1: "Announced at least 2 weeks before its start date on germanysmash.de"
-    #     power_ranking_li_2: "A minimum of 16 attendees"
-    #     power_ranking_li_3: "Reasonable seeding"
-    #     power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
-    #     power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
-    #     power_ranking_li_6: "Weeklies do not count to the PR"
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi GermanySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the GermanySmash tournament manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in Germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
-    # fr:
-    #   title: "Information"
-    #   title_short: "Infos"
-    #   general:
-    #     title: "General"
-    #     francesmash: |
-    #       This website was created to provide an overview of the Super Smash Bros. Ultimate scene in France and to provide an entry point for new players to find their way into their local smash community.<br><br>
-    #       In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-    #       The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (local coordination).
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in France that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in France from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
-    #     calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   power_ranking:
-    #     title: "Power Ranking"
-    #     power_ranking: "Power Ranking (PR)"
-    #     power_ranking_body: "The power ranking FR uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality. To find out more you can go to %{link} in the FAQ section or on the discord server"
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.fr tournament manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashUltimate.fr:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the SmashUltimate.fr Tournament Manager internal tournaments, SmashUltimate.fr is also able to get the results from all other tournaments in France. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
-    # lu:
-    #   title: "Information"
-    #   title_short: "Infos"
-    #   general:
-    #     title: "General"
-    #     luxsmash: |
-    #       This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in Luxembourg and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
-    #       It shall also present an entry point for new players to find their respective local smash community.<br><br>
-    #       The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, LuxSmash is able to find and list all the SSBU tournaments in Luxembourg that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in Luxembourg from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On luxsmash.lu created weekly tournament"
-    #     calendar_internal: "Internal -> On luxsmash.lu created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "LuxSmash.lu contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the LuxSmash Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi LuxSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the LuxSmash tournament manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on luxsmash.lu:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the LuxSmash Tournament Manager internal tournaments, luxsmash.lu is also able to get the results from all other tournaments in Luxembourg.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
+    ch:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        swisssmash: |
+          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in switzerland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
+          It shall also present an entry point for new players to find their respective local smash community.<br><br>
+          In the meantime it now also provides an almost complete list of swiss smashers with relevant stats, player data, rankings and roles.
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SwissSmash is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in switzerland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On swisssmash.ch created weekly tournament"
+        calendar_internal: "Internal -> On swisssmash.ch created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "A tournament will be considered an official SwissSmash tournament and will count to the PR when the following requirements are met:"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on swisssmash.ch or on the Swiss Smash Discord tournaments channel"
+        power_ranking_li_2: "A minimum of 16 attendees"
+        power_ranking_li_3: "Reasonable seeding"
+        power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
+        power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
+        power_ranking_li_6: "Weeklies do not count to the PR"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "SwissSmash.ch contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SwissSmash Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi SwissSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SwissSmash tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the SwissSmash Tournament Manager internal tournaments, swisssmash.ch is also able to get the results from all other tournaments in switzerland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      personal_data:
+        title: "Personal data"
+        personal_data_body: "Based on Article 13 of the Swiss Federal Constitution and the data protection provisions of the Confederation (Data Protection Act, DSG), every person has the right to the protection of his or her privacy and to protection against the misuse of his or her personal data.<br><br>SwissSmash complies with these provisions. Therefore non-player data (such as emails & mobile numer) will be kept strictly confidential and will not be sold to third parties."
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
+    de:
+      title: "About"
+      title_short: "About"
+      general:
+        title: "General"
+        germanysmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Germany and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{TaDavidID} (local coordination).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, GermanySmash is able to find and list all the SSBU tournaments in germany that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in Germany from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On germanysmash.de created weekly tournament"
+        calendar_internal: "Internal -> On germanysmash.de created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "A tournament will be considered an official GermanySmash tournament and will count to the PR when the following requirements will be met:"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on germanysmash.de"
+        power_ranking_li_2: "A minimum of 16 attendees"
+        power_ranking_li_3: "Reasonable seeding"
+        power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
+        power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
+        power_ranking_li_6: "Weeklies do not count to the PR"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "GermanySmash.de contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the GermanySmash Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi GermanySmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the GermanySmash tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the GermanySmash Tournament Manager internal tournaments, germanysmash.de is also able to get the results from all other tournaments in Germany. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
+    fr:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        francesmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in France and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer) and %{telu} (local coordination).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.fr is able to find and list all the SSBU tournaments in France that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in France from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On SmashUltimate.fr created weekly tournament"
+        calendar_internal: "Internal -> On SmashUltimate.fr created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "The power ranking FR uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality. To find out more you can go to %{link} in the FAQ section or on the discord server"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "SmashUltimate.fr contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.fr Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi SmashUltimate.fr\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.fr tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashUltimate.fr:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the SmashUltimate.fr Tournament Manager internal tournaments, SmashUltimate.fr is also able to get the results from all other tournaments in France. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
+    lu:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        luxsmash: |
+          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in Luxembourg and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
+          It shall also present an entry point for new players to find their respective local smash community.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, LuxSmash is able to find and list all the SSBU tournaments in Luxembourg that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in Luxembourg from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On luxsmash.lu created weekly tournament"
+        calendar_internal: "Internal -> On luxsmash.lu created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "LuxSmash.lu contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the LuxSmash Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi LuxSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the LuxSmash tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on luxsmash.lu:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the LuxSmash Tournament Manager internal tournaments, luxsmash.lu is also able to get the results from all other tournaments in Luxembourg.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
     it:
       title: "Informazioni"
       title_short: "Infos"
@@ -714,128 +714,128 @@ it:
         tournament_organiser: "Organizzatore del torneo"
         tournament_organiser_body: "ItalySmash contiene un'applicazione web per la semplice creazione e amministrazione di tornei di smash.<br><br>È particolarmente adatto ai settimanali, in quanto consente di generare diversi tornei in un periodo di tempo definito.<br><br>Organizzi tu stesso dei tornei e vorresti utilizzare il Tournament Manager di ItalySmash? Basta aggiungere il ruolo di TO al vostro profilo!"
         tournament_organiser_mail: "via e-mail"
-        tournament_organiser_mail_subject: "Vorrei diventare amministratore!".
+        tournament_organiser_mail_subject: "Vorrei diventare amministratore!"
         tournament_organiser_mail_body: "Ciao ItalySmash sono ??? e vorrei diventare amministratore perché:\n????"
         bracket_tool: "Strumento parentesi"
         bracket_tool_body: "Per i suoi bracket e le sue API gratuite, senza lag e facili da usare, il Tournament Manager di ItalySmash usa %{link}."
         bracket_seeding: "Bracket seeding"
         bracket_seeding_body1: "Il seeding iniziale viene effettuato generando un elenco di giocatori ordinati per abilità da tutti i dati presenti su ItalySmash:"
-        bracket_seeding_body2: "Il seeding finale è fatto manualmente da un TO".
+        bracket_seeding_body2: "Il seeding finale è fatto manualmente da un TO"
       results:
         title: "Risultati"
-        results_body: "Oltre ai risultati (punteggi delle partite e classifiche) dei tornei interni a ItalySmash Tournament Manager, ItalySmash è in grado di ottenere anche i risultati di tutti gli altri tornei in Italia. L'unica condizione è che il torneo sia stato importato su braacket.com nella lega %{link}".
+        results_body: "Oltre ai risultati (punteggi delle partite e classifiche) dei tornei interni a ItalySmash Tournament Manager, ItalySmash è in grado di ottenere anche i risultati di tutti gli altri tornei in Italia. L'unica condizione è che il torneo sia stato importato su braacket.com nella lega %{link}"
         ranking_system: "Sistema di punteggio"
         ranking_system_body: "Indipendentemente dal numero di partecipanti per torneo, la classifica dei giocatori alla fine del torneo decide l'ammontare dei punti ricevuti."
-        ranking_system_rank: "Classifica".
+        ranking_system_rank: "Classifica"
         ranking_system_points: "Punti"
       contact:
         title: "Scrivimi un messaggio"
         submit: "Invia"
-        name: "Il tuo nome o la tua etichetta giocatore".
-        email: "Il tuo indirizzo e-mail".
-        body: "Il tuo messaggio".
+        name: "Il tuo nome o la tua etichetta giocatore"
+        email: "Il tuo indirizzo e-mail"
+        body: "Il tuo messaggio"
       partners:
         title: "Partner"
         sites: "Siti dei partner"
-    # uk:
-    #   title: "Information"
-    #   title_short: "Infos"
-    #   general:
-    #     title: "General"
-    #     uksmash: |
-    #       This website was created to provide an overview of the Super Smash Bros. Ultimate scene in the UK & Ireland and to provide an entry point for new players to find their way into their local smash community.<br><br>
-    #       In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-    #       The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK & Ireland that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in the UK & Ireland from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On SmashUltimate.uk created weekly tournament"
-    #     calendar_internal: "Internal -> On SmashUltimate.uk created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   power_ranking:
-    #     title: "Power Ranking"
-    #     power_ranking: "Power Ranking (PR)"
-    #     power_ranking_body: "The UK & Ireland PR is published biannually with each season generally lasting 6 months.<br>As a basis for the rankings, there is a live ranking spreadsheet known as the Boma Rankings (%{link}). The PR Panel, which is formed of experienced TOs and players as representatives of each region, determine the PR at the end of each season."
-    #     link_title: "BomasUKRankings"
-    #     link: "https://bit.ly/BomasUKRankings"
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "SmashUltimate.uk contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.uk Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi SmashUltimate.uk\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.uk Tournament Manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashUltimate.uk:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the SmashUltimate.uk Tournament Manager internal tournaments, SmashUltimate.uk is also able to get the results from all other tournaments in the UK & Ireland. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
-    #     media: "Media"
-    # pt:
-    #   title: "Information"
-    #   title_short: "Infos"
-    #   general:
-    #     title: "General"
-    #     ptsmash: |
-    #       This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Portugal and to provide an entry point for new players to find their way into their local smash community.<br><br>
-    #       In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
-    #       The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
-    #   calendar:
-    #     title: "Calendar"
-    #     tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, Smash Bros. Portugal is able to find and list all the SSBU tournaments in Portugal that were added to either one of the following sites:"
-    #     calendar_body: "The calendar shows all found SSBU tournaments in Portugal from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
-    #     calendar_weekly: "Weekly -> On Smash Bros. Portugal created weekly tournament"
-    #     calendar_internal: "Internal -> On Smash Bros. Portugal created tournament"
-    #     calendar_external: "External -> On an external site created tournament"
-    #   power_ranking:
-    #     title: "Power Ranking"
-    #     power_ranking: "Power Ranking (PR)"
-    #     power_ranking_body: "The power ranking PT uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality."
-    #   tournament_manager:
-    #     title: "Tournament manager"
-    #     tournament_organiser: "Tournament organiser"
-    #     tournament_organiser_body: "Smash Bros. Portugal contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the Smash Bros. Portugal Tournament Manager? Just add the TO role to your profile!"
-    #     tournament_organiser_mail: "via email"
-    #     tournament_organiser_mail_subject: "I would like to be an administrator!"
-    #     tournament_organiser_mail_body: "Hi Smash Bros. Portugal\n\nI'm ??? and I would like to be an administrator because:\n???"
-    #     bracket_tool: "Bracket tool"
-    #     bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the Smash Bros. Portugal Tournament Manager uses %{link}."
-    #     bracket_seeding: "Bracket seeding"
-    #     bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on Smash Bros. Portugal:"
-    #     bracket_seeding_body2: "The final seeding is done manually by a TO."
-    #   results:
-    #     title: "Results"
-    #     results_body: "Besides the results (match scores and rankings) of the Smash Bros. Portugal Tournament Manager internal tournaments, Smash Bros. Portugal is also able to get the results from all other tournaments in Portugal. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
-    #     ranking_system: "Scoring system"
-    #     ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
-    #     ranking_system_rank: "Rank"
-    #     ranking_system_points: "Points"
-    #   contact:
-    #     title: "Write me a message"
-    #     submit: "Submit"
-    #     name: "Your name or gamer tag"
-    #     email: "Your email"
-    #     body: "Your message"
-    #   partners:
-    #     title: "Partners"
-    #     sites: "Partners sites"
+    uk:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        uksmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in the UK & Ireland and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, SmashUltimate.uk is able to find and list all the SSBU tournaments in the UK & Ireland that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in the UK & Ireland from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On SmashUltimate.uk created weekly tournament"
+        calendar_internal: "Internal -> On SmashUltimate.uk created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "The UK & Ireland PR is published biannually with each season generally lasting 6 months.<br>As a basis for the rankings, there is a live ranking spreadsheet known as the Boma Rankings (%{link}). The PR Panel, which is formed of experienced TOs and players as representatives of each region, determine the PR at the end of each season."
+        link_title: "BomasUKRankings"
+        link: "https://bit.ly/BomasUKRankings"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "SmashUltimate.uk contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashUltimate.uk Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi SmashUltimate.uk\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashUltimate.uk Tournament Manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashUltimate.uk:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the SmashUltimate.uk Tournament Manager internal tournaments, SmashUltimate.uk is also able to get the results from all other tournaments in the UK & Ireland. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
+        media: "Media"
+    pt:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        ptsmash: |
+          This website was created to provide an overview of the Super Smash Bros. Ultimate scene in Portugal and to provide an entry point for new players to find their way into their local smash community.<br><br>
+          In addition, the website offers a tournament manager who provides tournament organizers (TOs) with a simple tool for managing tournaments.<br><br>
+          The page was created from the template by %{swisssmash_link} and is primarily maintained by: %{Yomi} (developer).
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and a self written %{link} program, that runs once every night, Smash Bros. Portugal is able to find and list all the SSBU tournaments in Portugal that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in Portugal from two weeks ago and four months into the future. It distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On Smash Bros. Portugal created weekly tournament"
+        calendar_internal: "Internal -> On Smash Bros. Portugal created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "The power ranking PT uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality."
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "Smash Bros. Portugal contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the Smash Bros. Portugal Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi Smash Bros. Portugal\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the Smash Bros. Portugal Tournament Manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on Smash Bros. Portugal:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the Smash Bros. Portugal Tournament Manager internal tournaments, Smash Bros. Portugal is also able to get the results from all other tournaments in Portugal. The only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
 
   calendar:
     title: "Calendario"
@@ -911,71 +911,71 @@ it:
       confirm: "Puoi confermare l'email del tuo account attraverso il link sottostante:"
       confirm_account: "Conferma il mio account"
       hello: "Ciao"
-      change_pw_request: "Qualcuno ha richiesto un link per cambiare la password. È possibile farlo attraverso il link sottostante".
-      change_my_pw: "Cambia la mia password".
-      change_pw_ignore: "Se non l'avete richiesto, ignorate questa e-mail".
-      pw_wont_change: "La tua password non cambierà finché non accederai al link qui sopra e ne creerai una nuova".
-      account_locked: "Il vostro account è stato bloccato a causa di un numero eccessivo di tentativi di accesso non riusciti".
+      change_pw_request: "Qualcuno ha richiesto un link per cambiare la password. È possibile farlo attraverso il link sottostante"
+      change_my_pw: "Cambia la mia password"
+      change_pw_ignore: "Se non l'avete richiesto, ignorate questa e-mail"
+      pw_wont_change: "La tua password non cambierà finché non accederai al link qui sopra e ne creerai una nuova"
+      account_locked: "Il vostro account è stato bloccato a causa di un numero eccessivo di tentativi di accesso non riusciti"
       unlock_account: "Cliccate sul link qui sotto per sbloccare il vostro account:"
       unlock_my_account: "Sblocca il mio account"
     password:
       title: "Cambia la tua password"
       new_pw: "Nuova password"
-      chars_min: "Caratteri minimi".
+      chars_min: "Caratteri minimi"
       confirm: "Conferma la nuova password"
-      change_my_pw: "Cambia la mia password".
-      title_forgot: "Hai dimenticato la password?".
+      change_my_pw: "Cambia la mia password"
+      title_forgot: "Hai dimenticato la password?"
       reset_pw: "Inviatemi le istruzioni per reimpostare la password"
     sessions:
       forgot_pw: "Hai dimenticato la password?"
     share:
       log_in: "Accedi"
       sign_up: "Registrati"
-      forgot_pw: "Hai dimenticato la password?".
-      no_conf_inst: "Non hai ricevuto le istruzioni di conferma?".
-      no_unlock_inst: "Non hai ricevuto le istruzioni per lo sblocco?".
+      forgot_pw: "Hai dimenticato la password?"
+      no_conf_inst: "Non hai ricevuto le istruzioni di conferma?"
+      no_unlock_inst: "Non hai ricevuto le istruzioni per lo sblocco?"
       log_in_with: "Accedi con"
     unlocks:
       title: "Invia nuovamente le istruzioni di sblocco"
       resend_unlock_inst: "Invia nuovamente le istruzioni di sblocco"
 
-  # news:
-  #   title: "News"
-  #   post_title: "Title"
-  #   teaser: "Teaser"
-  #   text: "Text"
-  #   post: "Post"
-  #   update: "Update"
-  #   prohibited: "prohibited this news post from being saved:"
-  #   title_edit: "Editing news post"
-  #   creat_new: "Create a new news post"
-  #   new: "New news post"
-  #   updated_at: "Updated at:"
-  #   created_at: "Created at:"
-  #   created_by: "Created by:"
-  #   no_news_found: "No news found yet"
-  #   info_body: "To be able to create news, add the news editor role in your profile."
+  news:
+    title: "News"
+    post_title: "Title"
+    teaser: "Teaser"
+    text: "Text"
+    post: "Post"
+    update: "Update"
+    prohibited: "prohibited this news post from being saved:"
+    title_edit: "Editing news post"
+    creat_new: "Create a new news post"
+    new: "New news post"
+    updated_at: "Updated at:"
+    created_at: "Created at:"
+    created_by: "Created by:"
+    no_news_found: "No news found yet"
+    info_body: "To be able to create news, add the news editor role in your profile."
 
-  # feedback:
-  #   mailer:
-  #     thanks: "Thanks a lot for your feedback or question."
-  #     response: "You can check out my response by following %{link}."
-  #     this_link: "this link"
-  #     best_regards: "Best regards"
-  #   text: "Text"
-  #   admin_replied: "Administrator \"%{user}\" replied:"
-  #   prohibited: "prohibited this feedback from being saved:"
-  #   admin_response: "Administrator response"
-  #   feedback_or_question: "Feedback or Question"
-  #   title_edit: "Editing feedback or question"
-  #   let_us_know: "Let us know what you think of our tournaments or homepage and tell us if you're missing something, found a problem or have a question."
-  #   creat_new: "Create a new feedback or question"
-  #   admins: "Administrators"
-  #   new: "New feedback or question"
-  #   users_feedback: "%{user}'s feedback or question"
-  #   someones_feedback: "Someone's feedback or question"
-  #   updated_at: "Updated at:"
-  #   created_at: "Created at:"
+  feedback:
+    mailer:
+      thanks: "Thanks a lot for your feedback or question."
+      response: "You can check out my response by following %{link}."
+      this_link: "this link"
+      best_regards: "Best regards"
+    text: "Text"
+    admin_replied: "Administrator \"%{user}\" replied:"
+    prohibited: "prohibited this feedback from being saved:"
+    admin_response: "Administrator response"
+    feedback_or_question: "Feedback or Question"
+    title_edit: "Editing feedback or question"
+    let_us_know: "Let us know what you think of our tournaments or homepage and tell us if you're missing something, found a problem or have a question."
+    creat_new: "Create a new feedback or question"
+    admins: "Administrators"
+    new: "New feedback or question"
+    users_feedback: "%{user}'s feedback or question"
+    someones_feedback: "Someone's feedback or question"
+    updated_at: "Updated at:"
+    created_at: "Created at:"
 
   players:
     title: "Giocatori"
@@ -995,29 +995,29 @@ it:
     warnings: "Numero di avvisi"
     alternative_gamer_tags: "Tag alternativi per i giocatori"
     points: "Punti"
-    participations: "Partecipazioni": "Partecipazioni"
+    participations: "Partecipazioni"
     best_rank: "Migliore classifica"
     wins: "Vittorie"
-    losses: "Perdite": "Perdite".
+    losses: "Perdite"
     losses_shy: "Perdite"
-    # region_ch: "Canton"
-    # region_de: "Stato federale"
-    # region_fr: "Regione"
-    # region_lu: "Cantone"
+    region_ch: "Canton"
+    region_de: "Stato federale"
+    region_fr: "Regione"
+    region_lu: "Cantone"
     region_it: "Regione"
-    # region_uk: "Regione"
-    # region_pt: "Distretto"
+    region_uk: "Regione"
+    region_pt: "Distretto"
     gender: "Genere"
     gender_pronouns: "Pronomi di genere"
-    birth_year: "Anno di nascita".
-    self_assessment: "Autovalutazione": "Autovalutazione".
-    self_assessment_shy: "Autovalutazione".
-    tournament_experience: "Esperienza nei tornei".
-    main_characters: "Personaggi principali".
-    main_character_skins: "Pelli dei personaggi".
-    up_to_three: "(è possibile selezionarne fino a tre)".
+    birth_year: "Anno di nascita"
+    self_assessment: "Autovalutazione"
+    self_assessment_shy: "Autovalutazione"
+    tournament_experience: "Esperienza nei tornei"
+    main_characters: "Personaggi principali"
+    main_character_skins: "Pelli dei personaggi"
+    up_to_three: "(è possibile selezionarne fino a tre)"
     comment: "Commento"
-    for_what_ever: "(per qualsiasi cosa tu voglia dire al mondo)".
+    for_what_ever: "(per qualsiasi cosa tu voglia dire al mondo)"
     update_profile: "Aggiorna profilo"
     edit: "Modifica profilo"
     stats: "Statistiche"
@@ -1026,58 +1026,58 @@ it:
     mains: "Mains"
     xp: "XP"
     age: "Età"
-    no_players_found: "Nessun giocatore trovato".
-    win_loss: "Vittoria/Perdita".
-    experience: "Esperienza".
-    tournaments: "Tornei".
-    joined_tournaments: "Tornei iscritti".
+    no_players_found: "Nessun giocatore trovato"
+    win_loss: "Vittoria/Perdita"
+    experience: "Esperienza"
+    tournaments: "Tornei"
+    joined_tournaments: "Tornei iscritti"
     joined_tournament_at: "At"
     past_tournaments: "Tornei passati"
     videos: "Video"
     individuals: "Elenco"
     teams: "Squadre"
-    joined_teams: "Squadre iscritte".
+    joined_teams: "Squadre iscritte"
     role: "Ruolo"
     roles: "Ruoli"
 
   statistics:
     title: "Panoramica"
-    title2: "Panoramica dei giocatori".
-    count_total: "Totale giocatori registrati".
+    title2: "Panoramica dei giocatori"
+    count_total: "Totale giocatori registrati"
     in_2019: "nel 2019"
     in_2020: "nel 2020"
     in_2021: "nel 2021"
-    in_2022: "nel 2022".
-    male: "Maschio".
+    in_2022: "nel 2022"
+    male: "Maschio"
     female: "Femmina"
     other: "altro"
     youngest: "Il più giovane"
     mean-age: "Ø età"
     oldest: "Più vecchio"
-    # region_ch: "Cantone"
-    # region_de: "Stato federale"
-    # region_fr: "Regione"
-    # region_lu: "Cantone"
+    region_ch: "Cantone"
+    region_de: "Stato federale"
+    region_fr: "Regione"
+    region_lu: "Cantone"
     region_it: "Regione"
-    # region_uk: "Regione"
-    # region_pt: "Distretto"
-    number_of_players: "Numero di giocatori".
-    character: "Personaggio".
+    region_uk: "Regione"
+    region_pt: "Distretto"
+    number_of_players: "Numero di giocatori"
+    character: "Personaggio"
     player_activity: "Attività del giocatore"
-    active: "Attivo".
-    inactive: "Inattivo".
+    active: "Attivo"
+    inactive: "Inattivo"
     days: "giorni"
-    when_active: "(Attivo quando si è iscritto ad almeno un torneo)".
+    when_active: "(Attivo quando si è iscritto ad almeno un torneo)"
 
   rankings:
     title: "Classifiche"
-    official_power_ranking: "Classifiche ufficiali".
-    tournament_specific: "Torneo specifico".
-    region_specific: "Regione specifica".
+    official_power_ranking: "Classifiche ufficiali"
+    tournament_specific: "Torneo specifico"
+    region_specific: "Regione specifica"
     filter:
-      overall: "Generale".
+      overall: "Generale"
       seed_points: "Punti seme"
-      note: "(Nota: solo i giocatori registrati su questo sito appariranno in queste classifiche)".
+      note: "(Nota: solo i giocatori registrati su questo sito appariranno in queste classifiche)"
     no_players_found: "Nessun giocatore trovato"
     s1_19:
       title: "S1 2019"
@@ -1091,240 +1091,240 @@ it:
       considered_tournaments: "Considerati ma ritenuti non ammissibili:"
     s1_20:
       title: "2020"
-      no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2020".
+      no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2020"
     s1_21:
       title: "2021"
-      no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2021".
+      no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2021"
       top10: "Top 10:"
       details:
         title: "Dettagli"
-        text1: "Puoi trovare maggiori informazioni sui giocatori del PR %{link}".
-        text2: "È possibile trovare una spiegazione dettagliata di come è stato calcolato il PR %{link}".
+        text1: "Puoi trovare maggiori informazioni sui giocatori del PR %{link}"
+        text2: "È possibile trovare una spiegazione dettagliata di come è stato calcolato il PR %{link}"
     s1_22:
       title: "S1 2022"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2023"
       top15: "Top 15:"
       details:
         title: "Dettagli"
-        text1: "Potete trovare ulteriori informazioni sui giocatori PR %{link}".
+        text1: "Potete trovare ulteriori informazioni sui giocatori PR %{link}"
         text2: "Alcune parole sulla competizione PR Level del 2022 e sui secondi classificati sono disponibili %{link}."
     s2_22:
       title: "S2 2022"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2023"
-    # region_nrw:
-    #   title: "NRW"
-    # region_hessen:
-    #   title: "Hessen"
-    # region_berlin:
-    #   title: "Berlin"
-    # region_nds:
-    #   title: "NDS"
-    # region_norden:
-    #   title: "North"
-    # region_osten:
-    #   title: "East"
-    # region_bawu:
-    #   title: "BaWü"
-    # region_bayern:
-    #   title: "Bavaria"
-    # region_east_of_england:
-    #   title: "East of England"
-    # region_ireland:
-    #   title: "Ireland"
-    # region_london:
-    #   title: "London"
-    # region_midlands:
-    #   title: "Midlands"
-    # region_north_east:
-    #   title: "North East"
-    # region_north_west:
-    #   title: "North West"
-    # region_northern_ireland:
-    #   title: "Northern Ireland"
-    # region_scotland:
-    #   title: "Scotland"
-    # region_south_east:
-    #   title: "South East"
-    # region_south_west:
-    #   title: "South West"
-    # region_wales:
-    #   title: "Wales"
-    # region_yorkshire_and_the_humber:
-    #   title: "Yorkshire and the Humber"
+    region_nrw:
+      title: "NRW"
+    region_hessen:
+      title: "Hessen"
+    region_berlin:
+      title: "Berlin"
+    region_nds:
+      title: "NDS"
+    region_norden:
+      title: "North"
+    region_osten:
+      title: "East"
+    region_bawu:
+      title: "BaWü"
+    region_bayern:
+      title: "Bavaria"
+    region_east_of_england:
+      title: "East of England"
+    region_ireland:
+      title: "Ireland"
+    region_london:
+      title: "London"
+    region_midlands:
+      title: "Midlands"
+    region_north_east:
+      title: "North East"
+    region_north_west:
+      title: "North West"
+    region_northern_ireland:
+      title: "Northern Ireland"
+    region_scotland:
+      title: "Scotland"
+    region_south_east:
+      title: "South East"
+    region_south_west:
+      title: "South West"
+    region_wales:
+      title: "Wales"
+    region_yorkshire_and_the_humber:
+      title: "Yorkshire and the Humber"
 
   forum:
     title: "Forum"
 
   rules:
     title: "Regole"
-    # ch:
-    #   general_rules:
-    #     title_short: "General"
-    #     title: "General rules"
-    #     body: "So that we can continue playing tournaments in the found locations, we all have to follow some common sense rules. If any of these rules are broken the host has the right to throw out and ban any player without further explanation."
-    #     li1: "Smoking indoors is prohibited"
-    #     li2: "Take care of all used hard- and software, the furnishings and other inventory. If you break something, report it to the host"
-    #     li3: "Be friendly and helpful to all participants"
-    #     li4: "Follow the instructions of the host. A hosts word is law"
-    #     li5: "Physical fights will not be tolerated"
-    #     li6: "Thieving will not be tolerated"
-    #   tournament_rules:
-    #     title_short: "Tournaments"
-    #     title: "SSBU tournament rules"
-    #     li1: "The registrations fee must be payed on site before the tournament games begin"
-    #     li2: "If you come too late (>15min) to a tournament or a match, you will be disqualified"
-    #     li3: "Bring your own controller (and it's extras)"
-    #     li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
-    #     li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
-    #   match_rules:
-    #     title_short: "Rulesets"
-    #     title: "SSBU match rules (Rulesets)"
-    #     body: "For now the Dutch or the Mirakuru ruleset is used in most of the official Swiss tournaments"
-    #     overview_dutch: "Overview Dutch ruleset:"
-    #     overview_dutch_by_tadavidid: "Overview Dutch ruleset (by TaDavidID):"
-    #     overview: "Overview Mirakuru ruleset:"
-    #     li1: "1 vs. 1"
-    #     li2: "Best of 3 (Final matches: Best of 5)"
-    #     li3: "3 stocks per game"
-    #     li4: "7 min per game"
-    #     li5: "No items"
-    #     li6: "Pause: Off"
-    #     li7: "Stage hazards: Off"
-    #     li8: "The winner of a match is obligated to report the results to an administrator"
-    #     complete_mirakuru: "The complete ruleset can be found"
-    #     here: "here"
-    # de:
-    #   general_rules:
-    #     title_short: "Conduct"
-    #     body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-    #     ul: "Some (hopefully self-evident) rules are as follows:"
-    #     li1: "Adhere to the rules of common sense and the law in Germany."
-    #     li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-    #     li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-    #     li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-    #     li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-    #     li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-    #     li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-    #     li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
-    #   match_rules:
-    #     title_short: "Ruleset"
-    #     body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Germany. Please find out which rules are being used before each event."
-    # fr:
-    #   general_rules:
-    #     title_short: "Conduct"
-    #     body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-    #     ul: "Some (hopefully self-evident) rules are as follows:"
-    #     li1: "Adhere to the rules of common sense and the law in France."
-    #     li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-    #     li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-    #     li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-    #     li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-    #     li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-    #     li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-    #     li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
-    #   match_rules:
-    #     title_short: "Ruleset"
-    #     body: "The following Ruleset is used at most tournaments in France. Please find out which rules are being used before each event."
-    #     complete: "You can find the complete ruleset %{link}"
-    #     here: "here"
-    # lu:
-    #   general_rules:
-    #     title_short: "Conduct"
-    #     body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-    #     ul: "Some (hopefully self-evident) rules are as follows:"
-    #     li1: "Adhere to the rules of common sense and the law in Luxemburg."
-    #     li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-    #     li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-    #     li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-    #     li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-    #     li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-    #     li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-    #     li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
-    #   match_rules:
-    #     title_short: "Ruleset"
-    #     body: "The Luxembourgish SSBU Ruleset is used at most tournaments in Luxembourg. Please find out which rules are being used before each event."
+    ch:
+      general_rules:
+        title_short: "General"
+        title: "General rules"
+        body: "So that we can continue playing tournaments in the found locations, we all have to follow some common sense rules. If any of these rules are broken the host has the right to throw out and ban any player without further explanation."
+        li1: "Smoking indoors is prohibited"
+        li2: "Take care of all used hard- and software, the furnishings and other inventory. If you break something, report it to the host"
+        li3: "Be friendly and helpful to all participants"
+        li4: "Follow the instructions of the host. A hosts word is law"
+        li5: "Physical fights will not be tolerated"
+        li6: "Thieving will not be tolerated"
+      tournament_rules:
+        title_short: "Tournaments"
+        title: "SSBU tournament rules"
+        li1: "The registrations fee must be payed on site before the tournament games begin"
+        li2: "If you come too late (>15min) to a tournament or a match, you will be disqualified"
+        li3: "Bring your own controller (and it's extras)"
+        li4: "If not otherwise defined, Double Elimination Matches will be played (if you lose two matches you're out of the tournament)"
+        li5: "Unused tournament game stations (setups) can be used for friendly matches as soon as a host allowed it"
+      match_rules:
+        title_short: "Rulesets"
+        title: "SSBU match rules (Rulesets)"
+        body: "For now the Dutch or the Mirakuru ruleset is used in most of the official Swiss tournaments"
+        overview_dutch: "Overview Dutch ruleset:"
+        overview_dutch_by_tadavidid: "Overview Dutch ruleset (by TaDavidID):"
+        overview: "Overview Mirakuru ruleset:"
+        li1: "1 vs. 1"
+        li2: "Best of 3 (Final matches: Best of 5)"
+        li3: "3 stocks per game"
+        li4: "7 min per game"
+        li5: "No items"
+        li6: "Pause: Off"
+        li7: "Stage hazards: Off"
+        li8: "The winner of a match is obligated to report the results to an administrator"
+        complete_mirakuru: "The complete ruleset can be found"
+        here: "here"
+    de:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in Germany."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Germany. Please find out which rules are being used before each event."
+    fr:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in France."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The following Ruleset is used at most tournaments in France. Please find out which rules are being used before each event."
+        complete: "You can find the complete ruleset %{link}"
+        here: "here"
+    lu:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in Luxemburg."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The Luxembourgish SSBU Ruleset is used at most tournaments in Luxembourg. Please find out which rules are being used before each event."
     it:
       general_rules:
         title_short: "Condotta"
-        body: "Ogni torneo ha il suo regolamento interno e le sue regole di condotta. In caso di dubbi, chiedete sempre all'organizzatore del torneo o all'organizzatore dell'evento".
+        body: "Ogni torneo ha il suo regolamento interno e le sue regole di condotta. In caso di dubbi, chiedete sempre all'organizzatore del torneo o all'organizzatore dell'evento"
         ul: "Alcune regole (si spera evidenti) sono le seguenti:"
-        li1: "Rispettare le regole del buon senso e della legge in Italia".
+        li1: "Rispettare le regole del buon senso e della legge in Italia"
         li2: "Trattare tutti i partecipanti con rispetto. Non saranno tollerati sessismo, razzismo, omofobia o transfobia, ostilità verso i disabili o discriminazione religiosa."
-        li3: "Ogni giocatore deve sentirsi al sicuro durante i tornei. Le molestie sessuali o la violenza fisica comporteranno l'immediata interdizione".
-        li4: "La maggior parte dei tornei è aperta anche ai giovani. Alcool e sigarette non devono essere messi a disposizione dei minori. Il consumo di sostanze illegali deve essere completamente evitato".
-        li5: "Il danneggiamento o il furto deliberato di proprietà altrui non sarà tollerato. Se accidentalmente danneggiate qualcosa o se notate qualcosa di sospetto, siete pregati di segnalarlo al padrone di casa".
-        li6: "L'imbroglio o altre manipolazioni del torneo sono dannose per la competizione e comporteranno gravi conseguenze".
+        li3: "Ogni giocatore deve sentirsi al sicuro durante i tornei. Le molestie sessuali o la violenza fisica comporteranno l'immediata interdizione"
+        li4: "La maggior parte dei tornei è aperta anche ai giovani. Alcool e sigarette non devono essere messi a disposizione dei minori. Il consumo di sostanze illegali deve essere completamente evitato"
+        li5: "Il danneggiamento o il furto deliberato di proprietà altrui non sarà tollerato. Se accidentalmente danneggiate qualcosa o se notate qualcosa di sospetto, siete pregati di segnalarlo al padrone di casa"
+        li6: "L'imbroglio o altre manipolazioni del torneo sono dannose per la competizione e comporteranno gravi conseguenze"
         li7: "In caso di violazione delle regole, l'organizzatore ha sempre il diritto di escludere qualsiasi giocatore dall'evento senza ulteriori discussioni."
-        li8: "A seconda della situazione di Covid-19 e del concetto di protezione dell'evento, esistono diverse regole di Corona. Attenetevi ad esse in ogni momento".
+        li8: "A seconda della situazione di Covid-19 e del concetto di protezione dell'evento, esistono diverse regole di Corona. Attenetevi ad esse in ogni momento"
       match_rules:
         title_short: "Regolamento"
-        body: "Il "Regolamento Smash Ultimate Italiano" è utilizzato nella maggior parte dei tornei in Italia. Informati sulle regole utilizzate prima di ogni evento."
+        body: "Il \"Regolamento Smash Ultimate Italiano\" è utilizzato nella maggior parte dei tornei in Italia. Informati sulle regole utilizzate prima di ogni evento."
         complete: "Puoi trovare il regolamento completo %{link}"
         here: "qui"
-    # uk:
-    #   general_rules:
-    #     title_short: "Conduct"
-    #     body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-    #     ul: "Some (hopefully self-evident) rules are as follows:"
-    #     li1: "Adhere to the rules of common sense and the law in the UK & Ireland."
-    #     li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-    #     li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-    #     li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-    #     li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-    #     li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-    #     li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-    #     li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
-    #   match_rules:
-    #     title_short: "Ruleset"
-    #     body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
-    # pt:
-    #   general_rules:
-    #     title_short: "Conduct"
-    #     body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
-    #     ul: "Some (hopefully self-evident) rules are as follows:"
-    #     li1: "Adhere to the rules of common sense and the law in the Portugal."
-    #     li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
-    #     li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
-    #     li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
-    #     li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
-    #     li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
-    #     li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
-    #     li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
-    #   match_rules:
-    #     title_short: "Ruleset"
-    #     body: "The GUIA/Stagelist is used at most tournaments in the Portugal. Please find out which rules are being used before each event."
+    uk:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in the UK & Ireland."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
+    pt:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in the Portugal."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The GUIA/Stagelist is used at most tournaments in the Portugal. Please find out which rules are being used before each event."
 
   tournaments:
     title: "Tornei"
     mailer:
-      # new_external_ch: "A new external tournament was added to the SwissSmash Tournament Manager."
-      # new_tournament_ch: "A new tournament was added to the SwissSmash Tournament Manager."
-      # new_weekly_ch: "One or more weeklies were added to the SwissSmash Tournament Manager. Here are the data of the first:"
-      # new_external_de: "A new external tournament was added to the GermanySmash Tournament Manager."
-      # new_tournament_de: "A new tournament was added to the GermanySmash Tournament Manager."
-      # new_weekly_de: "One or more weeklies were added to the GermanySmash Tournament Manager. Here are the data of the first:"
-      # new_external_fr: "A new external tournament was added to the SmashUltimate.fr Tournament Manager."
-      # new_tournament_fr: "A new tournament was added to the SmashUltimate.fr Tournament Manager."
-      # new_weekly_fr: "One or more weeklies were added to the SmashUltimate.fr Tournament Manager. Here are the data of the first:"
-      # new_external_lu: "A new external tournament was added to the LuxSmash Tournament Manager."
-      # new_tournament_lu: "A new tournament was added to the LuxSmash Tournament Manager."
-      # new_weekly_lu: "One or more weeklies were added to the LuxSmash Tournament Manager. Here are the data of the first:"
+      new_external_ch: "A new external tournament was added to the SwissSmash Tournament Manager."
+      new_tournament_ch: "A new tournament was added to the SwissSmash Tournament Manager."
+      new_weekly_ch: "One or more weeklies were added to the SwissSmash Tournament Manager. Here are the data of the first:"
+      new_external_de: "A new external tournament was added to the GermanySmash Tournament Manager."
+      new_tournament_de: "A new tournament was added to the GermanySmash Tournament Manager."
+      new_weekly_de: "One or more weeklies were added to the GermanySmash Tournament Manager. Here are the data of the first:"
+      new_external_fr: "A new external tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_tournament_fr: "A new tournament was added to the SmashUltimate.fr Tournament Manager."
+      new_weekly_fr: "One or more weeklies were added to the SmashUltimate.fr Tournament Manager. Here are the data of the first:"
+      new_external_lu: "A new external tournament was added to the LuxSmash Tournament Manager."
+      new_tournament_lu: "A new tournament was added to the LuxSmash Tournament Manager."
+      new_weekly_lu: "One or more weeklies were added to the LuxSmash Tournament Manager. Here are the data of the first:"
       new_external_it: "È stato aggiunto un nuovo torneo esterno al Tournament Manager di ItalySmash.it."
       new_tournament_it: "Un nuovo torneo è stato aggiunto al Tournament Manager di ItalySmash.it."
       new_weekly_it: "Uno o più settimanali sono stati aggiunti al Tournament Manager di ItalySmash.it. Ecco i dati del primo:"
-      # new_external_uk: "A new external tournament was added to the SmashUltimate.uk Tournament Manager."
-      # new_tournament_uk: "A new tournament was added to the SmashUltimate.uk Tournament Manager."
-      # new_weekly_uk: "One or more weeklies were added to the SmashUltimate.uk Tournament Manager. Here are the data of the first:"
-      # new_external_pt: "A new external tournament was added to the Smash Bros. Portugal Tournament Manager."
-      # new_tournament_pt: "A new tournament was added to the Smash Bros. Portugal Tournament Manager."
-      # new_weekly_pt: "One or more weeklies were added to the Smash Bros. Portugal Tournament Manager. Here are the data of the first:"
-      too_few_registrations: "A causa di un numero insufficiente di iscrizioni o per altri motivi, un amministratore ha annullato il torneo \"<strong>%{tournament}</strong>\"."
+      new_external_uk: "A new external tournament was added to the SmashUltimate.uk Tournament Manager."
+      new_tournament_uk: "A new tournament was added to the SmashUltimate.uk Tournament Manager."
+      new_weekly_uk: "One or more weeklies were added to the SmashUltimate.uk Tournament Manager. Here are the data of the first:"
+      new_external_pt: "A new external tournament was added to the Smash Bros. Portugal Tournament Manager."
+      new_tournament_pt: "A new tournament was added to the Smash Bros. Portugal Tournament Manager."
+      new_weekly_pt: "One or more weeklies were added to the Smash Bros. Portugal Tournament Manager. Here are the data of the first:"
+      too_few_registrations: "A causa di un numero insufficiente di iscrizioni o per altri motivi, un amministratore ha annullato il torneo \"<strong>%{tournament}</strong>\""
       player_left_tournament: "Poiché un giocatore ha appena abbandonato il torneo e tu eri il primo della lista d'attesa, ora sei iscritto a questo torneo."
       name: "Nome:"
       date: "Data:"
       fee: "Quota di iscrizione:"
       location: "Posizione:"
-      to_check_out: "Per controllare questo torneo, basta seguire il %{link}".
+      to_check_out: "Per controllare questo torneo, basta seguire il %{link}"
       to_check_out2: "Per verificare questo torneo, basta seguire il link:"
       to_join: "Per partecipare a questo torneo, basta seguire il %{link} e cliccare sul pulsante."
       to_join2: "Per partecipare a questo torneo, basta seguire il link e cliccare sul pulsante:"
@@ -1462,37 +1462,37 @@ it:
 
   communities:
     title: "Comunità"
-    # title_pt: "Districs"
-    # body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
-    # nds:
-    #   title: "#NDS"
-    #   text: "The NDS region consists of the following federal states: Lower Saxony & Bremen"
-    # nrw:
-    #   title: "#NRW"
-    #   text: "The NRW region consists of the following federal states: Northrhine-Westphalia"
-    # hessen:
-    #   title: "#Hesse"
-    #   text: "The Hesse region consists of the following federal states: Hesse, Rhineland Palatinate & Saarland"
-    # bawu:
-    #   title: "#BaWü"
-    #   text: "The BaWü region consists of the following federal states: Baden-Württemberg"
-    # norden:
-    #   title: "#North"
-    #   text: "The North region consists of the following federal states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
-    # berlin:
-    #   title: "#Berlin"
-    #   text: "The Berlin region consists of the following federal states: Brandenburg & Berlin"
-    # osten:
-    #   title: "#East"
-    #   text: "The East region consists of the following federal states: Saxony, Saxony-Anhalt & Thuringia"
-    # bayern:
-    #   title: "#Bavaria"
-    #   text: "The Bavaria region consists of the following federal states: Bavaria"
+    title_pt: "Districs"
+    body: "The German SSBU Community can be roughly divided into eight regions. Click on a federal state to find out more about the associated region."
+    nds:
+      title: "#NDS"
+      text: "The NDS region consists of the following federal states: Lower Saxony & Bremen"
+    nrw:
+      title: "#NRW"
+      text: "The NRW region consists of the following federal states: Northrhine-Westphalia"
+    hessen:
+      title: "#Hesse"
+      text: "The Hesse region consists of the following federal states: Hesse, Rhineland Palatinate & Saarland"
+    bawu:
+      title: "#BaWü"
+      text: "The BaWü region consists of the following federal states: Baden-Württemberg"
+    norden:
+      title: "#North"
+      text: "The North region consists of the following federal states: Schleswig Holstein, Hamburg & Mecklenburg Western Pomerania"
+    berlin:
+      title: "#Berlin"
+      text: "The Berlin region consists of the following federal states: Brandenburg & Berlin"
+    osten:
+      title: "#East"
+      text: "The East region consists of the following federal states: Saxony, Saxony-Anhalt & Thuringia"
+    bayern:
+      title: "#Bavaria"
+      text: "The Bavaria region consists of the following federal states: Bavaria"
     ranking: "I migliori giocatori della regione si trovano qui:"
-    # body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
+    body_fr: "The France SSBU Community can be roughly divided into 13 regions. Click on a region to find out more about the associated communities."
     body_it: "La Comunità SSBU Italia può essere suddivisa in 20 regioni. Cliccate su una regione per saperne di più sulle comunità associate."
-    # body_uk: "The UK & Ireland SSBU Community can be divided into 12 regions. Click on a region to find out more about the associated communities."
-    # body_pt: "The Portugal SSBU Community can be divided into 20 districs. Click on a district to find out more about the associated communities."
+    body_uk: "The UK & Ireland SSBU Community can be divided into 12 regions. Click on a region to find out more about the associated communities."
+    body_pt: "The Portugal SSBU Community can be divided into 20 districs. Click on a district to find out more about the associated communities."
     new: "Nuova comunità"
     edit: "Modifica della comunità"
     prohibited: "ha impedito a questa comunità di essere salvata:"
@@ -1513,13 +1513,13 @@ it:
 
   users:
     mailer:
-      # welcome_ch: "Welcome to the SwissSmash Tournament Manager"
-      # welcome_de: "Welcome to the GermanySmash Tournament Manager"
-      # welcome_fr: "Welcome to the SmashUltimate.fr Tournament Manager"
-      # welcome_lu: "Welcome to the LuxSmash Tournament Manager"
+      welcome_ch: "Welcome to the SwissSmash Tournament Manager"
+      welcome_de: "Welcome to the GermanySmash Tournament Manager"
+      welcome_fr: "Welcome to the SmashUltimate.fr Tournament Manager"
+      welcome_lu: "Welcome to the LuxSmash Tournament Manager"
       welcome_it: "Benvenuti nel Manager del torneo ItalySmash"
-      # welcome_uk: "Welcome to the SmashUltimate.uk Tournament Manager"
-      # welcome_pt: "Welcome to the Smash Bros. Portugal Tournament Manager"
+      welcome_uk: "Welcome to the SmashUltimate.uk Tournament Manager"
+      welcome_pt: "Welcome to the Smash Bros. Portugal Tournament Manager"
       signed_up: "L'iscrizione è avvenuta con successo. Il tuo nome utente è:"
       to_join: "Per partecipare ad alcuni tornei, basta seguire il %{link}."
       to_join2: "Per partecipare ad alcuni tornei, basta seguire questo link:"
@@ -1539,21 +1539,21 @@ it:
     challonge_api_key: "Chiave api Challonge (%{link})"
     wants_major_email: "Informatemi quando viene aggiunto un torneo importante"
     wants_weekly_email: "Informatemi quando viene aggiunto un torneo settimanale"
-    # allows_emails_from_swisssmash: "I agree that SwissSmash sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_ch: "I agree that partners of SwissSmash send me emails from time to time"
-    # allows_emails_from_germanysmash: "I agree that GermanySmash sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_de: "I agree that partners of GermanySmash send me emails from time to time"
-    # allows_emails_from_francesmash: "I agree that SmashUltimate.fr sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_fr: "I agree that partners of SmashUltimate.fr send me emails from time to time"
-    # allows_emails_from_luxsmash: "I agree that LuxSmash sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_lu: "I agree that partners of LuxSmash send me emails from time to time"
+    allows_emails_from_swisssmash: "I agree that SwissSmash sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_ch: "I agree that partners of SwissSmash send me emails from time to time"
+    allows_emails_from_germanysmash: "I agree that GermanySmash sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_de: "I agree that partners of GermanySmash send me emails from time to time"
+    allows_emails_from_francesmash: "I agree that SmashUltimate.fr sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_fr: "I agree that partners of SmashUltimate.fr send me emails from time to time"
+    allows_emails_from_luxsmash: "I agree that LuxSmash sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_lu: "I agree that partners of LuxSmash send me emails from time to time"
     allows_emails_from_italysmash: "Accetto che ItalySmash mi invii di tanto in tanto e-mail su argomenti importanti della comunità e annunci di grandi tornei."
     allows_emails_from_partners_it: "Accetto che i partner di ItalySmash mi inviino email di tanto in tanto"
-    # allows_emails_from_uksmash: "I agree that SmashUltimate.uk sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_uk: "I agree that partners of SmashUltimate.uk send me emails from time to time"
-    # allows_emails_from_portugalsmash: "I agree that Smash Bros. Portugal sends me emails about important community topics & big tournament announcements from time to time"
-    # allows_emails_from_partners_pt: "I agree that partners of Smash Bros. Portugal send me emails from time to time"
-    data_agreement: "<strong>(Campo obbligatorio)</strong> Accetto che i miei dati siano visibili pubblicamente tramite il mio profilo e che vengano utilizzati per le statistiche dei giocatori. I dati forniti possono essere modificati o cancellati in qualsiasi momento tramite \"Modifica profilo" o \"Account""
+    allows_emails_from_uksmash: "I agree that SmashUltimate.uk sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_uk: "I agree that partners of SmashUltimate.uk send me emails from time to time"
+    allows_emails_from_portugalsmash: "I agree that Smash Bros. Portugal sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_pt: "I agree that partners of Smash Bros. Portugal send me emails from time to time"
+    data_agreement: "<strong>(Campo obbligatorio)</strong> Accetto che i miei dati siano visibili pubblicamente tramite il mio profilo e che vengano utilizzati per le statistiche dei giocatori. I dati forniti possono essere modificati o cancellati in qualsiasi momento tramite \"Modifica profilo\" o \"Account\""
     data_agreement_text: "Il campo obbligatorio deve essere selezionato!"
     current_password: "Password attuale"
     enter_current_password: "(inserire la password attuale per confermare le modifiche)"
