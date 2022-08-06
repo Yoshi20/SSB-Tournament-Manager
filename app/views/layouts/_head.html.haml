@@ -1,17 +1,19 @@
 - if session['country_code'] == 'ch'
-  %title= @section.present? ? @section.capitalize : "SwissSmash.ch"
+  %title= "SwissSmash#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'de'
-  %title= @section.present? ? @section.capitalize : "GermanySmash.de"
+  %title= "GermanySmash#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'fr'
-  %title= @section.present? ? @section.capitalize : "SmashUltimate.fr"
+  %title= "SmashUltimateFr#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'lu'
-  %title= @section.present? ? @section.capitalize : "LuxSmash.lu"
+  %title= "LuxSmash#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'it'
-  %title= @section.present? ? @section.capitalize : "ItalySmash.it"
+  %title= "ItalySmash#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'uk'
-  %title= @section.present? ? @section.capitalize : "SmashUltimate.uk"
+  %title= "SmashUltimateUk#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'pt'
-  %title= @section.present? ? @section.capitalize : "SmashBrosPortugal.com"
+  %title= "SmashBrosPortugal#{@section.present? ? " | #{@section.capitalize}" : ""}"
+
+
 = display_meta_tags(default_meta_tags)
 %meta{:charset => "utf-8"}
 %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}
