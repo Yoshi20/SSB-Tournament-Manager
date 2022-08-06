@@ -133,7 +133,7 @@
               %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region, anchor: 'data')}
                 %td.text-center
                   .tooltip.tooltip_region
-                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', alt: "#{region} image", style: 'position: absolute; top: 10px;'
                     %span.tooltiptext
                       = t("defines.regions.#{region}")
                 %td.text-center
@@ -154,7 +154,7 @@
               %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region, anchor: 'data')}
                 %td.text-center
                   .tooltip.tooltip_region
-                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', alt: "#{region} image", style: 'position: absolute; top: 10px;'
                     %span.tooltiptext
                       = t("defines.regions.#{region}")
                 %td.text-center
@@ -182,7 +182,7 @@
                   %td.text-center
                     .main_char
                       .tooltip.tooltip_character
-                        = image_tag "characters/#{file}", height: '25px', width: '25px'
+                        = image_tag "characters/#{file}", height: '25px', width: '25px', alt: "#{file} icon"
                         %span.tooltiptext.tooltiptext_character
                           = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
                   %td.text-center
@@ -206,7 +206,7 @@
                   %td.text-center
                     .main_char
                       .tooltip.tooltip_character
-                        = image_tag "characters/#{file}", height: '25px', width: '25px'
+                        = image_tag "characters/#{file}", height: '25px', width: '25px', alt: "#{file} icon"
                         %span.tooltiptext.tooltiptext_character
                           = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
                   %td.text-center

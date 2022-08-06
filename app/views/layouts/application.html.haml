@@ -14,9 +14,9 @@
       .banner
         .banner__overlay
         - if session['country_code'] == 'uk'
-          = image_tag 'uk_banner.jpg', class: 'banner__image'
+          = image_tag 'uk_banner.jpg', alt: 'banner image', class: 'banner__image'
         - else
-          = image_tag 'banner.jpg', class: 'banner__image'
+          = image_tag 'banner.jpg', alt: 'banner image', class: 'banner__image'
         - if false #session['country_code'] == 'it'
           .wip
             = "This site is a \"Work In Progress\""
@@ -47,11 +47,11 @@
               - if session['country_code'] == 'ch' || session['country_code'] == 'de'
                 .sidebar{style: 'margin-top: 10px; padding: 0;'}
                   = link_to('https://www.start.gg/league/smash-contest-circuit', target: '_blank') do
-                    = image_tag 'smash_contest_circuit.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
+                    = image_tag 'smash_contest_circuit.jpg', height: '100%', width: '100%', alt: 'smash contest circuit image', style: 'border-radius: 0.365rem;'
               - elsif session['country_code'] == 'pt'
                 .sidebar{style: 'margin-top: 10px; padding: 0;'}
                   = link_to('https://www.start.gg/meiadeleite', target: '_blank') do
-                    = image_tag 'pt_meiadeleite.jpg', height: '100%', width: '100%', style: 'border-radius: 0.365rem;'
+                    = image_tag 'pt_meiadeleite.jpg', height: '100%', width: '100%', alt: 'meiadeleite image', style: 'border-radius: 0.365rem;'
               - else
                 .sidebar{style: 'margin-top: 10px; height: 200px; display: flex; text-align: center; align-items: center;'}
                   %p

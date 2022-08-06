@@ -1,5 +1,5 @@
 = link_to asset_url('rankings/ch/pr_21.jpg') do
-  = image_tag "rankings/ch/pr_21.jpg", width: '100%'
+  = image_tag "rankings/ch/pr_21.jpg", width: '100%', alt: "pr 2021 image"
 %br
 %br
 
@@ -21,7 +21,7 @@
         %div
           - ['isabelle'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -32,7 +32,7 @@
         %div
           - ['terry'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -43,7 +43,7 @@
         %div
           - ['wii_fit_trainer', 'bowser'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -54,7 +54,7 @@
         %div
           - ['joker'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -65,7 +65,7 @@
         %div
           - ['palutena'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -76,7 +76,7 @@
         %div
           - ['pac_man'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -88,7 +88,7 @@
         %div
           - ['joker', 'sephiroth', 'byleth'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -99,7 +99,7 @@
         %div
           - ['meta_knight', 'sora'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -110,7 +110,7 @@
         %div
           - ['luigi', 'wario'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -121,7 +121,7 @@
         %div
           - ['snake', 'chrom'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -132,7 +132,7 @@
         %div
           - ['toon_link'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -143,7 +143,7 @@
         %div
           - ['lucas'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 
@@ -154,7 +154,7 @@
         %div
           - ['pikachu'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
 

@@ -23,7 +23,7 @@
                   - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{CGI.escape(v_id)}&format=json").read)
                   .row{style: 'margin-bottom: 1rem;'}
                     .col-4{style: 'text-align: center;'}
-                      = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                      = link_to image_tag(video_info["thumbnail_url"], width: '100%', alt: 'youtube video thumbnail', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
                     .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
                       = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
                 - rescue => ex

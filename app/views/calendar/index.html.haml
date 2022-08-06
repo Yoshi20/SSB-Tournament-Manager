@@ -9,7 +9,7 @@
     .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
     - regions_raw_from(session['country_code']).each do |region|
       = link_to calendar_path(filter: region) do
-        = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+        = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
 = render 'calendar'
 

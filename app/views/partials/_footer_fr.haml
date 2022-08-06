@@ -7,7 +7,7 @@
 
   .col-2
     = button_tag '', title: 'Go to top', style: 'background-color: transparent; border: none;', class: 'scroll-top' do
-      = image_tag('fr_logo.jpg', class: 'francesmash_logo', height: '50px', width: '50px')
+      = image_tag('fr_logo.jpg', class: 'francesmash_logo', height: '50px', width: '50px', alt: 'SmashUltimateFr logo')
   .col-5
     .row
       .col
@@ -19,5 +19,5 @@
       .col
         %p#donate-btn
           = link_to("https://ko-fi.com/smashultimatefr", target: '_blank', class: "btn btn-default") do
-            = image_tag('ko-fi-cup.webp')
+            = image_tag('ko-fi-cup.webp', alt: 'ko-fi cup icon for donations')
             %span= t('please_donate')

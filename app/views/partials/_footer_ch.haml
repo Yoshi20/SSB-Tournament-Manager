@@ -13,7 +13,7 @@
           = link_to t('navigation.footer.contact'), informations_path(anchor: 'contact')
   .col-2
     = button_tag '', title: 'Go to top', style: 'background-color: transparent; border: none;', class: 'scroll-top' do
-      = image_tag('ch_logo.png', class: 'swisssmash_logo', height: '50px', width: '50px')
+      = image_tag('ch_logo.png', class: 'swisssmash_logo', height: '50px', width: '50px', alt: 'SwissSmash logo')
   .col-5
     .row
       .col
@@ -25,5 +25,5 @@
       .col
         %p#donate-btn
           = link_to("https://ko-fi.com/swisssmash", target: '_blank', class: "btn btn-sstm") do
-            = image_tag('ko-fi-cup.webp')
+            = image_tag('ko-fi-cup.webp', alt: 'ko-fi cup icon for donations')
             %span= t('please_donate')

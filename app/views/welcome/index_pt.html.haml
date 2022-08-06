@@ -20,12 +20,12 @@
       = link_to calendar_path do
         %p{style: 'margin-bottom: 0;'}
           %strong= t('tournaments.calendar')
-        = image_tag "Calendar_Logo.svg", class: 'welcome_image'
+        = image_tag "Calendar_Logo.svg", alt: 'Calendar logo welcome image', class: 'welcome_image'
     .col
       = link_to 'https://discord.gg/zKkNJgB', target: '_blank' do
         %p{style: 'margin-bottom: 0;'}
           %strong= "Discord"
-        = image_tag "Discord-Logo-Color.svg", class: 'welcome_image'
+        = image_tag "Discord-Logo-Color.svg", alt: 'Discord logo welcome image', class: 'welcome_image'
 %p
   = t('welcome.pt.body0')
 

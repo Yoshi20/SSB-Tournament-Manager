@@ -3,7 +3,7 @@
     .row{style: 'max-height: 50px;'}
       .col-2
         .icon
-          = image_tag("https://cdn.discordapp.com/icons/#{discord_invite["guild"]["id"]}/#{discord_invite["guild"]["icon"]}.png?size=64", height: '50px', width: '50px') if discord_invite["guild"].present?
+          = image_tag("https://cdn.discordapp.com/icons/#{discord_invite["guild"]["id"]}/#{discord_invite["guild"]["icon"]}.png?size=64", height: '50px', width: '50px', alt: "#{discord_invite["guild"]["name"]} discord invite image") if discord_invite["guild"].present?
       .col-7
         .info
           .row

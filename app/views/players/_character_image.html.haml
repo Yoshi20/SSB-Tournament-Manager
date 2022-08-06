@@ -1,5 +1,5 @@
 - if character.present? && File.file?("#{Rails.root}/app/assets/images/characters/#{character}.png")
   - if skin_nr.present?
-    = image_tag "/character_skins/#{character}_#{skin_nr.to_s.rjust(2, '0')}.png", height: '25px', width: '25px'
+    = image_tag "/character_skins/#{character}_#{skin_nr.to_s.rjust(2, '0')}.png", height: '25px', width: '25px', alt: "#{character} icon"
   - else
-    = image_tag "characters/#{character}.png", height: '25px', width: '25px'
+    = image_tag "characters/#{character}.png", height: '25px', width: '25px', alt: "#{character} icon"

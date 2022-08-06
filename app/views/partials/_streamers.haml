@@ -15,7 +15,7 @@
           -# %td= streamer['title'].truncate(20)
           %td= streamer['user_name']
           %td{style: 'text-align: center;'}= streamer['viewer_count']
-          -# %td.d-block.d-lg-none.d-xl-block= image_tag streamer['thumbnail_url'].gsub('{width}','50').gsub('{height}','50')
+          -# %td.d-block.d-lg-none.d-xl-block= image_tag streamer['thumbnail_url'].gsub('{width}','50').gsub('{height}','50'), alt: 'streamer thumbnail'
 
     - any_inactive_streamers = !@inactive_streamers.nil? && @inactive_streamers.any?
     - if any_inactive_streamers

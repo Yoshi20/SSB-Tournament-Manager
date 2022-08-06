@@ -1,6 +1,6 @@
 .container
   %a.navbar-brand{href: '/'}
-    = image_tag('pt_logo.jpg', height: '50px', width: '50px')
+    = image_tag('pt_logo.jpg', height: '50px', width: '50px', alt: 'SmashBrosPortugal logo')
     %span.d-none.d-sm-block.d-lg-none.d-xl-block.title{style: 'line-height: 0.8;'}
       = t('welcome.pt.title')
       %br
@@ -8,9 +8,9 @@
 
   %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.com/invite/zKkNJgB', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32', alt: 'Discord logo white'), 'https://discord.com/invite/zKkNJgB', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/SmashBrosPT', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/SmashBrosPT', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
     %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
@@ -53,9 +53,9 @@
       = link_to t('information.pt.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item.locales-list
-      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
-      = link_to image_tag("flags/portugal.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'pt' ? '1px solid white' : ''};"), url_for(locale: 'pt'), "data-turbolinks": "false"
-      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', alt: 'united-kingdom flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
+      = link_to image_tag("flags/portugal.svg", width: '20px', height: '20px', alt: 'portugal flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'pt' ? '1px solid white' : ''};"), url_for(locale: 'pt'), "data-turbolinks": "false"
+      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
   %ul.navbar-nav.navbar-account
     - if user_signed_in?

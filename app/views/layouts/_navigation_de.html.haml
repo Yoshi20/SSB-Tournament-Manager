@@ -1,6 +1,6 @@
 .container
   %a.navbar-brand{href: '/'}
-    = image_tag('de_logo.png', height: '50px', width: '50px')
+    = image_tag('de_logo.png', height: '50px', width: '50px', alt: 'GermanySmash logo')
     %span.d-none.d-block.d-sm-block.d-lg-none.d-xl-block.title{style: 'line-height: 0.8;'}
       = t('welcome.de.title')
       %br
@@ -48,9 +48,9 @@
       = link_to t('information.de.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item.locales-list
-      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
-      = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de'), "data-turbolinks": "false"
-      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', alt: 'united-kingdom flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
+      = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', alt: 'germany flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de'), "data-turbolinks": "false"
+      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
 
   %ul.navbar-nav.navbar-account

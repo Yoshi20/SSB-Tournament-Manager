@@ -3,7 +3,7 @@
     .col
       - if @team.region.present?
         .tooltip
-          = image_tag "regions/#{@team.country_code}/#{@team.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          = image_tag "regions/#{@team.country_code}/#{@team.region}.svg", height: '25px', width: '25px', alt: "#{@team.region} image", style: 'position: absolute; top: 10px;'
           %span.tooltiptext
             = t("defines.regions.#{@team.region}")
       .page__title
@@ -13,13 +13,13 @@
             = "[#{@team.name_short}]"
         - logos_shown = 0
         - if @team.twitter.present?
-          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), @team.twitter.include?('http') ? @team.twitter : "https://twitter.com/#{@team.twitter}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px', alt: 'Twitter logo'), @team.twitter.include?('http') ? @team.twitter : "https://twitter.com/#{@team.twitter}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
         - if @team.instagram.present?
-          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @team.instagram.include?('http') ? @team.instagram : "https://www.instagram.com/#{@team.instagram}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px', alt: 'Instagram logo'), @team.instagram.include?('http') ? @team.instagram : "https://www.instagram.com/#{@team.instagram}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
         - if @team.facebook.present?
-          = link_to image_tag('Facebook_Logo.svg', height: '35px', width: '30px'), @team.facebook.include?('http') ? @team.facebook : "https://www.facebook.com/#{@team.facebook}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Facebook_Logo.svg', height: '35px', width: '30px', alt: 'Facebook logo'), @team.facebook.include?('http') ? @team.facebook : "https://www.facebook.com/#{@team.facebook}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
@@ -34,7 +34,7 @@
 
   .text-center
     - if @team.image_link.present?
-      = image_tag @team.image_link, height: @team.image_height.present? ? @team.image_height : '100%', width: @team.image_width.present? ? @team.image_width : '100%'
+      = image_tag @team.image_link, height: @team.image_height.present? ? @team.image_height : '100%', width: @team.image_width.present? ? @team.image_width : '100%', alt: "#{@team.name_long} logo"
 
   - if not @team.description.nil? and not @team.description.empty?
     .team__stats
@@ -61,13 +61,13 @@
       .row
         - if @team.twitch.present?
           .col{style: 'text-align: center;'}
-            = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px'), @team.twitch.include?('http') ? @team.twitch : "https://www.twitch.tv/#{@team.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+            = link_to image_tag('TwitchExtrudedWordmarkPurple.svg', height: '60px', alt: 'Twitch logo purple'), @team.twitch.include?('http') ? @team.twitch : "https://www.twitch.tv/#{@team.twitch}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
         - if @team.youtube.present?
           .col{style: 'text-align: center;'}
             - if cookies[:color_theme] == 'dark'
-              = link_to image_tag('Youtube_Logo_Light.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+              = link_to image_tag('Youtube_Logo_Light.png', height: '60px', alt: 'Youtube logo light'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
             - else
-              = link_to image_tag('Youtube_Logo_Dark.png', height: '60px'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+              = link_to image_tag('Youtube_Logo_Dark.png', height: '60px', alt: 'Youtube logo dark'), @team.youtube.include?('http') ? @team.youtube : "https://www.youtube.tv/#{@team.youtube}", target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
 
   - if @team.website.present?
     .team__stats

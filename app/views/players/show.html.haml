@@ -6,7 +6,7 @@
     .col
       - if @player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{@player.country_code}/#{@player.region}.svg")
         .tooltip
-          = image_tag "regions/#{@player.country_code}/#{@player.region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+          = image_tag "regions/#{@player.country_code}/#{@player.region}.svg", height: '25px', width: '25px', alt: "#{@player.region} image", style: 'position: absolute; top: 10px;'
           %span.tooltiptext
             = t("defines.regions.#{@player.region}")
       .page__title
@@ -27,19 +27,19 @@
         - logos_shown = 0;
         - if @player.discord_username.present?
           .tooltip{style: "position: absolute; top: 0px; right: #{logos_shown*35}px; z-index: 1;"}
-            = link_to image_tag('Discord-Logo-Color.svg', id: 'copy_discord_name', height: '35px', width: '35px'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
+            = link_to image_tag('Discord-Logo-Color.svg', id: 'copy_discord_name', height: '35px', width: '35px', alt: 'Discord logo color'), '#', 'data-value': @player.discord_username, class: 'tooltip', style: 'position: absolute; top: 5px; right: 0px;'
             %span.tooltiptext.d-none.d-md-block{style: 'margin-left: -78px;'}
               = @player.discord_username
           - logos_shown = logos_shown + 1;
         - if @player.twitter_username.present?
-          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px'), @player.twitter_username.include?('http') ? @player.twitter_username : "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+          = link_to image_tag('Twitter_Logo.svg', height: '35px', width: '35px', alt: 'Twitter logo'), @player.twitter_username.include?('http') ? @player.twitter_username : "https://twitter.com/#{@player.twitter_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
           - logos_shown = logos_shown + 1;
         .row.d-none.d-sm-block
           - if @player.twitch_username.present?
-            = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px; padding: 3px 0px;"
+            = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px', alt: 'Twitch logo purple'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px; padding: 3px 0px;"
             - logos_shown = logos_shown + 1;
           - if @player.instagram_username.present?
-            = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
+            = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px', alt: 'Instagram logo'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: 5px; right: #{logos_shown*35}px;"
             - logos_shown = logos_shown + 1;
 
     -# admin actions -------------------------------------------------------------
@@ -98,10 +98,10 @@
             .mobile_number{style: "font-size: 10px; position: absolute; top: #{has_tabs ? '-1.4' : '-2.4'}rem; left: #{has_mail_icon ? '2.2rem' : '0'}; margin-top: 10px;"}= " (#{@player.user.mobile_number})"
         - logos_shown = 0;
         - if @player.twitch_username.present?
-          = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: #{has_tabs ? '-1' : '-2'}rem; right: #{logos_shown*35}px; margin-top: 5px; padding: 3px 0px;"
+          = link_to image_tag('TwitchGlitchPurple.svg', height: '35px', width: '35px', alt: 'Twitch logo purple'), @player.twitch_username.include?('http') ? @player.twitch_username : "https://www.twitch.tv/#{@player.twitch_username}", target: '_blank', style: "position: absolute; top: #{has_tabs ? '-1' : '-2'}rem; right: #{logos_shown*35}px; margin-top: 5px; padding: 3px 0px;"
           - logos_shown = logos_shown + 1;
         - if @player.instagram_username.present?
-          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: #{has_tabs ? '-1' : '-2'}rem; right: #{logos_shown*35}px; margin-top: 5px;"
+          = link_to image_tag('Instagram_Logo.png', height: '35px', width: '35px', alt: 'Instagram logo'), @player.instagram_username.include?('http') ? @player.instagram_username : "https://www.instagram.com/#{@player.instagram_username}", target: '_blank', style: "position: absolute; top: #{has_tabs ? '-1' : '-2'}rem; right: #{logos_shown*35}px; margin-top: 5px;"
           - logos_shown = logos_shown + 1;
 
       .player__characters
@@ -109,10 +109,10 @@
           - @player.main_characters[0...3].each_with_index do |char, i|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}_200x200.png")
               .player__characters__single{style: 'position: relative;'}
-                = image_tag "characters/#{char}_200x200.png", class: 'player__characters__image'
+                = image_tag "characters/#{char}_200x200.png", alt: "#{char} image", class: 'player__characters__image'
                 - skin_nr = @player.main_character_skins[i] if @player.main_character_skins.any?
                 - if skin_nr.present? && skin_nr > 0
-                  = image_tag "/character_skins/#{char}_#{skin_nr.to_s.rjust(2, '0')}.png", height: '25px', width: '25px', style: "position: absolute; bottom: 0; right: 0;"
+                  = image_tag "/character_skins/#{char}_#{skin_nr.to_s.rjust(2, '0')}.png", height: '25px', width: '25px', alt: "#{char} icon", style: "position: absolute; bottom: 0; right: 0;"
 
       - if @player.birth_year.present? || @player.gender.present? || @player.gender_pronouns.present?
         .player__stats
@@ -226,7 +226,7 @@
                 .player__stats__single.player__stats__single--last
                   - smash_gg_link = @player.smash_gg_id.include?('http') ? @player.smash_gg_id : "https://smash.gg/user/#{@player.smash_gg_id}"
                   %strong
-                    = link_to(image_tag("start_gg_logo_#{cookies[:color_theme] == 'dark' ? 'white' : 'black'}.png", height: "30px", style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
+                    = link_to(image_tag("start_gg_logo_#{cookies[:color_theme] == 'dark' ? 'white' : 'black'}.png", height: "30px", alt: 'start.gg logo', style: "margin-top: 18px;"), smash_gg_link, target: '_blank')
                   %span
                     = t("players.smash_gg_user")
 
@@ -285,7 +285,7 @@
                 - video_info = JSON.parse(URI.open("https://www.youtube.com/oembed?url=https://youtu.be/#{CGI.escape(v_id)}&format=json").read)
                 .row{style: 'margin-bottom: 1rem;'}
                   .col-4{style: 'text-align: center;'}
-                    = link_to image_tag(video_info["thumbnail_url"], width: '100%', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
+                    = link_to image_tag(video_info["thumbnail_url"], width: '100%', alt: 'youtube video thumbnail', style: 'max-width: 220px; max-height: 160px;'), "https://youtu.be/#{v_id}", target: '_blank'
                   .col-8{style: 'margin-top: auto; margin-bottom: auto;'}
                     = link_to video_info["title"], "https://youtu.be/#{v_id}", target: '_blank'
               - rescue OpenURI::HTTPError => ex

@@ -3,7 +3,7 @@
     - region = @tournament.region
     - if region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{@tournament.country_code}/#{region}.svg")
       .tooltip
-        = image_tag "regions/#{@tournament.country_code}/#{region}.svg", height: '25px', width: '25px', style: 'position: absolute; top: 10px;'
+        = image_tag "regions/#{@tournament.country_code}/#{region}.svg", height: '25px', width: '25px', alt: "#{region} image", style: 'position: absolute; top: 10px;'
         %span.tooltiptext
           = t("defines.regions.#{region}")
     %h1.page__title= @tournament.name
@@ -11,15 +11,15 @@
 .text-center
   - if @tournament.name.include?('PK Bern')
     - if @tournament.date >= Time.local(2021,6,1)
-      = image_tag 'pk_bern_erupted_corona.png', height: '100%', width: '100%'
+      = image_tag 'pk_bern_erupted_corona.png', height: '100%', width: '100%', alt: 'pk_bern_erupted_corona image'
     - elsif @tournament.date >= Time.local(2020,3,1) && @tournament.date < Time.local(2021,6,1)
-      = image_tag 'pk_bern_corona.png', height: '100%', width: '100%'
+      = image_tag 'pk_bern_corona.png', height: '100%', width: '100%', alt: 'pk_bern_corona image'
     - else
-      = image_tag 'pk_bern.png', height: '100%', width: '100%'
+      = image_tag 'pk_bern.png', height: '100%', width: '100%', alt: 'pk_bern image'
   - elsif @tournament.name.include?('sPooKy Bern')
-    = image_tag 'pk_bern_erupted_halloween.png', height: '100%', width: '100%'
+    = image_tag 'pk_bern_erupted_halloween.png', height: '100%', width: '100%', alt: 'pk_bern_erupted_halloween image'
   - elsif @tournament.image_link.present?
-    = image_tag @tournament.image_link, height: @tournament.image_height.present? ? @tournament.image_height : '100%', width: @tournament.image_width.present? ? @tournament.image_width : '100%'
+    = image_tag @tournament.image_link, height: @tournament.image_height.present? ? @tournament.image_height : '100%', width: @tournament.image_width.present? ? @tournament.image_width : '100%', alt: 'tournament image'
 
 .tournament
   - has_current_user_admin_rights = (current_user.present? && (current_user.admin? || (@tournament.host.present? && current_user == @tournament.host)))
@@ -266,7 +266,7 @@
                       = player.prefix.present? ? "#{player.prefix} | #{player.gamer_tag}" : player.gamer_tag
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{player.country_code}/#{player.region}.svg")
-                        = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px'
+                        = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px', alt: "#{player.region} image"
                     %td.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell{style: 'text-align: center;'}
                       - if player.main_characters.any?
                         - player.main_characters[0...3].each_with_index do |char, i|

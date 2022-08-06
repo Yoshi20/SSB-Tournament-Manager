@@ -89,7 +89,7 @@
                 = player.prefix.present? ? "#{player.prefix} | #{truncate(player.gamer_tag, length: 20)}" : truncate(player.gamer_tag, length: 20)
               %td.text-center
                 - if player.region.present? && File.file?("#{Rails.root}/app/assets/images/regions/#{player.country_code}/#{player.region}.svg")
-                  = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px'
+                  = image_tag "regions/#{player.country_code}/#{player.region}.svg", height: '20px', width: '20px', alt: "#{player.region} image"
                   = t("defines.regions.#{player.region}")
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= player.birth_year.nil? ? '' : (Date.today.year - player.birth_year)
               %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell= (player.gender.nil? or player.gender.empty?) ? "" : t("defines.genders.#{player.gender}")

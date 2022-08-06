@@ -1,18 +1,18 @@
 .container
   %a.navbar-brand{href: '/'}
-    = image_tag('ch_logo.svg', height: '50px', width: '50px')
+    = image_tag('ch_logo.svg', height: '50px', width: '50px', alt: 'SwissSmash logo')
     %span.d-none.d-sm-block.d-lg-none.d-xl-block
       = t('welcome.ch.title')
 
   %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32', alt: 'Discord logo white'), 'https://discord.gg/wA89CyA', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitch_Logo.png', height: '32', width: '32'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+      = link_to image_tag('Twitch_Logo.png', height: '32', width: '32', alt: 'Twitch logo'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40', alt: 'Youtube logo'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
 
   %button.navbar-toggler.collapsed{'data-toggle'=>'collapse', 'data-target'=>'#navbarSupportedContent', 'aria-controls'=>'navbarSupportedContent', 'aria-expanded'=>'false', 'aria-label'=>'Toggle navigation'}
     %span.navbar-toggler-icon
@@ -100,10 +100,10 @@
       .col-6
         %ul.navbar-nav.navbar-account
           %li.nav-item.locales-list{style: 'margin-top: 8px;'}
-            = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
-            = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de'), "data-turbolinks": "false"
-            = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr'), "data-turbolinks": "false"
-            = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+            = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', alt: 'united-kingdom flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
+            = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', alt: 'germany flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de'), "data-turbolinks": "false"
+            = link_to image_tag("flags/france.svg", width: '20px', height: '20px', alt: 'france flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr'), "data-turbolinks": "false"
+            = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
 .collapse#navbarSupportedContent
   .btn{onclick: "$('.navbar-toggler').click()", style: 'position: absolute; left: 0; width: 100%; height: 1000%; margin-top: 8px; background-color: transparent;'}

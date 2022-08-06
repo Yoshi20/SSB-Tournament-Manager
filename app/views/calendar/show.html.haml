@@ -1,6 +1,6 @@
 -# hidden region images to get the asset_urls via js
 .hidden
   - @regions.each do |region|
-    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '1px', width: '1px', id: region
+    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '1px', width: '1px', alt: "#{region} image", id: region
 
 = render 'calendar'

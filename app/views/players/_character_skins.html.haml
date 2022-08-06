@@ -4,6 +4,6 @@
       - files = Dir.entries("#{Rails.root}/public/character_skins").map{|f| f if f[0] != '.' && f[0..-8] == character}.compact.sort
       - files.each_with_index do |file, i|
         - character_skin_nr = file.sub('.png', '').split('_')[-1].to_i
-        = image_tag "/character_skins/#{file}", height: '25px', width: '25px'
+        = image_tag "/character_skins/#{file}", height: '25px', width: '25px', alt: "#{file} icon"
         - is_checked = (current_character_skin_nr.present? && current_character_skin_nr == character_skin_nr) || i == 0
         = radio_button("main_char_skin#{skin_nr.to_s}", nil, character_skin_nr, style: 'margin-left: -3px; margin-right: 8px;', checked: (is_checked ? 'checked' : ''))

@@ -1,5 +1,5 @@
 = link_to asset_url('rankings/ch/pr_s1_19.jpg') do
-  = image_tag "rankings/ch/pr_s1_19.jpg", width: '100%'
+  = image_tag "rankings/ch/pr_s1_19.jpg", width: '100%', alt: "pr s1 2019 image"
 %br
 %br
 %h2= t('rankings.s1_19.top10')
@@ -20,7 +20,7 @@
         %div
           - ['meta_knight', 'wolf', 'little_mac'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 11
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 83.17 %
     %tr{'data-id': 253, 'data-component'=>'player'}
@@ -30,7 +30,7 @@
         %div
           - ['falco'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 11
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 80 %
     %tr{'data-id': 973, 'data-component'=>'player'}
@@ -40,7 +40,7 @@
         %div
           - ['greninja', 'captain_falcon'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 8
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 84.85 %
     %tr{'data-id': Player.find_by(gamer_tag: 'Severe Calamari').try(:id), 'data-component'=>'player'}
@@ -50,7 +50,7 @@
         %div
           - ['wolf'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 3
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 82.14 %
     %tr{'data-id': 254, 'data-component'=>'player'}
@@ -60,7 +60,7 @@
         %div
           - ['wario'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 12
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 73.56 %
     %tr{'data-id': 267, 'data-component'=>'player'}
@@ -70,7 +70,7 @@
         %div
           - ['wii_fit_trainer', 'bowser'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 8
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 74.55 %
     %tr{'data-id': 262, 'data-component'=>'player'}
@@ -80,7 +80,7 @@
         %div
           - ['snake'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 5
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 77.14 %
     %tr{'data-id': 48, 'data-component'=>'player'}
@@ -90,7 +90,7 @@
         %div
           - ['wolf'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 11
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 71.76 %
     %tr{'data-id': 483, 'data-component'=>'player'}
@@ -100,7 +100,7 @@
         %div
           - ['yoshi', 'ganondorf', 'link'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 3
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 76 %
     %tr{'data-id': 233, 'data-component'=>'player'}
@@ -110,7 +110,7 @@
         %div
           - ['wii_fit_trainer', 'duck_hunt'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
-              = image_tag "characters/#{char}.png", height: '25px', width: '25px'
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 12
       %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell 74.47 %
 

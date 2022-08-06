@@ -1,14 +1,14 @@
 .container
   %a.navbar-brand{href: '/'}
-    = image_tag('uk_logo.jpg', height: '50px', width: '64px')
+    = image_tag('uk_logo.jpg', height: '50px', width: '64px', alt: 'SmashUltimateUK logo')
     %span.d-none.d-sm-block.d-lg-none.d-xl-block
       = t('welcome.uk.title')
 
   %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Discord-Logo-Gold.svg', height: '40', width: '32'), 'https://discord.com/invite/gWxdYyV', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Discord-Logo-Gold.svg', height: '40', width: '32', alt: 'Discord logo gold'), 'https://discord.com/invite/gWxdYyV', target: '_blank', class: 'nav-link'
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-      = link_to image_tag('Twitter_Logo_Gold.svg', height: '40', width: '32'), 'https://twitter.com/SmashUltimateUK', target: '_blank', class: 'nav-link'
+      = link_to image_tag('Twitter_Logo_Gold.svg', height: '40', width: '32', alt: 'Twitter logo gold'), 'https://twitter.com/SmashUltimateUK', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
     %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
@@ -48,7 +48,7 @@
       = link_to t('information.uk.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item.locales-list
-      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag'), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', class: 'language_flag'), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
   %ul.navbar-nav.navbar-account
     - if user_signed_in?
