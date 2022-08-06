@@ -15,6 +15,8 @@ module SSBTournamentManager
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.middleware.insert_before ActionDispatch::Static, Rack::Deflater # to compress (gzip) static assets
+
     config.time_zone = 'Bern'
 
     config.i18n.available_locales = %w(en de fr it pt)

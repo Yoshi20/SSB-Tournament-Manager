@@ -1431,7 +1431,7 @@ it:
       li4: "Gioco Super Smash Bros. Ultimate (con tutti i personaggi e il regolamento più recente)"
       i_will_bring: "Porterò i setup"
       max_one_more_needed_setup: "(è necessario al massimo un altro allestimento)"
-      max_more_needed_setups: "(max. %{setup} sono necessari più setup atm.)"
+      max_more_needed_setups: "(max. %{setups} sono necessari più setup atm.)"
     mail_all_players: "Scrivere un'e-mail a tutti i giocatori registrati"
     mail_all_players_subject: "Per quanto riguarda il torneo: #{@tournament.name}"
     add_player: "Aggiungi giocatore"
@@ -1458,7 +1458,7 @@ it:
   video:
     title: "Videos"
     title2: "Video del giocatore"
-    players_videos: "Video dei %{player}:"
+    players_videos: "Video%{s} dei %{player}:"
 
   communities:
     title: "Comunità"
