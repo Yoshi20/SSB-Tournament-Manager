@@ -39,9 +39,9 @@
       = link_to t('information.lu.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item.locales-list
-      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en')
-      = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de')
-      = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr')
+      = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
+      = link_to image_tag("flags/germany.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'de' ? '1px solid white' : ''};"), url_for(locale: 'de'), "data-turbolinks": "false"
+      = link_to image_tag("flags/france.svg", width: '20px', height: '20px', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'fr' ? '1px solid white' : ''};"), url_for(locale: 'fr'), "data-turbolinks": "false"
       = link_to image_tag("day-and-night.png", width: '20px', height: '20px', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
 
   %ul.navbar-nav.navbar-account

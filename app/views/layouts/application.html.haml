@@ -1,5 +1,5 @@
 !!!
-%html{"data-color-theme": (cookies[:color_theme] || "auto")}
+%html{lang: I18n.locale.to_s, "data-color-theme": (cookies[:color_theme] || "auto")}
   %head
     = render '/layouts/head'
 
