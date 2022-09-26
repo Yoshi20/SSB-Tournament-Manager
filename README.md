@@ -34,6 +34,7 @@ Stage commands:
 - heroku run rake tournaments_crawler_it:all --remote stage_it
 - heroku run rake tournaments_crawler_uk:all --remote stage_uk
 - heroku run rake tournaments_crawler_ie:all --remote stage_uk
+- heroku run rake tournaments_crawler_im:all --remote stage_uk
 - heroku run rake tournaments_crawler_pt:all --remote stage_pt
 - heroku run rake results_crawler_ch:all --remote stage_ch
 - heroku run rake results_crawler_de:all --remote stage_de
@@ -58,6 +59,7 @@ Prod commands:
 - heroku run rake tournaments_crawler_it:all --remote prod
 - heroku run rake tournaments_crawler_uk:all --remote prod
 - heroku run rake tournaments_crawler_ie:all --remote prod
+- heroku run rake tournaments_crawler_im:all --remote prod
 - heroku run rake tournaments_crawler_pt:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
@@ -67,6 +69,9 @@ Prod commands:
 - heroku run rake results_crawler_uk:all --remote prod
 - heroku run rake results_crawler_pt:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
+
+Note:  
+UK also includes Ireland (IE) & Isle of Men (IM) in this application.
 
 General links:
 - https://swisssmash.herokuapp.com
