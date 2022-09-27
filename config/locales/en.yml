@@ -1151,6 +1151,8 @@ en:
       title: "Wales"
     region_yorkshire_and_the_humber:
       title: "Yorkshire and the Humber"
+    region_lisbon:
+      title: "Lisbon"
 
   forum:
     title: "Forum"

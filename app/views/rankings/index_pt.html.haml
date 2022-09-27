@@ -37,10 +37,15 @@
       %li.nav-item
         %a#region_norden-tab.nav-link.active{'data-toggle'=>'tab', href: '#region_norden', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.region_norden.title')
+      %li.nav-item
+        %a#region_lisbon-tab.nav-link{'data-toggle'=>'tab', href: '#region_lisbon', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.region_lisbon.title')
 
     .tab-content#region-tabs-content
       .tab-pane.fade.show.active#region_norden{role: 'tabpanel', 'aria-labelledby'=>'region_norden-tab'}
         = render 'rankings/pt/region_norte'
+      .tab-pane.fade#region_lisbon{role: 'tabpanel', 'aria-labelledby'=>'region_lisbon-tab'}
+        = render 'rankings/pt/region_lisbon'
 
 :javascript
   document.addEventListener('turbolinks:load', function() {
