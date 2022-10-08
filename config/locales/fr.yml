@@ -1044,6 +1044,7 @@ fr:
       if_you_dont_want: "(Si vous ne souhaitez plus recevoir ce mail, vous pouvez configurer cela dans vos paramètres d'utilisateur.)"
     prohibited: "a interdit la sauvegarde de ce tournoi:"
     start_date: "Date de début du tournoi"
+    end_date: "Date de fin du tournoi"
     start_date_short: "Date de début"
     name: "Nom"
     name_placeholder: "Tournoi SSBU ..."

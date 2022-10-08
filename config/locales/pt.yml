@@ -1338,6 +1338,7 @@ pt:
       if_you_dont_want: "(Se já não quiser receber este email, pode agora configurá-lo nas suas definições de utilizador.)"
     prohibited: "proibiu este torneio de ser guardado:"
     start_date: "Data de começo do torneio"
+    end_date: "Data de término do torneio"
     start_date_short: "Data de começo"
     name: "Nome"
     name_placeholder: "Torneio SSBU ..."

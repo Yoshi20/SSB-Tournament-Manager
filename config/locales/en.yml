@@ -1340,6 +1340,7 @@ en:
       if_you_dont_want: "(If you don't want to get this email anymore, you can now configure so in your user settings.)"
     prohibited: "prohibited this tournament from being saved:"
     start_date: "Tournament start date"
+    end_date: "Tournament end date"
     start_date_short: "Start date"
     name: "Name"
     name_placeholder: "SSBU Tournament ..."

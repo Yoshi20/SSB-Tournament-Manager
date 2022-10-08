@@ -1045,6 +1045,7 @@ de:
       if_you_dont_want: "(Wenn du diese Email nicht mehr erhalten möchtest, kannst du dies jetzt in deinen Benutzereinstellungen konfigurieren.)"
     prohibited: "hat das Speichern dieses Turniers verhindert:"
     start_date: "Turnier Startdatum"
+    end_date: "Turnier Enddatum"
     start_date_short: "Startdatum"
     name: "Name"
     name_placeholder: "SSBU Turnier ..."

@@ -22,6 +22,11 @@
       .form-group-inline
         = f.datetime_select :date, { start_year: Time.zone.now.year, end_year: Date.today.year + 3 }, class: 'form-control'
     .form-group
+      = f.label :end_date, t('tournaments.end_date')
+      %em= '(dd.mm.yyyy - hh:mm)'
+      .form-group-inline
+        = f.datetime_select :end_date, { start_year: Time.zone.now.year, end_year: Date.today.year + 3 }, class: 'form-control'
+    .form-group
       = f.label :name, t('tournaments.name')
       = f.text_field :name, class: 'form-control', placeholder: t('tournaments.name_placeholder')
     - unless @tournament.new_record?

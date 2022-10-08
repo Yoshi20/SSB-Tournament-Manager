@@ -1338,6 +1338,7 @@ it:
       if_you_dont_want: "(Se non si desidera più ricevere questa e-mail, è possibile configurarla nelle impostazioni dell'utente)."
     prohibited: "ha impedito di salvare questo torneo:"
     start_date: "Data di inizio del torneo"
+    end_date: "Data di fine del torneo"
     start_date_short: "Data di inizio"
     name: "Nome"
     name_placeholder: "Torneo SSBU ..."
