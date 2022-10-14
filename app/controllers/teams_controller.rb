@@ -111,7 +111,7 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:name_long, :name_short, :description,
         :website, :discord, :twitter, :instagram, :facebook, :youtube, :twitch,
-        :image_link, :image_height, :image_width, :region,
+        :image_link, :image_height, :image_width, :region, :telegram,
         :is_sponsoring_players, :is_recruiting, :recruiting_description)
     end
 

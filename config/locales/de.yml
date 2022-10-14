@@ -1210,6 +1210,7 @@ de:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     info_body: "Um eine Community erstellen zu können, füge die Community-Editor-Rolle deinem Profil hinzu."
 
   users:
@@ -1293,6 +1294,7 @@ de:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     website: "Webseite"
     image_link: "Bild-Link"
     image_owner: "(Verlinke nur Bilder die rechtlich dir gehören)"

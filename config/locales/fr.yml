@@ -1209,6 +1209,7 @@ fr:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     info_body: "Pour pouvoir créer une communauté, ajoutes le rôle d'éditeur communautaire dans ton profil."
 
   users:
@@ -1292,6 +1293,7 @@ fr:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     website: "Site Web"
     image_link: "Lien d'image"
     image_owner: "(Assures que tu es bien le propriétaire de cette image)"

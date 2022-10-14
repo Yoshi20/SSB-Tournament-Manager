@@ -23,6 +23,10 @@
     = f.label :discord, t('teams.discord')
     %em= t('teams.discord_comment')
     = f.text_field :discord, class: 'form-control'
+  - if session['country_code'] == 'it'
+    .field.form-group
+      = f.label :telegram, t('teams.telegram')
+      = f.text_field :telegram, class: 'form-control'
   .field.form-group
     = f.label :twitter, t('teams.twitter')
     = f.text_field :twitter, class: 'form-control'

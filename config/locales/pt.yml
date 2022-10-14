@@ -1510,6 +1510,7 @@ pt:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     info_body: "To be able to create a community, add the community editor role in your profile."
 
   users:
@@ -1602,6 +1603,7 @@ pt:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     website: "Website"
     image_link: "Link de Image"
     image_owner: "(Certifique-se de que é o proprietário desta imagem)"

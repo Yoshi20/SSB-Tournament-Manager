@@ -17,7 +17,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create team" do
     assert_difference('Team.count') do
-      post teams_url, params: { team: { country_code: @team.country_code, description: @team.description, discord: @team.discord, facebook: @team.facebook, image_height: @team.image_height, image_link: @team.image_link, image_width: @team.image_width, instagram: @team.instagram, is_recruiting: @team.is_recruiting, is_sponsoring_players: @team.is_sponsoring_players, name_long: @team.name_long, name_short: @team.name_short, recruiting_description: @team.recruiting_description, region: @team.region, twitch: @team.twitch, twitter: @team.twitter, website: @team.website, youtube: @team.youtube } }
+      post teams_url, params: { team: { country_code: @team.country_code, description: @team.description, discord: @team.discord, telegram: @team.telegram, facebook: @team.facebook, image_height: @team.image_height, image_link: @team.image_link, image_width: @team.image_width, instagram: @team.instagram, is_recruiting: @team.is_recruiting, is_sponsoring_players: @team.is_sponsoring_players, name_long: @team.name_long, name_short: @team.name_short, recruiting_description: @team.recruiting_description, region: @team.region, twitch: @team.twitch, twitter: @team.twitter, website: @team.website, youtube: @team.youtube } }
     end
 
     assert_redirected_to team_url(Team.last)
@@ -34,7 +34,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update team" do
-    patch team_url(@team), params: { team: { country_code: @team.country_code, description: @team.description, discord: @team.discord, facebook: @team.facebook, image_height: @team.image_height, image_link: @team.image_link, image_width: @team.image_width, instagram: @team.instagram, is_recruiting: @team.is_recruiting, is_sponsoring_players: @team.is_sponsoring_players, name_long: @team.name_long, name_short: @team.name_short, recruiting_description: @team.recruiting_description, region: @team.region, twitch: @team.twitch, twitter: @team.twitter, website: @team.website, youtube: @team.youtube } }
+    patch team_url(@team), params: { team: { country_code: @team.country_code, description: @team.description, discord: @team.discord, telegram: @team.telegram, facebook: @team.facebook, image_height: @team.image_height, image_link: @team.image_link, image_width: @team.image_width, instagram: @team.instagram, is_recruiting: @team.is_recruiting, is_sponsoring_players: @team.is_sponsoring_players, name_long: @team.name_long, name_short: @team.name_short, recruiting_description: @team.recruiting_description, region: @team.region, twitch: @team.twitch, twitter: @team.twitter, website: @team.website, youtube: @team.youtube } }
     assert_redirected_to team_url(@team)
   end
 

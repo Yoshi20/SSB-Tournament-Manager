@@ -1510,6 +1510,7 @@ it:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     info_body: "Per poter creare una comunità, aggiungere il ruolo di redattore della comunità nel proprio profilo."
 
   users:
@@ -1602,6 +1603,7 @@ it:
     facebook: "Facebook"
     youtube: "YouTube"
     twitch: "Twitch"
+    telegram: "Telegram"
     website: "Sito web"
     image_link: "Collegamento immagine"
     image_owner: "(Assicurarsi di essere il proprietario di questa immagine)"

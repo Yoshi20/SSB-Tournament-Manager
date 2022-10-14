@@ -56,6 +56,18 @@
             %span{style: 'margin-top: -10px;'}
               = (@discord_invites_json.count > 1 ? "Discords" : "Discord")
 
+  - if @team.telegram.present?
+    .team__stats
+      .row
+        .col
+          .team__stats__single.team__stats__single--last
+            .telegram_invite{style: 'justify-content: center; display: grid;'}
+              .row{style: 'margin-bottom: 1rem;'}
+                .col
+                  = link_to image_tag('Telegram_Logo.svg', width: '110px', alt: 'Telegram logo'), @team.telegram.include?('http') ? @team.telegram : "https://t.me/#{@team.telegram}", target: '_blank'
+            %span{style: 'margin-top: -10px;'}
+              = t('teams.telegram')
+
   - if @team.twitch.present? || @team.youtube.present?
     .team__media_channels
       .row

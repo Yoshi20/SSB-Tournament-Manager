@@ -29,6 +29,7 @@ class TeamsTest < ApplicationSystemTestCase
     fill_in "Recruiting description", with: @team.recruiting_description
     fill_in "Region", with: @team.region
     fill_in "Twitch", with: @team.twitch
+    fill_in "Telegram", with: @team.telegram
     fill_in "Twitter", with: @team.twitter
     fill_in "Website", with: @team.website
     fill_in "Youtube", with: @team.youtube
@@ -57,6 +58,7 @@ class TeamsTest < ApplicationSystemTestCase
     fill_in "Recruiting description", with: @team.recruiting_description
     fill_in "Region", with: @team.region
     fill_in "Twitch", with: @team.twitch
+    fill_in "Telegram", with: @team.telegram
     fill_in "Twitter", with: @team.twitter
     fill_in "Website", with: @team.website
     fill_in "Youtube", with: @team.youtube

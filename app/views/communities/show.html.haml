@@ -60,6 +60,18 @@
             %span{style: 'margin-top: -10px;'}
               = (@discord_invites_json.count > 1 ? "Discords" : "Discord")
 
+  - if @community.telegram.present?
+    .community__stats
+      .row
+        .col
+          .community__stats__single.community__stats__single--last
+            .telegram_invite{style: 'justify-content: center; display: grid;'}
+              .row{style: 'margin-bottom: 1rem;'}
+                .col
+                  = link_to image_tag('Telegram_Logo.svg', width: '110px', alt: 'Telegram logo'), @community.telegram.include?('http') ? @community.telegram : "https://t.me/#{@community.telegram}", target: '_blank'
+            %span{style: 'margin-top: -10px;'}
+              = t('communities.telegram')
+
   - if @community.twitch.present? || @community.youtube.present?
     .community__media_channels
       .row

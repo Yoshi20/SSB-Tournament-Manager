@@ -11,6 +11,7 @@ one:
   facebook: MyString
   youtube: MyString
   twitch: MyString
+  telegram: MyString
   image_link: MyString
   image_height: MyString
   image_width: MyString
@@ -31,6 +32,7 @@ two:
   facebook: MyString
   youtube: MyString
   twitch: MyString
+  telegram: MyString
   image_link: MyString
   image_height: MyString
   image_width: MyString

@@ -239,7 +239,7 @@ class CommunitiesController < ApplicationController
   def community_params
     params.require(:community).permit(
       :name, :city, :department, :region, :country_code, :discord, :twitter,
-      :instagram, :facebook, :youtube, :twitch
+      :instagram, :facebook, :youtube, :twitch, :telegram
     )
   end
 
