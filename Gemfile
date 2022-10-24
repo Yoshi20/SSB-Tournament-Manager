@@ -116,7 +116,7 @@ gem 'will_paginate'
 gem 'http_accept_language'
 
 # See https://nokogiri.org/
-gem "nokogiri", ">= 1.13.4"
+gem "nokogiri", ">= 1.13.9"
 
 # See https://github.com/ambethia/recaptcha
 gem 'recaptcha'
