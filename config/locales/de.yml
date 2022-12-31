@@ -13,6 +13,7 @@ de:
   s12_2020: "2020"
   s12_2021: "2021"
   s12_2022: "2022"
+  s12_2023: "2023"
   external: "Extern"
   internal: "Intern"
   weekly: "Weekly"
@@ -841,6 +842,7 @@ de:
     in_2020: "im 2020"
     in_2021: "im 2021"
     in_2022: "im 2022"
+    in_2023: "im 2023"
     male: "Männlich"
     female: "Weiblich"
     other: "Sonstiges"
@@ -901,6 +903,17 @@ de:
     s2_22:
       title: "S2 2022"
       no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2023"
+    s1_23:
+      title: "S1 2023"
+      no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2023"
+      top15: "Top 15:"
+      details:
+        title: "Details"
+        text1: "Nähere Informationen zu den PR-Spieler findest du %{link}."
+        text2: "Einige Worte zum PR-Level-Wettbewerb 2023 und den runner ups findest du %{link}."
+    s2_23:
+      title: "S2 2023"
+      no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2024"
     region_nrw:
       title: "NRW"
     region_hessen:

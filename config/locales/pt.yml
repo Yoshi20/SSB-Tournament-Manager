@@ -13,6 +13,7 @@ pt:
   s12_2020: "2020"
   s12_2021: "2021"
   s12_2022: "2022"
+  s12_2023: "2023"
   external: "Externo"
   internal: "Interno"
   weekly: "Semanal"
@@ -1048,6 +1049,7 @@ pt:
     in_2020: "em 2020"
     in_2021: "em 2021"
     in_2022: "em 2022"
+    in_2023: "em 2023"
     male: "Macho"
     female: "Fêmea"
     other: "Outro"
@@ -1111,6 +1113,17 @@ pt:
     s2_22:
       title: "S2 2022"
       no_ranking: "Espera-se que o ranking apareça no início de 2023"
+    s1_23:
+      title: "S1 2023"
+      no_ranking: "Espera-se que o ranking apareça no início de 2023"
+      top15: "Top 15:"
+      details:
+        title: "Details"
+        text1: "You can find more information about the PR players %{link}."
+        text2: "Some words to the PR Level competition in 2023 and the runner ups can be found %{link}."
+    s2_23:
+      title: "S2 2023"
+      no_ranking: "Espera-se que o ranking apareça no início de 2024"
     region_nrw:
       title: "NRW"
     region_hessen:
@@ -1276,7 +1289,7 @@ pt:
         li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
       match_rules:
         title_short: "Ruleset"
-        body: "The SMASHUK SSBU RULESET 2022 is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
+        body: "The SMASHUK SSBU RULESET is used at most tournaments in the UK & Ireland. Please find out which rules are being used before each event."
     pt:
       general_rules:
         title_short: "Comportamento"

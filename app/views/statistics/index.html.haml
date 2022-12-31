@@ -35,11 +35,17 @@
             %span
               = t('statistics.in_2021')
         .col
-          .statistic__stats__single.statistic__stats__single--last
+          .statistic__stats__single
             %strong
               = @player_count_2022
             %span
               = t('statistics.in_2022')
+        .col
+          .statistic__stats__single.statistic__stats__single--last
+            %strong
+              = @player_count_2023
+            %span
+              = t('statistics.in_2023')
 
   .statistic__stats
     .row
@@ -92,7 +98,21 @@
   .statistic__stats
     .row
       - roles_raw = roles_raw_from(session['country_code']).prepend('admin')
-      .col
+      -# mobile view (small and below)
+      .col.d-md-none
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("players.role")
+              %th.text-center= t('statistics.number_of_players')
+          %tbody.table-content.with-show
+            - roles_raw.each do |role|
+              %tr{'data-internal_url': players_path(filter: 'role', 'filter-data': role, anchor: 'roles')}
+                %td.text-center
+                  %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
+                %td.text-center= @players.tagged_with(role).count
+      -# stanard view (medium and above)
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
@@ -104,7 +124,7 @@
                 %td.text-center
                   %span.badge.badge-pill.badge-primary{style: "background-color: #{role_color(role)}"}= t(role, scope: 'defines.roles')
                 %td.text-center= @players.tagged_with(role).count
-      .col
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
@@ -120,7 +140,30 @@
   .statistic__stats
     .row
       - regions_raw = regions_raw_from(session['country_code'])
-      .col
+      -# mobile view (small and below)
+      .col.d-md-none
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t("statistics.region_#{session['country_code']}")
+              %th.text-center= t('statistics.number_of_players')
+              %th.text-center= "Ø-#{t('w_l')}"
+          %tbody.table-content.with-show
+            - regions_raw.each do |region|
+              - region_players = @players.where(region: region)
+              %tr{'data-internal_url': players_path(filter: 'region', 'filter-data': region, anchor: 'data')}
+                %td.text-center
+                  .tooltip.tooltip_region
+                    = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '25px', width: '25px', alt: "#{region} image", style: 'position: absolute; top: 10px;'
+                    %span.tooltiptext
+                      = t("defines.regions.#{region}")
+                %td.text-center
+                  = region_players.count
+                %td.text-center
+                  - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
+                  = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
+      -# stanard view (medium and above)
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
@@ -141,7 +184,7 @@
                 %td.text-center
                   - wl_array = region_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                   = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-      .col
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
@@ -166,7 +209,33 @@
   .statistic__stats{style: "margin-top: 0;"}
     .row
       - all_char_files = Dir.entries("#{Rails.root}/app/assets/images/characters").map{|f| f if !f.include?("200x200") and f[0] != '.'}.compact.sort
-      .col
+      -# mobile view (small and below)
+      .col.d-md-none
+        %table.table.table-hover.table-borderless
+          %thead.table-header
+            %tr
+              %th.text-center= t('statistics.character')
+              %th.text-center= t('statistics.number_of_players')
+              %th.text-center= "Ø-#{t('w_l')}"
+          %tbody.table-content.with-show
+            .main_chars
+              - all_char_files.each do |file|
+                - character = file.sub('.png', '')
+                - character_players = @players.where("? = ANY (main_characters)", character)
+                %tr{'data-internal_url': players_path(filter: 'character', 'filter-data': character)}
+                  %td.text-center
+                    .main_char
+                      .tooltip.tooltip_character
+                        = image_tag "characters/#{file}", height: '25px', width: '25px', alt: "#{file} icon"
+                        %span.tooltiptext.tooltiptext_character
+                          = character.split('_').map(&:capitalize).join(" ").gsub('And', 'and')
+                  %td.text-center
+                    = character_players.count
+                  %td.text-center
+                    - wl_array = character_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
+                    = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
+      -# stanard view (medium and above)
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
@@ -190,7 +259,7 @@
                   %td.text-center
                     - wl_array = character_players.map{ |p| p.win_loss_ratio if p.wins > 0 || p.losses > 0}.compact
                     = "#{wl_array.size > 0 ? (wl_array.sum.to_f / wl_array.size).round(2) : 0} %"
-      .col
+      .col.d-none.d-md-block
         %table.table.table-hover.table-borderless
           %thead.table-header
             %tr
