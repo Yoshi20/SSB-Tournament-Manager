@@ -119,6 +119,7 @@ Twitch API:
 
 Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
+- https://www.spriters-resource.com/nintendo_switch/supersmashbrosultimate/sheet/111395/
 
 Banner:
 - https://www.ssbwiki.com/Super_Smash_Bros._Ultimate
