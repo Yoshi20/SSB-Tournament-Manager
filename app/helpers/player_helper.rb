@@ -18,7 +18,7 @@ module PlayerHelper
     elsif country_code == 'fr'
       ["Auvergne", "Bourgogne", "Bretagne", "Centre", "Corsica", "Grand_Est", "Hauts-de-France", "Ile_de_France", "Normandie", "Nouvelle_Aquitaine", "Occitanie", "Pays_de_la_Loire", "Provence-Alpes-Cote_dAzur", "Reunion", "Martinique", "Guyane", "Guadeloupe", "Mayotte"]
     elsif country_code == 'lu'
-      ['capellen', 'clervaux', 'diekirch', 'echternach', 'esch', 'grevenmacher', 'luxembourg', 'mersch', 'redange', 'remich', 'vianden', 'wiltz']
+      ['capellen', 'clervaux', 'diekirch', 'echternach', 'esch', 'grevenmacher', 'luxembourg', 'mersch', 'redange', 'remich', 'vianden', 'wiltz', 'belgium', 'france', 'germany']
     elsif country_code == 'it'
       ['abruzzo', 'aosta_valley', 'apulia', 'basilicata', 'calabria', 'campania', 'emilia-romagna', 'friuli_venezia_giulia', 'lazio', 'liguria', 'lombardy', 'marche', 'molise', 'piemont', 'sardinia', 'sicily', 'trentino-south_tyrol', 'tuscany', 'umbria', 'veneto']
     elsif country_code == 'uk'
