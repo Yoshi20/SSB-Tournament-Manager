@@ -8,18 +8,14 @@
   if post
     post_view = Thredded::PostView.new(post, policy(post))
   end
-  moderation_state_notice_args = {
-      moderator: user_link(record.moderator),
-      time_ago:  time_ago(record.created_at)
-  }
 %>
 <article class="thredded--post-moderation-record thredded--post-moderation-record-<%= record.moderation_state %>">
   <header class="thredded--post-moderation-record--header">
     <p class="thredded--post-moderation-record--moderation-state-notice">
       <% if record.approved? %>
-        <%= t('thredded.moderation.post_approved_html', moderation_state_notice_args) %>
+        <%= t('thredded.moderation.post_approved_html', moderator: user_link(record.moderator), time_ago: time_ago(record.created_at)) %>
       <% elsif record.blocked? %>
-        <%= t('thredded.moderation.post_blocked_html', moderation_state_notice_args) %>
+        <%= t('thredded.moderation.post_blocked_html', moderator: user_link(record.moderator), time_ago: time_ago(record.created_at)) %>
       <% end %>
     </p>
     <% if post && post.content != record.post_content %>

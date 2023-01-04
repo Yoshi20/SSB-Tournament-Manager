@@ -9,7 +9,7 @@
   <section class="thredded--main-section">
     <%= view_hooks.moderation_user_page.user_title.render self, user: user do %>
       <h1 class="thredded--moderation--user--title">
-        <%= image_tag Thredded.avatar_url.call(user), alt: 'avatar', class: 'thredded--user--avatar' %><%= user.thredded_display_name %>
+        <%= image_tag Thredded.avatar_url.call(user), class: 'thredded--user--avatar' %><%= user.thredded_display_name %>
       </h1>
     <% end %>
     <%= view_hooks.moderation_user_page.user_info.render self, user: user do %>

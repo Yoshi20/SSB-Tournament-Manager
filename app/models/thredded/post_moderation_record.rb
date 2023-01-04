@@ -33,18 +33,18 @@ module Thredded
         h[r.post.postable_id] = r.post.postable if r.post
       end
       next result if owners_by_id.empty?
-      preloader = ActiveRecord::Associations::Preloader.new.preload(
-        owners_by_id.values, :first_post,
-        Thredded::Post.unscoped.where(<<~SQL.delete("\n"))
-          #{posts_table_name}.created_at = (
-          SELECT MAX(p2.created_at) from #{posts_table_name} p2 WHERE p2.postable_id = #{posts_table_name}.postable_id)
-      SQL
-      )
-      preloader[0].preloaded_records.each do |post|
-        topic = owners_by_id.delete(post.postable_id)
-        next unless topic
-        topic.association(:first_post).target = post
-      end
+      # preloader = ActiveRecord::Associations::Preloader.new.preload(
+      #   owners_by_id.values, :first_post,
+      #   Thredded::Post.unscoped.where(<<~SQL.delete("\n"))
+      #     #{posts_table_name}.created_at = (
+      #     SELECT MAX(p2.created_at) from #{posts_table_name} p2 WHERE p2.postable_id = #{posts_table_name}.postable_id)
+      # SQL
+      # )
+      # preloader[0].preloaded_records.each do |post|
+      #   topic = owners_by_id.delete(post.postable_id)
+      #   next unless topic
+      #   topic.association(:first_post).target = post
+      # end
       result
     }
 
