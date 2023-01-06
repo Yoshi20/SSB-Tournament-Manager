@@ -1119,11 +1119,6 @@ it:
     s1_23:
       title: "S1 2023"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2023"
-      top15: "Top 15:"
-      details:
-        title: "Dettagli"
-        text1: "Potete trovare ulteriori informazioni sui giocatori PR %{link}"
-        text2: "Alcune parole sulla competizione PR Level del 2023 e sui secondi classificati sono disponibili %{link}."
     s2_23:
       title: "S2 2023"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2024"

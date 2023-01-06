@@ -908,12 +908,7 @@ de:
       no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2023"
     s1_23:
       title: "S1 2023"
-      no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2023"
-      top15: "Top 15:"
-      details:
-        title: "Details"
-        text1: "Nähere Informationen zu den PR-Spieler findest du %{link}."
-        text2: "Einige Worte zum PR-Level-Wettbewerb 2023 und den runner ups findest du %{link}."
+      no_ranking: "Das Ranking erscheint voraussichtlich mitte 2023"
     s2_23:
       title: "S2 2023"
       no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2024"

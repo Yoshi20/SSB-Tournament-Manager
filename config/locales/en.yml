@@ -1118,12 +1118,7 @@ en:
       no_ranking: "The ranking is expected to appear at the beginning of 2023"
     s1_23:
       title: "S1 2023"
-      no_ranking: "The ranking is expected to appear at the beginning of 2023"
-      top15: "Top 15:"
-      details:
-        title: "Details"
-        text1: "You can find more information about the PR players %{link}."
-        text2: "Some words to the PR Level competition in 2023 and the runner ups can be found %{link}."
+      no_ranking: "The ranking is expected to appear in the middle of 2023"
     s2_23:
       title: "S2 2023"
       no_ranking: "The ranking is expected to appear at the beginning of 2024"
