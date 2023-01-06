@@ -13,14 +13,8 @@
       = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/SmashBrosPT', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
-    %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
-      = link_to forum_path, class: 'nav-link' do
-        = t('forum.title')
-        - if @forum_unread_count.present? && @forum_unread_count > 0
-          %span{class: "forum-unread-counter"}= "(#{@forum_unread_count})"
-
-    -# %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
-    -#   = link_to t('communities.title_pt'), communities_path, class: 'nav-link'
+    %li.nav-item{role: "presentation", class: (@section == 'locus_league' ? 'active' : 'inactive')}
+      = link_to t('locus_league.title'), locus_league_path, class: 'nav-link'
 
     %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments' or @section == 'rules') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
@@ -31,7 +25,6 @@
         = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
         = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
         = link_to t('rules.title'), rules_path, class: 'dropdown-item'
-
 
     %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
       = link_to t('rankings.title'), rankings_path, class: 'nav-link'

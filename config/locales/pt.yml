@@ -1634,6 +1634,19 @@ pt:
     total_points: "Total de pontos"
     info_body: "Para poder criar uma equipa, acrescente a função de gestor de equipa ao seu perfil."
 
+  locus_league:
+    title: "Locus League"
+    explanation:
+      title: "Explicação"
+      body1: "A Locus League é um circuito de torneios da Locus Crew no qual os participantes podem acumular pontos ao longo de 6 meses de competição!"
+      body2: "No final do circuito, os 8 jogadores com a maior quantidade de pontos são qualificados e convidados para as FINAIS do circuito: um invitational ao estilo de Smash Summit que decorrerá em Julho!"
+      body3: "Os seguintes resultados contribuem para o ranking:"
+      li1: "Os 3 melhores resultados em eventos Showdown Chop-House"
+      li2: "Os 10 melhores resultados em eventos Weekly L"
+      li3: "Os 10 melhores resultados em eventos S Tier Weekly"
+      li4: "O resultado do Major L III"
+      body4: "Para além das classificações em torneios, outra forma de obter pontos é ao redimir channel points em %{link} (limite de uma vez por stream) que podem ser recebidos ao visualizar as streams dos torneios e a aceitar as Previsões do resultado das matches! Existe, portanto, motivação para pensar bem nas apostas e para acompanhar os torneios de casa!"
+      body5: "Todos os eventos da Locus Crew mencionados acima contam para a liga, começando a 05/01 com o Weekly L #46 e terminando a 30/06."
 
 
   thredded:

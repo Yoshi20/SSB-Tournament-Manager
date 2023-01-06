@@ -44,6 +44,9 @@ Rails.application.routes.draw do
   get "/communities/character_discords" => "communities#character_discords"
   resources :communities
 
+  # PT routes:
+  get 'locus_league' => 'locus_league#index'
+
   resources :teams
   post 'teams/add_player/:id' => 'teams#add_player'
   post 'teams/remove_player/:id' => 'teams#remove_player'

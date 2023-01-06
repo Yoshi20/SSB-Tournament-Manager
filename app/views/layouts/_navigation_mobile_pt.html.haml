@@ -21,14 +21,8 @@
     .row
       .col-6
         %ul.navbar-nav.navbar-main.ml-auto
-          %li.nav-item{role: "presentation", class: (@section == 'forum' ? 'active' : 'inactive')}
-            = link_to forum_path, class: 'nav-link' do
-              = t('forum.title')
-              - if @forum_unread_count.present? && @forum_unread_count > 0
-                %span{class: "forum-unread-counter"}= "(#{@forum_unread_count})"
-
-          -# %li.nav-item{role: "presentation", class: (@section == 'communities' ? 'active' : 'inactive')}
-          -#   = link_to t('communities.title_pt'), communities_path, class: 'nav-link'
+          %li.nav-item{role: "presentation", class: (@section == 'locus_league' ? 'active' : 'inactive')}
+            = link_to t('locus_league.title'), locus_league_path, class: 'nav-link'
 
           %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments' or @section == 'rules') ? 'active' : 'inactive')}
             %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

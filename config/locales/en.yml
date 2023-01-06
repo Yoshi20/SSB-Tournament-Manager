@@ -1635,3 +1635,17 @@ en:
     members: "Members"
     total_points: "Total points"
     info_body: "To be able to create a team, add the team manager role in your profile."
+
+  locus_league:
+    title: "Locus League"
+    explanation:
+      title: "Explanation"
+      body1: "The Locus League is a Locus Crew tournament circuit where participants can accumulate points over 6 months of competition!"
+      body2: "At the end of the circuit, the 8 players with the most points are qualified and invited to the circuit FINALS: a Smash Summit-style invitational that will take place in July!"
+      body3: "The following results contribute to the ranking:"
+      li1: "Top 3 results in Showdown Chop-House events"
+      li2: "Top 10 results in Weekly L events"
+      li3: "Top 10 results in S Tier Weekly events"
+      li4: "Major L III result"
+      body4: "In addition to tournament rankings, another way to earn points is to redeem channel points at %{link} (once per stream) which can be earned by viewing tournament streams and accepting Match Result Predictions! There is, therefore, motivation to think carefully about the bets and to follow the tournaments from home!"
+      body5: "All Locus Crew events mentioned above count towards the league, starting 1/5 with Weekly L #46 and ending 6/30."

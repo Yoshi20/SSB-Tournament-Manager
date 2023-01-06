@@ -1,0 +1,24 @@
+- set_meta_tags description: meta_tag_description('Locus League')
+
+.row
+  .col
+    %h1.page__title= t('locus_league.title')
+
+.row
+  .col
+    %h2= t('locus_league.explanation.title')
+    %p= t('locus_league.explanation.body1')
+    %p= t('locus_league.explanation.body2')
+    %p= t('locus_league.explanation.body3')
+    %ul
+      %li= t('locus_league.explanation.li1')
+      %li= t('locus_league.explanation.li2')
+      %li= t('locus_league.explanation.li3')
+      %li= t('locus_league.explanation.li4')
+    %p= t('locus_league.explanation.body4', link: link_to('twitch.tv/locus_crew', 'https://www.twitch.tv/locus_crew', target: '_blank')).html_safe
+    %p= t('locus_league.explanation.body5')
+
+.row.center
+  .col
+    = link_to asset_url('pt_liga_PONTOS_3.jpg') do
+      = image_tag 'pt_liga_PONTOS_3.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
