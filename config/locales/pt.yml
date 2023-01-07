@@ -1641,7 +1641,9 @@ pt:
       li3: "Os 10 melhores resultados em eventos S Tier Weekly"
       li4: "O resultado do Major L III"
       body4: "Para além das classificações em torneios, outra forma de obter pontos é ao redimir channel points em %{link} (limite de uma vez por stream) que podem ser recebidos ao visualizar as streams dos torneios e a aceitar as Previsões do resultado das matches! Existe, portanto, motivação para pensar bem nas apostas e para acompanhar os torneios de casa!"
-      body5: "Todos os eventos da Locus Crew mencionados acima contam para a liga, começando a 05/01 com o Weekly L #46 e terminando a 30/06."
+      body5: "Todos os eventos da Locus Crew mencionados acima contam para a liga, começando a 09/01 com o S Tier Weekly #16 e terminando a 30/06."
+      body6: "Todos os meses, esta página vai ser atualizada com a scoreboard atual dos top 12 jogadores. Para ver a lista completa da atribuição de pontos, a lista está disponível %{link}."
+      excel_table: "nesta tabela de excel"
 
 
   thredded:

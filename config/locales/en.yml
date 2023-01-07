@@ -1643,4 +1643,6 @@ en:
       li3: "Top 10 results in S Tier Weekly events"
       li4: "Major L III result"
       body4: "In addition to tournament rankings, another way to earn points is to redeem channel points at %{link} (once per stream) which can be earned by viewing tournament streams and accepting Match Result Predictions! There is, therefore, motivation to think carefully about the bets and to follow the tournaments from home!"
-      body5: "All Locus Crew events mentioned above count towards the league, starting 1/5 with Weekly L #46 and ending 6/30."
+      body5: "All Locus Crew events mentioned above count towards the league, starting 1/9 with S Tier Weekly #16 and ending 6/30."
+      body6: "Every month, this page will be updated with the current scoreboard of the top 12 players. To see the complete list of points awarded, check out %{link}."
+      excel_table: "this excel table"

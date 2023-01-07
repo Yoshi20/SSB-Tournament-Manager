@@ -22,3 +22,7 @@
   .col
     = link_to asset_url('pt_liga_PONTOS_3.jpg') do
       = image_tag 'pt_liga_PONTOS_3.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
+
+.row.mt-3
+  .col
+    %p= t('locus_league.explanation.body6', link: link_to(t('locus_league.explanation.excel_table'), 'https://docs.google.com/spreadsheets/d/1V2VjHnoBEGfBfuTGf8I2K8L_50E-nwoZRfVR3g4_s0E/edit?usp=drivesdk', target: '_blank')).html_safe
