@@ -868,6 +868,11 @@ de:
     title: "Ranglisten"
     official_power_ranking: "Offizielle Power Rankings"
     tournament_specific: "Turnier spezifische"
+    elo: "Top 100 ELO"
+    elo_22:
+      title: "2022"
+      body1: "Erklärung inkl. FAQ:"
+      body2: "Mehr Statistiken (Upsets, Best Win, Bundesländer Ranking, etc.) gibt's hier:"
     region_specific: "Region spezifische"
     filter:
       overall: "Gesamt"

@@ -9,6 +9,9 @@
     %a#power_ranking-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking', role: 'tab', 'aria-controls'=>'all'}
       = t('rankings.official_power_ranking')
   %li.nav-item
+    %a#elo-tab.nav-link{'data-toggle'=>'tab', href: '#elo', role: 'tab', 'aria-controls'=>'all'}
+      = t('rankings.elo')
+  %li.nav-item
     %a#region-tab.nav-link{'data-toggle'=>'tab', href: '#region', role: 'tab', 'aria-controls'=>'all'}
       = t('rankings.region_specific')
 
@@ -48,6 +51,17 @@
       -# Power Ranking S2 2022 ----------------------------------------------
       .tab-pane.fade.show.active#power_ranking_s2_22{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s2_22-tab'}
         = render 'rankings/de/s2_22'
+
+  -# Top 100 ELO ---------------------------------------------------------------
+  .tab-pane.fade#elo{role: 'tabpanel', 'aria-labelledby'=>'elo-tab'}
+    %ul#elo-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+      %li.nav-item
+        %a#elo_22-tab.nav-link{'data-toggle'=>'tab', href: '#elo_22', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.elo_22.title')
+
+    .tab-content#elo-tabs-content
+      .tab-pane.fade#elo_22{role: 'tabpanel', 'aria-labelledby'=>'elo_22-tab'}
+        = render 'rankings/de/elo_22'
 
   -# Regions -------------------------------------------------------------------
   .tab-pane.fade#region{role: 'tabpanel', 'aria-labelledby'=>'region-tab'}

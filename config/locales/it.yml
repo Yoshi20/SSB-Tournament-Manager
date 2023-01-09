@@ -1078,6 +1078,11 @@ it:
     title: "Classifiche"
     official_power_ranking: "Classifiche ufficiali"
     tournament_specific: "Torneo specifico"
+    elo: "Top 100 ELO"
+    elo_22:
+      title: "2022"
+      body1: "Explanation incl. FAQ:"
+      body2: "More statistics (upsets, best win, federal state ranking, etc.) can be found here:"
     region_specific: "Regione specifica"
     filter:
       overall: "Generale"

@@ -1,0 +1,14 @@
+= link_to asset_url('rankings/de/elo_22_1.jpg') do
+  = image_tag "rankings/de/elo_22_1.jpg", width: '100%', alt: 'elo 22 1 image'
+= link_to asset_url('rankings/de/elo_22_2.jpg') do
+  = image_tag "rankings/de/elo_22_2.jpg", width: '100%', alt: 'elo 22 2 image'
+.row.mt-3
+  .col
+    %p
+      %span= t('rankings.elo_22.body1')
+      %span= link_to "twitlonger.com/show/n_1ss7h4t", "https://www.twitlonger.com/show/n_1ss7h4t", target: '_blank'
+.row
+  .col
+    %p
+      %span= t('rankings.elo_22.body2')
+      %span= link_to "docs.google.com/spreadsheets...", "https://docs.google.com/spreadsheets/d/1rEsrZAqFT6MCMkz8Bjmk83jZqm8ogG_-ka1hyszmAOc/edit?usp=sharing", target: '_blank'
