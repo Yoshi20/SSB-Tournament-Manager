@@ -15,6 +15,11 @@
       = donation.amount
   .toast-body
     %i= truncate ? donation.message.truncate(64) : donation.message
-    %small.d-block.text-right.text-muted.mt-2
-      = Time.parse(donation.timestamp).to_s(:custom_datetime_date)
+
+    %small.d-block.text-muted.mt-2
+      .row
+        .col.text-left
+          = donation.is_public ? "" : "(hidden)"
+        .col.text-right
+          = Time.parse(donation.timestamp).to_s(:custom_datetime_date)
   -# %a.stretched-link{:href => donation.url, :target => '_blank', :title => ""}
