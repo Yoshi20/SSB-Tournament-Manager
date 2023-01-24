@@ -62,7 +62,7 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     respond_to do |format|
-      format.html { redirect_to communities_path, notice: t('flash.notice.team_deleted') }
+      format.html { redirect_to teams_path, notice: t('flash.notice.team_deleted') }
       format.json { head :no_content }
     end
   end
