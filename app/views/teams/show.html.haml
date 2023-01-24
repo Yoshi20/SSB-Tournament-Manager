@@ -33,8 +33,8 @@
             %span.material-icons.admin-actions__link__icon= 'delete'
 
   .text-center
-    - if @team.image_link.present?
-      = image_tag @team.image_link, height: @team.image_height.present? ? @team.image_height : '100%', width: @team.image_width.present? ? @team.image_width : '100%', alt: "#{@team.name_long} logo"
+    - if @team.image_link.present? && Request.url_valid?(@team.image_link)
+      = image_tag @team.image_link, height: @team.image_height.present? ? @team.image_height : '100%', width: @team.image_width.present? ? @team.image_width : '100%', alt: "#{@team.name_long} logo", onerror: "console.log('blup');this.onerror=null; this.src='';"
 
   - if not @team.description.nil? and not @team.description.empty?
     .team__stats

@@ -18,7 +18,7 @@
       = image_tag 'pk_bern.png', height: '100%', width: '100%', alt: 'pk_bern image'
   - elsif @tournament.name.include?('sPooKy Bern')
     = image_tag 'pk_bern_erupted_halloween.png', height: '100%', width: '100%', alt: 'pk_bern_erupted_halloween image'
-  - elsif @tournament.image_link.present?
+  - elsif @tournament.image_link.present? && Request.url_valid?(@tournament.image_link)
     = image_tag @tournament.image_link, height: @tournament.image_height.present? ? @tournament.image_height : '100%', width: @tournament.image_width.present? ? @tournament.image_width : '100%', alt: 'tournament image'
 
 .tournament

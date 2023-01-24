@@ -20,4 +20,12 @@ module Request
     end
   end
 
+  def self.url_valid?(url)
+    begin
+      return URI.parse(url).host.present?
+    rescue URI::InvalidURIError
+      return false
+    end
+  end
+
 end
