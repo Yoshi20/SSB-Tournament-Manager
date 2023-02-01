@@ -100,10 +100,9 @@ class ApplicationController < ActionController::Base
 
   def set_top_players
     return unless session['country_code'] == 'ch'
-    Rails.cache.delete("top_players_s1_22")
-    @topPlayers = Rails.cache.fetch("top_players_s1_22", expires_in: 1.day) do
+    @topPlayers = Rails.cache.fetch("top_players_s2_22", expires_in: 1.day) do
       @topPlayers = []
-      helpers.top_players_s1_22.each do |p|
+      helpers.top_players_s2_22.each do |p|
         player = Player.find_by(gamer_tag: p)
         player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
         @topPlayers << player unless player.nil?
