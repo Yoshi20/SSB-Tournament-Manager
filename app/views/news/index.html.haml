@@ -9,7 +9,7 @@
       = link_to news, class: "thumbnail" do
         .row
           .col-2.text-center{style: "padding-top: 10px; font-size: 10px; border-right: 1px lightgray solid;"}
-            = news.created_at.to_s(:custom_datetime_date)
+            = news.created_at.to_fs(:custom_datetime_date)
           .col-10{style: "padding-left: 10px;"}
             %strong= news.title
             %br

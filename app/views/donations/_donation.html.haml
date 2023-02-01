@@ -21,5 +21,5 @@
         .col.text-left
           = donation.is_public ? "" : "(hidden)"
         .col.text-right
-          = Time.parse(donation.timestamp).to_s(:custom_datetime_date)
+          = Time.parse(donation.timestamp).to_fs(:custom_datetime_date)
   -# %a.stretched-link{:href => donation.url, :target => '_blank', :title => ""}
