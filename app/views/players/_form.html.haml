@@ -36,7 +36,7 @@
     = f.text_field :nintendo_friend_code, class: 'form-control', maxlength: '50'
   .field.form-group
     = f.label :smash_gg_id, t('players.smash_gg_id')
-    %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
+    %em= link_to(t('players.whats_smash_gg_id'), "https://help.start.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
     = f.text_field :smash_gg_id, class: 'form-control', maxlength: '50'
   - if current_user.super_admin?
     .field.form-group

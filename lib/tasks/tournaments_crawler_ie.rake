@@ -52,15 +52,15 @@ namespace :tournaments_crawler_ie do
     }
   end
 
-  desc "Creates upcoming external tournaments from smash.gg"
+  desc "Creates upcoming external tournaments from start.gg"
   task smash_gg: :environment do
     Time.use_zone("London") {
-      puts 'Crawling https://smash.gg/tournaments...'
-      root = 'https://smash.gg/'
+      puts 'Crawling https://start.gg/tournaments...'
+      root = 'https://start.gg/'
 
       # URL to get the data as JSON
-      # doc = Nokogiri::HTML(URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22IE%22}&page=1&per_page=100&returnMeta=true'))
-      doc = URI.open('https://smash.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22IE%22}&page=1&per_page=100&returnMeta=true').read
+      # doc = Nokogiri::HTML(URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22IE%22}&page=1&per_page=100&returnMeta=true'))
+      doc = URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22IE%22}&page=1&per_page=100&returnMeta=true').read
       jsonHash = JSON.parse doc
       jsonHash['total_count'].times do |i|
         tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]

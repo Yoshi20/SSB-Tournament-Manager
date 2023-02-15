@@ -52,7 +52,7 @@
         = text_field_tag :nintendo_friend_code, params[:nintendo_friend_code], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :smash_gg_id, t('players.smash_gg_id')
-        %em= link_to(t('players.whats_smash_gg_id'), "https://help.smash.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
+        %em= link_to(t('players.whats_smash_gg_id'), "https://help.start.gg/en/articles/4855957-discriminators-on-smash-gg", target: "_blank")
         = text_field_tag :smash_gg_id, params[:smash_gg_id], class: 'form-control', maxlength: '50'
       - unless session['country_code'] == 'uk'
         .form-group
