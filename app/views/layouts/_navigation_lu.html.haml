@@ -1,10 +1,8 @@
 .container
   %a.navbar-brand{href: '/'}
     = image_tag('lu_logo.png', height: '50px', width: '50px', alt: 'LuxSmash logo')
-    %span.title{style: 'line-height: 0.8;'}
+    %span
       = t('welcome.lu.title')
-      %br
-      %em{style: 'font-size: 12px;'}= 'powered by Lëtz Smash'
 
   %ul.navbar-nav.navbar-main.ml-auto
     %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
