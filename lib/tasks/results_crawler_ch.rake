@@ -35,7 +35,9 @@ namespace :results_crawler_ch do
     links = [
       'https://braacket.com/league/ALLOFTHEM/tournament?rows=200',
       'https://braacket.com/league/ALLOFTHEM/tournament?rows=200&page=2',
-      'https://braacket.com/league/SSBUCHPRs/tournament?rows=200'
+      'https://braacket.com/league/SSBUCHPRs/tournament?rows=200',
+      #'https://braacket.com/league/SSBUCHPRs/tournament?rows=200&page=2',
+      'https://braacket.com/league/weekrive/tournament?rows=200',
     ]
     links.each do |link|
       puts "\nCrawling #{link}..."
