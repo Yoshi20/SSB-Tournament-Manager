@@ -44,7 +44,7 @@
             .d-none.d-lg-block.col-lg-3
               .sidebar
                 = render '/partials/events', next_tournaments: @nextTournaments
-              - if session['country_code'] == 'ch' || session['country_code'] == 'de' #blup: tournament promotion
+              - if false #session['country_code'] == 'ch' || session['country_code'] == 'de' #blup: tournament promotion
                 .sidebar{style: 'margin-top: 10px; padding: 0;'}
                   = link_to('https://www.start.gg/tournament/smash-contest-dokomi-2023', target: '_blank') do
                     = image_tag 'de_smash_contest.jpg', height: '100%', width: '100%', alt: 'smash contest image', style: 'border-radius: 0.365rem;'
