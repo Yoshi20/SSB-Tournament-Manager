@@ -260,4 +260,9 @@ module PlayerHelper
   def top_players_s2_22
     ['Destany', 'Jaka', 'Deox6', 'SickBoy', 'Karpador64', 'DeepFreeze', 'Crow', 'PATOO', 'Artyst', 'Byron', 'Kimbo', 'ItseMePG', 'Crash', 'Fr0zen', 'gaya', 'Kepler']
   end
+
+  def top_players_s1_23
+    ['Jaka', 'DeepFreeze', 'Deox6', 'SickBoy', 'Destany', 'Byron', 'PATOO', 'Pege', 'gaya', 'Crow', 'Kimbo', 'Phonky', 'Rohan Doge', 'Artyst', 'Fr0zen']
+  end
+
 end

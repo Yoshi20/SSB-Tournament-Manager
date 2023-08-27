@@ -407,7 +407,7 @@ en:
   partials:
     events: "Next Tournaments"
     players:
-      title: "Top Players (2022)"
+      title: "Top Players (2023)"
       player: "Player"
     streamers:
       title: "Current Streams"
