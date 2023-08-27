@@ -26,6 +26,11 @@
         %p{style: 'margin-bottom: 0;'}
           %strong= t('communities.title')
         = image_tag "de_Karte_Deutschland.svg", alt: 'Deutschland Karte welcome image', class: 'welcome_image'
+    .col
+      = link_to 'https://discord.gg/QstytxxFFc', target: '_blank' do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= "Matchmaking"
+        = image_tag "Discord-Logo-Color.svg", alt: 'Discord logo welcome image', class: 'welcome_image'
 %p
   = t('welcome.de.body0')
 
