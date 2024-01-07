@@ -262,6 +262,8 @@
 
         - past_tournaments = @player.tournaments.where('active = ? AND date < ?', true, Time.zone.now)
         - if past_tournaments.any?
+          - past_tournaments_2024 = past_tournaments.where('date >= ? AND date < ?', Time.local(2024,1,1), Time.local(2025,1,1))
+          = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2024, year: '2024'
           - past_tournaments_2023 = past_tournaments.where('date >= ? AND date < ?', Time.local(2023,1,1), Time.local(2024,1,1))
           = render 'past_tournaments', player: @player, past_tournaments: past_tournaments_2023, year: '2023'
           - past_tournaments_2022 = past_tournaments.where('date >= ? AND date < ?', Time.local(2022,1,1), Time.local(2023,1,1))
