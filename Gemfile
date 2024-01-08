@@ -144,7 +144,7 @@ gem 'cookies_eu'
 
 # See https://github.com/thredded/thredded
 gem 'thredded', '~> 1.0'
-gem 'html-pipeline', '2.14.0' #blup: error when calling rails s with v2.14.1
+gem 'html-pipeline', '3.0.1' #blup: error when calling rails s with v2.14.1
 gem "addressable", ">= 2.8.0" # https://github.com/Yoshi20/SSB-Tournament-Manager/security/dependabot/6
 
 # See https://github.com/mbleigh/acts-as-taggable-on
