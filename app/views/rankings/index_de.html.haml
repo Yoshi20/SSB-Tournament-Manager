@@ -35,8 +35,11 @@
         %a#power_ranking_s2_22-tab.nav-link{'data-toggle'=>'tab', href: '#power_ranking_s2_22', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s2_22.title')
       %li.nav-item
-        %a#power_ranking_s1_23-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking_s1_23', role: 'tab', 'aria-controls'=>'all'}
+        %a#power_ranking_s1_23-tab.nav-link{'data-toggle'=>'tab', href: '#power_ranking_s1_23', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s1_23.title')
+      %li.nav-item
+        %a#power_ranking_s2_23-tab.nav-link.active{'data-toggle'=>'tab', href: '#power_ranking_s2_23', role: 'tab', 'aria-controls'=>'all'}
+          = t('rankings.s2_23.title')
 
     .tab-content#power_rankings-tabs-content
       -# Power Ranking S1 2019 -------------------------------------------------
@@ -55,8 +58,11 @@
       .tab-pane.fade#power_ranking_s2_22{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s2_22-tab'}
         = render 'rankings/de/s2_22'
       -# Power Ranking S1 2023 -------------------------------------------------
-      .tab-pane.fade.show.active#power_ranking_s1_23{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s1_23-tab'}
+      .tab-pane.fade#power_ranking_s1_23{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s1_23-tab'}
         = render 'rankings/de/s1_23'
+      -# Power Ranking S2 2023 -------------------------------------------------
+      .tab-pane.fade.show.active#power_ranking_s2_23{role: 'tabpanel', 'aria-labelledby'=>'power_ranking_s2_23-tab'}
+        = render 'rankings/de/s2_23'
 
   -# Top 100 ELO ---------------------------------------------------------------
   .tab-pane.fade#elo{role: 'tabpanel', 'aria-labelledby'=>'elo-tab'}
