@@ -4,36 +4,42 @@
   .col
     %h1.page__title= t('locus_league.title')
 
-.row.center
-  .col
-    = link_to asset_url('pt_locus_league_placements.jpg') do
-      = image_tag 'pt_locus_league_placements.jpg', height: '100%', width: '100%', alt: 'locus league placements image'
+.row.center.mt-3
+  %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/XXX", style: 'height: 360px; width: 100%;'}
 
-.row.center
-  .col
-    %h2{style: 'margin-bottom: -10px;'}= "Invitational Rules"
-    = link_to asset_url('pt_event_guideline.jpg') do
-      = image_tag 'pt_event_guideline.jpg', height: '100%', width: '100%', alt: 'locus league event guideline image'
+-# .row.center
+-#   .col
+-#     = link_to asset_url('pt_locus_league_placements.jpg') do
+-#       = image_tag 'pt_locus_league_placements.jpg', height: '100%', width: '100%', alt: 'locus league placements image'
+-#
+-# .row.center
+-#   .col
+-#     %h2{style: 'margin-bottom: -10px;'}= "Invitational Rules"
+-#     = link_to asset_url('pt_event_guideline.jpg') do
+-#       = image_tag 'pt_event_guideline.jpg', height: '100%', width: '100%', alt: 'locus league event guideline image'
 
 .row
   .col
     %h2= t('locus_league.explanation.title')
     %p= t('locus_league.explanation.body1')
     %p= t('locus_league.explanation.body2')
-    %p= t('locus_league.explanation.body3')
+    %p= t('locus_league.explanation.body3', link: link_to('twitch.tv/locus_crew', 'https://www.twitch.tv/locus_crew', target: '_blank')).html_safe
+    %p= t('locus_league.explanation.body4')
+    %p= t('locus_league.explanation.body5')
     %ul
       %li= t('locus_league.explanation.li1')
       %li= t('locus_league.explanation.li2')
       %li= t('locus_league.explanation.li3')
       %li= t('locus_league.explanation.li4')
-    %p= t('locus_league.explanation.body4', link: link_to('twitch.tv/locus_crew', 'https://www.twitch.tv/locus_crew', target: '_blank')).html_safe
-    %p= t('locus_league.explanation.body5')
+      %li= t('locus_league.explanation.li5')
+      %li= t('locus_league.explanation.li6')
+    %p= t('locus_league.explanation.body6')
 
 .row.center
   .col
-    = link_to asset_url('pt_liga_PONTOS_3.jpg') do
-      = image_tag 'pt_liga_PONTOS_3.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
+    = link_to asset_url('pt_liga_PONTOS_4.jpg') do
+      = image_tag 'pt_liga_PONTOS_4.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
 
-.row.mt-3
-  .col
-    %p= t('locus_league.explanation.body6', link: link_to(t('locus_league.explanation.excel_table'), 'https://docs.google.com/spreadsheets/d/1V2VjHnoBEGfBfuTGf8I2K8L_50E-nwoZRfVR3g4_s0E/edit?usp=drivesdk', target: '_blank')).html_safe
+-# .row.mt-3
+-#   .col
+-#     %p= t('locus_league.explanation.body6', link: link_to(t('locus_league.explanation.excel_table'), 'https://docs.google.com/spreadsheets/d/1V2VjHnoBEGfBfuTGf8I2K8L_50E-nwoZRfVR3g4_s0E/edit?usp=drivesdk', target: '_blank')).html_safe
