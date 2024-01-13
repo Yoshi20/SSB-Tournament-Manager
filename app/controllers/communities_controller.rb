@@ -114,7 +114,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/nds
   def nds
     community_regions = ['NI', 'HB']
-    discord_keys = ['t5vvpS4', '0X3myOFZHGCpW1G0', 'XpjNsRp']
+    discord_keys = ['t5vvpS4', '0X3myOFZHGCpW1G0', 'qFxVJZjhNB', 'XpjNsRp']
     @next_region_tournaments = Tournament.all_from(session['country_code']).active.upcoming.where(region: community_regions).order(date: :asc).limit(10)
     # @region_administartors = User.all_from(session['country_code']).where(is_admin: true).joins(:player).where("players.region IN (?)", community_regions)
     @discord_invites_json = []
