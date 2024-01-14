@@ -1643,7 +1643,7 @@ pt:
       body1: "A Locus League está de regresso para a sua segunda edição e com mais jogadores, mais eventos e o dobro da duração!"
       body2: "A Locus League é um circuito de torneios da Locus Crew no qual os participantes podem acumular pontos ao longo de 10 meses de competição!"
       body3: "À semelhança do ano passado, podes acumular pontos participando em QUALQUER evento da Locus Crew, mas outra forma de obter pontos é redimindo channel points em %{link} (limite de uma vez por stream). Channel points são recebidos ao visualizar as streams dos torneios e a aceitar as Previsões do resultado das matches! Existe, portanto, motivação para pensar bem nas apostas e para acompanhar os torneios de casa!"
-      body4: "Todos os eventos da Locus Crew de dia 15 de Janeiro para a frente contam para a liga. A atribuição de pontos é feita conforme a informação da tabela de pontos presente nesta página. Caso um determinado evento não esteja referido na tabela, o seu valor de pontos será descrito na própria página do evento."
+      body4: "Todos os eventos da Locus Crew de dia 15 de Janeiro para a frente contam para a liga. A atribuição de pontos é feita conforme a informação da tabela de pontos presente nesta página. Caso um determinado evento não esteja referido na tabela, o seu valor de pontos será descrito na própria página do evento. Existem também SHINNY EVENTS este ano. Shinny events são torneios normais que, aleatoriamente, valem o dobro (x2) dos pontos tabelados! Todos os Weeklies terão uma pequena chance de ser Shinny. Se um evento for Shinny, será anunciado na respetiva página."
       body5: "Ao longo do ano, vão existir datas de especial importância. Em algumas, os jogadores com a maior quantidade de pontos atuais ganham o privilégio de se qualificarem para as finais. As finais decorrerem no final do ano de 2024. As datas e números de convites são as seguintes:"
       li1: "25 de abril - TOP 2 jogadores com mais pontos qualificam-se para as finais"
       li2: "25 de agosto - TOP 2 jogadores com mais pontos qualificam-se para as finais"
@@ -1651,7 +1651,7 @@ pt:
       li4: "31 de outubro - \"Last Change Qualifier\" - O torneio \"Weekly L\" desta data terá regras adicionais e o vencedor será qualificado para as finais"
       li5: "4 de Novembro até 18 de Novembro - Voto comunitário - os 3 jogadores com mais votos qualificam-se para as finais"
       li6: "??? de Novembro - Finais da Locus League"
-      body6: "Os jogadores qualificados podem continuar a adquirir pontos. Durante o evento final, o \"seeding\" será atribuído exclusivamente baseado no número de pontos que cada jogador adquiriu ao longo do ano. Existirão também, tal como no ano passado, privilégios atribuídos às seeds mais altas."
+      body6: "Os jogadores qualificados podem continuar a adquirir pontos. Durante o evento final, o \"seeding\" dos TOP 3 jogadores será atribuído exclusivamente baseado no número de pontos que cada jogador adquiriu ao longo do ano. Existirão também, tal como no ano passado, privilégios atribuídos às seeds mais altas."
       excel_table: "nesta tabela de excel"
 
   thredded:
