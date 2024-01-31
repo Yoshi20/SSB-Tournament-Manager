@@ -1638,6 +1638,7 @@ pt:
 
   locus_league:
     title: "Locus League"
+    see_full_ranking_here: "Vê os ranking completos aqui"
     explanation:
       title: "Explicação"
       body1: "A Locus League está de regresso para a sua segunda edição e com mais jogadores, mais eventos e o dobro da duração!"

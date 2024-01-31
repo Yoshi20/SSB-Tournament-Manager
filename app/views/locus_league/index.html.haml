@@ -7,11 +7,16 @@
 .row.center.mt-3
   %iframe.newest-video{allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/7IIKX8ZxM4U", style: 'height: 360px; width: 100%;'}
 
--# .row.center
--#   .col
--#     = link_to asset_url('pt_locus_league_placements.jpg') do
--#       = image_tag 'pt_locus_league_placements.jpg', height: '100%', width: '100%', alt: 'locus league placements image'
--#
+%br
+.row.center
+  .col
+    = link_to asset_url('pt_locus_league_placements.jpg') do
+      = image_tag 'pt_locus_league_placements.jpg', height: '100%', width: '100%', alt: 'locus league placements image'
+
+.row.mt-3.center
+  .col
+    %p= link_to(t('locus_league.see_full_ranking_here'), 'https://docs.google.com/spreadsheets/d/107UK9mL06ybXfyP8kCaCoQYsVLSn7HEP3ejdVXUfjeE/edit?usp=sharing', target: '_blank')
+
 -# .row.center
 -#   .col
 -#     %h2{style: 'margin-bottom: -10px;'}= "Invitational Rules"
@@ -39,7 +44,3 @@
   .col
     = link_to asset_url('pt_liga_PONTOS_4.jpg') do
       = image_tag 'pt_liga_PONTOS_4.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
-
--# .row.mt-3
--#   .col
--#     %p= t('locus_league.explanation.body6', link: link_to(t('locus_league.explanation.excel_table'), 'https://docs.google.com/spreadsheets/d/1V2VjHnoBEGfBfuTGf8I2K8L_50E-nwoZRfVR3g4_s0E/edit?usp=drivesdk', target: '_blank')).html_safe
