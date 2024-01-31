@@ -13,7 +13,7 @@
     </p>
     <p>
       <strong><%= t('tournaments.mailer.name') %></strong> <%= @tournament.name %><br>
-      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_fs(:custom_datetime_with_weekday) %><br>
     </p>
     <p>
       <%= t('tournaments.mailer.to_check_out', link: link_to(t('tournaments.mailer.this_link'), @url)).html_safe %>

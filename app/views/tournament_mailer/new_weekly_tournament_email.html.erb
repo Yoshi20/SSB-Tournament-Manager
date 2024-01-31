@@ -13,7 +13,7 @@
     </p>
     <p>
       <strong><%= t('tournaments.mailer.name') %></strong> <%= @tournament.name %><br>
-      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %><br>
+      <strong><%= t('tournaments.mailer.date') %></strong> <%= @tournament.date.to_fs(:custom_datetime_with_weekday) %><br>
       <strong><%= t('tournaments.mailer.fee') %></strong> <%= @tournament.registration_fee %> <%= Domain.currency_from(@tournament.country_code) %><br>
       <strong><%= t('tournaments.mailer.location') %></strong><br>
       <%- @tournament.location.split(',').each do |str| %>

@@ -185,7 +185,7 @@
       .row
         .col
           .team__stats__single
-            %strong= @team.updated_at.to_s(:custom_datetime)
+            %strong= @team.updated_at.to_fs(:custom_datetime)
             %span= 'updated_at'
         .col
           .team__stats__single
@@ -193,5 +193,5 @@
             %span= 'Creator'
         .col
           .team__stats__single.team__stats__single--last
-            %strong= @team.created_at.to_s(:custom_datetime)
+            %strong= @team.created_at.to_fs(:custom_datetime)
             %span= 'created_at'

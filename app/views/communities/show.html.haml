@@ -93,7 +93,7 @@
       .row
         .col
           .community__stats__single
-            %strong= @community.updated_at.to_s(:custom_datetime)
+            %strong= @community.updated_at.to_fs(:custom_datetime)
             %span= 'updated_at'
         .col
           .community__stats__single
@@ -101,5 +101,5 @@
             %span= 'Creator'
         .col
           .community__stats__single.community__stats__single--last
-            %strong= @community.created_at.to_s(:custom_datetime)
+            %strong= @community.created_at.to_fs(:custom_datetime)
             %span= 'created_at'

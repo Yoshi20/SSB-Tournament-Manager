@@ -5,7 +5,7 @@
 
 <%= t('tournaments.mailer.too_few_registrations', tournament: @tournament.name.gsub('(cancelled) ', '')).html_safe %>
 
-<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_fs(:custom_datetime_with_weekday) %>
 
 <%= t('tournaments.mailer.to_join_an_other2') %>
   <%= @url %>

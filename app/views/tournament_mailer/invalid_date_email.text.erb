@@ -4,7 +4,7 @@
 The date of the external tournament "<%= @tournament.name %>" couldn't be extracted correctly.
 
 It was temporarily added on the following date:
-  <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+  <%= @tournament.date.to_fs(:custom_datetime_with_weekday) %>
 
 Please correct this manually by following this link:
   <%= @url %>

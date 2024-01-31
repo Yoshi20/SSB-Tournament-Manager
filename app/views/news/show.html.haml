@@ -12,10 +12,10 @@
       %p{style: "margin-top: 1rem; font-size: 12px;"}
         - if @news.updated_at != @news.created_at
           %strong= t('news.updated_at')
-          = @news.updated_at.to_s(:custom_datetime)
+          = @news.updated_at.to_fs(:custom_datetime)
           %br
         %strong= t('news.created_at')
-        = @news.created_at.to_s(:custom_datetime)
+        = @news.created_at.to_fs(:custom_datetime)
         %br
         %strong= t('news.created_by')
         = @news.user.username

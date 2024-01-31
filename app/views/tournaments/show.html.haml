@@ -195,12 +195,12 @@
             .col
               .tournament__details__single
                 %strong
-                  = @tournament.created_at.to_s(:custom_datetime)
+                  = @tournament.created_at.to_fs(:custom_datetime)
                 %span= "Created at"
             .col
               .tournament__details__single.tournament__details__single--last
                 %strong
-                  = @tournament.updated_at.to_s(:custom_datetime)
+                  = @tournament.updated_at.to_fs(:custom_datetime)
                 %span= "Updated at"
 
     - if @tournament.description.present?

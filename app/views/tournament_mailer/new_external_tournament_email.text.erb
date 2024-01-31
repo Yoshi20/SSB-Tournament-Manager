@@ -6,7 +6,7 @@
 <%= t("tournaments.mailer.new_external_#{@tournament.country_code}") %>
 
 <%= t('tournaments.mailer.name') %> <%= @tournament.name %>
-<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_s(:custom_datetime_with_weekday) %>
+<%= t('tournaments.mailer.date') %> <%= @tournament.date.to_fs(:custom_datetime_with_weekday) %>
 
 <%= t('tournaments.mailer.to_check_out2') %>
   <%= @url %>
