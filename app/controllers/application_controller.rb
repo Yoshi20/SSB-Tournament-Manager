@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
-    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
+    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(session['country_code'])
     lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
@@ -153,8 +153,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'uk'
       elsif request.host.include?("smashbrosportugal")
         session['country_code'] = 'pt'
+      elsif request.host.include?("smashiceland")
+        session['country_code'] = 'is'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"

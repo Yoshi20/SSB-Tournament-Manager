@@ -479,6 +479,15 @@ en:
       body4: "You can find the official Power Ranking with the best players in Portugal under %{rankings_link}."
       body5: "Here you can find all %{players_link} registered on Smash Bros. Portugal and the %{videos_link} they posted."
       body6: "Information about Smash Bros. Portugal can be found under %{informations_link}."
+    is:
+      title: "SmashIceland"
+      body0: "Welcome to SmashIceland, your entry point into the Iceland Super Smash Bros. Ultimate scene."
+      body1: "If you want to stay up-to-date with the Iceland Smash Community, join us on %{discord_link} and follow the Iceland Smash %{twitter_link} Account."
+      body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body3: "%{log_in_link} or %{sign_up_link} if you haven't yet, to be able to join a tournament and write a %{feedbacks_link}."
+      body4: "You can find the official Power Ranking of Iceland under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on SmashIceland and here you can find the %{statistics_link}."
+      body6: "More information about SmashIceland can be found under %{informations_link}."
     tournament_list: "Tournaments"
     calendar: "Calendar"
     log_in: "Log in"
@@ -527,7 +536,7 @@ en:
         bracket_tool: "Bracket tool"
         bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SwissSmash tournament manager uses %{link}."
         bracket_seeding: "Bracket seeding"
-        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on germanysmash.de:"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SwissSmash.ch:"
         bracket_seeding_body2: "The final seeding is done manually by a TO."
       results:
         title: "Results"
@@ -841,6 +850,60 @@ en:
       partners:
         title: "Partners"
         sites: "Partners sites"
+    is:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        smashiceland: |
+          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in Iceland and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
+          It shall also present an entry point for new players to find their respective local smash community.<br><br>
+          In the meantime it now also provides an almost complete list of players in Iceland with relevant stats, player data, rankings and roles.
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SmashIceland is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in Iceland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On smashiceland.com created weekly tournament"
+        calendar_internal: "Internal -> On smashiceland.com created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "A tournament will be considered an official SmashIceland tournament and will count to the PR when the following requirements are met:"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on smashiceland.com or on the Swiss Smash Discord tournaments channel"
+        power_ranking_li_2: "A minimum of 16 attendees"
+        power_ranking_li_3: "Reasonable seeding"
+        power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
+        power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
+        power_ranking_li_6: "Weeklies do not count to the PR"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "SmashIceland.ch contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashIceland Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi SmashIceland\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the SmashIceland tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on SmashIceland.com:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the SmashIceland Tournament Manager internal tournaments, smashiceland.com is also able to get the results from all other tournaments in Iceland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Partners sites"
 
   calendar:
     title: "Calendar"
@@ -1101,10 +1164,14 @@ en:
       top15: "Top 15:"
       counted_tournaments: "Counted tournaments:"
       considered_tournaments: "Considered but deemed ineligible:"
-    s1_20:
+    s12_20:
       title: "2020"
       no_ranking: "Due to COVID-19, there is no official 2020 ranking"
     s1_21:
+      title: "S1 2021"
+    s2_21:
+      title: "S2 2021"
+    s12_21:
       title: "2021"
       no_ranking: "Due to COVID-19, there is no official 2021 ranking"
       top10: "Top 10:"
@@ -1575,6 +1642,8 @@ en:
     allows_emails_from_partners_uk: "I agree that partners of SmashUltimate.uk send me emails from time to time"
     allows_emails_from_portugalsmash: "I agree that Smash Bros. Portugal sends me emails about important community topics & big tournament announcements from time to time"
     allows_emails_from_partners_pt: "I agree that partners of Smash Bros. Portugal send me emails from time to time"
+    allows_emails_from_smashiceland: "I agree that SmashIceland sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_is: "I agree that partners of SmashIceland send me emails from time to time"
     data_agreement: "<strong>(Mandatory field)</strong> I agree that my data will be publicly viewable via my profile and will be used for player statistics. The data provided can be edited or deleted at any time via \"Edit profile\" or \"Account\""
     data_agreement_text: "Mandatory field must be checked!"
     current_password: "Current password"

@@ -1,0 +1,37 @@
+- set_meta_tags description: meta_tag_description('Imprint')
+
+%h1.page__title
+  = t('navigation.footer.imprint')
+%p
+  %strong Contact
+%p
+  Jascha Haldemann
+  %br
+  B&uuml;rglenstrasse 69
+  %br
+  3006 Bern
+  %br
+  Switzerland
+%p
+  admin@smashiceland.com
+%br
+%p
+  %strong
+    = t('imprint.title1')
+%p
+  = t('imprint.text1')
+%p
+  = t('imprint.text2')
+%p
+  = t('imprint.text3')
+%p
+  %strong
+    = t('imprint.title2')
+%p
+  = t('imprint.text4')
+
+<!--ACHTUNG: Wenn Sie die Quelle ohne Erlaubnis von SwissAnwalt entfernen, dann begehen Sie eine Urheberrechtsverletzung welche in jedem Fall geahndet wird.-->
+%br
+= t('imprint.source')
+= link_to "SwissAnwalt", "https://www.swissanwalt.ch", target: "_blank", rel: "noopener"
+<!--Bitte beachten Sie die AGB von SwissAnwalt betreffend allf&auml;llig anfallenden Kosten bei Weglassen der Quelle!-->

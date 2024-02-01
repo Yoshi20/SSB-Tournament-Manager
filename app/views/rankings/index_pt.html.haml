@@ -61,6 +61,11 @@
           $('#region').addClass('show active');
           var region = anchor.split("_")[1].toString();
           $('#region_' + region + '-tab').addClass('show active');
+        } else {
+          $('#power_ranking-tab').addClass('active');
+          $('#power_ranking').addClass('show active');
+          $('#region-tab').removeClass('active');
+          $('#region').removeClass('show active');
         }
       }
     }

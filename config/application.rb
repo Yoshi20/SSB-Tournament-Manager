@@ -19,7 +19,7 @@ module SSBTournamentManager
 
     config.time_zone = 'Bern'
 
-    config.i18n.available_locales = %w(en de fr it pt)
+    config.i18n.available_locales = %w(en de fr it pt is)
 
     config.domains = {
       ch: "swisssmash.ch",
@@ -29,6 +29,7 @@ module SSBTournamentManager
       it: "italysmash.it",
       uk: "smashultimate.uk",
       pt: "smashbrosportugal.com",
+      is: "smashiceland.com",
     }
 
     config.default_locales = {
@@ -39,6 +40,7 @@ module SSBTournamentManager
       it: "it",
       uk: "en",
       pt: "pt",
+      is: "is",
     }
 
     config.available_locales = {
@@ -49,6 +51,7 @@ module SSBTournamentManager
       it: ["en", "it"],
       uk: ["en"],
       pt: ["en", "pt"],
+      is: ["en", "is"],
     }
 
     config.currencies = {
@@ -59,6 +62,7 @@ module SSBTournamentManager
       it: "€",
       uk: "£",
       pt: "€",
+      is: "kr‎",
     }
 
     config.emails = {
@@ -69,6 +73,7 @@ module SSBTournamentManager
       it: "ItalySmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_IT']}>",
       uk: "SmashUltimate.uk <#{ENV['INFOMANIAK_EMAIL_USERNAME_UK']}>",
       pt: "SmashBrosPortugal <#{ENV['INFOMANIAK_EMAIL_USERNAME_PT']}>",
+      is: "SmashIceland <#{ENV['INFOMANIAK_EMAIL_USERNAME_IS']}>",
     }
 
     config.smtp_hosts = {
@@ -79,6 +84,7 @@ module SSBTournamentManager
       it: "mail.infomaniak.com",
       uk: "mail.infomaniak.com",
       pt: "mail.infomaniak.com",
+      is: "mail.infomaniak.com",
     }
 
     config.smtp_domains = {
@@ -89,6 +95,7 @@ module SSBTournamentManager
       it: "italysmash.it",
       uk: "smashultimate.uk",
       pt: "smashbrosportugal.com",
+      is: "smashiceland.com",
     }
 
     config.smtp_user_names = {
@@ -99,6 +106,7 @@ module SSBTournamentManager
       it: ENV['INFOMANIAK_EMAIL_USERNAME_IT'],
       uk: ENV['INFOMANIAK_EMAIL_USERNAME_UK'],
       pt: ENV['INFOMANIAK_EMAIL_USERNAME_PT'],
+      is: ENV['INFOMANIAK_EMAIL_USERNAME_IS'],
     }
 
     config.smtp_passwords = {
@@ -109,6 +117,7 @@ module SSBTournamentManager
       it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       pt: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      is: ENV['INFOMANIAK_EMAIL_PASSWORD'],
     }
 
   end

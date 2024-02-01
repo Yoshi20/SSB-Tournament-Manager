@@ -70,9 +70,10 @@ class Tournament < ApplicationRecord
     regions_raw = ApplicationController.helpers.regions_raw_from(self.country_code)
     regions_de = ['ch', 'de'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :de).map(&:downcase) : []
     regions_fr = ['ch', 'fr'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :fr).map(&:downcase) : []
-    regions_en = ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase) : []
+    regions_en = ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :en).map(&:downcase) : []
     regions_it = ['ch', 'it'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :it).map(&:downcase) : []
     regions_pt = ['ch', 'pt'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :pt).map(&:downcase) : []
+    regions_pt = ['ch', 'is'].include?(self.country_code) ? I18n.t(regions_raw, scope: 'defines.regions', locale: :is).map(&:downcase) : [] #blup ch nötig?
     # First: Try to determine region from city
     if self.city.present?
       city = self.city.downcase

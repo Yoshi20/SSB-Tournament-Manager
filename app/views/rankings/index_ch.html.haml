@@ -24,10 +24,10 @@
           = t('rankings.s2_19.title')
       %li.nav-item
         %a#s1_20-tab.nav-link{'data-toggle'=>'tab', href: '#s1_20', role: 'tab', 'aria-controls'=>'all'}
-          = t('rankings.s1_20.title')
+          = t('rankings.s12_20.title')
       %li.nav-item
         %a#s1_21-tab.nav-link{'data-toggle'=>'tab', href: '#s1_21', role: 'tab', 'aria-controls'=>'all'}
-          = t('rankings.s1_21.title')
+          = t('rankings.s12_21.title')
       %li.nav-item
         %a#s1_22-tab.nav-link{'data-toggle'=>'tab', href: '#s1_22', role: 'tab', 'aria-controls'=>'all'}
           = t('rankings.s1_22.title')
@@ -89,3 +89,25 @@
     -#   -# Power Ranking S1 2019 -------------------------------------------------
     -#   .tab-pane.fade#points_2019{role: 'tabpanel', 'aria-labelledby'=>'s1_19-tab'}
     -#     = render 'rankings/ch/points', players: @players_2019, year: '2019'
+
+:javascript
+  document.addEventListener('turbolinks:load', function() {
+    // show points anchor tag if provided
+    var anchors = document.location.toString().split("#")
+    if (anchors.length >= 2) {
+      var anchor = anchors[1].toString();
+      if (anchor != undefined) {
+        if (anchor.startsWith('points')) {
+          $('#power_ranking-tab').removeClass('active');
+          $('#power_ranking').removeClass('show active');
+          $('#points-tab').addClass('active');
+          $('#points').addClass('show active');
+        } else {
+          $('#power_ranking-tab').addClass('active');
+          $('#power_ranking').addClass('show active');
+          $('#points-tab').removeClass('active');
+          $('#points').removeClass('show active');
+        }
+      }
+    }
+  });

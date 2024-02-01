@@ -890,10 +890,10 @@ fr:
       top15: "Top 15:"
       counted_tournaments: "Tournois comptés:"
       considered_tournaments: "Considérés mais jugés inéligibles:"
-    s1_20:
+    s12_20:
       title: "2020"
       no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2020"
-    s1_21:
+    s12_21:
       title: "2021"
       no_ranking: "En raison du COVID-19, il n'y a pas de classement officiel 2021"
       top10: "Top 10:"

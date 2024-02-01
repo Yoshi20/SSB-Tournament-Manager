@@ -25,6 +25,8 @@ module PlayerHelper
       ['south_east', 'london', 'north_west', 'east_of_england', 'midlands', 'south_west', 'yorkshire_and_the_humber', 'north_east', 'northern_ireland', 'scotland', 'wales', 'ireland']
     elsif country_code == 'pt'
       ['aveiro', 'azores', 'beja', 'braga', 'braganca', 'castelo_branco', 'coimbra', 'evora', 'faro', 'guarda', 'leiria', 'lisbon', 'madeira', 'portalegre', 'porto', 'santarem', 'setubal', 'viana_do_castelo', 'vila_real', 'viseu']
+    elsif country_code == 'is'
+      ['south', 'east', 'north', 'westfjords', 'west', 'reykjanes', 'reykjavík'] #blup
     end
   end
 
@@ -219,6 +221,8 @@ module PlayerHelper
       ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'pt'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "community_editor", "forum_moderator",
+    elsif country_code == 'is'
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     end
   end
 
