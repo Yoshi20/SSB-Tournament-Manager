@@ -1379,6 +1379,22 @@ is:
       match_rules:
         title_short: "Ruleset"
         body: "The GUIA/Stagelist is used at most tournaments in the Portugal. Please find out which rules are being used before each event."
+    is:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in Iceland."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Iceland. Please find out which rules are being used before each event."
 
   tournaments:
     title: "Tournaments"
