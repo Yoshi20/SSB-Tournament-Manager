@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
-    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(session['country_code'])
+    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
     lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
@@ -99,10 +99,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_top_players
-    return unless session['country_code'] == 'ch'
-    @topPlayers = Rails.cache.fetch("top_players_s2_23", expires_in: 1.day) do
+    return unless ['ch', 'is'].include?(session['country_code'])
+    top_players_method_str = "top_players_s2_23_#{session['country_code']}"
+    @topPlayers = Rails.cache.fetch(top_players_method_str, expires_in: 1.day) do
       @topPlayers = []
-      helpers.top_players_s2_23.each do |p|
+      helpers.send(top_players_method_str).each do |p|
         player = Player.find_by(gamer_tag: p)
         player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
         @topPlayers << player unless player.nil?

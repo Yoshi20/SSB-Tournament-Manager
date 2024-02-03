@@ -29,9 +29,9 @@
           - else
             .d-none.d-lg-block.col-lg-3
               .sidebar
-                - if session['country_code'] == 'ch'
+                - if ['ch', 'is'].include?(session['country_code'])
                   = render '/partials/players'
-                - elsif ['de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(session['country_code'])
+                - elsif ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
                   %h2.sidebar__title
                     = t('partials.streamers.title')
                   = render '/partials/streamers'

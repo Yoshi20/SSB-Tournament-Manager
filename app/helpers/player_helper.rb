@@ -245,32 +245,36 @@ module PlayerHelper
     end.reverse
   end
 
-  def top_players_s1_19
+  def top_players_s1_19_ch
     ['Destany', 'DeepFreeze', 'Smuff', 'Severe Calamari', 'Benji', 'Crash', 'Kepler', 'CrzyShroom', 'Sylph', 'Olivia', 'Ryuji', 'Zudenka', 'SickBoy', 'Phonky', 'Radiance', 'Godoh', 'Jesuischoq', 'ItseMePG', 'TunaLink', 'Acsor', 'Rampage', 'N3rthus', 'TheBlerton', 'Fr0zen', 'Karpador64']
   end
 
-  def top_players_s2_19
+  def top_players_s2_19_ch
     ['Destany', 'Karpador64', 'Crash', 'Phonky', 'DeepFreeze', 'Olivia', 'Kepler', 'SickBoy', 'Jaka', 'ItseMePG', 'Benji', 'Purist', 'Acsor', 'Rampage', 'Yannwatts']
   end
 
-  def top_players_s12_21
+  def top_players_s12_21_ch
     ['Jaka', 'Destany', 'Crash', 'DeepFreeze', 'Kimbo', 'Phonky', 'Deox6', 'Rohan Doge', 'Karpador64', 'Kepler']
   end
 
-  def top_players_s1_22
+  def top_players_s1_22_ch
     ['Destany', 'Jaka', 'Karpador64', 'Deox6', 'Crash', 'Rohan Doge', 'Kimbo', 'Kepler', 'Phonky', 'mistic', 'Byron', 'SickBoy', 'jodel', 'gaya', 'Fr0zen']
   end
 
-  def top_players_s2_22
+  def top_players_s2_22_ch
     ['Destany', 'Jaka', 'Deox6', 'SickBoy', 'Karpador64', 'DeepFreeze', 'Crow', 'PATOO', 'Artyst', 'Byron', 'Kimbo', 'ItseMePG', 'Crash', 'Fr0zen', 'gaya', 'Kepler']
   end
 
-  def top_players_s1_23
+  def top_players_s1_23_ch
     ['Jaka', 'DeepFreeze', 'Deox6', 'SickBoy', 'Destany', 'Byron', 'PATOO', 'Pege', 'gaya', 'Crow', 'Kimbo', 'Phonky', 'Rohan Doge', 'Artyst', 'Fr0zen']
   end
 
-  def top_players_s2_23
+  def top_players_s2_23_ch
     ['Deox6', 'Jaka', 'SickBoy', 'PATOO', 'Kepler', 'Rohan Doge', 'Destany', 'Kimbo', 'DeepFreeze', 'Byron', 'Pege', 'Karpador64', 'Crow', 'Ice-Walker', 'Acsor', 'Crash', 'Phonky', 'Yuno']
+  end
+
+  def top_players_s2_23_is
+    ['Mapelgold', 'Airli', 'Solar', 'Mr NoMad', 'Egiru', 'Dr BustDown', 'Seether', 'Juce Kid', 'Brake', 'Jópie Trópí', 'Violet', 'Vitleysingur10', 'Eggy']
   end
 
 end
