@@ -17,9 +17,6 @@
           = image_tag 'uk_banner.jpg', alt: 'banner image', class: 'banner__image'
         - else
           = image_tag 'banner.jpg', alt: 'banner image', class: 'banner__image'
-        - if session['country_code'] == 'is'
-          .wip
-            = "This site is a \"Work In Progress\""
       .container
         .row
           - if request.original_fullpath.start_with?('/calendar')
