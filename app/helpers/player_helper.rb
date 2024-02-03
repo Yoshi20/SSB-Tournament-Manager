@@ -26,7 +26,7 @@ module PlayerHelper
     elsif country_code == 'pt'
       ['aveiro', 'azores', 'beja', 'braga', 'braganca', 'castelo_branco', 'coimbra', 'evora', 'faro', 'guarda', 'leiria', 'lisbon', 'madeira', 'portalegre', 'porto', 'santarem', 'setubal', 'viana_do_castelo', 'vila_real', 'viseu']
     elsif country_code == 'is'
-      ['south', 'east', 'north', 'westfjords', 'west', 'reykjanes', 'reykjavík'] #blup
+      ['south', 'east', 'north_east', 'north_west', 'westfjords', 'west', 'reykjanes', 'reykjavik']
     end
   end
 

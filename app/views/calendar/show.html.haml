@@ -2,5 +2,7 @@
 .hidden
   - @regions.each do |region|
     = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '1px', width: '1px', alt: "#{region} image", id: region
+  - if session['country_code'] == 'is'
+    = image_tag "regions/is/iceland.svg", height: '30px', width: '30px', alt: "iceland image", id: 'iceland', style: "margin: 0px 5px; padding: 2.5px;"
 
 = render 'calendar'
