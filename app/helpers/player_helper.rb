@@ -25,6 +25,8 @@ module PlayerHelper
       ['south_east', 'london', 'north_west', 'east_of_england', 'midlands', 'south_west', 'yorkshire_and_the_humber', 'north_east', 'northern_ireland', 'scotland', 'wales', 'ireland']
     elsif country_code == 'pt'
       ['aveiro', 'azores', 'beja', 'braga', 'braganca', 'castelo_branco', 'coimbra', 'evora', 'faro', 'guarda', 'leiria', 'lisbon', 'madeira', 'portalegre', 'porto', 'santarem', 'setubal', 'viana_do_castelo', 'vila_real', 'viseu']
+    elsif country_code == 'is'
+      ['south', 'east', 'north_east', 'north_west', 'westfjords', 'west', 'reykjanes', 'reykjavik']
     end
   end
 
@@ -219,6 +221,8 @@ module PlayerHelper
       ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'pt'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "community_editor", "forum_moderator",
+    elsif country_code == 'is'
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
     end
   end
 
@@ -241,28 +245,36 @@ module PlayerHelper
     end.reverse
   end
 
-  def top_players_s1_19
+  def top_players_s1_19_ch
     ['Destany', 'DeepFreeze', 'Smuff', 'Severe Calamari', 'Benji', 'Crash', 'Kepler', 'CrzyShroom', 'Sylph', 'Olivia', 'Ryuji', 'Zudenka', 'SickBoy', 'Phonky', 'Radiance', 'Godoh', 'Jesuischoq', 'ItseMePG', 'TunaLink', 'Acsor', 'Rampage', 'N3rthus', 'TheBlerton', 'Fr0zen', 'Karpador64']
   end
 
-  def top_players_s2_19
+  def top_players_s2_19_ch
     ['Destany', 'Karpador64', 'Crash', 'Phonky', 'DeepFreeze', 'Olivia', 'Kepler', 'SickBoy', 'Jaka', 'ItseMePG', 'Benji', 'Purist', 'Acsor', 'Rampage', 'Yannwatts']
   end
 
-  def top_players_s12_21
+  def top_players_s12_21_ch
     ['Jaka', 'Destany', 'Crash', 'DeepFreeze', 'Kimbo', 'Phonky', 'Deox6', 'Rohan Doge', 'Karpador64', 'Kepler']
   end
 
-  def top_players_s1_22
+  def top_players_s1_22_ch
     ['Destany', 'Jaka', 'Karpador64', 'Deox6', 'Crash', 'Rohan Doge', 'Kimbo', 'Kepler', 'Phonky', 'mistic', 'Byron', 'SickBoy', 'jodel', 'gaya', 'Fr0zen']
   end
 
-  def top_players_s2_22
+  def top_players_s2_22_ch
     ['Destany', 'Jaka', 'Deox6', 'SickBoy', 'Karpador64', 'DeepFreeze', 'Crow', 'PATOO', 'Artyst', 'Byron', 'Kimbo', 'ItseMePG', 'Crash', 'Fr0zen', 'gaya', 'Kepler']
   end
 
-  def top_players_s1_23
+  def top_players_s1_23_ch
     ['Jaka', 'DeepFreeze', 'Deox6', 'SickBoy', 'Destany', 'Byron', 'PATOO', 'Pege', 'gaya', 'Crow', 'Kimbo', 'Phonky', 'Rohan Doge', 'Artyst', 'Fr0zen']
+  end
+
+  def top_players_s2_23_ch
+    ['Deox6', 'Jaka', 'SickBoy', 'PATOO', 'Kepler', 'Rohan Doge', 'Destany', 'Kimbo', 'DeepFreeze', 'Byron', 'Pege', 'Karpador64', 'Crow', 'Ice-Walker', 'Acsor', 'Crash', 'Phonky', 'Yuno']
+  end
+
+  def top_players_s2_23_is
+    ['Mapelgold', 'Airli', 'Solar', 'Mr NoMad', 'Egiru', 'Dr BustDown', 'Seether', 'Juce Kid', 'Brake', 'Jópie Trópí', 'Violet', 'Vitleysingur10', 'Eggy']
   end
 
 end

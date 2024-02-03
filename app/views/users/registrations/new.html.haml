@@ -70,7 +70,9 @@
           - elsif session['country_code'] == 'pt'
             %em= "(91 234 5678)"
           -# - elsif session['country_code'] == 'uk'
-          -#   %em= "(07123 456 789)"
+            %em= "(07123 456 789)"
+          - elsif session['country_code'] == 'is'
+            %em= "(700 1234)"
           = f.text_field :mobile_number, class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :region, t("players.region_#{session['country_code']}")
@@ -171,6 +173,11 @@
           .form-check
             = f.check_box :allows_emails_from_portugalsmash, checked: (params[:user].present? ? (params[:user][:allows_emails_from_portugalsmash] == "1") : false), class:'form-check-input mr-2'
             = f.label :allows_emails_from_portugalsmash, t('users.allows_emails_from_portugalsmash'), class:'form-check-label'
+      - elsif session['country_code'] == 'is'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_smashiceland, checked: (params[:user].present? ? (params[:user][:allows_emails_from_smashiceland] == "1") : false), class:'form-check-input mr-2'
+            = f.label :allows_emails_from_smashiceland, t('users.allows_emails_from_smashiceland'), class:'form-check-label'
       .form-group
         .form-check
           = f.check_box :allows_emails_from_partners, checked: (params[:user].present? ? (params[:user][:allows_emails_from_partners] == "1") : false), class:'form-check-input mr-2'

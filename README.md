@@ -15,35 +15,14 @@ Local commands:
 - heroku pg:push swisssmash_development \<postgresql-name\> --app swisssmash-stage
 
 Stage commands:
-- git push stage_ch master
-- git push stage_de master
-- git push stage_fr master
-- git push stage_lu master
-- git push stage_it master
-- git push stage_uk master
-- git push stage_ch <branch>:master
-- heroku logs --tail --remote stage_ch
-- heroku run rake db:migrate --remote stage_ch
-- heroku run rails c --remote stage_ch
-- heroku restart --remote stage_ch
+- git push stage <branch>:master
+- heroku logs --tail --remote stage
+- heroku run rake db:migrate --remote stage
+- heroku run rails c --remote stage
+- heroku restart --remote stage
 
-- heroku run rake tournaments_crawler_ch:all --remote stage_ch
-- heroku run rake tournaments_crawler_de:all --remote stage_de
-- heroku run rake tournaments_crawler_fr:all --remote stage_fr
-- heroku run rake tournaments_crawler_lu:all --remote stage_lu
-- heroku run rake tournaments_crawler_it:all --remote stage_it
-- heroku run rake tournaments_crawler_uk:all --remote stage_uk
-- heroku run rake tournaments_crawler_ie:all --remote stage_uk
-- heroku run rake tournaments_crawler_im:all --remote stage_uk
-- heroku run rake tournaments_crawler_pt:all --remote stage_pt
-- heroku run rake results_crawler_ch:all --remote stage_ch
-- heroku run rake results_crawler_de:all --remote stage_de
-- heroku run rake results_crawler_fr:all --remote stage_fr
-- heroku run rake results_crawler_lu:all --remote stage_lu
-- heroku run rake results_crawler_it:all --remote stage_it
-- heroku run rake results_crawler_uk:all --remote stage_uk
-- heroku run rake results_crawler_pt:all --remote stage_pt
-- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage_ch
+- heroku run rake tournaments_crawler_ch:all --remote stage
+- heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote stage
 
 Prod commands:
 - git push prod master
@@ -61,6 +40,7 @@ Prod commands:
 - heroku run rake tournaments_crawler_ie:all --remote prod
 - heroku run rake tournaments_crawler_im:all --remote prod
 - heroku run rake tournaments_crawler_pt:all --remote prod
+- heroku run rake tournaments_crawler_is:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
@@ -68,6 +48,7 @@ Prod commands:
 - heroku run rake results_crawler_it:all --remote prod
 - heroku run rake results_crawler_uk:all --remote prod
 - heroku run rake results_crawler_pt:all --remote prod
+- heroku run rake results_crawler_is:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 Note:  

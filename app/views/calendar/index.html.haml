@@ -4,12 +4,19 @@
   .col
     %h1.page__title= t('calendar.title')
 
-.row
-  .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
-    .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
+- if session['country_code'] == 'is'
+  .hidden
     - regions_raw_from(session['country_code']).each do |region|
       = link_to calendar_path(filter: region) do
         = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+    = image_tag "regions/is/iceland.svg", height: '30px', width: '30px', alt: "iceland image", id: 'iceland', style: "margin: 0px 5px; padding: 2.5px;"
+- else
+  .row
+    .col.tournaments__filter{style: 'justify-content: center; margin-bottom: 0;'}
+      .tournaments__filter__button= link_to t('tournaments.all'), calendar_path(filter: 'all'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
+      - regions_raw_from(session['country_code']).each do |region|
+        = link_to calendar_path(filter: region) do
+          = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
 = render 'calendar'
 
@@ -56,6 +63,10 @@
           .calendar__footer__actions.mb-3
             %strong= t('calendar.portugal') + ': '
             %span{style: 'font-size: 12px;'}= link_to "www.smashbrosportugal.com/calendar", "https://www.smashbrosportugal.com/calendar", target: '_blank'
+        - unless session['country_code'] == 'is'
+          .calendar__footer__actions.mb-3
+            %strong= t('calendar.iceland') + ': '
+            %span{style: 'font-size: 12px;'}= link_to "www.smashiceland.com/calendar", "https://www.smashiceland.com/calendar", target: '_blank'
         .calendar__footer__actions
           %strong= t('calendar.austria') + ': '
           %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'

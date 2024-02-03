@@ -852,6 +852,7 @@ pt:
     italy: "Italia"
     uk: "Reino Unido"
     portugal: "Portugal"
+    iceland: "Islândia"
     color_legend:
       past: "Passado"
       cancelled: "Cancelado"
@@ -1012,6 +1013,7 @@ pt:
     region_it: "Region"
     region_uk: "Region"
     region_pt: "Distrito"
+    region_is: "Region"
     gender: "Genero"
     gender_pronouns: "Pronomes de genero"
     birth_year: "Ano de nascimento"
@@ -1068,6 +1070,7 @@ pt:
     region_it: "Region"
     region_uk: "Region"
     region_pt: "Distrito"
+    region_is: "Region"
     number_of_players: "Número de jogadores"
     character: "Personagem"
     player_activity: "Atividade do jogador"
@@ -1101,10 +1104,10 @@ pt:
       top15: "Top 15:"
       counted_tournaments: "Counted tournaments:"
       considered_tournaments: "Considered but deemed ineligible:"
-    s1_20:
+    s12_20:
       title: "2020"
       no_ranking: "Due to COVID-19, there is no official 2020 ranking"
-    s1_21:
+    s12_21:
       title: "2021"
       no_ranking: "Due to COVID-19, there is no official 2021 ranking"
       top10: "Top 10:"
@@ -1123,12 +1126,15 @@ pt:
     s2_22:
       title: "S2 2022"
       no_ranking: "Espera-se que o ranking apareça no início de 2023"
+      top15: "Top 15:"
     s1_23:
       title: "S1 2023"
       no_ranking: "Espera-se que o ranking apareça no início de 2023"
+      top15: "Top 15:"
     s2_23:
       title: "S2 2023"
       no_ranking: "Espera-se que o ranking apareça no início de 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:
@@ -1437,6 +1443,7 @@ pt:
     region_it: "Region"
     region_uk: "Region"
     region_pt: "Distrito"
+    region_is: "Region"
     fee_paid: "Taxas pagas?"
     brings: "Traz"
     brought: "Trouxe"

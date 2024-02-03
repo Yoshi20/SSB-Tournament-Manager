@@ -852,6 +852,7 @@ it:
     italy: "Italia"
     uk: "Regno Unito"
     portugal: "Portogallo"
+    iceland: "Islanda"
     color_legend:
       past: "Passato"
       cancelled: "Annullato"
@@ -1012,6 +1013,7 @@ it:
     region_it: "Regione"
     region_uk: "Regione"
     region_pt: "Distretto"
+    region_is: "Region"
     gender: "Genere"
     gender_pronouns: "Pronomi di genere"
     birth_year: "Anno di nascita"
@@ -1068,6 +1070,7 @@ it:
     region_it: "Regione"
     region_uk: "Regione"
     region_pt: "Distretto"
+    region_is: "Region"
     number_of_players: "Numero di giocatori"
     character: "Personaggio"
     player_activity: "Attività del giocatore"
@@ -1101,10 +1104,10 @@ it:
       top15: "Top 15:"
       counted_tournaments: "Tornei contati:"
       considered_tournaments: "Considerati ma ritenuti non ammissibili:"
-    s1_20:
+    s12_20:
       title: "2020"
       no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2020"
-    s1_21:
+    s12_21:
       title: "2021"
       no_ranking: "A causa della COVID-19, non esiste una classifica ufficiale per il 2021"
       top10: "Top 10:"
@@ -1123,12 +1126,15 @@ it:
     s2_22:
       title: "S2 2022"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2023"
+      top15: "Top 15:"
     s1_23:
       title: "S1 2023"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2023"
+      top15: "Top 15:"
     s2_23:
       title: "S2 2023"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:
@@ -1437,6 +1443,7 @@ it:
     region_it: "Regione"
     region_uk: "Region"
     region_pt: "District"
+    region_is: "Region"
     fee_paid: "Pagamento di una tassa?"
     brings: "Porta"
     brought: "Portato"

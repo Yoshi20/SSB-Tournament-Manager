@@ -13,7 +13,7 @@
         %tr{'data-id': player.id, 'data-component'=>'player'}
           %td
             - if player.main_characters.any?
-              - char = player.main_characters[0]
+              - char = player.main_characters[0] || player.main_characters[1] || player.main_characters[2]
               = render partial: 'players/character_image', locals: {character: char, skin_nr: player.main_character_skins[i]}
             - else
               .div{style: 'display: inline;'}

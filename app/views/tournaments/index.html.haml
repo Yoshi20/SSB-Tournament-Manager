@@ -48,10 +48,11 @@
         .tournaments__filter__button= link_to t('external'), tournaments_path(search: params[:search], filter: 'external', anchor: 'upcoming'), class: "btn #{params[:filter] == 'external' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'upcoming'), class: "btn #{params[:filter] == 'internal' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-default' : 'btn-ghost'}"
-      .row.without_col
-        - regions_raw_from(session['country_code']).each do |region|
-          = link_to tournaments_path(search: params[:search], filter: region, anchor: 'upcoming') do
-            = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+      - unless session['country_code'] == 'is'
+        .row.without_col
+          - regions_raw_from(session['country_code']).each do |region|
+            = link_to tournaments_path(search: params[:search], filter: region, anchor: 'upcoming') do
+              = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -81,10 +82,11 @@
         .tournaments__filter__button= link_to t('external'), tournaments_path(search: params[:search], filter: 'external', anchor: 'past'), class: "btn #{params[:filter] == 'external' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'past'), class: "btn #{params[:filter] == 'internal' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'past'), class: "btn #{params[:filter] == 'weekly' ? 'btn-default' : 'btn-ghost'}"
-      .row.without_col
-        - regions_raw_from(session['country_code']).each do |region|
-          = link_to tournaments_path(search: params[:search], filter: region, anchor: 'past') do
-            = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+      - unless session['country_code'] == 'is'
+        .row.without_col
+          - regions_raw_from(session['country_code']).each do |region|
+            = link_to tournaments_path(search: params[:search], filter: region, anchor: 'past') do
+              = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
 
     %table.table.table-hover.table-tournaments
       %thead.table-header

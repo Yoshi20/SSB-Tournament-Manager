@@ -17,9 +17,6 @@
           = image_tag 'uk_banner.jpg', alt: 'banner image', class: 'banner__image'
         - else
           = image_tag 'banner.jpg', alt: 'banner image', class: 'banner__image'
-        - if false #session['country_code'] == 'it'
-          .wip
-            = "This site is a \"Work In Progress\""
       .container
         .row
           - if request.original_fullpath.start_with?('/calendar')
@@ -29,7 +26,7 @@
           - else
             .d-none.d-lg-block.col-lg-3
               .sidebar
-                - if session['country_code'] == 'ch'
+                - if ['ch', 'is'].include?(session['country_code'])
                   = render '/partials/players'
                 - elsif ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
                   %h2.sidebar__title
@@ -56,7 +53,7 @@
       .container
         = render "/partials/footer_#{session['country_code']}"
 
-  - if ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
+  - if ['de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(session['country_code'])
     = render 'cookies_eu/consent_banner'
 
 :javascript

@@ -208,6 +208,27 @@ module ApplicationHelper
           image: image_url('pt_logo.jpg')
         }
       }
+    elsif session['country_code'] == 'is'
+      {
+        reverse: true,
+        separator: '|',
+        description: 'Iceland Super Smash Bros. Ultimate Community Hub',
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('is_logo.png') },
+          { href: image_url('is_logo.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/svg' },
+        ],
+        og: {
+          site_name: 'smashiceland.com',
+          title: 'smashiceland.com',
+          description: 'Iceland Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('is_logo.png')
+        }
+      }
     end
   end
 
@@ -226,6 +247,8 @@ module ApplicationHelper
       "SmashUltimate.uk #{str}"
     elsif session['country_code'] == 'pt'
       "Smash Bros Portugal #{str}"
+    elsif session['country_code'] == 'is'
+      "SmashIceland #{str}"
     end
   end
 

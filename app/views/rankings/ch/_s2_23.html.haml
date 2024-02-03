@@ -1,0 +1,196 @@
+= link_to asset_url('rankings/ch/pr_s2_23.jpg') do
+  = image_tag "rankings/ch/pr_s2_23.jpg", width: '100%', alt: "pr s2 2023 image"
+%br
+%br
+
+%h2= t('rankings.s2_23.top15')
+%table.table.table-hover.table-borderless
+  %thead.table-header
+    %tr
+      %th.text-center #
+      %th= t('players.gamer_tag')
+      %th.text-center= t('players.mains')
+      -# %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('players.participations')
+      -# %th.text-center.d-sm-table-cell.d-none.d-md-table-cell.d-lg-none.d-xl-table-cell= t('w_l')
+
+  %tbody.table-content.with-show
+    -# %tr{'data-id': ???, 'data-component'=>'player'}
+    %tr
+      %td.text-center= 1.ordinalize
+      %td= 'eLS | Deox6'
+      %td.text-center
+        %div
+          - ['byleth'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 88, 'data-component'=>'player'}
+      %td.text-center= 2.ordinalize
+      %td= 'Jaka'
+      %td.text-center
+        %div
+          - ['isabelle'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 149, 'data-component'=>'player'}
+      %td.text-center= 3.ordinalize
+      %td= 'SickBoy'
+      %td.text-center
+        %div
+          - ['rob'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 1215, 'data-component'=>'player'}
+      %td.text-center= 4.ordinalize
+      %td= 'eLS | PATOO'
+      %td.text-center
+        %div
+          - ['lucas'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 143, 'data-component'=>'player'}
+      %td.text-center= 5.ordinalize
+      %td= 'eLS | Rohan Doge'
+      %td.text-center
+        %div
+          - ['wario', 'meta_knight'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 152, 'data-component'=>'player'}
+      %td.text-center= 6.ordinalize
+      %td= 'Kimbo'
+      %td.text-center
+        %div
+          - ['palutena'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 253, 'data-component'=>'player'}
+      %td.text-center= 7.ordinalize
+      %td= 'DeepFreeze'
+      %td.text-center
+        %div
+          - ['joker'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 129, 'data-component'=>'player'}
+      %td.text-center= 8.ordinalize
+      %td= 'Byron'
+      %td.text-center
+        %div
+          - ['fox'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 43, 'data-component'=>'player'}
+      %td.text-center= 9.ordinalize
+      %td= 'SLD | Pege'
+      %td.text-center
+        %div
+          - ['pyra_and_mythra', 'snake'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 29, 'data-component'=>'player'}
+      %td.text-center= 10.ordinalize
+      %td= 'eLS | Karpador64'
+      %td.text-center
+        %div
+          - ['luigi', 'mii_brawler'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 1461, 'data-component'=>'player'}
+      %td.text-center= 11.ordinalize
+      %td= 'ABFT | Elden Crow'
+      %td.text-center
+        %div
+          - ['falco'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 744, 'data-component'=>'player'}
+      %td.text-center= 12.ordinalize
+      %td= 'Ice-Walker'
+      %td.text-center
+        %div
+          - ['villager', 'terry'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 147, 'data-component'=>'player'}
+      %td.text-center= 13.ordinalize
+      %td= 'Acsor'
+      %td.text-center
+        %div
+          - ['mr_game_and_watch', 'inkling'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 85, 'data-component'=>'player'}
+      %td.text-center= 14.ordinalize
+      %td= 'Phonky'
+      %td.text-center
+        %div
+          - ['pac_man'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+    %tr{'data-id': 1274, 'data-component'=>'player'}
+      %td.text-center= 15.ordinalize
+      %td= 'ZN | Yuno'
+      %td.text-center
+        %div
+          - ['pokemon_trainer'].each do |char|
+            - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+              = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell
+      -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell  %
+
+.row
+  .col
+    %h2= "Algorithm & Panel:"
+    %p
+      = link_to '@TehLyan', 'https://twitter.com/TehLyan', target: '_blank'
+      %br
+      = link_to '@ChaesiSIR', 'https://twitter.com/ChaesiSIR', target: '_blank'
+      %br
+      = link_to '@LasGofras', 'https://twitter.com/LasGofras', target: '_blank'
+
+  .col
+    %h2= "PR Graphic:"
+    %p
+      = link_to '@felix_anselmi', 'https://twitter.com/felix_anselmi', target: '_blank'

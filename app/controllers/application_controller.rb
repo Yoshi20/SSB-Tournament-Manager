@@ -99,10 +99,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_top_players
-    return unless session['country_code'] == 'ch'
-    @topPlayers = Rails.cache.fetch("top_players_s1_23", expires_in: 1.day) do
+    return unless ['ch', 'is'].include?(session['country_code'])
+    top_players_method_str = "top_players_s2_23_#{session['country_code']}"
+    @topPlayers = Rails.cache.fetch(top_players_method_str, expires_in: 1.day) do
       @topPlayers = []
-      helpers.top_players_s1_23.each do |p|
+      helpers.send(top_players_method_str).each do |p|
         player = Player.find_by(gamer_tag: p)
         player = AlternativeGamerTag.find_by(gamer_tag: p).try(:player) if player.nil?
         @topPlayers << player unless player.nil?
@@ -153,8 +154,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'uk'
       elsif request.host.include?("smashbrosportugal")
         session['country_code'] = 'pt'
+      elsif request.host.include?("smashiceland")
+        session['country_code'] = 'is'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"
@@ -186,7 +189,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_time_zone
-      if session['country_code'] == 'uk' || session['country_code'] == 'pt'
+      if session['country_code'] == 'uk' || session['country_code'] == 'pt' || session['country_code'] == 'is'
         Time.use_zone("London") { yield }
       else
         yield
