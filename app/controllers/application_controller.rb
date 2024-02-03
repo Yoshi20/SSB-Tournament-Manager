@@ -188,7 +188,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_time_zone
-      if session['country_code'] == 'uk' || session['country_code'] == 'pt'
+      if session['country_code'] == 'uk' || session['country_code'] == 'pt' || session['country_code'] == 'is'
         Time.use_zone("London") { yield }
       else
         yield
