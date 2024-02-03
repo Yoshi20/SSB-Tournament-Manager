@@ -1640,6 +1640,7 @@ is:
       welcome_it: "Velkominn í ItalySmash mótastjórann"
       welcome_uk: "Velkominn í SmashUltimate.uk mótastjórann"
       welcome_pt: "Velkominn til Smash Bros. Portúgals mótsstjóra"
+      welcome_is: "Velkominn í SmashIceland mótastjórann"
       signed_up: "Þú hefur skráð þig. Notandanafn þitt er:"
       to_join: "Til að taka þátt í sumum mótum skaltu bara fylgja %{link}."
       to_join2: "Til að taka þátt í sumum mótum skaltu bara fylgja þessum hlekk:"

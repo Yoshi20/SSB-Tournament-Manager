@@ -1640,6 +1640,7 @@ en:
       welcome_it: "Welcome to the ItalySmash Tournament Manager"
       welcome_uk: "Welcome to the SmashUltimate.uk Tournament Manager"
       welcome_pt: "Welcome to the Smash Bros. Portugal Tournament Manager"
+      welcome_is: "Welcome to the SmashIceland Tournament Manager"
       signed_up: "You have successfully signed up. Your username is:"
       to_join: "To join some tournaments, just follow %{link}."
       to_join2: "To join some tournaments, just follow this link:"
