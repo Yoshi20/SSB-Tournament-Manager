@@ -159,7 +159,7 @@ module ApplicationHelper
         ],
         og: {
           site_name: 'italysmash.it',
-          title: 'italysmash.it',
+          title: 'ItalySmash',
           description: 'Italy Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
@@ -201,7 +201,7 @@ module ApplicationHelper
         ],
         og: {
           site_name: 'SmashBrosPortugal.com',
-          title: 'SmashBrosPortugal.com',
+          title: 'SmashBrosPortugal',
           description: 'PT Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
@@ -222,7 +222,7 @@ module ApplicationHelper
         ],
         og: {
           site_name: 'smashiceland.com',
-          title: 'smashiceland.com',
+          title: 'SmashIceland',
           description: 'Iceland Super Smash Bros. Ultimate Community Hub',
           type: 'website',
           url: request.original_url,
