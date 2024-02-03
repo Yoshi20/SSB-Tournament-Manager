@@ -647,6 +647,7 @@ fr:
     italy: "Italie"
     uk: "UK"
     portugal: "Portugal"
+    iceland: "Islande"
     color_legend:
       past: "Passé"
       cancelled: "Annulé"
@@ -912,12 +913,15 @@ fr:
     s2_22:
       title: "S2 2022"
       no_ranking: "Le classement devrait être publié début 2023"
+      top15: "Top 15:"
     s1_23:
       title: "S1 2023"
       no_ranking: "Le classement devrait être publié début 2023"
+      top15: "Top 15:"
     s2_23:
       title: "S2 2023"
       no_ranking: "Le classement devrait être publié début 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:

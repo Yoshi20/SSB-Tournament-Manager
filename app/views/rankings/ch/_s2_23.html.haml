@@ -39,7 +39,7 @@
 
     %tr{'data-id': 149, 'data-component'=>'player'}
       %td.text-center= 3.ordinalize
-      %td= 'LK | SickBoy'
+      %td= 'SickBoy'
       %td.text-center
         %div
           - ['rob'].each do |char|
@@ -83,7 +83,7 @@
 
     %tr{'data-id': 253, 'data-component'=>'player'}
       %td.text-center= 7.ordinalize
-      %td= 'LK | DeepFreeze'
+      %td= 'DeepFreeze'
       %td.text-center
         %div
           - ['joker'].each do |char|
@@ -119,7 +119,7 @@
       %td= 'eLS | Karpador64'
       %td.text-center
         %div
-          - ['luigi', 'little_mac'].each do |char|
+          - ['luigi', 'mii_brawler'].each do |char|
             - if File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
               = image_tag "characters/#{char}.png", height: '25px', width: '25px', alt: "#{char} icon"
       -# %td.text-center.d-none.d-sm-table-cell.d-md-table-cell.d-lg-none.d-xl-table-cell

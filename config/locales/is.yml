@@ -923,6 +923,7 @@ is:
     italy: "Ítalía"
     uk: "Bretland"
     portugal: "Portúgal"
+    iceland: "Ísland"
     color_legend:
       past: "Fortíð"
       cancelled: "Cancelled"
@@ -1200,12 +1201,15 @@ is:
     s2_22:
       title: "S2 2022"
       no_ranking: "Búist er við að röðunin birtist í byrjun árs 2023"
+      top15: "Top 15:"
     s1_23:
       title: "S1 2023"
       no_ranking: "Búist er við að röðunin birtist um mitt ár 2023"
+      top15: "Top 15:"
     s2_23:
       title: "S2 2023"
       no_ranking: "Búist er við að röðunin birtist í byrjun árs 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:
