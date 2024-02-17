@@ -69,7 +69,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Added gems:
 
 # See https://github.com/glebm/popper_js-rubygem
-gem 'popper_js', '~> 1.14.5' # tooltips
+gem 'popper_js', '~> 1.16.1' # tooltips
 
 # See https://github.com/twbs/bootstrap-rubygem
 gem 'bootstrap', '~> 4.3.1'
