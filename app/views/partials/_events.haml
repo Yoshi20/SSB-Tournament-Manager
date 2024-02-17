@@ -13,3 +13,6 @@
             - region = tournament.region
             - if region.present?
               = image_tag "regions/#{tournament.country_code}/#{region}.svg", height: '25px', width: '25px', alt: "#{region} image"
+    - else
+      .text-center
+        = t('tournaments.no_upcoming')
