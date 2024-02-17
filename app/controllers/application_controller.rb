@@ -127,9 +127,9 @@ class ApplicationController < ActionController::Base
       su4 = su3 + 7.days
       @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today
       @nextTournaments = @nextTournaments.where("(date >= ? AND date <= ?) OR (date >= ? AND date <= ?) OR (date >= ? AND date <= ?) OR (date >= ? AND date <= ?)", sa1, su1, sa2, su2, sa3, su3, sa4, su4)
-      @nextTournaments = @nextTournaments.order(date: :asc).includes(:players).limit(10)
+      @nextTournaments = @nextTournaments.order(date: :asc).limit(10)
     else
-      @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).includes(:players).limit(10)
+      @nextTournaments = Tournament.all_from(session['country_code']).active.upcoming_with_today.order(date: :asc).limit(10)
     end
   end
 

@@ -58,6 +58,9 @@ group :development do
   gem 'spring', '~> 4.1.3'
   gem 'better_errors'
   gem 'brakeman' # https://github.com/presidentbeef/brakeman
+  gem 'bullet' # https://github.com/flyerhzm/bullet
+  gem 'rails_best_practices' # Run: rails_best_practices . (https://github.com/flyerhzm/rails_best_practices)
+  gem 'rack-mini-profiler' # https://github.com/MiniProfiler/rack-mini-profiler
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
