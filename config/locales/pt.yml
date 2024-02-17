@@ -547,7 +547,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     de:
       title: "About"
       title_short: "About"
@@ -601,7 +602,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -649,7 +651,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -693,7 +696,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     it:
       title: "Information"
       title_short: "Infos"
@@ -741,7 +745,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -791,7 +796,8 @@ pt:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
         media: "Media"
     pt:
       title: "Informação"
@@ -840,7 +846,8 @@ pt:
         body: "A tua mensagem"
       partners:
         title: "Parceiros"
-        sites: "Sites parcerios"
+        sites: "Smash sites parcerios"
+        sites2: "Outros sites parcerios"
 
   calendar:
     title: "Calendário"

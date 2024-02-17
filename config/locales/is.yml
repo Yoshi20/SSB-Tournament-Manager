@@ -565,7 +565,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     de:
       title: "About"
       title_short: "About"
@@ -619,7 +620,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -667,7 +669,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -711,7 +714,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     it:
       title: "Information"
       title_short: "Infos"
@@ -759,7 +763,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -809,7 +814,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
         media: "Media"
     pt:
       title: "Information"
@@ -858,7 +864,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Partners sites"
+        sites: "Smash partner sites"
+        sites2: "Other partner sites"
     is:
       title: "Upplýsingar"
       title_short: "Upplýsingar"
@@ -911,7 +918,8 @@ is:
         body: "skilaboðin þín"
       partners:
         title: "Samstarfsaðilar"
-        sites: "Síður samstarfsaðila"
+        sites: "Smash síður samstarfsaðila"
+        sites2: "Aðrir samstarfssíður"
 
   calendar:
     title: "Dagatal"

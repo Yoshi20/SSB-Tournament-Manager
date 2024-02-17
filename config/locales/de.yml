@@ -490,7 +490,8 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Partnerseiten"
+        sites: "Smash Partnerseiten"
+        sites2: "Andere Partnerseiten"
     de:
       title: "About"
       title_short: "About"
@@ -544,7 +545,8 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Partnerseiten"
+        sites: "Smash Partnerseiten"
+        sites2: "Andere Partnerseiten"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -592,7 +594,8 @@ de:
         body: "Your message"
       partners:
         title: "Partner"
-        sites: "Partnerseiten"
+        sites: "Smash Partnerseiten"
+        sites2: "Andere Partnerseiten"
     lu:
       title: "Informationen"
       title_short: "Infos"
@@ -636,7 +639,8 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Partnerseiten"
+        sites: "Smash Partnerseiten"
+        sites2: "Andere Partnerseiten"
 
   calendar:
     title: "Kalender"
