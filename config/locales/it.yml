@@ -28,7 +28,7 @@ it:
   not_uniq: "è già stato preso"
 
   sidebar:
-    your_tournament_promotion: "Here could be your tournament promotion (%{link})"
+    your_tournament_promotion: "Qui potrebbe esserci la tua pubblicità (%{link})"
 
   defines:
     self_assessments:
@@ -947,6 +947,7 @@ it:
 
   news:
     title: "News"
+    title2: "Latest News"
     post_title: "Title"
     teaser: "Teaser"
     text: "Text"

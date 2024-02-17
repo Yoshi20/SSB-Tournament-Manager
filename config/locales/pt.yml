@@ -28,7 +28,7 @@ pt:
   not_uniq: "já está ocupado"
 
   sidebar:
-    your_tournament_promotion: "Aqui pode estar uma promoção para o teu torneio (%{link})"
+    your_tournament_promotion: "Aqui pode estar o seu anúncio (%{link})"
 
   defines:
     self_assessments:
@@ -947,6 +947,7 @@ pt:
 
   news:
     title: "News"
+    title2: "Latest News"
     post_title: "Title"
     teaser: "Teaser"
     text: "Text"

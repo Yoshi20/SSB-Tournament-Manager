@@ -39,6 +39,9 @@
                 .content{style: 'margin-top: 10px;'}
                   = render '/partials/top_donators'
             .d-none.d-lg-block.col-lg-3
+              - if ['ch', 'fr', 'uk', 'is'].include?(session['country_code'])
+                .sidebar{style: 'margin-bottom: 10px;'}
+                  = render '/partials/news', news: @latest_news
               .sidebar
                 = render '/partials/events', next_tournaments: @nextTournaments
               - if false #session['country_code'] == 'ch' || session['country_code'] == 'de' #blup: tournament promotion

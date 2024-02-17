@@ -28,7 +28,7 @@ is:
   not_uniq: "hefur þegar verið tekið"
 
   sidebar:
-    your_tournament_promotion: "Hér gæti verið mótakynningin þín (%{link})"
+    your_tournament_promotion: "Hér gæti verið auglýsingin þín (%{link})"
 
   defines:
     self_assessments:
@@ -1018,6 +1018,7 @@ is:
 
   news:
     title: "Fréttir"
+    title2: "Nýjustu fréttir"
     post_title: "Titill"
     teaser: "Kynning"
     text: "Texti"

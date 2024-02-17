@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
   before_action :set_streamers
   before_action :set_top_players
+  before_action :get_latest_news
   before_action :get_next_tournaments
   before_action :set_forum_unread_count, only: no_user_exceptions
   before_action :prepare_exception_notifier
@@ -63,8 +64,9 @@ class ApplicationController < ActionController::Base
   require 'open-uri'
   require 'json'
   def set_streamers
+    return unless Rails.env.production? # blup: only request streamers in production
     return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
-    lu_streamers = ["Letzsmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
+    lu_streamers = ["LETzSmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do
       url = "https://api.twitch.tv/helix/streams?game_id=504461"
@@ -112,6 +114,12 @@ class ApplicationController < ActionController::Base
       end
       @topPlayers
     end
+  end
+
+  def get_latest_news
+    return unless ['ch', 'fr', 'uk', 'is'].include?(session['country_code'])
+    # @latest_news = News.all_from(session['country_code']).where("created_at >= ?", Time.zone.now.beginning_of_year-30.days).order(created_at: :desc).limit(3)
+    @latest_news = News.all_from(session['country_code']).order(created_at: :desc).limit(3)
   end
 
   def get_next_tournaments

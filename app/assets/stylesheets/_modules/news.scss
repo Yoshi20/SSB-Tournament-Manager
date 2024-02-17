@@ -21,9 +21,24 @@
     &:hover {
       border: 1px solid $color-default2;
     }
-
-    &:first-child {
-      background-color: cornsilk;
+  }
+  .highlighted {
+    background-color: cornsilk;
+  }
+  .rotated {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: -3px;
+  }
+  @media screen and (max-width: 1200px) {
+    .rotated {
+      left: -10px;
     }
   }
 }

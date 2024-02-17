@@ -1,10 +1,4 @@
 %table.table.table-hover.table-borderless
-  -# %thead.table-header
-  -#   %tr
-  -#     %th
-  -#     %th= t('partials.streamers.streamer')
-  -#     %th{style: 'text-align: center;'}= t('partials.streamers.view_count')
-
   %tbody.table-content.with-show
     - any_streamers = !@streamers_json.nil? && @streamers_json.any?
     - if any_streamers

@@ -28,7 +28,7 @@ en:
   not_uniq: "has already been taken"
 
   sidebar:
-    your_tournament_promotion: "Here could be your tournament promotion (%{link})"
+    your_tournament_promotion: "Here could be your advertisement (%{link})"
 
   defines:
     self_assessments:
@@ -869,7 +869,7 @@ en:
           It shall also present an entry point for new players to find their respective local smash community.
       calendar:
         title: "Calendar"
-        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SmashIceland is able to find and list all the SSBU tournaments in Switzerland that were added to either one of the following sites:"
+        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, SmashIceland is able to find and list all the SSBU tournaments in Iceland that were added to either one of the following sites:"
         calendar_body: "The calendar shows all found SSBU tournaments in Iceland from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
         calendar_weekly: "Weekly -> On smashiceland.com created weekly tournament"
         calendar_internal: "Internal -> On smashiceland.com created tournament"
@@ -1018,6 +1018,7 @@ en:
 
   news:
     title: "News"
+    title2: "Latest News"
     post_title: "Title"
     teaser: "Teaser"
     text: "Text"

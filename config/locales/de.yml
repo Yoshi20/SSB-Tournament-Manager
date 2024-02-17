@@ -28,7 +28,7 @@ de:
   not_uniq: "ist bereits vergeben"
 
   sidebar:
-    your_tournament_promotion: "Hier könnte deine Turnier-Promotion stehen (%{link})"
+    your_tournament_promotion: "Hier könnte deine Werbung stehen (%{link})"
 
   defines:
     self_assessments:
@@ -743,6 +743,7 @@ de:
 
   news:
     title: "News"
+    title2: "Neuste News"
     post_title: "Titel"
     teaser: "Teaser"
     text: "Text"

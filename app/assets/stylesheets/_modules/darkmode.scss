@@ -81,10 +81,8 @@
   }
 
   .news {
-    .thumbnail {
-      &:first-child {
-        background-color: darkslategrey;
-      }
+    .highlighted {
+      background-color: darkslategrey;
     }
   }
 

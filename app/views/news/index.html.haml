@@ -5,8 +5,8 @@
 
 - if @news.any?
   .news
-    - @news.each do |news|
-      = link_to news, class: "thumbnail" do
+    - @news.each_with_index do |news, i|
+      = link_to news, class: "thumbnail #{i == 0 ? 'highlighted' : ''}" do
         .row
           .col-2.text-center{style: "padding-top: 10px; font-size: 10px; border-right: 1px lightgray solid;"}
             = news.created_at.to_fs(:custom_datetime_date)

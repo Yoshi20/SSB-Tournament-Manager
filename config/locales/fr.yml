@@ -28,7 +28,7 @@ fr:
   not_uniq: "n'est pas disponible"
 
   sidebar:
-    your_tournament_promotion: "Ton promotion de tournoi pourrait être ici (%{link})"
+    your_tournament_promotion: "Ici pourrait être ton publicité (%{link})"
 
   defines:
     self_assessments:
@@ -742,6 +742,7 @@ fr:
 
   news:
     title: "News"
+    title2: "Dernières nouvelles"
     post_title: "Titre"
     teaser: "Teaser"
     text: "Texte"
