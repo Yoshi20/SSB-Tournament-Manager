@@ -13,6 +13,9 @@ class NewsController < ApplicationController
   # GET /news/1
   # GET /news/1.json
   def show
+    if @latest_news.present? && @news.id == @latest_news.first.id
+      cookies.permanent[:latest_news_id] = @latest_news.first.id.to_s
+    end
   end
 
   # GET /news/new
@@ -58,7 +61,11 @@ class NewsController < ApplicationController
   # DELETE /news/1
   # DELETE /news/1.json
   def destroy
+    second_latest_news_id = @latest_news.second.id if cookies['latest_news_id'].present? && @latest_news.present? && @latest_news.second.present?
     @news.destroy
+    if second_latest_news_id
+      cookies.permanent[:latest_news_id] = second_latest_news_id
+    end
     respond_to do |format|
       format.html { redirect_to news_index_path, notice: t('flash.notice.news_deleted') }
       format.json { head :no_content }

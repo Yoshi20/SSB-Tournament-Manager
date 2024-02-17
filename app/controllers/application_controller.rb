@@ -120,6 +120,7 @@ class ApplicationController < ActionController::Base
     return unless ['ch', 'fr', 'uk', 'is'].include?(session['country_code'])
     # @latest_news = News.all_from(session['country_code']).where("created_at >= ?", Time.zone.now.beginning_of_year-30.days).order(created_at: :desc).limit(3)
     @latest_news = News.all_from(session['country_code']).order(created_at: :desc).limit(3)
+    @highlight_first_news = (cookies['latest_news_id'] != @latest_news.first.id.to_s)
   end
 
   def get_next_tournaments

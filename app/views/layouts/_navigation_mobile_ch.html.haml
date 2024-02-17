@@ -24,7 +24,10 @@
       .col-6
         %ul.navbar-nav.navbar-main.ml-auto
           %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
-            = link_to t('news.title'), news_index_path, class: 'nav-link'
+            = link_to news_index_path, class: 'nav-link' do
+              = t('news.title')
+              - if @highlight_first_news
+                %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
 
           %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
             %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}

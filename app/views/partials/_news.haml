@@ -3,8 +3,8 @@
 
 - if news.any?
   .news
-    - news.each do |n|
-      = link_to n, class: "thumbnail" do
+    - news.each_with_index do |n, i|
+      = link_to n, class: "thumbnail #{(i == 0 && @highlight_first_news) ? 'highlighted' : ''}" do
         .row
           .col-2.text-center{style: "padding-top: 10px; font-size: 10px; border-right: 1px lightgray solid;"}
             .rotated= n.created_at.to_fs(:custom_datetime_date)
