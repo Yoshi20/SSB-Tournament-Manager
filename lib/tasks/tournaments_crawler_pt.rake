@@ -62,7 +62,7 @@ namespace :tournaments_crawler_pt do
       # doc = Nokogiri::HTML(URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22PT%22}&page=1&per_page=100&returnMeta=true'))
       doc = URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22PT%22}&page=1&per_page=100&returnMeta=true').read
       jsonHash = JSON.parse doc
-      jsonHash['total_count'].times do |i|
+      ([jsonHash['total_count'], 100].min).times do |i|
         tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]
         externalTournament = Tournament.find_by(smash_gg_id: tournamentHash['id'])
         externalTournament = Tournament.find_by(name: tournamentHash['name']) if externalTournament.nil?

@@ -57,44 +57,53 @@ namespace :tournaments_crawler_fr do
 
     # URL to get the data as JSON
     # doc = Nokogiri::HTML(URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22FR%22}&page=1&per_page=100&returnMeta=true'))
-    doc = URI.open('https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22FR%22}&page=1&per_page=100&returnMeta=true').read
-    jsonHash = JSON.parse doc
-    jsonHash['total_count'].times do |i|
-      tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]
-      externalTournament = Tournament.find_by(smash_gg_id: tournamentHash['id'])
-      externalTournament = Tournament.find_by(name: tournamentHash['name']) if externalTournament.nil?
-      externalTournament = Tournament.new if externalTournament.nil?
-      externalTournament.smash_gg_id = tournamentHash['id']
-      externalTournament.subtype = 'external'
-      externalTournament.date = Time.at(tournamentHash['startAt']) rescue nil
-      isDateError = false
-      if externalTournament.date.nil? || externalTournament.date < Date.yesterday
-        externalTournament.date = Date.today
-        isDateError = true
-      end
-      externalTournament.end_date = Time.at(tournamentHash['endAt']) rescue nil
-      externalTournament.name = tournamentHash['name']
-      externalTournament.external_registration_link = root + tournamentHash['slug']
-      externalTournament.city = tournamentHash['city']
-      externalTournament.location = tournamentHash['venueAddress']
-      externalTournament.is_registration_allowed = false
-      externalTournament.active = true
-      externalTournament.country_code = 'fr'
-      new_record = externalTournament.new_record?
-      if externalTournament.save
-        puts "-> #{new_record ? "Created" : "Updated"}: \"#{externalTournament.name}\""
-        if isDateError
-          puts '==> Invalid date! You have to edit the date manually!'
-          TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later
+    total_number_of_pages = 1
+    page = 1
+    j = 0
+    # total_number_of_pages.times do |page|
+    while page <= total_number_of_pages
+      doc = URI.open("https://start.gg/api/-/gg_api./public/tournaments/schedule?filter={%22upcoming%22%3Atrue%2C%22videogameIds%22%3A%221386%22%2C%22countryCode%22%3A%22FR%22}&page=#{page}&per_page=100&returnMeta=true").read
+      jsonHash = JSON.parse doc
+      total_number_of_pages = jsonHash['total_count']/100+1
+      page = page + 1
+      ([jsonHash['total_count']-j, 100].min).times do |i|
+        j = j + 1
+        tournamentHash = jsonHash['total_count'] == 1 ? jsonHash['items']['entities']['tournament'] : jsonHash['items']['entities']['tournament'][i]
+        externalTournament = Tournament.find_by(smash_gg_id: tournamentHash['id'])
+        externalTournament = Tournament.find_by(name: tournamentHash['name']) if externalTournament.nil?
+        externalTournament = Tournament.new if externalTournament.nil?
+        externalTournament.smash_gg_id = tournamentHash['id']
+        externalTournament.subtype = 'external'
+        externalTournament.date = Time.at(tournamentHash['startAt']) rescue nil
+        isDateError = false
+        if externalTournament.date.nil? || externalTournament.date < Date.yesterday
+          externalTournament.date = Date.today
+          isDateError = true
         end
-        puts "\n"
-      else
-        puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
-        if externalTournament.errors.any?
-          externalTournament.errors.full_messages.each do |message|
-            puts "==> " + message
+        externalTournament.end_date = Time.at(tournamentHash['endAt']) rescue nil
+        externalTournament.name = tournamentHash['name']
+        externalTournament.external_registration_link = root + tournamentHash['slug']
+        externalTournament.city = tournamentHash['city']
+        externalTournament.location = tournamentHash['venueAddress']
+        externalTournament.is_registration_allowed = false
+        externalTournament.active = true
+        externalTournament.country_code = 'fr'
+        new_record = externalTournament.new_record?
+        if externalTournament.save
+          puts "-> #{new_record ? "Created" : "Updated"}: \"#{externalTournament.name}\""
+          if isDateError
+            puts '==> Invalid date! You have to edit the date manually!'
+            TournamentMailer.with(tournament: externalTournament).invalid_date_email.deliver_later
           end
           puts "\n"
+        else
+          puts "-> \"" + externalTournament.name + "\" couldn't be saved!"
+          if externalTournament.errors.any?
+            externalTournament.errors.full_messages.each do |message|
+              puts "==> " + message
+            end
+            puts "\n"
+          end
         end
       end
     end
