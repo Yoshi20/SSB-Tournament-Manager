@@ -52,7 +52,10 @@
         .row.without_col
           - regions_raw_from(session['country_code']).each do |region|
             = link_to tournaments_path(search: params[:search], filter: region, anchor: 'upcoming') do
-              = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+              .tooltip.tooltip_region{style: 'position: relative;'}
+                = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+                %span.tooltiptext{style: 'left: calc(50% - 12px); bottom: calc(150% - 8px);'}
+                  = t("defines.regions.#{region}")
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
@@ -86,7 +89,10 @@
         .row.without_col
           - regions_raw_from(session['country_code']).each do |region|
             = link_to tournaments_path(search: params[:search], filter: region, anchor: 'past') do
-              = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+              .tooltip.tooltip_region{style: 'position: relative;'}
+                = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
+                %span.tooltiptext{style: 'left: calc(50% - 12px); bottom: calc(150% - 8px);'}
+                  = t("defines.regions.#{region}")
 
     %table.table.table-hover.table-tournaments
       %thead.table-header
