@@ -134,7 +134,7 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'devise-i18n'
 
 # See https://github.com/fnando/i18n-js
-gem 'i18n-js', '>= 3.9.2', '< 4.0.0'
+gem 'i18n-js', '>= 3.9.2', '< 4.0.0' #blup: errors after updating (not worth it)
 
 # See https://github.com/brendon/acts_as_list
 gem 'acts_as_list'
