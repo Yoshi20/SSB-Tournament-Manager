@@ -72,7 +72,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'popper_js', '~> 1.16.1' # tooltips
 
 # See https://github.com/twbs/bootstrap-rubygem
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 4.6.1'
 
 # See https://github.com/Angelmmiguel/material_icons
 gem 'material_icons'
