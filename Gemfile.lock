@@ -127,7 +127,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     cookies_eu (1.7.8)
       js_cookie_rails (~> 2.2.0)
     crass (1.0.6)
@@ -157,6 +157,7 @@ GEM
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
       momentjs-rails (>= 2.9.0)
+    glob (0.4.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.3.0)
@@ -175,8 +176,9 @@ GEM
     http_accept_language (2.1.1)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
-    i18n-js (3.9.2)
-      i18n (>= 0.6.6)
+    i18n-js (4.2.3)
+      glob (>= 0.4.0)
+      i18n
     icalendar (2.10.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.4)
@@ -448,7 +450,7 @@ DEPENDENCIES
   haml-rails (~> 2.0)
   html-pipeline (= 2.14.0)
   http_accept_language
-  i18n-js (>= 3.9.2, < 4.0.0)
+  i18n-js (>= 3.9.2, < 5.0.0)
   icalendar
   jbuilder (~> 2.8)
   jquery-rails
