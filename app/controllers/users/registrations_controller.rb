@@ -68,7 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if player.save
           flash[:notice] = t('flash.notice.creating_player')
           # Tell the UserMailer to send a welcome email after save
-          UserMailer.with(user: user).welcome_email.deliver_later
+          UserMailer.with(user_id: user.id).welcome_email.deliver_later(wait: 5.seconds) # to make sure user is in the db
         else
           flash.delete(:notice)
           flash[:alert] = t('flash.alert.creating_player')

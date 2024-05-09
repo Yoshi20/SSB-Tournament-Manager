@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
 
   def welcome_email
-    @user = params[:user]
+    @user = User.find(params[:user_id])
     @url = tournaments_url(@user.country_code, '')
     I18n.with_locale(Domain.default_locale_from(@user.country_code)) do
       mail(
