@@ -47,7 +47,7 @@
           - ics_link_path = (request.base_url + calendar_path + '.ics' + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
           %span.copy-gamer-tag{style: 'font-size: 12px;', 'data-value': ics_link_path}= link_to ics_link_path.gsub('http://', '').gsub('https://', ''), ics_link_path, onclick:"event.preventDefault();"
         .calendar__footer__actions
-          %strong= 'iframe: '
+          %strong= 'iFrame: '
           - iframe_link_path = (request.base_url + calendar_for_iframe_path + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
           %span{style: 'font-size: 12px;'}= link_to iframe_link_path.gsub('http://', '').gsub('https://', ''), iframe_link_path
 

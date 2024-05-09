@@ -566,8 +566,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     de:
       title: "About"
       title_short: "About"
@@ -621,8 +621,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -670,8 +670,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -715,8 +715,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     it:
       title: "Information"
       title_short: "Infos"
@@ -764,8 +764,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -815,8 +815,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
         media: "Media"
     pt:
       title: "Information"
@@ -865,8 +865,8 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
     is:
       title: "Upplýsingar"
       title_short: "Upplýsingar"
