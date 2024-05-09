@@ -8,12 +8,6 @@
         align-items: center;
       }
     }
-    .calendar__footer__actions {
-      text-align: left;
-      @media (min-width: 768px) {
-        text-align: right;
-      }
-    }
   }
 }
 

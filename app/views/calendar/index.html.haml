@@ -37,50 +37,19 @@
       .col
         .calendar__footer__legend
           = render 'color_legend'
+      .col{style: 'margin-top: -10px;'}
+        = render 'partials/partners', width: '30px', height: '30px'
+
+    .row
       .col
-        .calendar__footer__actions.mb-3
+        .calendar__footer__actions
           %strong= 'ICS-Link: '
           - ics_link_path = (request.base_url + calendar_path + '.ics' + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
           %span.copy-gamer-tag{style: 'font-size: 12px;', 'data-value': ics_link_path}= link_to ics_link_path.gsub('http://', '').gsub('https://', ''), ics_link_path, onclick:"event.preventDefault();"
-        .calendar__footer__actions.mb-3
+        .calendar__footer__actions
           %strong= 'iframe: '
           - iframe_link_path = (request.base_url + calendar_for_iframe_path + (params[:filter].present? ? "?filter=#{params[:filter]}" : ""))
           %span{style: 'font-size: 12px;'}= link_to iframe_link_path.gsub('http://', '').gsub('https://', ''), iframe_link_path
-        - unless session['country_code'] == 'ch'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.switzerland') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.swisssmash.ch/calendar", "https://www.swisssmash.ch/calendar", target: '_blank'
-        - unless session['country_code'] == 'de'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.germany') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.germanysmash.de/calendar", "https://www.germanysmash.de/calendar", target: '_blank'
-        - unless session['country_code'] == 'fr'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.france') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.smashultimate.fr/calendar", "https://www.smashultimate.fr/calendar", target: '_blank'
-        - unless session['country_code'] == 'lu'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.luxembourg') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.luxsmash.lu/calendar", "https://www.luxsmash.lu/calendar", target: '_blank'
-        - unless session['country_code'] == 'it'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.italy') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.italysmash.it/calendar", "https://www.italysmash.it/calendar", target: '_blank'
-        - unless session['country_code'] == 'uk'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.uk') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.smashultimate.uk/calendar", "https://www.smashultimate.uk/calendar", target: '_blank'
-        - unless session['country_code'] == 'pt'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.portugal') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.smashbrosportugal.com/calendar", "https://www.smashbrosportugal.com/calendar", target: '_blank'
-        - unless session['country_code'] == 'is'
-          .calendar__footer__actions.mb-3
-            %strong= t('calendar.iceland') + ': '
-            %span{style: 'font-size: 12px;'}= link_to "www.smashiceland.com/calendar", "https://www.smashiceland.com/calendar", target: '_blank'
-        .calendar__footer__actions
-          %strong= t('calendar.austria') + ': '
-          %span{style: 'font-size: 12px;'}= link_to "https://smashbrothers.at", " https://smashbrothers.at", target: '_blank'
 
 - if current_user.present?
   .admin-actions
