@@ -4,6 +4,14 @@
   .col
     %h1.page__title= t('calendar.title')
 
+-# Advertisement image
+.row.text-center{style: 'margin-bottom: 10px;'}
+  .col
+    = link_to '/informations#contact' do
+      = image_tag('no-image.svg', height: '100px', width: '100px', alt: 'no_image logo', style: "background: white;")
+      %span{style: 'position: absolute; bottom: 10px; left: 0; right: 0; font-size: 8px;'} Your next major?
+
+-# Region filters
 - if session['country_code'] == 'is'
   .hidden
     - regions_raw_from(session['country_code']).each do |region|
@@ -20,7 +28,6 @@
             = image_tag "regions/#{session['country_code']}/#{region}.svg", height: '30px', width: '30px', alt: "#{region} image", id: region, style: "margin: 0px 5px; padding: 2.5px; border-bottom: #{params[:filter] == region ? 'solid 1px black' : ''};"
             %span.tooltiptext{style: 'left: calc(50% - 12px); bottom: calc(150% - 8px);'}
               = t("defines.regions.#{region}")
-
 
 = render 'calendar'
 
