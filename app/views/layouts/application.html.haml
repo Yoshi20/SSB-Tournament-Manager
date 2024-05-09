@@ -37,6 +37,8 @@
                 = yield
               - if request.path == '/' || request.path == '/welcome'
                 .content{style: 'margin-top: 10px;'}
+                  = render '/partials/partners'
+                .content{style: 'margin-top: 10px;'}
                   = render '/partials/top_donators'
             .d-none.d-lg-block.col-lg-3
               - if ['ch', 'fr', 'uk', 'is'].include?(session['country_code'])
