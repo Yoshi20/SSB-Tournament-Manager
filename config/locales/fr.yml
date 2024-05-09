@@ -490,8 +490,8 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
     de:
       title: "About"
       title_short: "About"
@@ -545,8 +545,8 @@ fr:
         body: "Your message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -593,8 +593,8 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -638,8 +638,8 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
 
   calendar:
     title: "Calendrier"

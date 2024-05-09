@@ -846,8 +846,8 @@ pt:
         body: "A tua mensagem"
       partners:
         title: "Parceiros"
-        sites: "Smash sites parcerios"
-        sites2: "Outros sites parcerios"
+        sites: "Smash parcerios"
+        sites2: "Outros parcerios"
 
   calendar:
     title: "Calendário"

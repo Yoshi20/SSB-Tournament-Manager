@@ -745,8 +745,8 @@ it:
         body: "Il tuo messaggio"
       partners:
         title: "Partner"
-        sites: "Smash siti partner"
-        sites2: "Altri siti partner"
+        sites: "Smash partner"
+        sites2: "Altri partner"
     uk:
       title: "Information"
       title_short: "Infos"
