@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_131934) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_091008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -172,6 +172,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_131934) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "survey_responses", force: :cascade do |t|
+    t.integer "response"
+    t.string "client_ip"
+    t.string "country_code"
+    t.boolean "is_hidden", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "survey_id"
+    t.index ["survey_id"], name: "index_survey_responses_on_survey_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "question"
+    t.string "option1"
+    t.string "option2"
+    t.string "option3"
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -538,6 +559,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_131934) do
 
   add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"
   add_foreign_key "thredded_messageboard_users", "thredded_messageboards", on_delete: :cascade

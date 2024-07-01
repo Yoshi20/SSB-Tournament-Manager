@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_streamers
+  before_action :set_survey
   before_action :set_top_players
   before_action :get_latest_news
   before_action :get_next_tournaments
@@ -99,6 +100,10 @@ class ApplicationController < ActionController::Base
       all_streamer_logins = @streamers_json.map { |s| s['user_login']}
       @inactive_streamers = lu_streamers.reject{ |s| all_streamer_logins.include?(s) }
     end
+  end
+
+  def set_survey
+    @survey = Survey.active.last
   end
 
   def set_top_players

@@ -1,0 +1,31 @@
+.survey {
+  width: 100%;
+  padding: 1rem;
+  background: gold;
+  position: absolute;
+  font-size: 14px;
+  z-index: 2;
+  @media screen and (max-width: 992px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 600px) {
+  padding: 0.5rem;
+    font-size: 10px;
+  }
+  .form-check {
+    display: block;
+    padding-left: 0.5rem;
+    margin: 3px 0;
+  }
+  .btn {
+    margin-top: 0.4rem;
+    @media screen and (max-width: 600px) {
+      position: absolute;
+      right: 0.5rem;
+      bottom: 0;
+    }
+  }
+  .progress {
+    margin-top: 5px;
+  }
+}
