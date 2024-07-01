@@ -47,15 +47,15 @@
           = form_for SurveyResponse.new, role: 'form', class:'form' do |f|
             - if @survey.option1.present?
               .form-check
-                = radio_button('survey_response', 'response', 1, class: 'form-check-input', style: 'margin-left: -3px;')
+                = radio_button('survey_response', 'response', 1, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
                 %label.form-check-label{for: "survey_response_response_1"}= @survey.option1
             - if @survey.option2.present?
               .form-check
-                = radio_button('survey_response', 'response', 2, class: 'form-check-input', style: 'margin-left: -3px;')
+                = radio_button('survey_response', 'response', 2, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
                 %label.form-check-label{for: "survey_response_response_2"}= @survey.option2
             - if @survey.option3.present?
               .form-check
-                = radio_button('survey_response', 'response', 3, class: 'form-check-input', style: 'margin-left: -3px;')
+                = radio_button('survey_response', 'response', 3, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
                 %label.form-check-label{for: "survey_response_response_3"}= @survey.option3
             = f.hidden_field :survey_id, value: @survey.id
-            = f.submit 'Submit', class: 'btn btn-ghost btn-sm'
+            = f.submit 'Submit', class: 'btn btn-ghost btn-sm', disabled: true, id: 'survey-submit-btn'

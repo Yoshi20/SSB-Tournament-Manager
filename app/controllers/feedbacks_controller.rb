@@ -6,7 +6,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    @feedbacks = Feedback.all_from(session['country_code']).order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
+    @feedbacks = Feedback.all_from(session['country_code']).includes(:user).order(created_at: :desc).paginate(page: params[:page], per_page: Feedback::MAX_FEEDBACKS_PER_PAGE)
   end
 
   # GET /feedbacks/1
