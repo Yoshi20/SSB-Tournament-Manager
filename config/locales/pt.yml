@@ -549,6 +549,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     de:
       title: "About"
       title_short: "About"
@@ -604,6 +605,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -653,6 +655,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -698,6 +701,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     it:
       title: "Information"
       title_short: "Infos"
@@ -747,6 +751,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -798,6 +803,7 @@ pt:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
         media: "Media"
     pt:
       title: "Informação"
@@ -848,6 +854,7 @@ pt:
         title: "Parceiros"
         sites: "Smash parcerios"
         sites2: "Outros parcerios"
+        sites3: "Smash tools"
 
   calendar:
     title: "Calendário"

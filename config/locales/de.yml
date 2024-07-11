@@ -492,6 +492,7 @@ de:
         title: "Partner"
         sites: "Smash Partner"
         sites2: "Andere Partner"
+        sites3: "Smash Tools"
     de:
       title: "About"
       title_short: "About"
@@ -547,6 +548,7 @@ de:
         title: "Partner"
         sites: "Smash Partner"
         sites2: "Andere Partner"
+        sites3: "Smash Tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -596,6 +598,7 @@ de:
         title: "Partner"
         sites: "Smash Partner"
         sites2: "Andere Partner"
+        sites3: "Smash Tools"
     lu:
       title: "Informationen"
       title_short: "Infos"
@@ -641,6 +644,7 @@ de:
         title: "Partner"
         sites: "Smash Partner"
         sites2: "Andere Partner"
+        sites3: "Smash Tools"
 
   calendar:
     title: "Kalender"

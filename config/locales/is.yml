@@ -568,6 +568,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     de:
       title: "About"
       title_short: "About"
@@ -623,6 +624,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -672,6 +674,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -717,6 +720,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     it:
       title: "Information"
       title_short: "Infos"
@@ -766,6 +770,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -817,6 +822,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
         media: "Media"
     pt:
       title: "Information"
@@ -867,6 +873,7 @@ is:
         title: "Partners"
         sites: "Smash partners"
         sites2: "Other partners"
+        sites3: "Smash tools"
     is:
       title: "Upplýsingar"
       title_short: "Upplýsingar"
@@ -921,6 +928,7 @@ is:
         title: "Samstarfsaðilar"
         sites: "Smash samstarfsaðila"
         sites2: "Aðrir samstarfssíður"
+        sites3: "Smash verkfæri"
 
   calendar:
     title: "Dagatal"

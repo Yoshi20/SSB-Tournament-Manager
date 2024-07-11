@@ -60,6 +60,16 @@
 
   .row{style: 'margin-top: 0.5rem;'}
     .col
+      %h2= t('information.ch.partners.sites3')
+  .row.text-center
+    .col
+      = link_to 'https://smashstage.com/', target: '_blank' do
+        = image_tag('smashstage_logo.png', height: height, width: width, alt: 'Smash Stage logo', style: "background: black; border-radius: 50%;")
+        %br
+        Smash Stage
+
+  .row{style: 'margin-top: 0.5rem;'}
+    .col
       %h2= t('information.ch.partners.sites2')
   .row.text-center
     - if session['country_code'] == 'uk'
