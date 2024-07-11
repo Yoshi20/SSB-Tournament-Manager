@@ -1,5 +1,5 @@
 - if @survey.present?
-  - survey_response = SurveyResponse.find_by(client_ip: request.remote_ip, country_code: session['country_code'])
+  - survey_response = SurveyResponse.find_by(client_ip: request.remote_ip)
   - if survey_response.present?
     - if survey_response.is_hidden
       .survey{style: 'background: transparent; opacity: 50%;'}
