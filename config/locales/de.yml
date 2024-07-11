@@ -376,7 +376,7 @@ de:
   partials:
     events: "Nächsten Turniere"
     players:
-      title: "Top Spieler (2023)"
+      title: "Top Spieler (2024)"
       player: "Spieler"
     streamers:
       title: "Aktuelle Streams"
@@ -931,6 +931,10 @@ de:
     s2_23:
       title: "S2 2023"
       no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2024"
+      top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "Das Ranking erscheint voraussichtlich mitte 2024"
       top15: "Top 15:"
     region_nrw:
       title: "NRW"

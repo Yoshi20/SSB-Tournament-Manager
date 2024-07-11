@@ -1228,6 +1228,10 @@ is:
       title: "S2 2023"
       no_ranking: "Búist er við að röðunin birtist í byrjun árs 2024"
       top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "Búist er við að röðunin birtist um mitt ár 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:

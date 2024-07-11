@@ -1150,6 +1150,10 @@ it:
       title: "S2 2023"
       no_ranking: "La classifica dovrebbe apparire all'inizio del 2024"
       top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "La classifica dovrebbe apparire all'inizio del 2024"
+      top15: "Top 15:"
     region_nrw:
       title: "NRW"
     region_hessen:

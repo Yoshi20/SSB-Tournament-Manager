@@ -108,7 +108,8 @@ class ApplicationController < ActionController::Base
 
   def set_top_players
     return unless ['ch', 'is'].include?(session['country_code'])
-    top_players_method_str = "top_players_s2_23_#{session['country_code']}"
+    top_players_method_str = "top_players_s2_23_#{session['country_code']}" if session['country_code'] == 'is'
+    top_players_method_str = "top_players_s1_24_#{session['country_code']}" if session['country_code'] == 'ch'
     @topPlayers = Rails.cache.fetch(top_players_method_str, expires_in: 1.day) do
       @topPlayers = []
       helpers.send(top_players_method_str).each do |p|
