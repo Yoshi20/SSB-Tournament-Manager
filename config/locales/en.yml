@@ -504,6 +504,7 @@ en:
     communities: "Communities"
     no_donations_yet: "No donations yet 😢"
     all_donations: "All donations"
+    feedback_or_question: "Feedback or Question"
 
   donations:
     title: "Donation wall"
