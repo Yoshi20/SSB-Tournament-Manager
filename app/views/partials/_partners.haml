@@ -1,6 +1,21 @@
 .partners{style: 'font-size: 8px;'}
   .row
     .col
+      %h2= t('information.ch.partners.sites3')
+  .row.text-center
+    .col
+      = link_to 'https://smashstage.com/', target: '_blank' do
+        = image_tag('smashstage_logo.png', height: height, width: width, alt: 'Smash Stage logo', style: "background: black; border-radius: 50%;")
+        %br
+        Smash Stage
+    .col
+      = link_to 'https://ultimateframedata.com/smash', target: '_blank' do
+        = image_tag('ufd_logo.png', height: height, width: width, alt: 'Ultimate Frame Data logo', style: "border-radius: 50%;")
+        %br
+        Ultimate Frame Data
+
+  .row{style: 'margin-top: 0.5rem;'}
+    .col
       %h2= t('information.ch.partners.sites')
   .row.text-center
     - unless session['country_code'] == 'ch'
@@ -57,16 +72,6 @@
           = image_tag('at_logo.png', height: height, width: width, alt: 'Austria logo')
           %br
           Austria
-
-  .row{style: 'margin-top: 0.5rem;'}
-    .col
-      %h2= t('information.ch.partners.sites3')
-  .row.text-center
-    .col
-      = link_to 'https://smashstage.com/', target: '_blank' do
-        = image_tag('smashstage_logo.png', height: height, width: width, alt: 'Smash Stage logo', style: "background: black; border-radius: 50%;")
-        %br
-        Smash Stage
 
   .row{style: 'margin-top: 0.5rem;'}
     .col
