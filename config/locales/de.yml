@@ -376,7 +376,7 @@ de:
   partials:
     events: "Nächsten Turniere"
     players:
-      title: "Top Spieler (2023)"
+      title: "Top Spieler (2024)"
       player: "Spieler"
     streamers:
       title: "Aktuelle Streams"
@@ -490,8 +490,9 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Smash Partnerseiten"
-        sites2: "Andere Partnerseiten"
+        sites: "Smash Partner"
+        sites2: "Andere Partner"
+        sites3: "Smash Tools"
     de:
       title: "About"
       title_short: "About"
@@ -545,8 +546,9 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Smash Partnerseiten"
-        sites2: "Andere Partnerseiten"
+        sites: "Smash Partner"
+        sites2: "Andere Partner"
+        sites3: "Smash Tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -594,8 +596,9 @@ de:
         body: "Your message"
       partners:
         title: "Partner"
-        sites: "Smash Partnerseiten"
-        sites2: "Andere Partnerseiten"
+        sites: "Smash Partner"
+        sites2: "Andere Partner"
+        sites3: "Smash Tools"
     lu:
       title: "Informationen"
       title_short: "Infos"
@@ -639,8 +642,9 @@ de:
         body: "Deine Nachricht"
       partners:
         title: "Partner"
-        sites: "Smash Partnerseiten"
-        sites2: "Andere Partnerseiten"
+        sites: "Smash Partner"
+        sites2: "Andere Partner"
+        sites3: "Smash Tools"
 
   calendar:
     title: "Kalender"
@@ -927,6 +931,10 @@ de:
     s2_23:
       title: "S2 2023"
       no_ranking: "Das Ranking erscheint voraussichtlich anfangs 2024"
+      top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "Das Ranking erscheint voraussichtlich mitte 2024"
       top15: "Top 15:"
     region_nrw:
       title: "NRW"

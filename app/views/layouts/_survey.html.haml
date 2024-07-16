@@ -1,0 +1,61 @@
+- if @survey.present?
+  - survey_response = SurveyResponse.find_by(client_ip: request.remote_ip)
+  - if survey_response.present?
+    - if survey_response.is_hidden
+      .survey{style: 'background: transparent; opacity: 50%;'}
+        -# show button
+        = form_for survey_response, role: 'form', class:'form' do |f|
+          = f.hidden_field :is_hidden, value: false
+          = button_tag type: 'submit', class:'btn', style: 'position: absolute; right: 0; top: 0; background: transparent;', onclick: "document.getElementsByClassName('survey')[0].style.display = 'none';" do
+            .material-icons= 'visibility'
+    - else
+      .survey
+        = @survey.question
+        .row{style: 'align-items: baseline;'}
+          - total = @survey.survey_responses.count
+          - if @survey.option1.present?
+            .col-6.col-md-4.col-lg-3
+              = @survey.option1
+            .col-6.col-md-8.col-lg-9
+              .progress
+                - now = @survey.survey_responses.where(response: 1).count
+                .progress-bar{"aria-valuemax": total, "aria-valuemin": 0, "aria-valuenow": now, style: "width: #{now > 0 ? 100*now/total : 0}%", role: "progressbar"}= now
+          - if @survey.option2.present?
+            .col-6.col-md-4.col-lg-3
+              = @survey.option2
+            .col-6.col-md-8.col-lg-9
+              .progress
+                - now = @survey.survey_responses.where(response: 2).count
+                .progress-bar{"aria-valuemax": total, "aria-valuemin": 0, "aria-valuenow": now, style: "width: #{now > 0 ? 100*now/total : 0}%", role: "progressbar"}= now
+          - if @survey.option3.present?
+            .col-6.col-md-4.col-lg-3
+              = @survey.option3
+            .col-6.col-md-8.col-lg-9
+              .progress
+                - now = @survey.survey_responses.where(response: 3).count
+                .progress-bar{"aria-valuemax": total, "aria-valuemin": 0, "aria-valuenow": now, style: "width: #{now > 0 ? 100*now/total : 0}%", role: "progressbar"}= now
+          -# hide button
+          = form_for survey_response, role: 'form', class:'form' do |f|
+            = f.hidden_field :is_hidden, value: true
+            = button_tag type: 'submit', class:'btn', style: 'position: absolute; right: 0; top: 0; background: transparent;', onclick: "document.getElementsByClassName('survey')[0].style.display = 'none';" do
+              .material-icons= 'close'
+  - else
+    .survey
+      = @survey.question
+      .row
+        .col-12
+          = form_for SurveyResponse.new, role: 'form', class:'form' do |f|
+            - if @survey.option1.present?
+              .form-check
+                = radio_button('survey_response', 'response', 1, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
+                %label.form-check-label{for: "survey_response_response_1"}= @survey.option1
+            - if @survey.option2.present?
+              .form-check
+                = radio_button('survey_response', 'response', 2, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
+                %label.form-check-label{for: "survey_response_response_2"}= @survey.option2
+            - if @survey.option3.present?
+              .form-check
+                = radio_button('survey_response', 'response', 3, class: 'form-check-input', style: 'margin-left: -3px;', onclick: "document.getElementById('survey-submit-btn').disabled = false;")
+                %label.form-check-label{for: "survey_response_response_3"}= @survey.option3
+            = f.hidden_field :survey_id, value: @survey.id
+            = f.submit 'Submit', class: 'btn btn-ghost btn-sm', disabled: true, id: 'survey-submit-btn'

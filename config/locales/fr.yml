@@ -490,8 +490,9 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
+        sites3: "Outils Smash"
     de:
       title: "About"
       title_short: "About"
@@ -545,8 +546,9 @@ fr:
         body: "Your message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
+        sites3: "Outils Smash"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -593,8 +595,9 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
+        sites3: "Outils Smash"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -638,8 +641,9 @@ fr:
         body: "Ton message"
       partners:
         title: "Partenaires"
-        sites: "Sites partenaires Smash"
-        sites2: "Autres sites partenaires"
+        sites: "Partenaires Smash"
+        sites2: "Autres partenaires"
+        sites3: "Outils Smash"
 
   calendar:
     title: "Calendrier"
@@ -925,6 +929,10 @@ fr:
       top15: "Top 15:"
     s2_23:
       title: "S2 2023"
+      no_ranking: "Le classement devrait être publié début 2024"
+      top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
       no_ranking: "Le classement devrait être publié début 2024"
       top15: "Top 15:"
     region_nrw:

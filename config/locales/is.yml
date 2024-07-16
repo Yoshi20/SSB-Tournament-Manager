@@ -566,8 +566,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     de:
       title: "About"
       title_short: "About"
@@ -621,8 +622,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -670,8 +672,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -715,8 +718,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     it:
       title: "Information"
       title_short: "Infos"
@@ -764,8 +768,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -815,8 +820,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
         media: "Media"
     pt:
       title: "Information"
@@ -865,8 +871,9 @@ is:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     is:
       title: "Upplýsingar"
       title_short: "Upplýsingar"
@@ -919,8 +926,9 @@ is:
         body: "skilaboðin þín"
       partners:
         title: "Samstarfsaðilar"
-        sites: "Smash síður samstarfsaðila"
+        sites: "Smash samstarfsaðila"
         sites2: "Aðrir samstarfssíður"
+        sites3: "Smash verkfæri"
 
   calendar:
     title: "Dagatal"
@@ -1219,6 +1227,10 @@ is:
     s2_23:
       title: "S2 2023"
       no_ranking: "Búist er við að röðunin birtist í byrjun árs 2024"
+      top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "Búist er við að röðunin birtist um mitt ár 2024"
       top15: "Top 15:"
     region_nrw:
       title: "NRW"

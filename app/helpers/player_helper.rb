@@ -277,4 +277,8 @@ module PlayerHelper
     ['Mapelgold', 'Airli', 'Solar', 'Mr NoMad', 'Egiru', 'Dr BustDown', 'Seether', 'Juce Kid', 'Brake', 'Jópie Trópí', 'Violet', 'Vitleysingur10', 'Eggy']
   end
 
+  def top_players_s1_24_ch
+    ['Deox6', 'Jaka', 'DeepFreeze', 'Destany', 'Kepler', 'SickBoy', 'Karpador64', 'Kimbo', 'PATOO', 'Pege', 'Ice-Walker', 'Yuno', 'Zeno', 'SIG', 'Phonky']
+  end
+
 end

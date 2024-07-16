@@ -11,7 +11,7 @@ class TournamentsController < ApplicationController
     @ongoing_tournaments = Tournament.all_from(session['country_code']).active.ongoing.order(date: :asc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     @past_tournaments = Tournament.all_from(session['country_code']).active.past.order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     if current_user.present? and current_user.super_admin?
-      @inactive_tournaments = Tournament.all_from(session['country_code']).where(active: false).order(date: :desc).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
+      @inactive_tournaments = Tournament.all_from(session['country_code']).where(active: false).order(date: :desc).includes(:players).paginate(page: params[:page], per_page: Tournament::MAX_PAST_TOURNAMENTS_PER_PAGE)
     end
     # handle search parameter
     if params[:search].present?

@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.1.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1.4'
 # Use Puma as the app server
@@ -72,7 +72,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'popper_js', '~> 1.16.1' # tooltips
 
 # See https://github.com/twbs/bootstrap-rubygem
-gem 'bootstrap', '~> 4.6.1'
+gem 'bootstrap', '~> 4.6.2'
 
 # See https://github.com/Angelmmiguel/material_icons
 gem 'material_icons'

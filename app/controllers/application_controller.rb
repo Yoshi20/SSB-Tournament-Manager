@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_streamers
+  before_action :set_survey
   before_action :set_top_players
   before_action :get_latest_news
   before_action :get_next_tournaments
@@ -101,9 +102,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_survey
+    @survey = Survey.active.last
+  end
+
   def set_top_players
     return unless ['ch', 'is'].include?(session['country_code'])
-    top_players_method_str = "top_players_s2_23_#{session['country_code']}"
+    top_players_method_str = "top_players_s2_23_#{session['country_code']}" if session['country_code'] == 'is'
+    top_players_method_str = "top_players_s1_24_#{session['country_code']}" if session['country_code'] == 'ch'
     @topPlayers = Rails.cache.fetch(top_players_method_str, expires_in: 1.day) do
       @topPlayers = []
       helpers.send(top_players_method_str).each do |p|

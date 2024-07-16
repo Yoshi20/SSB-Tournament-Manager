@@ -504,6 +504,7 @@ en:
     communities: "Communities"
     no_donations_yet: "No donations yet 😢"
     all_donations: "All donations"
+    feedback_or_question: "Feedback or Question"
 
   donations:
     title: "Donation wall"
@@ -565,8 +566,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     de:
       title: "About"
       title_short: "About"
@@ -620,8 +622,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     fr:
       title: "Information"
       title_short: "Infos"
@@ -669,8 +672,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     lu:
       title: "Information"
       title_short: "Infos"
@@ -714,8 +718,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     it:
       title: "Information"
       title_short: "Infos"
@@ -763,8 +768,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     uk:
       title: "Information"
       title_short: "Infos"
@@ -814,8 +820,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
         media: "Media"
     pt:
       title: "Information"
@@ -864,8 +871,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
     is:
       title: "Information"
       title_short: "Infos"
@@ -918,8 +926,9 @@ en:
         body: "Your message"
       partners:
         title: "Partners"
-        sites: "Smash partner sites"
-        sites2: "Other partner sites"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
 
   calendar:
     title: "Calendar"
@@ -1218,6 +1227,10 @@ en:
     s2_23:
       title: "S2 2023"
       no_ranking: "The ranking is expected to appear at the beginning of 2024"
+      top15: "Top 15:"
+    s1_24:
+      title: "S1 2024"
+      no_ranking: "The ranking is expected to appear in the middle of 2024"
       top15: "Top 15:"
     region_nrw:
       title: "NRW"
