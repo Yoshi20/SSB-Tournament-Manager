@@ -54,6 +54,35 @@ Prod commands:
 Note:  
 UK also includes Ireland (IE) & Isle of Men (IM) in this application.
 
+Surveys:
+```
+heroku run rails c --remote prod
+
+# Create survey:
+Survey.create(
+  question: "",
+  option1: "",
+  option2: "",
+  option3: "",
+  ends_at: DateTime.now.beginning_of_day+14.days,
+)
+
+# Evaluate survey:
+responses = Survey.last.survey_responses
+t = responses.count
+o1 = responses.where(response: 1).count
+o2 = responses.where(response: 2).count
+o3 = responses.where(response: 3).count
+puts "total = #{t} #{responses.group_by(&:country_code).map{ |d| [d[0], d[1].count] }}"
+puts "o1 = #{o1} (#{(100.0*o1/t).round(1)}%)"
+puts "o2 = #{o2} (#{(100.0*o2/t).round(1)}%)"
+puts "o3 = #{o3} (#{(100.0*o3/t).round(1)}%)"
+puts "by_resp_and_country:"
+pp responses.group_by{ |r| [r.response, r.country_code]}.map{ |d| [d[0], d[1].count] }.sort
+puts "by_country_and_resp:"
+pp responses.group_by{ |r| [r.country_code, r.response]}.map{ |d| [d[0], d[1].count] }.sort
+```
+
 General links:
 - https://swisssmash.herokuapp.com
 - https://www.swisssmash.ch
