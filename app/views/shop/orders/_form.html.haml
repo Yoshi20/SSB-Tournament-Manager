@@ -1,0 +1,47 @@
+= form_for @shop_order, html: { "data-turbo": "false" } do |f|
+  - if @shop_order.errors.any?
+    #error_explanation
+      -# %strong= "#{pluralize(@shop_order.errors.count, t('error'))} #{t('orders.prohibited')}"
+      %ul
+        - @shop_order.errors.full_messages.each do |message|
+          %li= message
+
+  .field.label.border
+    = f.text_field :organisation, disabled: @shop_order.was_order_sent
+    = f.label :organisation
+  .field.label.border
+    = f.text_field :name, disabled: @shop_order.was_order_sent
+    = f.label :name
+  .field.label.border
+    = f.text_field :address, disabled: @shop_order.was_order_sent
+    = f.label :address
+  .field.label.border
+    = f.text_field :address2, disabled: @shop_order.was_order_sent
+    = f.label :address2
+  .grid
+    .s6
+      .field.label.border
+        = f.text_field :zip_code, disabled: @shop_order.was_order_sent
+        = f.label :zip_code
+    .s6
+      .field.label.border
+        = f.text_field :city, disabled: @shop_order.was_order_sent
+        = f.label :city
+  .field.label.border
+    = f.text_field :phone_number, disabled: @shop_order.was_order_sent
+    = f.label :phone_number
+    %i phone
+
+  .grid
+    .s12.middle-align
+      %h5= "Rechnung"
+
+  .field.label.border
+    = f.text_field :email, disabled: !@shop_order.new_record?
+    = f.label :email, t('activerecord.attributes.shop_order.email') + '*'
+    %i email
+
+  .field.label.border
+    = f.select :payment_method, options_for_select(payment_methods_for_select, @shop_order.payment_method), {}, {disabled: @shop_order.was_order_paid || (!@shop_order.new_record? && @shop_order.payment_method == 'invoice')}
+    = f.label :payment_method
+    %i arrow_drop_down

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_16_140228) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -172,6 +172,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "shop_products", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: ""
+    t.string "currency"
+    t.float "price", default: 0.0, null: false
+    t.float "shipping", default: 0.0, null: false
+    t.integer "stock", default: 0, null: false
+    t.boolean "is_hidden", default: true
+    t.integer "position"
+    t.string "image_link"
+    t.string "image_height"
+    t.string "image_width"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_shop_products_on_user_id"
   end
 
   create_table "survey_responses", force: :cascade do |t|
@@ -559,6 +577,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
 
   add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "shop_products", "users"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"

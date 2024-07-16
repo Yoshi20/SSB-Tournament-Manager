@@ -1,0 +1,26 @@
+de:
+  activerecord:
+    models:
+      shop_purchase:
+        one: "Einkauf"
+        other: "Einkäufe"
+    attributes:
+      shop_purchase:
+        quantity: "Menge"
+        client_ip: "IP"
+        session_id: "Session"
+        user_id: "Benutzer"
+        has_checked_out: "Abgeschlossen?"
+  shop_purchases:
+    title: "Einkäufe"
+    new: "Neuer Einkauf erstellen"
+    edit: "Einkauf bearbeiten"
+    prohibited: "verhindern das Speichern dieses Einkaufs:"
+    total_count: "Anzahl Einkäufe"
+  flash:
+    shop_purchase_created: "Produkt wurde erfolgreich dem Einkaufswagen hinzugefügt"
+    shop_purchase_not_created: "Produkt konnten nicht hinzugefügt werden! Limit erreicht?"
+    shop_purchase_updated: "Produkt wurde erfolgreich aktualisiert"
+    shop_purchase_limitted: "Produkt wurde auf das Maximum limitiert"
+    shop_purchase_not_updated: "Produkt konnte nicht aktualisiert werden!"
+    shop_purchase_deleted: "Produkt wurde erfolgreich gelöscht"

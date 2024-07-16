@@ -1,0 +1,162 @@
+- set_meta_tags description: meta_tag_description('Shop')
+.row
+  .col
+    %h1.page__title= t('shop.title')
+
+- if @shop_products.any?
+  .shop_products
+    - @shop_products.each do |product|
+      - is_seller = current_user.super_admin? || current_user.id == product.user_id
+      - next if product.is_hidden && !is_seller
+      .col.text-center
+        :css
+          article {
+            box-shadow: 0 .125rem .125rem 0 rgb(0 0 0 / .32);
+            background-color: #f7f2f7;
+            color: #1c1b1e;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            display: block;
+            transition: transform .3s, border-radius .3s, padding .3s;
+          }
+        %article.no-padding
+          %div{style: 'position: absolute; left: calc(50% - 55px); bottom: 2.5px; z-index: 1; color: white; background: orange; padding: 0 1rem;'}= "Product is hidden" if product.is_hidden
+          %div{style: 'position: absolute; left: 10px; top: 5px; z-index: 1;'}= product.position if is_seller
+          .row.no-space{style: product.is_hidden ? 'opacity: 0.5;' : ''}
+            .col{style: 'background: white; border-top-right-radius: 0; border-bottom-right-radius: 0;'}
+              - if product.image_link.present? && Request.url_valid?(product.image_link)
+                = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image", style: 'max-width: 12rem;'
+              - else
+                = image_tag 'no-image.svg', height: '100%', width: '100%', alt: "no image logo", style: 'max-width: 12rem;'
+            .col
+              .padding
+                .text-left
+                  %h5.shop-product-title= product.name
+                  %p.shop-product-description= product.description.html_safe
+              .margin.text-center{style: 'position: absolute; bottom: 0; width: calc(100% - 2rem);'}
+                .text-right
+                  %p
+                    %strong{style: 'color: red; font-size: 1rem;'}= "CHF #{product.price_short}"
+                    %span.shop-product-stock{style: "display: block; color: #{product.stock_text_color};"}= product.stock_text
+                %nav.mt-0
+                  -# blup
+                  -# = form_for(ShopPurchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
+                  -#   = f.hidden_field :shop_product_id, value: product.id
+                  -#   %button.border.round{style: 'width: 100%', disabled: product.stock <= 0}
+                  -#     %span
+                  -#       %i{style: 'font-size: 20px;'} add_shopping_cart
+                  -#       -# product_purchase quantity badge
+                  -#       - product_purchase = @shopping_cart.shop_purchases.find_by(shop_product_id: product.id) if @shopping_cart.present?
+                  -#       - if product_purchase.present?
+                  -#         .badge= product_purchase.quantity
+                  -#     %span.l= t('shop.add_to_cart')
+                  -#     %span.s.m= t('shop.add_to_cart_short')
+          - if is_seller
+            -# Move down product button
+            .div{style: "position: absolute; right: 50px; top: 5px;"}
+              = button_to shop_product_move_down_path(product), method: :patch, form: { data: { turbo_method: :patch } }, class: 'small square', style:'margin: 0 0 0 5px; background: transparent; color: black;', disabled: (product.position == 0) do
+                %i.material-icons.admin-actions__link__icon= 'keyboard_arrow_up'
+            -# Edit product button
+            .div{style: "position: absolute; right: 10px; top: 5px;"}
+              = link_to edit_shop_product_path(product), data: { turbo_method: :get } do
+                = button_tag class: 'small square', style:'background: transparent; color: black;' do
+                  %i.material-icons.admin-actions__link__icon= 'edit'
+                  -# .tooltip.left= t('shop_products.edit')
+
+
+
+    -# .shop_products__pagination
+    -#   = render 'paginator'
+- else
+  .text-center
+    = t('shop_products.no_products_found')
+
+
+- if current_user.present?
+  .admin-actions
+    - if current_user.admin? || current_user.has_role?('seller')
+      .admin-actions__link
+        = link_to new_shop_product_path, class:'btn btn-default btn-square' do
+          %span.material-icons.admin-actions__link__icon= 'add'
+    - else
+      .admin-actions__link
+        = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+          %span.material-icons.admin-actions__link__icon= 'info'
+      = render '/partials/info', info_body: t('shop_products.info_body') #infoModal
+
+
+
+
+
+
+-# blup
+-# - @page_title = t('shop.title')
+-#
+-# .beta_header.text-center.middle-align{style: 'color: white; background: orange; height: 2rem;'}= "Beta-Version" #blup
+-#
+-# .row
+-#   .s12.text-center
+-#     %p= t('shop.header_text')
+-#
+-# - is_seller = (current_user.present? && current_user.super_admin?)
+-# .row.storefront.mt-0
+-#   - @products.each do |product|
+-#     - next if product.is_hidden && !is_seller
+-#     .s12.l6.text-center
+-#       %article.no-padding
+-#         %div{style: 'position: absolute; left: calc(50% - 55px); top: 2.5px; z-index: 1; color: white; background: orange; padding: 0 1rem;'}= "Product is hidden" if product.is_hidden
+-#         %div{style: 'position: absolute; left: 10px; top: 5px; z-index: 1;'}= product.position if is_seller
+-#         .row.no-space{style: product.is_hidden ? 'opacity: 0.5;' : ''}
+-#           .s6{style: 'background: white; border-top-right-radius: 0; border-bottom-right-radius: 0;'}
+-#             = image_tag((product.image.present? ? product.image : 'no-image.svg'), class: "responsive large")
+-#           .s6
+-#             .padding
+-#               %h5.shop-product-title= product.name
+-#               .text-left
+-#                 %p.shop-product-description= product.description.html_safe
+-#             .margin.text-center{style: 'position: absolute; bottom: 0; width: calc(100% - 2rem);'}
+-#               .text-right
+-#                 %p
+-#                   %strong{style: 'color: red; font-size: 1rem;'}= "CHF #{product.price_short}"
+-#                   %span.shop-product-stock{style: "display: block; color: #{product.stock_text_color};"}= product.stock_text
+-#               %nav.mt-0
+-#                 = form_for(ShopPurchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
+-#                   = f.hidden_field :shop_product_id, value: product.id
+-#                   %button.border.round{style: 'width: 100%', disabled: product.stock <= 0}
+-#                     %span
+-#                       %i{style: 'font-size: 20px;'} add_shopping_cart
+-#                       -# product_purchase quantity badge
+-#                       - product_purchase = @shopping_cart.shop_purchases.find_by(shop_product_id: product.id) if @shopping_cart.present?
+-#                       - if product_purchase.present?
+-#                         .badge= product_purchase.quantity
+-#                     %span.l= t('shop.add_to_cart')
+-#                     %span.s.m= t('shop.add_to_cart_short')
+-#         - if is_seller
+-#           -# Move down product button
+-#           .div{style: "position: absolute; right: 35px; top: 5px;"}
+-#             = button_to shop_product_move_down_path(product), method: :patch, form: { data: { turbo_method: :patch } }, class: 'small square', style:'margin: 0 0 0 5px; background: transparent; color: black;', disabled: (product.position == 0) do
+-#               %i.material-icons.admin-actions__link__icon= 'keyboard_arrow_up'
+-#           -# Edit product button
+-#           .div{style: "position: absolute; right: -5px; top: 5px;"}
+-#             = link_to edit_shop_product_path(product), data: { turbo_method: :get } do
+-#               = button_tag class: 'small square', style:'background: transparent; color: black;' do
+-#                 %i.material-icons.admin-actions__link__icon= 'edit'
+-#                 -# .tooltip.left= t('shop_products.edit')
+-#
+-# - if @shopping_cart.present?
+-#   .row
+-#     .s12.text-center
+-#       = link_to shop_shopping_cart_path do
+-#         %button.small-round.small-elevate
+-#           %span
+-#             %i shopping_cart
+-#             .badge= @shopping_cart.shop_purchases.sum(&:quantity)
+-#           %span= t('shopping_cart.title')
+-#
+-# - if is_seller
+-#   .row
+-#     .s12.text-center
+-#       = link_to new_shop_product_path do
+-#         %button.small-round.small-elevate
+-#           %i add
+-#           %span= t('shop_products.new')

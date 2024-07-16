@@ -1,0 +1,65 @@
+- @page_title = t('shopping_cart.checkout')
+
+.checkout{style: 'margin-top: 1.5rem;'}
+  %h5= t('shop_orders.summary')
+  %table.table.table-hover.border{style: 'margin-top: -1rem;'}
+    %thead.table-header
+      %tr
+        %th.left-align
+        %th.right-align= t('shopping_cart.total')
+    %tbody.shop_purchase-list-body#purchases
+      %tr
+        %td
+          - @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
+            = "#{purchase.quantity}x #{purchase.shop_product.name}"
+            %br
+          = "1x #{t('shopping_cart.shipment')}"
+        %td.right-align
+          - total_price = @shopping_cart.total_price
+          %strong= @shopping_cart.total_price_text(total_price)
+      %tr.total-row
+
+.grid{style: 'margin-top: 1.5rem;'}
+  .s12.middle-align
+    %h5= t('shop_orders.delivery_address')
+
+.new-shop_order
+  = render 'form'
+
+- back_path = @shop_order.new_record? ? shop_shopping_cart_path : shop_orders_path
+.grid
+  -# back button m & l
+  .m.m6.l.left-align
+    = link_to back_path do
+      %button.small-round.small-elevate
+        %i keyboard_backspace
+        %span= t('back')
+  -# update button
+  - if @shopping_cart.has_checked_out
+    .s12.m6.right-align
+      = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'button small-round small-elevate', style:'margin: 0;', disabled: @shop_order.was_order_sent do
+        %i save
+        %span= t('save')
+        -# %i euro_symbol
+  - else
+    -# checkout button
+    .s12.m6.right-align
+      - if @shopping_cart.user_id.present?
+        -# = link_to 'javascript:;', onclick: "if (confirm('#{t('is_all_data_correct')}')){document.getElementById('new_shop_order').submit();}", class: 'button small-round small-elevate', style:'margin: 0;' do
+        = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'button small-round small-elevate', style:'margin: 0;' do
+          %i monetization_on
+          %span= t('shop_orders.place_order')
+          -# %i euro_symbol
+      - else
+        = link_to 'javascript:;', data: { ui: "#log-in-modal" }, class: 'button small-round small-elevate', style:'margin: 0;' do
+          %i input
+          %span= t('shopping_cart.login_for_checkout')
+        %p{style: 'font-size: 10px;'}= t('shopping_cart.login_required')
+
+.grid
+  -# back button s
+  .s.s12.center-align
+    = link_to back_path do
+      %button.small-round.small-elevate
+        %i keyboard_backspace
+        %span= t('back')

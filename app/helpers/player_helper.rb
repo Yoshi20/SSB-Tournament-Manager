@@ -234,6 +234,10 @@ module PlayerHelper
     roles_from(country_code).zip(roles_raw_from(country_code))
   end
 
+  def currency_for_select
+    [['CHF', 'chf'],['€', 'eur'],['£','gbp'],['kr','isk']] # https://www.iban.com/currency-codes
+  end
+
   def birth_years
     year = Date.today.year
     ((year-100)..year).to_a.sort().reverse()

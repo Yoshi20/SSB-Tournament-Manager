@@ -26,6 +26,7 @@ en:
   back: "Back"
   confirm: "Are you sure?"
   not_uniq: "has already been taken"
+  save: "Save"
 
   sidebar:
     your_tournament_promotion: "Here could be your advertisement (%{link})"
@@ -1760,6 +1761,9 @@ en:
     members: "Members"
     total_points: "Total points"
     info_body: "To be able to create a team, add the team manager role in your profile."
+
+  shop:
+    title: "Shop"
 
   locus_league:
     title: "Locus League"

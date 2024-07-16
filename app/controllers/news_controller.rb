@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:new, :create]
+  before_action :authenticate_admin!, only: [:new, :create] #blup: news_creator?
   before_action :authenticate_news_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'news' }
 

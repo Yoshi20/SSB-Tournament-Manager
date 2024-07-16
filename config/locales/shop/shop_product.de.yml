@@ -1,0 +1,33 @@
+de:
+  activerecord:
+    models:
+      shop_product:
+        one: "Produkt"
+        other: "Produkte"
+    attributes:
+      shop_product:
+        name: "Name"
+        description: "Beschreibung"
+        price: "Preis"
+        stock: "Lagerbestand"
+        is_hidden: "Versteckt?"
+        shipping: "Versandkosten"
+        currency: "Währung"
+  shop_products:
+    title: "Produkte"
+    no_products_found: "Noch keine Produkte vorhanden"
+    new: "Neues Produkt erstellen"
+    edit: "Produkt bearbeiten"
+    prohibited: "verhindern das Speichern dieses Produkts:"
+    total_count: "Anzahl Produkte"
+    stock_text:
+      high: "Mehr als %{stock} Stück an Lager"
+      normal: "%{stock} Stück an Lager"
+      low: "Nur noch %{stock} Stück an Lager"
+      zero: "Nicht mehr an Lager"
+  flash:
+    shop_product_created: "Produkt wurde erfolgreich erstellt"
+    shop_product_not_created: "Produkt konnten nicht erstellt werden!"
+    shop_product_updated: "Produkt wurde erfolgreich aktualisiert"
+    shop_product_not_updated: "Produkt konnte nicht aktualisiert werden!"
+    shop_product_deleted: "Produkt wurde erfolgreich gelöscht"

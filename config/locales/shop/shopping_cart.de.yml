@@ -1,0 +1,24 @@
+de:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Einkaufswagen"
+        other: "Einkaufswägen"
+    attributes:
+      shopping_cart:
+        user_id: "Benutzer"
+        client_ip: "IP"
+        has_checked_out: "Checked out?"
+        created_at: "Erstellt am"
+  shopping_cart:
+    title: "Einkaufswagen"
+    total_count: "Anzahl Einkaufswägen"
+    checkout: "Checkout"
+    shipment: "Versand"
+    stripe_fees: "Stripe-Gebühren"
+    total: "Total"
+    continue_to_checkout: "Weiter zum Checkout"
+    login_for_checkout: "Anmelden für Checkout"
+    login_required: "(Für die Zuweisung der NFC & QR-Code Produkte wird ein Login benötigt)"
+  flash:
+    shopping_cart_deleted: "Einkaufswagen wurde erfolgreich gelöscht"

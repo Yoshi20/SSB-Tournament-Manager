@@ -1,0 +1,62 @@
+= form_for @shop_product, role: 'form', class:'form' do |f|
+
+  - if @shop_product.errors.any?
+    #error_explanation
+      %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop_product.prohibited')
+      %ul
+        - @shop_product.errors.full_messages.each do |message|
+          %li= message
+
+  -# .field.form-group
+  -#   = f.text_field :user_id, class: 'd-none form-control', value: current_user.id
+  -#   = f.label :title, t('shop_product.post_title')
+  -#   = f.text_field :title, class: 'form-control'
+  -# .field.form-group
+  -#   = f.label :teaser, t('shop_product.teaser')
+  -#   = f.text_field :teaser, class: 'form-control'
+  -# .field.form-group
+  -#   = f.label :text, t('shop_product.text')
+  -#   %em= "(HTML)"
+  -#   = f.text_area :text, class: 'form-control', rows: '5'
+  -#
+  -# .actions.form-group
+  -#   = f.submit class:'btn btn-cyan', value: @shop_product.new_record? ? t('shop_product.post') : t('shop_product.update')
+
+
+  .field.form-group
+    = f.label :image_link, t('teams.image_link')
+    %em= t('teams.image_owner')
+    = f.text_field :image_link, placeholder: "https://i.imgur.com/<my-image>.jpg", class: 'form-control'
+  -# .row
+  -#   .col.field.form-group
+  -#     = f.label :image_height, t('teams.image_height')
+  -#     = f.text_field :image_height, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+  -#   .col.field.form-group
+  -#     = f.label :image_width, t('teams.image_width')
+  -#     = f.text_field :image_width, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+  .field.form-group
+    = f.label :name, t('activerecord.attributes.shop_product.name')
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
+    = f.label :description, t('activerecord.attributes.shop_product.description')
+    = f.text_field :description, class: 'form-control'
+  .field.form-group
+    = f.label :currency, t('activerecord.attributes.shop_product.currency')
+    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.currency_from(current_user.country_code)), {}, class: 'form-control'
+  .field.form-group
+    = f.label :price, t('activerecord.attributes.shop_product.price')
+    = f.number_field :price, class: 'form-control', value: @shop_product.price || 0, step: 0.1, min: 0
+  .field.form-group
+    = f.label :shipping, t('activerecord.attributes.shop_product.shipping')
+    = f.number_field :shipping, class: 'form-control', value: @shop_product.shipping || 0, step: 0.1, min: 0
+  .field.form-group
+    = f.label :stock, t('activerecord.attributes.shop_product.stock')
+    = f.number_field :stock, class: 'form-control', value: @shop_product.stock || 0, step: 1, min: 0
+  .field.form-group
+    %label.checkbox
+      %input{autocomplete: "off", name: "shop_product[is_hidden]", type: "hidden", value: "0"}
+      %input{type: "checkbox", id: "shop_product_is_hidden", name: "shop_product[is_hidden]", value: "1", checked: @shop_product.is_hidden}
+      %span= t('activerecord.attributes.shop_product.is_hidden')
+
+  .actions.form-group
+    = f.submit class:'btn btn-block btn-cyan'

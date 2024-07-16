@@ -1,0 +1,49 @@
+en:
+  activerecord:
+    models:
+      shop_order:
+        one: "Order"
+        other: "Orders"
+    attributes:
+      shop_order:
+        organisation: "Organisation"
+        name: "Name"
+        address: "Address"
+        address2: "Address supplement"
+        zip_code: "ZIP code"
+        city: "City/Location"
+        phone_number: "Phone"
+        email: "Email"
+        was_order_sent: "Order sent?"
+        order_sent_at: "Order sent at"
+        was_order_paid: "Order paid?"
+        order_paid_at: "Order paid at"
+        status: "Status"
+        payment_method: "Payment method"
+  shop_orders:
+    title: "My orders"
+    title_short: "My orders"
+    total_count: "Orders count"
+    no_orders_yet: "No orders yet"
+    summary: "Summary"
+    delivery_address: "Delivery address"
+    place_order: "Place order"
+    turnover: "Turnover"
+    status:
+      open: "Payment pending offen"
+      paid: "Paid"
+      sent: "Sent"
+      cancelled: "Cancelled"
+    payment_methods:
+      invoice: "In advance via email invoice"
+      stripe: "Immediately via Stripe (Fees: 3% + 0.5 CHF)"
+      # card: "Credit card"
+      # paypal: "PayPal"
+      # twint: "Twint"
+  flash:
+    shop_order_created: "The order was successful. Thank you"
+    shop_order_not_created: "The order failed!"
+    shop_order_updated: "The order was successfully updated"
+    shop_order_not_updated: "The order couldn't be updated!"
+    shop_order_deleted: "Order was successfully deleted"
+    shop_order_not_deleted: "Order couldn't be deleted!"

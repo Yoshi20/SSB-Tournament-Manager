@@ -26,6 +26,7 @@ de:
   back: "Zurück"
   confirm: "Bist du sicher?"
   not_uniq: "ist bereits vergeben"
+  save: "Speichern"
 
   sidebar:
     your_tournament_promotion: "Hier könnte deine Werbung stehen (%{link})"
@@ -1343,3 +1344,6 @@ de:
     members: "Mitglieder"
     total_points: "Total Punkte"
     info_body: "Um ein Team erstellen zu können, füge die Team-Manager-Rolle deinem Profil hinzu."
+
+  shop:
+    title: "Shop"

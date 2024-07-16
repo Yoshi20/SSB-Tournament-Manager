@@ -1,0 +1,33 @@
+en:
+  activerecord:
+    models:
+      shop_product:
+        one: "Product"
+        other: "Products"
+    attributes:
+      shop_product:
+        name: "Name"
+        description: "Description"
+        price: "Price"
+        stock: "Stock"
+        is_hidden: "Hidden?"
+        shipping: "Shipping"
+        currency: "Currency"
+  shop_products:
+    title: "Products"
+    no_products_found: "No products found yet"
+    new: "Create new product"
+    edit: "Edit product"
+    prohibited: "prohibited this product from being saved:"
+    total_count: "Products count"
+    stock_text:
+      high: "More than %{stock} pieces in stock"
+      normal: "%{stock} pieces in stock"
+      low: "Only %{stock} pieces left in stock"
+      zero: "Out of stock"
+  flash:
+    shop_product_created: "Product was successfully created"
+    shop_product_not_created: "Product couldn't be created!"
+    shop_product_updated: "Product was successfully updated"
+    shop_product_not_updated: "Product couldn't be updated!"
+    shop_product_deleted: "Product was successfully deleted"

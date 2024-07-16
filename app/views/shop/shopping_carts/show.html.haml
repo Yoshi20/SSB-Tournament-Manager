@@ -1,0 +1,88 @@
+- @page_title = t('shopping_cart.title')
+
+-# .grid.shopping_cart{style: 'margin-top: 1.5rem;'}
+.grid
+  .s12.middle-align
+    %p= t('shop_purchases.total_count') + " = #{@purchases.count}"
+
+.shop_purchase-list{data: { controller: "tables" }, style: 'overflow: auto;'}
+  %table.table.table-hover.border
+    %thead.table-header
+      %tr
+        %th.min.center-align= t('activerecord.models.activestorage::attachment.one')
+        %th= t('activerecord.attributes.shop_product.description')
+        %th.min.center-align= t('activerecord.attributes.shop_purchase.quantity')
+        %th.min.center-align= t('activerecord.attributes.shop_product.price')
+        %th.min.right-align= t('actions')
+    %tbody.shop_purchase-list-body#purchases
+      -# - @purchases_and_quantities.each do |purchase_and_quantity|
+      -#   - purchase = purchase_and_quantity[0]
+      - @purchases.each do |purchase|
+        - product = purchase.shop_product
+        - quantity = purchase.quantity #purchase_and_quantity[1]
+        %tr
+          %td.min.center-align
+            = image_tag((product.image.present? ? product.image : 'no-image.svg'), style: "max-height: 6rem;")
+          %td
+            %strong= product.name
+            %p.m.l= product.description.html_safe
+            %p{style: "color: #{product.stock_text_color};"}= product.stock_text
+          %td.min.center-align
+            = form_for purchase do |f|
+              .field.border.small{style: 'margin: 0;'}
+                = f.number_field :quantity, value: quantity, step: 1, min: 1, style: 'min-width: 3rem; padding: 0;', onchange: 'submit();'
+          %td.min.right-align
+            %strong= product.price_long(quantity)
+          %td.min.center-align
+            .admin-list-actions.right-align
+              .admin-list-actions__link
+                = button_to shop_purchase_path(purchase), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
+                  %i.material-icons.admin-actions__link__icon= 'delete'
+      -# Shipping row
+      %tr
+        %td.min.left-align
+          %strong= t('shopping_cart.shipment')
+        %td
+        %td
+        %td.min.right-align
+          %strong= @shopping_cart.shipping_costs_text
+        %td.min.center-align
+      -# Total row
+      %tr.total-row
+        %td.min.left-align
+          %strong= t('shopping_cart.total')
+        %td
+        %td
+        %td.min.right-align
+          %strong= @shopping_cart.total_price_text_long
+        %td.min.center-align
+
+- back_path = @shopping_cart.has_checked_out ? shop_orders_path : shop_path
+.grid
+  -# back button m & l
+  .m.m6.l.left-align
+    = link_to back_path do
+      %button.small-round.small-elevate
+        %i keyboard_backspace
+        %span= t('back')
+  -# checkout button
+  - unless @shopping_cart.has_checked_out
+    .s12.m6.right-align
+      - if current_user.present?
+        = link_to shop_checkout_path do
+          %button.small-round.small-elevate
+            %i{style: 'rotate: 180deg;'} keyboard_backspace
+            %span= t('shopping_cart.continue_to_checkout')
+      - else
+        = link_to 'javascript:;', data: { ui: "#log-in-modal" }, class: 'button small-round small-elevate', style:'margin: 0;' do
+          %i input
+          %span= t('shopping_cart.login_for_checkout')
+        %p{style: 'font-size: 10px;'}= t('shopping_cart.login_required')
+
+.grid
+  -# back button s
+  .s.s12.center-align
+    = link_to back_path do
+      %button.small-round.small-elevate
+        %i keyboard_backspace
+        %span= t('back')
