@@ -16,16 +16,21 @@
     td {
       vertical-align: middle;
     }
+  }
+  .with-show {
+    tr  {
+      cursor: pointer;
+    }
+  }
+}
+
+.table-hover {
+  tbody {
     tr:hover {
       background-color: $color-grey-light;
       .admin-list-actions {
         display: flex;
       }
-    }
-  }
-  .with-show {
-    tr  {
-      cursor: pointer;
     }
   }
 }

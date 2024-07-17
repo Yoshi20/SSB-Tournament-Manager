@@ -18,7 +18,5 @@ de:
     stripe_fees: "Stripe-Gebühren"
     total: "Total"
     continue_to_checkout: "Weiter zum Checkout"
-    login_for_checkout: "Anmelden für Checkout"
-    login_required: "(Für die Zuweisung der NFC & QR-Code Produkte wird ein Login benötigt)"
   flash:
     shopping_cart_deleted: "Einkaufswagen wurde erfolgreich gelöscht"

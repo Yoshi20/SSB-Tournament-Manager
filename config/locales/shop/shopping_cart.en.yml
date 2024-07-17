@@ -18,7 +18,5 @@ en:
     stripe_fees: "Stripe fees"
     total: "Total"
     continue_to_checkout: "Continue to checkout"
-    login_for_checkout: "Login for checkout"
-    login_required: "(A login is required to assign the NFC & QR code products)"
   flash:
     shopping_cart_deleted: "Shopping cart was successfully deleted"

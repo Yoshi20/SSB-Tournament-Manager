@@ -50,6 +50,12 @@
     position: absolute;
     bottom: 0;
     width: calc(100% - 1rem);
+    button {
+      font-size: 0.625rem; // 10px
+      @media only screen and (min-width: 600px) {
+        font-size: 0.75rem; // 12px
+      }
+    }
   }
 
   .shop-product-stock {
@@ -100,11 +106,20 @@
 
   .product-image-col {
     background: white;
+    border-radius: 0.75rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    overflow: hidden;
+    padding: 0;
+    img {
+      inline-size: 100%;
+      block-size: 16rem; // this defines the size of the article
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
-  .cart-button {
+  .add_to_cart-button {
     position: relative;
     width: 100%;
     margin-left: 0;
@@ -117,4 +132,20 @@
     align-items: center;
     justify-content: center;
   }
+
+  .cart-button {
+    position: relative;
+    block-size: 2.5rem;
+    gap: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.btn-with-icon {
+  block-size: 2.5rem;
+  gap: 0.5rem;
+  display: inline-flex;
+  align-items: center;
 }

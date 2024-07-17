@@ -8,7 +8,7 @@ class Shop::ShoppingCartsController < ApplicationController
   def show
     # @purchases_and_quantities = @shopping_cart.shop_purchases.includes(:shop_product).group_by(&:shop_product_id).map{ |sp| [sp[1][0], sp[1].sum(&:quantity)] }
     if @shopping_cart.present?
-      @purchases = @shopping_cart.shop_purchases.includes(:shop_product, shop_product: :image_attachment).order(:created_at)
+      @purchases = @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at)
     else
       redirect_to shop_path
     end

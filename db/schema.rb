@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_140228) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_072913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -190,6 +190,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_140228) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_shop_products_on_user_id"
+  end
+
+  create_table "shop_purchases", force: :cascade do |t|
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shop_product_id"
+    t.bigint "shopping_cart_id"
+    t.index ["shop_product_id"], name: "index_shop_purchases_on_shop_product_id"
+    t.index ["shopping_cart_id"], name: "index_shop_purchases_on_shopping_cart_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.string "client_ip"
+    t.string "session_id"
+    t.bigint "user_id"
+    t.boolean "has_checked_out", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "survey_responses", force: :cascade do |t|
@@ -578,6 +597,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_140228) do
   add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
   add_foreign_key "shop_products", "users"
+  add_foreign_key "shop_purchases", "shop_products"
+  add_foreign_key "shop_purchases", "shopping_carts"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"

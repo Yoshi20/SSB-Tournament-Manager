@@ -1,7 +1,7 @@
 class ShopProduct < ApplicationRecord
   include PositionHandler
 
-  #blup has_many :shop_purchases, dependent: :destroy
+  has_many :shop_purchases, dependent: :destroy
 
   validates :name, presence: true
   validates :currency, presence: true

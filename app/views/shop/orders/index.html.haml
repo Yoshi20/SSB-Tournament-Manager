@@ -68,7 +68,7 @@
               %td.m.l.center-align
                 .admin-list-actions.right-align
                   .admin-list-actions__link
-                    = button_to shop_order_path(shop_order), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
+                    = button_to shop_order_path(shop_order), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
                       %i.material-icons.admin-actions__link__icon= 'delete'
 
         - if current_user.super_admin?
@@ -143,5 +143,5 @@
             %td.m.l.center-align
               .admin-list-actions.right-align
                 .admin-list-actions__link
-                  = button_to shop_shopping_cart_path(id: shopping_cart.id), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
+                  = button_to shop_shopping_cart_path(id: shopping_cart.id), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
                     %i.material-icons.admin-actions__link__icon= 'delete'

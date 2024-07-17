@@ -1,19 +1,20 @@
-- @page_title = t('shopping_cart.title')
+.row
+  .col
+    %h1.page__title= t('shopping_cart.title')
 
--# .grid.shopping_cart{style: 'margin-top: 1.5rem;'}
-.grid
-  .s12.middle-align
+.row
+  .col.middle-align
     %p= t('shop_purchases.total_count') + " = #{@purchases.count}"
 
 .shop_purchase-list{data: { controller: "tables" }, style: 'overflow: auto;'}
-  %table.table.table-hover.border
+  %table.table.border
     %thead.table-header
       %tr
-        %th.min.center-align= t('activerecord.models.activestorage::attachment.one')
+        %th.min.text-center= ''
         %th= t('activerecord.attributes.shop_product.description')
-        %th.min.center-align= t('activerecord.attributes.shop_purchase.quantity')
-        %th.min.center-align= t('activerecord.attributes.shop_product.price')
-        %th.min.right-align= t('actions')
+        %th.min.text-center= t('activerecord.attributes.shop_purchase.quantity')
+        %th.min.text-right= t('activerecord.attributes.shop_product.price')
+        %th.min.text-right= ''#t('actions')
     %tbody.shop_purchase-list-body#purchases
       -# - @purchases_and_quantities.each do |purchase_and_quantity|
       -#   - purchase = purchase_and_quantity[0]
@@ -21,68 +22,74 @@
         - product = purchase.shop_product
         - quantity = purchase.quantity #purchase_and_quantity[1]
         %tr
-          %td.min.center-align
-            = image_tag((product.image.present? ? product.image : 'no-image.svg'), style: "max-height: 6rem;")
+          %td.min.text-center{style: 'width: 0.001px; padding: 0.25rem;'}
+            - if product.image_link.present? && Request.url_valid?(product.image_link)
+              = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image", style: 'max-width: 12rem; max-height: 6rem;'
+            - else
+              = image_tag 'no-image.svg', height: '100%', width: '100%', alt: "no image logo", style: 'max-width: 12rem; max-height: 6rem;'
           %td
             %strong= product.name
-            %p.m.l= product.description.html_safe
+            %p.d-none.d-md-block.d-lg-none.d-xl-block= product.description.html_safe
             %p{style: "color: #{product.stock_text_color};"}= product.stock_text
-          %td.min.center-align
+          %td.min.text-center
             = form_for purchase do |f|
-              .field.border.small{style: 'margin: 0;'}
-                = f.number_field :quantity, value: quantity, step: 1, min: 1, style: 'min-width: 3rem; padding: 0;', onchange: 'submit();'
-          %td.min.right-align
+              .field.form-group.small{style: 'margin: 0;'}
+                = f.number_field :quantity, value: quantity, step: 1, min: 1, style: 'width: 3rem; padding: 0; text-align: center; block-size: 2rem;', onchange: 'submit();'
+          %td.min.text-right
             %strong= product.price_long(quantity)
-          %td.min.center-align
-            .admin-list-actions.right-align
+          %td.min.text-center
+            .admin-list-actions.text-right
               .admin-list-actions__link
-                = button_to shop_purchase_path(purchase), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
-                  %i.material-icons.admin-actions__link__icon= 'delete'
+                = button_to shop_purchase_path(purchase), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'btn btn-sstm btn-square' do
+                  %i.material-icons.material-icons.admin-actions__link__icon= 'delete'
       -# Shipping row
       %tr
-        %td.min.left-align
+        %td.min.text-left
           %strong= t('shopping_cart.shipment')
         %td
         %td
-        %td.min.right-align
+        %td.min.text-right
           %strong= @shopping_cart.shipping_costs_text
-        %td.min.center-align
+        %td.min.text-center
       -# Total row
       %tr.total-row
-        %td.min.left-align
+        %td.min.text-left
           %strong= t('shopping_cart.total')
         %td
         %td
-        %td.min.right-align
+        %td.min.text-right
           %strong= @shopping_cart.total_price_text_long
-        %td.min.center-align
+        %td.min.text-center
 
 - back_path = @shopping_cart.has_checked_out ? shop_orders_path : shop_path
-.grid
+.row
   -# back button m & l
-  .m.m6.l.left-align
+  .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-left
     = link_to back_path do
-      %button.small-round.small-elevate
-        %i keyboard_backspace
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
         %span= t('back')
   -# checkout button
   - unless @shopping_cart.has_checked_out
-    .s12.m6.right-align
-      - if current_user.present?
-        = link_to shop_checkout_path do
-          %button.small-round.small-elevate
-            %i{style: 'rotate: 180deg;'} keyboard_backspace
-            %span= t('shopping_cart.continue_to_checkout')
-      - else
-        = link_to 'javascript:;', data: { ui: "#log-in-modal" }, class: 'button small-round small-elevate', style:'margin: 0;' do
-          %i input
-          %span= t('shopping_cart.login_for_checkout')
-        %p{style: 'font-size: 10px;'}= t('shopping_cart.login_required')
+    .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
+      -#blup = link_to shop_checkout_path do
+      = link_to '#' do
+        %button.btn.btn-default.btn-with-icon
+          %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
+          %span= t('shopping_cart.continue_to_checkout')
 
-.grid
+.row
+  -# checkout button
+  - unless @shopping_cart.has_checked_out
+    .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
+      -#blup = link_to shop_checkout_path do
+      = link_to '#' do
+        %button.btn.btn-default.btn-with-icon
+          %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
+          %span= t('shopping_cart.continue_to_checkout')
   -# back button s
-  .s.s12.center-align
+  .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center.mt-2
     = link_to back_path do
-      %button.small-round.small-elevate
-        %i keyboard_backspace
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
         %span= t('back')
