@@ -1347,3 +1347,5 @@ de:
 
   shop:
     title: "Shop"
+    add_to_cart: "In den Warenkorb"
+    add_to_cart_short: "Hinzufügen"

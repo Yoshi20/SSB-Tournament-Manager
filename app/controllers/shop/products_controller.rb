@@ -1,6 +1,8 @@
 class Shop::ProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authenticate_seller!, only: [:new, :create]
   before_action :set_shop_product, only: %i[ edit update destroy move_down ]
+  before_action :authenticate_product_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'shop' }
 
   # GET /shop_products/new
@@ -74,5 +76,23 @@ class Shop::ProductsController < ApplicationController
         :name, :description, :currency, :price, :shipping, :stock, :is_hidden,
         :image_link, :image_height, :image_width
       )
+    end
+
+    def authenticate_seller!
+      unless current_user.present? && (current_user.admin? || current_user.has_role?("seller"))
+        respond_to do |format|
+          format.html { redirect_to shop_path, alert: t('flash.alert.unauthorized') }
+          format.json { render json: {}, status: :unauthorized }
+        end
+      end
+    end
+
+    def authenticate_product_creator!
+      unless current_user.present? && (@shop_product.user_id == current_user.id || current_user.super_admin?)
+        respond_to do |format|
+          format.html { redirect_to shop_path, alert: t('flash.alert.unauthorized') }
+          format.json { render json: @shop_product.errors, status: :unauthorized }
+        end
+      end
     end
 end

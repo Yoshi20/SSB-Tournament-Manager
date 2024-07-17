@@ -1764,6 +1764,8 @@ en:
 
   shop:
     title: "Shop"
+    add_to_cart: "Add to Cart"
+    add_to_cart_short: "Add to Cart"
 
   locus_league:
     title: "Locus League"
