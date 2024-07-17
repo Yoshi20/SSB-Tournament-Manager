@@ -1,7 +1,10 @@
-- @page_title = t('shop_orders.title')
+- set_meta_tags description: meta_tag_description('Orders')
+.row
+  .col
+    %h1.page__title= t('shop_orders.title')
 
-.grid
-  .s12.middle-align
+.row
+  .col.middle-align
     %p= t('shop_orders.total_count') + " = #{@shop_orders.count}"
 
 - if @shop_orders.any?
@@ -9,64 +12,61 @@
     %table.table.table-hover.border
       %thead.table-header
         %tr
-          %th.center-align= t('activerecord.attributes.shopping_cart.created_at')
-          %th.left-align= t('shop_products.title')
-          %th.left-align= t('shopping_cart.total')
-          %th.m.l.left-align= t('activerecord.attributes.shop_order.address')
+          %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
+          %th.text-left= t('shop_products.title')
+          %th.text-left= t('shopping_cart.total')
+          %th.m.l.text-left= t('activerecord.attributes.shop_order.address')
           - if current_user.super_admin?
-            %th.m.l.center-align{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.email')
-            %th.center-align{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.user_id')
-            %th.m.l.center-align{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.client_ip')
-            %th.center-align{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_paid')
-            %th.center-align{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_sent')
-            %th.center-align{style: 'color: blueviolet;'}= 'payment'#t('activerecord.attributes.shop_order.payment_method')
-          %th.center-align= t('activerecord.attributes.shop_order.status')
+            %th.m.l.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.email')
+            %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.user_id')
+            %th.m.l.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.client_ip')
+            %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_paid')
+            %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_sent')
+            -# %th.text-center{style: 'color: blueviolet;'}= 'payment'#t('activerecord.attributes.shop_order.payment_method')
+          %th.text-center= t('activerecord.attributes.shop_order.status')
           - if current_user.super_admin?
-            %th.m.l.right-align{style: 'color: blueviolet;'}= t('actions')
+            %th.m.l.text-right{style: 'color: blueviolet;'}= t('actions')
       %tbody.shopping_order-list-body#shop_orders
         - turnover = 0
         - @shop_orders.each do |shop_order|
           - shopping_cart = shop_order.shopping_cart
           %tr{data: { id: shop_order.id, component: 'shop/order', action: "click->tables#edit" }, style: "cursor: context-menu; background-color: #{shop_order.recently_updated? ? 'aliceblue' : ''}; color: #{shop_order.recently_updated? ? 'black' : ''};"}
-            %td.center-align= shop_order.created_at.localtime.to_fs(:custom_datetime)
-            %td.left-align{style: 'overflow: hidden;'}
+            %td.text-center= shop_order.created_at.localtime.to_fs(:custom_datetime)
+            %td.text-left{style: 'overflow: hidden;'}
               - shopping_cart.shop_purchases.each do |purchase|
                 = "#{purchase.quantity}x #{purchase.shop_product.name}"
                 %br
-            %td.left-align
+            %td.text-left
               - total_price = shopping_cart.total_price
               = shopping_cart.total_price_text(total_price)
               - turnover = turnover + total_price
-            %td.m.l.left-align{style: 'line-height: 1; overflow: hidden;', class: current_user.super_admin? ? 'link' : ''}
+            %td.m.l.text-left{style: 'line-height: 1; overflow: hidden;', class: current_user.super_admin? ? 'link' : ''}
               - if current_user.super_admin?
                 = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
                   = simple_format(shop_order.complete_address + "\n#{shop_order.phone_number}")
               - else
                 = simple_format(shop_order.complete_address)
             - if current_user.super_admin?
-              %td.m.l.center-align.link{style: 'overflow: hidden;'}
+              %td.m.l.text-center.link{style: 'overflow: hidden;'}
                 = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
                   = shop_order.email
-              %td.center-align.link
-                = link_to shopping_cart.username, edit_customer_path(shopping_cart.user.customer_id) if shopping_cart.user.present?
-                %br
-                = link_to 'Tags', profile_tags_path(customer_id: shopping_cart.user.customer_id) if shopping_cart.user.present?
-              %td.m.l.center-align= shopping_cart.client_ip
-              %td.min.center-align
+              %td.text-center.link=shopping_cart.username if shopping_cart.user.present?
+              %td.m.l.text-center= shopping_cart.client_ip
+              %td.min.text-center
                 = form_for shop_order, url: shop_order_path(shop_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
                   .hidden= f.check_box :was_order_paid, checked: !shop_order.was_order_paid
                   = f.button type: 'submit', class:'small square', style:'background: white; color: black;' do
                     %i.material-icons.admin-actions__link__icon= shop_order.was_order_paid ? 'check_box' : 'check_box_outline_blank'
-              %td.min.center-align
+              %td.min.text-center
                 = form_for shop_order, url: shop_order_path(shop_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
                   .hidden= f.check_box :was_order_sent, checked: !shop_order.was_order_sent
                   = f.button type: 'submit', class:'small square', style:'background: white; color: black;' do
                     %i.material-icons.admin-actions__link__icon= shop_order.was_order_sent ? 'check_box' : 'check_box_outline_blank'
-              %td.center-align= shop_order.payment_method
-            %td.center-align= shop_order.status_text
+              -# %td.text-center= shop_order.payment_method
+            %td.text-center= shop_order.status_text
             - if current_user.super_admin?
-              %td.m.l.center-align
-                .admin-list-actions.right-align
+              %td.m.l.text-center
+                .admin-list-actions.text-right
                   .admin-list-actions__link
                     = button_to shop_order_path(shop_order), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
                       %i.material-icons.admin-actions__link__icon= 'delete'
@@ -88,60 +88,60 @@
             %td.m.l
 
 - else
-  .grid
-    .s12.center-align
+  .row
+    .col.text-center
       = t('shop_orders.no_orders_yet')
-  .grid
+  .row
     -# shop button
-    .s12.center-align
+    .col.text-center
       = link_to shop_path do
-        %button.small-round.small-elevate
-          %i store
+        %button.btn.btn-default.btn-with-icon
+          %i.material-icons{style: 'font-size: 20px;'} store
           %span= t('shop.title')
 
 
 
 
 - if current_user.super_admin?
-  .grid
-    .s12
+  .row{style: 'margin-top: 2rem;'}
+    .col
       %h5 Super admin section:
   - sc_ids = @shop_orders.map(&:shopping_cart_id)
   - shopping_carts = ShoppingCart.where.not(id: sc_ids).includes(:user, :shop_purchases, shop_purchases: :shop_product).order(created_at: :desc)
-  .grid
-    .s12.middle-align
+  .row
+    .col.middle-align
       %p= t('shopping_cart.total_count') + " = #{shopping_carts.count}"
   .shopping_cart-list{data: { controller: "tables" }, style: 'overflow: auto;'}
-    %table.table.table-hover.border
+    %table.table.border
       %thead.table-header
         %tr
-          %th.center-align= t('activerecord.attributes.shopping_cart.created_at')
-          %th.left-align= t('shop_products.title')
-          %th.left-align= t('shopping_cart.total')
-          %th.center-align= t('activerecord.attributes.shopping_cart.user_id')
-          %th.m.l.center-align= t('activerecord.attributes.shopping_cart.client_ip')
-          %th.center-align= t('activerecord.attributes.shopping_cart.has_checked_out')
-          %th.m.l.right-align= t('actions')
+          %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
+          %th.text-left= t('shop_products.title')
+          %th.text-left= t('shopping_cart.total')
+          %th.text-center= t('activerecord.attributes.shopping_cart.user_id')
+          %th.m.l.text-center= t('activerecord.attributes.shopping_cart.client_ip')
+          %th.text-center= t('activerecord.attributes.shopping_cart.has_checked_out')
+          %th.m.l.text-right= t('actions')
       %tbody.shopping_cart-list-body#shopping_carts
         - turnover = 0
         - shopping_carts.each do |shopping_cart|
           %tr
-            %td.center-align= shopping_cart.created_at.localtime.to_fs(:custom_datetime)
-            %td.left-align
+            %td.text-center= shopping_cart.created_at.localtime.to_fs(:custom_datetime)
+            %td.text-left
               - shopping_cart.shop_purchases.each do |purchase|
                 = "#{purchase.quantity}x #{purchase.shop_product.name}"
                 %br
-            %td.left-align
+            %td.text-left
               - total_price = shopping_cart.total_price
               = shopping_cart.total_price_text(total_price)
               - turnover = turnover + total_price
-            %td.center-align.link= link_to shopping_cart.username, edit_customer_path(shopping_cart.user.customer_id) if shopping_cart.user.present?
-            %td.m.l.center-align= shopping_cart.client_ip
-            %td.min.center-align
+            %td.text-center.link= link_to shopping_cart.username, edit_customer_path(shopping_cart.user.customer_id) if shopping_cart.user.present?
+            %td.m.l.text-center= shopping_cart.client_ip
+            %td.min.text-center
               = button_tag class:'small square', style:'background: white; color: black;', disabled: true do
                 %i.material-icons.admin-actions__link__icon= shopping_cart.has_checked_out ? 'check_box' : 'check_box_outline_blank'
-            %td.m.l.center-align
-              .admin-list-actions.right-align
+            %td.m.l.text-center
+              .admin-list-actions.text-right
                 .admin-list-actions__link
                   = button_to shop_shopping_cart_path(id: shopping_cart.id), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'small square', style:'margin: 0 0 0 5px;' do
                     %i.material-icons.admin-actions__link__icon= 'delete'

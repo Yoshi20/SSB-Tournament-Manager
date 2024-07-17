@@ -11,33 +11,43 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
       line_items << {
         price_data: {
-          currency: 'chf',
+          currency: purchase.shop_product.currency,
           product_data: {name: purchase.shop_product.name},
           unit_amount: (purchase.shop_product.price * 100).to_i, # price in Rp
         },
         quantity: purchase.quantity,
       }
+      # blup: handle shipping on shopping_cart level (not product level)
+      # shipping (could also be handled in Stripe::Checkout::Session)
+      line_items << {
+        price_data: {
+          currency: purchase.shop_product.currency,
+          product_data: {name: t('shopping_cart.shipment')},
+          unit_amount: (purchase.shop_product.shipping * 100).to_i, # price in Rp
+        },
+        quantity: 1,
+      }
     end
-    # shipping (could also be handled in Stripe::Checkout::Session)
-    line_items << {
-      price_data: {
-        currency: 'chf',
-        product_data: {name: t('shopping_cart.shipment')},
-        unit_amount: (shopping_cart.shipping_costs * 100).to_i, # price in Rp
-      },
-      quantity: 1,
-    }
-    # stripe fee (only add this if you want the user to pay it)
-    total_price = shopping_cart.total_price
-    stripe_fees = total_price * 0.03 + 0.5 # 3% + 0.5 CHF
-    line_items << {
-      price_data: {
-        currency: 'chf',
-        product_data: {name: t('shopping_cart.stripe_fees')},
-        unit_amount: (stripe_fees * 100).to_i, # price in Rp
-      },
-      quantity: 1,
-    }
+    # # shipping (could also be handled in Stripe::Checkout::Session)
+    # line_items << {
+    #   price_data: {
+    #     currency: purchase.shop_product.currency,
+    #     product_data: {name: t('shopping_cart.shipment')},
+    #     unit_amount: (shopping_cart.shipping_costs * 100).to_i, # price in Rp
+    #   },
+    #   quantity: 1,
+    # }
+    # # stripe fee (only add this if you want the user to pay it)
+    # total_price = shopping_cart.total_price
+    # stripe_fees = total_price * 0.03 + 0.5 # 3% + 0.5 CHF
+    # line_items << {
+    #   price_data: {
+    #     currency: purchase.shop_product.currency,
+    #     product_data: {name: t('shopping_cart.stripe_fees')},
+    #     unit_amount: (stripe_fees * 100).to_i, # price in Rp
+    #   },
+    #   quantity: 1,
+    # }
     # Stripe checkout session request
     checkout_session = Stripe::Checkout::Session.create({
       line_items: line_items,
@@ -66,7 +76,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     # amount_for_seller = total_price * (1.0 - 0.05) # 5% left for me (95% goes to the seller)
     # transfer = Stripe::Transfer.create({
     #   amount: (amount_for_seller * 100).to_i, # price in Rp
-    #   currency: 'chf',
+    #   currency: purchase.shop_product.currency,
     #   destination: 'acct_1Pc88NJFjCRueizw', # seller account blup: swisssmash.ch
     #   transfer_group: "ORDER_#{shop_order.id}",
     #   metadata: { order_id: shop_order.id } # optional

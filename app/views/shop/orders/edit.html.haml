@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title= t('shopping_cart.checkout')
+    %h1.page__title= t('shop_orders.title_single')
 
 = render 'summary'
 
@@ -19,18 +19,18 @@
       %button.btn.btn-default.btn-with-icon
         %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
         %span= t('back')
-  -# checkout button
+  -# update button
   .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
-    = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
-      %i.material-icons{style: 'font-size: 20px;'} monetization_on
-      %span= t('shop_orders.place_order')
+    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;', disabled: @shop_order.was_order_sent do
+      %i.material-icons{style: 'font-size: 20px;'} save
+      %span= t('save')
 
 .row
-  -# checkout button
+  -# update button
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
-    = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
-      %i.material-icons{style: 'font-size: 20px;'} monetization_on
-      %span= t('shop_orders.place_order')
+    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;', disabled: @shop_order.was_order_sent do
+      %i.material-icons{style: 'font-size: 20px;'} save
+      %span= t('save')
   -# back button s
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center.mt-2
     = link_to back_path do

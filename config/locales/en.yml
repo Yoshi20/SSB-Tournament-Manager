@@ -27,6 +27,7 @@ en:
   confirm: "Are you sure?"
   not_uniq: "has already been taken"
   save: "Save"
+  actions: "Actions"
 
   sidebar:
     your_tournament_promotion: "Here could be your advertisement (%{link})"

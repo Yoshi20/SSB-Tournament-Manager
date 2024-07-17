@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_17_072913) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_17_112243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -172,6 +172,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_072913) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "shop_orders", force: :cascade do |t|
+    t.string "organisation"
+    t.string "name"
+    t.string "address"
+    t.string "address2"
+    t.string "zip_code"
+    t.string "city"
+    t.string "phone_number"
+    t.string "email", default: "", null: false
+    t.boolean "was_order_sent", default: false
+    t.datetime "order_sent_at"
+    t.boolean "was_order_paid", default: false
+    t.datetime "order_paid_at"
+    t.string "status", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shopping_cart_id"
+    t.index ["shopping_cart_id"], name: "index_shop_orders_on_shopping_cart_id"
   end
 
   create_table "shop_products", force: :cascade do |t|
@@ -596,6 +616,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_17_072913) do
 
   add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "shop_orders", "shopping_carts"
   add_foreign_key "shop_products", "users"
   add_foreign_key "shop_purchases", "shop_products"
   add_foreign_key "shop_purchases", "shopping_carts"

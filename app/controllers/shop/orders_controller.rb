@@ -1,5 +1,5 @@
 class Shop::OrdersController < ApplicationController
-  #before_action :authenticate_user!, only: %i[ index new create edit update ]
+  skip_before_action :authenticate_user!
   before_action :authenticate_super_admin!, only: %i[ destroy ]
   before_action :set_shop_order, only: %i[ edit update destroy ]
   before_action :set_shopping_cart, only: %i[ new create ]
@@ -14,22 +14,21 @@ class Shop::OrdersController < ApplicationController
   # GET /shop_order
   def edit
     @shopping_cart = @shop_order.shopping_cart
-    render :new
   end
 
   # GET /checkout
   def new
     @shop_order = ShopOrder.new
-    if @shopping_cart.user.present?
-      customer = @shopping_cart.user.customer
-      @shop_order.organisation = customer.name unless customer.is_private
-      @shop_order.name = customer.name_long
-      @shop_order.address = customer.address
-      @shop_order.address2 = customer.address2
-      @shop_order.zip_code = customer.zip_code
-      @shop_order.city = customer.city
-      @shop_order.phone_number = customer.phone_number
-      @shop_order.email = customer.email
+    user = @shopping_cart.user
+    if user.present?
+      # @shop_order.organisation = ""
+      @shop_order.name = user.full_name
+      # @shop_order.address = user.address
+      # @shop_order.address2 = user.address2
+      # @shop_order.zip_code = user.zip_code
+      @shop_order.city = user.area_of_responsibility
+      @shop_order.phone_number = user.mobile_number
+      @shop_order.email = user.email
     end
   end
 
@@ -42,16 +41,9 @@ class Shop::OrdersController < ApplicationController
     ShopOrder.where(shopping_cart_id: @shopping_cart.id).destroy_all
     respond_to do |format|
       if @shop_order.save
-        # invoice payment: instantly complete order as its handled manually and may take a while
-        if @shop_order.payment_method == 'invoice'
-          @shop_order.complete!(current_app_mode)
-          format.html { redirect_to shop_orders_path, notice: t('flash.shop_order_created') }
-          format.json { render :new, status: :ok, location: @shop_order }
-        else
-          # stripe payment: complete order in /shop/stripe/success
-          format.html { redirect_to shop_stripe_checkout_path(order_id: @shop_order.id) }
-          format.json { render :new, status: :ok, location: @shop_order }
-        end
+        # stripe payment: complete order in /shop/stripe/success
+        format.html { redirect_to shop_stripe_checkout_path(order_id: @shop_order.id) }
+        format.json { render :new, status: :ok, location: @shop_order }
       else
         format.html { render :new, status: :unprocessable_entity, alert: t('flash.shop_order_not_created') }
         format.json { render json: @shop_order.errors, status: :unprocessable_entity }
@@ -101,7 +93,7 @@ class Shop::OrdersController < ApplicationController
     def shop_order_params
       params.require(:shop_order).permit(
         :organisation, :name, :address, :address2, :zip_code, :city, :email,
-        :phone_number, :was_order_sent, :was_order_paid, :payment_method
+        :phone_number, :was_order_sent, :was_order_paid#, :payment_method
       )
     end
 

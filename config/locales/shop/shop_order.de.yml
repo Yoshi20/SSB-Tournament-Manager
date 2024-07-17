@@ -22,12 +22,13 @@ de:
         payment_method: "Zahlungsmethode"
   shop_orders:
     title: "Meine Bestellungen"
+    title_single: "Meine Bestellung"
     title_short: "Bestellungen"
     total_count: "Anzahl Bestellungen"
     no_orders_yet: "Noch keine Bestellungen vorhanden"
     summary: "Zusammenfassung"
     delivery_address: "Lieferadresse"
-    place_order: "Kostenpflichtig bestellen"
+    place_order: "Bezahlen"
     turnover: "Umsatz"
     status:
       open: "Zahlung offen"

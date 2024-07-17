@@ -14,7 +14,7 @@
         %th= t('activerecord.attributes.shop_product.description')
         %th.min.text-center= t('activerecord.attributes.shop_purchase.quantity')
         %th.min.text-right= t('activerecord.attributes.shop_product.price')
-        %th.min.text-right= ''#t('actions')
+        %th.min.text-right= t('actions')
     %tbody.shop_purchase-list-body#purchases
       -# - @purchases_and_quantities.each do |purchase_and_quantity|
       -#   - purchase = purchase_and_quantity[0]
@@ -72,8 +72,7 @@
   -# checkout button
   - unless @shopping_cart.has_checked_out
     .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
-      -#blup = link_to shop_checkout_path do
-      = link_to '#' do
+      = link_to shop_checkout_path do
         %button.btn.btn-default.btn-with-icon
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
           %span= t('shopping_cart.continue_to_checkout')
@@ -82,8 +81,7 @@
   -# checkout button
   - unless @shopping_cart.has_checked_out
     .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
-      -#blup = link_to shop_checkout_path do
-      = link_to '#' do
+      = link_to shop_checkout_path do
         %button.btn.btn-default.btn-with-icon
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
           %span= t('shopping_cart.continue_to_checkout')

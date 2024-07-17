@@ -27,6 +27,7 @@ de:
   confirm: "Bist du sicher?"
   not_uniq: "ist bereits vergeben"
   save: "Speichern"
+  actions: "Aktionen"
 
   sidebar:
     your_tournament_promotion: "Hier könnte deine Werbung stehen (%{link})"

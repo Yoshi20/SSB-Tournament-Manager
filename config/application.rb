@@ -129,5 +129,11 @@ module SsbTournamentManager
       is: ENV['INFOMANIAK_EMAIL_PASSWORD'],
     }
 
+    config.stripe = {
+      public_key: ENV["STRIPE_API_KEY_PUBLIC"],
+      secret_key: ENV["STRIPE_API_KEY_SECRET"],
+      webhook_secret: ENV["STRIPE_WEBHOOK_SECRET"],
+    }
+
   end
 end

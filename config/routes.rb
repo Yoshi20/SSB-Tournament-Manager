@@ -83,17 +83,17 @@ Rails.application.routes.draw do
 
   namespace :shop do
     resource :shopping_cart, only: [:show, :destroy]
-    # get 'checkout', to: 'orders#new', as: 'checkout'
-    # resources :orders, only: [:index, :edit, :create, :update, :destroy] # :new -> checkout
+    get 'checkout', to: 'orders#new', as: 'checkout'
+    resources :orders, only: [:index, :edit, :create, :update, :destroy] # :new -> checkout
     patch 'products/:id/move_down', to: 'products#move_down', as: 'product_move_down'
     resources :products, only: [:new, :edit, :create, :update, :destroy]
     resources :purchases, only: [:index, :create, :update, :destroy]
-    # namespace :stripe do
-    #   get 'checkout', to: 'checkouts#checkout'
-    #   get 'checkout_success', to: 'checkouts#success'
-    #   get 'checkout_cancel', to: 'checkouts#cancel'
-    #   post 'webhook', to: 'webhooks#webhook'
-    # end
+    namespace :stripe do
+      get 'checkout', to: 'checkouts#checkout'
+      get 'checkout_success', to: 'checkouts#success'
+      get 'checkout_cancel', to: 'checkouts#cancel'
+      post 'webhook', to: 'webhooks#webhook'
+    end
   end
   get 'shop', to: 'shop#index'
 

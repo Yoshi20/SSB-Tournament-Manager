@@ -2,7 +2,7 @@
 
   - if @shop_product.errors.any?
     #error_explanation
-      %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop_product.prohibited')
+      -# %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop_product.prohibited')
       %ul
         - @shop_product.errors.full_messages.each do |message|
           %li= message
