@@ -306,6 +306,7 @@ en:
       coach: "Coach"
       admin: "Admin"
       player: "Player"
+      seller: "Seller"
 
   coffee:
     copied: "Copied \"%{item}\" to the clipboard"
@@ -1711,6 +1712,7 @@ en:
     chars_min: "(%{pw_length} characters minimum)"
     password_confirmation: "Password confirmation"
     register: "Register"
+    stripe_account_id: "Stripe Account ID (%{link})"
 
   recaptcha:
     errors:
@@ -1767,6 +1769,9 @@ en:
     title: "Shop"
     add_to_cart: "Add to Cart"
     add_to_cart_short: "Add to Cart"
+    flash:
+      stripe_account_linked: "Your Stripe account has been successfully linked"
+      stripe_account_not_linkedy_yet: "Your Stripe account doesn't seem to be linked yet"
 
   locus_league:
     title: "Locus League"

@@ -14,6 +14,7 @@ class Shop::PurchasesController < ApplicationController
       @shop_purchase = ShopPurchase.new(shop_purchase_params)
       @shop_purchase.shopping_cart_id = @shopping_cart.id
       @shop_purchase.quantity = 1
+      @shop_purchase.stripe_account_id = @shop_purchase.shop_product.user.stripe_account_id
     end
     was_limitted = @shop_purchase.limit_quantity
     respond_to do |format|

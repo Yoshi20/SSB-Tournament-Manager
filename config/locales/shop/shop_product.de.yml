@@ -25,6 +25,7 @@ de:
       normal: "%{stock} Stück an Lager"
       low: "Nur noch %{stock} Stück an Lager"
       zero: "Nicht mehr an Lager"
+    info_body: "Um ein Produkt dem Shop hinzufügen zu können, füge zuerst die Verkäufer-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe Konto verknüpfen."
   flash:
     shop_product_created: "Produkt wurde erfolgreich erstellt"
     shop_product_not_created: "Produkt konnten nicht erstellt werden!"

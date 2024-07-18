@@ -181,7 +181,7 @@ module PlayerHelper
   end
 
   def all_roles_raw
-    ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "news_editor", "photographer", "streamer", "team_captain", "tournament_organizer"]
+    ["caster", "coach", "community_editor", "content_creator", "designer", "forum_moderator", "news_editor", "photographer", "seller", "streamer", "team_captain", "tournament_organizer"]
   end
 
   def all_role_colors
@@ -194,6 +194,7 @@ module PlayerHelper
       "forum_moderator": "#0A0A0A",
       "news_editor": "#F22303",
       "photographer": "#AB3F5D",
+      "seller": "#9400D3",
       "streamer": "#79D220",
       "team_captain": "#F4A900",
       "tournament_organizer": "#5071B6",
@@ -208,21 +209,21 @@ module PlayerHelper
 
   def roles_raw_from(country_code)
     if country_code == 'ch'
-      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'de'
-      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
+      ["caster", "coach", "content_creator", "designer", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'fr'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
+      ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'lu'
-      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "content_creator", "designer", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'it'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
+      ["caster", "coach", "community_editor", "content_creator", "designer", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"] # "forum_moderator",
     elsif country_code == 'uk'
-      ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "community_editor", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'pt'
-      ["caster", "coach", "content_creator", "designer", "photographer", "player", "streamer", "team_captain", "tournament_organizer"] # "community_editor", "forum_moderator",
+      ["caster", "coach", "content_creator", "designer", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"] # "community_editor", "forum_moderator",
     elsif country_code == 'is'
-      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "streamer", "team_captain", "tournament_organizer"]
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     end
   end
 

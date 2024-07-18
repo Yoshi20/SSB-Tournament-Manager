@@ -265,6 +265,7 @@ de:
       coach: "Coach"
       admin: "Admin"
       player: "Spieler"
+      seller: "Verkäufer"
 
   coffee:
     copied: "\"%{item}\" in die Zwischenablage kopiert"
@@ -1194,7 +1195,7 @@ de:
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
     drag_and_drop: "(mit Drag & Drop finalisieren)"
     calendar: "Turnierkalender"
-    info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
+    info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst du deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
     info_body_challonge: "Um ein internes oder weekly Turnier erstellen zu können, füge deinem Account ein Challonge Benutzername und API Schlüssel hinzu."
 
   video:
@@ -1294,6 +1295,7 @@ de:
     chars_min: "(%{pw_length} Zeichen mindestens)"
     password_confirmation: "Passwort bestätigen"
     register: "Registrieren"
+    stripe_account_id: "Stripe-Konto-ID (%{link})"
 
   recaptcha:
     errors:
@@ -1350,3 +1352,6 @@ de:
     title: "Shop"
     add_to_cart: "In den Warenkorb"
     add_to_cart_short: "Hinzufügen"
+    flash:
+      stripe_account_linked: "Dein Stripe-Konto wurde erfolgreich verknüpft"
+      stripe_account_not_linkedy_yet: "Dein Stripe-Konto scheint noch nicht verknüpft zu sein"

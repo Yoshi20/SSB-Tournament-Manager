@@ -5,38 +5,37 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
   def checkout
     shop_order = ShopOrder.find(params[:order_id])
     shopping_cart = shop_order.shopping_cart
-    redirect_to shop_stripe_checkout_cancel_path if (shop_order.was_order_paid || shopping_cart.has_checked_out)
+    if (shop_order.was_order_paid || shopping_cart.has_checked_out)
+      redirect_to shop_stripe_checkout_cancel_path
+      return
+    end
+    currency = nil
     line_items = []
+    stripe_account_ids = []
     # products
     shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
+      next if purchase.quantity <= 0
+      product = purchase.shop_product
       line_items << {
         price_data: {
-          currency: purchase.shop_product.currency,
-          product_data: {name: purchase.shop_product.name},
-          unit_amount: (purchase.shop_product.price * 100).to_i, # price in Rp
+          currency: product.currency,
+          product_data: {name: product.name},
+          unit_amount: (product.price * 100).to_i, # price in Rp
         },
         quantity: purchase.quantity,
       }
-      # blup: handle shipping on shopping_cart level (not product level)
-      # shipping (could also be handled in Stripe::Checkout::Session)
-      line_items << {
-        price_data: {
-          currency: purchase.shop_product.currency,
-          product_data: {name: t('shopping_cart.shipment')},
-          unit_amount: (purchase.shop_product.shipping * 100).to_i, # price in Rp
-        },
-        quantity: 1,
-      }
+      currency = product.currency if currency.nil?
+      stripe_account_ids << purchase.stripe_account_id
     end
-    # # shipping (could also be handled in Stripe::Checkout::Session)
-    # line_items << {
-    #   price_data: {
-    #     currency: purchase.shop_product.currency,
-    #     product_data: {name: t('shopping_cart.shipment')},
-    #     unit_amount: (shopping_cart.shipping_costs * 100).to_i, # price in Rp
-    #   },
-    #   quantity: 1,
-    # }
+    # shipping (could also be handled in Stripe::Checkout::Session)
+    line_items << {
+      price_data: {
+        currency: currency, #blup: pick the first product currency for shipping
+        product_data: {name: t('shopping_cart.shipment')},
+        unit_amount: (shopping_cart.shipping_costs * 100).to_i, # price in Rp
+      },
+      quantity: 1,
+    }
     # # stripe fee (only add this if you want the user to pay it)
     # total_price = shopping_cart.total_price
     # stripe_fees = total_price * 0.03 + 0.5 # 3% + 0.5 CHF
@@ -83,7 +82,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     # })
   end
 
-  # GET /shop/stripe/success?session_id=...
+  # GET /shop/stripe/checkout_success?session_id=...
   def success
     # checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
     # shop_order = ShopOrder.find(checkout_session.metadata.order_id)
@@ -91,7 +90,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     redirect_to shop_orders_path, notice: t('flash.shop_order_created')
   end
 
-  # GET /shop/stripe/cancel
+  # GET /shop/stripe/checkout_cancel
   def cancel
     redirect_to shop_checkout_path
   end

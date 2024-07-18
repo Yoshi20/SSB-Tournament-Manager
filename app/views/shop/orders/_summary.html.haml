@@ -4,14 +4,17 @@
     %thead.table-header
       %tr
         %th.text-left
+        %th.text-center= t('shopping_cart.currency')
         %th.text-right= t('shopping_cart.total')
     %tbody.shop_purchase-list-body#purchases
       %tr
         %td
           - @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
+            - next if purchase.quantity <= 0
             = "#{purchase.quantity}x #{purchase.shop_product.name}"
             %br
           = "1x #{t('shopping_cart.shipment')}"
+        %th.text-center= @shopping_cart.currency #blup: human_readable?
         %td.text-right
           - total_price = @shopping_cart.total_price
           %strong= @shopping_cart.total_price_text(total_price)

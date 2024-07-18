@@ -1,6 +1,7 @@
 class ShopProduct < ApplicationRecord
   include PositionHandler
 
+  belongs_to :user
   has_many :shop_purchases, dependent: :destroy
 
   validates :name, presence: true

@@ -35,10 +35,19 @@ class ShoppingCart < ApplicationRecord
     self.user&.username
   end
 
+  def purchases_group_by_stripe_account_ids
+    self.shop_purchases.includes(:shop_product).group_by(&:stripe_account_id)
+  end
+
   def shipping_costs
     shipping = 0
-    self.shop_purchases.includes(:shop_product).each do |purchase|
-      shipping = [purchase.shop_product.shipping, shipping].max if purchase.quantity > 0
+    # add max shipping for each seller (not only the max from all products)
+    self.purchases_group_by_stripe_account_ids.each do |acct_purchase|
+      acct_shipping = 0
+      acct_purchase[1].each do |purchase|
+        acct_shipping = [purchase.shop_product.shipping, shipping].max if purchase.quantity > 0
+      end
+      shipping += acct_shipping
     end
     return shipping
   end

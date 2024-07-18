@@ -93,6 +93,9 @@ Rails.application.routes.draw do
       get 'checkout_success', to: 'checkouts#success'
       get 'checkout_cancel', to: 'checkouts#cancel'
       post 'webhook', to: 'webhooks#webhook'
+      get 'account_link', to: 'accounts#account_link'
+      get 'account_return', to: 'accounts#return'
+      get 'account_refresh', to: 'accounts#refresh'
     end
   end
   get 'shop', to: 'shop#index'
