@@ -42,7 +42,7 @@
     = f.text_field :description, class: 'form-control'
   .field.form-group
     = f.label :currency, t('activerecord.attributes.shop_product.currency')
-    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.currency_from(current_user.country_code)), {}, class: 'form-control'
+    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.currency_from(current_user.country_code)), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :price, t('activerecord.attributes.shop_product.price')
     = f.number_field :price, class: 'form-control', value: @shop_product.price || 1, step: 0.1, min: 1
@@ -57,6 +57,23 @@
       %input{autocomplete: "off", name: "shop_product[is_hidden]", type: "hidden", value: "0"}
       %input{type: "checkbox", id: "shop_product_is_hidden", name: "shop_product[is_hidden]", value: "1", checked: @shop_product.is_hidden}
       %span= t('activerecord.attributes.shop_product.is_hidden')
+
+  .row
+    .col
+      %p.mb-0
+        = t('shop_products.terms_of_use.title')
+      %ul{style: 'font-size: 10px;'}
+        %li= t('shop_products.terms_of_use.li1')
+        %li= t('shop_products.terms_of_use.li2')
+        %li= t('shop_products.terms_of_use.li3')
+        %li= t('shop_products.terms_of_use.li4')
+        %li= t('shop_products.terms_of_use.li5')
+        %li= t('shop_products.terms_of_use.li6')
+        %li= t('shop_products.terms_of_use.li7')
+        %li= t('shop_products.terms_of_use.li8')
+        %li= t('shop_products.terms_of_use.li9')
+        %li= t('shop_products.terms_of_use.li10', link: link_to("https://stripe.com/pricing", "https://stripe.com/pricing", target: "_blank")).html_safe
+        %li= t('shop_products.terms_of_use.li11')
 
   .actions.form-group
     = f.submit class:'btn btn-block btn-cyan'
