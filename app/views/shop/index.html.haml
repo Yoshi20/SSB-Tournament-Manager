@@ -12,6 +12,7 @@
         %article.no-padding
           %div.hidden-indicator= "Product is hidden" if product.is_hidden
           %div.position-indicator= product.position if is_seller_product
+          %div.country-indicator= image_tag("flags/#{product.country_code}.svg", width: '20px', height: '15px', alt: "#{product.country_code} flag icon")
           .row.no-space{style: product.is_hidden ? 'opacity: 0.5;' : ''}
             .col.product-image-col
               - if product.image_link.present? && Request.url_valid?(product.image_link)
@@ -21,7 +22,9 @@
             .col
               .padding
                 .text-left
-                  %h5.shop-product-title= product.name
+                  %h5.shop-product-title
+                    = product.name
+                    %span.shop-product-username= "by #{product.username}"
                   %p.shop-product-description= product.description.html_safe
               .padding.text-center.shop-product-footer
                 .text-right

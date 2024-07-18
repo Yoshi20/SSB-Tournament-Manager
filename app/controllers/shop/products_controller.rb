@@ -18,6 +18,7 @@ class Shop::ProductsController < ApplicationController
   def create
     @shop_product = ShopProduct.new(shop_product_params)
     @shop_product.user_id = current_user.id
+    @shop_product.country_code = session['country_code']
     respond_to do |format|
       if @shop_product.save
         format.html { redirect_to shop_path, notice: t('flash.shop_product_created') }
@@ -54,7 +55,7 @@ class Shop::ProductsController < ApplicationController
   # PATCH/PUT /shop_products/1/move_down
   def move_down
     respond_to do |format|
-      if @shop_product.move_position_down(ShopProduct.all)
+      if @shop_product.move_position_down(ShopProduct.where(user_id: current_user.id))
         format.html { redirect_to shop_path }#, notice: t('flash.shop_product_updated') }
         format.json { render :show, status: :ok, location: @shop_product }
       else

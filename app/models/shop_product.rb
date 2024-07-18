@@ -21,6 +21,10 @@ class ShopProduct < ApplicationRecord
     self.position = (products.any? ? (products.last.position.to_i+1) : 0)
   end
 
+  def username
+    self.user&.username
+  end
+
   def price_short(quantity = 1)
     price = (self.price * quantity).round(1)
     (price%1 == 0) ? "#{price.to_i}.-" : "#{price}0"

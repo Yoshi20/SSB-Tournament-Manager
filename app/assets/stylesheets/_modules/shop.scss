@@ -39,6 +39,10 @@
     }
   }
 
+  .shop-product-username {
+    font-size: 0.625rem; // 10px
+  }
+
   .shop-product-description {
     font-size: 0.75rem; // 12px
     @media only screen and (min-width: 600px) {
@@ -100,7 +104,15 @@
   .position-indicator {
     position: absolute;
     left: 10px;
-    top: 5px;
+    bottom: 5px;
+    z-index: 1;
+  }
+
+  .country-indicator {
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
     z-index: 1;
   }
 

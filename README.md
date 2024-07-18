@@ -133,6 +133,9 @@ Icons:
 - https://www.ssbwiki.com/Category:Head_icons_(SSBU)
 - https://www.spriters-resource.com/nintendo_switch/supersmashbrosultimate/sheet/111395/
 
+SVG flags:
+- https://flagicons.lipis.dev/
+
 Banner:
 - https://www.ssbwiki.com/Super_Smash_Bros._Ultimate
 
