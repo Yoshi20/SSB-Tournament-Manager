@@ -9,7 +9,6 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
       redirect_to shop_stripe_checkout_cancel_path
       return
     end
-    currency = nil
     line_items = []
     stripe_account_ids = []
     # products
@@ -24,18 +23,20 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
         },
         quantity: purchase.quantity,
       }
-      currency = product.currency if currency.nil?
       stripe_account_ids << purchase.stripe_account_id
     end
     # shipping (could also be handled in Stripe::Checkout::Session)
-    line_items << {
-      price_data: {
-        currency: currency, #blup: pick the first product currency for shipping
-        product_data: {name: t('shopping_cart.shipment')},
-        unit_amount: (shopping_cart.shipping_costs * 100).to_i, # price in Rp
-      },
-      quantity: 1,
-    }
+    shipping = shopping_cart.shipping_costs
+    if shipping > 0
+      line_items << {
+        price_data: {
+          currency: shopping_cart.currency,
+          product_data: {name: t('shopping_cart.shipment')},
+          unit_amount: (shipping * 100).to_i, # price in Rp
+        },
+        quantity: 1,
+      }
+    end
     # # stripe fee (only add this if you want the user to pay it)
     # total_price = shopping_cart.total_price
     # stripe_fees = total_price * 0.03 + 0.5 # 3% + 0.5 CHF

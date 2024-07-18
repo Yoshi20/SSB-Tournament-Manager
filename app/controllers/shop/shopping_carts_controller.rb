@@ -9,6 +9,10 @@ class Shop::ShoppingCartsController < ApplicationController
     # @purchases_and_quantities = @shopping_cart.shop_purchases.includes(:shop_product).group_by(&:shop_product_id).map{ |sp| [sp[1][0], sp[1].sum(&:quantity)] }
     if @shopping_cart.present?
       @purchases = @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at)
+      unless @purchases.any?
+        @shopping_cart.destroy
+        redirect_to shop_path
+      end
     else
       redirect_to shop_path
     end

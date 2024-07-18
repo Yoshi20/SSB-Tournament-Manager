@@ -13,7 +13,7 @@
             - next if purchase.quantity <= 0
             = "#{purchase.quantity}x #{purchase.shop_product.name}"
             %br
-          = "1x #{t('shopping_cart.shipment')}"
+          = "1x #{t('shopping_cart.shipment')}" if @shopping_cart.shipping_costs > 0
         %td.text-right
           - total_price = @shopping_cart.total_price
           %strong= @shopping_cart.total_price_text(total_price)

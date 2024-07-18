@@ -53,7 +53,7 @@ class ShoppingCart < ApplicationRecord
     self.purchases_group_by_stripe_account_ids.each do |acct_purchase|
       acct_shipping = 0
       acct_purchase[1].each do |purchase|
-        acct_shipping = [purchase.shop_product.shipping, shipping].max if purchase.quantity > 0
+        acct_shipping = [purchase.shop_product.shipping, acct_shipping].max if purchase.quantity > 0
       end
       shipping += acct_shipping
     end
@@ -62,7 +62,8 @@ class ShoppingCart < ApplicationRecord
 
   def shipping_costs_text
     shipping_costs = self.shipping_costs.round(1)
-    return (shipping_costs%1 == 0) ? "#{shipping_costs.to_i}.00" : "#{shipping_costs}0"
+    delimeter = self.currency == 'chf' ? '.' : ','
+    return (shipping_costs%1 == 0) ? "#{shipping_costs.to_i}#{delimeter}00" : "#{shipping_costs}0"
   end
 
   def total_price
@@ -76,12 +77,14 @@ class ShoppingCart < ApplicationRecord
 
   def total_price_text(price = nil)
     total_price = price.present? ? price.round(1) : self.total_price.round(1)
-    return (total_price%1 == 0) ? "#{total_price.to_i}.-" : "#{total_price}0"
+    delimeter = self.currency == 'chf' ? '.' : ','
+    return (total_price%1 == 0) ? "#{total_price.to_i}#{delimeter}-" : "#{total_price}0"
   end
 
   def total_price_text_long(price = nil)
     total_price = price.present? ? price.round(1) : self.total_price.round(1)
-    return (total_price%1 == 0) ? "#{total_price.to_i}.00" : "#{total_price}0"
+    delimeter = self.currency == 'chf' ? '.' : ','
+    return (total_price%1 == 0) ? "#{total_price.to_i}#{delimeter}00" : "#{total_price}0"
   end
 
   def checkout!
