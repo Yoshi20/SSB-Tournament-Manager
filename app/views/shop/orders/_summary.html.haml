@@ -4,8 +4,8 @@
     %thead.table-header
       %tr
         %th.text-left
-        %th.text-center= t('shopping_cart.currency')
         %th.text-right= t('shopping_cart.total')
+        %th.text-center= t('activerecord.attributes.shop_product.currency')
     %tbody.shop_purchase-list-body#purchases
       %tr
         %td
@@ -14,8 +14,9 @@
             = "#{purchase.quantity}x #{purchase.shop_product.name}"
             %br
           = "1x #{t('shopping_cart.shipment')}"
-        %th.text-center= @shopping_cart.currency #blup: human_readable?
         %td.text-right
           - total_price = @shopping_cart.total_price
           %strong= @shopping_cart.total_price_text(total_price)
+        %td.text-center
+          %strong= @shopping_cart.currency_text
       %tr.total-row

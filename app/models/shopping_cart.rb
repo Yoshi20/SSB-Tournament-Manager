@@ -35,6 +35,14 @@ class ShoppingCart < ApplicationRecord
     self.user&.username
   end
 
+  def currency
+    self.shop_purchases.first&.currency
+  end
+
+  def currency_text
+    Currency::hash[self.currency.to_sym]
+  end
+
   def purchases_group_by_stripe_account_ids
     self.shop_purchases.includes(:shop_product).group_by(&:stripe_account_id)
   end

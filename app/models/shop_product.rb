@@ -27,12 +27,14 @@ class ShopProduct < ApplicationRecord
 
   def price_short(quantity = 1)
     price = (self.price * quantity).round(1)
-    (price%1 == 0) ? "#{price.to_i}.-" : "#{price}0"
+    delimeter = self.currency == 'chf' ? '.' : ','
+    (price%1 == 0) ? "#{price.to_i}#{delimeter}-" : "#{price}0"
   end
 
   def price_long(quantity = 1)
     price = (self.price * quantity).round(1)
-    (price%1 == 0) ? "#{price.to_i}.00" : "#{price}0"
+    delimeter = self.currency == 'chf' ? '.' : ','
+    (price%1 == 0) ? "#{price.to_i}#{delimeter}00" : "#{price}0"
   end
 
   def stock_text
@@ -55,6 +57,10 @@ class ShopProduct < ApplicationRecord
     else
       'red'
     end
+  end
+
+  def currency_text
+    Currency::hash[self.currency.to_sym]
   end
 
 end

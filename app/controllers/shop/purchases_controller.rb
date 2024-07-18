@@ -17,12 +17,13 @@ class Shop::PurchasesController < ApplicationController
       @shop_purchase.stripe_account_id = @shop_purchase.shop_product.user.stripe_account_id
     end
     was_limitted = @shop_purchase.limit_quantity
+    is_same_currency = (@shopping_cart.currency == @shop_purchase.currency)
     respond_to do |format|
-      if !was_limitted && @shop_purchase.save
+      if (!was_limitted && is_same_currency) && @shop_purchase.save
         format.html { redirect_to shop_path, notice: t('flash.shop_purchase_created') }
         format.json { render :show, status: :created, location: @shop_purchase }
       else
-        format.html { redirect_to shop_path, alert: t('flash.shop_purchase_not_created') }
+        format.html { redirect_to shop_path, alert: (is_same_currency ? t('flash.shop_purchase_not_created_limit') : t('flash.shop_purchase_not_created_currency')) }
         format.json { render json: @shop_purchase.errors, status: :unprocessable_entity }
       end
     end

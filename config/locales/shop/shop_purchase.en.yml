@@ -19,7 +19,8 @@ en:
     total_count: "Purchases count"
   flash:
     shop_purchase_created: "Product was successfully added to the shopping cart"
-    shop_purchase_not_created: "Product couldn't be added! Limit reached?"
+    shop_purchase_not_created_limit: "Product couldn't be added! Limit reached"
+    shop_purchase_not_created_currency: "Product couldn't be added! Only one currency can be used per purchase"
     shop_purchase_updated: "Product was successfully updated"
     shop_purchase_limitted: "Product has been limited to the maximum"
     shop_purchase_not_updated: "Product couldn't be updated!"

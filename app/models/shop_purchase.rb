@@ -15,4 +15,12 @@ class ShopPurchase < ApplicationRecord
     return was_limitted
   end
 
+  def currency
+    self.shop_product.currency
+  end
+
+  def currency_text
+    Currency::hash[self.currency.to_sym]
+  end
+
 end

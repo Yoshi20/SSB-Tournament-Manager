@@ -236,7 +236,7 @@ module PlayerHelper
   end
 
   def currency_for_select
-    [['CHF', 'chf'],['€', 'eur'],['£','gbp'],['kr','isk']] # https://www.iban.com/currency-codes
+    Currency::hash.map{ |k, v| [v, k.to_s] }
   end
 
   def birth_years

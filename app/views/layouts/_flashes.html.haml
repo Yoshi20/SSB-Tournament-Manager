@@ -1,6 +1,7 @@
 .toast-holder
   - flash.each do |key, value|
     - if value.present?
-      .toast.toast-flash{role:'alert', 'aria-live'=>'assertive', 'aria-atomic'=>'true'}
+      - background = (key == 'alert' ? 'red' : (key == 'warn' ? 'yellow' : ''))
+      .toast.toast-flash{role:'alert', 'aria-live'=>'assertive', 'aria-atomic'=>'true', style: "background: #{background};"}
         .toast-body
           = value.to_s.html_safe

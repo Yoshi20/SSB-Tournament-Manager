@@ -29,7 +29,7 @@
               .padding.text-center.shop-product-footer
                 .text-right
                   %p{style: 'margin: 0.5rem 0;'}
-                    %strong{style: 'color: red; font-size: 1rem;'}= "CHF #{product.price_short}"
+                    %strong{style: 'color: red; font-size: 1rem;'}= "#{product.currency_text} #{product.price_short}"
                     %span.shop-product-stock{style: "display: block; color: #{product.stock_text_color};"}= product.stock_text
                 %nav.text-center{style: 'margin-top: 0;'}
                   = form_for(ShopPurchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
