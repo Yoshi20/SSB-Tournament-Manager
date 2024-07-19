@@ -22,11 +22,11 @@ class ShoppingCart < ApplicationRecord
     return cart
   end
 
-  def self.find_or_create_latest(client_ip, user_id, session_id)
+  def self.find_or_create_latest(client_ip, user_id, session_id, country_code)
     cart = self.find_latest(client_ip, user_id, session_id)
     # if no shopping cart was found -> create a new one
     unless cart.present?
-      cart = ShoppingCart.create(client_ip: client_ip, user_id: user_id, session_id: session_id)
+      cart = ShoppingCart.create(client_ip: client_ip, user_id: user_id, session_id: session_id, country_code: country_code)
     end
     return cart
   end

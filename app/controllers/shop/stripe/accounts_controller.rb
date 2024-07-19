@@ -1,5 +1,5 @@
 class Shop::Stripe::AccountsController < Shop::Stripe::StripeController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   # GET /shop/stripe/account_link
   def account_link

@@ -5,7 +5,7 @@ class Shop::PurchasesController < ApplicationController
 
   # POST /shop_purchases or /shop_purchases.json
   def create
-    @shopping_cart = ShoppingCart.find_or_create_latest(request.remote_ip, current_user&.id, session['session_id'])
+    @shopping_cart = ShoppingCart.find_or_create_latest(request.remote_ip, current_user&.id, session['session_id'], session['country_code'])
     # only update quantity if a purchase with the same product already exists
     @shop_purchase = @shopping_cart.shop_purchases.find_by(shop_product_id: shop_purchase_params[:shop_product_id])
     if @shop_purchase.present?

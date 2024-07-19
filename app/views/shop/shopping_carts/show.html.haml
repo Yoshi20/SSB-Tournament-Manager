@@ -17,8 +17,6 @@
         %th.min.text-center= t('activerecord.attributes.shop_product.currency')
         %th.min.text-center= t('actions')
     %tbody.shop_purchase-list-body#purchases
-      -# - @purchases_and_quantities.each do |purchase_and_quantity|
-      -#   - purchase = purchase_and_quantity[0]
       - @purchases.each do |purchase|
         - product = purchase.shop_product
         - quantity = purchase.quantity #purchase_and_quantity[1]

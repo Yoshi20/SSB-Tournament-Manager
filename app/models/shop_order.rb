@@ -41,10 +41,11 @@ class ShopOrder < ApplicationRecord
     self.updated_at >= 3.seconds.ago
   end
 
-  def complete!(current_app_mode)
+  def complete!
     self.shopping_cart.checkout!
-    ShopMailer.with(shop_order: self, app_mode: current_app_mode).order_created_email.deliver_later
-    ShopMailer.with(email: self.email, app_mode: current_app_mode).thank_you_email.deliver_later
+    # blup
+    # ShopMailer.with(shop_order: self, app_mode: current_app_mode).order_created_email.deliver_later
+    # ShopMailer.with(email: self.email, app_mode: current_app_mode).thank_you_email.deliver_later
   end
 
   def revert_checkout

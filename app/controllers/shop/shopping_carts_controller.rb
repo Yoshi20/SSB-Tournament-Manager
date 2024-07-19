@@ -6,7 +6,6 @@ class Shop::ShoppingCartsController < ApplicationController
 
   # GET /shopping_cart
   def show
-    # @purchases_and_quantities = @shopping_cart.shop_purchases.includes(:shop_product).group_by(&:shop_product_id).map{ |sp| [sp[1][0], sp[1].sum(&:quantity)] }
     if @shopping_cart.present?
       @purchases = @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at)
       unless @purchases.any?

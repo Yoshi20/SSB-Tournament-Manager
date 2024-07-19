@@ -37,7 +37,7 @@ en:
       li7: "Changes: We reserve the right to adjust these terms at any time"
       li8: "Listing fees: Listing products is free"
       li9: "Platform fees: A success commission of 5% is charged on sales"
-      li10: "Stripe fees: %{link}"
+      li10: "Stripe fees: 3.25% + 0.3 is charged on sales %{link}"
       li11: "Place of jurisdiction: Canton of Bern, Switzerland"
   flash:
     shop_product_created: "Product was successfully created"

@@ -1,4 +1,4 @@
-class Shop::Stripe::StripeController < ApplicationController
+class Shop::Stripe::StripeController < ActionController::Base
   before_action :set_stripe_key
 
   private
