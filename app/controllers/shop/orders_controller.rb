@@ -8,8 +8,9 @@ class Shop::OrdersController < ApplicationController
 
   # GET /shop_orders
   def index
-    scope = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
-    @shop_orders = current_user.super_admin? ? scope.all : scope.where(shopping_cart: {user_id: current_user.id})
+    @shop_orders = current_user.shop_seller_orders
+    # scope = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
+    #blup @shop_orders = current_user.super_admin? ? scope.all : scope.where(shopping_cart: {user_id: current_user.id})
   end
 
   # GET /shop_order/1
@@ -47,7 +48,7 @@ class Shop::OrdersController < ApplicationController
     ShopOrder.where(shopping_cart_id: @shopping_cart.id).destroy_all
     respond_to do |format|
       if @shop_order.save
-        # stripe payment: complete order in /shop/stripe/success
+        # stripe payment: complete order in /shop/stripe/webhook
         format.html { redirect_to shop_stripe_checkout_path(order_id: @shop_order.id) }
         format.json { render :new, status: :ok, location: @shop_order }
       else
@@ -99,7 +100,7 @@ class Shop::OrdersController < ApplicationController
     def shop_order_params
       params.require(:shop_order).permit(
         :organisation, :name, :address, :address2, :zip_code, :city, :email,
-        :phone_number, :was_order_sent, :was_order_paid#, :payment_method
+        :phone_number, :was_order_paid#, :payment_method
       )
     end
 

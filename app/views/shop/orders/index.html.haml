@@ -23,7 +23,7 @@
             %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.user_id')
             %th.m.l.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.client_ip')
             %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_paid')
-            %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_sent')
+            -# %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.was_order_sent')
             -# %th.text-center{style: 'color: blueviolet;'}= 'payment'#t('activerecord.attributes.shop_order.payment_method')
           %th.text-center= t('activerecord.attributes.shop_order.status')
           - if current_user.super_admin?
@@ -59,11 +59,11 @@
                   .hidden= f.check_box :was_order_paid, checked: !shop_order.was_order_paid
                   = f.button type: 'submit', class:'small square', style:'background: white; color: black;' do
                     %i.material-icons.admin-actions__link__icon= shop_order.was_order_paid ? 'check_box' : 'check_box_outline_blank'
-              %td.min.text-center
-                = form_for shop_order, url: shop_order_path(shop_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
-                  .hidden= f.check_box :was_order_sent, checked: !shop_order.was_order_sent
-                  = f.button type: 'submit', class:'small square', style:'background: white; color: black;' do
-                    %i.material-icons.admin-actions__link__icon= shop_order.was_order_sent ? 'check_box' : 'check_box_outline_blank'
+              -# %td.min.text-center
+              -#   = form_for shop_order, url: shop_order_path(shop_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
+              -#     .hidden= f.check_box :was_order_sent, checked: !shop_order.was_order_sent
+              -#     = f.button type: 'submit', class:'small square', style:'background: white; color: black;' do
+              -#       %i.material-icons.admin-actions__link__icon= shop_order.was_order_sent ? 'check_box' : 'check_box_outline_blank'
               -# %td.text-center= shop_order.payment_method
             %td.text-center= shop_order.status_text
             - if current_user.super_admin?

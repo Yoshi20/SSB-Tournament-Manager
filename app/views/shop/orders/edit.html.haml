@@ -23,14 +23,14 @@
         %span= t('back')
   -# update button
   .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
-    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;', disabled: @shop_order.was_order_sent do
+    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
       %i.material-icons{style: 'font-size: 20px;'} save
       %span= t('save')
 
 .row
   -# update button
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
-    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;', disabled: @shop_order.was_order_sent do
+    = link_to 'javascript:;', onclick: "document.getElementById('edit_shop_order_#{@shop_order.id}').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
       %i.material-icons{style: 'font-size: 20px;'} save
       %span= t('save')
   -# back button s

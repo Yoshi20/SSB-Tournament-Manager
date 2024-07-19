@@ -9,28 +9,28 @@
 
   .field.form-group
     = f.label :organisation, t('activerecord.attributes.shop_order.organisation')
-    = f.text_field :organisation, class: 'form-control', disabled: @shop_order.was_order_sent
+    = f.text_field :organisation, class: 'form-control'
   .field.form-group
     = f.label :name, t('activerecord.attributes.shop_order.name')
-    = f.text_field :name, class: 'form-control', disabled: @shop_order.was_order_sent
+    = f.text_field :name, class: 'form-control'
   .field.form-group
     = f.label :address, t('activerecord.attributes.shop_order.address')
-    = f.text_field :address, class: 'form-control', disabled: @shop_order.was_order_sent
+    = f.text_field :address, class: 'form-control'
   .field.form-group
     = f.label :address2, t('activerecord.attributes.shop_order.address2')
-    = f.text_field :address2, class: 'form-control', disabled: @shop_order.was_order_sent
+    = f.text_field :address2, class: 'form-control'
   .row
     .col
       .field.form-group
         = f.label :zip_code, t('activerecord.attributes.shop_order.zip_code')
-        = f.text_field :zip_code, class: 'form-control', disabled: @shop_order.was_order_sent
+        = f.text_field :zip_code, class: 'form-control'
     .col
       .field.form-group
         = f.label :city, t('activerecord.attributes.shop_order.city')
-        = f.text_field :city, class: 'form-control', disabled: @shop_order.was_order_sent
+        = f.text_field :city, class: 'form-control'
   .field.form-group
     = f.label :phone_number, t('activerecord.attributes.shop_order.phone_number')
-    = f.text_field :phone_number, class: 'form-control', disabled: @shop_order.was_order_sent
+    = f.text_field :phone_number, class: 'form-control'
 
   .field.form-group
     = f.label :email, t('activerecord.attributes.shop_order.email') + '*'

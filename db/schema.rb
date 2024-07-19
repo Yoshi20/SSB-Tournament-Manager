@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_19_060513) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -183,8 +183,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_060513) do
     t.string "city"
     t.string "phone_number"
     t.string "email", default: "", null: false
-    t.boolean "was_order_sent", default: false
-    t.datetime "order_sent_at"
     t.boolean "was_order_paid", default: false
     t.datetime "order_paid_at"
     t.string "status", default: "", null: false
@@ -222,6 +220,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_060513) do
     t.string "stripe_account_id"
     t.index ["shop_product_id"], name: "index_shop_purchases_on_shop_product_id"
     t.index ["shopping_cart_id"], name: "index_shop_purchases_on_shopping_cart_id"
+  end
+
+  create_table "shop_seller_orders", force: :cascade do |t|
+    t.boolean "was_order_sent", default: false
+    t.datetime "order_sent_at"
+    t.string "status", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shop_order_id"
+    t.bigint "user_id"
+    t.index ["shop_order_id"], name: "index_shop_seller_orders_on_shop_order_id"
+    t.index ["user_id"], name: "index_shop_seller_orders_on_user_id"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -625,6 +635,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_060513) do
   add_foreign_key "shop_products", "users"
   add_foreign_key "shop_purchases", "shop_products"
   add_foreign_key "shop_purchases", "shopping_carts"
+  add_foreign_key "shop_seller_orders", "shop_orders"
+  add_foreign_key "shop_seller_orders", "users"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"
