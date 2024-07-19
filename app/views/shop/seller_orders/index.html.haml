@@ -1,0 +1,60 @@
+- set_meta_tags description: meta_tag_description('Orders')
+.row
+  .col
+    %h1.page__title= t('shop_orders.title')
+
+= render 'shop/beta_header' #blup: beta
+
+.row
+  .col.middle-align
+    %p= t('shop_orders.total_count') + " = #{@shop_seller_orders.count}"
+
+- if @shop_seller_orders.any?
+  .shopping_order-list{data: { controller: "tables copy" }, style: 'overflow: auto;'}
+    %table.table.table-hover.border
+      %thead.table-header
+        %tr
+          %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
+          %th.text-left= t('shop_products.title')
+          %th.text-center= t('shopping_cart.total')
+          %th.text-center= t('activerecord.attributes.shop_order.was_order_sent')
+          %th.text-center= t('activerecord.attributes.shop_order.status')
+      %tbody.table-content.with-show.shopping_order-list-body#shop_orders
+        - turnover = 0
+        - @shop_seller_orders.each do |shop_seller_order|
+          %tr{data: { id: shop_seller_order.id, component: 'shop/seller_order', action: "click->tables#show" }, style: "cursor: context-menu; background-color: #{shop_seller_order.recently_updated? ? 'aliceblue' : ''}; color: #{shop_seller_order.recently_updated? ? 'black' : ''};"}
+            %td.text-center= shop_seller_order.created_at.localtime.to_fs(:custom_datetime)
+            %td.text-left{style: 'overflow: hidden;'}
+              - shop_seller_order.purchases.each do |purchase|
+                = "#{purchase.quantity}x #{purchase.shop_product.name}"
+                %br
+            %td.text-center
+              - total_price = shop_seller_order.total_price
+              = shop_seller_order.total_price_text(total_price)
+              - turnover = turnover + total_price
+            %td.min.text-center
+              = form_for shop_seller_order, url: shop_seller_order_path(shop_seller_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
+                .hidden= f.check_box :was_order_sent, checked: !shop_seller_order.was_order_sent
+                = f.button type: 'submit', class:'small square', style:'color: black; background: transparent; color: black; border: 0;' do
+                  %i.material-icons.admin-actions__link__icon= shop_seller_order.was_order_sent ? 'check_box' : 'check_box_outline_blank'
+            %td.text-center= shop_seller_order.status_text
+
+        -# Turnover row
+        %tr.total-row{style: 'cursor: initial;'}
+          %td
+          %td= t('shop_orders.turnover')
+          %td.text-center= turnover.round(1)
+          %td
+          %td
+
+- else
+  .row
+    .col.text-center
+      = t('shop_orders.no_orders_yet')
+  .row
+    -# shop button
+    .col.text-center
+      = link_to shop_path do
+        %button.btn.btn-default.btn-with-icon
+          %i.material-icons{style: 'font-size: 20px;'} store
+          %span= t('shop.title')

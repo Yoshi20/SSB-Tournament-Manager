@@ -246,4 +246,18 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def authenticate_super_admin!
+      unless (current_user.present? && current_user.super_admin?)
+        render_forbidden
+        return
+      end
+    end
+
+    def render_forbidden(path = root_path)
+      respond_to do |format|
+        format.html { redirect_to path, alert: t('flash.alert.unauthorized') }
+        format.json { render json: { status: 'error', message: t('flash.alert.unauthorized') }, status: :forbidden }
+      end
+    end
+
 end

@@ -1,16 +1,13 @@
 class Shop::OrdersController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :authenticate_user!, only: %i[ index show ]
-  before_action :authenticate_super_admin!, only: %i[ destroy ]
+  before_action :authenticate_super_admin!, only: %i[ index show destroy ]
   before_action :set_shop_order, only: %i[ show edit update destroy ]
   before_action :set_shopping_cart, only: %i[ new create ]
   before_action { @section = 'shop_orders' }
 
   # GET /shop_orders
   def index
-    @shop_orders = current_user.shop_seller_orders
-    # scope = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
-    #blup @shop_orders = current_user.super_admin? ? scope.all : scope.where(shopping_cart: {user_id: current_user.id})
+    @shop_orders = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
   end
 
   # GET /shop_order/1

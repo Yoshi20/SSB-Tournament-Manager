@@ -100,7 +100,7 @@
                   = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
                   = link_to t('navigation.account.add_tournament'), new_tournament_path, class: 'dropdown-item'
                 -#
-                .divider
+                .dropdown-divider
                 = link_to t('navigation.account.log_out'), destroy_user_session_path, method: :delete, confirm: t('navigation.account.log_out_confirm'), class: 'dropdown-item'
           - else
             %li.nav-item.dropdown

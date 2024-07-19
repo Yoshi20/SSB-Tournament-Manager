@@ -36,10 +36,12 @@ class ShopOrder < ApplicationRecord
     stripe_account_ids = ShopPurchase.where(shopping_cart_id: self.shopping_cart_id).pluck(:stripe_account_id)
     stripe_account_ids.uniq!
     stripe_account_ids.each do |acct|
+      user = User.find_by(stripe_account_id: acct)
       ShopSellerOrder.create(
         shop_order_id: self.id,
-        user_id: User.find_by(stripe_account_id: acct).id,
+        user_id: user.id,
         status: self.status,
+        stripe_account_id: user.stripe_account_id, # in case user changes stripe_account_id later
       )
     end
   end

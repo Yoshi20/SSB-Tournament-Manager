@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     resource :shopping_cart, only: [:show, :destroy]
     get 'checkout', to: 'orders#new', as: 'checkout'
     resources :orders, only: [:index, :show, :edit, :create, :update, :destroy] # :new -> checkout
+    resources :seller_orders, only: [:index, :show, :update]
     patch 'products/:id/move_down', to: 'products#move_down', as: 'product_move_down'
     resources :products, only: [:new, :edit, :create, :update, :destroy]
     resources :purchases, only: [:index, :create, :update, :destroy]

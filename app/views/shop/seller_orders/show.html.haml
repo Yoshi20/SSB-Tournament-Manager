@@ -4,7 +4,7 @@
 
 = render 'shop/beta_header' #blup: beta
 
-= render 'summary' #blup: nur produkte von seller anzeigen (nicht alle von bestellung)
+= render 'summary'
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
@@ -33,29 +33,26 @@
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
-    %h5= t('activerecord.attributes.shop_order.email')
+    %h5= "Customer " + t('activerecord.attributes.shop_order.email') #blup: translate
     %p= mail_to @shop_order.email
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
     %h5= t('activerecord.attributes.shop_order.status')
-    %p= @shop_order.status_text
+    %p= @shop_seller_order.status_text
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
-    %h5= "Sellers"
-    -# %ul
-    - @shop_order.shop_seller_orders.each do |shop_seller_order|
-      - player = shop_seller_order.user.player
-      -# %li
-      .row
-        .col= link_to player.gamer_tag, player_path(player)
-        .col= link_to shop_seller_order.status_text, shop_seller_order_path(shop_seller_order)
+    %h5= t('activerecord.attributes.shop_order.was_order_sent')
+    = form_for @shop_seller_order, url: shop_seller_order_path(@shop_seller_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
+      .hidden= f.check_box :was_order_sent, checked: !@shop_seller_order.was_order_sent
+      = f.button type: 'submit', class:'small square', style:'color: black; background: transparent; color: black; border: 0;' do
+        %i.material-icons.admin-actions__link__icon= @shop_seller_order.was_order_sent ? 'check_box' : 'check_box_outline_blank'
 
 -# back button s
-.row{style: 'margin-top: 1.5rem;'}
+.row
   .col.text-center
-    = link_to shop_orders_path do
+    = link_to shop_seller_orders_path do
       %button.btn.btn-default.btn-with-icon
         %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
         %span= t('back')

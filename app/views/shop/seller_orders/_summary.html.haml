@@ -9,15 +9,15 @@
     %tbody.shop_purchase-list-body#purchases
       %tr
         %td
-          - @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
+          - @shop_seller_order.purchases.includes(:shop_product).order(:created_at).each do |purchase|
             - next if purchase.quantity <= 0
             = "#{purchase.quantity}x #{purchase.shop_product.name}"
             %br
-          = "1x #{t('shopping_cart.shipment')}" if @shopping_cart.shipping_costs > 0
+          = "1x #{t('shopping_cart.shipment')}" if @shop_seller_order.shipping_costs > 0
           -# blup: anzahl versand
         %td.text-right
-          - total_price = @shopping_cart.total_price
-          %strong= @shopping_cart.total_price_text(total_price)
+          - total_price = @shop_seller_order.total_price
+          %strong= @shop_seller_order.total_price_text(total_price)
         %td.text-center
-          %strong= @shopping_cart.currency_text
+          %strong= @shop_seller_order.currency_text
       %tr.total-row

@@ -226,6 +226,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
     t.boolean "was_order_sent", default: false
     t.datetime "order_sent_at"
     t.string "status", default: "", null: false
+    t.string "stripe_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "shop_order_id"
