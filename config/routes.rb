@@ -84,7 +84,7 @@ Rails.application.routes.draw do
   namespace :shop do
     resource :shopping_cart, only: [:show, :destroy]
     get 'checkout', to: 'orders#new', as: 'checkout'
-    resources :orders, only: [:index, :edit, :create, :update, :destroy] # :new -> checkout
+    resources :orders, only: [:index, :show, :edit, :create, :update, :destroy] # :new -> checkout
     patch 'products/:id/move_down', to: 'products#move_down', as: 'product_move_down'
     resources :products, only: [:new, :edit, :create, :update, :destroy]
     resources :purchases, only: [:index, :create, :update, :destroy]

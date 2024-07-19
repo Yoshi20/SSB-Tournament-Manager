@@ -3,6 +3,8 @@
   .col
     %h1.page__title= t('shop.title')
 
+= render 'beta_header' #blup: beta
+
 - if @shop_products.any?
   .row.shop_products
     - @shop_products.each do |product|

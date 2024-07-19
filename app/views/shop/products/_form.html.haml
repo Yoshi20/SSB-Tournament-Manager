@@ -76,4 +76,12 @@
         %li= t('shop_products.terms_of_use.li11')
 
   .actions.form-group
-    = f.submit class:'btn btn-block btn-cyan'
+    = f.submit class:'btn btn-block btn-cyan btn-with-icon'
+
+-# back button
+.row
+  .col.text-center
+    = link_to shop_path do
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
+        %span= t('back')

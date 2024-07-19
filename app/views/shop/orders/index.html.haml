@@ -3,6 +3,8 @@
   .col
     %h1.page__title= t('shop_orders.title')
 
+= render 'shop/beta_header' #blup: beta
+
 .row
   .col.middle-align
     %p= t('shop_orders.total_count') + " = #{@shop_orders.count}"
@@ -14,8 +16,8 @@
         %tr
           %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
           %th.text-left= t('shop_products.title')
-          %th.text-left= t('shopping_cart.total')
-          %th.m.l.text-left= t('activerecord.attributes.shop_order.address')
+          %th.text-center= t('shopping_cart.total')
+          -# %th.m.l.text-left= t('activerecord.attributes.shop_order.address')
           - if current_user.super_admin?
             %th.m.l.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shop_order.email')
             %th.text-center{style: 'color: blueviolet;'}= t('activerecord.attributes.shopping_cart.user_id')
@@ -26,7 +28,7 @@
           %th.text-center= t('activerecord.attributes.shop_order.status')
           - if current_user.super_admin?
             %th.m.l.text-right{style: 'color: blueviolet;'}= t('actions')
-      %tbody.shopping_order-list-body#shop_orders
+      %tbody.table-content.with-show.shopping_order-list-body#shop_orders
         - turnover = 0
         - @shop_orders.each do |shop_order|
           - shopping_cart = shop_order.shopping_cart
@@ -36,16 +38,16 @@
               - shopping_cart.shop_purchases.each do |purchase|
                 = "#{purchase.quantity}x #{purchase.shop_product.name}"
                 %br
-            %td.text-left
+            %td.text-center
               - total_price = shopping_cart.total_price
               = shopping_cart.total_price_text(total_price)
               - turnover = turnover + total_price
-            %td.m.l.text-left{style: 'line-height: 1; overflow: hidden;', class: current_user.super_admin? ? 'link' : ''}
-              - if current_user.super_admin?
-                = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
-                  = simple_format(shop_order.complete_address + "\n#{shop_order.phone_number}")
-              - else
-                = simple_format(shop_order.complete_address)
+            -# %td.m.l.text-left{style: 'line-height: 1; overflow: hidden;', class: current_user.super_admin? ? 'link' : ''}
+            -#   - if current_user.super_admin?
+            -#     = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
+            -#       = simple_format(shop_order.complete_address + "\n#{shop_order.phone_number}")
+            -#   - else
+            -#     = simple_format(shop_order.complete_address)
             - if current_user.super_admin?
               %td.m.l.text-center.link{style: 'overflow: hidden;'}
                 = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
