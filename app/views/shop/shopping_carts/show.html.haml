@@ -1,12 +1,12 @@
 .row
   .col
-    %h1.page__title= t('shopping_cart.title')
+    %h1.page__title= t('shop.shopping_cart.title')
 
 = render 'shop/beta_header' #blup: beta
 
 .row
   .col.middle-align
-    %p= t('shop_purchases.total_count') + " = #{@purchases.count}"
+    %p= t('shop.purchases.total_count') + " = #{@purchases.count}"
 
 .shop_purchase-list{data: { controller: "tables" }, style: 'overflow: auto;'}
   %table.table.border
@@ -20,7 +20,7 @@
         %th.min.text-center= t('actions')
     %tbody.shop_purchase-list-body#purchases
       - @purchases.each do |purchase|
-        - product = purchase.shop_product
+        - product = purchase.product
         - quantity = purchase.quantity #purchase_and_quantity[1]
         %tr
           %td.min.text-center{style: 'width: 0.001px; padding: 0.25rem;'}
@@ -49,7 +49,7 @@
       -# Shipping row
       %tr
         %td.min.text-left
-          %strong= t('shopping_cart.shipment')
+          %strong= t('shop.shopping_cart.shipment')
         %td
         %td
         %td.min.text-right
@@ -60,7 +60,7 @@
       -# Total row
       %tr.total-row
         %td.min.text-left
-          %strong= t('shopping_cart.total')
+          %strong= t('shop.shopping_cart.total')
         %td
         %td
         %td.min.text-right
@@ -83,7 +83,7 @@
       = link_to shop_checkout_path do
         %button.btn.btn-default.btn-with-icon
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
-          %span= t('shopping_cart.continue_to_checkout')
+          %span= t('shop.shopping_cart.continue_to_checkout')
 
 .row
   -# checkout button
@@ -92,7 +92,7 @@
       = link_to shop_checkout_path do
         %button.btn.btn-default.btn-with-icon
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
-          %span= t('shopping_cart.continue_to_checkout')
+          %span= t('shop.shopping_cart.continue_to_checkout')
   -# back button s
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center.mt-2
     = link_to back_path do

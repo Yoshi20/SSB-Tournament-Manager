@@ -1,13 +1,13 @@
 - set_meta_tags description: meta_tag_description('Orders')
 .row
   .col
-    %h1.page__title= t('shop_orders.title_short')
+    %h1.page__title= t('shop.orders.title_short')
 
 = render 'shop/beta_header' #blup: beta
 
 .row
   .col.middle-align
-    %p= t('shop_orders.total_count') + " = #{@shop_orders.count}"
+    %p= t('shop.orders.total_count') + " = #{@shop_orders.count}"
 
 - if @shop_orders.any?
   .shopping_order-list{data: { controller: "tables copy" }, style: 'overflow: auto;'}
@@ -15,8 +15,8 @@
       %thead.table-header
         %tr
           %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
-          -# %th.text-left= t('shop_products.title')
-          %th.text-center= t('shopping_cart.total')
+          -# %th.text-left= t('shop.products.title')
+          %th.text-center= t('shop.shopping_cart.total')
           %th.m.l.text-center= t('activerecord.attributes.shop_order.email')
           %th.text-center= t('activerecord.attributes.shopping_cart.user_id')
           %th.m.l.text-center= t('activerecord.attributes.shopping_cart.client_ip')
@@ -31,18 +31,16 @@
           %tr{data: { id: shop_order.id, component: 'shop/order', action: "click->tables#show" }, style: "cursor: context-menu; background-color: #{shop_order.recently_updated? ? 'aliceblue' : ''}; color: #{shop_order.recently_updated? ? 'black' : ''};"}
             %td.text-center= shop_order.created_at.localtime.to_fs(:custom_datetime)
             -# %td.text-left{style: 'overflow: hidden;'}
-            -#   - shopping_cart.shop_purchases.each do |purchase|
-            -#     = "#{purchase.quantity}x #{purchase.shop_product.name}"
+            -#   - shopping_cart.purchases.each do |purchase|
+            -#     = "#{purchase.quantity}x #{purchase.product.name}"
             -#     %br
             %td.text-center
               - total_price = shopping_cart.total_price
               = shopping_cart.total_price_text(total_price)
               - turnover = turnover + total_price
             - if current_user.super_admin?
-              %td.m.l.text-center.link{style: 'overflow: hidden;'}
-                = link_to 'javascript:;', data: { action: "click->copy#innerHTML:stop" } do
-                  = shop_order.email
-              %td.text-center.link=shopping_cart.username if shopping_cart.user.present?
+              %td.m.l.text-center{style: 'overflow: hidden;'}= shop_order.email
+              %td.text-center= shopping_cart.username if shopping_cart.user.present?
               %td.m.l.text-center= shopping_cart.client_ip
               %td.min.text-center
                 = form_for shop_order, url: shop_order_path(shop_order), html: { "data-turbo": "false" }, data: { turbo_method: :patch } do |f|
@@ -60,7 +58,7 @@
           %td
           -# %td
           %td= turnover.round(1)
-          %td= t('shop_orders.turnover') + ' (5%)'
+          %td= t('shop.orders.turnover') + ' (5%)'
           %td
             %strong= (turnover*0.05).round(1)
           %td
@@ -71,7 +69,7 @@
 - else
   .row
     .col.text-center
-      = t('shop_orders.no_orders_yet')
+      = t('shop.orders.no_orders_yet')
   .row
     -# shop button
     .col.text-center
@@ -83,18 +81,18 @@
 
 -# Shopping carts
 - sc_ids = @shop_orders.map(&:shopping_cart_id)
-- shopping_carts = ShoppingCart.where.not(id: sc_ids).includes(:user, :shop_purchases, shop_purchases: :shop_product).order(created_at: :desc)
+- shopping_carts = Shop::ShoppingCart.where.not(id: sc_ids).includes(:user, :purchases, purchases: :product).order(created_at: :desc)
 .row{style: 'margin-top: 2rem;'}
   .col.middle-align
-    %p= t('shopping_cart.total_count') + " = #{shopping_carts.count}"
+    %p= t('shop.shopping_cart.total_count') + " = #{shopping_carts.count}"
 .shopping_cart-list{data: { controller: "tables" }, style: 'overflow: auto;'}
   %table.table.border
     %thead.table-header
       %tr
         %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
         %th.text-center= 'Country'
-        -# %th.text-left= t('shop_products.title')
-        %th.text-left= t('shopping_cart.total')
+        -# %th.text-left= t('shop.products.title')
+        %th.text-left= t('shop.shopping_cart.total')
         %th.text-center= t('activerecord.attributes.shopping_cart.user_id')
         %th.m.l.text-center= t('activerecord.attributes.shopping_cart.client_ip')
         %th.text-center= t('activerecord.attributes.shopping_cart.has_checked_out')
@@ -106,14 +104,14 @@
           %td.text-center= shopping_cart.created_at.localtime.to_fs(:custom_datetime)
           %td.text-center= shopping_cart.country_code
           -# %td.text-left
-          -#   - shopping_cart.shop_purchases.each do |purchase|
-          -#     = "#{purchase.quantity}x #{purchase.shop_product.name}"
+          -#   - shopping_cart.purchases.each do |purchase|
+          -#     = "#{purchase.quantity}x #{purchase.product.name}"
           -#     %br
           %td.text-left
             - total_price = shopping_cart.total_price
             = shopping_cart.total_price_text(total_price)
             - turnover = turnover + total_price
-          %td.text-center.link= link_to shopping_cart.username, edit_customer_path(shopping_cart.user.customer_id) if shopping_cart.user.present?
+          %td.text-center= shopping_cart.username if shopping_cart.user.present?
           %td.m.l.text-center= shopping_cart.client_ip
           %td.min.text-center
             = button_tag class:'small square', style:'background: transparent; color: black; border: 0;', disabled: true do

@@ -1,6 +1,6 @@
 .row
   .col
-    %h1.page__title= t('shopping_cart.checkout')
+    %h1.page__title= t('shop.shopping_cart.checkout')
 
 = render 'shop/beta_header' #blup: beta
 
@@ -8,7 +8,7 @@
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
-    %h5= t('shop_orders.delivery_address')
+    %h5= t('shop.orders.delivery_address')
 
 .new-shop_order
   = render 'form'
@@ -25,14 +25,14 @@
   .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
     = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
       %i.material-icons{style: 'font-size: 20px;'} monetization_on
-      %span= t('shop_orders.place_order')
+      %span= t('shop.orders.place_order')
 
 .row
   -# checkout button
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
     = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
       %i.material-icons{style: 'font-size: 20px;'} monetization_on
-      %span= t('shop_orders.place_order')
+      %span= t('shop.orders.place_order')
   -# back button s
   .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center.mt-2
     = link_to back_path do

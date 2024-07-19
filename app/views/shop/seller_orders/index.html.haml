@@ -1,13 +1,13 @@
 - set_meta_tags description: meta_tag_description('Orders')
 .row
   .col
-    %h1.page__title= t('shop_orders.title')
+    %h1.page__title= t('shop.orders.title')
 
 = render 'shop/beta_header' #blup: beta
 
 .row
   .col.middle-align
-    %p= t('shop_orders.total_count') + " = #{@shop_seller_orders.count}"
+    %p= t('shop.orders.total_count') + " = #{@shop_seller_orders.count}"
 
 - if @shop_seller_orders.any?
   .shopping_order-list{data: { controller: "tables copy" }, style: 'overflow: auto;'}
@@ -15,8 +15,8 @@
       %thead.table-header
         %tr
           %th.text-center= t('activerecord.attributes.shopping_cart.created_at')
-          %th.text-left= t('shop_products.title')
-          %th.text-center= t('shopping_cart.total')
+          %th.text-left= t('shop.products.title')
+          %th.text-center= t('shop.shopping_cart.total')
           %th.text-center= t('activerecord.attributes.shop_order.was_order_sent')
           %th.text-center= t('activerecord.attributes.shop_order.status')
       %tbody.table-content.with-show.shopping_order-list-body#shop_orders
@@ -26,7 +26,7 @@
             %td.text-center= shop_seller_order.created_at.localtime.to_fs(:custom_datetime)
             %td.text-left{style: 'overflow: hidden;'}
               - shop_seller_order.purchases.each do |purchase|
-                = "#{purchase.quantity}x #{purchase.shop_product.name}"
+                = "#{purchase.quantity}x #{purchase.product.name}"
                 %br
             %td.text-center
               - total_price = shop_seller_order.total_price
@@ -42,7 +42,7 @@
         -# Turnover row
         %tr.total-row{style: 'cursor: initial;'}
           %td
-          %td= t('shop_orders.turnover')
+          %td= t('shop.orders.turnover')
           %td.text-center= turnover.round(1)
           %td
           %td
@@ -50,7 +50,7 @@
 - else
   .row
     .col.text-center
-      = t('shop_orders.no_orders_yet')
+      = t('shop.orders.no_orders_yet')
   .row
     -# shop button
     .col.text-center

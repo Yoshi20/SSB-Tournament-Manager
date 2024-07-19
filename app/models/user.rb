@@ -4,8 +4,8 @@ class User < ApplicationRecord
   has_many :feedbacks
   has_many :news
   has_many :teams
-  has_many :shop_products, dependent: :destroy
-  has_many :shop_seller_orders, dependent: :destroy
+  has_many :products, class_name: 'Shop::Product', dependent: :destroy
+  has_many :seller_orders, class_name: 'Shop::SellerOrder', dependent: :destroy
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'

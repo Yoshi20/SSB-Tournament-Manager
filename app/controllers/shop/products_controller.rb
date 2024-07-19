@@ -5,18 +5,18 @@ class Shop::ProductsController < ApplicationController
   before_action :authenticate_product_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'shop' }
 
-  # GET /shop_products/new
+  # GET /shop/products/new
   def new
-    @shop_product = ShopProduct.new
+    @shop_product = Shop::Product.new
   end
 
-  # GET /shop_products/1/edit
+  # GET /shop/products/1/edit
   def edit
   end
 
-  # POST /shop_products or /shop_products.json
+  # POST /shop/products or /shop/products.json
   def create
-    @shop_product = ShopProduct.new(shop_product_params)
+    @shop_product = Shop::Product.new(shop_product_params)
     @shop_product.user_id = current_user.id
     @shop_product.country_code = session['country_code']
     respond_to do |format|
@@ -30,7 +30,7 @@ class Shop::ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shop_products/1 or /shop_products/1.json
+  # PATCH/PUT /shop/products/1 or /shop/products/1.json
   def update
     respond_to do |format|
       if @shop_product.update(shop_product_params)
@@ -43,7 +43,7 @@ class Shop::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /shop_products/1 or /shop_products/1.json
+  # DELETE /shop/products/1 or /shop/products/1.json
   def destroy
     @shop_product.destroy
     respond_to do |format|
@@ -52,10 +52,10 @@ class Shop::ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shop_products/1/move_down
+  # PATCH/PUT /shop/products/1/move_down
   def move_down
     respond_to do |format|
-      if @shop_product.move_position_down(ShopProduct.where(user_id: current_user.id))
+      if @shop_product.move_position_down(Shop::Product.where(user_id: current_user.id))
         format.html { redirect_to shop_path }#, notice: t('flash.shop_product_updated') }
         format.json { render :show, status: :ok, location: @shop_product }
       else
@@ -68,7 +68,7 @@ class Shop::ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop_product
-      @shop_product = ShopProduct.find(params[:id])
+      @shop_product = Shop::Product.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -3,18 +3,18 @@ class Shop::PurchasesController < ApplicationController
   before_action :set_shop_purchase, only: %i[ update destroy ]
   before_action { @section = 'shop' }
 
-  # POST /shop_purchases or /shop_purchases.json
+  # POST /shop/purchases or /shop/purchases.json
   def create
-    @shopping_cart = ShoppingCart.find_or_create_latest(request.remote_ip, current_user&.id, session['session_id'], session['country_code'])
+    @shopping_cart = Shop::ShoppingCart.find_or_create_latest(request.remote_ip, current_user&.id, session['session_id'], session['country_code'])
     # only update quantity if a purchase with the same product already exists
-    @shop_purchase = @shopping_cart.shop_purchases.find_by(shop_product_id: shop_purchase_params[:shop_product_id])
+    @shop_purchase = @shopping_cart.purchases.find_by(product_id: shop_purchase_params[:product_id])
     if @shop_purchase.present?
       @shop_purchase.quantity = @shop_purchase.quantity + 1
     else
-      @shop_purchase = ShopPurchase.new(shop_purchase_params)
+      @shop_purchase = Shop::Purchase.new(shop_purchase_params)
       @shop_purchase.shopping_cart_id = @shopping_cart.id
       @shop_purchase.quantity = 1
-      @shop_purchase.stripe_account_id = @shop_purchase.shop_product.user.stripe_account_id
+      @shop_purchase.stripe_account_id = @shop_purchase.product.user.stripe_account_id
     end
     was_limitted = @shop_purchase.limit_quantity
     is_same_currency = (@shopping_cart.currency.nil? || @shopping_cart.currency == @shop_purchase.currency)
@@ -29,12 +29,12 @@ class Shop::PurchasesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shop_purchases/1 or /shop_purchases/1.json
+  # PATCH/PUT /shop/purchases/1 or /shop/purchases/1.json
   def update
     respond_to do |format|
       edited_shop_purchase_params = shop_purchase_params.dup
       quantity = edited_shop_purchase_params[:quantity].to_i
-      max_quantity = @shop_purchase.shop_product.stock
+      max_quantity = @shop_purchase.product.stock
       was_limitted = false
       if quantity > max_quantity
         edited_shop_purchase_params[:quantity] = max_quantity
@@ -56,14 +56,14 @@ class Shop::PurchasesController < ApplicationController
     end
   end
 
-  # DELETE /shop_purchases/1 or /shop_purchases/1.json
+  # DELETE /shop/purchases/1 or /shop/purchases/1.json
   def destroy
     shopping_cart = @shop_purchase.shopping_cart
     @shop_purchase.destroy
     respond_to do |format|
       format.html {
         # redirect to the shop if no purchases are left
-        if shopping_cart.shop_purchases.any?
+        if shopping_cart.purchases.any?
           redirect_to shop_shopping_cart_path, notice: t('flash.shop_purchase_deleted')
         else
           shopping_cart.destroy
@@ -77,12 +77,12 @@ class Shop::PurchasesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop_purchase
-      @shop_purchase = ShopPurchase.find(params[:id])
+      @shop_purchase = Shop::Purchase.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def shop_purchase_params
-      params.require(:shop_purchase).permit(:quantity, :shop_product_id)
+      params.require(:shop_purchase).permit(:quantity, :product_id)
     end
 
 end

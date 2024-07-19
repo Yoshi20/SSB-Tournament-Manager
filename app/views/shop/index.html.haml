@@ -34,13 +34,13 @@
                     %strong{style: 'color: red; font-size: 1rem;'}= "#{product.currency_text} #{product.price_short}"
                     %span.shop-product-stock{style: "display: block; color: #{product.stock_text_color};"}= product.stock_text
                 %nav.text-center{style: 'margin-top: 0;'}
-                  = form_for(ShopPurchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
-                    = f.hidden_field :shop_product_id, value: product.id
+                  = form_for(Shop::Purchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
+                    = f.hidden_field :product_id, value: product.id
                     %button.border.round.add_to_cart-button{disabled: product.stock <= 0}
                       %span{style: 'position: relative;'}
                         %i.material-icons{style: 'font-size: 20px; margin-top: 5px;'} add_shopping_cart
                         -# product_purchase quantity badge
-                        - product_purchase = @shopping_cart.shop_purchases.find_by(shop_product_id: product.id) if @shopping_cart.present?
+                        - product_purchase = @shopping_cart.purchases.find_by(product_id: product.id) if @shopping_cart.present?
                         - if product_purchase.present?
                           .badge= product_purchase.quantity
                       %span.d-none.d-sm-block.d-lg-none.d-xl-block= t('shop.add_to_cart')
@@ -56,13 +56,13 @@
               = link_to edit_shop_product_path(product), data: { turbo_method: :get } do
                 = button_tag class: 'small square', style:'background: transparent; color: black; border: 0;' do
                   %i.material-icons.admin-actions__link__icon= 'edit'
-                  -# .tooltip.left= t('shop_products.edit')
+                  -# .tooltip.left= t('shop.products.edit')
 
     -# .shop_products__pagination
     -#   = render 'paginator'
 - else
   .text-center
-    = t('shop_products.no_products_found')
+    = t('shop.products.no_products_found')
 
 - if current_user.present? || @shopping_cart.present?
   .admin-actions
@@ -71,7 +71,7 @@
         = link_to shop_shopping_cart_path, class:'btn btn-default btn-square' do
           %span
             .material-icons.admin-actions__link__icon= 'shopping_cart'
-            .badge{style: 'color: black; position: absolute; top: 4px; left: 8.5px;'}= @shopping_cart.shop_purchases.sum(&:quantity)
+            .badge{style: 'color: black; position: absolute; top: 4px; left: 8.5px;'}= @shopping_cart.purchases.sum(&:quantity)
     - if current_user.present?
       - if current_user.super_admin? || (current_user.has_role?('seller') && current_user.stripe_account_is_ready)
         .admin-actions__link
@@ -81,7 +81,7 @@
         .admin-actions__link
           = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
             %span.material-icons.admin-actions__link__icon= 'info'
-        = render '/partials/info', info_body: t('shop_products.info_body')
+        = render '/partials/info', info_body: t('shop.products.info_body')
 
 - if @shopping_cart.present?
   .row
@@ -91,5 +91,5 @@
           %button.btn.btn-default.cart-button
             %span{style: 'position: relative;'}
               %i.material-icons{style: 'font-size: 20px; margin-top: 5px;'} shopping_cart
-              .badge= @shopping_cart.shop_purchases.sum(&:quantity)
-            %span= t('shopping_cart.title')
+              .badge= @shopping_cart.purchases.sum(&:quantity)
+            %span= t('shop.shopping_cart.title')

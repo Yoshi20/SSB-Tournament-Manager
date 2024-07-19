@@ -10,13 +10,14 @@ de:
         client_ip: "IP"
         has_checked_out: "Checked out?"
         created_at: "Erstellt am"
-  shopping_cart:
-    title: "Einkaufswagen"
-    total_count: "Anzahl Einkaufswägen"
-    checkout: "Checkout"
-    shipment: "Versand"
-    stripe_fees: "Stripe-Gebühren"
-    total: "Total"
-    continue_to_checkout: "Weiter zum Checkout"
+  shop:
+    shopping_cart:
+      title: "Einkaufswagen"
+      total_count: "Anzahl Einkaufswägen"
+      checkout: "Checkout"
+      shipment: "Versand"
+      stripe_fees: "Stripe-Gebühren"
+      total: "Total"
+      continue_to_checkout: "Weiter zum Checkout"
   flash:
-    shopping_cart_deleted: "Einkaufswagen wurde erfolgreich gelöscht"
+    shop_shopping_cart_deleted: "Einkaufswagen wurde erfolgreich gelöscht"

@@ -1,8 +1,10 @@
-class ShopProduct < ApplicationRecord
+class Shop::Product < ApplicationRecord
+  self.table_name = "shop_products"
+
   include PositionHandler
 
   belongs_to :user
-  has_many :shop_purchases, dependent: :destroy
+  has_many :purchases, class_name: 'Shop::Purchase', dependent: :destroy
 
   validates :name, presence: true
   validates :currency, presence: true
@@ -17,7 +19,7 @@ class ShopProduct < ApplicationRecord
   LOW_STOCK_QUANTITY = 3
 
   def set_position
-    products = ShopProduct.all.order(:position, :created_at)
+    products = Shop::Product.all.order(:position, :created_at)
     self.position = (products.any? ? (products.last.position.to_i+1) : 0)
   end
 
@@ -39,13 +41,13 @@ class ShopProduct < ApplicationRecord
 
   def stock_text
     if self.stock > HIGH_STOCK_QUANTITY
-      I18n.t('shop_products.stock_text.high', stock: HIGH_STOCK_QUANTITY)
+      I18n.t('shop.products.stock_text.high', stock: HIGH_STOCK_QUANTITY)
     elsif self.stock > LOW_STOCK_QUANTITY
-      I18n.t('shop_products.stock_text.normal', stock: self.stock)
+      I18n.t('shop.products.stock_text.normal', stock: self.stock)
     elsif self.stock > 0
-      I18n.t('shop_products.stock_text.low', stock: self.stock)
+      I18n.t('shop.products.stock_text.low', stock: self.stock)
     else
-      I18n.t('shop_products.stock_text.zero')
+      I18n.t('shop.products.stock_text.zero')
     end
   end
 

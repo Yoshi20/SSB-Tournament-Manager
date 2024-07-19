@@ -10,13 +10,14 @@ en:
         client_ip: "IP"
         has_checked_out: "Checked out?"
         created_at: "Created at"
-  shopping_cart:
-    title: "Shopping cart"
-    total_count: "Shopping carts count"
-    checkout: "Checkout"
-    shipment: "Shipment"
-    stripe_fees: "Stripe fees"
-    total: "Total"
-    continue_to_checkout: "Continue to checkout"
+  shop:
+    shopping_cart:
+      title: "Shopping cart"
+      total_count: "Shopping carts count"
+      checkout: "Checkout"
+      shipment: "Shipment"
+      stripe_fees: "Stripe fees"
+      total: "Total"
+      continue_to_checkout: "Continue to checkout"
   flash:
-    shopping_cart_deleted: "Shopping cart was successfully deleted"
+    shop_shopping_cart_deleted: "Shopping cart was successfully deleted"

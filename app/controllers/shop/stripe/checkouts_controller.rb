@@ -2,7 +2,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
 
   # GET /shop/stripe/checkout?order_id=1
   def checkout
-    shop_order = ShopOrder.find(params[:order_id])
+    shop_order = Shop::Order.find(params[:order_id])
     shopping_cart = shop_order.shopping_cart
     if (shop_order.was_order_paid || shopping_cart.has_checked_out)
       redirect_to shop_stripe_checkout_cancel_path
@@ -12,9 +12,9 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     line_items = []
     transfer_data = []
     # purchases
-    shopping_cart.shop_purchases.includes(:shop_product).order(:created_at).each do |purchase|
+    shopping_cart.purchases.includes(:product).order(:created_at).each do |purchase|
       next if purchase.quantity <= 0
-      product = purchase.shop_product
+      product = purchase.product
       # populate line_items
       line_items << {
         price_data: {
@@ -44,7 +44,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     #   line_items << {
     #     price_data: {
     #       currency: currency,
-    #       product_data: {name: t('shopping_cart.shipment')},
+    #       product_data: {name: t('shop.shopping_cart.shipment')},
     #       unit_amount: (shipping * 100).to_i, # price in Rp
     #     },
     #     quantity: 1,
@@ -56,7 +56,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     # line_items << {
     #   price_data: {
     #     currency: currency,
-    #     product_data: {name: t('shopping_cart.stripe_fees')},
+    #     product_data: {name: t('shop.shopping_cart.stripe_fees')},
     #     unit_amount: (stripe_fees * 100).to_i, # price in Rp
     #   },
     #   quantity: 1,
@@ -83,7 +83,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
       # {stripe_account: '{{CONNECTED_ACCOUNT_ID}}'}, # optional (for branding?)
       shipping_options: (shipping > 0 ? [{
         shipping_rate_data: {
-          display_name: I18n.t('shopping_cart.shipment'), #blup: paket national or international text?
+          display_name: I18n.t('shop.shopping_cart.shipment'), #blup: paket national or international text?
           type: 'fixed_amount',
           fixed_amount: {
             amount: (shipping * 100).to_i, # price in Rp
@@ -98,10 +98,17 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
 
   # GET /shop/stripe/checkout_success?session_id=...
   def success
-    # checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    # shop_order = ShopOrder.find(checkout_session.metadata.order_id)
-    # shop_order.complete! -> is handled in the webhook
-    # transfer_data_array = JSON.parse(checkout_session.metadata.transfer_data_json)
+    # # only for development -> should be handled in the webhook
+    # if Rails.env.development?
+    #   checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    #   shop_order = Shop::Order.find(checkout_session.metadata.order_id)
+    #   if checkout_session.payment_status == 'paid'
+    #     shop_order = Shop::Order.find(checkout_session.metadata.order_id)
+    #     shop_order.update!(was_order_paid: true)
+    #     shop_order.complete! # reduce stocks and send some emails
+    #     handleTransferToSellers(checkout_session)
+    #   end
+    # end
     redirect_to shop_orders_path, notice: t('flash.shop_order_created')
   end
 

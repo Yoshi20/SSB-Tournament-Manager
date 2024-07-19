@@ -7,7 +7,7 @@ class Shop::ShoppingCartsController < ApplicationController
   # GET /shopping_cart
   def show
     if @shopping_cart.present?
-      @purchases = @shopping_cart.shop_purchases.includes(:shop_product).order(:created_at)
+      @purchases = @shopping_cart.purchases.includes(:product).order(:created_at)
       unless @purchases.any?
         @shopping_cart.destroy
         redirect_to shop_path
@@ -19,11 +19,11 @@ class Shop::ShoppingCartsController < ApplicationController
 
   # DELETE /shopping_cart/1
   def destroy
-    @shopping_cart = ShoppingCart.find(params[:id])
+    @shopping_cart = Shop::ShoppingCart.find(params[:id])
     @shopping_cart.revert_checkout!
     @shopping_cart.destroy
     respond_to do |format|
-      format.html { redirect_to shop_orders_path, notice: t('flash.shopping_cart_deleted') }
+      format.html { redirect_to shop_orders_path, notice: t('flash.shop_shopping_cart_deleted') }
       format.json { head :no_content }
     end
   end
@@ -31,7 +31,7 @@ class Shop::ShoppingCartsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shopping_cart
-      @shopping_cart = ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
+      @shopping_cart = Shop::ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
     end
 
 end

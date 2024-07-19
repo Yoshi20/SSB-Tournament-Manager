@@ -1,19 +1,19 @@
 .checkout{style: 'margin-top: 1.5rem;'}
-  %h5= t('shop_orders.summary')
+  %h5= t('shop.orders.summary')
   %table.table.border
     %thead.table-header
       %tr
-        %th.text-left= t('shop_products.title')
-        %th.text-right= t('shopping_cart.total')
+        %th.text-left= t('shop.products.title')
+        %th.text-right= t('shop.shopping_cart.total')
         %th.text-center= t('activerecord.attributes.shop_product.currency')
     %tbody.shop_purchase-list-body#purchases
       %tr
         %td
-          - @shop_seller_order.purchases.includes(:shop_product).order(:created_at).each do |purchase|
+          - @shop_seller_order.purchases.includes(:product).order(:created_at).each do |purchase|
             - next if purchase.quantity <= 0
-            = "#{purchase.quantity}x #{purchase.shop_product.name}"
+            = "#{purchase.quantity}x #{purchase.product.name}"
             %br
-          = "1x #{t('shopping_cart.shipment')}" if @shop_seller_order.shipping_costs > 0
+          = "1x #{t('shop.shopping_cart.shipment')}" if @shop_seller_order.shipping_costs > 0
           -# blup: anzahl versand
         %td.text-right
           - total_price = @shop_seller_order.total_price

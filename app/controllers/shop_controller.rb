@@ -4,8 +4,8 @@ class ShopController < ApplicationController
 
   # GET /shop or /shop.json
   def index
-    @shop_products = ShopProduct.all.order(:user_id, :position, :created_at)
-    @shopping_cart = ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
+    @shop_products = Shop::Product.all.order(:user_id, :position, :created_at)
+    @shopping_cart = Shop::ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
   end
 
 end

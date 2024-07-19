@@ -7,14 +7,12 @@ class Shop::SellerOrdersController < ApplicationController
 
   # GET /shop/seller_orders
   def index
-    @shop_seller_orders = current_user.shop_seller_orders
-    # scope = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
-    #blup @shop_seller_orders = current_user.super_admin? ? scope.all : scope.where(shopping_cart: {user_id: current_user.id})
+    @shop_seller_orders = current_user.seller_orders.order(created_at: :desc)
   end
 
-  # GET /shop_order/1
+  # GET /shop/seller_order/1
   def show
-    @shop_order = @shop_seller_order.shop_order
+    @shop_order = @shop_seller_order.order
   end
 
   # PATCH/PUT /shop/seller_order/1
@@ -33,7 +31,7 @@ class Shop::SellerOrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop_seller_order
-      @shop_seller_order = ShopSellerOrder.find(params[:id])
+      @shop_seller_order = Shop::SellerOrder.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

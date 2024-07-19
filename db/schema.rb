@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_19_163230) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -215,10 +215,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
     t.integer "quantity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "shop_product_id"
+    t.bigint "product_id"
     t.bigint "shopping_cart_id"
     t.string "stripe_account_id"
-    t.index ["shop_product_id"], name: "index_shop_purchases_on_shop_product_id"
+    t.index ["product_id"], name: "index_shop_purchases_on_product_id"
     t.index ["shopping_cart_id"], name: "index_shop_purchases_on_shopping_cart_id"
   end
 
@@ -229,9 +229,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
     t.string "stripe_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "shop_order_id"
+    t.bigint "order_id"
     t.bigint "user_id"
-    t.index ["shop_order_id"], name: "index_shop_seller_orders_on_shop_order_id"
+    t.index ["order_id"], name: "index_shop_seller_orders_on_order_id"
     t.index ["user_id"], name: "index_shop_seller_orders_on_user_id"
   end
 
@@ -634,9 +634,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_113027) do
   add_foreign_key "players", "users"
   add_foreign_key "shop_orders", "shopping_carts"
   add_foreign_key "shop_products", "users"
-  add_foreign_key "shop_purchases", "shop_products"
+  add_foreign_key "shop_purchases", "shop_products", column: "product_id"
   add_foreign_key "shop_purchases", "shopping_carts"
-  add_foreign_key "shop_seller_orders", "shop_orders"
+  add_foreign_key "shop_seller_orders", "shop_orders", column: "order_id"
   add_foreign_key "shop_seller_orders", "users"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"

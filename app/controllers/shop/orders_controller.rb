@@ -5,24 +5,24 @@ class Shop::OrdersController < ApplicationController
   before_action :set_shopping_cart, only: %i[ new create ]
   before_action { @section = 'shop_orders' }
 
-  # GET /shop_orders
+  # GET /shop/orders
   def index
-    @shop_orders = ShopOrder.includes(:shopping_cart, shopping_cart: [:user, :shop_purchases, shop_purchases: :shop_product]).order(created_at: :desc)
+    @shop_orders = Shop::Order.includes(:shopping_cart, shopping_cart: [:user, :purchases, purchases: :product]).order(created_at: :desc)
   end
 
-  # GET /shop_order/1
+  # GET /shop/order/1
   def show
     @shopping_cart = @shop_order.shopping_cart
   end
 
-  # GET /shop_order/1/edit
+  # GET /shop/order/1/edit
   def edit
     @shopping_cart = @shop_order.shopping_cart
   end
 
   # GET /checkout
   def new
-    @shop_order = ShopOrder.new
+    @shop_order = Shop::Order.new
     user = @shopping_cart.user
     if user.present?
       # @shop_order.organisation = ""
@@ -36,13 +36,13 @@ class Shop::OrdersController < ApplicationController
     end
   end
 
-  # POST /shop_order/1
+  # POST /shop/order/1
   def create
-    @shop_order = ShopOrder.new(shop_order_params)
+    @shop_order = Shop::Order.new(shop_order_params)
     @shop_order.shopping_cart_id = @shopping_cart.id
     @shop_order.status = 'open'
     # delete all old orders with the same shopping_cart_id as there should only be one order per shopping_cart
-    ShopOrder.where(shopping_cart_id: @shopping_cart.id).destroy_all
+    Shop::Order.where(shopping_cart_id: @shopping_cart.id).destroy_all
     respond_to do |format|
       if @shop_order.save
         # stripe payment: complete order in /shop/stripe/webhook
@@ -55,7 +55,7 @@ class Shop::OrdersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shop_order/1
+  # PATCH/PUT /shop/order/1
   def update
     respond_to do |format|
       if @shop_order.update(shop_order_params)
@@ -68,7 +68,7 @@ class Shop::OrdersController < ApplicationController
     end
   end
 
-  # DELETE /shop_order/1
+  # DELETE /shop/order/1
   def destroy
     respond_to do |format|
       if @shop_order.revert_checkout
@@ -85,11 +85,11 @@ class Shop::OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shop_order
-      @shop_order = ShopOrder.find(params[:id])
+      @shop_order = Shop::Order.find(params[:id])
     end
 
     def set_shopping_cart
-      @shopping_cart = ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
+      @shopping_cart = Shop::ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
       redirect_to shop_path unless @shopping_cart.present?
     end
 

@@ -1,6 +1,8 @@
-class ShopOrder < ApplicationRecord
-  belongs_to :shopping_cart
-  has_many :shop_seller_orders, dependent: :destroy
+class Shop::Order < ApplicationRecord
+  self.table_name = "shop_orders"
+
+  belongs_to :shopping_cart, class_name: 'Shop::ShoppingCart'
+  has_many :seller_orders, class_name: 'Shop::SellerOrder', dependent: :destroy
 
   validates :email, presence: true
 
@@ -33,12 +35,12 @@ class ShopOrder < ApplicationRecord
   end
 
   def create_seller_orders
-    stripe_account_ids = ShopPurchase.where(shopping_cart_id: self.shopping_cart_id).pluck(:stripe_account_id)
+    stripe_account_ids = Shop::Purchase.where(shopping_cart_id: self.shopping_cart_id).pluck(:stripe_account_id)
     stripe_account_ids.uniq!
     stripe_account_ids.each do |acct|
       user = User.find_by(stripe_account_id: acct)
-      ShopSellerOrder.create(
-        shop_order_id: self.id,
+      Shop::SellerOrder.create(
+        order_id: self.id,
         user_id: user.id,
         status: self.status,
         stripe_account_id: user.stripe_account_id, # in case user changes stripe_account_id later
@@ -52,7 +54,7 @@ class ShopOrder < ApplicationRecord
 
   def complete!
     self.shopping_cart.checkout!
-    # blup
+    # blup: TODO -> ShopMailer
     # ShopMailer.with(shop_order: self, app_mode: current_app_mode).order_created_email.deliver_later
     # ShopMailer.with(email: self.email, app_mode: current_app_mode).thank_you_email.deliver_later
   end
@@ -81,7 +83,7 @@ class ShopOrder < ApplicationRecord
 
   def status_text
     if self.was_order_paid
-      I18n.t('shop_orders.status.paid') + " (#{self.order_paid_at.localtime.to_fs(:custom_datetime_date)})"
+      I18n.t('shop.orders.status.paid') + " (#{self.order_paid_at.localtime.to_fs(:custom_datetime_date)})"
     else
       I18n.t("shop_orders.status.#{self.status}")
     end

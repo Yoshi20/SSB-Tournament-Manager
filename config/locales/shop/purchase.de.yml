@@ -11,12 +11,13 @@ de:
         session_id: "Session"
         user_id: "Benutzer"
         has_checked_out: "Abgeschlossen?"
-  shop_purchases:
-    title: "Einkäufe"
-    new: "Neuer Einkauf erstellen"
-    edit: "Einkauf bearbeiten"
-    prohibited: "verhindern das Speichern dieses Einkaufs:"
-    total_count: "Anzahl Einkäufe"
+  shop:
+    purchases:
+      title: "Einkäufe"
+      new: "Neuer Einkauf erstellen"
+      edit: "Einkauf bearbeiten"
+      prohibited: "verhindern das Speichern dieses Einkaufs:"
+      total_count: "Anzahl Einkäufe"
   flash:
     shop_purchase_created: "Produkt wurde erfolgreich dem Einkaufswagen hinzugefügt"
     shop_purchase_not_created_limit: "Produkt konnten nicht hinzugefügt werden! Limit erreicht"

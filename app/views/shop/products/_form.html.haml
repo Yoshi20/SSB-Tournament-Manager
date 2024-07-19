@@ -2,25 +2,25 @@
 
   - if @shop_product.errors.any?
     #error_explanation
-      -# %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop_product.prohibited')
+      -# %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop.product.prohibited')
       %ul
         - @shop_product.errors.full_messages.each do |message|
           %li= message
 
   -# .field.form-group
   -#   = f.text_field :user_id, class: 'd-none form-control', value: current_user.id
-  -#   = f.label :title, t('shop_product.post_title')
+  -#   = f.label :title, t('shop.product.post_title')
   -#   = f.text_field :title, class: 'form-control'
   -# .field.form-group
-  -#   = f.label :teaser, t('shop_product.teaser')
+  -#   = f.label :teaser, t('shop.product.teaser')
   -#   = f.text_field :teaser, class: 'form-control'
   -# .field.form-group
-  -#   = f.label :text, t('shop_product.text')
+  -#   = f.label :text, t('shop.product.text')
   -#   %em= "(HTML)"
   -#   = f.text_area :text, class: 'form-control', rows: '5'
   -#
   -# .actions.form-group
-  -#   = f.submit class:'btn btn-cyan', value: @shop_product.new_record? ? t('shop_product.post') : t('shop_product.update')
+  -#   = f.submit class:'btn btn-cyan', value: @shop_product.new_record? ? t('shop.product.post') : t('shop.product.update')
 
 
   .field.form-group
@@ -61,19 +61,19 @@
   .row
     .col
       %p.mb-0
-        = t('shop_products.terms_of_use.title')
+        = t('shop.products.terms_of_use.title')
       %ul{style: 'font-size: 10px;'}
-        %li= t('shop_products.terms_of_use.li1')
-        %li= t('shop_products.terms_of_use.li2')
-        %li= t('shop_products.terms_of_use.li3')
-        %li= t('shop_products.terms_of_use.li4')
-        %li= t('shop_products.terms_of_use.li5')
-        %li= t('shop_products.terms_of_use.li6')
-        %li= t('shop_products.terms_of_use.li7')
-        %li= t('shop_products.terms_of_use.li8')
-        %li= t('shop_products.terms_of_use.li9')
-        %li= t('shop_products.terms_of_use.li10', link: link_to("https://stripe.com/de-ch/pricing", "https://stripe.com/de-ch/pricing", target: "_blank")).html_safe
-        %li= t('shop_products.terms_of_use.li11')
+        %li= t('shop.products.terms_of_use.li1')
+        %li= t('shop.products.terms_of_use.li2')
+        %li= t('shop.products.terms_of_use.li3')
+        %li= t('shop.products.terms_of_use.li4')
+        %li= t('shop.products.terms_of_use.li5')
+        %li= t('shop.products.terms_of_use.li6')
+        %li= t('shop.products.terms_of_use.li7')
+        %li= t('shop.products.terms_of_use.li8')
+        %li= t('shop.products.terms_of_use.li9')
+        %li= t('shop.products.terms_of_use.li10', link: link_to("https://stripe.com/de-ch/pricing", "https://stripe.com/de-ch/pricing", target: "_blank")).html_safe
+        %li= t('shop.products.terms_of_use.li11')
 
   .actions.form-group
     = f.submit class:'btn btn-block btn-cyan btn-with-icon'

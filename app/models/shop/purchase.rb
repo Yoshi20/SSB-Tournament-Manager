@@ -1,12 +1,14 @@
-class ShopPurchase < ApplicationRecord
-  belongs_to :shop_product
-  belongs_to :shopping_cart
+class Shop::Purchase < ApplicationRecord
+  self.table_name = "shop_purchases"
+
+  belongs_to :product, class_name: 'Shop::Product'
+  belongs_to :shopping_cart, class_name: 'Shop::ShoppingCart'
 
   validates :quantity, presence: true
   validates :quantity, :numericality => { greater_than_or_equal_to: 0 }
 
   def limit_quantity
-    max_quantity = self.shop_product.stock
+    max_quantity = self.product.stock
     was_limitted = false
     if self.quantity > max_quantity
       self.quantity = max_quantity
@@ -16,7 +18,7 @@ class ShopPurchase < ApplicationRecord
   end
 
   def currency
-    self.shop_product.currency
+    self.product.currency
   end
 
   def currency_text

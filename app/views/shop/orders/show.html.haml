@@ -4,11 +4,11 @@
 
 = render 'shop/beta_header' #blup: beta
 
-= render 'summary' #blup: nur produkte von seller anzeigen (nicht alle von bestellung)
+= render 'summary'
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
-    %h5= t('shop_orders.delivery_address')
+    %h5= t('shop.orders.delivery_address')
 
 .row
   .col
@@ -45,7 +45,7 @@
   .col.middle-align
     %h5= "Sellers"
     -# %ul
-    - @shop_order.shop_seller_orders.each do |shop_seller_order|
+    - @shop_order.seller_orders.each do |shop_seller_order|
       - player = shop_seller_order.user.player
       -# %li
       .row
