@@ -6,4 +6,11 @@
 
 .row.form
   .col
-    = render 'form', news: @news
+    = render 'form'
+
+-# TODO -> add was_deleted to shop_products
+- if current_user.present? && current_user.is_super_admin?
+  .hidden.admin-list-actions.text-center{style: 'position: absolute; top: 10px; right: 10px;'}
+    .admin-list-actions__link
+      = button_to shop_product_path(@shop_product), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'btn btn-sstm btn-square' do
+        %i.material-icons.material-icons.admin-actions__link__icon= 'delete'
