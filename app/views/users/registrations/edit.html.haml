@@ -115,7 +115,6 @@
         .form-group
           = f.label :challonge_api_key, t('users.challonge_api_key', link: link_to('https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank')).html_safe
           = f.text_field :challonge_api_key, class: 'form-control'
-        %hr
       - if current_user.super_admin? || current_user.has_role?('seller')
         %hr
         %p

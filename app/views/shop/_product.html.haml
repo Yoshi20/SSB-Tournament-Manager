@@ -16,7 +16,7 @@
           .text-left
             %h5.shop-product-title
               = product.name
-              %span.shop-product-username= "by #{product.username}"
+              %span.shop-product-seller-name= "by #{product.seller_name}"
             %p.shop-product-description= product.description.html_safe
         .padding.text-center.shop-product-footer
           .text-right

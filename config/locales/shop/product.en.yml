@@ -26,7 +26,7 @@ en:
         normal: "%{stock} pieces in stock"
         low: "Only %{stock} pieces left in stock"
         zero: "Out of stock"
-      info_body: "To add a product to the shop, first add the seller role to your profile. Then you need to link a Stripe account in your account settings."
+      info_body: "To add your own product to the shop, log in and first add the seller role to your profile. Then you need to link a Stripe account in your account settings."
       terms_of_use:
         title: "By creating a product, you agree to the following terms of use:"
         li1: "Disclaimer: This shop serves only as a marketplace. Sellers and buyers conclude contracts autonomously and on their own responsibility"

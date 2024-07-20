@@ -57,9 +57,9 @@
         %tr.total-row{style: 'cursor: initial;'}
           %td
           -# %td
-          %td= turnover.round(1)
-          %td= t('shop.orders.turnover') + ' (5%)'
-          %td
+          %td.text-center= turnover.round(1)
+          %td.text-center= t('shop.orders.turnover') + ' (5%)'
+          %td.text-center
             %strong= (turnover*0.05).round(1)
           %td
           %td

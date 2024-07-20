@@ -18,24 +18,22 @@
   .text-center
     = t('shop.products.no_products_found')
 
-- if current_user.present? || @shopping_cart.present?
-  .admin-actions
-    - if @shopping_cart.present?
-      .admin-actions__link
-        = link_to shop_shopping_cart_path, class:'btn btn-default btn-square' do
-          %span
-            .material-icons.admin-actions__link__icon= 'shopping_cart'
-            .badge{style: 'color: black; position: absolute; top: 4px; left: 8.5px;'}= @shopping_cart.purchases.sum(&:quantity)
-    - if current_user.present?
-      - if current_user.super_admin? || (current_user.has_role?('seller') && current_user.stripe_account_is_ready)
-        .admin-actions__link
-          = link_to new_shop_product_path, class:'btn btn-default btn-square' do
-            %span.material-icons.admin-actions__link__icon= 'add'
-      - else
-        .admin-actions__link
-          = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
-            %span.material-icons.admin-actions__link__icon= 'info'
-        = render '/partials/info', info_body: t('shop.products.info_body')
+.admin-actions
+  - if @shopping_cart.present?
+    .admin-actions__link
+      = link_to shop_shopping_cart_path, class:'btn btn-default btn-square' do
+        %span
+          .material-icons.admin-actions__link__icon= 'shopping_cart'
+          .badge{style: 'color: black; position: absolute; top: 4px; left: 8.5px;'}= @shopping_cart.purchases.sum(&:quantity)
+  - if current_user.present? && (current_user.super_admin? || (current_user.has_role?('seller') && current_user.stripe_account_is_ready))
+    .admin-actions__link
+      = link_to new_shop_product_path, class:'btn btn-default btn-square' do
+        %span.material-icons.admin-actions__link__icon= 'add'
+  - else
+    .admin-actions__link
+      = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+        %span.material-icons.admin-actions__link__icon= 'info'
+    = render '/partials/info', info_body: t('shop.products.info_body')
 
 - if @shopping_cart.present?
   .row

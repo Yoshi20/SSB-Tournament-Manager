@@ -26,7 +26,7 @@ de:
         normal: "%{stock} Stück an Lager"
         low: "Nur noch %{stock} Stück an Lager"
         zero: "Nicht mehr an Lager"
-      info_body: "Um ein Produkt dem Shop hinzufügen zu können, füge zuerst die Verkäufer-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe Konto verknüpfen."
+      info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die Verkäufer-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen."
       terms_of_use:
         title: "Mit dem Erstellen eines Produkts, stimmst du den folgenden Nutzungsbedingungen zu:"
         li1: "Haftungsausschluss: Dieser Shop dient lediglich als Martkplatz. Verkäufer und Käufer schlissen autonom und eigenverantwortlich Vertäge ab"

@@ -23,8 +23,8 @@ class Shop::Product < ApplicationRecord
     self.position = (products.any? ? (products.last.position.to_i+1) : 0)
   end
 
-  def username
-    self.user&.username
+  def seller_name
+    self.user&.player&.gamer_tag
   end
 
   def price_short(quantity = 1)
