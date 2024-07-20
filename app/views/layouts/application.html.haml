@@ -20,7 +20,7 @@
         = render '/layouts/survey'
       .container
         .row
-          - if request.original_fullpath.start_with?('/calendar')
+          - if request.original_fullpath.start_with?('/calendar') || request.original_fullpath.start_with?('/shop')
             .col-12
               .content
                 = yield

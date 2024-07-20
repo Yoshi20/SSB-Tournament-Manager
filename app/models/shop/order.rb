@@ -85,7 +85,7 @@ class Shop::Order < ApplicationRecord
     if self.was_order_paid
       I18n.t('shop.orders.status.paid') + " (#{self.order_paid_at.localtime.to_fs(:custom_datetime_date)})"
     else
-      I18n.t("shop_orders.status.#{self.status}")
+      I18n.t("shop.orders.status.#{self.status}")
     end
   end
 
