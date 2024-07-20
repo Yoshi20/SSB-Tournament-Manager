@@ -24,7 +24,7 @@ class Shop::PurchasesController < ApplicationController
         format.json { render :show, status: :created, location: @shop_purchase }
       else
         format.html { redirect_to shop_path, alert: (is_same_currency ? t('flash.shop_purchase_not_created_limit') : t('flash.shop_purchase_not_created_currency')) }
-        format.json { render json: @shop_purchase.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_purchase.errors, status: :unprocessable_content }
       end
     end
   end
@@ -51,7 +51,7 @@ class Shop::PurchasesController < ApplicationController
         format.json { render :show, status: :ok, location: @shop_purchase }
       else
         format.html { redirect_to shop_shopping_cart_path, alert: t('flash.shop_purchase_not_updated') }
-        format.json { render json: @shop_purchase.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_purchase.errors, status: :unprocessable_content }
       end
     end
   end

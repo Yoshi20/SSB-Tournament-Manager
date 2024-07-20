@@ -39,7 +39,7 @@ class NewsController < ApplicationController
         format.json { render :show, status: :created, location: @news }
       else
         format.html { render :new }
-        format.json { render json: @news.errors, status: :unprocessable_entity }
+        format.json { render json: @news.errors, status: :unprocessable_content }
       end
     end
   end
@@ -53,7 +53,7 @@ class NewsController < ApplicationController
         format.json { render :show, status: :ok, location: @news }
       else
         format.html { render :edit }
-        format.json { render json: @news.errors, status: :unprocessable_entity }
+        format.json { render json: @news.errors, status: :unprocessable_content }
       end
     end
   end

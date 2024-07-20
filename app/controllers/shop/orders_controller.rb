@@ -44,13 +44,13 @@ class Shop::OrdersController < ApplicationController
     # delete all old orders with the same shopping_cart_id as there should only be one order per shopping_cart
     Shop::Order.where(shopping_cart_id: @shopping_cart.id).destroy_all
     respond_to do |format|
-      if @shop_order.save
+      if @shopping_cart.total_price > 0 && @shop_order.save
         # stripe payment: complete order in /shop/stripe/webhook
         format.html { redirect_to shop_stripe_checkout_path(order_id: @shop_order.id) }
         format.json { render :new, status: :ok, location: @shop_order }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: t('flash.shop_order_not_created') }
-        format.json { render json: @shop_order.errors, status: :unprocessable_entity }
+        format.html { redirect_to shop_checkout_path, alert: t('flash.shop_order_not_created') }
+        format.json { render json: @shop_order.errors, status: :unprocessable_content }
       end
     end
   end
@@ -63,7 +63,7 @@ class Shop::OrdersController < ApplicationController
         format.json { render :edit, status: :ok, location: @shop_order }
       else
         format.html { redirect_to shop_orders_path, alert: t('flash.shop_order_not_updated') }
-        format.json { render json: @shop_order.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_order.errors, status: :unprocessable_content }
       end
     end
   end
@@ -77,7 +77,7 @@ class Shop::OrdersController < ApplicationController
         format.json { head :no_content }
       else
         format.html { redirect_to shop_orders_path, alert: t('flash.shop_order_not_deleted') }
-        format.json { render json: @shop_order.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_order.errors, status: :unprocessable_content }
       end
     end
   end

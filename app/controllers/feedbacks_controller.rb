@@ -39,7 +39,7 @@ class FeedbacksController < ApplicationController
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.json { render json: @feedback.errors, status: :unprocessable_content }
       end
     end
   end
@@ -62,7 +62,7 @@ class FeedbacksController < ApplicationController
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.json { render json: @feedback.errors, status: :unprocessable_content }
       end
     end
   end

@@ -24,8 +24,8 @@ class Shop::ProductsController < ApplicationController
         format.html { redirect_to shop_path, notice: t('flash.shop_product_created') }
         format.json { render :show, status: :created, location: @shop_product }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: t('flash.shop_product_not_created') }
-        format.json { render json: @shop_product.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content, alert: t('flash.shop_product_not_created') }
+        format.json { render json: @shop_product.errors, status: :unprocessable_content }
       end
     end
   end
@@ -37,8 +37,8 @@ class Shop::ProductsController < ApplicationController
         format.html { redirect_to shop_path, notice: t('flash.shop_product_updated') }
         format.json { render :show, status: :ok, location: @shop_product }
       else
-        format.html { render :edit, status: :unprocessable_entity, alert: t('flash.shop_product_not_updated') }
-        format.json { render json: @shop_product.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content, alert: t('flash.shop_product_not_updated') }
+        format.json { render json: @shop_product.errors, status: :unprocessable_content }
       end
     end
   end
@@ -60,7 +60,7 @@ class Shop::ProductsController < ApplicationController
         format.json { render :show, status: :ok, location: @shop_product }
       else
         format.html { redirect_to shop_path, alert: t('flash.shop_product_not_updated') }
-        format.json { render json: @shop_product.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_product.errors, status: :unprocessable_content }
       end
     end
   end

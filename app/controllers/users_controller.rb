@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { redirect_to users_path, alert: t('flash.alert.updating_user') }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_content }
       end
     end
   end

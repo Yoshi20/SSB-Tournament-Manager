@@ -81,7 +81,7 @@
   - unless @shopping_cart.has_checked_out
     .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
       = link_to shop_checkout_path do
-        %button.btn.btn-default.btn-with-icon
+        %button.btn.btn-default.btn-with-icon{disabled: @shopping_cart.total_price <= 0}
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
           %span= t('shop.shopping_cart.continue_to_checkout')
 
@@ -90,7 +90,7 @@
   - unless @shopping_cart.has_checked_out
     .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
       = link_to shop_checkout_path do
-        %button.btn.btn-default.btn-with-icon
+        %button.btn.btn-default.btn-with-icon{disabled: @shopping_cart.total_price <= 0}
           %i.material-icons{style: 'font-size: 20px; rotate: 180deg;'} keyboard_backspace
           %span= t('shop.shopping_cart.continue_to_checkout')
   -# back button s

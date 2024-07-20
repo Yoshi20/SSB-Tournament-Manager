@@ -7,7 +7,7 @@ class Shop::SellerOrdersController < ApplicationController
 
   # GET /shop/seller_orders
   def index
-    @shop_seller_orders = current_user.seller_orders.order(created_at: :desc)
+    @shop_seller_orders = current_user.seller_orders.includes(:order, order: :shopping_cart).order(created_at: :desc)
   end
 
   # GET /shop/seller_order/1
@@ -23,7 +23,7 @@ class Shop::SellerOrdersController < ApplicationController
         format.json { render json: {}, status: :ok, location: @shop_seller_order }
       else
         format.html { redirect_to shop_seller_orders_path, alert: t('flash.shop_order_not_updated') }
-        format.json { render json: @shop_seller_order.errors, status: :unprocessable_entity }
+        format.json { render json: @shop_seller_order.errors, status: :unprocessable_content }
       end
     end
   end

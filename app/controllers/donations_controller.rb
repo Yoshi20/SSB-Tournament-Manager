@@ -37,7 +37,7 @@ class DonationsController < ApplicationController
         if @donation.save
           format.json { head :ok }
         else
-          format.json { head :unprocessable_entity }
+          format.json { head :unprocessable_content }
         end
       else
         format.json { head :unauthorized }

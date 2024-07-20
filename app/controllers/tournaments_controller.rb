@@ -108,7 +108,7 @@ class TournamentsController < ApplicationController
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_internal_tournament') }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+          format.json { render json: @tournament.errors, status: :unprocessable_content }
         end
       end
     elsif @tournament.subtype == 'external'
@@ -125,7 +125,7 @@ class TournamentsController < ApplicationController
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_external_tournament') }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+          format.json { render json: @tournament.errors, status: :unprocessable_content }
         end
       end
     elsif @tournament.weekly?
@@ -150,7 +150,7 @@ class TournamentsController < ApplicationController
               last_weekly = next_weekly
             else
               format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
-              format.json { render json: next_weekly.errors, status: :unprocessable_entity }
+              format.json { render json: next_weekly.errors, status: :unprocessable_content }
               return
             end
           end
@@ -158,13 +158,13 @@ class TournamentsController < ApplicationController
           format.json { render :show, status: :created, location: @tournament }
         else
           format.html { redirect_to new_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.create_weekly_tournament') }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+          format.json { render json: @tournament.errors, status: :unprocessable_content }
         end
       end
     else
       respond_to do |format|
         format.html { render :new }
-        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        format.json { render json: @tournament.errors, status: :unprocessable_content }
       end
     end
   end
@@ -184,7 +184,7 @@ class TournamentsController < ApplicationController
             @tournament.name = generate_weekly_name(@tournament.city, @tournament.date)
             unless @tournament.save
               format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
-              format.json { render json: t.errors, status: :unprocessable_entity }
+              format.json { render json: t.errors, status: :unprocessable_content }
               return
             end
           end
@@ -203,12 +203,12 @@ class TournamentsController < ApplicationController
                   last_weekly = t
                 else
                   format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
-                  format.json { render json: t.errors, status: :unprocessable_entity }
+                  format.json { render json: t.errors, status: :unprocessable_content }
                   return
                 end
               else
                 format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_weekly_tournament') }
-                format.json { render json: t.errors, status: :unprocessable_entity }
+                format.json { render json: t.errors, status: :unprocessable_content }
                 return
               end
             end
@@ -219,7 +219,7 @@ class TournamentsController < ApplicationController
           format.json { render :show, status: :ok, location: @tournament }
         else
           format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_internal_tournament') }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+          format.json { render json: @tournament.errors, status: :unprocessable_content }
         end
       end
     elsif @tournament.subtype == 'external'
@@ -229,13 +229,13 @@ class TournamentsController < ApplicationController
           format.json { render :show, status: :ok, location: @tournament }
         else
           format.html { redirect_to edit_tournament_path(@tournament, tournament: tournament_params, errors: {count: @tournament.errors&.count, full_messages: @tournament.errors&.full_messages}, anchor: @tournament.subtype), alert: t('flash.alert.update_external_tournament') }
-          format.json { render json: @tournament.errors, status: :unprocessable_entity }
+          format.json { render json: @tournament.errors, status: :unprocessable_content }
         end
       end
     else
       respond_to do |format|
         format.html { render :edit }
-        format.json { render json: @tournament.errors, status: :unprocessable_entity }
+        format.json { render json: @tournament.errors, status: :unprocessable_content }
       end
     end
   end
