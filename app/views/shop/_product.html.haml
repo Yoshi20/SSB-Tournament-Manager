@@ -26,7 +26,7 @@
           %nav.text-center{style: 'margin-top: 0;'}
             = form_for(Shop::Purchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
               = f.hidden_field :product_id, value: product.id
-              %button.border.round.add_to_cart-button{disabled: product.stock <= 0}
+              %button.border.round.add_to_cart-button{disabled: product.subtype == 'physical' && product.stock <= 0}
                 %span{style: 'position: relative;'}
                   %i.material-icons{style: 'font-size: 20px; margin-top: 5px;'} add_shopping_cart
                   -# product_purchase quantity badge

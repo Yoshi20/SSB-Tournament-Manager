@@ -8,6 +8,7 @@ class Shop::Purchase < ApplicationRecord
   validates :quantity, :numericality => { greater_than_or_equal_to: 0 }
 
   def limit_quantity
+    return false unless self.product.subtype == 'physical'
     max_quantity = self.product.stock
     was_limitted = false
     if self.quantity > max_quantity

@@ -75,7 +75,7 @@ class Shop::ProductsController < ApplicationController
     def shop_product_params
       params.require(:shop_product).permit(
         :name, :description, :currency, :price, :shipping, :stock, :is_hidden,
-        :image_link, :image_height, :image_width
+        :image_link, :image_height, :image_width, :subtype
       )
     end
 

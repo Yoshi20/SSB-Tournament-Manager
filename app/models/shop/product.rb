@@ -13,10 +13,18 @@ class Shop::Product < ApplicationRecord
   validates :stock, :numericality => { greater_than_or_equal_to: 0 }
   validates :shipping, presence: true
 
+  after_validation :handle_subtype, on: [ :create, :update ]
   after_validation :set_position, on: [ :create ]
 
   HIGH_STOCK_QUANTITY = 10
   LOW_STOCK_QUANTITY = 3
+
+  def handle_subtype
+    unless self.subtype == 'physical'
+      self.shipping = 0
+      self.stock = 0
+    end
+  end
 
   def set_position
     products = Shop::Product.all.order(:position, :created_at)
@@ -40,22 +48,38 @@ class Shop::Product < ApplicationRecord
   end
 
   def stock_text
-    if self.stock > HIGH_STOCK_QUANTITY
-      I18n.t('shop.products.stock_text.high', stock: HIGH_STOCK_QUANTITY)
-    elsif self.stock > LOW_STOCK_QUANTITY
-      I18n.t('shop.products.stock_text.normal', stock: self.stock)
-    elsif self.stock > 0
-      I18n.t('shop.products.stock_text.low', stock: self.stock)
+    if self.subtype == 'service'
+      I18n.t('shop.products.subtypes.service')
+    elsif self.subtype == 'digital'
+      I18n.t('shop.products.subtypes.digital')
+    elsif self.subtype == 'physical'
+      if self.stock > HIGH_STOCK_QUANTITY
+        I18n.t('shop.products.stock_text.high', stock: HIGH_STOCK_QUANTITY)
+      elsif self.stock > LOW_STOCK_QUANTITY
+        I18n.t('shop.products.stock_text.normal', stock: self.stock)
+      elsif self.stock > 0
+        I18n.t('shop.products.stock_text.low', stock: self.stock)
+      else
+        I18n.t('shop.products.stock_text.zero')
+      end
     else
       I18n.t('shop.products.stock_text.zero')
     end
   end
 
   def stock_text_color
-    if self.stock > LOW_STOCK_QUANTITY
+    if self.subtype == 'service'
       'green'
-    elsif self.stock > 0
-      'orange'
+    elsif self.subtype == 'digital'
+      'green'
+    elsif self.subtype == 'physical'
+      if self.stock > LOW_STOCK_QUANTITY
+        'green'
+      elsif self.stock > 0
+        'orange'
+      else
+        'red'
+      end
     else
       'red'
     end

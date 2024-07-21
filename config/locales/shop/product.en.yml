@@ -13,6 +13,7 @@ en:
         is_hidden: "Hidden?"
         shipping: "Shipping"
         currency: "Currency"
+        subtype: "Product Type"
   shop:
     products:
       title: "Products"
@@ -26,6 +27,10 @@ en:
         normal: "%{stock} pieces in stock"
         low: "Only %{stock} pieces left in stock"
         zero: "Out of stock"
+      subtypes:
+        service: "Service"
+        digital: "Digital product"
+        physical: "Physical product"
       info_body: "To add your own product to the shop, log in and first add the seller role to your profile. Then you need to link a Stripe account in your account settings."
       terms_of_use:
         title: "By creating a product, you agree to the following terms of use:"
