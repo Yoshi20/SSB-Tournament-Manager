@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_21_091455) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_21_153018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -197,7 +197,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_091455) do
     t.string "description", default: ""
     t.string "currency"
     t.float "price", default: 0.0, null: false
-    t.float "shipping", default: 0.0, null: false
+    t.float "shipping_national", default: 0.0, null: false
     t.integer "stock", default: 0, null: false
     t.boolean "is_hidden", default: true
     t.integer "position"
@@ -209,6 +209,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_21_091455) do
     t.bigint "user_id"
     t.string "country_code"
     t.string "subtype", default: "service", null: false
+    t.float "shipping_international", default: 0.0, null: false
     t.index ["user_id"], name: "index_shop_products_on_user_id"
   end
 

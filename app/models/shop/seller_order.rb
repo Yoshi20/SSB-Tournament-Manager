@@ -52,8 +52,9 @@ class Shop::SellerOrder < ApplicationRecord
 
   def shipping_costs
     shipping = 0
+    country_code = self.order.shopping_cart.country_code
     self.purchases.includes(:product).each do |purchase|
-      shipping = [purchase.product.shipping, shipping].max if purchase.quantity > 0
+      shipping = [purchase.product.shipping(country_code), shipping].max if purchase.quantity > 0
     end
     return shipping
   end

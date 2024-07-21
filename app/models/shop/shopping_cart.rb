@@ -51,7 +51,7 @@ class Shop::ShoppingCart < ApplicationRecord
     self.purchases.includes(:product).group_by(&:stripe_account_id).each do |acct_purchase|
       acct_shipping = 0
       acct_purchase[1].each do |purchase|
-        acct_shipping = [purchase.product.shipping, acct_shipping].max if purchase.quantity > 0
+        acct_shipping = [purchase.product.shipping(self.country_code), acct_shipping].max if purchase.quantity > 0
       end
       shipping += acct_shipping
     end

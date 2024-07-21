@@ -11,7 +11,8 @@ de:
         price: "Preis"
         stock: "Lagerbestand"
         is_hidden: "Versteckt?"
-        shipping: "Versandkosten"
+        shipping_national: "Versandkosten"
+        shipping_international: "Versandkosten"
         currency: "Währung"
         subtype: "Produktart"
   shop:
@@ -31,6 +32,9 @@ de:
         service: "Dienstleistung"
         digital: "Digitales Produkt"
         physical: "Physikalisches Produkt"
+      shipping_types:
+          national: "Inland"
+          international: "Ausland"
       info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die Verkäufer-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen."
       terms_of_use:
         title: "Mit dem Erstellen eines Produkts, stimmst du den folgenden Nutzungsbedingungen zu:"

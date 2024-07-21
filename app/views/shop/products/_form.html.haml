@@ -44,8 +44,14 @@
     = f.number_field :price, class: 'form-control', value: @shop_product.price || 1, step: 0.1, min: 1
   #subtype-target{class: @shop_product.subtype != 'physical' ? 'hidden' : ''}
     .field.form-group
-      = f.label :shipping, t('activerecord.attributes.shop_product.shipping')
-      = f.number_field :shipping, class: 'form-control', value: @shop_product.shipping || 0, step: 0.1, min: 0
+      = f.label :shipping_national, t('activerecord.attributes.shop_product.shipping_national')
+      .row
+        .col
+          = f.number_field :shipping_national, class: 'form-control', value: @shop_product.shipping_national || 0, step: 0.1, min: 0
+          %em= t('shop.products.shipping_types.national')
+        .col
+          = f.number_field :shipping_international, class: 'form-control', value: @shop_product.shipping_international || 0, step: 0.1, min: 0
+          %em= t('shop.products.shipping_types.international')
     .field.form-group
       = f.label :stock, t('activerecord.attributes.shop_product.stock')
       = f.number_field :stock, class: 'form-control', value: @shop_product.stock || 0, step: 1, min: 0

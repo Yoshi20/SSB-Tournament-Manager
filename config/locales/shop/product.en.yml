@@ -11,7 +11,8 @@ en:
         price: "Price"
         stock: "Stock"
         is_hidden: "Hidden?"
-        shipping: "Shipping"
+        shipping_national: "Shipping"
+        shipping_international: "Shipping"
         currency: "Currency"
         subtype: "Product Type"
   shop:
@@ -31,6 +32,9 @@ en:
         service: "Service"
         digital: "Digital product"
         physical: "Physical product"
+      shipping_types:
+          national: "National"
+          international: "International"
       info_body: "To add your own product to the shop, log in and first add the seller role to your profile. Then you need to link a Stripe account in your account settings."
       terms_of_use:
         title: "By creating a product, you agree to the following terms of use:"

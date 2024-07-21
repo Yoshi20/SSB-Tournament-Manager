@@ -11,7 +11,8 @@ class Shop::Product < ApplicationRecord
   validates :price, presence: true
   validates :stock, presence: true
   validates :stock, :numericality => { greater_than_or_equal_to: 0 }
-  validates :shipping, presence: true
+  validates :shipping_national, presence: true
+  validates :shipping_international, presence: true
 
   after_validation :handle_subtype, on: [ :create, :update ]
   after_validation :set_position, on: [ :create ]
@@ -21,7 +22,8 @@ class Shop::Product < ApplicationRecord
 
   def handle_subtype
     unless self.subtype == 'physical'
-      self.shipping = 0
+      self.shipping_national = 0
+      self.shipping_international = 0
       self.stock = 0
     end
   end
@@ -45,6 +47,17 @@ class Shop::Product < ApplicationRecord
     price = (self.price * quantity).round(1)
     delimeter = self.currency == 'chf' ? '.' : ','
     (price%1 == 0) ? "#{price.to_i}#{delimeter}00" : "#{price}0"
+  end
+
+  def shipping(country_code)
+    eu_countries = ['de', 'fr', 'it', 'lu', 'pt']
+    if country_code == self.country_code
+      self.shipping_national
+    elsif country_code.in?(eu_countries) && self.country_code.in?(eu_countries)
+      self.shipping_national
+    else
+      self.shipping_international
+    end
   end
 
   def stock_text
