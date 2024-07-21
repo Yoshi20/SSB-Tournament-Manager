@@ -74,9 +74,9 @@ class Shop::ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def shop_product_params
       params.require(:shop_product).permit(
-        :name, :description, :currency, :price, :shipping_national, :stock, :is_hidden,
-        :image_link, :image_height, :image_width, :subtype,
-        :shipping_international
+        :name, :description, :currency, :price, :shipping_national, :stock,
+        :is_hidden, :image_link, :image_height, :image_width, :subtype,
+        :shipping_international, :max_quantity_per_package
       )
     end
 

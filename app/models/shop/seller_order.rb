@@ -54,7 +54,10 @@ class Shop::SellerOrder < ApplicationRecord
     shipping = 0
     country_code = self.order.shopping_cart.country_code
     self.purchases.includes(:product).each do |purchase|
-      shipping = [purchase.product.shipping(country_code), shipping].max if purchase.quantity > 0
+      if purchase.quantity > 0
+        number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).round
+        shipping = [purchase.product.shipping(country_code)*number_of_packages, shipping].max
+      end
     end
     return shipping
   end

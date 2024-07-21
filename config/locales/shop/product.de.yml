@@ -13,6 +13,7 @@ de:
         is_hidden: "Versteckt?"
         shipping_national: "Versandkosten"
         shipping_international: "Versandkosten"
+        max_quantity_per_package: "Max. Anzahl pro Paket"
         currency: "Währung"
         subtype: "Produktart"
   shop:

@@ -9,10 +9,13 @@ class Shop::Product < ApplicationRecord
   validates :name, presence: true
   validates :currency, presence: true
   validates :price, presence: true
+  validates :price, :numericality => { greater_than_or_equal_to: 1 }
   validates :stock, presence: true
   validates :stock, :numericality => { greater_than_or_equal_to: 0 }
   validates :shipping_national, presence: true
   validates :shipping_international, presence: true
+  validates :max_quantity_per_package, presence: true
+  validates :max_quantity_per_package, :numericality => { greater_than_or_equal_to: 1 }
 
   after_validation :handle_subtype, on: [ :create, :update ]
   after_validation :set_position, on: [ :create ]
@@ -25,6 +28,7 @@ class Shop::Product < ApplicationRecord
       self.shipping_national = 0
       self.shipping_international = 0
       self.stock = 0
+      self.max_quantity_per_package = 1
     end
   end
 

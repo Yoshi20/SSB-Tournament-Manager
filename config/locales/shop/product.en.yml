@@ -13,6 +13,7 @@ en:
         is_hidden: "Hidden?"
         shipping_national: "Shipping"
         shipping_international: "Shipping"
+        max_quantity_per_package: "Max. quantity per package"
         currency: "Currency"
         subtype: "Product Type"
   shop:

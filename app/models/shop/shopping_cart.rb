@@ -49,11 +49,14 @@ class Shop::ShoppingCart < ApplicationRecord
     shipping = 0
     # add max shipping for each seller (not only the max from all products)
     self.purchases.includes(:product).group_by(&:stripe_account_id).each do |acct_purchase|
-      acct_shipping = 0
+      seller_shipping = 0
       acct_purchase[1].each do |purchase|
-        acct_shipping = [purchase.product.shipping(self.country_code), acct_shipping].max if purchase.quantity > 0
+        if purchase.quantity > 0
+          number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).round
+          seller_shipping = [purchase.product.shipping(self.country_code)*number_of_packages, seller_shipping].max
+        end
       end
-      shipping += acct_shipping
+      shipping += seller_shipping
     end
     return shipping
   end
