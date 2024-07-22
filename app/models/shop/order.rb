@@ -11,6 +11,9 @@ class Shop::Order < ApplicationRecord
   after_validation :set_status, on: [ :update ]
   after_create :create_seller_orders
 
+  FeeInPercent = (0.0325 + 0.05) # Stripe-Fee: 3.25% + 0.3 + Platform-Fee: 5%
+  FeeFlatrate = 0.3 # Stripe-Fee: 3.25% + 0.3
+
   def strip_whitespace
     self.organisation.try(:strip!)
     self.name.try(:strip!)

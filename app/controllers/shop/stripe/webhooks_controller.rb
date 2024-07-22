@@ -25,11 +25,16 @@ class Shop::Stripe::WebhooksController < Shop::Stripe::StripeController
         shop_order = Shop::Order.find(checkout_session.metadata.order_id)
         shop_order.update!(was_order_paid: true)
         shop_order.complete! # reduce stocks and send some emails
-        handleTransferToSellers(checkout_session)
       end
     # when 'checkout.session.async_payment_failed' # payment failed
+    # when 'checkout.session.expired'
+    when 'charge.updated'
+      charge = event.data.object
+      list = Stripe::Checkout::Session.list({payment_intent: charge.payment_intent, limit: 1})
+      checkout_session = list.data[0]
+      handleTransferToSellers(checkout_session)
     else
-      puts "Unhandled event type: #{event.type}"
+      puts "Unhandled event type: \"#{event.type}\""
     end
     render json: {}, status: 200
   end

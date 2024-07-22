@@ -93,7 +93,9 @@ class Shop::ShoppingCart < ApplicationRecord
       self.update!(has_checked_out: true)
       self.purchases.includes(:product).each do |purchase|
         product = purchase.product
-        product.update!(stock: product.stock - purchase.quantity)
+        if product.subtype == 'physical'
+          product.update!(stock: product.stock - purchase.quantity)
+        end
       end
     end
   end
@@ -102,7 +104,9 @@ class Shop::ShoppingCart < ApplicationRecord
     if self.has_checked_out == true
       self.purchases.includes(:product).each do |purchase|
         product = purchase.product
-        product.update!(stock: product.stock + purchase.quantity)
+        if product.subtype == 'physical'
+          product.update!(stock: product.stock + purchase.quantity)
+        end
       end
       self.update!(has_checked_out: false)
     end

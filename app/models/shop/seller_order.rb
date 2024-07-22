@@ -4,8 +4,42 @@ class Shop::SellerOrder < ApplicationRecord
   belongs_to :user
   belongs_to :order, class_name: 'Shop::Order'
 
+  after_validation :set_sold_products_and_more, on: [ :create ]
   after_validation :set_order_sent_at, on: [ :update ]
   after_validation :set_status, on: [ :update ]
+
+  def set_sold_products_and_more
+    shopping_cart = self.order.shopping_cart
+    country_code = shopping_cart.country_code
+    purchases = shopping_cart.purchases.where(stripe_account_id: self.stripe_account_id).includes(:product)
+    sold_products = []
+    shipping = 0
+    total_price = 0
+    purchases.each do |purchase|
+      product = purchase.product
+      sold_products << {
+        name: product.name,
+        description: product.description,
+        currency: product.currency,
+        price: product.price,
+        shipping: product.shipping(country_code),
+        quantity: purchase.quantity,
+        product_id: product.id
+      }
+      if purchase.quantity > 0
+        number_of_packages = (purchase.quantity.to_f / product.max_quantity_per_package).round
+        shipping = [product.shipping(country_code)*number_of_packages, shipping].max
+      end
+      total_price += (purchase.product.price * purchase.quantity)
+    end
+    total_price += shipping
+    self.sold_products_json = sold_products
+    self.currency = purchases.first.product.currency
+    self.shipping_costs = shipping
+    self.total_price = total_price
+    number_of_sellers = shopping_cart.purchases.pluck(&:stripe_account_id).uniq.count
+    self.total_fee = total_price * Shop::Order::FeeInPercent + Shop::Order::FeeFlatrate/number_of_sellers
+  end
 
   def set_order_sent_at
     self.order_sent_at = self.was_order_sent ? DateTime.now : nil
@@ -31,39 +65,10 @@ class Shop::SellerOrder < ApplicationRecord
     end
   end
 
-  def purchases
-    self.order.shopping_cart.purchases.where(stripe_account_id: self.stripe_account_id)
-  end
-
-  def total_price
-    total_price = 0
-    self.purchases.includes(:product).each do |purchase|
-      total_price = total_price + (purchase.product.price * purchase.quantity)
-    end
-    total_price = total_price + self.shipping_costs
-    return total_price
-  end
-
   def total_price_text(price = nil)
     total_price = price.present? ? price.round(1) : self.total_price.round(1)
     delimeter = self.currency == 'chf' ? '.' : ','
     return (total_price%1 == 0) ? "#{total_price.to_i}#{delimeter}-" : "#{total_price}0"
-  end
-
-  def shipping_costs
-    shipping = 0
-    country_code = self.order.shopping_cart.country_code
-    self.purchases.includes(:product).each do |purchase|
-      if purchase.quantity > 0
-        number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).round
-        shipping = [purchase.product.shipping(country_code)*number_of_packages, shipping].max
-      end
-    end
-    return shipping
-  end
-
-  def currency
-    self.purchases.first.product.currency
   end
 
   def currency_text

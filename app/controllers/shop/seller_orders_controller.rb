@@ -7,6 +7,7 @@ class Shop::SellerOrdersController < ApplicationController
 
   # GET /shop/seller_orders
   def index
+    # blup: eventuell nur .paid seller_orders anzeigen?
     @shop_seller_orders = current_user.seller_orders.includes(:order, order: :shopping_cart).order(created_at: :desc)
   end
 

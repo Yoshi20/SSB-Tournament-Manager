@@ -17,6 +17,7 @@ de:
       checkout: "Checkout"
       shipment: "Versand"
       stripe_fees: "Stripe-Gebühren"
+      fees: "Gebühren"
       total: "Total"
       continue_to_checkout: "Weiter zum Checkout"
   flash:

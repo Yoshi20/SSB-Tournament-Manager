@@ -109,7 +109,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     #     handleTransferToSellers(checkout_session)
     #   end
     # end
-    redirect_to shop_orders_path, notice: t('flash.shop_order_created')
+    redirect_to shop_path, notice: t('flash.shop_order_created')
   end
 
   # GET /shop/stripe/checkout_cancel

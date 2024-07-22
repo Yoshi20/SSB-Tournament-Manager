@@ -17,6 +17,7 @@ en:
       checkout: "Checkout"
       shipment: "Shipment"
       stripe_fees: "Stripe fees"
+      fees: "Fees"
       total: "Total"
       continue_to_checkout: "Continue to checkout"
   flash:

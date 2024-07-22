@@ -25,8 +25,8 @@
           %tr{data: { id: shop_seller_order.id, component: 'shop/seller_order', action: "click->tables#show" }, style: "cursor: context-menu; background-color: #{shop_seller_order.recently_updated? ? 'aliceblue' : ''}; color: #{shop_seller_order.recently_updated? ? 'black' : ''};"}
             %td.text-center= shop_seller_order.created_at.localtime.to_fs(:custom_datetime)
             %td.text-left{style: 'overflow: hidden;'}
-              - shop_seller_order.purchases.each do |purchase|
-                = "#{purchase.quantity}x #{purchase.product.name}"
+              - shop_seller_order.sold_products_json.each do |sold_product|
+                = "#{sold_product['quantity']}x #{sold_product['name']}"
                 %br
             %td.text-center
               - total_price = shop_seller_order.total_price
