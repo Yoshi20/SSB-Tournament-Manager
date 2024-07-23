@@ -1,5 +1,9 @@
 module Domain
 
+  def self.title_from(country_code)
+    Rails.application.config.apps[country_code.to_sym]
+  end
+
   def self.domain_from(country_code)
     Rails.application.config.domains[country_code.to_sym]
   end

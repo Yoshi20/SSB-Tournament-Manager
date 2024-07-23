@@ -55,11 +55,18 @@ class Shop::Order < ApplicationRecord
     self.updated_at >= 3.seconds.ago
   end
 
+  def has_physicals?
+    self.shopping_cart.has_physicals?
+  end
+
   def complete!
     self.shopping_cart.checkout!
-    # blup: TODO -> ShopMailer
-    # ShopMailer.with(shop_order: self, app_mode: current_app_mode).order_created_email.deliver_later
-    # ShopMailer.with(email: self.email, app_mode: current_app_mode).thank_you_email.deliver_later
+    country_code = self.shopping_cart.country_code
+    ShopMailer.with(shop_order: self, country_code: country_code).order_paid_email.deliver_later
+    ShopMailer.with(shop_order: self, country_code: country_code).thank_you_email.deliver_later
+    self.seller_orders.each do |seller_order|
+      ShopMailer.with(seller_order: seller_order, country_code: country_code).seller_order_paid_email.deliver_later
+    end
   end
 
   def revert_checkout

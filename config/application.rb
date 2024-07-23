@@ -30,6 +30,17 @@ module SsbTournamentManager
 
     config.i18n.available_locales = %w(en de fr it pt is)
 
+    config.apps = {
+      ch: "SwissSmash",
+      de: "GermanySmash",
+      fr: "SmashUltimate",
+      lu: "LuxSmash",
+      it: "ItalySmash",
+      uk: "SmashUltimate",
+      pt: "SmashBrosPortugal",
+      is: "SmashIceland",
+    }
+
     config.domains = {
       ch: "swisssmash.ch",
       de: "germanysmash.de",

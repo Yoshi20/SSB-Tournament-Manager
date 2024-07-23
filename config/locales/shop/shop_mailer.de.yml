@@ -1,0 +1,7 @@
+de:
+  shop_mailer:
+    thank_you_email:
+      subject: "Vielen Dank für deine Bestellung auf %{title}"
+      delivery_address: "Die folgende Lieferadresse wurden erfasst:"
+      sellers: "Bei Änderungen oder Fragen kontaktiere bitte direkt der/die Verkäufer:"
+      outro: "Wir wünschen viel Spass mit deinem Einkauf!"
