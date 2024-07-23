@@ -38,7 +38,12 @@
     = f.text_field :description, class: 'form-control'
   .field.form-group
     = f.label :currency, t('activerecord.attributes.shop_product.currency')
-    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.currency_from(current_user.country_code)), {include_blank: true}, class: 'form-control'
+    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.iso_currency_from(session[:country_code])), {include_blank: true}, class: 'form-control'
+    - if session[:country_code] == 'is'
+      %em
+        = '( Unfortunately, Stripe does not seem to support the Icelandic Krona as an alternative currency ->'
+        = link_to 'Doc', 'https://docs.stripe.com/payouts/alternative-currencies', target: '_blank'
+        = ')'
   .field.form-group
     = f.label :price, t('activerecord.attributes.shop_product.price')
     = f.number_field :price, class: 'form-control', value: @shop_product.price || 1, step: 0.1, min: 1

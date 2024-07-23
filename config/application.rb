@@ -74,6 +74,17 @@ module SsbTournamentManager
       is: "kr",
     }
 
+    config.iso_currencies = {
+      ch: "chf",
+      de: "eur",
+      fr: "eur",
+      lu: "eur",
+      it: "eur",
+      uk: "gbp",
+      pt: "eur",
+      is: "isk",
+    }
+
     config.emails = {
       ch: "SwissSmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_CH']}>",
       de: "GermanySmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_DE']}>",
