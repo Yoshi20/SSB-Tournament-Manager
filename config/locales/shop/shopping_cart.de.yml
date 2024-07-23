@@ -10,6 +10,7 @@ de:
         client_ip: "IP"
         has_checked_out: "Checked out?"
         created_at: "Erstellt am"
+        currency: "Währung"
   shop:
     shopping_cart:
       title: "Einkaufswagen"

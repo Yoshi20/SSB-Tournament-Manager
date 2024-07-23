@@ -10,6 +10,7 @@ en:
         client_ip: "IP"
         has_checked_out: "Checked out?"
         created_at: "Created at"
+        currency: "Currency"
   shop:
     shopping_cart:
       title: "Shopping cart"

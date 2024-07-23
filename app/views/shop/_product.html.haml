@@ -5,7 +5,8 @@
     - if is_seller_product
       %div.position-indicator= product.position
     %div.country-indicator= image_tag("flags/#{product.country_code}.svg", width: '20px', height: '15px', alt: "#{product.country_code} flag icon")
-    .row.no-space{style: product.is_hidden ? 'opacity: 0.5;' : ''}
+    - show_disabled = product.is_hidden || (@shopping_cart.present? && product.currency != @shopping_cart.currency)
+    .row.no-space{style: show_disabled ? 'opacity: 0.5;' : ''}
       .col.product-image-col
         - if product.image_link.present? && Request.url_valid?(product.image_link)
           = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image"

@@ -20,6 +20,7 @@ class Shop::PurchasesController < ApplicationController
     is_same_currency = (@shopping_cart.currency.nil? || @shopping_cart.currency == @shop_purchase.currency)
     respond_to do |format|
       if (!was_limitted && is_same_currency) && @shop_purchase.save
+        @shopping_cart.update(currency: @shop_purchase.currency) unless @shopping_cart.currency.present?
         format.html { redirect_to shop_path, notice: t('flash.shop_purchase_created') }
         format.json { render :show, status: :created, location: @shop_purchase }
       else

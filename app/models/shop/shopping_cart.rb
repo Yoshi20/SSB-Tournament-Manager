@@ -44,10 +44,6 @@ class Shop::ShoppingCart < ApplicationRecord
     return false
   end
 
-  def currency
-    self.purchases.first&.currency
-  end
-
   def currency_text
     Currency::hash[self.currency.to_sym]
   end
