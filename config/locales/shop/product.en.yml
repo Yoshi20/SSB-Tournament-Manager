@@ -50,6 +50,7 @@ en:
         li9: "Platform fees: A success commission of 5% is charged on sales"
         li10: "Stripe fees: 3.25% + 0.3 is charged on sales %{link}"
         li11: "Place of jurisdiction: Canton of Bern, Switzerland"
+        li12: "Last updated on: %{date}"
   flash:
     shop_product_created: "Product was successfully created"
     shop_product_not_created: "Product couldn't be created!"

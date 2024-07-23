@@ -50,6 +50,7 @@ de:
         li9: "Platform-Gebühren: Bei Verkauf fällt eine Erfolgsprovision von 5% an"
         li10: "Stripe-Gebühren: Bei Verkauf 3.25% + 0.3 (%{link})"
         li11: "Gerichtsstand: Kanton Bern, Schweiz"
+        li12: "Zuletzt aktualisiert am: %{date}"
   flash:
     shop_product_created: "Produkt wurde erfolgreich erstellt"
     shop_product_not_created: "Produkt konnten nicht erstellt werden!"
