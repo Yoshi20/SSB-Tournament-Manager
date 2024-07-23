@@ -14,8 +14,8 @@ de:
         city: "Stadt/Ort"
         phone_number: "Telefon"
         email: "E-Mail"
-        was_order_sent: "Versendet?"
-        order_sent_at: "Versendet am"
+        was_order_sent: "Ausgeliefert?"
+        order_sent_at: "Ausgeliefert am"
         was_order_paid: "Bezahlt?"
         order_paid_at: "Bezahlt am"
         status: "Status"
@@ -34,7 +34,7 @@ de:
       status:
         open: "Zahlung offen"
         paid: "Bezahlt"
-        sent: "Versendet"
+        sent: "Ausgeliefert"
         cancelled: "Storniert"
       payment_methods:
         invoice: "Vorkasse via E-Mail-Rechnung"

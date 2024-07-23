@@ -4,29 +4,21 @@ class Shop::Stripe::StripeController < ActionController::Base
   protected
 
     def handleTransferToSellers(checkout_session)
-      # checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
       shop_order = Shop::Order.find(checkout_session.metadata.order_id)
-      # blup: unless shop_order.stripe_transfer_id.present?
       transfer_data_array = JSON.parse(checkout_session.metadata.transfer_data_json)
       # make a transfer for every seller
       transfer_data_array.each do |td|
+        seller_order = shop_order.seller_orders.find_by(stripe_account_id: td['stripe_account_id'])
+        next if seller_order.stripe_transfer_id.present? # prevents creating multiple Stripe::Transfer
         account = Stripe::Account.retrieve(td['stripe_account_id'])
         if (account.present? && account.charges_enabled && account.details_submitted && account.payouts_enabled)
-          # blup: next if account.id == "acct_1Pc88NJFjCRueizw" # no Transfer required if its my swisssmash.ch stripe account
+          # blup: TODO -> next if account.id == "acct_1Pc88NJFjCRueizw" # no Transfer required if its my swisssmash.ch stripe account
           # Find charge_id to be able to define source_transaction (to prevent "insufficient available funds"-error)
           payment_intent = Stripe::PaymentIntent::retrieve(checkout_session.payment_intent)
-          puts 'blup'
-          puts payment_intent.inspect#blup
+          # puts payment_intent.inspect
           charge_id = payment_intent.latest_charge # TODO: handling when charge_id is (still) nil?
-          puts 'blup'
-          puts charge_id.inspect#blup
-          charge = Stripe::Charge::retrieve(charge_id) #blup
-          puts charge.inspect#blup
-          puts 'blup1 <-------------'
-          # blup: nur einmalig requesten (nicht pro seller?)
-          # blup: exchange_rate auf order speichern?
-          balance_transaction = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)#blup
-          puts balance_transaction.inspect#blup
+          # charge = Stripe::Charge::retrieve(charge_id)
+          # balance_transaction = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)
           # Transfer a specific amount to a given destination (e.g. a seller account) and only leave my platform fee
           # https://docs.stripe.com/connect/separate-charges-and-transfers?platform=web&ui=stripe-hosted#verf%C3%BCgbarkeit-von-%C3%BCberweisungen
           # Note: The currency of source_transaction's balance transaction must be the same as the transfer currency
@@ -39,11 +31,10 @@ class Shop::Stripe::StripeController < ActionController::Base
             destination: account.id, # seller account
             transfer_group: "ORDER_#{shop_order.id}",
             metadata: { order_id: shop_order.id }, # optional
-            source_transaction: charge_id,
+            source_transaction: charge_id, # optional (used to prevent "insufficient available funds"-error)
           })
-          puts 'blup2'
-          puts transfer.inspect#blup
-          #blup: transfer_id auf seller_order speichern?  shop_order.update(stripe_transfer_id: transfer.id)
+          # puts transfer.inspect
+          seller_order.update(stripe_transfer_id: transfer.id)
         else
           #TODO: handle invalid payout account
           raise "invalid Stripe payout account! -> #{account.inspect}"

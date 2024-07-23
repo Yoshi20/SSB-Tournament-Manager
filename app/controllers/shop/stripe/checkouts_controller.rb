@@ -25,6 +25,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
         quantity: purchase.quantity,
       }
       # populate transfer_data (either add to existing or create new entry)
+      # Note: This data could alse be saved on seller_order, but is added here to be able to see it in Stripe
       td = transfer_data.find{ |td| td[:stripe_account_id] == purchase.stripe_account_id }
       if td.present?
         td[:price] += (product.price * purchase.quantity)

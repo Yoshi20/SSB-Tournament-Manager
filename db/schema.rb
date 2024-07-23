@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_23_075856) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_23_112058) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -239,6 +239,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_075856) do
     t.float "shipping_costs", default: 0.0, null: false
     t.float "total_price", default: 0.0, null: false
     t.float "total_fee", default: 0.0, null: false
+    t.string "stripe_transfer_id"
     t.index ["order_id"], name: "index_shop_seller_orders_on_order_id"
     t.index ["user_id"], name: "index_shop_seller_orders_on_user_id"
   end

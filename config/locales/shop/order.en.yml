@@ -14,8 +14,8 @@ en:
         city: "City/Location"
         phone_number: "Phone"
         email: "Email"
-        was_order_sent: "Order sent?"
-        order_sent_at: "Order sent at"
+        was_order_sent: "Order delivered?"
+        order_sent_at: "Order delivered at"
         was_order_paid: "Order paid?"
         order_paid_at: "Order paid at"
         status: "Status"
@@ -34,7 +34,7 @@ en:
       status:
         open: "Payment pending offen"
         paid: "Paid"
-        sent: "Sent"
+        sent: "Delivered"
         cancelled: "Cancelled"
       payment_methods:
         invoice: "In advance via email invoice"
