@@ -83,7 +83,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
       # {stripe_account: '{{CONNECTED_ACCOUNT_ID}}'}, # optional (for branding?)
       shipping_options: (shipping > 0 ? [{
         shipping_rate_data: {
-          display_name: I18n.t('shop.shopping_cart.shipment'), #blup: paket national or international text?
+          display_name: I18n.t('shop.shopping_cart.shipment'), # delivery_text
           type: 'fixed_amount',
           fixed_amount: {
             amount: (shipping * 100).to_i, # price in Rp
@@ -101,7 +101,6 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     # # only for development -> should be handled in the webhook
     # if Rails.env.development?
     #   checkout_session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    #   shop_order = Shop::Order.find(checkout_session.metadata.order_id)
     #   if checkout_session.payment_status == 'paid'
     #     shop_order = Shop::Order.find(checkout_session.metadata.order_id)
     #     shop_order.update!(was_order_paid: true)

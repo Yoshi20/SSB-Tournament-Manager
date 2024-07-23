@@ -15,7 +15,6 @@
             = "#{sold_product['quantity']}x #{sold_product['name']}"
             %br
           = "1x #{t('shop.shopping_cart.shipment')}" if @shop_seller_order.shipping_costs > 0
-          -# blup: anzahl versand
         %td.text-right
           %strong= @shop_seller_order.total_price_text
         %td.text-center

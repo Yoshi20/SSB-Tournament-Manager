@@ -14,7 +14,6 @@
             = "#{purchase.quantity}x #{purchase.product.name}"
             %br
           = "1x #{t('shop.shopping_cart.shipment')}" if @shopping_cart.shipping_costs > 0
-          -# blup: anzahl versand
         %td.text-right
           - total_price = @shopping_cart.total_price
           %strong= @shopping_cart.total_price_text(total_price)

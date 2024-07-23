@@ -24,7 +24,8 @@ class Shop::SellerOrder < ApplicationRecord
         price: product.price,
         shipping: product.shipping(country_code),
         quantity: purchase.quantity,
-        product_id: product.id
+        product_id: product.id,
+        subtype: product.subtype,
       }
       if purchase.quantity > 0
         number_of_packages = (purchase.quantity.to_f / product.max_quantity_per_package).round
