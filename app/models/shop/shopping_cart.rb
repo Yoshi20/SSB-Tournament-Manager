@@ -37,6 +37,13 @@ class Shop::ShoppingCart < ApplicationRecord
     self.user&.username
   end
 
+  def has_physicals?
+    self.purchases.includes(:product).each do |purchase|
+      return true if purchase.product.subtype == 'physical'
+    end
+    return false
+  end
+
   def currency
     self.purchases.first&.currency
   end

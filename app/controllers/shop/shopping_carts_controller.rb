@@ -7,7 +7,7 @@ class Shop::ShoppingCartsController < ApplicationController
   # GET /shopping_cart
   def show
     if @shopping_cart.present?
-      @purchases = @shopping_cart.purchases.includes(:product).order(:created_at)
+      @purchases = @shopping_cart.purchases.includes(:product, product: {user: :player}).order(:created_at)
       unless @purchases.any?
         @shopping_cart.destroy
         redirect_to shop_path

@@ -49,7 +49,7 @@ class Shop::OrdersController < ApplicationController
         format.html { redirect_to shop_stripe_checkout_path(order_id: @shop_order.id) }
         format.json { render :new, status: :ok, location: @shop_order }
       else
-        format.html { redirect_to shop_checkout_path, alert: t('flash.shop_order_not_created') }
+        format.html { render :new, status: :unprocessable_content, alert: t('flash.shop_order_not_created') }
         format.json { render json: @shop_order.errors, status: :unprocessable_content }
       end
     end

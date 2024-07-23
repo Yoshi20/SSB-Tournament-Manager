@@ -6,11 +6,7 @@
 
 = render 'summary'
 
-.row{style: 'margin-top: 1.5rem;'}
-  .col.middle-align
-    %h5= t('shop.orders.delivery_address')
-
-.new-shop_order
+.edit-shop_order
   = render 'form'
 
 - back_path = @shop_order.new_record? ? shop_shopping_cart_path : shop_orders_path

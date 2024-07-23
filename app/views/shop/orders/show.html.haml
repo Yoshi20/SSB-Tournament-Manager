@@ -43,7 +43,12 @@
 
 .row{style: 'margin-top: 1.5rem;'}
   .col.middle-align
-    %h5= "Sellers"
+
+    .row
+      .col
+        %h5= "Sellers"
+      .col
+        %h5= "seller_order"
     -# %ul
     - @shop_order.seller_orders.each do |shop_seller_order|
       - player = shop_seller_order.user.player
