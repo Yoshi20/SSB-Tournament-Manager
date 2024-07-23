@@ -23,7 +23,7 @@ class Shop::PurchasesController < ApplicationController
         format.html { redirect_to shop_path, notice: t('flash.shop_purchase_created') }
         format.json { render :show, status: :created, location: @shop_purchase }
       else
-        format.html { redirect_to shop_path, alert: (is_same_currency ? t('flash.shop_purchase_not_created_limit') : t('flash.shop_purchase_not_created_currency')) }
+        format.html { redirect_to shop_path, alert: (is_same_currency ? t('flash.shop_purchase_not_created_limit') : t('flash.shop_purchase_not_created_currency', currency: @shopping_cart.currency_text)) }
         format.json { render json: @shop_purchase.errors, status: :unprocessable_content }
       end
     end

@@ -21,7 +21,7 @@ de:
   flash:
     shop_purchase_created: "Produkt wurde erfolgreich dem Einkaufswagen hinzugefügt"
     shop_purchase_not_created_limit: "Produkt konnten nicht hinzugefügt werden! Limit erreicht"
-    shop_purchase_not_created_currency: "Produkt konnten nicht hinzugefügt werden! Pro Einkauf kann nur eine Währung verwendet werden"
+    shop_purchase_not_created_currency: "Produkt konnten nicht hinzugefügt werden! Pro Einkauf kann nur eine Währung verwendet werden (Aktuell: %{currency})"
     shop_purchase_updated: "Produkt wurde erfolgreich aktualisiert"
     shop_purchase_limitted: "Produkt wurde auf das Maximum limitiert"
     shop_purchase_not_updated: "Produkt konnte nicht aktualisiert werden!"
