@@ -19,7 +19,7 @@ en:
   shop:
     products:
       title: "Products"
-      no_products_found: "No products found yet"
+      no_products_found: "No products found"
       new: "Create new product"
       edit: "Edit product"
       prohibited: "prohibited this product from being saved:"

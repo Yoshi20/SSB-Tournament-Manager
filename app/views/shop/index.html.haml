@@ -5,6 +5,36 @@
 
 = render 'beta_header' #blup: beta
 
+.row
+  -# subtype
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :seller, params[:seller] if params[:seller].present?
+      = hidden_field_tag :order, params[:order] if params[:order].present?
+      .form-group
+        - subtypes_for_select = Shop::Product.pluck(:subtype).uniq.map{ |type| [t("shop.products.subtypes.#{type}"), type]}.sort
+        = select_tag :subtype, options_for_select(subtypes_for_select, params[:subtype]), prompt: t('shop.filter_by.subtype'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+  -# seller
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :subtype, params[:subtype] if params[:subtype].present?
+      = hidden_field_tag :order, params[:order] if params[:order].present?
+      .form-group
+        - sellers_for_select = User.includes(:player, :products).where(stripe_account_is_ready: true).map{|u| [u.player.gamer_tag, u.id] if u.products.any?}.sort
+        = select_tag :seller, options_for_select(sellers_for_select, params[:seller]), prompt: t('shop.filter_by.seller'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+  -# order_options
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :seller, params[:seller] if params[:seller].present?
+      = hidden_field_tag :subtype, params[:subtype] if params[:subtype].present?
+      .form-group
+        - order_options_raw = ['price-asc', 'price-desc', 'created_at-desc', 'created_at-asc']
+        - order_options_for_select = t(order_options_raw, scope: 'shop.sort_by').zip(order_options_raw)
+        = select_tag :order, options_for_select(order_options_for_select, params[:order]), prompt: t('shop.sort_by.prompt'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+
 - if @shop_products.any?
   .row.shop_products
     - @shop_products.each do |product|

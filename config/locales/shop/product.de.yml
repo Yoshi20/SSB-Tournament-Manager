@@ -19,7 +19,7 @@ de:
   shop:
     products:
       title: "Produkte"
-      no_products_found: "Noch keine Produkte vorhanden"
+      no_products_found: "Keine Produkte gefunden"
       new: "Neues Produkt erstellen"
       edit: "Produkt bearbeiten"
       prohibited: "verhindern das Speichern dieses Produkts:"

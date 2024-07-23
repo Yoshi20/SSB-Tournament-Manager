@@ -1767,6 +1767,15 @@ en:
 
   shop:
     title: "Shop"
+    filter_by:
+      seller: "Filter by seller"
+      subtype: "Filter by prduct type"
+    sort_by:
+      prompt: "Sort by"
+      price-asc: "Cheapest"
+      price-desc: "Most expensive"
+      created_at-desc: "Newest"
+      created_at-asc: "Oldest"
     add_to_cart: "Add to Cart"
     add_to_cart_short: "Add to Cart"
     flash:

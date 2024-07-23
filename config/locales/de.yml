@@ -1350,6 +1350,15 @@ de:
 
   shop:
     title: "Shop"
+    filter_by:
+      seller: "Nach Verkäufer filtern"
+      subtype: "Nach Produktart filtern"
+    sort_by:
+      prompt: "Sortiere nach"
+      price-asc: "Günstigste"
+      price-desc: "Teuerste"
+      created_at-desc: "Neuste"
+      created_at-asc: "Älteste"
     add_to_cart: "In den Warenkorb"
     add_to_cart_short: "Hinzufügen"
     flash:
