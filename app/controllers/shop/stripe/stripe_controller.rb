@@ -16,28 +16,34 @@ class Shop::Stripe::StripeController < ActionController::Base
           # Find charge_id to be able to define source_transaction (to prevent "insufficient available funds"-error)
           payment_intent = Stripe::PaymentIntent::retrieve(checkout_session.payment_intent)
           puts 'blup'
-          puts payment_intent.inspect
+          puts payment_intent.inspect#blup
           charge_id = payment_intent.latest_charge # TODO: handling when charge_id is (still) nil?
+          puts 'blup'
+          puts charge_id.inspect#blup
+          charge = Stripe::Charge::retrieve(charge_id) #blup
+          puts charge.inspect#blup
           puts 'blup1 <-------------'
-          puts charge_id.inspect
-          puts Stripe::Charge::retrieve(charge_id) #blup
+          # blup: nur einmalig requesten (nicht pro seller?)
+          # blup: exchange_rate auf order speichern?
+          balance_transaction = Stripe::BalanceTransaction.retrieve(charge.balance_transaction)#blup
+          puts balance_transaction.inspect#blup
           # Transfer a specific amount to a given destination (e.g. a seller account) and only leave my platform fee
-          amount_for_seller = (td['price'] + td['shipping']) * (1.0 - Shop::Order::FeeInPercent) - Shop::Order::FeeFlatrate
+          # https://docs.stripe.com/connect/separate-charges-and-transfers?platform=web&ui=stripe-hosted#verf%C3%BCgbarkeit-von-%C3%BCberweisungen
+          # Note: The currency of source_transaction's balance transaction must be the same as the transfer currency
+          # => This means that for ever currency a matching bank account is required -> https://dashboard.stripe.com/settings/payouts
+          total_price = (td['price'] + td['shipping'])
+          amount_for_seller = total_price * (1.0 - Shop::Order::FeeInPercent) - Shop::Order::FeeFlatrate/transfer_data_array.count
           transfer = Stripe::Transfer.create({
             amount: (amount_for_seller * 100).to_i, # price in Rp
             currency: td['currency'],
             destination: account.id, # seller account
             transfer_group: "ORDER_#{shop_order.id}",
             metadata: { order_id: shop_order.id }, # optional
-            # note: The currency of source_transaction's balance transaction (chf) must be the same as the transfer currency
-            # https://docs.stripe.com/connect/separate-charges-and-transfers?platform=web&ui=stripe-hosted#verf%C3%BCgbarkeit-von-%C3%BCberweisungen
-            source_transaction: (td['currency'] == 'chf' ? charge_id : nil),
-            # blup: bei Euro o.ä. muss mein Stripe-Konto ein genügend grosses Guthaben vorweisen!
-            # (oder trotzdem als chf schicken und vorgängig amount_for_seller anpassen?)
+            source_transaction: charge_id,
           })
           puts 'blup2'
-          puts transfer.inspect
-          # shop_order.update(stripe_transfer_id: transfer.id)
+          puts transfer.inspect#blup
+          #blup: transfer_id auf seller_order speichern?  shop_order.update(stripe_transfer_id: transfer.id)
         else
           #TODO: handle invalid payout account
           raise "invalid Stripe payout account! -> #{account.inspect}"

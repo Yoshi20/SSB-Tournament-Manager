@@ -4,8 +4,8 @@ module Currency
     {
       chf: 'CHF',
       eur: '€',
-      gbp: '£',
-      isk: 'kr',
+      gbp: '£', # 1% additional fee by payout for Swiss bank accounts
+      # isk: 'kr', # not supported by Stripe for Swiss bank accounts
     }
   end
 

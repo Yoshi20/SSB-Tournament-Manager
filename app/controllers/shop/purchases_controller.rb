@@ -31,16 +31,10 @@ class Shop::PurchasesController < ApplicationController
 
   # PATCH/PUT /shop/purchases/1 or /shop/purchases/1.json
   def update
+    @shop_purchase.assign_attributes(shop_purchase_params)
+    was_limitted = @shop_purchase.limit_quantity
     respond_to do |format|
-      edited_shop_purchase_params = shop_purchase_params.dup
-      quantity = edited_shop_purchase_params[:quantity].to_i
-      max_quantity = @shop_purchase.product.stock
-      was_limitted = false
-      if quantity > max_quantity
-        edited_shop_purchase_params[:quantity] = max_quantity
-        was_limitted = true
-      end
-      if quantity >= 0 && @shop_purchase.update(edited_shop_purchase_params)
+      if (@shop_purchase.quantity >= 0 && !was_limitted) && @shop_purchase.save
         format.html {
           if was_limitted
             redirect_to shop_shopping_cart_path, flash: {warn: t('flash.shop_purchase_limitted')}
