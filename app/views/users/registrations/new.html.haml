@@ -25,6 +25,7 @@
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
       .form-group
         = label_tag :gamer_tag, "#{t('players.gamer_tag')} *"
+        %em= "(Nickname)"
         = text_field_tag :gamer_tag, params[:gamer_tag], class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :prefix, t('players.prefix')

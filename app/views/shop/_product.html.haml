@@ -22,11 +22,16 @@
         .padding.text-center.shop-product-footer
           .text-right
             %p{style: 'margin: 0.5rem 0;'}
-              %strong{style: 'color: red; font-size: 1rem;'}= "#{product.currency_text} #{product.price_short}"
-              %span.shop-product-stock{style: "display: block; color: #{product.stock_text_color};"}= product.stock_text
+              %strong.shop-product-price= "#{product.currency_text} #{product.price_short}"
+              %span.shop-product-stock{style: "color: #{product.stock_text_color};"}= product.stock_text
           %nav.text-center{style: 'margin-top: 0;'}
             = form_for(Shop::Purchase.new, url: shop_purchases_path, html: { style: 'width: 100%;' }) do |f|
               = f.hidden_field :product_id, value: product.id
+              -# blup: if product.variants.any?
+              .form-group.mb-2{style: 'margin-top: -5px;'}
+                -# - variants_for_select = product.variants.map{ |v| [v.name, v.id] }
+                - variants_for_select = Shop::Product.pluck(:subtype).uniq.map{ |type| [t("shop.products.subtypes.#{type}"), type]}.sort
+                = select_tag :variant, options_for_select(variants_for_select), class: 'form-control'
               %button.border.round.add_to_cart-button{disabled: product.subtype == 'physical' && product.stock <= 0}
                 %span{style: 'position: relative;'}
                   %i.material-icons{style: 'font-size: 20px; margin-top: 5px;'} add_shopping_cart

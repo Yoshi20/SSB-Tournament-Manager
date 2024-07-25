@@ -7,7 +7,7 @@ de:
     attributes:
       shop_product:
         name: "Name"
-        description: "Beschreibung"
+        description: "Kurzbeschreibung"
         price: "Preis"
         stock: "Lagerbestand"
         is_hidden: "Versteckt?"
@@ -36,7 +36,7 @@ de:
       shipping_types:
           national: "Inland"
           international: "Ausland"
-      info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die Verkäufer-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen."
+      info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die \"Verkäufer\"-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen. Nachdem dein Stripe-Konto korrekt hinzugefügt wurde, klicke nochmal auf diesen Knopf um ein Produkt zu erstellen."
       terms_of_use:
         title: "Mit dem Erstellen eines Produkts, stimmst du den folgenden Nutzungsbedingungen zu:"
         li1: "Haftungsausschluss: Dieser Shop dient lediglich als Martkplatz. Verkäufer und Käufer schlissen autonom und eigenverantwortlich Vertäge ab"

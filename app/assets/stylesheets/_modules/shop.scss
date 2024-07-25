@@ -44,6 +44,7 @@
   }
 
   .shop-product-description {
+    line-height: 1.4;
     font-size: 0.75rem; // 12px
     @media only screen and (min-width: 600px) {
       font-size: 0.875rem; // 14px
@@ -62,7 +63,15 @@
     }
   }
 
+  .shop-product-price {
+    color: red;
+    background-color: #f7f2f7;
+    font-size: 1rem;
+  }
+
   .shop-product-stock {
+    display: block;
+    background-color: #f7f2f7;
     font-size: 0.625rem; // 10px
     @media only screen and (min-width: 600px) {
       font-size: 0.75rem; // 12px
