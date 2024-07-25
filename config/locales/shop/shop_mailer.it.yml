@@ -1,0 +1,7 @@
+it:
+  shop_mailer:
+    thank_you_email:
+      subject: "Grazie per il suo ordine su %{title}"
+      delivery_address: "È stato inserito il seguente indirizzo di consegna:"
+      sellers: "In caso di modifiche o domande, si prega di contattare direttamente il/i venditore/i:"
+      outro: "Ci auguriamo che il vostro acquisto sia di vostro gradimento!"

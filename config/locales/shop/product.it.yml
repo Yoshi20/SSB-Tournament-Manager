@@ -1,0 +1,61 @@
+it:
+  activerecord:
+    models:
+      shop_product:
+        one: "Prodotto"
+        other: "Prodotti"
+    attributes:
+      shop_product:
+        name: "Nome"
+        description: "Breve descrizione"
+        price: "Prezzo"
+        stock: "Scorte disponibili"
+        is_hidden: "Nascosto?"
+        shipping_national: Costi di spedizione
+        shipping_international: Costi di spedizione
+        max_quantity_per_package: Quantità massima per confezione
+        currency: "Valuta"
+        subtype: "Tipo di prodotto"
+        variants: "Varianti"
+  shop:
+    products:
+      title: "Prodotti"
+      no_products_found: "Nessun prodotto trovato"
+      new: "Crea un nuovo prodotto"
+      edit: "Modifica prodotto"
+      prohibited: "Impedisce il salvataggio di questo prodotto:"
+      total_count: "Numero di prodotti"
+      stock_text:
+        high: "Più di %{stock} pezzi in magazzino"
+        normal: "%{stock} pezzi in magazzino"
+        low: "Solo %{stock} pezzi in stock"
+        zero: "Non più in stock"
+      subtypes:
+        service: "Servizio"
+        digital: "Prodotto digitale"
+        physical: "Prodotto fisico"
+      shipping_types:
+          national: "Nazionale"
+          international: "All'estero"
+      variants_info: "(separati da virgole: ad esempio \"Verde, Rosso, Blu\" o \"S, M, L, XL\")"
+      info_body: "Per aggiungere un tuo prodotto al negozio, accedi al sito e aggiungi il ruolo di ‘venditore’ al tuo profilo. Quindi è necessario collegare un account Stripe nelle impostazioni dell'account. Una volta aggiunto correttamente l'account Stripe, fare nuovamente clic su questo pulsante per creare un prodotto."
+      terms_of_use:
+        title: "Creando un prodotto, si accettano le seguenti condizioni d'uso:"
+        li1: "Disclaimer: questo negozio funge solo da mercato. Venditori e acquirenti stipulano i contratti autonomamente e sotto la propria responsabilità"
+        li2: "Garanzia: in qualità di venditore, siete responsabili dell'adempimento dei contratti e rispondete dei difetti di qualità e/o dei vizi del titolo"
+        li3: "Indennità: vi impegnate a difenderci e a tenerci indenni da qualsiasi reclamo"
+        li4: "Divieto di pubblicità: i prodotti non possono contenere alcuna forma di pubblicità che non offrite attualmente o offrirete nell'immediato futuro attraverso questo negozio"
+        li5: "Obbligo di utilizzo: i prodotti offerti non possono essere finalizzati o incoraggiare la conclusione di contratti al di fuori del negozio"
+        li6: "Cancellazione: Ci riserviamo il diritto di nascondere o cancellare il vostro prodotto"
+        li7: "Modifiche: Ci riserviamo il diritto di modificare questi termini e condizioni in qualsiasi momento"
+        li8: "Spese di inserzione: L'inserimento dei prodotti è gratuito"
+        li9: "Commissioni per la piattaforma: Per le vendite viene applicata una commissione di successo del 5%"
+        li10: "Commissioni Stripe: Per le vendite 3,25% + 0,3 (%{link})"
+        li11: "Foro competente: Cantone di Berna, Svizzera"
+        li12: "Ultimo aggiornamento il: %{date}"
+  flash:
+    shop_product_created: "Il prodotto è stato creato con successo"
+    shop_product_not_created: "Il prodotto non è stato creato!"
+    shop_product_updated: "Il prodotto è stato aggiornato con successo"
+    shop_product_not_updated: "Il prodotto non può essere aggiornato!"
+    shop_product_deleted: "Il prodotto è stato cancellato con successo"

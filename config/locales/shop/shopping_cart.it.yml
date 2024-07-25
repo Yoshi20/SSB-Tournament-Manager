@@ -1,0 +1,25 @@
+it:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Carrelli della spesa"
+        other: "Carrelli della spesa"
+    attributes:
+      shopping_cart:
+        user_id: "Utente"
+        client_ip: "IP"
+        has_checked_out: "Effettuato il check-out?"
+        created_at: "Creato il"
+        currency: "Valuta"
+  shop:
+    shopping_cart:
+      title: "Carrelli della spesa"
+      total_count: "Numero di carrelli della spesa"
+      checkout: "Cassa"
+      shipment: "Spedizione"
+      stripe_fees: "Spese di stripe"
+      fees: "Commissioni"
+      total: "Totale"
+      continue_to_checkout: "Continua alla cassa"
+  flash:
+    shop_shopping_cart_deleted: "Il carrello è stato cancellato con successo"
