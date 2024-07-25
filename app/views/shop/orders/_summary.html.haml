@@ -11,7 +11,7 @@
         %td
           - @shopping_cart.purchases.includes(:product).order(:created_at).each do |purchase|
             - next if purchase.quantity <= 0
-            = "#{purchase.quantity}x #{purchase.product.name}"
+            = "#{purchase.quantity}x #{purchase.product_name}"
             %br
           = "1x #{t('shop.shopping_cart.shipment')}" if @shopping_cart.shipping_costs > 0
         %td.text-right

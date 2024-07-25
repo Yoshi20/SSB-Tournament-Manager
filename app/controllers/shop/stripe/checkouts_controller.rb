@@ -19,7 +19,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
       line_items << {
         price_data: {
           currency: product.currency,
-          product_data: {name: product.name},
+          product_data: {name: purchase.product_name},
           unit_amount: (product.price * 100).to_i, # price in Rp
         },
         quantity: purchase.quantity,

@@ -106,4 +106,8 @@ class Shop::Product < ApplicationRecord
     Currency::hash[self.currency.to_sym]
   end
 
+  def variants_array
+    self.variants.present? ? self.variants.split(',').compact.collect(&:strip) : []
+  end
+
 end

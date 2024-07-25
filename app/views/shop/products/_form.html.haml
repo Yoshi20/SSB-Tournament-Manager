@@ -47,6 +47,10 @@
   .field.form-group
     = f.label :price, t('activerecord.attributes.shop_product.price')
     = f.number_field :price, class: 'form-control', value: @shop_product.price || 1, step: 0.1, min: 1
+  .field.form-group
+    = f.label :variants, t('activerecord.attributes.shop_product.variants')
+    %em= t('shop.products.variants_info')
+    = f.text_field :variants, class: 'form-control'
   #subtype-target{class: @shop_product.subtype != 'physical' ? 'hidden' : ''}
     .field.form-group
       = f.label :shipping_national, t('activerecord.attributes.shop_product.shipping_national')

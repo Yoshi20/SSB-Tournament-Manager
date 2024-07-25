@@ -13,6 +13,8 @@ class ShopController < ApplicationController
     if params[:order].present?
       sanitizedOrder = ActiveRecord::Base.sanitize_sql_for_order(params[:order].gsub('-', ' '))
       @shop_products = @shop_products.order(Arel.sql(sanitizedOrder))
+    else
+      @shop_products = @shop_products.order(updated_at: :desc) # default: Latest first
     end
     # in any case order by user_id & position at the end
     @shop_products = @shop_products.order(:user_id, :position)

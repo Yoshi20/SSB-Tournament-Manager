@@ -16,6 +16,7 @@ de:
         max_quantity_per_package: "Max. Anzahl pro Paket"
         currency: "Währung"
         subtype: "Produktart"
+        variants: "Varianten"
   shop:
     products:
       title: "Produkte"
@@ -36,6 +37,7 @@ de:
       shipping_types:
           national: "Inland"
           international: "Ausland"
+      variants_info: "(Komma getrennt: z.B. \"Grün, Rot, Blau\" oder \"S, M, L, XL\")"
       info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die \"Verkäufer\"-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen. Nachdem dein Stripe-Konto korrekt hinzugefügt wurde, klicke nochmal auf diesen Knopf um ein Produkt zu erstellen."
       terms_of_use:
         title: "Mit dem Erstellen eines Produkts, stimmst du den folgenden Nutzungsbedingungen zu:"

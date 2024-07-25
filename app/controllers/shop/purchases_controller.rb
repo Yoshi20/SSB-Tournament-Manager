@@ -7,7 +7,7 @@ class Shop::PurchasesController < ApplicationController
   def create
     @shopping_cart = Shop::ShoppingCart.find_or_create_latest(request.remote_ip, current_user&.id, session['session_id'], session['country_code'])
     # only update quantity if a purchase with the same product already exists
-    @shop_purchase = @shopping_cart.purchases.find_by(product_id: shop_purchase_params[:product_id])
+    @shop_purchase = @shopping_cart.purchases.find_by(product_id: shop_purchase_params[:product_id], variant: shop_purchase_params[:variant])
     if @shop_purchase.present?
       @shop_purchase.quantity = @shop_purchase.quantity + 1
     else
@@ -77,7 +77,7 @@ class Shop::PurchasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shop_purchase_params
-      params.require(:shop_purchase).permit(:quantity, :product_id)
+      params.require(:shop_purchase).permit(:quantity, :product_id, :variant)
     end
 
 end

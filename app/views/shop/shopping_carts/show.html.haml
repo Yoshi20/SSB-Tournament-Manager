@@ -29,7 +29,7 @@
             - else
               = image_tag 'no-image.svg', height: '100%', width: '100%', alt: "no image logo", style: 'max-width: 12rem; max-height: 6rem;'
           %td
-            %strong= product.name
+            %strong= purchase.product_name
             %span.shop-product-seller-name= "by #{product.seller_name}"
             %p.d-none.d-md-block.d-lg-none.d-xl-block= product.description.html_safe
             %p{style: "color: #{product.stock_text_color};"}= product.stock_text

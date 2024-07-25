@@ -32,7 +32,7 @@
             %td.text-center= shop_order.created_at.localtime.to_fs(:custom_datetime)
             -# %td.text-left{style: 'overflow: hidden;'}
             -#   - shopping_cart.purchases.each do |purchase|
-            -#     = "#{purchase.quantity}x #{purchase.product.name}"
+            -#     = "#{purchase.quantity}x #{purchase.product_name}"
             -#     %br
             %td.text-center
               - total_price = shopping_cart.total_price
@@ -105,7 +105,7 @@
           %td.text-center= shopping_cart.country_code
           -# %td.text-left
           -#   - shopping_cart.purchases.each do |purchase|
-          -#     = "#{purchase.quantity}x #{purchase.product.name}"
+          -#     = "#{purchase.quantity}x #{purchase.product_name}"
           -#     %br
           %td.text-left
             - total_price = shopping_cart.total_price

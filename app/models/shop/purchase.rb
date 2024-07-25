@@ -18,6 +18,10 @@ class Shop::Purchase < ApplicationRecord
     return was_limitted
   end
 
+  def product_name
+    self.product.name + (self.variant.present? ? " (#{self.variant})" : "")
+  end
+
   def currency
     self.product.currency
   end

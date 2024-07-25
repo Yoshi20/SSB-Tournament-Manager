@@ -18,7 +18,7 @@ class Shop::SellerOrder < ApplicationRecord
     purchases.each do |purchase|
       product = purchase.product
       sold_products << {
-        name: product.name,
+        name: purchase.product_name,
         description: product.description,
         currency: product.currency,
         price: product.price,
