@@ -29,13 +29,13 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
       td = transfer_data.find{ |td| td[:stripe_account_id] == purchase.stripe_account_id }
       if td.present?
         td[:price] += (product.price * purchase.quantity)
-        td[:shipping] += product.shipping(session[:country_code])
+        td[:shipping] += product.shipping(shopping_cart.country_code)
       else
         transfer_data << {
           stripe_account_id: purchase.stripe_account_id,
           currency: product.currency,
           price: (product.price * purchase.quantity),
-          shipping: product.shipping(session[:country_code]),
+          shipping: product.shipping(shopping_cart.country_code),
         }
       end
     end
