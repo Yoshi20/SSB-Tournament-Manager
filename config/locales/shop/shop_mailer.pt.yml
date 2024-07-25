@@ -1,0 +1,7 @@
+pt:
+  shop_mailer:
+    thank_you_email:
+      subject: "Obrigado pela sua encomenda em %{title}"
+      delivery_address: "Foi introduzido o seguinte endereço de entrega:"
+      sellers: "Se tiver alguma alteração ou dúvida, contacte diretamente o(s) vendedor(es):"
+      outro: "Esperamos que goste da sua compra!"
