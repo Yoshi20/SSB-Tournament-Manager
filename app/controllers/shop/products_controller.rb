@@ -21,6 +21,7 @@ class Shop::ProductsController < ApplicationController
     @shop_product.country_code = session['country_code']
     respond_to do |format|
       if @shop_product.save
+        ShopMailer.with(shop_product: @shop_product).new_product_email.deliver_later
         format.html { redirect_to shop_path, notice: t('flash.shop_product_created') }
         format.json { render :show, status: :created, location: @shop_product }
       else

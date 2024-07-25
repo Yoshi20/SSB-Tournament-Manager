@@ -1,5 +1,18 @@
 class ShopMailer < ApplicationMailer
 
+  def new_product_email
+    @shop_product = params[:shop_product]
+    country_code = @shop_product.country_code
+    @url = shop_url(country_code)
+    @domain = Domain.domain_from(country_code)
+    mail(
+      from: Domain.email_from(country_code),
+      to: Domain.email_from(country_code),
+      subject: "New shop product on #{@domain}!",
+      delivery_method_options: Domain.delivery_options_from(country_code)
+    )
+  end
+
   def order_paid_email
     shop_order = params[:shop_order]
     country_code = params[:country_code]
@@ -52,6 +65,10 @@ class ShopMailer < ApplicationMailer
 
   def seller_orders_url(country_code, path)
     "https://www.#{Domain.domain_from(country_code)}/shop/seller_orders/#{path}"
+  end
+
+  def shop_url(country_code)
+    "https://www.#{Domain.domain_from(country_code)}/shop"
   end
 
 end
