@@ -1,0 +1,28 @@
+is:
+  activerecord:
+    models:
+      shop_purchase:
+        one: "Kaupa"
+        other: "Kaup"
+    attributes:
+      shop_purchase:
+        quantity: "Magn"
+        client_ip: "IP"
+        session_id: "Session"
+        user_id: "Notandi"
+        has_checked_out: "Lokið?"
+  shop:
+    purchases:
+      title: "Kaup"
+      new: "Búa til ný kaup"
+      edit: "Breyta kaupum"
+      prohibited: "koma í veg fyrir að þessi kaup verði vistuð:"
+      total_count: "Fjöldi kaupa"
+  flash:
+    shop_purchase_created: "Vöru var bætt í körfu"
+    shop_purchase_not_created_limit: "Ekki var hægt að bæta vörunni við! Hámarki náð"
+    shop_purchase_not_created_currency: "Ekki var hægt að bæta vörunni við! Aðeins er hægt að nota einn gjaldmiðil í hverja innkaupakörfu (Núverandi: %{currency})"
+    shop_purchase_updated: "Varan hefur verið uppfærð"
+    shop_purchase_limitted: "Varan hefur verið takmörkuð við hámarkið"
+    shop_purchase_not_updated: "Ekki var hægt að uppfæra vöru!"
+    shop_purchase_deleted: "Vöru var eytt"

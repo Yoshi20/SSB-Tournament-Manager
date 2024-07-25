@@ -1,0 +1,25 @@
+is:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Innkaupakerfa"
+        other: "Innkaupakerrur"
+    attributes:
+      shopping_cart:
+        user_id: "Notandi"
+        client_ip: "IP"
+        has_checked_out: "Útritaður?"
+        created_at: "Búið til á"
+        currency: "Gjaldmiðill"
+  shop:
+    shopping_cart:
+      title: "Innkaupakerfa"
+      total_count: "Fjöldi innkaupakörfa"
+      checkout: "Kassa"
+      shipment: "Sending"
+      stripe_fees: "Röndugjöld"
+      fees: "Gjöld"
+      total: "Algerlega"
+      continue_to_checkout: "Halda áfram í útskráningu"
+  flash:
+    shop_shopping_cart_deleted: "Vörukörfu var eytt"

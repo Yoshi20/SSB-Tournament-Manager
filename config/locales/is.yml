@@ -26,6 +26,8 @@ is:
   back: "Aftur"
   confirm: "Ertu viss?"
   not_uniq: "hefur þegar verið tekið"
+  save: "Vista"
+  actions: "Aðgerðir"
 
   sidebar:
     your_tournament_promotion: "Hér gæti verið auglýsingin þín (%{link})"
@@ -304,6 +306,7 @@ is:
       coach: "Þjálfari"
       admin: "Admin"
       player: "Leikmaður"
+      seller: "Seljandi"
 
   coffee:
     copied: "Afritaði \"%{item}\" á klippiborðið"
@@ -1709,6 +1712,7 @@ is:
     chars_min: "(%{pw_length} stafir að lágmarki)"
     password_confirmation: "Staðfesting lykilorðs"
     register: "Skráðu þig"
+    stripe_account_id: "Stripe Account ID (%{link})"
 
   recaptcha:
     errors:
@@ -1761,21 +1765,19 @@ is:
     total_points: "Heildarstig"
     info_body: "Til að geta búið til lið skaltu bæta við liðsstjórahlutverkinu á prófílnum þínum."
 
-  locus_league:
-    title: "Locus League"
-    see_full_ranking_here: "See the full ranking here"
-    explanation:
-      title: "Explanation"
-      body1: "The Locus League is back for its second edition and with more players, more events and twice the duration!"
-      body2: "The Locus League is a Locus Crew tournament circuit in which participants can accumulate points over 10 months of competition!"
-      body3: "Like last year, you can accumulate points by participating in ANY Locus Crew event, but another way to earn points is by redeeming channel points at %{link} (limit once per stream). Channel points are earned by viewing tournament streams and accepting match outcome predictions! There is, therefore, motivation to think carefully about your bets and to follow the tournaments from home!"
-      body4: "All Locus Crew events from January 15th onwards count towards the league. Points are awarded according to the information in the points table on this page. If a particular event is not mentioned in the table, the point values will be described on the event page itself. There are also SHINY EVENTS this year. Shiny events are normal tournaments that, randomly, are worth double (x2) the points listed! All Weeklies will have a small chance to be Shiny. If an event is Shiny, it will be announced on the respective page."
-      body5: "Throughout the year, there will be dates of special importance. In some, the players with the highest amount of current points win the privilege of qualifying for the finals. The finals will take place at the end of the year 2024. The dates and invitation numbers are as follows:"
-      li1: "April 25th - TOP 2 players with the most points qualify for the finals"
-      li2: "August 25th - TOP 2 players with the most points qualify for the finals"
-      li3: "October 24th - TOP 4 qualifies for the finals and points acquisition ends"
-      li4: "October 31st - \"Last Chance Qualifier\" - This date's \"Weekly L\" tournament will have additional rules and the winner will be qualified for the finals"
-      li5: "November 4th until November 18th - Community vote - the 3 players with the most votes qualify for the finals"
-      li6: "??? November - Locus League Finals"
-      body6: "Qualified players can continue to acquire points. During the final event, the seeding of the TOP 3 players will be awarded exclusively based on the number of points each player has acquired throughout the year. There will also be, as last year, privileges attributed to the highest seeds."
-      excel_table: "this excel table"
+  shop:
+    title: "Versla"
+    filter_by:
+      seller: "Sía eftir seljanda"
+      subtype: "Sía eftir vörutegund"
+    sort_by:
+      prompt: "Raða eftir"
+      price-asc: "Ódýrast"
+      price-desc: "Dýrasta"
+      created_at-desc: "Nýjasta"
+      created_at-asc: "Elst"
+    add_to_cart: "Bæta í körfu"
+    add_to_cart_short: "Bæta við"
+    flash:
+      stripe_account_linked: "Stripe reikningurinn þinn hefur verið tengdur"
+      stripe_account_not_linkedy_yet: "Stripe reikningurinn þinn virðist ekki vera tengdur ennþá"

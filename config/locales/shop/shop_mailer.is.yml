@@ -1,0 +1,7 @@
+is:
+  shop_mailer:
+    thank_you_email:
+      subject: "Þakka þér fyrir pöntunina á %{title}"
+      delivery_address: "Eftirfarandi afhendingarheimilisfang hefur verið skráð:"
+      sellers: "Ef þú hefur einhverjar breytingar eða spurningar, vinsamlegast hafðu samband við seljanda beint:"
+      outro: "Við vonum að þú hafir gaman af kaupunum þínum!"
