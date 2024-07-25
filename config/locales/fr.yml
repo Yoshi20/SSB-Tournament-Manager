@@ -1295,6 +1295,8 @@ fr:
     password_confirmation: "Confirmation du mot de passe"
     register: "Enregistrer"
     stripe_account_id: "ID de compte Stripe (%{link})"
+    stripe_account_link: "Cliquez ici pour lier un compte Stripe"
+    stripe_account_linked_correctly: "Le compte Stripe est correctement lié ?"
 
   recaptcha:
     errors:

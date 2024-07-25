@@ -1713,6 +1713,8 @@ en:
     password_confirmation: "Password confirmation"
     register: "Register"
     stripe_account_id: "Stripe Account ID (%{link})"
+    stripe_account_link: "Click here to link a Stripe account"
+    stripe_account_linked_correctly: "Stripe account linked correctly?"
 
   recaptcha:
     errors:

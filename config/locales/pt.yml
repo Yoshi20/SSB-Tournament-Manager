@@ -1614,6 +1614,8 @@ pt:
     password_confirmation: "Confirmação da palavra-passe"
     register: "Registar"
     stripe_account_id: "ID da conta Stripe (%{link})"
+    stripe_account_link: "Clique aqui para ligar uma conta Stripe"
+    stripe_account_linked_correctly: "Conta Stripe ligada corretamente?"
 
   recaptcha:
     errors:

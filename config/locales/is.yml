@@ -1713,6 +1713,8 @@ is:
     password_confirmation: "Staðfesting lykilorðs"
     register: "Skráðu þig"
     stripe_account_id: "Stripe Account ID (%{link})"
+    stripe_account_link: "Smelltu hér til að tengja Stripe reikning"
+    stripe_account_linked_correctly: "Stripe reikningur rétt tengdur?"
 
   recaptcha:
     errors:

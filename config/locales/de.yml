@@ -1296,6 +1296,8 @@ de:
     password_confirmation: "Passwort bestätigen"
     register: "Registrieren"
     stripe_account_id: "Stripe-Konto-ID (%{link})"
+    stripe_account_link: "Klicke hier um ein Stripe-Konte zu verknüpfen"
+    stripe_account_linked_correctly: "Stripe-Konto korrekt verlinkt?"
 
   recaptcha:
     errors:
