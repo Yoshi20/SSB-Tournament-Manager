@@ -1,0 +1,25 @@
+fr:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Chariots de supermarché"
+        other: "Chariots de supermarché"
+    attributes:
+      shopping_cart:
+        user_id: "Utilisateur"
+        client_ip: "IP"
+        has_checked_out: "Vérifié ?"
+        created_at: "Créé le"
+        currency: "Monnaie"
+  shop:
+    shopping_cart:
+      title: "Chariots de supermarché"
+      total_count: "Nombre de chariots"
+      checkout: "Passage en caisse"
+      shipment: "Expédition"
+      stripe_fees: "Frais de Stripe"
+      fees: "Frais"
+      total: "Total"
+      continue_to_checkout: "Continuer à passer à la caisse"
+  flash:
+    shop_shopping_cart_deleted: "Le panier a été supprimé avec succès"

@@ -1,0 +1,51 @@
+fr:
+  activerecord:
+    models:
+      shop_order:
+        one: "Commander"
+        other: "Commandes"
+    attributes:
+      shop_order:
+        organisation: "Organisation"
+        name: "Nom"
+        address: "Adresse"
+        address2: "Adresse supplémentaire"
+        zip_code: "Code postal"
+        city: "Ville/Village"
+        phone_number: "Téléphone"
+        email: "E-mail"
+        was_order_sent: "Livré?"
+        order_sent_at: "Livré le"
+        was_order_paid: "Payé?"
+        order_paid_at: "Payé le"
+        status: "Statut"
+        payment_method: "Mode de paiement"
+  shop:
+    orders:
+      title: "Mes commandes"
+      title_single: "Ma commande"
+      title_short: "Commandes"
+      total_count: "Nombre de commandes"
+      no_orders_yet: "Aucune commande pour l'instant"
+      summary: "Résumé"
+      delivery_address: "Adresse de livraison"
+      place_order: "Payer"
+      turnover: "Ventes"
+      status:
+        open: "Paiement ouvert"
+        paid: "Payé"
+        sent: "Livré"
+        cancelled: "Annulé"
+      payment_methods:
+        invoice: "Paiement d’avance via facture email"
+        stripe: "Immédiatement via Stripe (frais : 3% + 0,5 CHF)"
+        # card: "Carte de crédit"
+        # paypal: "PayPal"
+        # twint: "Twint"
+  flash:
+    shop_order_created: "La commande a réussi. Merci"
+    shop_order_not_created: "La commande a échoué !"
+    shop_order_updated: "La commande a été mise à jour avec succès"
+    shop_order_not_updated: "La commande n'a pas pu être mise à jour !"
+    shop_order_deleted: "La commande a été supprimée avec succès"
+    shop_order_not_deleted: "La commande n'a pas pu être supprimée !"
