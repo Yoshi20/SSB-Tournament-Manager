@@ -55,7 +55,7 @@ group :development do
   gem 'web-console'
   gem 'listen'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 4.1.3'
+  gem 'spring', '~> 4.2.1'
   gem 'better_errors'
   gem 'brakeman' # https://github.com/presidentbeef/brakeman
   gem 'bullet' # https://github.com/flyerhzm/bullet
