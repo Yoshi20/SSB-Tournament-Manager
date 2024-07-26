@@ -45,7 +45,7 @@
             .admin-list-actions.text-center
               .admin-list-actions__link
                 = button_to shop_purchase_path(purchase), method: :delete, form: { data: { turbo_method: :delete, turbo_confirm: t('confirm') } }, class: 'btn btn-sstm btn-square' do
-                  %i.material-icons.material-icons.admin-actions__link__icon= 'delete'
+                  %i.material-icons.admin-actions__link__icon= 'delete'
       -# Shipping row
       %tr
         %td.min.text-left

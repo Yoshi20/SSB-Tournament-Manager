@@ -126,6 +126,10 @@
         .form-check
           = f.check_box :stripe_account_is_ready, {class: 'form-check-input mr-2', disabled: true, value: current_user.stripe_account_is_ready}
           = f.label :stripe_account_is_ready, t('users.stripe_account_linked_correctly'), class:'form-check-label'
+          - if current_user.stripe_account_id.present?
+            = link_to shop_stripe_account_return_path, style: 'margin-left: 5px;' do
+              = button_tag type: 'button', class: 'btn btn-cyan btn-square', style: 'scale: 0.75;' do
+                %i.material-icons.admin-actions__link__icon= 'refresh'
         %hr
       .form-group{style: 'margin-top: 2rem;'}
         %strong= f.label :current_password, t('users.current_password')
