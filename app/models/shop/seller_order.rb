@@ -19,6 +19,7 @@ class Shop::SellerOrder < ApplicationRecord
       product = purchase.product
       sold_products << {
         name: purchase.product_name,
+        description_short: product.description_short,
         description: product.description,
         currency: product.currency,
         price: product.price,

@@ -7,7 +7,7 @@ class Shop::OrdersController < ApplicationController
 
   # GET /shop/orders
   def index
-    @shop_orders = Shop::Order.includes(:shopping_cart, shopping_cart: [:user, :purchases, purchases: :product]).order(created_at: :desc)
+    @shop_orders = Shop::Order.includes(:shopping_cart, shopping_cart: :user).order(created_at: :desc)
   end
 
   # GET /shop/order/1

@@ -1,0 +1,13 @@
+.modal.fade{id: "productDescriptionModal_#{product.id}", tabindex: '-1', role: 'dialog', 'aria-hidden'=>'true'}
+  .modal-dialog.modal-dialog-centered{role: 'document'}
+    .modal-content
+      .modal-header
+        .modal-title
+          %h5.shop-product-title
+            = product.name
+            %span.shop-product-seller-name= "by #{product.seller_name}"
+        %button.close{type: 'button', 'data-dismiss'=>'modal', 'aria-label'=>'close'}
+          %span{'aria-hidden'=>'true'}
+            &times;
+      .modal-body.text-left{style: 'margin-bottom: 0.325rem;'}
+        = simple_format(product.description)

@@ -78,7 +78,7 @@ class Shop::ProductsController < ApplicationController
         :name, :description, :currency, :price, :shipping_national, :stock,
         :is_hidden, :image_link, :image_height, :image_width, :subtype,
         :shipping_international, :max_quantity_per_package, :variants,
-        :shipping_international_eu
+        :shipping_international_eu, :description_short
       )
     end
 

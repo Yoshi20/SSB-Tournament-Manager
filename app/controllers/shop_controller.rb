@@ -4,7 +4,7 @@ class ShopController < ApplicationController
 
   # GET /shop or /shop.json
   def index
-    @shop_products = Shop::Product.all.includes(:user, user: :player)
+    @shop_products = Shop::Product.all#.includes(:user, user: :player)
     @shopping_cart = Shop::ShoppingCart.find_latest(request.remote_ip, current_user&.id, session['session_id'])
     # handle filter parameter
     @shop_products = @shop_products.where(user_id: params[:seller]) if params[:seller].present?

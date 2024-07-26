@@ -21,6 +21,7 @@ class Shop::Product < ApplicationRecord
   after_validation :handle_subtype, on: [ :create, :update ]
   after_validation :set_position, on: [ :create ]
 
+  MAX_LEN_DESCRIPTION_SHORT = 100
   HIGH_STOCK_QUANTITY = 10
   LOW_STOCK_QUANTITY = 3
 

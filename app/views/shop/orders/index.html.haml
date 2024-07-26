@@ -81,7 +81,7 @@
 
 -# Shopping carts
 - sc_ids = @shop_orders.map(&:shopping_cart_id)
-- shopping_carts = Shop::ShoppingCart.where.not(id: sc_ids).includes(:user, :purchases, purchases: :product).order(created_at: :desc)
+- shopping_carts = Shop::ShoppingCart.where.not(id: sc_ids).includes(:user).order(created_at: :desc)
 .row{style: 'margin-top: 2rem;'}
   .col.middle-align
     %p= t('shop.shopping_cart.total_count') + " = #{shopping_carts.count}"

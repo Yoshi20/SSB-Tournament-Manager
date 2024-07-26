@@ -7,7 +7,8 @@ it:
     attributes:
       shop_product:
         name: "Nome"
-        description: "Breve descrizione"
+        description_short: "Breve descrizione"
+        description: "Descrizione"
         price: "Prezzo"
         stock: "Scorte disponibili"
         is_hidden: "Nascosto?"

@@ -7,7 +7,8 @@ en:
     attributes:
       shop_product:
         name: "Name"
-        description: "Short description"
+        description_short: "Short description"
+        description: "Description"
         price: "Price"
         stock: "Stock"
         is_hidden: "Hidden?"

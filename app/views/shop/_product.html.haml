@@ -2,25 +2,30 @@
   %article.no-padding
     - if product.is_hidden
       %div.hidden-indicator= "Product is hidden"
-    - if is_seller_product
-      %div.position-indicator= product.position
+    -# - if is_seller_product
+    -#   %div.position-indicator= product.position
     %div.country-indicator= image_tag("flags/#{product.country_code}.svg", width: '20px', height: '15px', alt: "#{product.country_code} flag icon")
+    - modal_params = {}
+    - if product.description.present?
+      - modal_params = {'data-toggle': 'modal', 'data-target': "#productDescriptionModal_#{product.id}", 'aria-haspopup': 'true', 'aria-expanded': 'false', style: 'cursor: help;'}
+      = render 'product_description_modal', product: product
     - show_disabled = product.is_hidden || (@shopping_cart.present? && product.currency != @shopping_cart.currency)
     .row.no-space{style: show_disabled ? 'opacity: 0.5;' : ''}
-      .col.product-image-col
+      .col-5.col-md-6.product-image-col{modal_params}
         - if product.image_link.present? && Request.url_valid?(product.image_link)
           = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image"
         - else
           = image_tag 'no-image.svg', height: '100%', width: '100%', alt: "no image logo"
-      .col
+      .col-7.col-md-6
         .padding
-          .text-left
+          .text-left{modal_params}
             %h5.shop-product-title
               = product.name
               %span.shop-product-seller-name= "by #{product.seller_name}"
-            %p.shop-product-description= product.description
+            %p.shop-product-description-short
+              = product.description_short.truncate(Shop::Product::MAX_LEN_DESCRIPTION_SHORT)
         .padding.text-center.shop-product-footer
-          .text-right
+          .text-right{modal_params}
             %p{style: 'margin: 0.5rem 0;'}
               %strong.shop-product-price= "#{product.currency_text} #{product.price_short}"
               %span.shop-product-stock{style: "color: #{product.stock_text_color};"}= product.stock_text

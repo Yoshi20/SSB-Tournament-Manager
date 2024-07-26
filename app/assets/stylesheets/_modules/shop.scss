@@ -43,7 +43,8 @@
     font-size: 0.625rem; // 10px
   }
 
-  .shop-product-description {
+  .shop-product-description-short {
+    min-height: 6rem;
     line-height: 1.4;
     font-size: 0.75rem; // 12px
     @media only screen and (min-width: 600px) {
@@ -52,6 +53,7 @@
   }
 
   .shop-product-footer {
+    padding-top: 0 !important;
     position: absolute;
     bottom: 0;
     width: calc(100% - 1rem);
@@ -65,13 +67,11 @@
 
   .shop-product-price {
     color: red;
-    background-color: #f7f2f7;
     font-size: 1rem;
   }
 
   .shop-product-stock {
     display: block;
-    background-color: #f7f2f7;
     font-size: 0.625rem; // 10px
     @media only screen and (min-width: 600px) {
       font-size: 0.75rem; // 12px

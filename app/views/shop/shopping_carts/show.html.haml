@@ -13,7 +13,7 @@
     %thead.table-header
       %tr
         %th.min.text-center= ''
-        %th= t('activerecord.attributes.shop_product.description')
+        %th= t('activerecord.attributes.shop_product.description_short')
         %th.min.text-center= t('activerecord.attributes.shop_purchase.quantity')
         %th.min.text-right= t('activerecord.attributes.shop_product.price')
         %th.min.text-center= t('activerecord.attributes.shop_product.currency')
@@ -31,7 +31,7 @@
           %td
             %strong= purchase.product_name
             %span.shop-product-seller-name= "by #{product.seller_name}"
-            %p.d-none.d-md-block.d-lg-none.d-xl-block= product.description.html_safe
+            %p.d-none.d-md-block.d-lg-none.d-xl-block= product.description_short
             %p{style: "color: #{product.stock_text_color};"}= product.stock_text
           %td.min.text-center
             = form_for purchase do |f|
