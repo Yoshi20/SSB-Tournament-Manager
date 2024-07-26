@@ -1,0 +1,47 @@
+= form_for @shop_order, role: 'form', class:'form' do |f|
+
+  - if @shop_order.errors.any?
+    #error_explanation
+      -# %h2= pluralize(@shop_order.errors.count, "error") + ' ' + t('orders.prohibited')
+      %ul
+        - @shop_order.errors.full_messages.each do |message|
+          %li= message
+
+  - if @shopping_cart.has_physicals?
+    .row{style: 'margin-top: 1.5rem;'}
+      .col.middle-align
+        %h5= t('shop.orders.delivery_address')
+
+    .field.form-group
+      = f.label :organisation, t('activerecord.attributes.shop_order.organisation')
+      = f.text_field :organisation, class: 'form-control'
+    .field.form-group
+      = f.label :name, t('activerecord.attributes.shop_order.name')
+      = f.text_field :name, class: 'form-control'
+    .field.form-group
+      = f.label :address, t('activerecord.attributes.shop_order.address')
+      = f.text_field :address, class: 'form-control'
+    .field.form-group
+      = f.label :address2, t('activerecord.attributes.shop_order.address2')
+      = f.text_field :address2, class: 'form-control'
+    .row
+      .col
+        .field.form-group
+          = f.label :zip_code, t('activerecord.attributes.shop_order.zip_code')
+          = f.text_field :zip_code, class: 'form-control'
+      .col
+        .field.form-group
+          = f.label :city, t('activerecord.attributes.shop_order.city')
+          = f.text_field :city, class: 'form-control'
+    .field.form-group
+      = f.label :phone_number, t('activerecord.attributes.shop_order.phone_number')
+      = f.text_field :phone_number, class: 'form-control'
+
+  .field.form-group
+    = f.label :email, t('activerecord.attributes.shop_order.email') + '*'
+    = f.text_field :email, class: 'form-control', disabled: !@shop_order.new_record?
+
+  -# .field.label.border
+  -#   = f.select :payment_method, options_for_select(payment_methods_for_select, @shop_order.payment_method), {}, {disabled: @shop_order.was_order_paid || (!@shop_order.new_record? && @shop_order.payment_method == 'invoice')}
+  -#   = f.label :payment_method
+  -#   %i arrow_drop_down

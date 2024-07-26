@@ -59,6 +59,9 @@
         color: $color-white;
       }
     }
+  }
+
+  .table-hover {
     tbody {
       tr:hover {
         background-color: $color-grey;

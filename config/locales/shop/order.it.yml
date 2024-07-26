@@ -1,0 +1,51 @@
+it:
+  activerecord:
+    models:
+      shop_order:
+        one: "Ordine"
+        other: "Ordini"
+    attributes:
+      shop_order:
+        organisation: "Organizzazione"
+        name: "Nome"
+        address: "Indirizzo"
+        address2: "Suffisso dell'indirizzo"
+        zip_code: "Codice postale"
+        city: "Città"
+        phone_number: "Telefono"
+        email: "Email"
+        was_order_sent: "Consegnato?"
+        order_sent_at: "Consegnato il"
+        was_order_paid: "Pagato?"
+        order_paid_at: "Pagato in data"
+        status: "Stato"
+        payment_method: "Metodo di pagamento"
+  shop:
+    orders:
+      title: "I miei ordini"
+      title_single: "Il mio ordine"
+      title_short: "Ordini"
+      total_count: "Numero di ordini"
+      no_orders_yet: "Nessun ordine ancora disponibile"
+      summary: "Riepilogo"
+      delivery_address: "Indirizzo di consegna"
+      place_order: "Pagamento"
+      turnover: "Fatturato"
+      status:
+        open: "Pagamento aperto"
+        paid: "Pagato"
+        sent: "Consegnato"
+        cancelled: "Annullato"
+      payment_methods:
+        invoice: "Pagamento anticipato tramite fattura via e-mail"
+        stripe: "Immediatamente tramite Stripe (commissioni: 3% + 0,5 CHF)"
+        # card: "Carta di credito"
+        # paypal: "PayPal"
+        # twint: "Twint"
+  flash:
+    shop_order_created: "L'ordine è andato a buon fine. Grazie mille"
+    shop_order_not_created: "L'ordine non è andato a buon fine!"
+    shop_order_updated: "L'ordine è stato aggiornato con successo"
+    shop_order_not_updated: "Non è stato possibile aggiornare l'ordine!"
+    shop_order_deleted: "L'ordine è stato cancellato con successo"
+    shop_order_not_deleted: "L'ordine non è stato cancellato!"

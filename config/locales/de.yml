@@ -26,6 +26,8 @@ de:
   back: "Zurück"
   confirm: "Bist du sicher?"
   not_uniq: "ist bereits vergeben"
+  save: "Speichern"
+  actions: "Aktionen"
 
   sidebar:
     your_tournament_promotion: "Hier könnte deine Werbung stehen (%{link})"
@@ -263,6 +265,7 @@ de:
       coach: "Coach"
       admin: "Admin"
       player: "Spieler"
+      seller: "Verkäufer"
 
   coffee:
     copied: "\"%{item}\" in die Zwischenablage kopiert"
@@ -1192,7 +1195,7 @@ de:
     seed_players_tournament_confirm: "Bist du sicher? Die aktuelle Spielerreihenfolge wird überschrieben."
     drag_and_drop: "(mit Drag & Drop finalisieren)"
     calendar: "Turnierkalender"
-    info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
+    info_body: "Um ein internes oder weekly Turnier erstellen zu können, füge zuerst die TO-Rolle deinem Profil hinzu. Anschliessend musst du deinem Account ein Challonge Benutzername und API Schlüssel hinterlegen."
     info_body_challonge: "Um ein internes oder weekly Turnier erstellen zu können, füge deinem Account ein Challonge Benutzername und API Schlüssel hinzu."
 
   video:
@@ -1292,6 +1295,9 @@ de:
     chars_min: "(%{pw_length} Zeichen mindestens)"
     password_confirmation: "Passwort bestätigen"
     register: "Registrieren"
+    stripe_account_id: "Stripe-Konto-ID (%{link})"
+    stripe_account_link: "Klicke hier um ein Stripe-Konte zu verknüpfen"
+    stripe_account_linked_correctly: "Stripe-Konto korrekt verlinkt?"
 
   recaptcha:
     errors:
@@ -1343,3 +1349,20 @@ de:
     members: "Mitglieder"
     total_points: "Total Punkte"
     info_body: "Um ein Team erstellen zu können, füge die Team-Manager-Rolle deinem Profil hinzu."
+
+  shop:
+    title: "Shop"
+    filter_by:
+      seller: "Nach Verkäufer filtern"
+      subtype: "Nach Produktart filtern"
+    sort_by:
+      prompt: "Sortiere nach"
+      price-asc: "Günstigste"
+      price-desc: "Teuerste"
+      created_at-desc: "Neuste"
+      created_at-asc: "Älteste"
+    add_to_cart: "In den Warenkorb"
+    add_to_cart_short: "Hinzufügen"
+    flash:
+      stripe_account_linked: "Dein Stripe-Konto wurde erfolgreich verknüpft"
+      stripe_account_not_linkedy_yet: "Dein Stripe-Konto scheint noch nicht verknüpft zu sein"

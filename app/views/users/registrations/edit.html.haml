@@ -105,7 +105,7 @@
       -#     = f.label :area_of_responsibility, t('users.area_of_responsibility')
       -#     %i (Bern, Zurich, Geneva, ...?)
       -#     = f.text_field :area_of_responsibility, class: 'form-control', maxlength: '50'
-      - if current_user.admin? || current_user.has_role?('tournament_organizer')
+      - if current_user.super_admin? || current_user.has_role?('tournament_organizer')
         %hr
         %p
           %strong TOs only:
@@ -115,6 +115,17 @@
         .form-group
           = f.label :challonge_api_key, t('users.challonge_api_key', link: link_to('https://challonge.com/en/settings/developer', 'https://challonge.com/en/settings/developer', target: '_blank')).html_safe
           = f.text_field :challonge_api_key, class: 'form-control'
+      - if current_user.super_admin? || current_user.has_role?('seller')
+        %hr
+        %p
+          %strong Seller only:
+        .form-group
+          = f.label :stripe_account_id, t('users.stripe_account_id', link: link_to(t('users.stripe_account_link'), shop_stripe_account_link_path)).html_safe
+          = f.text_field :stripe_account_id, class: 'form-control', readonly: true
+      .form-group
+        .form-check
+          = f.check_box :stripe_account_is_ready, {class: 'form-check-input mr-2', disabled: true, value: current_user.stripe_account_is_ready}
+          = f.label :stripe_account_is_ready, t('users.stripe_account_linked_correctly'), class:'form-check-label'
         %hr
       .form-group{style: 'margin-top: 2rem;'}
         %strong= f.label :current_password, t('users.current_password')

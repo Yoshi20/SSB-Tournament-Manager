@@ -1,0 +1,28 @@
+fr:
+  activerecord:
+    models:
+      shop_purchase:
+        one: "Achats"
+        other: "Achats"
+    attributes:
+      shop_purchase:
+        quantity: "Quantité"
+        client_ip: "IP"
+        session_id: "Session"
+        user_id: "Utilisateur"
+        has_checked_out: "Terminé ?"
+  shop:
+    purchases:
+      title: "Achats"
+      new: "Créer un nouvel achat"
+      edit: "Modifier l'achat"
+      prohibited: "empêcher l'enregistrement de cet achat :"
+      total_count: "Nombre d'achats"
+  flash:
+    shop_purchase_created: "Le produit a été ajouté avec succès au panier"
+    shop_purchase_not_created_limit: "Le produit n'a pas pu être ajouté ! Limite atteinte"
+    shop_purchase_not_created_currency: "Le produit n'a pas pu être ajouté ! Une seule devise peut être utilisée par panier (Actuellement : %{currency})"
+    shop_purchase_updated: "Le produit a été mis à jour avec succès"
+    shop_purchase_limitted: "Le produit a été limité au maximum"
+    shop_purchase_not_updated: "Le produit n'a pas pu être mis à jour !"
+    shop_purchase_deleted: "Le produit a été supprimé avec succès"

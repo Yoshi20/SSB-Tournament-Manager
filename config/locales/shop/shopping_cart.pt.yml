@@ -1,0 +1,25 @@
+pt:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Carrinho de compras"
+        other: "Carrinhos de compras"
+    attributes:
+      shopping_cart:
+        user_id: "Utilizador"
+        client_ip: "IP"
+        has_checked_out: "Efectuou o check-out?"
+        created_at: "Criado em"
+        currency: "Moeda"
+  shop:
+    shopping_cart:
+      title: "Carrinho de compras"
+      total_count: "Número de carrinhos de compras"
+      checkout: "Finalizar compra"
+      shipment: "Envio"
+      stripe_fees: "Taxas da Stripe"
+      fees: "Taxas"
+      total: "Total"
+      continue_to_checkout: "Continuar para o checkout"
+  flash:
+    shop_shopping_cart_deleted: "O carrinho de compras foi eliminado com êxito"

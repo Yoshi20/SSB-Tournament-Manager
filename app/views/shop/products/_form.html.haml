@@ -1,0 +1,106 @@
+= form_for @shop_product, role: 'form', class:'form' do |f|
+
+  - if @shop_product.errors.any?
+    #error_explanation
+      -# %h2= pluralize(@shop_product.errors.count, "error") + ' ' + t('shop.product.prohibited')
+      %ul
+        - @shop_product.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :subtype, t('activerecord.attributes.shop_product.subtype')
+    .form-check
+      = radio_button('shop_product', 'subtype', 'service', checked: (@shop_product.subtype == 'service' || @shop_product.new_record?), class: 'form-check-input', style: 'margin-right: 10px;', onclick: "document.getElementById('subtype-target').style.display = 'none';")
+      %label.form-check-label{for: "shop_product_subtype_service"}= t('shop.products.subtypes.service')
+    .form-check
+      = radio_button('shop_product', 'subtype', 'digital', checked: (@shop_product.subtype == 'digital'), class: 'form-check-input', style: 'margin-right: 10px;', onclick: "document.getElementById('subtype-target').style.display = 'none';")
+      %label.form-check-label{for: "shop_product_subtype_digital"}= t('shop.products.subtypes.digital')
+    .form-check
+      = radio_button('shop_product', 'subtype', 'physical', checked: (@shop_product.subtype == 'physical'), class: 'form-check-input', style: 'margin-right: 10px;', onclick: "document.getElementById('subtype-target').style.display = 'block';")
+      %label.form-check-label{for: "shop_product_subtype_physical"}= t('shop.products.subtypes.physical')
+
+  .field.form-group
+    = f.label :image_link, t('teams.image_link')
+    %em= t('teams.image_owner')
+    = f.text_field :image_link, placeholder: "https://i.imgur.com/<my-image>.jpg", class: 'form-control'
+  -# .row
+  -#   .col.field.form-group
+  -#     = f.label :image_height, t('teams.image_height')
+  -#     = f.text_field :image_height, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+  -#   .col.field.form-group
+  -#     = f.label :image_width, t('teams.image_width')
+  -#     = f.text_field :image_width, placeholder: t('teams.image_height_placeholder'), class: 'form-control'
+  .field.form-group
+    = f.label :name, t('activerecord.attributes.shop_product.name')
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
+    = f.label :description, t('activerecord.attributes.shop_product.description')
+    = f.text_field :description, class: 'form-control'
+  .field.form-group
+    = f.label :currency, t('activerecord.attributes.shop_product.currency')
+    = f.select :currency, options_for_select(currency_for_select, @shop_product.currency || Domain.iso_currency_from(session[:country_code])), {include_blank: true}, class: 'form-control'
+    - if session[:country_code] == 'is'
+      %em
+        = '( Unfortunately, Stripe does not seem to support the Icelandic Krona as an alternative currency ->'
+        = link_to 'Doc', 'https://docs.stripe.com/payouts/alternative-currencies', target: '_blank'
+        = ')'
+  .field.form-group
+    = f.label :price, t('activerecord.attributes.shop_product.price')
+    = f.number_field :price, class: 'form-control', value: @shop_product.price || 1, step: 0.1, min: 1
+  .field.form-group
+    = f.label :variants, t('activerecord.attributes.shop_product.variants')
+    %em= t('shop.products.variants_info')
+    = f.text_field :variants, class: 'form-control'
+  #subtype-target{class: @shop_product.subtype != 'physical' ? 'hidden' : ''}
+    .field.form-group
+      = f.label :shipping_national, t('activerecord.attributes.shop_product.shipping_national')
+      .row
+        .col
+          = f.number_field :shipping_national, class: 'form-control', value: @shop_product.shipping_national || 0, step: 0.1, min: 0
+          %em= t('shop.products.shipping_types.national')
+        .col
+          = f.number_field :shipping_international_eu, class: 'form-control', value: @shop_product.shipping_international_eu || 0, step: 0.1, min: 0
+          %em= t('shop.products.shipping_types.international_eu')
+        .col
+          = f.number_field :shipping_international, class: 'form-control', value: @shop_product.shipping_international || 0, step: 0.1, min: 0
+          %em= t('shop.products.shipping_types.international')
+    .field.form-group
+      = f.label :max_quantity_per_package, t('activerecord.attributes.shop_product.max_quantity_per_package')
+      = f.number_field :max_quantity_per_package, class: 'form-control', value: @shop_product.max_quantity_per_package || 1, step: 1, min: 1
+    .field.form-group
+      = f.label :stock, t('activerecord.attributes.shop_product.stock')
+      = f.number_field :stock, class: 'form-control', value: @shop_product.stock || 0, step: 1, min: 0
+  .field.form-group
+    %label.checkbox
+      %input{autocomplete: "off", name: "shop_product[is_hidden]", type: "hidden", value: "0"}
+      %input{type: "checkbox", id: "shop_product_is_hidden", name: "shop_product[is_hidden]", value: "1", checked: @shop_product.is_hidden}
+      %span= t('activerecord.attributes.shop_product.is_hidden')
+
+  .row
+    .col
+      %p.mb-0
+        = t('shop.products.terms_of_use.title')
+      %ul{style: 'font-size: 10px;'}
+        %li= t('shop.products.terms_of_use.li1')
+        %li= t('shop.products.terms_of_use.li2')
+        %li= t('shop.products.terms_of_use.li3')
+        %li= t('shop.products.terms_of_use.li4')
+        %li= t('shop.products.terms_of_use.li5')
+        %li= t('shop.products.terms_of_use.li6')
+        %li= t('shop.products.terms_of_use.li7')
+        %li= t('shop.products.terms_of_use.li8')
+        %li= t('shop.products.terms_of_use.li9')
+        %li= t('shop.products.terms_of_use.li10', link: link_to("https://stripe.com/de-ch/pricing", "https://stripe.com/de-ch/pricing", target: "_blank")).html_safe
+        %li= t('shop.products.terms_of_use.li11')
+        %li= t('shop.products.terms_of_use.li12', date: "23.07.2024")
+
+  .actions.form-group
+    = f.submit class:'btn btn-block btn-cyan btn-with-icon'
+
+-# back button
+.row
+  .col.text-center
+    = link_to shop_path do
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
+        %span= t('back')

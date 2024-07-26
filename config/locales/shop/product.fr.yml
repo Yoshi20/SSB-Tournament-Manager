@@ -1,0 +1,63 @@
+fr:
+  activerecord:
+    models:
+      shop_product:
+        one: "Produit"
+        other: "Produits"
+    attributes:
+      shop_product:
+        name: "Nom"
+        description: "Description courte"
+        price: "Prix"
+        stock: "stock"
+        is_hidden: "Caché ?"
+        shipping_national: "Frais de port"
+        shipping_international: "Frais de port"
+        shipping_international_eu: "Frais de port"
+        max_quantity_per_package: "Nombre max. par colis"
+        currency: "Devise"
+        subtype: "Type de produit"
+        variants: "Variantes"
+  shop:
+    products:
+      title: "Produits"
+      no_products_found: "Aucun produit trouvé"
+      new: "Créer un nouveau produit"
+      edit: "Modifier le produit"
+      prohibited: "Empêcher l'enregistrement de ce produit:"
+      total_count: "Nombre de produits"
+      stock_text:
+        high: "Plus de %{stock} pièces en stock"
+        normal: "%{stock} pièces en stock"
+        low: "Plus que %{stock} de stock pièces en stock"
+        zero: "Plus en stock"
+      subtypes:
+        service: "Service"
+        digital: "Produit digital"
+        physical: "Produit physique"
+      shipping_types:
+          national: "National"
+          international: "Étranger"
+          international_eu: "Étranger UE"
+      variants_info: "(séparés par une virgule: par ex. \"Vert, Rouge, Bleu\"  ou \"S, M, L, XL\")"
+      info_body: "Pour pouvoir ajouter ton propre produit à la boutique, connecte-toi et ajoute d'abord le rôle \"vendeur\" à ton profil. Ensuite, tu dois associer un compte Stripe dans les paramètres de ton compte. Une fois que ton compte Stripe a été correctement ajouté, clique à nouveau sur ce bouton pour créer un produit."
+      terms_of_use:
+        title: "En créant un produit, tu acceptes les conditions d'utilisation suivantes:"
+        li1: "Clause de non-responsabilité: cette boutique sert uniquement de place de marché. Le vendeur et l'acheteur concluent des contrats de manière autonome et sous leur propre responsabilité"
+        li2: "Garantie: en tant que vendeur, tu es responsable de l'exécution des contrats et tu es toi-même responsable des défauts de qualité et/ou des vices juridiques"
+        li3: "Indemnisation: tu t'engages à nous défendre et à nous indemniser contre toute réclamation"
+        li4: "Interdiction de publicité: les produits ne doivent contenir aucune forme de publicité que tu ne proposes pas actuellement ou dans un avenir immédiat via cette boutique"
+        li5: "Obligation d'utilisation: les produits proposés ne doivent pas viser ou inciter à la conclusion d'un contrat en dehors de la boutique"
+        li6: "Suppression: nous nous réservons le droit de cacher ou de supprimer ton produit"
+        li7: "Modifications: Nous nous réservons le droit d'adapter ces conditions à tout moment"
+        li8: "Frais de mise en ligne: La mise en ligne des produits est gratuite"
+        li9: "Frais de plateforme: Une commission de 5 % est prélevée sur les ventes"
+        li10: "Frais de Stripe: En cas de vente 3.25% + 0.3 (%{link})"
+        li11: "Tribunal compétent: canton de Berne, Suisse"
+        li12: "Dernière mise à jour le: %{date}"
+  flash:
+    shop_product_created: "Le produit a été créé avec succès"
+    shop_product_not_created: "Le produit n'a pas pu être créé !"
+    shop_product_updated: "Le produit a été mis à jour avec succès"
+    shop_product_not_updated: "Le produit n'a pas pu être mis à jour !"
+    shop_product_deleted: "Le produit a été supprimé avec succès"

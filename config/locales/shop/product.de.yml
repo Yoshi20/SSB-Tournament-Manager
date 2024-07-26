@@ -1,0 +1,63 @@
+de:
+  activerecord:
+    models:
+      shop_product:
+        one: "Produkt"
+        other: "Produkte"
+    attributes:
+      shop_product:
+        name: "Name"
+        description: "Kurzbeschreibung"
+        price: "Preis"
+        stock: "Lagerbestand"
+        is_hidden: "Versteckt?"
+        shipping_national: "Versandkosten"
+        shipping_international: "Versandkosten"
+        shipping_international_eu: "Versandkosten"
+        max_quantity_per_package: "Max. Anzahl pro Paket"
+        currency: "Währung"
+        subtype: "Produktart"
+        variants: "Varianten"
+  shop:
+    products:
+      title: "Produkte"
+      no_products_found: "Keine Produkte gefunden"
+      new: "Neues Produkt erstellen"
+      edit: "Produkt bearbeiten"
+      prohibited: "verhindern das Speichern dieses Produkts:"
+      total_count: "Anzahl Produkte"
+      stock_text:
+        high: "Mehr als %{stock} Stück an Lager"
+        normal: "%{stock} Stück an Lager"
+        low: "Nur noch %{stock} Stück an Lager"
+        zero: "Nicht mehr an Lager"
+      subtypes:
+        service: "Dienstleistung"
+        digital: "Digitales Produkt"
+        physical: "Physikalisches Produkt"
+      shipping_types:
+          national: "Inland"
+          international: "Ausland"
+          international_eu: "Ausland EU"
+      variants_info: "(Komma getrennt: z.B. \"Grün, Rot, Blau\" oder \"S, M, L, XL\")"
+      info_body: "Um dein eigenes Produkt dem Shop hinzufügen zu können, logge dich ein und füge zuerst die \"Verkäufer\"-Rolle deinem Profil hinzu. Anschliessend musst du in deinen Account-Einstellungen ein Stripe-Konto verknüpfen. Nachdem dein Stripe-Konto korrekt hinzugefügt wurde, klicke nochmal auf diesen Knopf um ein Produkt zu erstellen."
+      terms_of_use:
+        title: "Mit dem Erstellen eines Produkts, stimmst du den folgenden Nutzungsbedingungen zu:"
+        li1: "Haftungsausschluss: Dieser Shop dient lediglich als Martkplatz. Verkäufer und Käufer schlissen autonom und eigenverantwortlich Vertäge ab"
+        li2: "Gewähleistung: Du bist als Verkäufer für die Erfüllung der Verträge verantwortlich und bei Qualitätsmängel und/oder Rechtsmängel selbst haftbar"
+        li3: "Freistellung: Du stimmst zu, uns zu verteidigen und schad- und klaglos zu halten von allen Ansprüchen"
+        li4: "Werbeverbot: Produkte dürfen keine Form von Werbung enthalten, welche du nicht aktuell oder in unmittelbarer Zukunft über diesen Shop anbietest"
+        li5: "Nutzungspflicht: Angebotene Produkte dürfen nicht auf Vertragsabschlüsse ausserhalb des Shops abzielen oder dazu auffordern"
+        li6: "Löschung: Wir behalten uns jedes Recht vor dein Produkt zu verstecken oder zu löschen"
+        li7: "Änderungen: Wir behalten uns das Recht vor, diese Bedingungen jeder Zeit anzupassen"
+        li8: "Einstell-Gebühren: Das Einstellen von Produkten ist Kostenlos"
+        li9: "Platform-Gebühren: Bei Verkauf fällt eine Erfolgsprovision von 5% an"
+        li10: "Stripe-Gebühren: Bei Verkauf 3.25% + 0.3 (%{link})"
+        li11: "Gerichtsstand: Kanton Bern, Schweiz"
+        li12: "Zuletzt aktualisiert am: %{date}"
+  flash:
+    shop_product_created: "Produkt wurde erfolgreich erstellt"
+    shop_product_not_created: "Produkt konnten nicht erstellt werden!"
+    shop_product_updated: "Produkt wurde erfolgreich aktualisiert"
+    shop_product_not_updated: "Produkt konnte nicht aktualisiert werden!"
+    shop_product_deleted: "Produkt wurde erfolgreich gelöscht"

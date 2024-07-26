@@ -26,6 +26,8 @@ fr:
   back: "Retour"
   confirm: "Êtes-vous certain?"
   not_uniq: "n'est pas disponible"
+  save: "Enregistrer"
+  actions: "Actions"
 
   sidebar:
     your_tournament_promotion: "Ici pourrait être ton publicité (%{link})"
@@ -263,6 +265,7 @@ fr:
       coach: "Entraîneur"
       admin: "Admin"
       player: "Joueur"
+      seller: "Vendeur"
 
   coffee:
     copied: "Copié \"%{item}\" dans le presse-papier"
@@ -1291,6 +1294,9 @@ fr:
     chars_min: "(%{pw_length} caractères minimum)"
     password_confirmation: "Confirmation du mot de passe"
     register: "Enregistrer"
+    stripe_account_id: "ID de compte Stripe (%{link})"
+    stripe_account_link: "Cliquez ici pour lier un compte Stripe"
+    stripe_account_linked_correctly: "Le compte Stripe est correctement lié ?"
 
   recaptcha:
     errors:
@@ -1343,7 +1349,22 @@ fr:
     total_points: "Total points"
     info_body: "Pour pouvoir créer une équipe, ajoutes le rôle de responsable d'équipe dans ton profil."
 
-
+  shop:
+    title: "Shop"
+    filter_by:
+      seller: "Filtrer par vendeur"
+      subtype: "Filtrer par type de produit"
+    sort_by:
+      prompt: "Trier par"
+      price-asc: "Le moins cher"
+      price-desc: "Le plus cher"
+      created_at-desc: "Plus récent"
+      created_at-asc: "Le plus ancien"
+    add_to_cart: "Ajouter au panier"
+    add_to_cart_short: "Ajouter"
+    flash:
+      stripe_account_linked: "Votre compte Stripe a été lié avec succès"
+      stripe_account_not_linkedy_yet: "Votre compte Stripe ne semble pas encore lié"
 
   thredded:
     users:

@@ -1,0 +1,66 @@
+.row
+  .col
+    %h1.page__title= "Bestellung vom #{@shop_order.created_at.localtime.to_fs(:custom_datetime)}"
+
+= render 'shop/beta_header' #blup: beta
+
+= render 'summary'
+
+.row{style: 'margin-top: 1.5rem;'}
+  .col.middle-align
+    %h5= t('shop.orders.delivery_address')
+
+.row
+  .col
+    %p
+      - if @shop_order.organisation.present?
+        = @shop_order.organisation
+        %br
+      - if @shop_order.name.present?
+        = @shop_order.name
+        %br
+      - if @shop_order.address.present?
+        = @shop_order.address
+        %br
+      - if @shop_order.address2.present?
+        = @shop_order.address2
+        %br
+      - if @shop_order.zip_code.present? || @shop_order.city.present?
+        = "#{@shop_order.zip_code} #{@shop_order.city}".strip
+        %br
+      - if @shop_order.phone_number.present?
+        = @shop_order.phone_number
+
+.row{style: 'margin-top: 1.5rem;'}
+  .col.middle-align
+    %h5= t('activerecord.attributes.shop_order.email')
+    %p= mail_to @shop_order.email
+
+.row{style: 'margin-top: 1.5rem;'}
+  .col.middle-align
+    %h5= t('activerecord.attributes.shop_order.status')
+    %p= @shop_order.status_text
+
+.row{style: 'margin-top: 1.5rem;'}
+  .col.middle-align
+
+    .row
+      .col
+        %h5= "Sellers"
+      .col
+        %h5= "seller_order"
+    -# %ul
+    - @shop_order.seller_orders.each do |shop_seller_order|
+      - player = shop_seller_order.user.player
+      -# %li
+      .row
+        .col= link_to player.gamer_tag, player_path(player)
+        .col= link_to shop_seller_order.status_text, shop_seller_order_path(shop_seller_order)
+
+-# back button s
+.row{style: 'margin-top: 1.5rem;'}
+  .col.text-center
+    = link_to shop_orders_path do
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
+        %span= t('back')

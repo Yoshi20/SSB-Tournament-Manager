@@ -26,6 +26,8 @@ it:
   back: "Indietro"
   confirm: "Sei sicuro?"
   not_uniq: "è già stato preso"
+  save: "Salva"
+  actions: "Azioni"
 
   sidebar:
     your_tournament_promotion: "Qui potrebbe esserci la tua pubblicità (%{link})"
@@ -295,6 +297,7 @@ it:
       coach: "Allenatore"
       admin: "Amministratore"
       player: "Giocatore"
+      seller: "Venditore"
 
   coffee:
     copied: "Copied \"%{item}\" to the clipboard"
@@ -1610,6 +1613,9 @@ it:
     chars_min: "(%{pw_length} caratteri minimi)"
     password_confirmation: "Conferma della password"
     register: "Registro"
+    stripe_account_id: "ID del conto Stripe (%{link})"
+    stripe_account_link: "Fai clic qui per collegare un account Stripe"
+    stripe_account_linked_correctly: "Account Stripe collegato correttamente?"
 
   recaptcha:
     errors:
@@ -1661,3 +1667,20 @@ it:
     members: "Membri"
     total_points: "Punti totali"
     info_body: "Per poter creare un team, aggiungere il ruolo di team manager nel proprio profilo."
+
+  shop:
+    title: "Negozio"
+    filter_by:
+      seller: "Filtrare per venditore"
+      subtype: "Filtrare per tipo di prodotto"
+    sort_by:
+      prompt: "Ordina per"
+      price-asc: "Più economico"
+      price-desc: "Più costoso"
+      created_at-desc: "Più recente"
+      created_at-asc: "Più vecchio"
+    add_to_cart: "Aggiungi al carrello"
+    add_to_cart_short: "“Aggiungi”"
+    flash:
+      stripe_account_linked: "Il vostro conto Stripe è stato collegato con successo"
+      stripe_account_not_linkedy_yet: "Il vostro conto Stripe non sembra essere ancora collegato"

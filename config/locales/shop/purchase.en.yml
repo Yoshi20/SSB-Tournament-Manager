@@ -1,0 +1,28 @@
+en:
+  activerecord:
+    models:
+      shop_purchase:
+        one: "Purchase"
+        other: "Purchases"
+    attributes:
+      shop_purchase:
+        quantity: "Quantity"
+        client_ip: "IP"
+        session_id: "Session"
+        user_id: "User"
+        has_checked_out: "Completed?"
+  shop:
+    purchases:
+      title: "Purchases"
+      new: "Create new purchase"
+      edit: "Edit purchase"
+      prohibited: "prohibited this purchase from being saved:"
+      total_count: "Purchases count"
+  flash:
+    shop_purchase_created: "Product was successfully added to the shopping cart"
+    shop_purchase_not_created_limit: "Product couldn't be added! Limit reached"
+    shop_purchase_not_created_currency: "Product couldn't be added! Only one currency can be used per shopping cart (Currently: %{currency})"
+    shop_purchase_updated: "Product was successfully updated"
+    shop_purchase_limitted: "Product has been limited to the maximum"
+    shop_purchase_not_updated: "Product couldn't be updated!"
+    shop_purchase_deleted: "Product was successfully deleted"

@@ -1,0 +1,51 @@
+de:
+  activerecord:
+    models:
+      shop_order:
+        one: "Bestellung"
+        other: "Bestellungen"
+    attributes:
+      shop_order:
+        organisation: "Organisation"
+        name: "Name"
+        address: "Adresse"
+        address2: "Adresszusatz"
+        zip_code: "PLZ"
+        city: "Stadt/Ort"
+        phone_number: "Telefon"
+        email: "E-Mail"
+        was_order_sent: "Ausgeliefert?"
+        order_sent_at: "Ausgeliefert am"
+        was_order_paid: "Bezahlt?"
+        order_paid_at: "Bezahlt am"
+        status: "Status"
+        payment_method: "Zahlungsmethode"
+  shop:
+    orders:
+      title: "Meine Bestellungen"
+      title_single: "Meine Bestellung"
+      title_short: "Bestellungen"
+      total_count: "Anzahl Bestellungen"
+      no_orders_yet: "Noch keine Bestellungen vorhanden"
+      summary: "Zusammenfassung"
+      delivery_address: "Lieferadresse"
+      place_order: "Bezahlen"
+      turnover: "Umsatz"
+      status:
+        open: "Zahlung offen"
+        paid: "Bezahlt"
+        sent: "Ausgeliefert"
+        cancelled: "Storniert"
+      payment_methods:
+        invoice: "Vorkasse via E-Mail-Rechnung"
+        stripe: "Sofort via Stripe (Gebühren: 3% + 0.5 CHF)"
+        # card: "Kreditkarte"
+        # paypal: "PayPal"
+        # twint: "Twint"
+  flash:
+    shop_order_created: "Die Bestellung war erfolgreich. Vielen Dank"
+    shop_order_not_created: "Die Bestellung ist fehlgeschlagen!"
+    shop_order_updated: "Die Bestellung wurde erfolgreich aktualisiert"
+    shop_order_not_updated: "Die Bestellung konnte nicht aktualisiert werden!"
+    shop_order_deleted: "Bestellung wurde erfolgreich gelöscht"
+    shop_order_not_deleted: "Bestellung konnte nicht gelöscht werden!"

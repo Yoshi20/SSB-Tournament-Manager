@@ -16,16 +16,28 @@
     td {
       vertical-align: middle;
     }
-    tr:hover {
-      background-color: $color-grey-light;
-      .admin-list-actions {
-        display: flex;
-      }
-    }
   }
   .with-show {
     tr  {
       cursor: pointer;
+    }
+  }
+
+  .total-row {
+    td {
+      border-top: 1px solid black;
+    }
+  }
+}
+
+.table-hover {
+  tbody {
+    tr:hover {
+      background-color: $color-grey-light;
+      .admin-list-actions {
+        display: flex;
+        justify-content: right;
+      }
     }
   }
 }

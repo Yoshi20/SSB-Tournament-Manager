@@ -1,0 +1,63 @@
+is:
+  activerecord:
+    models:
+      shop_product:
+        one: "Vara"
+        other: "Vörur"
+    attributes:
+      shop_product:
+        name: "Nafn"
+        description: "Stutt lýsing"
+        price: "Verð"
+        stock: "Lager"
+        is_hidden: "Falið?"
+        shipping_national: "Sendingarkostnaður"
+        shipping_international: "Sendingarkostnaður"
+        shipping_international_eu: "Sendingarkostnaður"
+        max_quantity_per_package: "Hámarksmagn á pakka"
+        currency: "Gjaldmiðill"
+        subtype: "Vörutegund"
+        variants: "Afbrigði"
+  shop:
+    products:
+      title: "Vörur"
+      no_products_found: "Engar vörur fundust"
+      new: "Búa til nýja vöru"
+      edit: "Breyta vöru"
+      prohibited: "koma í veg fyrir að þessi vara sé vistuð:"
+      total_count: "Fjöldi vara"
+      stock_text:
+        high: "Meira en %{stock} stykki á lager"
+        normal: "%{stock} stykki á lager"
+        low: "Aðeins %{stock} stykki eftir á lager"
+        zero: "Utan lager"
+      subtypes:
+        service: "Stafræn vara"
+        digital: "Digitales Produkt"
+        physical: "Líkamleg vara"
+      shipping_types:
+          national: "Innlent"
+          international: "Erlendis"
+          international_eu: "Erlendis ESB"
+      variants_info: "(kommu aðskilin: t.d. \"Grænn, Rauður, Blár\" eða \"S, M, L, XL\")"
+      info_body: "Til að geta bætt eigin vöru við búðina, skráðu þig inn og bættu fyrst hlutverkinu \"Seljandi\" við prófílinn þinn. Þú verður síðan að tengja Stripe reikning í reikningsstillingunum þínum. Eftir að Stripe reikningurinn þinn hefur verið bætt við rétt, smelltu aftur á þennan hnapp til að búa til vöru."
+      terms_of_use:
+        title: "Með því að búa til vöru samþykkir þú eftirfarandi notkunarskilmála:"
+        li1: "Fyrirvari: Þessi verslun þjónar aðeins sem markaðstorg. Seljendur og kaupendur gera samninga sjálfstætt og á eigin ábyrgð"
+        li2: "Ábyrgð: Sem seljandi berð þú ábyrgð á efndum samninga og berð ábyrgð á gæðagöllum og/eða lagagöllum"
+        li3: "Bótur: Þú samþykkir að verja og halda okkur skaðlausum frá öllum kröfum"
+        li4: "Bönn við auglýsingum: Vörur mega ekki innihalda neina tegund af auglýsingum sem þú býður ekki í augnablikinu eða munt bjóða í náinni framtíð í gegnum þessa búð"
+        li5: "Notunarskylda: Tilboðnar vörur mega ekki miða að eða hvetja til samningagerðar utan verslunar"
+        li6: "Eyðing: Við áskiljum okkur rétt til að fela eða eyða vörunni þinni"
+        li7: "Breytingar: Við áskiljum okkur rétt til að aðlaga þessi skilyrði hvenær sem er"
+        li8: "Bótunargjöld: Að skrá vörur er ókeypis"
+        li9: "Pallargjöld: 5% árangursþóknun er innheimt við sölu"
+        li10: "Stripe Gjöld: Á útsölu 3,25% + 0,3 (%{link})"
+        li11: "Lögsagnarumdæmi: Bern kantónan, Sviss"
+        li12: "Síðast uppfært þann: %{date}"
+  flash:
+    shop_product_created: "Varan var búin til með góðum árangri"
+    shop_product_not_created: "Ekki var hægt að búa til vöru!"
+    shop_product_updated: "Varan hefur verið uppfærð"
+    shop_product_not_updated: "Ekki var hægt að uppfæra vöru!"
+    shop_product_deleted: "Vöru var eytt"

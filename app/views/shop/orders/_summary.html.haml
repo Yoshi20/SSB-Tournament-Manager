@@ -1,0 +1,22 @@
+.checkout{style: 'margin-top: 1.5rem;'}
+  %h5= t('shop.orders.summary')
+  %table.table.border
+    %thead.table-header
+      %tr
+        %th.text-left= t('shop.products.title')
+        %th.text-right= t('shop.shopping_cart.total')
+        %th.text-center= t('activerecord.attributes.shop_product.currency')
+    %tbody.shop_purchase-list-body#purchases
+      %tr
+        %td
+          - @shopping_cart.purchases.includes(:product).order(:created_at).each do |purchase|
+            - next if purchase.quantity <= 0
+            = "#{purchase.quantity}x #{purchase.product_name}"
+            %br
+          = "1x #{t('shop.shopping_cart.shipment')}" if @shopping_cart.shipping_costs > 0
+        %td.text-right
+          - total_price = @shopping_cart.total_price
+          %strong= @shopping_cart.total_price_text(total_price)
+        %td.text-center
+          %strong= @shopping_cart.currency_text
+      %tr.total-row

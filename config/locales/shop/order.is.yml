@@ -1,0 +1,51 @@
+is:
+  activerecord:
+    models:
+      shop_order:
+        one: "Pöntun"
+        other: "Pantanir"
+    attributes:
+      shop_order:
+        organisation: "Stofnun"
+        name: "Nafn"
+        address: "Heimilisfang"
+        address2: "Heimilisfang2"
+        zip_code: "Póstnúmer"
+        city: "Borg/bær"
+        phone_number: "Sími"
+        email: "Netfang"
+        was_order_sent: "Afhent?"
+        order_sent_at: "Afhent þann"
+        was_order_paid: "Greitt?"
+        order_paid_at: "Greitt á"
+        status: "Staða"
+        payment_method: "Greiðslumáti"
+  shop:
+    orders:
+      title: "Pantanir mínar"
+      title_single: "Pöntun mín"
+      title_short: "Pantanir"
+      total_count: "Fjöldi pantana"
+      no_orders_yet: "Engar pantanir ennþá"
+      summary: "Samantekt"
+      delivery_address: "Afhendingarheimilisfang"
+      place_order: "Borga"
+      turnover: "Sala"
+      status:
+        open: "Greiðsla opin"
+        paid: "Greitt"
+        sent: "Afhent"
+        cancelled: "Hætt við"
+      payment_methods:
+        invoice: "Fyrirframgreiðsla með reikningi í tölvupósti"
+        stripe: "Strax í gegnum Stripe (gjöld: 3% + 0,5 CHF)"
+        # card: "Kreditkort"
+        # paypal: "PayPal"
+        # twint: "Twint"
+  flash:
+    shop_order_created: "Pöntunin tókst. Þakka þér fyrir"
+    shop_order_not_created: "Pöntunin mistókst!"
+    shop_order_updated: "Pöntunin var uppfærð með góðum árangri"
+    shop_order_not_updated: "Ekki var hægt að uppfæra pöntunina!"
+    shop_order_deleted: "Pöntun var eytt"
+    shop_order_not_deleted: "Ekki var hægt að eyða pöntun!"

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New product on <%= @domain %></h1>
+    <p>
+      Name:
+      <strong><%= @shop_product.name %></strong>
+    </p>
+    <p>
+      To see it, click
+      <%= link_to "here", @url %>.
+    </p>
+  </body>
+</html>

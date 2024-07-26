@@ -1,0 +1,26 @@
+<%= t('shop_mailer.thank_you_email.subject', title: @title) %>
+===============================================
+<%- if @shop_order.has_physicals? %>
+
+<%= t('shop_mailer.thank_you_email.delivery_address') %>
+
+<%-# @shop_order.complete_address %>
+  <%= @shop_order.organisation.present? ? @shop_order.organisation : '-' %>
+  <%= @shop_order.name.present? ? @shop_order.name : '-' %>
+  <%= @shop_order.address.present? ? @shop_order.address : '-' %>
+  <%= @shop_order.address2.present? ? @shop_order.address2 : '-' %>
+  <%= @shop_order.zip_code.present? ? @shop_order.zip_code : '-' %>
+  <%= @shop_order.city.present? ? @shop_order.city : '-' %>
+  <%= @shop_order.phone_number.present? ? @shop_order.phone_number : '-' %>
+<%- end %>
+
+<%= t('shop_mailer.thank_you_email.sellers') %>
+
+<%- @shop_order.seller_orders.each do |seller_order| %>
+  <%= "#{seller_order.user.email}" %>
+  <%- seller_order.sold_products_json.each do |sold_product| %>
+    <%= "#{sold_product['quantity']}x #{sold_product['name']}" %>
+  <%- end %>
+<%- end %>
+
+<%= t('shop_mailer.thank_you_email.outro') %>

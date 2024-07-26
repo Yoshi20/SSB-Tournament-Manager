@@ -1,0 +1,51 @@
+pt:
+  activerecord:
+    models:
+      shop_order:
+        one: "Order"
+        other: "Orders"
+    attributes:
+      shop_order:
+        organisation: "Organisation"
+        name: "Name"
+        address: "Endereço"
+        address2: "Sufixo do endereço"
+        zip_code: "Código postal"
+        city: "Cidade/localidade"
+        phone_number: "Telefone"
+        email: "Email"
+        was_order_sent: "Entregue?"
+        order_sent_at: "Entregue em"
+        was_order_paid: "Pago?"
+        order_paid_at: "Pago em"
+        status: "Estado"
+        payment_method: "Método de pagamento"
+  shop:
+    orders:
+      title: "As minhas encomendas"
+      title_single: "A minha encomenda"
+      title_short: "Encomendas"
+      total_count: "Número de encomendas"
+      no_orders_yet: "Ainda não há encomendas disponíveis"
+      summary: "Resumo"
+      delivery_address: "Endereço de entrega"
+      place_order: "Pagamento"
+      turnover: "Volume de negócios"
+      status:
+        open: "Pagamento aberto"
+        paid: "Pago"
+        sent: "Delivered"
+        cancelled: "Cancelado"
+      payment_methods:
+        invoice: "Pré-pagamento através de fatura por e-mail"
+        stripe: "Imediatamente via Stripe (taxas: 3% + 0,5 CHF)"
+        # card: "Cartão de crédito"
+        # paypal: "PayPal"
+        # twint: "Twint"
+  flash:
+    shop_order_created: "A encomenda foi efectuada com sucesso. Muito obrigado"
+    shop_order_not_created: "A encomenda falhou!"
+    shop_order_updated: "A encomenda foi actualizada com sucesso"
+    shop_order_not_updated: "A encomenda não pôde ser actualizada!"
+    shop_order_deleted: "A encomenda foi eliminada com êxito"
+    shop_order_not_deleted: "A encomenda não pôde ser eliminada!"

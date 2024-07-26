@@ -101,7 +101,7 @@ class PlayersController < ApplicationController
   #       format.json { render :show, status: :created, location: @player }
   #     else
   #       format.html { render :new }
-  #       format.json { render json: @player.errors, status: :unprocessable_entity }
+  #       format.json { render json: @player.errors, status: :unprocessable_content }
   #     end
   #   end
   # end
@@ -161,7 +161,7 @@ class PlayersController < ApplicationController
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
+        format.json { render json: @player.errors, status: :unprocessable_content }
       end
     end
   end

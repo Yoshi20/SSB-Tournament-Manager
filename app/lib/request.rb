@@ -28,4 +28,21 @@ module Request
     end
   end
 
+  def self.find_country_code(address)
+    country_code = nil
+    begin
+      json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(address)}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+      if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
+        json_data["results"][0]["address_components"].each do |res|
+          if (res["types"].present? && res["types"].include?('country'))
+            country_code = res["short_name"].downcase if res["short_name"].present?
+          end
+        end
+      end
+    rescue OpenURI::HTTPError => ex
+      puts ex
+    end
+    return country_code
+  end
+
 end

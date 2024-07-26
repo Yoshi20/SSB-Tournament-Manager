@@ -1,0 +1,77 @@
+- set_meta_tags description: meta_tag_description('Shop')
+.row
+  .col
+    %h1.page__title= t('shop.title')
+
+= render 'beta_header' #blup: beta
+
+.row
+  -# subtype
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :seller, params[:seller] if params[:seller].present?
+      = hidden_field_tag :order, params[:order] if params[:order].present?
+      .form-group
+        - subtypes_for_select = Shop::Product.pluck(:subtype).uniq.map{ |type| [t("shop.products.subtypes.#{type}"), type]}.sort
+        = select_tag :subtype, options_for_select(subtypes_for_select, params[:subtype]), prompt: t('shop.filter_by.subtype'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+  -# seller
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :subtype, params[:subtype] if params[:subtype].present?
+      = hidden_field_tag :order, params[:order] if params[:order].present?
+      .form-group
+        - sellers_for_select = User.includes(:player, :products).where(stripe_account_is_ready: true).map{|u| [u.player.gamer_tag, u.id] if u.products.any?}.sort
+        = select_tag :seller, options_for_select(sellers_for_select, params[:seller]), prompt: t('shop.filter_by.seller'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+  -# order_options
+  .col-6.col-md-4
+    = form_tag shop_path, method: :get, enforce_utf8: false do
+      = hidden_field_tag :seller, params[:seller] if params[:seller].present?
+      = hidden_field_tag :subtype, params[:subtype] if params[:subtype].present?
+      .form-group
+        - order_options_raw = ['price-asc', 'price-desc', 'created_at-desc', 'created_at-asc']
+        - order_options_for_select = t(order_options_raw, scope: 'shop.sort_by').zip(order_options_raw)
+        = select_tag :order, options_for_select(order_options_for_select, params[:order]), prompt: t('shop.sort_by.prompt'), class: 'form-control', onchange: 'submit();'
+        .hidden= submit_tag
+
+- if @shop_products.any?
+  .row.shop_products
+    - @shop_products.each do |product|
+      - is_seller_product = current_user.present? && (current_user.super_admin? || current_user.id == product.user_id)
+      - next if product.is_hidden && !is_seller_product
+      .col-sm-12.col-lg-6
+        = render 'product', product: product, is_seller_product: is_seller_product
+    -# .shop_products__pagination
+    -#   = render 'paginator'
+- else
+  .text-center
+    = t('shop.products.no_products_found')
+
+.admin-actions
+  - if @shopping_cart.present?
+    .admin-actions__link
+      = link_to shop_shopping_cart_path, class:'btn btn-default btn-square' do
+        %span
+          .material-icons.admin-actions__link__icon= 'shopping_cart'
+          .badge{style: 'color: black; position: absolute; top: 4px; left: 8.5px;'}= @shopping_cart.purchases.sum(&:quantity)
+  - if current_user.present? && (current_user.super_admin? || (current_user.has_role?('seller') && current_user.stripe_account_is_ready))
+    .admin-actions__link
+      = link_to new_shop_product_path, class:'btn btn-default btn-square' do
+        %span.material-icons.admin-actions__link__icon= 'add'
+  - else
+    .admin-actions__link
+      = button_tag class:'btn btn-default btn-square', 'data-toggle'=>'modal', 'data-target'=>'#infoModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false' do
+        %span.material-icons.admin-actions__link__icon= 'info'
+    = render '/partials/info', info_body: t('shop.products.info_body')
+
+- if @shopping_cart.present?
+  .row
+    .col.text-center
+      = link_to shop_shopping_cart_path do
+        .shop_products
+          %button.btn.btn-default.cart-button
+            %span{style: 'position: relative;'}
+              %i.material-icons{style: 'font-size: 20px; margin-top: 5px;'} shopping_cart
+              .badge= @shopping_cart.purchases.sum(&:quantity)
+            %span= t('shop.shopping_cart.title')

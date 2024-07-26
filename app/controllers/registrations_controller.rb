@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
         format.json { render json: registration, status: :ok, location: registration }
       else
         format.html { redirect_to registration.tournament, alert: t('flash.alert.updating_registration') }
-        format.json { render json: registration.errors, status: :unprocessable_entity }
+        format.json { render json: registration.errors, status: :unprocessable_content }
       end
     end
   end

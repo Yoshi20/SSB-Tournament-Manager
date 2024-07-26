@@ -1,0 +1,37 @@
+.row
+  .col
+    %h1.page__title= t('shop.shopping_cart.checkout')
+
+= render 'shop/beta_header' #blup: beta
+
+= render 'summary'
+
+.new-shop_order
+  = render 'form'
+
+- back_path = @shop_order.new_record? ? shop_shopping_cart_path : shop_orders_path
+.row
+  -# back button m & l
+  .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-left
+    = link_to back_path do
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
+        %span= t('back')
+  -# checkout button
+  .d-none.d-md-block.col-md-6.d-lg-none.d-xl-block.text-right
+    = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
+      %i.material-icons{style: 'font-size: 20px;'} monetization_on
+      %span= t('shop.orders.place_order')
+
+.row
+  -# checkout button
+  .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center
+    = link_to 'javascript:;', onclick: "document.getElementById('new_shop_order').submit();", class: 'btn btn-default btn-with-icon', style:'margin: 0;' do
+      %i.material-icons{style: 'font-size: 20px;'} monetization_on
+      %span= t('shop.orders.place_order')
+  -# back button s
+  .col-12.d-block.d-md-none.d-lg-block.d-xl-none.text-center.mt-2
+    = link_to back_path do
+      %button.btn.btn-default.btn-with-icon
+        %i.material-icons{style: 'font-size: 20px;'} keyboard_backspace
+        %span= t('back')

@@ -155,3 +155,6 @@ gem 'acts-as-taggable-on'
 
 # See https://github.com/argerim/select2-rails
 gem "select2-rails"
+
+# See https://docs.stripe.com/connect/separate-charges-and-transfers
+gem 'stripe'

@@ -1,0 +1,63 @@
+en:
+  activerecord:
+    models:
+      shop_product:
+        one: "Product"
+        other: "Products"
+    attributes:
+      shop_product:
+        name: "Name"
+        description: "Short description"
+        price: "Price"
+        stock: "Stock"
+        is_hidden: "Hidden?"
+        shipping_national: "Shipping"
+        shipping_international: "Shipping"
+        shipping_international_eu: "Shipping"
+        max_quantity_per_package: "Max. quantity per package"
+        currency: "Currency"
+        subtype: "Product Type"
+        variants: "Variants"
+  shop:
+    products:
+      title: "Products"
+      no_products_found: "No products found"
+      new: "Create new product"
+      edit: "Edit product"
+      prohibited: "prohibited this product from being saved:"
+      total_count: "Products count"
+      stock_text:
+        high: "More than %{stock} pieces in stock"
+        normal: "%{stock} pieces in stock"
+        low: "Only %{stock} pieces left in stock"
+        zero: "Out of stock"
+      subtypes:
+        service: "Service"
+        digital: "Digital product"
+        physical: "Physical product"
+      shipping_types:
+          national: "National"
+          international: "International"
+          international_eu: "International EU"
+      variants_info: "(comma separated: e.g. \"Green, Red, Blue\" or \"S, M, L, XL\")"
+      info_body: "To add your own product to the shop, log in and first add the \"Seller\" role to your profile. Then you need to link a Stripe account in your account settings. When your Stripe account was added correctly, click this button again to create a product."
+      terms_of_use:
+        title: "By creating a product, you agree to the following terms of use:"
+        li1: "Disclaimer: This shop serves only as a marketplace. Sellers and buyers conclude contracts autonomously and on their own responsibility"
+        li2: "Warranty: As a seller, you are responsible for fulfilling the contracts and are liable for quality defects and/or legal defects"
+        li3: "Indemnity: You agree to defend and indemnify us against all claims."
+        li4: "Advertising ban: Products may not contain any form of advertising that you are not currently offering or will not offer in the immediate future through this shop"
+        li5: "Use obligation: Products offered may not aim to conclude contracts outside of the shop or encourage this"
+        li6: "Deletion: We reserve every right to hide or delete your product"
+        li7: "Changes: We reserve the right to adjust these terms at any time"
+        li8: "Listing fees: Listing products is free"
+        li9: "Platform fees: A success commission of 5% is charged on sales"
+        li10: "Stripe fees: 3.25% + 0.3 is charged on sales %{link}"
+        li11: "Place of jurisdiction: Canton of Bern, Switzerland"
+        li12: "Last updated on: %{date}"
+  flash:
+    shop_product_created: "Product was successfully created"
+    shop_product_not_created: "Product couldn't be created!"
+    shop_product_updated: "Product was successfully updated"
+    shop_product_not_updated: "Product couldn't be updated!"
+    shop_product_deleted: "Product was successfully deleted"

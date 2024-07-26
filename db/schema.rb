@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_26_064926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -172,6 +172,90 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["player_id"], name: "index_results_on_player_id"
     t.index ["tournament_id"], name: "index_results_on_tournament_id"
+  end
+
+  create_table "shop_orders", force: :cascade do |t|
+    t.string "organisation"
+    t.string "name"
+    t.string "address"
+    t.string "address2"
+    t.string "zip_code"
+    t.string "city"
+    t.string "phone_number"
+    t.string "email", default: "", null: false
+    t.boolean "was_order_paid", default: false
+    t.datetime "order_paid_at"
+    t.string "status", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shopping_cart_id"
+    t.index ["shopping_cart_id"], name: "index_shop_orders_on_shopping_cart_id"
+  end
+
+  create_table "shop_products", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "description", default: ""
+    t.string "currency"
+    t.float "price", default: 0.0, null: false
+    t.float "shipping_national", default: 0.0, null: false
+    t.integer "stock", default: 0, null: false
+    t.boolean "is_hidden", default: true
+    t.integer "position"
+    t.string "image_link"
+    t.string "image_height"
+    t.string "image_width"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "country_code"
+    t.string "subtype", default: "service", null: false
+    t.float "shipping_international", default: 0.0, null: false
+    t.integer "max_quantity_per_package", default: 1, null: false
+    t.string "variants"
+    t.float "shipping_international_eu", default: 0.0, null: false
+    t.index ["user_id"], name: "index_shop_products_on_user_id"
+  end
+
+  create_table "shop_purchases", force: :cascade do |t|
+    t.integer "quantity", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.bigint "shopping_cart_id"
+    t.string "stripe_account_id"
+    t.string "variant"
+    t.index ["product_id"], name: "index_shop_purchases_on_product_id"
+    t.index ["shopping_cart_id"], name: "index_shop_purchases_on_shopping_cart_id"
+  end
+
+  create_table "shop_seller_orders", force: :cascade do |t|
+    t.boolean "was_order_sent", default: false
+    t.datetime "order_sent_at"
+    t.string "status", default: "", null: false
+    t.string "stripe_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.bigint "user_id"
+    t.json "sold_products_json"
+    t.string "currency"
+    t.float "shipping_costs", default: 0.0, null: false
+    t.float "total_price", default: 0.0, null: false
+    t.float "total_fee", default: 0.0, null: false
+    t.string "stripe_transfer_id"
+    t.index ["order_id"], name: "index_shop_seller_orders_on_order_id"
+    t.index ["user_id"], name: "index_shop_seller_orders_on_user_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.string "client_ip"
+    t.string "session_id"
+    t.bigint "user_id"
+    t.boolean "has_checked_out", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "country_code"
+    t.string "currency"
   end
 
   create_table "survey_responses", force: :cascade do |t|
@@ -552,6 +636,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
     t.boolean "allows_emails_from_uksmash", default: true
     t.boolean "allows_emails_from_portugalsmash", default: true
     t.boolean "allows_emails_from_smashiceland", default: true
+    t.string "stripe_account_id"
+    t.boolean "stripe_account_is_ready", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -559,6 +645,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_151204) do
 
   add_foreign_key "communities", "users"
   add_foreign_key "players", "users"
+  add_foreign_key "shop_orders", "shopping_carts"
+  add_foreign_key "shop_products", "users"
+  add_foreign_key "shop_purchases", "shop_products", column: "product_id"
+  add_foreign_key "shop_purchases", "shopping_carts"
+  add_foreign_key "shop_seller_orders", "shop_orders", column: "order_id"
+  add_foreign_key "shop_seller_orders", "users"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "taggings", "tags"
   add_foreign_key "teams", "users"

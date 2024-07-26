@@ -1,0 +1,63 @@
+pt:
+  activerecord:
+    models:
+      shop_product:
+        one: "Produto"
+        other: "Produtos"
+    attributes:
+      shop_product:
+        name: "Nome"
+        description: "Breve descrição"
+        price: "Preço"
+        stock: "Stock disponível"
+        is_hidden: "Escondido?"
+        shipping_national: "Custos de envio"
+        shipping_international: "Custos de envio"
+        shipping_international_eu: "Custos de envio"
+        max_quantity_per_package: "Quantidade máxima por embalagem"
+        currency: "Moeda"
+        subtype: "Tipo de produto"
+        variants: "Variantes"
+  shop:
+    products:
+      title: "Produtos"
+      no_products_found: "Não foram encontrados produtos"
+      new: "Criar novo produto"
+      edit: "Editar produto"
+      prohibited: "impedir que este produto seja guardado:"
+      total_count: "Número de produtos"
+      stock_text:
+        high: "Mais de %{stock} peças em stock"
+        normal: "%{stock} peças em stock"
+        low: "Apenas %{stock} peças em stock"
+        zero: "Já não existe em stock"
+      subtypes:
+        service: "Serviço"
+        digital: "Produto digital"
+        physical: "Produto físico"
+      shipping_types:
+          national: "Domestic"
+          international: "Abroad"
+          international_eu: "Abroad UE"
+      variants_info: "(separadas por vírgulas: por exemplo, \"Verde, Vermelho, Azul\" ou \"S, M, L, XL\")"
+      info_body: "Para adicionar o seu próprio produto à loja, inicie sessão e comece por adicionar a função \"Vendedor\" ao seu perfil. Em seguida, tem de associar uma conta Stripe nas definições da sua conta. Quando a sua conta Stripe tiver sido adicionada corretamente, clique novamente neste botão para criar um produto."
+      terms_of_use:
+        title: "Ao criar um produto, está a aceitar as seguintes condições de utilização:"
+        li1: "Declaração de exoneração de responsabilidade: Esta loja funciona apenas como um mercado. Os vendedores e compradores celebram contratos de forma autónoma e sob a sua própria responsabilidade"
+        li2: "Garantia: Como vendedor, é responsável pelo cumprimento dos contratos e é responsável por defeitos de qualidade e/ou defeitos de título"
+        li3: "Indemnização: Concorda em defender e indemnizar-nos contra todas as reclamações"
+        li4: "Proibição de publicidade: Os produtos não podem conter qualquer forma de publicidade que não ofereça atualmente ou venha a oferecer no futuro imediato através desta loja"
+        li5: "Obrigação de utilização: Os produtos oferecidos não podem ter como objetivo ou incentivar a celebração de contratos fora da loja"
+        li6: "Anulação: Reservamo-nos o direito de ocultar ou eliminar o seu produto"
+        li7: "Alterações: Reservamo-nos o direito de alterar estes termos e condições em qualquer altura"
+        li8: "Taxas de registo: A listagem de produtos é gratuita"
+        li9: "Taxas da plataforma: É cobrada uma comissão de sucesso de 5% sobre as vendas"
+        li10: "Taxas da Stripe: Para vendas 3,25% + 0,3 (%{link})"
+        li11: "Local de jurisdição: Cantão de Berna, Suíça"
+        li12: "Última atualização em: %{date}"
+  flash:
+    shop_product_created: "O produto foi criado com sucesso"
+    shop_product_not_created: "Não foi possível criar o produto!"
+    shop_product_updated: "O produto foi atualizado com sucesso"
+    shop_product_not_updated: "O produto não pôde ser atualizado!"
+    shop_product_deleted: "O produto foi eliminado com êxito"

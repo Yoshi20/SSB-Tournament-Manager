@@ -1,5 +1,9 @@
 module Domain
 
+  def self.title_from(country_code)
+    Rails.application.config.apps[country_code.to_sym]
+  end
+
   def self.domain_from(country_code)
     Rails.application.config.domains[country_code.to_sym]
   end
@@ -21,6 +25,12 @@ module Domain
   def self.currency_from(country_code)
     return '$' if country_code.nil?
     Rails.application.config.currencies[country_code.to_sym]
+  end
+
+  def self.iso_currency_from(country_code)
+    # Stripe does not seem to support the Icelandic Krona as an alternative currency -> https://docs.stripe.com/payouts/alternative-currencies
+    return 'eur' if country_code.nil? || country_code == 'is'
+    Rails.application.config.iso_currencies[country_code.to_sym]
   end
 
   def self.delivery_options_from(country_code)

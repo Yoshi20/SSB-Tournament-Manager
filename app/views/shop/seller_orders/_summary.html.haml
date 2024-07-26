@@ -1,0 +1,23 @@
+.checkout{style: 'margin-top: 1.5rem;'}
+  %h5= t('shop.orders.summary')
+  %table.table.border
+    %thead.table-header
+      %tr
+        %th.text-left= t('shop.products.title')
+        %th.text-right= t('shop.shopping_cart.total')
+        %th.text-center= t('activerecord.attributes.shop_product.currency')
+        %th.text-right= t('shop.shopping_cart.fees')
+    %tbody.shop_purchase-list-body#purchases
+      %tr
+        %td
+          - @shop_seller_order.sold_products_json.each do |sold_product|
+            - next if sold_product['quantity'] <= 0
+            = "#{sold_product['quantity']}x #{sold_product['name']}"
+            %br
+          = "1x #{t('shop.shopping_cart.shipment')}" if @shop_seller_order.shipping_costs > 0
+        %td.text-right
+          %strong= @shop_seller_order.total_price_text
+        %td.text-center
+          %strong= @shop_seller_order.currency_text
+        %td.text-right
+          %strong= @shop_seller_order.total_fee.round(2)

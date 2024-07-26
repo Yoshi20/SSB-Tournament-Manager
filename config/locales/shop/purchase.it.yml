@@ -1,0 +1,28 @@
+it:
+  activerecord:
+    models:
+      shop_purchase:
+        one: "Acquisto"
+        other: "Acquisti"
+    attributes:
+      shop_purchase:
+        quantity: "Quantità"
+        client_ip: "IP"
+        session_id: "Sessione"
+        user_id: "Utente"
+        has_checked_out: "Completato?"
+  shop:
+    purchases:
+      title: "Acquisti"
+      new: "Crea un nuovo acquisto"
+      edit: "Modifica acquisto"
+      prohibited: "impedisce il salvataggio di questo acquisto:"
+      total_count: "Numero di acquisti"
+  flash:
+    shop_purchase_created: "Il prodotto è stato aggiunto con successo al carrello"
+    shop_purchase_not_created_limit: "Il prodotto non può essere aggiunto! Limite raggiunto"
+    shop_purchase_not_created_currency: "Il prodotto non può essere aggiunto! È possibile utilizzare solo una valuta per carrello (attualmente: %{valuta})"
+    shop_purchase_updated: "Il prodotto è stato aggiornato con successo"
+    shop_purchase_limitted: "Il prodotto è stato limitato al massimo"
+    shop_purchase_not_updated: "Non è stato possibile aggiornare il prodotto!"
+    shop_purchase_deleted: "Il prodotto è stato cancellato con successo"

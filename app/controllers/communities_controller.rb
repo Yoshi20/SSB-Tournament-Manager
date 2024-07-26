@@ -56,7 +56,7 @@ class CommunitiesController < ApplicationController
         format.json { render :show, status: :created, location: @community }
       else
         format.html { render :new }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
+        format.json { render json: @community.errors, status: :unprocessable_content }
       end
     end
   end
@@ -70,7 +70,7 @@ class CommunitiesController < ApplicationController
         format.json { render :show, status: :ok, location: @community }
       else
         format.html { render :edit }
-        format.json { render json: @community.errors, status: :unprocessable_entity }
+        format.json { render json: @community.errors, status: :unprocessable_content }
       end
     end
   end

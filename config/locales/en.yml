@@ -26,6 +26,8 @@ en:
   back: "Back"
   confirm: "Are you sure?"
   not_uniq: "has already been taken"
+  save: "Save"
+  actions: "Actions"
 
   sidebar:
     your_tournament_promotion: "Here could be your advertisement (%{link})"
@@ -304,6 +306,7 @@ en:
       coach: "Coach"
       admin: "Admin"
       player: "Player"
+      seller: "Seller"
 
   coffee:
     copied: "Copied \"%{item}\" to the clipboard"
@@ -1709,6 +1712,9 @@ en:
     chars_min: "(%{pw_length} characters minimum)"
     password_confirmation: "Password confirmation"
     register: "Register"
+    stripe_account_id: "Stripe Account ID (%{link})"
+    stripe_account_link: "Click here to link a Stripe account"
+    stripe_account_linked_correctly: "Stripe account linked correctly?"
 
   recaptcha:
     errors:
@@ -1760,6 +1766,23 @@ en:
     members: "Members"
     total_points: "Total points"
     info_body: "To be able to create a team, add the team manager role in your profile."
+
+  shop:
+    title: "Shop"
+    filter_by:
+      seller: "Filter by seller"
+      subtype: "Filter by prduct type"
+    sort_by:
+      prompt: "Sort by"
+      price-asc: "Cheapest"
+      price-desc: "Most expensive"
+      created_at-desc: "Newest"
+      created_at-asc: "Oldest"
+    add_to_cart: "Add to Cart"
+    add_to_cart_short: "Add to Cart"
+    flash:
+      stripe_account_linked: "Your Stripe account has been successfully linked"
+      stripe_account_not_linkedy_yet: "Your Stripe account doesn't seem to be linked yet"
 
   locus_league:
     title: "Locus League"

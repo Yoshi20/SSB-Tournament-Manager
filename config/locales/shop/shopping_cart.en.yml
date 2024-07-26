@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    models:
+      shopping_cart:
+        one: "Shopping cart"
+        other: "Shopping carts"
+    attributes:
+      shopping_cart:
+        user_id: "User"
+        client_ip: "IP"
+        has_checked_out: "Checked out?"
+        created_at: "Created at"
+        currency: "Currency"
+  shop:
+    shopping_cart:
+      title: "Shopping cart"
+      total_count: "Shopping carts count"
+      checkout: "Checkout"
+      shipment: "Shipment"
+      stripe_fees: "Stripe fees"
+      fees: "Fees"
+      total: "Total"
+      continue_to_checkout: "Continue to checkout"
+  flash:
+    shop_shopping_cart_deleted: "Shopping cart was successfully deleted"

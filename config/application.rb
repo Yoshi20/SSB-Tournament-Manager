@@ -30,6 +30,17 @@ module SsbTournamentManager
 
     config.i18n.available_locales = %w(en de fr it pt is)
 
+    config.apps = {
+      ch: "SwissSmash",
+      de: "GermanySmash",
+      fr: "SmashUltimate",
+      lu: "LuxSmash",
+      it: "ItalySmash",
+      uk: "SmashUltimate",
+      pt: "SmashBrosPortugal",
+      is: "SmashIceland",
+    }
+
     config.domains = {
       ch: "swisssmash.ch",
       de: "germanysmash.de",
@@ -72,6 +83,17 @@ module SsbTournamentManager
       uk: "£",
       pt: "€",
       is: "kr",
+    }
+
+    config.iso_currencies = {
+      ch: "chf",
+      de: "eur",
+      fr: "eur",
+      lu: "eur",
+      it: "eur",
+      uk: "gbp",
+      pt: "eur",
+      is: "isk",
     }
 
     config.emails = {
@@ -127,6 +149,12 @@ module SsbTournamentManager
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       pt: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       is: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+    }
+
+    config.stripe = {
+      public_key: ENV["STRIPE_API_KEY_PUBLIC"],
+      secret_key: ENV["STRIPE_API_KEY_SECRET"],
+      webhook_secret: ENV["STRIPE_WEBHOOK_SECRET"],
     }
 
   end

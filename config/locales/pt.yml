@@ -26,6 +26,8 @@ pt:
   back: "Anterior"
   confirm: "Tens a certeza?"
   not_uniq: "já está ocupado"
+  save: "Guardar"
+  actions: "Acções"
 
   sidebar:
     your_tournament_promotion: "Aqui pode estar o seu anúncio (%{link})"
@@ -295,6 +297,7 @@ pt:
       coach: "Treinador"
       admin: "Administrador"
       player: "Jogador"
+      seller: "Vendedor"
 
   coffee:
     copied: "Copiou \"%{item}\" para o clipboard"
@@ -1610,6 +1613,9 @@ pt:
     chars_min: "minimo (%{pw_length} caracteres)"
     password_confirmation: "Confirmação da palavra-passe"
     register: "Registar"
+    stripe_account_id: "ID da conta Stripe (%{link})"
+    stripe_account_link: "Clique aqui para ligar uma conta Stripe"
+    stripe_account_linked_correctly: "Conta Stripe ligada corretamente?"
 
   recaptcha:
     errors:
@@ -1661,6 +1667,23 @@ pt:
     members: "Membros"
     total_points: "Total de pontos"
     info_body: "Para poder criar uma equipa, acrescente a função de gestor de equipa ao seu perfil."
+
+  shop:
+    title: "Loja"
+    filter_by:
+      seller: "Filtrar por vendedor"
+      subtype: "Filtrar por tipo de produto"
+    sort_by:
+      prompt: "Ordenar por"
+      price-asc: "Mais barato"
+      price-desc: "Mais caro"
+      created_at-desc: "Mais recente"
+      created_at-asc: "Mais antigo"
+    add_to_cart: "Adicionar ao carrinho"
+    add_to_cart_short: "Adicionar"
+    flash:
+      stripe_account_linked: "A sua conta Stripe foi ligada com sucesso"
+      stripe_account_not_linkedy_yet: "A sua conta Stripe ainda não parece estar ligada"
 
   locus_league:
     title: "Locus League"

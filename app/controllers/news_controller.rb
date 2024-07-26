@@ -1,6 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:new, :create]
+  before_action :authenticate_news_editor!, only: [:new, :create]
   before_action :authenticate_news_creator!, only: [:edit, :update, :destroy]
   before_action { @section = 'news' }
 
@@ -39,7 +39,7 @@ class NewsController < ApplicationController
         format.json { render :show, status: :created, location: @news }
       else
         format.html { render :new }
-        format.json { render json: @news.errors, status: :unprocessable_entity }
+        format.json { render json: @news.errors, status: :unprocessable_content }
       end
     end
   end
@@ -53,7 +53,7 @@ class NewsController < ApplicationController
         format.json { render :show, status: :ok, location: @news }
       else
         format.html { render :edit }
-        format.json { render json: @news.errors, status: :unprocessable_entity }
+        format.json { render json: @news.errors, status: :unprocessable_content }
       end
     end
   end
@@ -83,7 +83,7 @@ class NewsController < ApplicationController
       params.require(:news).permit(:user_id, :title, :teaser, :text, :created_at, :updated_at)
     end
 
-    def authenticate_admin!
+    def authenticate_news_editor!
       unless current_user.present? && (current_user.admin? || current_user.has_role?("news_editor"))
         respond_to do |format|
           format.html { redirect_to news_index_path, alert: t('flash.alert.unauthorized') }

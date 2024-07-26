@@ -62,7 +62,7 @@
           - if current_user.admin? and @player.user.mobile_number.present?
             .mobile_number.d-none.d-sm-block{style: 'font-size: 10px; position: absolute; top: 29px;'}= " (#{@player.user.mobile_number})"
 
-  - if @player.tournaments.any? || youtube_video_ids.any?
+  - if @player.tournaments.any? || youtube_video_ids.any? || @player.teams.any? #|| @player.user.has_role?('seller')
     %ul#player-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
       %li.nav-item
         %a#data-tab.nav-link.active{'data-toggle'=>'tab', href: '#data', role: 'tab', 'aria-controls'=>'all'}
@@ -79,6 +79,10 @@
         %li.nav-item
           %a#teams-tab.nav-link{'data-toggle'=>'tab', href: '#teams', role: 'tab', 'aria-controls'=>'all'}
             = t('players.teams')
+      -# - if @player.user.has_role?('seller')
+      -#   %li.nav-item
+      -#     %a#products-tab.nav-link{'data-toggle'=>'tab', href: '#products', role: 'tab', 'aria-controls'=>'all'}
+      -#       = t('players.products')
   - else
     %ul{style: "margin-bottom: 2rem;"}
 
@@ -312,3 +316,10 @@
                 %tr{'data-id': team.id, 'data-component'=>'team'}
                   %td= team.name_long
                   %td.text-center= team.name_short
+
+    -# -# products ---------------------------------------------------------------
+    -# - if @player.user.has_role?('seller')
+    -#   .tab-pane.fade.show#products{role: 'tabpanel', 'aria-labelledby'=>'products-tab'}
+    -#     .player__products
+    -#       - @player.user.products.each do |product|
+    -#         = render 'shop/product', product: product, is_seller_product: false
