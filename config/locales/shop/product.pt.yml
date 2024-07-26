@@ -13,6 +13,7 @@ pt:
         is_hidden: "Escondido?"
         shipping_national: "Custos de envio"
         shipping_international: "Custos de envio"
+        shipping_international_eu: "Custos de envio"
         max_quantity_per_package: "Quantidade máxima por embalagem"
         currency: "Moeda"
         subtype: "Tipo de produto"
@@ -37,6 +38,7 @@ pt:
       shipping_types:
           national: "Domestic"
           international: "Abroad"
+          international_eu: "Abroad UE"
       variants_info: "(separadas por vírgulas: por exemplo, \"Verde, Vermelho, Azul\" ou \"S, M, L, XL\")"
       info_body: "Para adicionar o seu próprio produto à loja, inicie sessão e comece por adicionar a função \"Vendedor\" ao seu perfil. Em seguida, tem de associar uma conta Stripe nas definições da sua conta. Quando a sua conta Stripe tiver sido adicionada corretamente, clique novamente neste botão para criar um produto."
       terms_of_use:

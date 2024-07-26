@@ -13,6 +13,7 @@ is:
         is_hidden: "Falið?"
         shipping_national: "Sendingarkostnaður"
         shipping_international: "Sendingarkostnaður"
+        shipping_international_eu: "Sendingarkostnaður"
         max_quantity_per_package: "Hámarksmagn á pakka"
         currency: "Gjaldmiðill"
         subtype: "Vörutegund"
@@ -37,6 +38,7 @@ is:
       shipping_types:
           national: "Innlent"
           international: "Erlendis"
+          international_eu: "Erlendis ESB"
       variants_info: "(kommu aðskilin: t.d. \"Grænn, Rauður, Blár\" eða \"S, M, L, XL\")"
       info_body: "Til að geta bætt eigin vöru við búðina, skráðu þig inn og bættu fyrst hlutverkinu \"Seljandi\" við prófílinn þinn. Þú verður síðan að tengja Stripe reikning í reikningsstillingunum þínum. Eftir að Stripe reikningurinn þinn hefur verið bætt við rétt, smelltu aftur á þennan hnapp til að búa til vöru."
       terms_of_use:

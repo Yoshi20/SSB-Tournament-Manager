@@ -14,6 +14,7 @@ class Shop::Product < ApplicationRecord
   validates :stock, :numericality => { greater_than_or_equal_to: 0 }
   validates :shipping_national, presence: true
   validates :shipping_international, presence: true
+  validates :shipping_international_eu, presence: true
   validates :max_quantity_per_package, presence: true
   validates :max_quantity_per_package, :numericality => { greater_than_or_equal_to: 1 }
 
@@ -27,6 +28,7 @@ class Shop::Product < ApplicationRecord
     unless self.subtype == 'physical'
       self.shipping_national = 0
       self.shipping_international = 0
+      self.shipping_international_eu = 0
       self.stock = 0
       self.max_quantity_per_package = 1
     end
@@ -54,11 +56,11 @@ class Shop::Product < ApplicationRecord
   end
 
   def shipping(country_code)
-    eu_countries = ['de', 'fr', 'it', 'lu', 'pt']
+    eu_countries = ['at', 'be', 'bg', 'hr', 'cy', 'dk', 'ee', 'fi', 'fr', 'de', 'gr', 'hu', 'ie', 'it', 'lv', 'lt', 'lu', 'mt', 'nl', 'pl', 'pt', 'ro', 'sk', 'si', 'es', 'se']
     if country_code == self.country_code
       self.shipping_national
-    elsif country_code.in?(eu_countries) && self.country_code.in?(eu_countries)
-      self.shipping_national
+    elsif country_code.in?(eu_countries)
+      self.shipping_international_eu
     else
       self.shipping_international
     end

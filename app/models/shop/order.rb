@@ -9,6 +9,7 @@ class Shop::Order < ApplicationRecord
   before_validation :strip_whitespace
   after_validation :set_order_paid_at, on: [ :update ]
   after_validation :set_status, on: [ :update ]
+  after_create :find_real_country_code
   after_create :create_seller_orders
 
   FeeInPercent = (0.0325 + 0.05) # Stripe-Fee: 3.25% + 0.3 + Platform-Fee: 5%
@@ -34,6 +35,16 @@ class Shop::Order < ApplicationRecord
       self.status = 'paid'
     else
       self.status = 'open'
+    end
+  end
+
+  # Try to find real_country_code from address if present (to prevent fake shipping costs)
+  def find_real_country_code
+    return unless self.address.present? || self.city.present?
+    real_country_code = Request.find_country_code(self.complete_address)
+    # update shopping_cart.country_code if we found a fake one
+    if real_country_code.present? && (real_country_code != self.shopping_cart.country_code)
+      self.shopping_cart.update(country_code: real_country_code)
     end
   end
 

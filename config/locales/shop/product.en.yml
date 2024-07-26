@@ -13,6 +13,7 @@ en:
         is_hidden: "Hidden?"
         shipping_national: "Shipping"
         shipping_international: "Shipping"
+        shipping_international_eu: "Shipping"
         max_quantity_per_package: "Max. quantity per package"
         currency: "Currency"
         subtype: "Product Type"
@@ -37,6 +38,7 @@ en:
       shipping_types:
           national: "National"
           international: "International"
+          international_eu: "International EU"
       variants_info: "(comma separated: e.g. \"Green, Red, Blue\" or \"S, M, L, XL\")"
       info_body: "To add your own product to the shop, log in and first add the \"Seller\" role to your profile. Then you need to link a Stripe account in your account settings. When your Stripe account was added correctly, click this button again to create a product."
       terms_of_use:
