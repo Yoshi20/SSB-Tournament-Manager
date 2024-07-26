@@ -55,7 +55,7 @@ class Shop::ShoppingCart < ApplicationRecord
     #   seller_shipping = 0
     #   acct_purchase[1].each do |purchase|
     #     if purchase.quantity > 0
-    #       number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).round
+    #       number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).ceil
     #       seller_shipping += purchase.product.shipping(self.country_code)*number_of_packages
     #       # seller_shipping = [purchase.product.shipping(self.country_code)*number_of_packages, seller_shipping].max
     #     end
@@ -63,7 +63,7 @@ class Shop::ShoppingCart < ApplicationRecord
     #   shipping += seller_shipping
     # end
     self.purchases.includes(:product).each do |purchase|
-      number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).round
+      number_of_packages = (purchase.quantity.to_f / purchase.product.max_quantity_per_package).ceil
       shipping += purchase.product.shipping(self.country_code)*number_of_packages
     end
     return shipping

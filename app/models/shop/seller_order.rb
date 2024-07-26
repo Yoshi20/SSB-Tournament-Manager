@@ -28,7 +28,7 @@ class Shop::SellerOrder < ApplicationRecord
         subtype: product.subtype,
       }
       if purchase.quantity > 0
-        number_of_packages = (purchase.quantity.to_f / product.max_quantity_per_package).round
+        number_of_packages = (purchase.quantity.to_f / product.max_quantity_per_package).ceil
         shipping = [product.shipping(country_code)*number_of_packages, shipping].max
       end
       total_price += (purchase.product.price * purchase.quantity)
