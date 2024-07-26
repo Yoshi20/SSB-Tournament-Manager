@@ -35,7 +35,7 @@ class Shop::PurchasesController < ApplicationController
     @shop_purchase.assign_attributes(shop_purchase_params)
     was_limitted = @shop_purchase.limit_quantity
     respond_to do |format|
-      if (@shop_purchase.quantity >= 0 && !was_limitted) && @shop_purchase.save
+      if @shop_purchase.quantity >= 0 && @shop_purchase.save
         format.html {
           if was_limitted
             redirect_to shop_shopping_cart_path, flash: {warn: t('flash.shop_purchase_limitted')}
