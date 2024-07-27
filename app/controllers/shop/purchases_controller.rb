@@ -9,7 +9,7 @@ class Shop::PurchasesController < ApplicationController
     # only update quantity if a purchase with the same product already exists
     @shop_purchase = @shopping_cart.purchases.find_by(product_id: shop_purchase_params[:product_id], variant: shop_purchase_params[:variant])
     if @shop_purchase.present?
-      @shop_purchase.quantity = @shop_purchase.quantity + 1
+      @shop_purchase.quantity = @shop_purchase.quantity.to_i + 1
     else
       @shop_purchase = Shop::Purchase.new(shop_purchase_params)
       @shop_purchase.shopping_cart_id = @shopping_cart.id
@@ -35,7 +35,7 @@ class Shop::PurchasesController < ApplicationController
     @shop_purchase.assign_attributes(shop_purchase_params)
     was_limitted = @shop_purchase.limit_quantity
     respond_to do |format|
-      if @shop_purchase.quantity >= 0 && @shop_purchase.save
+      if @shop_purchase.quantity.to_i >= 0 && @shop_purchase.save
         format.html {
           if was_limitted
             redirect_to shop_shopping_cart_path, flash: {warn: t('flash.shop_purchase_limitted')}

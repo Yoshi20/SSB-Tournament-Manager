@@ -13,7 +13,7 @@ class Shop::Stripe::CheckoutsController < Shop::Stripe::StripeController
     transfer_data = []
     # purchases
     shopping_cart.purchases.includes(:product).order(:created_at).each do |purchase|
-      next if purchase.quantity <= 0
+      next if purchase.quantity.to_i <= 0
       product = purchase.product
       # populate line_items
       line_items << {

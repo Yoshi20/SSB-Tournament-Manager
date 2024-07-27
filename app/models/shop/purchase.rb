@@ -9,9 +9,9 @@ class Shop::Purchase < ApplicationRecord
 
   def limit_quantity
     return false unless self.product.subtype == 'physical'
-    max_quantity = self.product.stock
+    max_quantity = self.product.stock.to_i
     was_limitted = false
-    if self.quantity > max_quantity
+    if self.quantity.to_i > max_quantity
       self.quantity = max_quantity
       was_limitted = true
     end
