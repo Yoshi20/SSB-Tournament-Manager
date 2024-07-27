@@ -53,8 +53,8 @@
       .col-6
         %ul.navbar-nav.navbar-main.ml-auto
 
-          %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
-            = link_to t('rankings.title'), rankings_path, class: 'nav-link'
+          -# %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
+          -#   = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
           %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' || @section == 'statistics' || @section == 'videos' || @section == 'teams') ? 'active' : 'inactive')}
             %a.nav-link.dropdown-toggle#navbarDropdown3{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
@@ -72,6 +72,11 @@
 
           %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
             = link_to t('information.fr.title_short'), informations_path, class: 'nav-link'
+
+          %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
+            = link_to shop_path, class: 'nav-link' do
+              = t('shop.title')
+              %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
 
     .row
       .col-6
@@ -95,6 +100,11 @@
                   = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
                   = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
                 = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
+                - if current_user.has_role?("seller")
+                  .dropdown-divider
+                  = link_to t('shop.orders.title_short'), shop_seller_orders_path, class: 'dropdown-item'
+                - if current_user.super_admin?
+                  = link_to 'Alle '+t('shop.orders.title_short'), shop_orders_path, class: 'dropdown-item'
                 - if current_user.admin?
                   .dropdown-divider
                   = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'

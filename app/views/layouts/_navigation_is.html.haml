@@ -18,7 +18,7 @@
     %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
       = link_to t('news.title'), news_index_path, class: 'nav-link'
 
-    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' || @section == 'tournaments') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
         = t('tournaments.title')
         .h-24
@@ -30,7 +30,7 @@
     %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
       = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
-    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics' or @section == 'videos') ? 'active' : 'inactive')}
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' || @section == 'statistics' || @section == 'videos' || @section == 'teams') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
         = t('players.title')
         .h-24
@@ -39,15 +39,18 @@
         = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
         = link_to t('players.individuals'), players_path, class: 'dropdown-item'
         = link_to t('video.title'), videos_path, class: 'dropdown-item'
-
-    %li.nav-item{role: "presentation", class: (@section == 'teams' ? 'active' : 'inactive')}
-      = link_to t('teams.title'), teams_path, class: 'nav-link'
+        = link_to t('teams.title'), teams_path, class: 'dropdown-item'
 
     %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
       = link_to t('rules.title'), rules_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
       = link_to t('information.is.title_short'), informations_path, class: 'nav-link'
+
+    %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
+      = link_to shop_path, class: 'nav-link' do
+        = t('shop.title')
+        %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
 
     %li.nav-item.locales-list
       = link_to image_tag("flags/united-kingdom.svg", width: '20px', height: '20px', alt: 'united-kingdom flag icon', class: 'language_flag', style: "border-bottom: #{cookies[:locale] == 'en' ? '1px solid white' : ''};"), url_for(locale: 'en'), "data-turbolinks": "false"
@@ -78,6 +81,11 @@
             = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
             = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
           = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
+          - if current_user.has_role?("seller")
+            .dropdown-divider
+            = link_to t('shop.orders.title_short'), shop_seller_orders_path, class: 'dropdown-item'
+          - if current_user.super_admin?
+            = link_to 'Alle '+t('shop.orders.title_short'), shop_orders_path, class: 'dropdown-item'
           - if current_user.admin?
             .dropdown-divider
             = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
