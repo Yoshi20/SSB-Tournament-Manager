@@ -41,7 +41,7 @@ pt:
           international: "Abroad"
           international_eu: "Abroad UE"
       variants_info: "(separadas por vírgulas: por exemplo, \"Verde, Vermelho, Azul\" ou \"S, M, L, XL\")"
-      info_body: "Para adicionar o seu próprio produto à loja, inicie sessão e comece por adicionar a função \"Vendedor\" ao seu perfil. Em seguida, tem de associar uma conta Stripe nas definições da sua conta. Quando a sua conta Stripe tiver sido adicionada corretamente, clique novamente neste botão para criar um produto."
+      info_body: "Para adicionar o seu próprio produto ou serviço à loja, inicie sessão e comece por adicionar a função \"Vendedor\" ao seu perfil. Em seguida, tem de associar uma conta Stripe nas definições da sua conta. Quando a sua conta Stripe tiver sido adicionada corretamente, clique novamente neste botão para criar um produto."
       terms_of_use:
         title: "Ao criar um produto, está a aceitar as seguintes condições de utilização:"
         li1: "Declaração de exoneração de responsabilidade: Esta loja funciona apenas como um mercado. Os vendedores e compradores celebram contratos de forma autónoma e sob a sua própria responsabilidade"

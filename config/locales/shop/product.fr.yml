@@ -41,7 +41,7 @@ fr:
           international: "Étranger"
           international_eu: "Étranger UE"
       variants_info: "(séparés par une virgule: par ex. \"Vert, Rouge, Bleu\"  ou \"S, M, L, XL\")"
-      info_body: "Pour pouvoir ajouter ton propre produit à la boutique, connecte-toi et ajoute d'abord le rôle \"vendeur\" à ton profil. Ensuite, tu dois associer un compte Stripe dans les paramètres de ton compte. Une fois que ton compte Stripe a été correctement ajouté, clique à nouveau sur ce bouton pour créer un produit."
+      info_body: "Pour pouvoir ajouter ton propre produit ou service à la boutique, connecte-toi et ajoute d'abord le rôle \"vendeur\" à ton profil. Ensuite, tu dois associer un compte Stripe dans les paramètres de ton compte. Une fois que ton compte Stripe a été correctement ajouté, clique à nouveau sur ce bouton pour créer un produit."
       terms_of_use:
         title: "En créant un produit, tu acceptes les conditions d'utilisation suivantes:"
         li1: "Clause de non-responsabilité: cette boutique sert uniquement de place de marché. Le vendeur et l'acheteur concluent des contrats de manière autonome et sous leur propre responsabilité"

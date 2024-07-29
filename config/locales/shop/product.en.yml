@@ -41,7 +41,7 @@ en:
           international: "International"
           international_eu: "International EU"
       variants_info: "(comma separated: e.g. \"Green, Red, Blue\" or \"S, M, L, XL\")"
-      info_body: "To add your own product to the shop, log in and first add the \"Seller\" role to your profile. Then you need to link a Stripe account in your account settings. When your Stripe account was added correctly, click this button again to create a product."
+      info_body: "To add your own product or service to the shop, log in and first add the \"Seller\" role to your profile. Then you need to link a Stripe account in your account settings. When your Stripe account was added correctly, click this button again to create a product."
       terms_of_use:
         title: "By creating a product, you agree to the following terms of use:"
         li1: "Disclaimer: This shop serves only as a marketplace. Sellers and buyers conclude contracts autonomously and on their own responsibility"
