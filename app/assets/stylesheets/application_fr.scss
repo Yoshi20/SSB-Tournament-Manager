@@ -176,3 +176,9 @@ a.disabled {
   padding: 6px 6px;
   padding-right: 0px;
 }
+
+.dropdown-item {
+  .forum-unread-counter {
+    color: $color-default;
+  }
+}
