@@ -10,7 +10,7 @@
             .material-icons= 'visibility'
     - else
       .survey
-        = @survey.question
+        = @survey.question.html_safe
         .row{style: 'align-items: baseline;'}
           - total = @survey.survey_responses.count
           - if @survey.option1.present?
@@ -41,7 +41,7 @@
               .material-icons= 'close'
   - else
     .survey
-      = @survey.question
+      = @survey.question.html_safe
       .row
         .col-12
           = form_for SurveyResponse.new, role: 'form', class:'form' do |f|
