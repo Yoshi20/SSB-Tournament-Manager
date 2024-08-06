@@ -36,7 +36,7 @@
           %td.min.text-center
             = form_for purchase do |f|
               .field.form-group.small{style: 'margin: 0;'}
-                = f.number_field :quantity, value: quantity, step: 1, min: 1, style: 'width: 3rem; padding: 0; text-align: center; block-size: 2rem;', onchange: 'if (parseInt(this.value) >= 0) {submit();}'
+                = f.number_field :quantity, value: quantity, step: 1, min: 0, style: 'width: 3rem; padding: 0; text-align: center; block-size: 2rem;', onchange: 'if (parseInt(this.value) >= 0) {submit();}'
           %td.min.text-right
             %strong= product.price_long(quantity)
           %td.min.text-center
