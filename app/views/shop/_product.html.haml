@@ -13,7 +13,7 @@
     .row.no-space{style: show_disabled ? 'opacity: 0.5;' : ''}
       .col-5.col-md-6.product-image-col{modal_params}
         - if product.image_link.present? && Request.url_valid?(product.image_link)
-          = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image"
+          = image_tag product.image_link, height: product.image_height.present? ? product.image_height : '100%', width: product.image_width.present? ? product.image_width : '100%', alt: "#{product.name} image", onerror: "this.onerror=null;this.src='#{image_url('no-image.svg')}';"
         - else
           = image_tag 'no-image.svg', height: '100%', width: '100%', alt: "no image logo"
       .col-7.col-md-6
