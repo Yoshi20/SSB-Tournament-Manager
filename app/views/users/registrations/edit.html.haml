@@ -37,10 +37,10 @@
       .form-group
         = f.label :password, t('users.new_password')
         %i= t('users.leave_blank')
-        = f.password_field :password, autocomplete: "off", class: 'form-control'
+        = f.text_field :password, autocomplete: "off", class: 'form-control'
       .form-group
         = f.label :password_confirmation, t('users.new_password_conf')
-        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+        = f.text_field :password_confirmation, autocomplete: "off", class: 'form-control'
       -# .form-group.mb-0
       -#   .form-check
       -#     = f.check_box :wants_major_email, class:'form-check-input mr-2'
