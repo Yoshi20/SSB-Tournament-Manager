@@ -17,7 +17,7 @@
       = hidden_field_tag :seller, params[:seller] if params[:seller].present?
       = hidden_field_tag :order, params[:order] if params[:order].present?
       .form-group
-        - subtypes_for_select = Shop::Product.pluck(:subtype).uniq.map{ |type| [t("shop.products.subtypes.#{type}"), type]}.sort
+        - subtypes_for_select = Shop::Product.pluck(:subtype).uniq.map{ |type| [t("shop.products.subtypes.#{type}"), type]}.compact.sort
         = select_tag :subtype, options_for_select(subtypes_for_select, params[:subtype]), prompt: t('shop.filter_by.subtype'), class: 'form-control', onchange: 'submit();'
         .hidden= submit_tag
   -# seller
@@ -26,7 +26,7 @@
       = hidden_field_tag :subtype, params[:subtype] if params[:subtype].present?
       = hidden_field_tag :order, params[:order] if params[:order].present?
       .form-group
-        - sellers_for_select = User.includes(:player, :products).where(stripe_account_is_ready: true).map{|u| [u.player.gamer_tag, u.id] if u.products.any?}.sort
+        - sellers_for_select = User.includes(:player, :products).where(stripe_account_is_ready: true).map{|u| [u.player.gamer_tag, u.id] if u.products.any?}.compact.sort
         = select_tag :seller, options_for_select(sellers_for_select, params[:seller]), prompt: t('shop.filter_by.seller'), class: 'form-control', onchange: 'submit();'
         .hidden= submit_tag
   -# order_options
