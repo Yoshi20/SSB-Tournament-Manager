@@ -570,7 +570,7 @@ fr:
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "Le power ranking FR utilise une combinaison d'algorithme et de jury pour fournir un classement qui se rapproche le plus possible de la réalité. Pour en savoir plus vous pouvez vous rendre sur %{link} dans la section FAQ ou sur le serveur discord"
+        power_ranking_body: "Le power ranking FR utilise une combinaison d'algorithme et de jury pour fournir un classement qui se rapproche le plus possible de la réalité. Si vous voulez en savoir plus ou aider à participer à la confection des prochains rankings rejoignez nous sur le %{link}"
       tournament_manager:
         title: "Gestionnaire de tournoi"
         tournament_organiser: "Organisateur de tournoi"

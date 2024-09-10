@@ -647,7 +647,7 @@ en:
       power_ranking:
         title: "Power Ranking"
         power_ranking: "Power Ranking (PR)"
-        power_ranking_body: "The power ranking FR uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality. To find out more you can go to %{link} in the FAQ section or on the discord server"
+        power_ranking_body: "The FR power ranking uses a combination of algorithm and jury to provide a ranking that is as close as possible to reality. If you want to know more or help participate in the creation of the next ranking, join us on %{link}"
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
