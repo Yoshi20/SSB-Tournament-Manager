@@ -1768,7 +1768,8 @@ en:
     info_body: "To be able to create a team, add the team manager role in your profile."
 
   shop:
-    title: "Shop"
+    title: "Market"
+    title_long: "Marketplace"
     filter_by:
       seller: "Filter by seller"
       subtype: "Filter by prduct type"

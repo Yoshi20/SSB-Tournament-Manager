@@ -1363,7 +1363,8 @@ de:
     info_body: "Um ein Team erstellen zu können, füge die Team-Manager-Rolle deinem Profil hinzu."
 
   shop:
-    title: "Shop"
+    title: "Markt"
+    title_long: "Marktplatz"
     filter_by:
       seller: "Nach Verkäufer filtern"
       subtype: "Nach Produktart filtern"

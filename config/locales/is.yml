@@ -1768,7 +1768,8 @@ is:
     info_body: "Til að geta búið til lið skaltu bæta við liðsstjórahlutverkinu á prófílnum þínum."
 
   shop:
-    title: "Versla"
+    title: "Market"
+    title_long: "Marketplace"
     filter_by:
       seller: "Sía eftir seljanda"
       subtype: "Sía eftir vörutegund"

@@ -1669,7 +1669,8 @@ it:
     info_body: "Per poter creare un team, aggiungere il ruolo di team manager nel proprio profilo."
 
   shop:
-    title: "Negozio"
+    title: "Mercato"
+    title_long: "Mercato"
     filter_by:
       seller: "Filtrare per venditore"
       subtype: "Filtrare per tipo di prodotto"

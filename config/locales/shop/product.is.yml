@@ -41,7 +41,7 @@ is:
           international: "Erlendis"
           international_eu: "Erlendis ESB"
       variants_info: "(kommu aðskilin: t.d. \"Grænn, Rauður, Blár\" eða \"S, M, L, XL\")"
-      info_body: "Til að geta bætt eigin vöru eða þjónustu við búðina, skráðu þig inn og bættu fyrst hlutverkinu \"Seljandi\" við prófílinn þinn. Þú verður síðan að tengja Stripe reikning í reikningsstillingunum þínum. Eftir að Stripe reikningurinn þinn hefur verið bætt við rétt, smelltu aftur á þennan hnapp til að búa til vöru."
+      info_body: "Til að bæta þinni eigin vöru eða þjónustu við markaðstorgið skaltu skrá þig inn og bæta fyrst \"Seljandi\" hlutverkinu við prófílinn þinn. Þú verður síðan að tengja Stripe reikning í reikningsstillingunum þínum. Eftir að Stripe reikningnum þínum hefur verið bætt rétt við skaltu smella aftur á þennan hnapp til að búa til vöru."
       terms_of_use:
         title: "Með því að búa til vöru samþykkir þú eftirfarandi notkunarskilmála:"
         li1: "Fyrirvari: Þessi verslun þjónar aðeins sem markaðstorg. Seljendur og kaupendur gera samninga sjálfstætt og á eigin ábyrgð"

@@ -1669,7 +1669,8 @@ pt:
     info_body: "Para poder criar uma equipa, acrescente a função de gestor de equipa ao seu perfil."
 
   shop:
-    title: "Loja"
+    title: "Mercado"
+    title_long: "Mercado"
     filter_by:
       seller: "Filtrar por vendedor"
       subtype: "Filtrar por tipo de produto"

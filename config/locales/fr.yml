@@ -1362,7 +1362,8 @@ fr:
     info_body: "Pour pouvoir créer une équipe, ajoutes le rôle de responsable d'équipe dans ton profil."
 
   shop:
-    title: "Shop"
+    title: "Marché"
+    title_long: "Marché"
     filter_by:
       seller: "Filtrer par vendeur"
       subtype: "Filtrer par type de produit"
