@@ -158,3 +158,5 @@ gem "select2-rails"
 
 # See https://docs.stripe.com/connect/separate-charges-and-transfers
 gem 'stripe'
+
+gem 'ffi', '~> 1.16' #blup: specific ffi version since ffi-1.17 requires ruby version >= 3.3.22
