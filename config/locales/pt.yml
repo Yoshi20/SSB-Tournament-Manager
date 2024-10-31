@@ -1702,9 +1702,12 @@ pt:
       li3: "24 de outubro - TOP 4 qualifica-se para as finais e a aquisição de pontos termina"
       li4: "31 de outubro - \"Last Chance Qualifier\" - O torneio \"Weekly L\" desta data terá regras adicionais e o vencedor será qualificado para as finais"
       li5: "4 de Novembro até 18 de Novembro - Voto comunitário - os 3 jogadores com mais votos qualificam-se para as finais"
-      li6: "??? de Novembro - Finais da Locus League"
+      li6: "24 de Novembro - Finais da Locus League"
       body6: "Os jogadores qualificados podem continuar a adquirir pontos. Durante o evento final, o \"seeding\" dos TOP 3 jogadores será atribuído exclusivamente baseado no número de pontos que cada jogador adquiriu ao longo do ano. Existirão também, tal como no ano passado, privilégios atribuídos às seeds mais altas."
       excel_table: "nesta tabela de excel"
+    image_caption_1: "Divisão de pontos"
+    image_caption_2: "Formato Completo das Finais"
+    image_caption_3: "Processo de Votação"
 
   thredded:
     users:

@@ -12,7 +12,6 @@
   .col
     = link_to asset_url('pt_locus_league_placements.jpg') do
       = image_tag 'pt_locus_league_placements.jpg', height: '100%', width: '100%', alt: 'locus league placements image'
-
 .row.mt-3.center
   .col
     %p= link_to(t('locus_league.see_full_ranking_here'), 'https://docs.google.com/spreadsheets/d/107UK9mL06ybXfyP8kCaCoQYsVLSn7HEP3ejdVXUfjeE/edit?usp=sharing', target: '_blank')
@@ -44,3 +43,24 @@
   .col
     = link_to asset_url('pt_liga_PONTOS_4.jpg') do
       = image_tag 'pt_liga_PONTOS_4.jpg', height: '100%', width: '100%', alt: 'liga pontos image'
+.row.mt-2.center
+  .col
+    %p{style: 'font-size: 14px;'}= t('locus_league.image_caption_1')
+
+%br
+.row.center
+  .col
+    = link_to asset_url('pt_locus_league_event_format.jpg') do
+      = image_tag 'pt_locus_league_event_format.jpg', height: '100%', width: '100%', alt: 'locus league event format image'
+.row.mt-2.center
+  .col
+    %p{style: 'font-size: 14px;'}= t('locus_league.image_caption_2')
+
+%br
+.row.center
+  .col
+    = link_to asset_url('pt_locus_league_vote_in.jpg') do
+      = image_tag 'pt_locus_league_vote_in.jpg', height: '100%', width: '100%', alt: 'locus league vote in image'
+.row.mt-2.center
+  .col
+    %p{style: 'font-size: 14px;'}= t('locus_league.image_caption_3')
