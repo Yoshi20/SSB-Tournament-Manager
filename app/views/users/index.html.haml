@@ -59,7 +59,7 @@
             %td.admin-list-actions
               .admin-list-actions__link
                 = form_for user, url: "/users/#{user.id}", html: { method: :patch }, role: 'form' do |f|
-                  = f.select :country_code, options_for_select(['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'], user.country_code), {}, class: 'form-control', style: 'width: 40px; display: inline;'
+                  = f.select :country_code, options_for_select(['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is', 'us_ca'], user.country_code), {}, class: 'form-control', style: 'width: 40px; display: inline;'
                   = f.button type: 'submit', data: { confirm: 'Are you sure? (:country_code)' }, class:'btn btn-ghost btn-square' do
                     %span.material-icons.admin-actions__link__icon= 'language'
               -# .admin-list-actions__link

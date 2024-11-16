@@ -14,7 +14,8 @@
   %title= "SmashBrosPortugal#{@section.present? ? " | #{@section.capitalize}" : ""}"
 - elsif session['country_code'] == 'is'
   %title= "SmashIceland#{@section.present? ? " | #{@section.capitalize}" : ""}"
-
+- elsif session['country_code'] == 'us_ca'
+  %title= "CaliSmash#{@section.present? ? " | #{@section.capitalize}" : ""}"
 
 = display_meta_tags(default_meta_tags)
 %meta{:charset => "utf-8"}
@@ -43,6 +44,9 @@
 - elsif session['country_code'] == 'is'
   = favicon_link_tag 'is_logo.png'
   = stylesheet_link_tag 'application_is', media: 'all', 'data-turbolinks-track' => true
+- elsif session['country_code'] == 'us_ca'
+  = favicon_link_tag 'us_ca_logo.png'
+  = stylesheet_link_tag 'application_us_ca', media: 'all', 'data-turbolinks-track' => true
 = render '/layouts/google_analytics'
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 = csrf_meta_tags

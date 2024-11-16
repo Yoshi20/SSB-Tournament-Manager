@@ -21,7 +21,7 @@
 
   .row{style: 'margin-top: 0.5rem;'}
     .col
-      %h2= t('information.ch.partners.sites')
+      %h2= t('information.ch.partners.sites') # blup: EU
   .row.text-center
     - unless session['country_code'] == 'ch'
       .col
@@ -77,6 +77,17 @@
           = image_tag('at_logo.png', height: height, width: width, alt: 'Austria logo')
           %br
           Austria
+
+  .row{style: 'margin-top: 0.5rem;'}
+    .col
+      %h2= t('information.ch.partners.sites') # blup: US
+  .row.text-center
+    - unless session['country_code'] == 'us_ca'
+      .col
+        = link_to 'https://www.ca-smash.com', target: '_blank' do
+          = image_tag('us_ca_logo.png', height: height, width: width, alt: 'CaliSmash logo')
+          %br
+          California
 
   .row{style: 'margin-top: 0.5rem;'}
     .col

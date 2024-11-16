@@ -33,6 +33,8 @@
               %em= "(07123 456 789)"
           - elsif session['country_code'] == 'is'
             %em= "(700 1234)"
+          - elsif session['country_code'] == 'us_ca'
+            %em= "(213-123-4567)"
           = f.text_field :mobile_number, class: 'form-control', maxlength: '50'
       .form-group
         = f.label :password, t('users.new_password')
@@ -89,6 +91,11 @@
           .form-check
             = f.check_box :allows_emails_from_smashiceland, class:'form-check-input mr-2'
             = f.label :allows_emails_from_smashiceland, t('users.allows_emails_from_smashiceland'), class:'form-check-label'
+      - elsif session['country_code'] == 'us_ca'
+        .form-group
+          .form-check
+            = f.check_box :allows_emails_from_calismash, class:'form-check-input mr-2'
+            = f.label :allows_emails_from_calismash, t('users.allows_emails_from_calismash'), class:'form-check-label'
       .form-group
         .form-check
           = f.check_box :allows_emails_from_partners, class:'form-check-input mr-2'

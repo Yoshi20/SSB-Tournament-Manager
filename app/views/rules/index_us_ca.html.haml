@@ -1,0 +1,38 @@
+- set_meta_tags description: meta_tag_description('Rules')
+
+.row
+  .col
+    %h1.page__title= t('rules.title')
+
+%ul#rules-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+  %li.nav-item
+    %a#matches-tab.nav-link.active{'data-toggle'=>'tab', href: '#matches', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.us_ca.match_rules.title_short')
+  %li.nav-item
+    %a#general-tab.nav-link{'data-toggle'=>'tab', href: '#general', role: 'tab', 'aria-controls'=>'all'}
+      = t('rules.us_ca.general_rules.title_short')
+
+.tab-content#information-tabs-content
+  .tab-pane.fade#general{role: 'tabpanel', 'aria-labelledby'=>'general-tab'}
+    .row
+      .col
+        %p= t('rules.us_ca.general_rules.body')
+        = t('rules.us_ca.general_rules.ul')
+        %ul
+          %li= t('rules.us_ca.general_rules.li1')
+          %li= t('rules.us_ca.general_rules.li2')
+          %li= t('rules.us_ca.general_rules.li3')
+          %li= t('rules.us_ca.general_rules.li4')
+          %li= t('rules.us_ca.general_rules.li5')
+          %li= t('rules.us_ca.general_rules.li6')
+          %li= t('rules.us_ca.general_rules.li7')
+          %li= t('rules.us_ca.general_rules.li8')
+
+  .tab-pane.fade.show.active#matches{role: 'tabpanel', 'aria-labelledby'=>'matches-tab'}
+    .row
+      .col
+        %p
+          = t('rules.us_ca.match_rules.body')
+    .row
+      = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_en.jpg') do
+        = image_tag 'dutch_ssbu_ruleset_by_tadavidid_en.jpg', height: '100%', width: '100%', alt: 'dutch ssbu ruleset by tadavidid in english'

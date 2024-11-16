@@ -27,6 +27,64 @@ module PlayerHelper
       ['aveiro', 'azores', 'beja', 'braga', 'braganca', 'castelo_branco', 'coimbra', 'evora', 'faro', 'guarda', 'leiria', 'lisbon', 'madeira', 'portalegre', 'porto', 'santarem', 'setubal', 'viana_do_castelo', 'vila_real', 'viseu']
     elsif country_code == 'is'
       ['south', 'east', 'north_east', 'north_west', 'westfjords', 'west', 'reykjanes', 'reykjavik']
+    elsif country_code == 'us_ca'
+      # blup: counties_of_california
+      ['california', 'alameda_county', 'alpine_county', 'amador_county', 'butte_county', 'calaveras_county', 'colusa_county', 'contra_costa_county', 'del_norte_county', 'el_dorado_county', 'fresno_county', 'glenn_county', 'humboldt_county', 'imperial_county', 'inyo_county', 'kern_county', 'kings_county', 'lake_county', 'lassen_county', 'los_angeles_county', 'madera_county', 'marin_county', 'mariposa_county', 'mendocino_county', 'merced_county', 'modoc_county', 'mono_county', 'monterey_county', 'napa_county', 'nevada_county', 'orange_county', 'placer_county', 'plumas_county', 'riverside_county', 'sacramento_county', 'san_benito_county', 'san_bernardino_county', 'san_diego_county', 'san_francisco_county', 'san_joaquin_county', 'san_luis_obispo_county', 'san_mateo_county', 'santa_barbara_county', 'santa_clara_county', 'santa_cruz_county', 'shasta_county', 'sierra_county', 'siskiyou_county', 'solano_county', 'sonoma_county', 'stanislaus_county']
+
+      # source: https://transition.fcc.gov/oet/info/maps/census/fips/fips.txt
+      # 06000        California
+      # 06001        Alameda County
+      # 06003        Alpine County
+      # 06005        Amador County
+      # 06007        Butte County
+      # 06009        Calaveras County
+      # 06011        Colusa County
+      # 06013        Contra Costa County
+      # 06015        Del Norte County
+      # 06017        El Dorado County
+      # 06019        Fresno County
+      # 06021        Glenn County
+      # 06023        Humboldt County
+      # 06025        Imperial County
+      # 06027        Inyo County
+      # 06029        Kern County
+      # 06031        Kings County
+      # 06033        Lake County
+      # 06035        Lassen County
+      # 06037        Los Angeles County
+      # 06039        Madera County
+      # 06041        Marin County
+      # 06043        Mariposa County
+      # 06045        Mendocino County
+      # 06047        Merced County
+      # 06049        Modoc County
+      # 06051        Mono County
+      # 06053        Monterey County
+      # 06055        Napa County
+      # 06057        Nevada County
+      # 06059        Orange County
+      # 06061        Placer County
+      # 06063        Plumas County
+      # 06065        Riverside County
+      # 06067        Sacramento County
+      # 06069        San Benito County
+      # 06071        San Bernardino County
+      # 06073        San Diego County
+      # 06075        San Francisco County
+      # 06077        San Joaquin County
+      # 06079        San Luis Obispo County
+      # 06081        San Mateo County
+      # 06083        Santa Barbara County
+      # 06085        Santa Clara County
+      # 06087        Santa Cruz County
+      # 06089        Shasta County
+      # 06091        Sierra County
+      # 06093        Siskiyou County
+      # 06095        Solano County
+      # 06097        Sonoma County
+      # 06099        Stanislaus County
+
+
     end
   end
 
@@ -223,6 +281,9 @@ module PlayerHelper
     elsif country_code == 'pt'
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"] # "community_editor", "forum_moderator",
     elsif country_code == 'is'
+      ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
+    elsif country_code == 'us_ca'
+      # blup:
       ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     end
   end

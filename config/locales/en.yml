@@ -186,6 +186,8 @@ en:
       west: "West"
       reykjanes: "Reykjanes"
       reykjavik: "Reykjavík"
+      # us_ca regions:
+      # ...
     departments:
       Ain: "Ain"
       Aisne: "Aisne"
@@ -501,6 +503,15 @@ en:
       body4: "You can find the official Power Ranking of Iceland under %{rankings_link}."
       body5: "Here you can find all %{players_link} registered on SmashIceland and here you can find the %{statistics_link}."
       body6: "More information about SmashIceland can be found under %{informations_link}."
+    us_ca:
+      title: "CaliSmash"
+      body0: "Welcome to CaliSmash, your entry point into the California Super Smash Bros. Ultimate scene."
+      body1: "If you want to stay up-to-date with the California Smash Community, join us on %{discord_link}."
+      body2: "You can find the upcoming events in the %{tournaments_link} or in the %{calendar_link}."
+      body3: "%{log_in_link} or %{sign_up_link} if you haven't yet, to be able to join a tournament and write a %{feedbacks_link}."
+      body4: "You can find the official Power Ranking of California under %{rankings_link}."
+      body5: "Here you can find all %{players_link} registered on CaliSmash and here you can find the %{statistics_link}."
+      body6: "More information about CaliSmash can be found under %{informations_link}."
     tournament_list: "Tournaments list"
     calendar: "Calendar"
     log_in: "Log in"
@@ -906,7 +917,7 @@ en:
       tournament_manager:
         title: "Tournament manager"
         tournament_organiser: "Tournament organiser"
-        tournament_organiser_body: "SmashIceland.ch contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashIceland Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_body: "SmashIceland.com contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the SmashIceland Tournament Manager? Just add the TO role to your profile!"
         tournament_organiser_mail: "via email"
         tournament_organiser_mail_subject: "I would like to be an administrator!"
         tournament_organiser_mail_body: "Hi SmashIceland\n\nI'm ??? and I would like to be an administrator because:\n???"
@@ -918,6 +929,61 @@ en:
       results:
         title: "Results"
         results_body: "Besides the results (match scores and rankings) of the SmashIceland Tournament Manager internal tournaments, smashiceland.com is also able to get the results from all other tournaments in Iceland.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
+        ranking_system: "Scoring system"
+        ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
+        ranking_system_rank: "Rank"
+        ranking_system_points: "Points"
+      contact:
+        title: "Write me a message"
+        submit: "Submit"
+        name: "Your name or gamer tag"
+        email: "Your email"
+        body: "Your message"
+      partners:
+        title: "Partners"
+        sites: "Smash partners"
+        sites2: "Other partners"
+        sites3: "Smash tools"
+    us_ca:
+      title: "Information"
+      title_short: "Infos"
+      general:
+        title: "General"
+        calismash: |
+          This web application/site was primarly created to give an overview over the Super Smash Bros. Ultimate scene in California and to provide a tournament organizer (TO) a simple tool to manage their tournaments.<br><br>
+          It shall also present an entry point for new players to find their respective local smash community.
+      calendar:
+        title: "Calendar"
+        tournaments_body: "With the help of the start.gg API and with self written %{link} programs, that runs once every night, CaliSmash is able to find and list all the SSBU tournaments in California that were added to either one of the following sites:"
+        calendar_body: "The calendar shows all found SSBU tournaments in California from two weeks ago and four months into the future.\nIt distinguishes between the following tournament types:"
+        calendar_weekly: "Weekly -> On ca-smash.com created weekly tournament"
+        calendar_internal: "Internal -> On ca-smash.com created tournament"
+        calendar_external: "External -> On an external site created tournament"
+      power_ranking:
+        title: "Power Ranking"
+        power_ranking: "Power Ranking (PR)"
+        power_ranking_body: "A tournament will be considered an official CaliSmash tournament and will count to the PR when the following requirements are met:"
+        power_ranking_li_1: "Announced at least 2 weeks before its start date on ca-smash.com or on the CaliSmash Discord tournaments channel"
+        power_ranking_li_2: "A minimum of 16 attendees"
+        power_ranking_li_3: "Reasonable seeding"
+        power_ranking_li_4: "Enough lagless setups with decent sitting opportunities"
+        power_ranking_li_5: "Must be held on a weekend and with reasonable start and end times"
+        power_ranking_li_6: "Weeklies do not count to the PR"
+      tournament_manager:
+        title: "Tournament manager"
+        tournament_organiser: "Tournament organiser"
+        tournament_organiser_body: "Ca-Smash.com contains a web application for the simple creation and administration of smash tournaments.<br><br>It is particularly suitable for weeklies, as it allows the generation of several tournaments in a defined period of time.<br><br>Are you organising tournaments yourself and would like to use the CaliSmash Tournament Manager? Just add the TO role to your profile!"
+        tournament_organiser_mail: "via email"
+        tournament_organiser_mail_subject: "I would like to be an administrator!"
+        tournament_organiser_mail_body: "Hi CaliSmash\n\nI'm ??? and I would like to be an administrator because:\n???"
+        bracket_tool: "Bracket tool"
+        bracket_tool_body: "Because of its free, lagless and easy to use brackets and API, the CaliSmash tournament manager uses %{link}."
+        bracket_seeding: "Bracket seeding"
+        bracket_seeding_body1: "The initial seeding is done by generating a player list sorted by skill from all the data on CaliSmash.com:"
+        bracket_seeding_body2: "The final seeding is done manually by a TO."
+      results:
+        title: "Results"
+        results_body: "Besides the results (match scores and rankings) of the CaliSmash Tournament Manager internal tournaments, ca-smash.com is also able to get the results from all other tournaments in California.\nThe only condition is, that the tournament was imported on braacket.com in the %{link} league."
         ranking_system: "Scoring system"
         ranking_system_body: "Regardless of the number of participants per tournament, the players rank at the end of a tournament decides the received amount of points."
         ranking_system_rank: "Rank"
@@ -1107,6 +1173,7 @@ en:
     region_uk: "Region"
     region_pt: "District"
     region_is: "Region"
+    region_us_ca: "Region"
     gender: "Gender"
     gender_pronouns: "Gender pronouns"
     birth_year: "Birth year"
@@ -1164,6 +1231,7 @@ en:
     region_uk: "Region"
     region_pt: "District"
     region_is: "Region"
+    region_us_ca: "Region"
     number_of_players: "Number of players"
     character: "Character"
     player_activity: "Player activity"
@@ -1436,6 +1504,22 @@ en:
       match_rules:
         title_short: "Ruleset"
         body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Iceland. Please find out which rules are being used before each event."
+    us_ca:
+      general_rules:
+        title_short: "Conduct"
+        body: "Every tournament has its own house rules and rules of conduct. If in doubt, always ask the tournament organizer or host of the event."
+        ul: "Some (hopefully self-evident) rules are as follows:"
+        li1: "Adhere to the rules of common sense and the law in California."
+        li2: "Treat all participants with respect. Sexism, racism, homophobia or transphobia, hostility towards the disabled or religious discrimination will not be tolerated."
+        li3: "Every player should feel safe at tournaments. Sexual harassment or physical violence will result in immediate bans."
+        li4: "Most tournaments are also open to youth. Alcohol and cigarettes must not be made available to minors. The consumption of illegal substances is to be completely refrained from."
+        li5: "Deliberate damage or theft of other people's property will not be tolerated. If you accidentally damage anything or if you notice anything suspicious, please report it to the host."
+        li6: "Cheating or other manipulation of the tournament is detrimental to the competition and will result in severe consequences."
+        li7: "If rules are broken, the host always has the right to exclude any player from the event without further discussion."
+        li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
+      match_rules:
+        title_short: "Ruleset"
+        body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in California. Please find out which rules are being used before each event."
 
   tournaments:
     title: "Tournaments"
@@ -1563,6 +1647,7 @@ en:
     region_uk: "Region"
     region_pt: "District"
     region_is: "Region"
+    region_us_ca: "Region"
     fee_paid: "Fee paid?"
     brings: "Brings"
     brought: "Brought"
@@ -1702,6 +1787,8 @@ en:
     allows_emails_from_partners_pt: "I agree that partners of Smash Bros. Portugal send me emails from time to time"
     allows_emails_from_smashiceland: "I agree that SmashIceland sends me emails about important community topics & big tournament announcements from time to time"
     allows_emails_from_partners_is: "I agree that partners of SmashIceland send me emails from time to time"
+    allows_emails_from_calismash: "I agree that CaliSmash sends me emails about important community topics & big tournament announcements from time to time"
+    allows_emails_from_partners_us_ca: "I agree that partners of CaliSmash send me emails from time to time"
     data_agreement: "<strong>(Mandatory field)</strong> I agree that my data will be publicly viewable via my profile and will be used for player statistics. The data provided can be edited or deleted at any time via \"Edit profile\" or \"Account\""
     data_agreement_text: "Mandatory field must be checked!"
     current_password: "Current password"

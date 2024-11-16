@@ -39,6 +39,7 @@ module SsbTournamentManager
       uk: "SmashUltimate",
       pt: "SmashBrosPortugal",
       is: "SmashIceland",
+      us_ca: "CaliSmash",
     }
 
     config.domains = {
@@ -50,6 +51,7 @@ module SsbTournamentManager
       uk: "smashultimate.uk",
       pt: "smashbrosportugal.com",
       is: "smashiceland.com",
+      us_ca: "ca-smash.com",
     }
 
     config.default_locales = {
@@ -61,6 +63,7 @@ module SsbTournamentManager
       uk: "en",
       pt: "pt",
       is: "is",
+      us_ca: "en",
     }
 
     config.available_locales = {
@@ -72,6 +75,7 @@ module SsbTournamentManager
       uk: ["en"],
       pt: ["en", "pt"],
       is: ["en", "is"],
+      us_ca: ["en"],
     }
 
     config.currencies = {
@@ -83,6 +87,7 @@ module SsbTournamentManager
       uk: "£",
       pt: "€",
       is: "kr",
+      us_ca: "$",
     }
 
     config.iso_currencies = {
@@ -94,6 +99,7 @@ module SsbTournamentManager
       uk: "gbp",
       pt: "eur",
       is: "isk",
+      us_ca: "usd",
     }
 
     config.emails = {
@@ -105,6 +111,7 @@ module SsbTournamentManager
       uk: "SmashUltimate.uk <#{ENV['INFOMANIAK_EMAIL_USERNAME_UK']}>",
       pt: "SmashBrosPortugal <#{ENV['INFOMANIAK_EMAIL_USERNAME_PT']}>",
       is: "SmashIceland <#{ENV['INFOMANIAK_EMAIL_USERNAME_IS']}>",
+      us_ca: "CaliSmash <#{ENV['INFOMANIAK_EMAIL_USERNAME_US_CA']}>",
     }
 
     config.smtp_hosts = {
@@ -116,6 +123,7 @@ module SsbTournamentManager
       uk: "mail.infomaniak.com",
       pt: "mail.infomaniak.com",
       is: "mail.infomaniak.com",
+      us_ca: "mail.infomaniak.com",
     }
 
     config.smtp_domains = {
@@ -127,6 +135,7 @@ module SsbTournamentManager
       uk: "smashultimate.uk",
       pt: "smashbrosportugal.com",
       is: "smashiceland.com",
+      us_ca: "ca-smash.com",
     }
 
     config.smtp_user_names = {
@@ -138,6 +147,7 @@ module SsbTournamentManager
       uk: ENV['INFOMANIAK_EMAIL_USERNAME_UK'],
       pt: ENV['INFOMANIAK_EMAIL_USERNAME_PT'],
       is: ENV['INFOMANIAK_EMAIL_USERNAME_IS'],
+      us_ca: ENV['INFOMANIAK_EMAIL_USERNAME_US_CA'],
     }
 
     config.smtp_passwords = {
@@ -149,6 +159,7 @@ module SsbTournamentManager
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       pt: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       is: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      us_ca: ENV['INFOMANIAK_EMAIL_PASSWORD'],
     }
 
     config.stripe = {

@@ -1,0 +1,58 @@
+- set_meta_tags description: 'USA California Super Smash Brothers E-Sports Community'
+
+%h1.page__title
+  = t('welcome.us_ca.title')
+%p
+  .row{style: 'text-align: center;'}
+    - if current_user.present?
+      .col
+        = link_to statistics_path do
+          %p{style: 'margin-bottom: 0;'}
+            %strong= t('players.title')
+          %span.welcome_image.material-icons.admin-actions__link__icon= 'person'
+    - else
+      .col
+        = link_to new_user_registration_path do
+          %p{style: 'margin-bottom: 0;'}
+            %strong= t('sign_up')
+          %span.welcome_image.material-icons.admin-actions__link__icon= 'person_add'
+    .col
+      = link_to calendar_path do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= t('tournaments.calendar')
+        = image_tag "Calendar_Logo.svg", alt: 'Calendar logo welcome image', class: 'welcome_image'
+    .col
+      = link_to 'https://discord.gg/QCnpAAYs', target: '_blank' do
+        %p{style: 'margin-bottom: 0;'}
+          %strong= "Discord"
+        = image_tag "Discord-Logo-Color.svg", alt: 'Discord logo welcome image', class: 'welcome_image'
+%p
+  = t('welcome.us_ca.body0')
+
+%p
+  = t('welcome.us_ca.body1',
+    discord_link: link_to('Discord', 'https://discord.gg/QCnpAAYs', target: '_blank', style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.us_ca.body2',
+    tournaments_link: link_to(t('welcome.tournament_list'), tournaments_path, style: 'font-weight: 600;'),
+    calendar_link: link_to(t('welcome.calendar'), calendar_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.us_ca.body3',
+    log_in_link: link_to(t('welcome.log_in'), new_user_session_path, style: 'font-weight: 600;'),
+    sign_up_link: link_to(t('welcome.sign_up'), new_user_registration_path, style: 'font-weight: 600;'),
+    feedbacks_link: link_to(t('welcome.feedback_or_question'), feedbacks_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.us_ca.body4',
+    rankings_link: link_to(t('rankings.title'), rankings_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.us_ca.body5',
+    players_link: link_to(t('players.title'), players_path, style: 'font-weight: 600;'),
+    statistics_link: link_to(t('statistics.title2'), statistics_path, style: 'font-weight: 600;')).html_safe
+
+%p
+  = t('welcome.us_ca.body6',
+    informations_link: link_to(t('information.us_ca.title_short'), informations_path, style: 'font-weight: 600;')).html_safe

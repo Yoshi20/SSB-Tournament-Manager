@@ -229,6 +229,27 @@ module ApplicationHelper
           image: image_url('is_logo.png')
         }
       }
+    elsif session['country_code'] == 'us_ca'
+      {
+        reverse: true,
+        separator: '|',
+        description: 'USA California Super Smash Bros. Ultimate Community Hub',
+        keywords: 'super smash bros, nintendo, esports, ultimate',
+        canonical: request.original_url,
+        noindex: !Rails.env.production?,
+        icon: [
+          { href: image_url('us_ca_logo.png') },
+          { href: image_url('us_ca_logo.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/svg' },
+        ],
+        og: {
+          site_name: 'ca-smash.com',
+          title: 'CaliSmash',
+          description: 'USA California Super Smash Bros. Ultimate Community Hub',
+          type: 'website',
+          url: request.original_url,
+          image: image_url('us_ca_logo.png')
+        }
+      }
     end
   end
 
@@ -249,6 +270,8 @@ module ApplicationHelper
       "Smash Bros Portugal #{str}"
     elsif session['country_code'] == 'is'
       "SmashIceland #{str}"
+    elsif session['country_code'] == 'us_ca'
+      "CaliSmash #{str}"
     end
   end
 

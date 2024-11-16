@@ -1,0 +1,98 @@
+.container
+  %a.navbar-brand{href: '/'}
+    = image_tag('us_ca_logo.png', height: '50px', width: '50px', alt: 'CaliSmash logo')
+    %span.d-none.d-sm-block.d-lg-none.d-xl-block
+      = t('welcome.us_ca.title')
+
+  %ul.navbar-nav.navbar-icons
+    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+      = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32', alt: 'Discord logo white'), 'https://discord.gg/QCnpAAYs', target: '_blank', class: 'nav-link'
+    -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+    -#   = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
+    -# %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
+    -#   = link_to image_tag('Twitch_Logo.png', height: '32', width: '32', alt: 'Twitch logo'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
+    -# %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
+    -#   = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40', alt: 'Youtube logo'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
+
+  %ul.navbar-nav.navbar-main.ml-auto
+    %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
+      = link_to t('news.title'), news_index_path, class: 'nav-link'
+
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' || @section == 'tournaments') ? 'active' : 'inactive')}
+      %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+        = t('tournaments.title')
+        .h-24
+          %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+      .dropdown-menu{'aria-labelledby': 'navbarDropdown1'}
+        = link_to t('calendar.title'), calendar_path, class: 'dropdown-item'
+        = link_to t('navigation.list'), tournaments_path, class: 'dropdown-item'
+
+    %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
+      = link_to t('rankings.title'), rankings_path, class: 'nav-link'
+
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' || @section == 'statistics' || @section == 'videos' || @section == 'teams') ? 'active' : 'inactive')}
+      %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+        = t('players.title')
+        .h-24
+          %span.material-icons{style: "font-size: 16px; margin-top: 5px;"}= 'keyboard_arrow_down'
+      .dropdown-menu{'aria-labelledby': 'navbarDropdown2'}
+        = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
+        = link_to t('players.individuals'), players_path, class: 'dropdown-item'
+        = link_to t('video.title'), videos_path, class: 'dropdown-item'
+        = link_to t('teams.title'), teams_path, class: 'dropdown-item'
+
+    %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
+      = link_to t('rules.title'), rules_path, class: 'nav-link'
+
+    %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
+      = link_to t('information.us_ca.title_short'), informations_path, class: 'nav-link'
+
+    %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
+      = link_to shop_path, class: 'nav-link' do
+        = t('shop.title')
+        %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
+
+    %li.nav-item.locales-list
+      = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', alt: 'day-and-night icon', class: 'language_flag', style: "margin-left: 10px;"), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"
+
+  %ul.navbar-nav.navbar-account
+    - if user_signed_in?
+      %li.nav-item.dropdown.ml-lg-3
+        %a.nav-link.dropdown-toggle#navbarDropdown3{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          %span.material-icons
+            - if current_user.player.main_characters.any?
+              - char = current_user.player.main_characters[0] || current_user.player.main_characters[1] || current_user.player.main_characters[2]
+              - skin_nr = current_user.player.main_character_skins[0] || current_user.player.main_character_skins[1] || current_user.player.main_character_skins[2]
+              - if char != 'random' && File.file?("#{Rails.root}/app/assets/images/characters/#{char}.png")
+                #nav-char-image= render partial: 'players/character_image', locals: {character: char, skin_nr: skin_nr}
+              - else
+                = 'person'
+            - else
+              = 'person'
+
+        .dropdown-menu{'aria-labelledby': 'navbarDropdown3'}
+          .dropdown-title{style: 'text-align: center; font-weight: lighter;'}
+            = current_user.username
+            - if current_user.admin?
+              = t('navigation.account.admin')
+          - if current_user.player.present?
+            = link_to t('navigation.account.show_profile'), player_path(current_user.player), class: 'dropdown-item'
+            = link_to t('navigation.account.edit_profile'), edit_player_path(current_user.player), class: 'dropdown-item'
+          = link_to t('navigation.account.account'), edit_user_registration_path, class: 'dropdown-item'
+          - if current_user.has_role?("seller")
+            .dropdown-divider
+            = link_to t('shop.orders.title_short'), shop_seller_orders_path, class: 'dropdown-item'
+          - if current_user.super_admin?
+            = link_to 'Alle '+t('shop.orders.title_short'), shop_orders_path, class: 'dropdown-item'
+          - if current_user.admin?
+            .dropdown-divider
+            = link_to t('navigation.account.show_all_users'), users_path, class: 'dropdown-item'
+            = link_to t('navigation.account.add_tournament'), new_tournament_path, class: 'dropdown-item'
+          -#
+          .dropdown-divider
+          = link_to t('navigation.account.log_out'), destroy_user_session_path, method: :delete, confirm: t('navigation.account.log_out_confirm'), class: 'dropdown-item'
+    - else
+      %li.nav-item.dropdown.ml-lg-3
+        %a.nav-link{href:"#", role:"button", 'data-toggle'=>'modal', 'data-target'=>'#loginModal', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
+          %span.material-icons
+            = 'account_circle'
