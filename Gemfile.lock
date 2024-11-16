@@ -107,9 +107,9 @@ GEM
       rouge (>= 1.0.0)
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    bootstrap (4.6.2.1)
+    bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.11.8, < 3)
     brakeman (6.2.1)
       racc
     builder (3.3.0)
@@ -283,7 +283,7 @@ GEM
       activerecord (>= 6.1)
       request_store (~> 1.4)
     pg (1.1.4)
-    popper_js (1.16.1)
+    popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -467,7 +467,7 @@ DEPENDENCIES
   addressable (>= 2.8.0)
   bcrypt
   better_errors
-  bootstrap (~> 4.6.2)
+  bootstrap (~> 5.3.3)
   brakeman
   bullet
   byebug
@@ -497,7 +497,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.9)
   paper_trail
   pg (~> 1.1.4)
-  popper_js (~> 1.16.1)
+  popper_js (~> 2.11.8)
   pry
   puma (>= 6.3.1)
   rack-mini-profiler
