@@ -44,7 +44,7 @@ class Shop::SellerOrder < ApplicationRecord
   end
 
   def set_order_sent_at
-    self.order_sent_at = self.was_order_sent ? DateTime.now : nil
+    self.order_sent_at = self.was_order_sent ? Time.zone.now : nil
   end
 
   def set_status

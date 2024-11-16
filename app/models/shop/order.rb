@@ -27,7 +27,7 @@ class Shop::Order < ApplicationRecord
   end
 
   def set_order_paid_at
-    self.order_paid_at = self.was_order_paid ? DateTime.now : nil
+    self.order_paid_at = self.was_order_paid ? Time.zone.now : nil
   end
 
   def set_status

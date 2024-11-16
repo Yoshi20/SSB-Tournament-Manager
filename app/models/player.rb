@@ -16,12 +16,12 @@ class Player < ApplicationRecord
   validates :prefix, length: { maximum: 12 }
 
   scope :all_from, ->(country_code) { where(country_code: country_code) }
-  scope :from_2019, -> { where('created_at >= ? AND created_at < ?', Time.local(2019,1,1), Time.local(2020,1,1)) }
-  scope :from_2020, -> { where('created_at >= ? AND created_at < ?', Time.local(2020,1,1), Time.local(2021,1,1)) }
-  scope :from_2021, -> { where('created_at >= ? AND created_at < ?', Time.local(2021,1,1), Time.local(2022,1,1)) }
-  scope :from_2022, -> { where('created_at >= ? AND created_at < ?', Time.local(2022,1,1), Time.local(2023,1,1)) }
-  scope :from_2023, -> { where('created_at >= ? AND created_at < ?', Time.local(2023,1,1), Time.local(2024,1,1)) }
-  scope :from_2024, -> { where('created_at >= ? AND created_at < ?', Time.local(2024,1,1), Time.local(2025,1,1)) }
+  scope :from_2019, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2019,1,1), Time.zone.local(2020,1,1)) }
+  scope :from_2020, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2020,1,1), Time.zone.local(2021,1,1)) }
+  scope :from_2021, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2021,1,1), Time.zone.local(2022,1,1)) }
+  scope :from_2022, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2022,1,1), Time.zone.local(2023,1,1)) }
+  scope :from_2023, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2023,1,1), Time.zone.local(2024,1,1)) }
+  scope :from_2024, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2024,1,1), Time.zone.local(2025,1,1)) }
 
   MAX_PLAYERS_PER_PAGE = 50
   MAX_PLAYER_VIDEOS_PER_PAGE = 5

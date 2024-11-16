@@ -10,9 +10,9 @@
 
 .text-center
   - if @tournament.name.include?('PK Bern')
-    - if @tournament.date >= Time.local(2021,6,1)
+    - if @tournament.date >= Time.zone.local(2021,6,1)
       = image_tag 'pk_bern_erupted_corona.png', height: '100%', width: '100%', alt: 'pk_bern_erupted_corona image'
-    - elsif @tournament.date >= Time.local(2020,3,1) && @tournament.date < Time.local(2021,6,1)
+    - elsif @tournament.date >= Time.zone.local(2020,3,1) && @tournament.date < Time.zone.local(2021,6,1)
       = image_tag 'pk_bern_corona.png', height: '100%', width: '100%', alt: 'pk_bern_corona image'
     - else
       = image_tag 'pk_bern.png', height: '100%', width: '100%', alt: 'pk_bern image'

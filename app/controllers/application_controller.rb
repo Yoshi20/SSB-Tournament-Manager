@@ -172,8 +172,10 @@ class ApplicationController < ActionController::Base
         session['country_code'] = 'pt'
       elsif request.host.include?("smashiceland")
         session['country_code'] = 'is'
+      elsif request.host.include?("ca-smash")
+        session['country_code'] = 'us_ca'
       elsif cookies['country_code'].present?
-        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is'].include?(cookies['country_code'])
+        if ['ch', 'de', 'fr', 'lu', 'it', 'uk', 'pt', 'is', 'us_ca'].include?(cookies['country_code'])
           session['country_code'] = cookies['country_code']
         else
           raise "Invalid country_code!"
@@ -207,6 +209,8 @@ class ApplicationController < ActionController::Base
     def set_time_zone
       if session['country_code'] == 'uk' || session['country_code'] == 'pt' || session['country_code'] == 'is'
         Time.use_zone("London") { yield }
+      elsif session['country_code'] == 'us_ca'
+        Time.use_zone("Pacific Time (US & Canada)") { yield }
       else
         yield
       end
