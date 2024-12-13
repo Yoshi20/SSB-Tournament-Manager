@@ -9,6 +9,9 @@
     %a#general-tab.nav-link.active{'data-toggle'=>'tab', href: '#general', role: 'tab', 'aria-controls'=>'all'}
       = t('information.us_ca.general.title')
   %li.nav-item
+    %a#regions-tab.nav-link{'data-toggle'=>'tab', href: '#regions', role: 'tab', 'aria-controls'=>'all'}
+      = "Regions"
+  %li.nav-item
     %a#calendar-tab.nav-link{'data-toggle'=>'tab', href: '#calendar', role: 'tab', 'aria-controls'=>'all'}
       = t('information.us_ca.calendar.title')
   %li.nav-item
@@ -35,6 +38,84 @@
         %h2 Ca-Smash.com
         %p
           = t('information.us_ca.general.calismash', swisssmash_link: link_to('www.swisssmash.ch', 'https://www.swisssmash.ch/', target: '_blank'), Yomi: link_to('Yomi', '/players/1')).html_safe
+  -# regions
+  .tab-pane.fade.show#regions{role: 'tabpanel', 'aria-labelledby'=>'regions-tab'}
+    .row
+      .col
+        %h2= "Regions"
+    .row
+      .col.text-center
+        = link_to asset_url('us_ca_map_lines.jpg') do
+          = image_tag 'us_ca_map_lines.jpg', height: '400px', style: 'max-width: 100%;', alt: 'Cali map lines image'
+    .row.mt-3
+      .col
+        %strong North
+        %ul{style: 'padding-left: 0.5rem; list-style: none;'}
+          %li Alameda
+          %li Alpine
+          %li Amador
+          %li Butte
+          %li Calavera
+          %li Colusa
+          %li Contra Costa
+          %li Del Norte
+          %li El Dorado
+          %li Glenn
+          %li Humboldt
+          %li Lake
+          %li Lassen
+          %li Marin
+          %li Mendocino
+          %li Modoc
+          %li Mono
+          %li Napa
+          %li Nevada
+          %li Placer
+          %li Plumas
+          %li Sacramento
+          %li San Francisco
+          %li San Joaquin
+          %li San Mateo
+          %li Santa Clara
+          %li Santa Cruz
+          %li Shasta
+          %li Sierra
+          %li Siskiyou
+          %li Solano
+          %li Sonoma
+          %li Stanislaus
+          %li Sutter
+          %li Tehama
+          %li Trinity
+          %li Tuolumne
+          %li Yolo
+          %li Yuba
+      .col
+        %strong Central
+        %ul{style: 'padding-left: 0.5rem; list-style: none;'}
+          %li Fresno
+          %li Inyo
+          %li Kings
+          %li Madera
+          %li Mariposa
+          %li Merced
+          %li Monterey
+          %li San Benito
+          %li Tulare
+      .col
+        %strong South
+        %ul{style: 'padding-left: 0.5rem; list-style: none;'}
+          %li Imperial
+          %li Kern
+          %li Los Angeles
+          %li Orange
+          %li Riverside
+          %li San Bernardino
+          %li San Diego
+          %li San Luis Obispo
+          %li Santa Barbara
+          %li Ventura
+
   -# calendar
   .tab-pane.fade.show#calendar{role: 'tabpanel', 'aria-labelledby'=>'calendar-tab'}
     .row

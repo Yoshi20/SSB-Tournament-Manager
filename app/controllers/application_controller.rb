@@ -39,7 +39,8 @@ class ApplicationController < ActionController::Base
       :instagram_username, :youtube_video_ids, :allows_emails_from_swisssmash,
       :allows_emails_from_germanysmash, :allows_emails_from_francesmash,
       :allows_emails_from_luxsmash, :allows_emails_from_italysmash,
-      :allows_emails_from_smashiceland, :allows_emails_from_partners,
+      :allows_emails_from_smashiceland, :allows_emails_from_calismash,
+      :allows_emails_from_partners,
       :country_code, :smash_gg_id, :nintendo_friend_code, :twitch_username,
       :role_list, :gender_pronouns]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
@@ -66,7 +67,7 @@ class ApplicationController < ActionController::Base
   require 'json'
   def set_streamers
     return unless Rails.env.production? # blup: only request streamers in production
-    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt'].include?(session['country_code'])
+    return unless ['de', 'fr', 'lu', 'it', 'uk', 'pt', 'us_ca'].include?(session['country_code'])
     lu_streamers = ["LETzSmash_SSB", "sweetspotasbl", "lestv_lu", "derladefehler", "El_Arbok"] if session['country_code'] == 'lu'
     bearer_token = request_twitch_token()
     @streamers_json = Rails.cache.fetch("streamers_#{session['country_code']}", expires_in: 1.minute) do

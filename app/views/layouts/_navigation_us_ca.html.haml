@@ -7,18 +7,15 @@
   %ul.navbar-nav.navbar-icons
     %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
       = link_to image_tag('Discord-Logo-White.svg', height: '40', width: '32', alt: 'Discord logo white'), 'https://discord.gg/QCnpAAYs', target: '_blank', class: 'nav-link'
-    -# %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
-    -#   = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/swiss_smash', target: '_blank', class: 'nav-link'
+    %li.nav-item.ml-2.ml-lg-0{role: "presentation"}
+      = link_to image_tag('Twitter_Logo_WhiteOnImage.svg', height: '40', width: '40', alt: 'Twitter logo white'), 'https://twitter.com/leo_denard', target: '_blank', class: 'nav-link'
     -# %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
     -#   = link_to image_tag('Twitch_Logo.png', height: '32', width: '32', alt: 'Twitch logo'), 'https://www.twitch.tv/swisssmash', target: '_blank', class: 'nav-link', style: 'margin-top: 5px; margin-right: 5px;'
     -# %li.nav-item.ml-2.ml-lg-0.d-block.d-lg-none.d-xl-block{role: "presentation"}
     -#   = link_to image_tag('Youtube_Logo.svg', height: '40', width: '40', alt: 'Youtube logo'), 'https://www.youtube.com/channel/UC-wjoJ5nIusy2EBe-06Yfmw', target: '_blank', class: 'nav-link'
 
   %ul.navbar-nav.navbar-main.ml-auto
-    %li.nav-item{role: "presentation", class: (@section == 'news' ? 'active' : 'inactive')}
-      = link_to t('news.title'), news_index_path, class: 'nav-link'
-
-    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' || @section == 'tournaments') ? 'active' : 'inactive')}
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'calendar' or @section == 'tournaments') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown1{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
         = t('tournaments.title')
         .h-24
@@ -30,7 +27,7 @@
     %li.nav-item{role: "presentation", class: (@section == 'rankings' ? 'active' : 'inactive')}
       = link_to t('rankings.title'), rankings_path, class: 'nav-link'
 
-    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' || @section == 'statistics' || @section == 'videos' || @section == 'teams') ? 'active' : 'inactive')}
+    %li.nav-item.dropdown{role: "presentation", class: ((@section == 'players' or @section == 'statistics' or @section == 'videos') ? 'active' : 'inactive')}
       %a.nav-link.dropdown-toggle#navbarDropdown2{href:"#", role:"button", 'data-toggle'=>'dropdown', 'aria-haspopup'=>'true', 'aria-expanded'=>'false'}
         = t('players.title')
         .h-24
@@ -39,13 +36,15 @@
         = link_to t('statistics.title'), statistics_path, class: 'dropdown-item'
         = link_to t('players.individuals'), players_path, class: 'dropdown-item'
         = link_to t('video.title'), videos_path, class: 'dropdown-item'
-        = link_to t('teams.title'), teams_path, class: 'dropdown-item'
+
+    %li.nav-item{role: "presentation", class: (@section == 'tos' ? 'active' : 'inactive')}
+      = link_to t('tos.title_short'), tos_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'rules' ? 'active' : 'inactive')}
       = link_to t('rules.title'), rules_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'informations' ? 'active' : 'inactive')}
-      = link_to t('information.us_ca.title_short'), informations_path, class: 'nav-link'
+      = link_to t('information.lu.title_short'), informations_path, class: 'nav-link'
 
     %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
       = link_to shop_path, class: 'nav-link' do

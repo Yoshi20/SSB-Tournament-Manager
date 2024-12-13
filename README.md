@@ -41,6 +41,7 @@ Prod commands:
 - heroku run rake tournaments_crawler_im:all --remote prod
 - heroku run rake tournaments_crawler_pt:all --remote prod
 - heroku run rake tournaments_crawler_is:all --remote prod
+- heroku run rake tournaments_crawler_us_ca:all --remote prod
 - heroku run rake results_crawler_ch:all --remote prod
 - heroku run rake results_crawler_de:all --remote prod
 - heroku run rake results_crawler_fr:all --remote prod
@@ -49,6 +50,7 @@ Prod commands:
 - heroku run rake results_crawler_uk:all --remote prod
 - heroku run rake results_crawler_pt:all --remote prod
 - heroku run rake results_crawler_is:all --remote prod
+- heroku run rake results_crawler_us_ca:all --remote prod
 - heroku run rake "utils:remove_player_from_finished_tournament[<t_id>,<p_id>]" --remote prod
 
 Note:  
@@ -98,6 +100,7 @@ General links:
 - https://www.smashultimate.uk
 - https://www.smashultimate.co.uk
 - https://www.smashbrosportugal.com
+- https://www.ca-smash.com
 - https://challonge.com
 - https://braacket.com/league/ALLOFTHEM/tournament?rows=200
 - https://braacket.com/league/SSBUCHPRs/tournament?rows=200

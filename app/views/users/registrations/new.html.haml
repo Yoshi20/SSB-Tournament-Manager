@@ -79,6 +79,8 @@
           = f.text_field :mobile_number, class: 'form-control', maxlength: '50'
       .form-group
         = label_tag :region, t("players.region_#{session['country_code']}")
+        - if session['country_code'] == 'us_ca'
+          %em= link_to("(What is my region?)", "/informations#regions", target: "_blank")
         = select_tag :region, options_for_select(regions_for_select_from(session['country_code']), params[:region]), {include_blank: true, class: 'form-control'}
       .form-group
         = label_tag :gender, t('players.gender')

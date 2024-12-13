@@ -21,96 +21,93 @@
 
   .row{style: 'margin-top: 0.5rem;'}
     .col
-      %h2= t('information.ch.partners.sites') # blup: EU
+      %h2= t('information.ch.partners.sites')
   .row.text-center
-    - unless session['country_code'] == 'ch'
+    - if session['country_code'].include?('us_')
       .col
-        = link_to 'https://www.swisssmash.ch', target: '_blank' do
-          = image_tag('ch_logo.svg', height: height, width: width, alt: 'SwissSmash logo')
+        = link_to '/informations#contact' do
+          = image_tag('no-image.svg', height: height, width: width, alt: 'no_image logo', style: "background: white;")
           %br
-          Switzerland
-    - unless session['country_code'] == 'de'
-      .col
-        = link_to 'https://www.germanysmash.de', target: '_blank' do
-          = image_tag('de_logo.png', height: height, width: width, alt: 'GermanySmash logo')
-          %br
-          Germany
-    - unless session['country_code'] == 'fr'
-      .col
-        = link_to 'https://www.smashultimate.fr', target: '_blank' do
-          = image_tag('fr_logo.jpg', height: height, width: width, alt: 'FranceSmash logo')
-          %br
-          France
-    - unless session['country_code'] == 'uk'
-      .col
-        = link_to 'https://www.smashultimate.uk', target: '_blank' do
-          = image_tag('uk_logo.jpg', height: height, width: width, alt: 'UK logo')
-          %br
-          UK
-    - unless session['country_code'] == 'it'
-      .col
-        = link_to 'https://www.italysmash.it', target: '_blank' do
-          = image_tag('it_logo.svg', height: height, width: width, alt: 'ItalySmash logo')
-          %br
-          Italy
-    - unless session['country_code'] == 'lu'
-      .col
-        = link_to 'https://www.luxsmash.lu', target: '_blank' do
-          = image_tag('lu_logo.png', height: height, width: width, alt: 'LuxSmash logo')
-          %br
-          Luxembourg
-    - unless session['country_code'] == 'pt'
-      .col
-        = link_to 'https://www.smashbrosportugal.com', target: '_blank' do
-          = image_tag('pt_logo.jpg', height: height, width: width, alt: 'SmashBrosPortugal logo', style: 'border-radius: 50%;')
-          %br
-          Portugal
-    - unless session['country_code'] == 'is'
-      .col
-        = link_to 'https://www.smashiceland.com', target: '_blank' do
-          = image_tag('is_logo.png', height: height, width: width, alt: 'SmashIceland logo')
-          %br
-          Iceland
-    - unless session['country_code'] == 'at'
-      .col
-        = link_to 'https://smashbrothers.at', target: '_blank' do
-          = image_tag('at_logo.png', height: height, width: width, alt: 'Austria logo')
-          %br
-          Austria
+          Your website?
+    - else
+      - unless session['country_code'] == 'ch'
+        .col
+          = link_to 'https://www.swisssmash.ch', target: '_blank' do
+            = image_tag('ch_logo.svg', height: height, width: width, alt: 'SwissSmash logo')
+            %br
+            Switzerland
+      - unless session['country_code'] == 'de'
+        .col
+          = link_to 'https://www.germanysmash.de', target: '_blank' do
+            = image_tag('de_logo.png', height: height, width: width, alt: 'GermanySmash logo')
+            %br
+            Germany
+      - unless session['country_code'] == 'fr'
+        .col
+          = link_to 'https://www.smashultimate.fr', target: '_blank' do
+            = image_tag('fr_logo.jpg', height: height, width: width, alt: 'FranceSmash logo')
+            %br
+            France
+      - unless session['country_code'] == 'uk'
+        .col
+          = link_to 'https://www.smashultimate.uk', target: '_blank' do
+            = image_tag('uk_logo.jpg', height: height, width: width, alt: 'UK logo')
+            %br
+            UK
+      - unless session['country_code'] == 'it'
+        .col
+          = link_to 'https://www.italysmash.it', target: '_blank' do
+            = image_tag('it_logo.svg', height: height, width: width, alt: 'ItalySmash logo')
+            %br
+            Italy
+      - unless session['country_code'] == 'lu'
+        .col
+          = link_to 'https://www.luxsmash.lu', target: '_blank' do
+            = image_tag('lu_logo.png', height: height, width: width, alt: 'LuxSmash logo')
+            %br
+            Luxembourg
+      - unless session['country_code'] == 'pt'
+        .col
+          = link_to 'https://www.smashbrosportugal.com', target: '_blank' do
+            = image_tag('pt_logo.jpg', height: height, width: width, alt: 'SmashBrosPortugal logo', style: 'border-radius: 50%;')
+            %br
+            Portugal
+      - unless session['country_code'] == 'is'
+        .col
+          = link_to 'https://www.smashiceland.com', target: '_blank' do
+            = image_tag('is_logo.png', height: height, width: width, alt: 'SmashIceland logo')
+            %br
+            Iceland
+      - unless session['country_code'] == 'at'
+        .col
+          = link_to 'https://smashbrothers.at', target: '_blank' do
+            = image_tag('at_logo.png', height: height, width: width, alt: 'Austria logo')
+            %br
+            Austria
 
-  .row{style: 'margin-top: 0.5rem;'}
-    .col
-      %h2= t('information.ch.partners.sites') # blup: US
-  .row.text-center
-    - unless session['country_code'] == 'us_ca'
+  - if !session['country_code'].include?('us_')
+    .row{style: 'margin-top: 0.5rem;'}
       .col
-        = link_to 'https://www.ca-smash.com', target: '_blank' do
-          = image_tag('us_ca_logo.png', height: height, width: width, alt: 'CaliSmash logo')
-          %br
-          California
-
-  .row{style: 'margin-top: 0.5rem;'}
-    .col
-      %h2= t('information.ch.partners.sites2')
-  .row.text-center
-    - if session['country_code'] == 'uk'
+        %h2= t('information.ch.partners.sites2')
+    .row.text-center
+      - if session['country_code'] == 'uk'
+        .col
+          = link_to 'https://www.verdphoto.co.uk/', target: '_blank' do
+            = image_tag('partner_verdphoto.jpg', height: height, width: width, alt: 'verdphoto logo')
+            %br
+            Banner by @VerdJack
       .col
-        = link_to 'https://www.verdphoto.co.uk/', target: '_blank' do
-          = image_tag('partner_verdphoto.jpg', height: height, width: width, alt: 'verdphoto logo')
+        = link_to 'https://member-card.ch/en/', target: '_blank' do
+          = image_tag('partner_membercard_logo.svg', height: height, width: width, alt: 'MemberCard logo')
           %br
-          Banner by @VerdJack
-    .col
-      = link_to 'https://member-card.ch/en/', target: '_blank' do
-        = image_tag('partner_membercard_logo.svg', height: height, width: width, alt: 'MemberCard logo')
-        %br
-        MemberCard
-    .col
-      = link_to 'https://profile-card.ch/', target: '_blank' do
-        = image_tag('partner_profilecard_logo.png', height: height, width: width, alt: 'ProfileCard logo', style: "background: white;")
-        %br
-        ProfileCard
-    .col
-      = link_to '/informations#contact' do
-        = image_tag('no-image.svg', height: height, width: width, alt: 'no_image logo', style: "background: white;")
-        %br
-        Your image?
+          MemberCard
+      .col
+        = link_to 'https://profile-card.ch/', target: '_blank' do
+          = image_tag('partner_profilecard_logo.png', height: height, width: width, alt: 'ProfileCard logo', style: "background: white;")
+          %br
+          ProfileCard
+      .col
+        = link_to '/informations#contact' do
+          = image_tag('no-image.svg', height: height, width: width, alt: 'no_image logo', style: "background: white;")
+          %br
+          Your image?

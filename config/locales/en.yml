@@ -187,7 +187,9 @@ en:
       reykjanes: "Reykjanes"
       reykjavik: "Reykjavík"
       # us_ca regions:
-      # ...
+      north: "North"
+      central: "Central"
+      south: "South"
     departments:
       Ain: "Ain"
       Aisne: "Aisne"
@@ -1894,3 +1896,7 @@ en:
     image_caption_1: "Points Breakdown"
     image_caption_2: "Complete Finals Format"
     image_caption_3: "Voting Process"
+
+  tos:
+    title: "Tournament Organizers (TOs)"
+    title_short: "TOs"

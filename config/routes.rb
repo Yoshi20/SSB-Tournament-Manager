@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   get 'statistics' => 'statistics#index'
 
+  get 'tos' => 'tos#index'
+
   get 'videos' => 'videos#index'
 
   # DE routes:

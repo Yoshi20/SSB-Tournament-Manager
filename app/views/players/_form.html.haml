@@ -61,6 +61,8 @@
       = f.number_field :losses, class: 'form-control'
   .field.form-group
     = f.label :region, t("players.region_#{@player.country_code}")
+    - if session['country_code'] == 'us_ca'
+      %em= link_to("(What is my region?)", "/informations#regions", target: "_blank")
     = f.select :region, options_for_select(regions_for_select_from(@player.country_code), @player.region), {include_blank: true}, class: 'form-control'
   .field.form-group
     = f.label :gender, t('players.gender')

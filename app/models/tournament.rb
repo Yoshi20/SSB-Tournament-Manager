@@ -111,7 +111,9 @@ class Tournament < ApplicationRecord
       require 'open-uri'
       require 'json'
       begin
-        json_data = JSON.parse(URI.open("https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:#{self.country_code.upcase}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json").read)
+        country = self.country_code.include?('us_') ? 'US' : self.country_code.upcase
+        url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{ERB::Util.url_encode(self.location)}&components=country:#{country}&key=#{ENV['GOOGLE_MAPS_SERVER_SIDE_API_KEY']}&outputFormat=json"
+        json_data = JSON.parse(URI.open(url).read)
         if json_data["status"] == "OK" && json_data["results"].present? && json_data["results"][0].present?
           json_data["results"][0]["address_components"].each do |res|
             if (res["types"].present? && res["types"].include?('administrative_area_level_1'))
@@ -125,6 +127,19 @@ class Tournament < ApplicationRecord
                       uk_region = ApplicationController.helpers.counties_of_england[sn2.to_sym] if sn2.present?
                       if regions_raw.include?(uk_region)
                         self.region = uk_region
+                        return # as soon as region was found
+                      end
+                    end
+                  end
+                end
+                # handle special case: "California"
+                if sn == "CA"
+                  json_data["results"][0]["address_components"].each do |res|
+                    if (res["types"].present? && res["types"].include?('administrative_area_level_2'))
+                      sn2 = res["short_name"]
+                      us_ca_region = ApplicationController.helpers.counties_of_us_ca[sn2.to_sym] if sn2.present?
+                      if regions_raw.include?(us_ca_region)
+                        self.region = us_ca_region
                         return # as soon as region was found
                       end
                     end
