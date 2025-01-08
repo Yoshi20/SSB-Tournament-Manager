@@ -290,7 +290,7 @@ module PlayerHelper
     elsif country_code == 'is'
       ["caster", "coach", "content_creator", "designer", "news_editor", "photographer", "player", "seller", "streamer", "team_captain", "tournament_organizer"]
     elsif country_code == 'us_ca'
-      # blup:
+      # blup: finalize ca-smash.com roles
       ["caster", "coach", "content_creator", "designer", "photographer", "player", "seller", "streamer", "tournament_organizer"]
     end
   end
