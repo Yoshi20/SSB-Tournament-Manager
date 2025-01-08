@@ -26,3 +26,8 @@ Survey.find_or_create_by(
   option3: "No",
   ends_at: DateTime.parse("16.07.2024"),
 )
+
+Survey.find_or_create_by(
+  question: "To better distinguish from larger tournaments, the calendar now displays external tournaments that have \"Weekly\" in their name in dark cyan.",
+  ends_at: DateTime.parse("20.01.2025"),
+)

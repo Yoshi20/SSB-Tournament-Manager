@@ -48,7 +48,8 @@
     %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
       = link_to shop_path, class: 'nav-link' do
         = t('shop.title')
-        %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
+        - if @highlight_shop
+          %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
 
     %li.nav-item.locales-list
       = link_to image_tag("day-and-night.png", width: '20px', height: '20px', alt: 'day-and-night icon', class: 'language_flag'), url_for(color_theme: "#{cookies[:color_theme] == 'dark' ? 'light' : 'dark'}"), "data-turbolinks": "false"

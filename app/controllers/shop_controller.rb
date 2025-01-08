@@ -18,6 +18,8 @@ class ShopController < ApplicationController
     end
     # in any case order by user_id & position at the end
     @shop_products = @shop_products.order(:user_id, :position)
+    # save current shop_products_count to be able to show a new_releases icon
+    cookies.permanent[:shop_products_count] = @shop_products.count
   end
 
 end

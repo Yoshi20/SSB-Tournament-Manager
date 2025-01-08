@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   before_action :set_streamers
   before_action :set_survey
   before_action :set_top_players
+  before_action :set_highlight_shop
   before_action :get_latest_news
   before_action :get_next_tournaments
   before_action :set_forum_unread_count, only: no_user_exceptions
@@ -121,6 +122,10 @@ class ApplicationController < ActionController::Base
       end
       @topPlayers
     end
+  end
+
+  def set_highlight_shop
+    @highlight_shop = (cookies['shop_products_count'].to_i != Shop::Product.all.count && request.path != '/shop')
   end
 
   def get_latest_news

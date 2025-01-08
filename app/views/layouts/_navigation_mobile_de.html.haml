@@ -61,7 +61,8 @@
           %li.nav-item{role: "presentation", class: (@section == 'shop' ? 'active' : 'inactive')}
             = link_to shop_path, class: 'nav-link' do
               = t('shop.title')
-              %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
+              - if @highlight_shop
+                %span.material-icons{style: "margin-left: 5px;"}= 'new_releases'
 
     .row
       .col-6
