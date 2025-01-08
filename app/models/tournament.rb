@@ -30,27 +30,35 @@ class Tournament < ApplicationRecord
   end
 
   def cancelled?
-    !self.started and self.finished
+    (!self.started && self.finished)
+  end
+
+  def ongoing?
+    (!self.finished && self.date <= Time.zone.now && self.date >= (Time.zone.now - 6.hours))
   end
 
   def is_past?
-    self.date < Time.zone.now
+    (self.date < Time.zone.now)
   end
 
   def has_pools?
-    self.number_of_pools.to_i > 0
+    (self.number_of_pools.to_i > 0)
   end
 
   def weekly?
-    self.subtype == 'weekly'
+    (self.subtype == 'weekly')
   end
 
   def internal?
-    self.subtype == 'internal'
+    (self.subtype == 'internal')
   end
 
   def external?
-    self.subtype == 'external'
+    (self.subtype == 'external')
+  end
+
+  def external_weekly?
+    (self.subtype == 'external' && self.name.downcase.include?('weekly'))
   end
 
   def game_stations_count

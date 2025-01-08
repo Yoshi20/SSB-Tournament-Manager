@@ -18,6 +18,7 @@ pt:
   external: "Externo"
   internal: "Interno"
   weekly: "Semanal"
+  external_weekly: "Externo Semanal"
   show: "Mostrar"
   create: "Criar"
   update: "Atualizar"

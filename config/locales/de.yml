@@ -18,6 +18,7 @@ de:
   external: "Extern"
   internal: "Intern"
   weekly: "Weekly"
+  external_weekly: "Externes Weekly"
   show: "Zeige"
   create: "Erstelle"
   update: "Aktualisiere"

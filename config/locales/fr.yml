@@ -18,6 +18,7 @@ fr:
   external: "Externe"
   internal: "Interne"
   weekly: "Hebdomadaire"
+  external_weekly: "Externe Weekly"
   show: "Montrer"
   create: "Créer"
   update: "Mettre à jour"
@@ -664,8 +665,8 @@ fr:
       past: "Passé"
       cancelled: "Annulé"
       ongoing: "En cours"
-      internal_joined: "Interne"
-      weekly_joined: "Hebdomadaire"
+      internal_joined: "Interne joint"
+      weekly_joined: "Hebdomadaire joint"
     allDayText: "toute la jour"
     buttonText:
       today: "Aujourd'hui"

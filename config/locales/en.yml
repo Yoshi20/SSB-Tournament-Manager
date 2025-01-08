@@ -18,6 +18,7 @@ en:
   external: "External"
   internal: "Internal"
   weekly: "Weekly"
+  external_weekly: "External Weekly"
   show: "Show"
   create: "Create"
   update: "Update"

@@ -18,6 +18,7 @@ is:
   external: "Ytri"
   internal: "Innri"
   weekly: "Vikulega"
+  external_weekly: "Ytri vikulega"
   show: "Sýna"
   create: "Búa til"
   update: "Uppfæra"
@@ -953,7 +954,7 @@ is:
       weekly_joined: "Vikulega tengdur"
     allDayText: "all-day"
     buttonText:
-      today dag: "Í dag"
+      today: "Í dag"
       month: "mánuður"
       agendaWeek: 'Vika'
       agendaDay: 'Dagur'
