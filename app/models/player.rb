@@ -22,6 +22,7 @@ class Player < ApplicationRecord
   scope :from_2022, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2022,1,1), Time.zone.local(2023,1,1)) }
   scope :from_2023, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2023,1,1), Time.zone.local(2024,1,1)) }
   scope :from_2024, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2024,1,1), Time.zone.local(2025,1,1)) }
+  scope :from_2025, -> { where('created_at >= ? AND created_at < ?', Time.zone.local(2025,1,1), Time.zone.local(2026,1,1)) }
 
   MAX_PLAYERS_PER_PAGE = 50
   MAX_PLAYER_VIDEOS_PER_PAGE = 5

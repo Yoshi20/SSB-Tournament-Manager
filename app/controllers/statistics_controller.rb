@@ -13,6 +13,7 @@ class StatisticsController < ApplicationController
       @player_count_2022 = @players.from_2022.count
       @player_count_2023 = @players.from_2023.count
       @player_count_2024 = @players.from_2024.count
+      @player_count_2025 = @players.from_2025.count
       @player_count_active_365 = @players.includes(:tournaments).where(tournaments: {date: 365.days.ago.. Date.today}).count
       @player_count_active_90 = @players.includes(:tournaments).where(tournaments: {date: 90.days.ago.. Date.today}).count
       @player_count_active_30 = @players.includes(:tournaments).where(tournaments: {date: 30.days.ago.. Date.today}).count

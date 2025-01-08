@@ -53,7 +53,7 @@
     .tournaments__filter
       .row.without_col
         .tournaments__filter__button= link_to t('tournaments.all'), tournaments_path(search: params[:search], filter: 'all', anchor: 'upcoming'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
-        .tournaments__filter__button= link_to t('s12_2024'), tournaments_path(search: params[:search], filter: 's12_2024', anchor: 'upcoming'), class: "btn #{params[:filter] == 's12_2024' ? 'btn-default' : 'btn-ghost'}"
+        .tournaments__filter__button= link_to "2025", tournaments_path(search: params[:search], filter: 's12_2025', anchor: 'upcoming'), class: "btn #{params[:filter] == 's12_2025' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('external'), tournaments_path(search: params[:search], filter: 'external', anchor: 'upcoming'), class: "btn #{params[:filter] == 'external' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('internal'), tournaments_path(search: params[:search], filter: 'internal', anchor: 'upcoming'), class: "btn #{params[:filter] == 'internal' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('weekly'), tournaments_path(search: params[:search], filter: 'weekly', anchor: 'upcoming'), class: "btn #{params[:filter] == 'weekly' ? 'btn-default' : 'btn-ghost'}"
@@ -83,6 +83,7 @@
     .tournaments__filter
       .row.without_col
         .tournaments__filter__button= link_to t('tournaments.all'), tournaments_path(search: params[:search], filter: 'all', anchor: 'past'), class: "btn #{(params[:filter].nil? or params[:filter].empty? or params[:filter] == 'all') ? 'btn-default' : 'btn-ghost'}"
+        .tournaments__filter__button= link_to "2025", tournaments_path(search: params[:search], filter: 's12_2025', anchor: 'past'), class: "btn #{params[:filter] == 's12_2025' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('s12_2024'), tournaments_path(search: params[:search], filter: 's12_2024', anchor: 'past'), class: "btn #{params[:filter] == 's12_2024' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('s12_2023'), tournaments_path(search: params[:search], filter: 's12_2023', anchor: 'past'), class: "btn #{params[:filter] == 's12_2023' ? 'btn-default' : 'btn-ghost'}"
         .tournaments__filter__button= link_to t('s12_2022'), tournaments_path(search: params[:search], filter: 's12_2022', anchor: 'past'), class: "btn #{params[:filter] == 's12_2022' ? 'btn-default' : 'btn-ghost'}"
