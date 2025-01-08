@@ -272,21 +272,17 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.1-aarch64-linux-gnu)
+    nokogiri (1.17.2-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.18.1-aarch64-linux-musl)
+    nokogiri (1.17.2-arm-linux)
       racc (~> 1.4)
-    nokogiri (1.18.1-arm-linux-gnu)
+    nokogiri (1.17.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.1-arm-linux-musl)
+    nokogiri (1.17.2-x86-linux)
       racc (~> 1.4)
-    nokogiri (1.18.1-arm64-darwin)
+    nokogiri (1.17.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.18.1-x86_64-linux-musl)
+    nokogiri (1.17.2-x86_64-linux)
       racc (~> 1.4)
     onebox (2.2.19)
       addressable (~> 2.8.0)
@@ -478,11 +474,14 @@ GEM
     zeitwerk (2.6.18)
 
 PLATFORMS
+  aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
+  x86-linux
   x86_64-darwin
   x86_64-linux
   x86_64-linux-gnu
@@ -521,7 +520,7 @@ DEPENDENCIES
   material_icons
   meta-tags
   momentjs-rails
-  nokogiri (>= 1.13.9)
+  nokogiri (>= 1.13.9, < 1.18.0)
   paper_trail
   pg (~> 1.1.4)
   popper_js (~> 1.16.1)

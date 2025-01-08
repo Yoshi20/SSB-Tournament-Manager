@@ -119,7 +119,7 @@ gem 'will_paginate'
 gem 'http_accept_language'
 
 # See https://nokogiri.org/
-gem "nokogiri", ">= 1.13.9"
+gem "nokogiri", ">= 1.13.9", "< 1.18.0" #blup: v1.18 drops ruby 3.0 support -> update ruby and remove this limmiter
 
 # See https://github.com/ambethia/recaptcha
 gem 'recaptcha'
