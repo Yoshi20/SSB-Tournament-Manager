@@ -948,6 +948,8 @@ fr:
       title: "S1 2024"
       no_ranking: "Le classement devrait être publié début 2024"
       top15: "Top 15:"
+    s2_24:
+      title: "S2 2024"
     region_nrw:
       title: "NRW"
     region_hessen:
