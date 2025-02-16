@@ -4,7 +4,7 @@ class Shop::Order < ApplicationRecord
   belongs_to :shopping_cart, class_name: 'Shop::ShoppingCart'
   has_many :seller_orders, class_name: 'Shop::SellerOrder', dependent: :destroy
 
-  validates :email, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   before_validation :strip_whitespace
   after_validation :set_order_paid_at, on: [ :update ]
