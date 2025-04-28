@@ -6,7 +6,7 @@ class ContactController < ApplicationController
       if verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_#{session['country_code'].upcase}"], message: t('flash.alert.contact'))
         if params[:email].present? && params[:body].present? && !params[:url].present? # the :url is used to trick spam bots
           # also do net send anything when the message contains certain keywords
-          unless params[:body].include?('leadgeneration.com')
+          if !(params[:body].downcase.include?('leadgeneration.com') || params[:body].downcase.include?('к')) # greek К
             ContactMailer.with(name: params[:name], email: params[:email], body: params[:body], country_code: session['country_code']).contact_email.deliver_later
           end
           format.html { redirect_to informations_path(anchor: 'contact'), notice: t('flash.notice.contact') }
