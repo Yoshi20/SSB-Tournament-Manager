@@ -117,7 +117,7 @@ module SsbTournamentManager
     config.smtp_hosts = {
       ch: "mail.infomaniak.com",
       de: "mail.infomaniak.com",
-      fr: "mail.infomaniak.com",
+      fr: "ssl0.ovh.net",
       lu: "mail.infomaniak.com",
       it: "mail.infomaniak.com",
       uk: "mail.infomaniak.com",
@@ -129,7 +129,7 @@ module SsbTournamentManager
     config.smtp_domains = {
       ch: "swisssmash.ch",
       de: "germanysmash.de",
-      fr: "francesmash.fr",
+      fr: "smashultimate.fr",
       lu: "luxsmash.lu",
       it: "italysmash.it",
       uk: "smashultimate.uk",
@@ -153,7 +153,7 @@ module SsbTournamentManager
     config.smtp_passwords = {
       ch: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       de: ENV['INFOMANIAK_EMAIL_PASSWORD'],
-      fr: ENV['INFOMANIAK_EMAIL_PASSWORD'],
+      fr: ENV['INFOMANIAK_EMAIL_PASSWORD_FR'],
       lu: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       it: ENV['INFOMANIAK_EMAIL_PASSWORD'],
       uk: ENV['INFOMANIAK_EMAIL_PASSWORD'],
