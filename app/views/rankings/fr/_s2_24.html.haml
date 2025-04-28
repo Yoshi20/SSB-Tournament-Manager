@@ -1,0 +1,105 @@
+.tab-pane.show.active#fr_s2_24{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24-tab'}
+  %ul#fr_s2_24-tabs.nav.nav-pills.nav-fill{role: 'tablist'}
+    %li.nav-item
+      %a#fr_s2_24_1-tab.nav-link.active{'data-toggle'=>'tab', href: '#fr_s2_24_1', role: 'tab', 'aria-controls'=>'all'}
+        = "Top 10"
+    %li.nav-item
+      %a#fr_s2_24_2-tab.nav-link{'data-toggle'=>'tab', href: '#fr_s2_24_2', role: 'tab', 'aria-controls'=>'all'}
+        = "Top 50"
+    %li.nav-item
+      %a#fr_s2_24_3-tab.nav-link{'data-toggle'=>'tab', href: '#fr_s2_24_3', role: 'tab', 'aria-controls'=>'all'}
+        = "Platinum" # Platinum
+    %li.nav-item
+      %a#fr_s2_24_4-tab.nav-link{'data-toggle'=>'tab', href: '#fr_s2_24_4', role: 'tab', 'aria-controls'=>'all'}
+        = "Gold" # Gold
+    %li.nav-item
+      %a#fr_s2_24_5-tab.nav-link{'data-toggle'=>'tab', href: '#fr_s2_24_5', role: 'tab', 'aria-controls'=>'all'}
+        = "Silver" # Silver
+    %li.nav-item
+      %a#fr_s2_24_6-tab.nav-link{'data-toggle'=>'tab', href: '#fr_s2_24_6', role: 'tab', 'aria-controls'=>'all'}
+        = "Bronze" # Bronze
+
+  .tab-content#fr_s2_24-tabs-content
+    .tab-pane.show.active#fr_s2_24_1{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_1-tab'}
+      .row
+        .col
+          = link_to asset_url('rankings/fr/pr_s2_24_top10.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10.webp", width: '100%', alt: 'pr s2 24 image top10'
+      .row.mt-3
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_1.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_1.webp", width: '100%', alt: 'pr s2 24 image top10_1'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_2.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_2.webp", width: '100%', alt: 'pr s2 24 image top10_2'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_3.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_3.webp", width: '100%', alt: 'pr s2 24 image top10_3'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_4.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_4.webp", width: '100%', alt: 'pr s2 24 image top10_4'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_5.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_5.webp", width: '100%', alt: 'pr s2 24 image top10_5'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_6.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_6.webp", width: '100%', alt: 'pr s2 24 image top10_6'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_7.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_7.webp", width: '100%', alt: 'pr s2 24 image top10_7'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_8.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_8.webp", width: '100%', alt: 'pr s2 24 image top10_8'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_9.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_9.webp", width: '100%', alt: 'pr s2 24 image top10_9'
+        .col-6
+          = link_to asset_url('rankings/fr/pr_s2_24_top10_10.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top10_10.webp", width: '100%', alt: 'pr s2 24 image top10_10'
+      .row.mt-2
+        .col
+          %p
+            %span= "Artist:"
+            %span= link_to '@NaraSSB', 'https://x.com/NaraSSB', target: '_blank'
+    .tab-pane#fr_s2_24_2{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_2-tab'}
+      .row
+        .col
+          = link_to asset_url('rankings/fr/pr_s2_24_top50.webp') do
+            = image_tag "rankings/fr/pr_s2_24_top50.webp", width: '100%', alt: 'pr s2 24 image top50'
+      .row.mt-2
+        .col
+          %p
+            %span= "Artist:"
+            %span= link_to '@NaraSSB', 'https://x.com/NaraSSB', target: '_blank'
+    .tab-pane#fr_s2_24_3{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_3-tab'}
+      .row
+        .col
+          %h2= "Platinum (51-200)"
+          %ul{start: 51}
+            - players = ["Adam","Adrian","Amiin","Astral","Azertitop","Azure","Babyman","Baggy","Bartho","Bellz","BlackSoul","Blueriegan","Bluesky","Byakuya","Cayen","Cesco","Coname","Counter-Hit","Cracha","Dasher","Davianel","Dawn","DenPuShi","Discodog","Donut","DouDou","Drathian","EEO AAE","Eikoh","Elfo","Elgoumi","Elias","Etoiles","evian","Evolt","Eydou","Famoflo","FireXBoy97","FlameSlashKaioken13","FovoZero","Foxa","FRNK","Furisson","Gluigi","Godrim","Grand-Radiateur","Guismo","Hozmee","Human","IKEI","Iluya","Inami","Ink_Blue_Evo","Irt0zero","Ismealis","Jazzpunk","Jazzy Jeff","Jesuischoq","Jibay","Julos","Jun","Justinbyleth","Kaga","Kajou","Kalisto","Kéképi","Kimoru","Kirio","Kryzer","Lao","Leazin","LeDjo","LeYeah","Linepik","Littlemonke","Lorgan","Lucix","Lupin","Lycan","Lyxeon","Marceau","Marki","MaTheo","Mbp","Merredion","Micro-onde","mister_street","Mocra","Mohamed","MonnaieBison30","Motoji","moufi","Mustinho","MysticTenshinhan29","Naga","NauBody","Necross","Neibafu","Nerraw","NikoBZH","Nishiro","Nowno","OctoDams","OsReish","Otakuni","Padinspi","Paille paille","Palouse","Papou","Phoenix","Pratys","Pyjaman","Pyrrhon","Que_ni_ni","QuiRbo","R1","Rafé","Rafko","Rahou","Sagi","Saka","Sield","SIN","Sinj","Sirknight","Slacker","Sourif","STAR_PLATINUM","Stephenis","Strange","Suikrom","TBN","Teïko","Thena","Todlumière","Tofchrist","toiny","TonyClackos","TsuyuB@kaOn1i-Ch@n69","Tymorio","Valve","Vladez32","WooxTom","Yahiko","Yoguiffy","Yoshisaure","Yuno","Zaph","Zassio","ZeroFK","zeyus","Zura","εpsilon"]
+            - players.each do |p|
+              %li= p
+    .tab-pane#fr_s2_24_4{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_4-tab'}
+      .row
+        .col
+          %h2= "Gold (201-500)"
+          %ul{start: 201}
+            - players = ["&polo","| Rukia","1800hope","A.lpha","Achama","Actylo","Adles","Akai","Alasauce","AlphaX","Alternatif","Alucxrd","Alw","Amine","Andry","Anos","Ant of War","Arbok","Argonaute","artoupix","Artsnif","Aru","AtomicInteger","Aubrey","Axorion","Azeym","Azhega","Ba2meTT","Badr","Bandana","Banisu","Barloche","bato","Bayolante","Bdenneu","Bear","Benorris","Bibah","BiggyAlgérienne93","Bigsinge","Bizaute","Bluestorm","Bôlonièze","BoobagloireàBoulogne92","Booster","bopi","Bouboune","Bousculade","BranliX","Bravir","Browkoo","Cadzer","Cailloux","Capybara","Carmadura","Cereza","Cheerz","ChirurChien","Coflo","Cokodora","ComteNiark","Dam smasher","Dawn","DDBee","Desjo","Destadik","divinik","Djevebran","Djol","DMK","Dolby","DracoFlo","Drazaï","Drimea","Droopyf","Dyl","Eclipse_ssb_","Elie","elko","Erayle Cold","ERTI","Este","Excel","Exots","Farfaboulette","Flandre Scarlet","Flynn","foutriket","Fun","Furydrack","Gabourella","Gary","Gawain","GG Goja","glob","GodKu","Gohurisson","Goison","Grahf","Graou","Grenitsu","Grimm","Grorouch","GroSinjDu35","Guerreisons","Guilshark","Guiton","Gulux","Gunpix","Halua","Hao","Haru","Hearzy","Heekoz","Hélio","Hexagone","Heydelios","HiroTisha","Hiura","Honyoru","hugzbo","Ianis","IbanTF","iFun","iKonoha","Irongreen","Islou","Ivan du chit","Jiko","Jochen","Jojito","Kajja","kaliæ","KamikazeeSSJ13","Kappa","Keeptmantella","Kensi1313","Kichiro","Kiffeur2Gothique","Kildy","KingSkizz","kng","Korli","Kragen","Kyruu","Lannoé","Lapeluche","LeHgare","Lenny","Letto06","liang","lolo","Lorinato","Loris","Luca","lucasou","Lucky","Lunk","M1er","mael .","Maggie","MalAlpha","marc","Marius","Marti","Massi","Master","MattmatiK","maxence","Maximus","MaxKell","Maxou","Mayble","Méga-Branette","Mephy","Michoco","Mirrah","Mister Pepouz","Moi","Monori","mortal","Mr Parpaing","MrDaiyamondo","MugiwaraNoBrando","Murcielago","Myss","Nara","Nathez","Nelson mandale","Neroda","NEV","Newgvte","NighT","Nino","Nives","Nounouye","Noxumbra","Nozune","NTZ","Nutchup","Oadax","OneBrawl","Ords","Oreji","Orik","OutTgl","over13","Owdy","Oxydion","Palourde","Permake","PhapVo","Phendra","Pho","Piccaki","PiccoloDBZ76","Pierolym","Pillow","PINGOLEON 1er","Play4glory","Poda","Portal","PuppyHimejoshiLenin69004","Purner","Quasar","Ragon","Ramos","Raphaël btw","Raphro","Rathlasse","RedHotCherryPepper76","Rel","Renoi2campagne","River","robloxmaincharacter43","Rojojo","Ronéo","Rooskas","Rozariot","Ruynio","SacBøY","Sakaï","Samy","Sanglier","Secrétaire","Senko","Shapo","Shawn","Shikamounty","Shiro.exe","ShoeBip","Shynio","Sigo","SilvChar","SimonF","Skyl-974","Snofrost","sonraY","ST10","Stego","Sumbra","Super","Sylvalpha","Taikken","TaLinEsh","TarteAuPastek ඞ","Tatshpls","Teezy","Théotop","theray1","Tiko","Tôma","Tomikka","Toraké","tortue obèse","Touheris","Traceur","Trollardent","Tsukii","Turbo","Turbo","Tyzoute","Victor","VIRUS","Vueko","Wapiuki","Wayfarer","Wiveron","WolfyGalak","Xalker","XevilHaxx","Xinelire","Xylophonk","YACINE","yamis","Yanis","Yellowind","Yohgus","Yoshini","Yukinato","Zed","Zeni","ZeNo","ZeroSkill",]
+            - players.each do |p|
+              %li= p
+    .tab-pane#fr_s2_24_5{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_3-tab'}
+      .row
+        .col
+          %h2= "Silver (501-1000)"
+          %ul{start: 501}
+            - players = ["tiBonus","3arbi deluxe","Aabi","Adrian","Adrill94","Ae","Aenor","AFROOOOOOOO","AG","Agash","Agonyzz","Aiba","Aikawa","Akya","Alcatrazz","AlphA","An Salle De Sport","Anta","Apokalipse","Armando","ArnoCK","Arsene94vivemongun","Aruko Magique","AshW","AsstaMlk","Atosheep","Atteros","augustin","austino","Ayglon","azenet","Babou","BackFlip59","BandanaRoy","BanjoV","Baskoy","Bastian","Bâton","Bebare","BeLikeBisharp","Bèn","BenGen","Bensai","BibiLaBibi","Biboun","Big Mama","Bigdoudouw","BigKazuyaFan69","BiRoZz","Bixys","Blabla","Blackyu","Bloodnight","Blou","Blue","BM","bobby","Boomerang92i","BouBouTreize","BoumPoisson","Brindherb","Brionac","Bronyx","Brumaire","CacaProutMan","CaCdeus","cageot","Caphug","Cellok","Chad Light","Champi","Chapka","Cheewi","Chnaw","Chokotrec'h","Choukayte","cifarus","Clarinette","Clem","Clemclou","Corti_LZTD","Crabyi","Cracott","Creed","Cross","CumDrinker","Cyp","Cyrano du sud","Dapoce","Dawoo","DégobilleurCirconsi11100","Dhia","Djacky","Djenix","Dragnis","Dude","Duff","Edel","Eggidji","El","El Tépe","Elekhyr","Eli","Elix","Elo","Elphara","Empty","Enard_","Endergold05","enfantpsychique69","Enzale","Enzo","EnzoW","Erakos","ERROR 404","Évier à Miettes","Ewanz","Faaith","Fabd","Fan2agartha","Fanoza","Félix","Fenek","Fenriss","Fewku","Flame","flipflop02","Flying Raccoon","Foie_Gras_Poêlé","Folley","Fraise Parapluie","Franael","Franprix","Freepouille","Freesbi","Frimoun","Funky Town","Fybus le roi des 0-2","Gachimaster","Gadd","Galemagus","Garoh","Gazogen","GGP","Ghazi","Gigansel","GoldenKiwi","Goofyeur originel 7000","gotigo","Goudron","GPrime","Grandserein","Green","Grimdjow","groscylindrique34","Guts","Gx","Hadëss","Heka","Heliasin","her","Hime","Himitchi","Hisobi","Honorably","Howard","Hrunting","I <3 Hyrule Warriors","I2B","iFreeZiiA","IKEBIGFAN49","illioow","imercogo","ImJustSeal","Ink's Wonderful Feets","Iron R.O.B","Ironsup","JAHMAN","jaja","Jambon0001","Jean","Jesus with a glock","jeuneraclo brrrr","JG","Jillian","Jirolondon","Jo","Jojo le pêcheur","Jojopikmin22","Jokes","Jonathan Gaming !","Jost Eady","Julian","JuM","kaarislespyramides93","KaHoZ","Kat","Kaulnir","Kazam","Kealyr","Kerriamh","Ketro","Keurbi","Keurt","Keyro","Khaledsan","Kiffeur2Asiat","Kiffeur2Chorba76","Kiryn","Kissel","Kiyo","KnightRazor","Kogo","KoreanSeed","Kotw","Koya (amphinoboy","Kudo","Kybo","Kywi","Laiflayn","Lalan","Lammer&216","LaPelouse","Larga le fou","Larosh","LaSalope2Vivikintox","LaSalopeDeKintox","Lawerr","layzz","Le Très Gentil JP","lekib","Lelou","Leo","Léoneuil","Leopold","LetsGoPépèle","Levi","Licane","Light Crow","Lilitimus","LIS","LITIÈRE2YORUICHI","Loann","loicsamaaa","Louis1","Loulou","Loulou","Lounis","Lucky la bastos","Lucyøll","Lunaireevian","Lydien","Lydou","Lyrone","Maaaars","Maccao","Mael de poulet","Mahjong player","MamaDj","Marc","Marsolo1","Martow Pillow","maskass","Maskime","Math46","Maxisam","Maxray","Mayse Under","Mazen","McCoy","Mdraa","Mek","melchior","Melliodama","Meso","MetauxDeContrebande","Mewzar","Mickjeagle","Miden","Migota","Miiew","Mimirk","Miroufit","Mister_Sheep","Mncrftiscool","mobigdike","Momo_Stache Jr","Momo_stache Sr","MonkeyDOzio","Monotako","Monsieur Meringue","Morgana","Mowgly","Mr.Grizzly","Myst","N-Yu","Naderry","Narga","Nata","NatNat","Naunaud","Nayi","NDrama","Nebula","Necrotau","Nekorio","nelou","neo_soren","Neorel","NEVA","Nevi","Next","Nexus","Neytram","Nicooo","NightSFW","Niglosberg","Niobi","Nitta","NoaH","Nori","Noshiro","Novastormm","Nover","Nuno","Nupsitau","nz","Octavio","olivier gyro","Oozma","Oracle","Orphée","Otakujunior","Other","OuhPa","OwOmaltine","Paco","Paktou","Palirex","Panpan","Papa-ludisme","PapRika","Pascalito","pathbaulo","pedro","Pendulum","Peppa","Pihutte/srdt","PikPik","Pilex","Pinguin-San","Pipibox","Plop","Poade","Pouk","Poutre","Pride","Prøux","Provençal","Providence","Quatro","Quche","Racaillou","Razmo","RebelHeart","Redshadow","Reijin","Rïchester","RockRom","Rokusa","Roploplo","Roy","Ryse","Ryuku","Rαρh","SachaSalah","Saiidok","Saltyrock","SanglierSansGain","Sapinos","Sarasa","Sayger","Saylo","Says","Scal","Scarn","Screwdriver","Selachii","Semek","Señor Mouton","Sensei","Serial","Shauna","Shaymezu","Sherka","Shinuel","Shy Girl","Silver","Simko","Sinane","Skyy","Sliated","SLIMM","SM0GUY","SnH","SoraTa","Sortilège","Sovani","Soyboy","Speedroide","Spike stampede","Sr","SRFC m'a tout pris","Staugoten","Suniwa","SUS_Zano","Swanardo","Switcher","T!G3R","T.E.P_06","Tabl_bass","TableOmlaag","Tac","Taf","TaiHenki","Takion","Takudrifto","Tekninon","Théa","Threllox","Tian's","Tic","Tigno","Tima","Toast'Ikhar","TomAzo","Toxa","TR33K","Trozer176","Tyuhug","Ulmar","Upsi","Uzumaki08","Val","Vasochak","Vcs","Vérix","Vetas","VHS Cassette","Victofu","Victouffe","Visage Pâle","Wakey","Wallis","Wendigoat","whale","WheeIn","Wolfire","WOOSAN","Wormi","xAllmight","Xanadu","Xeno","XenoPlayed","Xenoww","Xida","Xpariboy","Yakin","yiaz","Yook","YOUZLEX","Yubi","Yuzh","Zaccaouette","Zang-Fu","ZelKonii","Zelume","Zen'iro","Zenixh","Zenyx","Zerd","Zetech","Zinogrine","Zirveden","Zlakaii","zobawhite","Zorgo","Zuwuu","zztep","гадсуп"]
+            - players.each do |p|
+              %li= p
+    .tab-pane#fr_s2_24_6{role: 'tabpanel', 'aria-labelledby'=>'fr_s2_24_3-tab'}
+      .row
+        .col
+          %h2= "Bronze (1001-2079)"
+          %ul{start: 1001}
+            - players = ["~Straycat","0uginiak","100_Non","Abaca","Abyss","Adrenali","Adridomage2 FAN account","agartha","Aignister","Ail","Aïzame_","Akateric","Akimori","Akirah","Akyriel","alo","Another","AntoDudu","AntonilUwU","Antouane","Arkanos","arkor","Armîn","arn0","Artelys","Artus","ARTY-CODE-1-2-GARS-LARD","Ashb0rn","Assasnake","Awlast","AxFeed","Axooul","Azali","Baalouga","babass","BananaKush","BananeGX","Bearr","Bendo","Biche","BigBurgeur","Blackyr","Blahaj","Blitzø","Bob","Booillant","Boushi","Bowman","Bregs","BreizhBlackJack","Buveur2T","Cachot","Carn0ult","Castor bma","Ce bon vieux Benja","Celest","Cenndre","CENTURIPE","Chabinours","Chatai","Chopperflame","Choun","Cibu","Classie","Clet","Clone","Comtesse de Semor","conix13","Corentin","CréDDDimpôt","Cross_start","Crøux","D4MŪ","DAGADIKT","Darkmario12","Darky","Dauss_","Derq","Djindjeur","Doggo","Don","Doppler","DouDouDou","Dr. Lulu","Dractyloplume","Dvalin","e_solis","Ebluod","Edralos","Eiko","EisFanL'officiel","Eltío","Emitchoum","Erin","Esclave2feuef","Ethector","Expophoto","Fencer","feuef","fif","FITOU | Alpacam","Flavien","Flayce","Flo","Fóbos","fondamental","Franckicola","FRAPPE OTTOMANE","Frost_Wind","Gaeloum","Gapex","Gaspou","Geek","GogoChad","GreGrenier","Gronpi","GroPingouinDu35","gto","Guramy","GyronAce","h","Hacheuh","Hao","Hazel","Hegemony","HirojustHiro","Hopeless","hræsvelg","Huge","Hürt","HuttelaCabane","IL PENTANOO","ilix","INDURVEC","Izuku Akatani.Exe","J44J","Jean2fos","JerichoO","JMLPDEAD<3","Jojo","Just-Brandon","Jynw","k1ota","Kabey","Kaen","Kal-Torak","Kam","Karton","KassCroute","Kazu","Kek","KeyFace","Keyhoobin","kiksmin","Kimmist","kirbally","Kitraz","Kokoro","Konod","Kot0","Kurogane","Kurøi_Kiba","kwakgaming","LA MANO 2.6","Lagruby","Lancers","Lapinstèque","Le Chen","le nulle","LeBéton","Leny","Lepanda13","LesaintLineon","Li Ku LXIX","Likeme","LinebeckIV","Linkos","Litchi","Localo","Lolo","Lolo257","louis","Lowtox","Lucïol","Lucrou","Luffy_samy","Lugh","Lumay","Lunatic","Lyz","Magician","MagLunzVSF Carlsen","Maki","Malv","Mangolettos","Manza","Marcassin Marxiste","Markitoss","Mashu","Mateus","Matt1726","Mauch","Maulisu","MaxyOursGarou","Medjed","MetalQueerSolid","midfirewear","Minka","Mirai","Miz","MoahRikunel","Mouloud","moustirab","Mr.Notor","Nalawan","namibo","Natellen","Natsu34","Neisan","Neoya","Nessy","Nfox","Ninjazen","Ninow","NisKuu","Nissou","Nito","Noble Six","Noctrys","Nolimar","Nuamus","Nyomon","Nywen","Ocarno","Ogruste","OliviaRodrigoFan#4489635","Omegadeus","Oni-Link","onir","Onizuka 35","Ota","OttarBerg","Pabushron","pain de mii","Patalor","Patobeurre","Paulinx","PengouinSuperFagg2Marne","Personaka","Pickas","Pluck","Pom","Poognette","Posty","PotiChat","Poufmou","Poutre","Ppalv","Prodige","Proteseman","Pyja","Pyrathiolys","Raf","Rahmses","Raijin","Ratio '-'","Rei","Remacx","Resolx","RetrO","Rikumashi","Rimuru","RnG_","Roman","Rondiodio","Rorodela","roys","Ruth","RyanB","Ryauma","RyuJo","ryuka","SarreNy","Sat","SATO","ScØoBY","Scor","Seishiii","Seistral","Seiun","Semys","serissan","Sha","Shaloan19","Sharkrai","Shifu","Shota","Simple","sinj","Siriwa","skyRaX","Solile","Soupux","speakies","Starboye","Stargapouet","Steel Soupe","Subnos","Sunsty","SuperKendamaFanEmpire71","Supersaucise","Ta gueule Plectrum xDD","take","Talion","Tall_French_Guy","Tallgeese","Tartare","Tatal","Tempo","Terebu","THEANATOLIEN","TheLouton","TheMasterStorm","ThetaSigma","ThomasSwitch","Thomback","TIGGY","Tigtou","Tilté","Tiroxx","tmy","Tnaiih","Toinou","Tokiyo Dorifto","Toncal","Tora Mapo","Tortaal","tourte","Trels","Trem","TwilCynder","Umbrash","UnCalin","ValFlyZz","Ventricinina","Vildark","Virgile","vitasentinel","Vivi/Pazuzu","voa iel","Voltar","Vzy au chapeau noir","W.E.W","Waisuru_","Watercooled","Weegie","Wheze","Wiqnn","Xion","Yarai","yasko","Yoh","You","Young Silva","yumejas","Zane","Zel","Zephenox","ZeroSauceSamus","Zhanor","Zimez","Zodrack","Zombizz","Zydraik","Zyx"]
+            - players.each do |p|
+              %li= p
