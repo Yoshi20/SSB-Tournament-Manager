@@ -219,7 +219,7 @@ class CommunitiesController < ApplicationController
       ["pit", "tRzaFXP"], ["pokemon_trainer", "Y6dhCsM"], ["pyra_and_mythra", "7g8gY7wQJH"],
       ["richter", "ZDvJWdz"], ["ridley", "yenwRqm"], ["rob", "rSx8MSf"], ["robin", "Gpc7Dbu"],
       ["rosalina_and_luma", "zfvA8xV"], ["roy", "wwnhVjS"], ["ryu", "CPptRsR"],
-      ["samus", "e9vyVF2"], ["sephiroth", "APW2QScwW7"], ["sheik", "edvYN57"], ["shulk", "GneEZAC"],
+      ["samus", "e9vyVF2"], ["sephiroth", "YsdmXAGJD7"], ["sheik", "edvYN57"], ["shulk", "GneEZAC"],
       ["simon", "ZDvJWdz"], ["snake", "WgWhze4"], ["sonic", "NVWzs5M"], ["sora", "AaZjVBnANh"],
       ["steve", "7nK7ADz"], ["terry", "WXW26zN"], ["toon_link", "mSU95AB"], ["villager", "9N6Rr3B"],
       ["wario", "jTDGUC2"], ["wii_fit_trainer", "NcGbfek"], ["wolf", "RYC3cVDuuq"],
