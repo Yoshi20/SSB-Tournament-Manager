@@ -296,7 +296,7 @@ GEM
     paper_trail (16.0.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
-    pg (1.1.4)
+    pg (1.5.9)
     popper_js (1.16.1)
     pry (0.15.2)
       coderay (~> 1.1)
@@ -522,7 +522,7 @@ DEPENDENCIES
   momentjs-rails
   nokogiri (>= 1.13.9, < 1.18.0)
   paper_trail
-  pg (~> 1.1.4)
+  pg (~> 1.5.9)
   popper_js (~> 1.16.1)
   pry
   puma (>= 6.3.1)
