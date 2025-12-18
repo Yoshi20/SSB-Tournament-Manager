@@ -6,9 +6,19 @@ namespace :tournaments_crawler_ch do
   task all: :environment do
     tCtr = Tournament.all_from('ch').count
     puts "Running all tournaments web crawlers..."
-    Rake::Task["tournaments_crawler_ch:braacket"].invoke
-    Rake::Task["tournaments_crawler_ch:smash_gg"].invoke
-    Rake::Task["tournaments_crawler_ch:toornament"].invoke
+    [
+      "tournaments_crawler_ch:braacket",
+      "tournaments_crawler_ch:smash_gg",
+      "tournaments_crawler_ch:toornament"
+    ].each do |task_name|
+      begin
+        Rake::Task[task_name].reenable
+        Rake::Task[task_name].invoke
+      rescue => e
+        puts "Task #{task_name} failed: #{e.class} - #{e.message}"
+        Rails.logger.error e.full_message
+      end
+    end
     puts "\ndone -> #{Tournament.all_from('ch').count - tCtr} new tournament(s)\n"
   end
 
