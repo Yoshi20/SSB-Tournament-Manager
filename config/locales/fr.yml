@@ -998,6 +998,7 @@ fr:
         title_short: "Règlements"
         title: "Règles de match SSBU (Règlements)"
         body: "Pour l'instant les règlements de néerlandaise ou de Mirakuru est utilisé dans la plupart des tournois officiels suisses."
+        body2: "Le document complet des règles se trouve ici: %{link}"
         overview_dutch: "Aperçu des règles néerlandaises:"
         overview_dutch_by_tadavidid: "Aperçu des règles néerlandaises (par TaDavidID):"
         overview: "Aperçu des règles Mirakuru:"

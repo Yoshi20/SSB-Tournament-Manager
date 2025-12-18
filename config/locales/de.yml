@@ -999,6 +999,7 @@ de:
         title_short: "Rulesets"
         title: "SSBU-Matchregeln (Rulesets)"
         body: "Derzeit wird das Niederländische- oder das Mirakuru-Ruleset in den meisten offiziellen Schweizer Turnieren verwendet."
+        body2: "Das vollständige Ruleset findest du hier: %{link}"
         overview_dutch: "Übersicht Niederländische-Ruleset:"
         overview_dutch_by_tadavidid: "Übersicht Niederländische-Ruleset (von TaDavidID):"
         overview: "Übersicht Mirakuru-Ruleset:"
@@ -1027,7 +1028,7 @@ de:
         li8: "Je nach Covid-19 Situation und Schutzkonzept des Events gibt es unterschiedliche Corona Regeln. Halte dich jederzeit an die Vorgaben."
       match_rules:
         title_short: "Ruleset"
-        body: "Auf den meisten Turnieren in Deutschland wird das GSC Ruleset bzw. das Niederländische Ruleset verwendet. Informiere dich bitte vor jedem Event welches Regelwerk konkret verwendet wird."
+        body: "Das vollständige Ruleset findest du hier: %{link}"
     fr:
       general_rules:
         title_short: "Conduct"

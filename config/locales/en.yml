@@ -1383,6 +1383,7 @@ en:
         title_short: "Rulesets"
         title: "SSBU match rules (Rulesets)"
         body: "For now the Dutch or the Mirakuru ruleset is used in most of the official Swiss tournaments"
+        body2: "Read the full ruleset document here: %{link}"
         overview_dutch: "Overview Dutch ruleset:"
         overview_dutch_by_tadavidid: "Overview Dutch ruleset (by TaDavidID):"
         overview: "Overview Mirakuru ruleset:"
@@ -1411,7 +1412,7 @@ en:
         li8: "Depending on the Covid-19 situation and the protection concept of the event, there are different Corona rules. Stick to them at all times."
       match_rules:
         title_short: "Ruleset"
-        body: "The GSC Ruleset respectively the Dutch Ruleset is used at most tournaments in Germany. Please find out which rules are being used before each event."
+        body: "Read the full ruleset document here: %{link}"
     fr:
       general_rules:
         title_short: "Conduct"

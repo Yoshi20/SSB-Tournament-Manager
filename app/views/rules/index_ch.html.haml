@@ -52,7 +52,6 @@
       .col
         %p
           = t('rules.ch.match_rules.body')
-
     .row
       .col
         %p
@@ -60,8 +59,12 @@
     .row
       = link_to asset_url('dutch_ssbu_ruleset_by_tadavidid_en.jpg') do
         = image_tag 'dutch_ssbu_ruleset_by_tadavidid_en.jpg', height: '100%', width: '100%', alt: 'dutch ssbu ruleset by tadavidid in english'
+    .row.mt-3
+      .col
+        %p
+          = t('rules.ch.match_rules.body2', link: link_to("https://calypt.us/ruleset", "https://calypt.us/ruleset", target: '_blank')).html_safe
 
-    .row
+    .row.mt-3
       .col
         %p
           %strong= t('rules.ch.match_rules.overview_dutch')
